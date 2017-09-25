@@ -1,0 +1,316 @@
+.larger {
+  width: 1480px;
+}
+ul {
+  list-style-type: none;
+}
+.product-view-switcher {
+  margin-right: 0 !important;
+}
+.product-img-wrap {
+  max-height: 350px;
+}
+.col-md-12,
+.col-md-3 {
+  padding: 0;
+}
+.footer {
+  padding-bottom: 0;
+}
+.footer .section-padding {
+  padding-bottom: 0 !important;
+}
+.footer .copyrights {
+  padding-top: 80px;
+  padding-bottom: 10px;
+}
+.product-item {
+  border: 1px solid #eeeeee;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.product-item:hover .product-title a {
+  color: #63a4ff;
+}
+.product-item:hover b {
+  color: #63a4ff;
+}
+.product-item:last-child {
+  border-right: 1px solid #eeeeee;
+}
+.nav-link h2 {
+  color: rgba(51, 51, 51, 0.48);
+}
+.nav-item a {
+  border-right: 1px solid #eee;
+}
+.nav-item.last a:last-child {
+  border: none;
+}
+.nav-link.active h2 {
+  color: #333;
+}
+.productLine:last-child .product-item {
+  border-bottom: 1px solid #eeeeee;
+}
+.goods_amount {
+  padding: 10px;
+  color: #333333;
+}
+.item-price span {
+  font-size: 12px;
+}
+#new-tranding .product-item {
+  border-bottom: 1px solid #eeeeee;
+}
+.like-share-inner h1 {
+  font-size: 25px;
+  color: #fff;
+}
+.aboutText h2,
+.aboutText h5 {
+  text-transform: uppercase;
+}
+.aboutText h5 {
+  margin-top: 20px;
+}
+.aboutText a.btn {
+  border: none;
+  float: left;
+  background: #63a4ff;
+  color: #fff;
+  margin-left: 40px;
+  padding: 13px 30px 10px 30px;
+  margin-top: -6px;
+}
+#collapseInfo .col-md-12,
+#collapseInfo .col-md-3 {
+  padding: 20px;
+  text-align: justify;
+}
+.categories .cat_block {
+  margin-top: -80px;
+  z-index: 1;
+}
+.phone div {
+  margin-right: 30px;
+}
+.productIcons {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.productIcons i {
+  width: 35px;
+  height: 35px;
+  margin-left: 5px;
+  float: left;
+  display: block;
+  background-size: 100% !important;
+  margin-bottom: 5px;
+}
+.productIcons .stamp_leather {
+  background: url("../img/product_icons/stamp_koza.svg") no-repeat;
+}
+.productIcons .stamp_snake {
+  background: url("../img/product_icons/stamp_zmeika.svg") no-repeat;
+}
+.productIcons .stamp_wool {
+  background: url("../img/product_icons/stamp_sherst.svg") no-repeat;
+}
+.productIcons .stamp_backlight {
+  background: url("../img/product_icons/stamp_podsvetka.svg") no-repeat;
+}
+.productIcons .stamp_brakes {
+  background: url("../img/product_icons/stamp_tormoza.svg") no-repeat;
+}
+.productIcons .stamp_heat-cold {
+  background: url("../img/product_icons/stamp_teploHolod.svg") no-repeat;
+}
+.productIcons .stamp_leatherinsole {
+  background: url("../img/product_icons/stamp_kozanayaStelka.svg") no-repeat;
+}
+.productIcons .stamp_doubleKnitting {
+  background: url("../img/product_icons/stamp_dvoinayaVyazka.svg") no-repeat;
+}
+.productIcons .stamp_singleKnitting {
+  background: url("../img/product_icons/stamp_odinarnayaVyazka.svg") no-repeat;
+}
+.list-page-title h2 small {
+  margin-left: 10px;
+  color: #63a4ff;
+}
+.product-list-view .goods_amount {
+  padding: 0;
+  padding-bottom: 10px;
+}
+.product-list-view .goods_amount .col-md-6 {
+  padding: 0;
+}
+.product-list-view .item-price {
+  padding: 0;
+}
+.product-list-view .product-item {
+  border-bottom: 1px solid #eeeeee;
+}
+.categoryPage .product-item:last-child {
+  border-right: 1px solid #eeeeee;
+  border-bottom: 1px solid #eee;
+}
+.categoryPage .product-show {
+  margin-right: 30px;
+}
+.categoryPage .filterInner {
+  max-height: 230px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.categoryPage .sidebar-container {
+  padding-right: 30px;
+  position: relative;
+}
+.categoryPage .checkbox {
+  margin: 0 auto;
+  max-width: 100%;
+  text-align: left;
+}
+.categoryPage .checkbox label {
+  padding-left: 15px;
+}
+.categoryPage .pull-right {
+  margin-right: 0 !important;
+}
+.categoryPage .checkbox:hover label {
+  color: #63a4ff;
+}
+.categoryPage .product-item .product-item-inner img {
+  width: 100%;
+  max-height: 390px;
+  max-width: 170px;
+  text-align: center;
+  margin: 0 auto;
+  float: none;
+}
+.categoryPage .product-img-wrap a {
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.categoryPage .product-list-view .product-img-wrap {
+  margin: 0;
+}
+.categoryPage .product-list-view .product-item-inner img {
+  width: 100%;
+  max-height: 390px;
+  max-width: 230px;
+  text-align: center;
+  margin: 0 auto;
+  float: none;
+}
+.categoryPage .submit_onChoose {
+  position: absolute;
+  right: 15%;
+  top: 10%;
+  z-index: 1;
+  display: none;
+}
+.categoryPage .submit_onChoose button {
+  position: fixed;
+  background: #63a4ff;
+  padding: 11px 30px 10px 30px;
+  color: #fff;
+  border-radius: 8px 15px 15px 8px;
+}
+.categoryPage .submit_onChoose button:hover {
+  background: #5186d0;
+}
+.categoryPage .submit_onChoose button:hover .arrow-left {
+  border-right: 15px solid #5186d0;
+}
+.categoryPage .submit_onChoose .arrow-left {
+  width: 0;
+  left: -14px;
+  top: 2px;
+  position: absolute;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 15px solid #63a4ff;
+  transition: all 0.3s ease 0s !important;
+  -moz-transition: all 0.3s ease 0s !important;
+  -webkit-transition: all 0.3s ease 0s !important;
+  -o-transition: all 0.3s ease 0s !important;
+}
+.categoryPage .showed {
+  display: block !important;
+}
+.logReg_page input,
+.logReg_page input[type="text"],
+.logReg_page input[type="email"],
+.logReg_page input[type="tel"],
+.logReg_page input[type="number"],
+.logReg_page input[type="password"],
+.logReg_page input[type="radio"],
+.logReg_page input[type="checkbox"],
+.logReg_page textarea,
+.logReg_page select {
+  -webkit-appearance: initial;
+}
+.logReg_page .form-border-box {
+  padding-bottom: 20px;
+}
+.logReg_page .form-border-box label {
+  text-align: left;
+}
+.logReg_page .form-border-box .form-field-wrapper {
+  text-align: center;
+}
+.logReg_page .form-border-box .form-field-wrapper a {
+  margin-top: 30px;
+}
+.logReg_page .form-border-box .submit {
+  margin-top: 10px;
+}
+.regPage .form-field-wrapper.col-md-12 {
+  text-align: center;
+  margin-top: 50px;
+}
+.regPage .form-field-wrapper {
+  padding: 0;
+}
+.regPage .form-group {
+  float: left;
+  width: 100%;
+  padding: 0;
+}
+.regPage .form-group label {
+  text-align: left;
+}
+.regPage .form-group input {
+  padding-top: 13px;
+  padding-bottom: 13px;
+  height: 44px;
+  width: 90%;
+}
+.regPage .btn-md {
+  padding: 20px 85px !important;
+  font-size: 14px;
+}
+.regPage .help-block {
+  color: #f55151;
+  position: absolute;
+  left: 20px;
+}
+.regPage .form-horizontal input,
+.regPage .form-horizontal select {
+  padding-top: 13px;
+  padding-bottom: 13px;
+  height: 44px !important;
+  border-radius: 30px !important;
+}
+.regPage .input-group {
+  padding-right: 40px;
+}
+
+/*# sourceMappingURL=main.css.map */
