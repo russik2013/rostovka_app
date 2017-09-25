@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $('#contact_form').bootstrapValidator({
+        message: '',
         // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -34,6 +35,9 @@ $(document).ready(function() {
                     },
                     emailAddress: {
                         message: 'Введите корректный адрес эл. почты'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_@\.]+$/
                     }
                 }
             },
@@ -42,9 +46,11 @@ $(document).ready(function() {
                     notEmpty: {
                         message: 'Введите ваш номер телефона'
                     },
-                    phone: {
-                        country: 'UA',
-                        message: 'Введите корректный номер телефона'
+                    stringLength: {
+                        min: 10
+                    },
+                    regexp: {
+                        regexp: /^[0-9\.]+$/
                     }
                 }
             },
@@ -77,15 +83,46 @@ $(document).ready(function() {
             },
             zip: {
                 validators: {
-                    notEmpty: {
-                        message: 'Введите ваш почтовый индекс'
-                    },
-                    zipCode: {
-                        country: 'UA',
+                    stringLength: {
+                        min: 5,
                         message: 'Введите корректный почтовый индекс'
+                    },
+                    notEmpty: {
+                        message: ''
+                    },
+                    regexp: {
+                        regexp: /^[0-9\.]+$/
                     }
                 }
-            }
+            },
+            password: {
+                validators: {
+                    stringLength: {
+                        min: 6,
+                        message: 'Минимально 6 символов'
+                    },
+                    notEmpty: {
+                        message: 'Пароль обязательно'
+                    },
+                    identical: {
+                        field: 'confirmPassword'
+                    }
+                }
+            },
+            confirmPassword: {
+                validators: {
+                    notEmpty: {
+                        message: 'Подтвердите пароль!'
+                    },
+                    stringLength: {
+                        min: 6
+                    },
+                    identical: {
+                        field: 'password',
+                        message: 'Пароли должны совпадать'
+                    }
+                }
+            },
         }
     })
         .on('success.form.bv', function(e) {

@@ -26,7 +26,7 @@
     <link href="{{asset('css/settings-ver.5.3.1.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('css/main.css')}}" rel="stylesheet" type="text/css"/>
 </head>
-<body class="logReg_page regPage">
+<body class="">
 
 <!-- Overlay -->
 <div id="nlpopup_overlay"></div>
@@ -469,348 +469,122 @@
         <!-- Bread Crumb -->
 
         <!-- Page Content -->
-        <section class="content-page">
+        @yield('register')
+        @yield('login')
+        @yield('category')
+        @yield('mainPage')
+        <!-- End Page Content -->
+
+        <!-- Footer Section -------------->
+        <footer class="footer section-padding">
+            <!-- Footer Info -->
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <h3>Регистрация</h3>
-                        <div class="container">
-
-                            <form class="well form-horizontal" action="{{url('/register')}}" method="post" id="contact_form">
-                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                <input type="hidden" name="_method" value="POST">
-                                <fieldset>
-                                    <div class="form-field-wrapper form-center col-sm-12">
-                                        @if ($errors->has('first_name'))
-
-
-                                           <p> {{$errors -> first('first_name')}} </p>
-
-                                        @endif
-                                        <div class="col-md-6 form-field-wrapper form-group has-feedback">
-                                            <label class="col-md-12 control-label">Ваше имя</label>
-                                            <div class="col-md-12 inputGroupContainer">
-
-                                                <div class="input-group">
-                                                    <input name="first_name" placeholder="имя" class="input-md form-full-width form-control" type="text" value="{{old('first_name')}}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Text input-->
-                                        @if ($errors->has('last_name'))
-
-
-                                                <p> {{$errors -> first('last_name')}} </p>
-
-                                        @endif
-                                        <div class="col-md-6 form-field-wrapper form-group has-feedback">
-                                            <label class="col-md-12 control-label">Ваша фамилия</label>
-                                            <div class="col-md-12 inputGroupContainer">
-
-                                                <div class="input-group">
-                                                    <input name="last_name" placeholder="фамилия" class="form-control" type="text" value="{{old('last_name')}}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Text input-->
-                                    @if ($errors->has('email'))
-
-
-                                        <p>  {{$errors -> first('email')}} </p>
-
-                                    @endif
-                                    <div class="col-md-6 form-field-wrapper form-group has-feedback">
-                                        <label class="col-md-12 control-label">Ваш E-Mail</label>
-                                        <div class="col-md-12 inputGroupContainer">
-
-                                            <div class="input-group">
-                                                <input name="email" placeholder="e-mail" class="form-control" type="text" value="{{old('email')}}">
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <!-- Text input-->
-                                    @if ($errors->has('phone'))
-
-
-                                        <p>   {{$errors -> first('phone')}} </p>
-
-                                    @endif
-                                    <div class="col-md-6 form-field-wrapper form-group has-feedback">
-                                        <label class="col-md-12 control-label">Ваш телефон</label>
-                                        <div class="col-md-12 inputGroupContainer">
-
-                                            <div class="input-group">
-                                                <input name="phone" placeholder="(845)555-1212" class="form-control" type="text" value="{{old('phone')}}">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Text input-->
-                                    @if ($errors->has('address'))
-
-
-                                        <p>  {{$errors -> first('address')}} </p>
-
-                                    @endif
-                                    <div class="col-md-6 form-field-wrapper form-group has-feedback">
-                                        <label class="col-md-12 control-label">Ваш адрес</label>
-                                        <div class="col-md-12 inputGroupContainer">
-
-                                            <div class="input-group">
-                                                <input name="address" placeholder="адрес" class="form-control" type="text" value="{{old('address')}}">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Text input-->
-                                    @if ($errors->has('city'))
-
-
-                                        <p> {{$errors -> first('city')}} </p>
-
-                                    @endif
-                                    <div class="col-md-6 form-field-wrapper form-group has-feedback">
-                                        <label class="col-md-12 control-label">Ваш город</label>
-                                        <div class="col-md-12 inputGroupContainer">
-
-                                            <div class="input-group">
-                                                <input name="city" placeholder="город" class="form-control" type="text" value="{{old('city')}}">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Select Basic -->
-                                    @if ($errors->has('state'))
-
-
-                                        <p>  {{$errors -> first('state')}} </p>
-
-                                    @endif
-                                    <div class="col-md-6 form-field-wrapper form-group has-feedback">
-                                        <label class="col-md-12 control-label">Страна</label>
-                                        <div class="col-md-12 selectContainer">
-
-                                            <div class="input-group">
-                                                <select name="state" class="form-control selectpicker">
-                                                    <option value=" ">выберите вашу страну</option>
-                                                    <option>Alabama</option>
-                                                    <option>Alaska</option>
-                                                    <option>Arizona</option>
-                                                    <option>Arkansas</option>
-                                                    <option>California</option>
-                                                    <option>Colorado</option>
-                                                    <option>Connecticut</option>
-                                                    <option>Delaware</option>
-                                                    <option>District of Columbia</option>
-                                                    <option> Florida</option>
-                                                    <option>Georgia</option>
-                                                    <option>Hawaii</option>
-                                                    <option>daho</option>
-                                                    <option>Illinois</option>
-                                                    <option>Indiana</option>
-                                                    <option>Iowa</option>
-                                                    <option>Kansas</option>
-                                                    <option>Kentucky</option>
-                                                    <option>Louisiana</option>
-                                                    <option>Maine</option>
-                                                    <option>Maryland</option>
-                                                    <option>Mass</option>
-                                                    <option>Michigan</option>
-                                                    <option>Minnesota</option>
-                                                    <option>Mississippi</option>
-                                                    <option>Missouri</option>
-                                                    <option>Montana</option>
-                                                    <option>Nebraska</option>
-                                                    <option>Nevada</option>
-                                                    <option>New Hampshire</option>
-                                                    <option>New Jersey</option>
-                                                    <option>New Mexico</option>
-                                                    <option>New York</option>
-                                                    <option>North Carolina</option>
-                                                    <option>North Dakota</option>
-                                                    <option>Ohio</option>
-                                                    <option>Oklahoma</option>
-                                                    <option>Oregon</option>
-                                                    <option>Pennsylvania</option>
-                                                    <option>Rhode Island</option>
-                                                    <option>South Carolina</option>
-                                                    <option>South Dakota</option>
-                                                    <option>Tennessee</option>
-                                                    <option>Texas</option>
-                                                    <option> Uttah</option>
-                                                    <option>Vermont</option>
-                                                    <option>Virginia</option>
-                                                    <option>Washington</option>
-                                                    <option>West Virginia</option>
-                                                    <option>Wisconsin</option>
-                                                    <option>Wyoming</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Text input-->
-                                    @if ($errors->has('zip'))
-
-
-                                        <p> {{$errors -> first('zip')}} </p>
-
-                                    @endif
-                                    <div class="col-md-6 form-field-wrapper form-group has-feedback">
-                                        <label class="col-md-12 control-label">Ваш почтовый код</label>
-                                        <div class="col-md-12 inputGroupContainer">
-
-                                            <div class="input-group">
-                                                <input name="zip" placeholder="почтовый код" class="form-control"
-                                                       type="text" value="{{old('zip')}}">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    @if ($errors->has('password'))
-
-
-                                        <p> {{$errors -> first('password')}} </p>
-
-                                    @endif
-                                    <div class="col-md-6 form-field-wrapper form-group has-feedback">
-                                        <label class="col-md-12 control-label">Ваш пароль</label>
-                                        <div class="col-md-12 inputGroupContainer">
-
-                                            <div class="input-group">
-                                                <input name="password" placeholder="пароль" class="form-control"
-                                                       type="text" value="{{old('password')}}">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Button -->
-                                    <div class="col-md-12 form-field-wrapper form-group has-feedback">
-                                        <button type="submit" class="btn btn-warning submit btn btn-md btn-color">Зарегистрироваться</button>
-                                    </div>
-                                </fieldset>
-                            </form>
+                    <div class="col-lg-3 col-md-12 col-sm-12 mb-sm-45">
+                        <div class="footer-block about-us-block">
+                            <img src="{{'img/logo_white.png'}}" width="400" alt="">
+                            <p>Gumbo beet greens corn soko endive gum gourd. Parsley allot courgette tatsoi pea sprouts fava
+                                bean soluta nobis est ses eligendi optio.</p>
+                            <ul class="footer-social-icon list-none-ib">
+                                <li>
+                                    <a href="http://facebook.com/" target="_blank">
+                                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://twitter.com/" target="_blank">
+                                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.pinterest.com/" target="_blank">
+                                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://plus.google.com/" target="_blank">
+                                        <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/" target="_blank">
+                                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                    </div><!-- /.container -->
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-4 mb-sm-45">
+                        <div class="footer-block information-block">
+                            <h6>Information</h6>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Delivery Information</a></li>
+                                <li><a href="#">Discount</a></li>
+                                <li><a href="#">Latest News</a></li>
+                                <li><a href="#">Our Sitemap</a></li>
+                                <li><a href="#">Terms &amp; Condition</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-4 mb-sm-45">
+                        <div class="footer-block links-block">
+                            <h6>Our Links</h6>
+                            <ul>
+                                <li><a href="#">Brands</a></li>
+                                <li><a href="#">Gift Vouchers</a></li>
+                                <li><a href="#">Affiliates</a></li>
+                                <li><a href="#">Special Event</a></li>
+                                <li><a href="#">Retunrs</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-4 mb-sm-45">
+                        <div class="footer-block extra-block">
+                            <h6>Extra</h6>
+                            <ul>
+                                <li><a href="#">New Collection</a></li>
+                                <li><a href="#">Women Dresses</a></li>
+                                <li><a href="#">Kids Collection</a></li>
+                                <li><a href="#">Mens Collection</a></li>
+                                <li><a href="#">Custom Service</a></li>
+                                <li><a href="#">Shipping policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="footer-block contact-block">
+                            <h6>Contact</h6>
+                            <ul>
+                                <li><i class="fa fa-map-marker" aria-hidden="true"></i>1 Wintergreen Dr. Huntley
+                                    <br>
+                                    IL 60142, Usa
+                                </li>
+                                <li><i class="fa fa-envelope" aria-hidden="true"></i><a
+                                            href="mailto:info@sky.com">info@sky.com</a>
+                                </li>
+                                <li><i class="fa fa-phone" aria-hidden="true"></i>(013) 456789</li>
+                                <li><i class="fa fa-fax" aria-hidden="true"></i>89567989</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-        <!-- End Page Content -->
+            <!-- End Footer Info -->
+
+            <!-- Footer Copyright -->
+            <div class="container">
+                <div class="copyrights">
+                    <p class="copyright">&copy; Developed by <a href="http://micore-studio.com/" target="_blank">MiCore
+                            Development</a></p>
+                </div>
+            </div>
+            <!-- End Footer Copyright -->
+        </footer>
+        <!-- End Footer Section -------------->
     </div>
     <!-- End Page Content Wraper -->
-</div>
-<!-- Footer Section -------------->
-<footer class="footer section-padding">
-    <!-- Footer Info -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-12 col-sm-12 mb-sm-45">
-                <div class="footer-block about-us-block">
-                    <img src="{{'img/logo_white.png'}}" width="400" alt="">
-                    <p>Gumbo beet greens corn soko endive gum gourd. Parsley allot courgette tatsoi pea sprouts fava
-                        bean soluta nobis est ses eligendi optio.</p>
-                    <ul class="footer-social-icon list-none-ib">
-                        <li>
-                            <a href="http://facebook.com/" target="_blank">
-                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/" target="_blank">
-                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.pinterest.com/" target="_blank">
-                                <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://plus.google.com/" target="_blank">
-                                <i class="fa fa-google-plus" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/" target="_blank">
-                                <i class="fa fa-instagram" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 mb-sm-45">
-                <div class="footer-block information-block">
-                    <h6>Information</h6>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Delivery Information</a></li>
-                        <li><a href="#">Discount</a></li>
-                        <li><a href="#">Latest News</a></li>
-                        <li><a href="#">Our Sitemap</a></li>
-                        <li><a href="#">Terms &amp; Condition</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 mb-sm-45">
-                <div class="footer-block links-block">
-                    <h6>Our Links</h6>
-                    <ul>
-                        <li><a href="#">Brands</a></li>
-                        <li><a href="#">Gift Vouchers</a></li>
-                        <li><a href="#">Affiliates</a></li>
-                        <li><a href="#">Special Event</a></li>
-                        <li><a href="#">Retunrs</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 mb-sm-45">
-                <div class="footer-block extra-block">
-                    <h6>Extra</h6>
-                    <ul>
-                        <li><a href="#">New Collection</a></li>
-                        <li><a href="#">Women Dresses</a></li>
-                        <li><a href="#">Kids Collection</a></li>
-                        <li><a href="#">Mens Collection</a></li>
-                        <li><a href="#">Custom Service</a></li>
-                        <li><a href="#">Shipping policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-12 col-sm-12">
-                <div class="footer-block contact-block">
-                    <h6>Contact</h6>
-                    <ul>
-                        <li><i class="fa fa-map-marker" aria-hidden="true"></i>1 Wintergreen Dr. Huntley
-                            <br>
-                            IL 60142, Usa
-                        </li>
-                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a
-                                    href="mailto:info@sky.com">info@sky.com</a>
-                        </li>
-                        <li><i class="fa fa-phone" aria-hidden="true"></i>(013) 456789</li>
-                        <li><i class="fa fa-fax" aria-hidden="true"></i>89567989</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Footer Info -->
-
-    <!-- Footer Copyright -->
-    <div class="container">
-        <div class="copyrights">
-            <p class="copyright">&copy; Developed by <a href="http://micore-studio.com/" target="_blank">MiCore
-                    Development</a></p>
-        </div>
-    </div>
-    <!-- End Footer Copyright -->
-</footer>
-<!-- End Footer Section -------------->
-
 </div>
 
 <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
@@ -840,6 +614,7 @@
 <!-- Plugins All js -->
 <script type="text/javascript" src="{{asset('js/auth.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/cart.js')}}"></script>
 <!-- custom js -->
 <!-- end jquery -->
 </body>

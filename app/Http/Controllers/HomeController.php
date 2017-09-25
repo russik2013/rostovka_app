@@ -11,13 +11,13 @@ class HomeController extends Controller
 {
     public function login(){
 
-        return view('login_register.login');
+        return view('user.login_register.login');
 
     }
 
     public function registerIndex(){
 
-        return view('login_register.register');
+        return view('user.login_register.register');
 
     }
 

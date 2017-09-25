@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('main_page.main');
+    return view('user.main_page.main');
 });
 Route::get('/login', 'HomeController@login');
 Route::post('/login', 'HomeController@auth');
@@ -24,7 +24,7 @@ Route::post('/register', 'HomeController@register');
 
 
 Route::get('/category', function () {
-    return view('category_page.category');
+    return view('user.category_page.category');
 });
 
 
