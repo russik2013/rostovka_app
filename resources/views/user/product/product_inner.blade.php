@@ -258,10 +258,10 @@
                             <div class="product-item-inner">
                                 <div class="product-img-wrap">
                                     <a href="#!">
-                                        <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                        <img src="{{asset('img/product-img/prod2.jpg')}}" alt="">
                                     </a>
                                 </div>
-                                <div class="product-button">
+                                <div class="product-show">
                                     <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
                                         <i class="fa fa-eye"></i>
                                     </a>
@@ -283,7 +283,7 @@
                                         <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                     </a>
                                 </div>
-                                <div class="product-button">
+                                <div class="product-show">
                                     <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
                                         <i class="fa fa-eye"></i>
                                     </a>
@@ -305,7 +305,7 @@
                                         <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                     </a>
                                 </div>
-                                <div class="product-button">
+                                <div class="product-show">
                                     <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
                                         <i class="fa fa-eye"></i>
                                     </a>
@@ -327,7 +327,7 @@
                                         <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                     </a>
                                 </div>
-                                <div class="product-button">
+                                <div class="product-show">
                                     <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
                                         <i class="fa fa-eye"></i>
                                     </a>
@@ -349,7 +349,7 @@
                                         <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                     </a>
                                 </div>
-                                <div class="product-button">
+                                <div class="product-show">
                                     <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
                                         <i class="fa fa-eye"></i>
                                     </a>
@@ -371,7 +371,7 @@
                                         <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                     </a>
                                 </div>
-                                <div class="product-button">
+                                <div class="product-show">
                                     <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
                                         <i class="fa fa-eye"></i>
                                     </a>
@@ -393,7 +393,7 @@
                                         <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                     </a>
                                 </div>
-                                <div class="product-button">
+                                <div class="product-show">
                                     <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
                                         <i class="fa fa-eye"></i>
                                     </a>

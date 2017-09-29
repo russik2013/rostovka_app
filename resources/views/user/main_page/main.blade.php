@@ -395,13 +395,23 @@
 
                     <!-- Tab2 - Best Sellar -->
                     <div id="best-sellar" role="tabpanel" class="tab-pane fade">
-                        <div class="col-md-12 pull-left productLine">
-                            <div class="col-md-3 pull-left product-item">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                            <div class="productIcons">
+                                                <i class="stamp_leather"></i>
+                                                <i class="stamp_snake"></i>
+                                                <i class="stamp_wool"></i>
+                                                <i class="stamp_backlight"></i>
+                                                <i class="stamp_brakes"></i>
+                                                <i class="stamp_heat-cold"></i>
+                                                <i class="stamp_leatherinsole"></i>
+                                                <i class="stamp_doubleKnitting"></i>
+                                                <i class="stamp_singleKnitting"></i>
+                                            </div>
                                         </a>
                                     </div>
                                     <div class="product-button">
@@ -423,13 +433,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 pull-left product-item">
-                                <div class="new-label">New</div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
@@ -451,13 +459,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 pull-left product-item">
-                                <div class="new-label">New</div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
@@ -479,127 +485,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 pull-left product-item">
-                                <div class="new-label">New</div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
-                                                 alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-12 pull-left productLine">
-                            <div class="col-md-3 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
-                                                 alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 pull-left product-item">
-                                <div class="new-label">New</div>
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
-                                                 alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 pull-left product-item">
-                                <div class="new-label">New</div>
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
-                                                 alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 pull-left product-item">
-                                <div class="new-label">New</div>
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
@@ -623,13 +513,23 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12 pull-left productLine">
-                            <div class="col-md-3 pull-left product-item">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                            <div class="productIcons">
+                                                <i class="stamp_leather"></i>
+                                                <i class="stamp_snake"></i>
+                                                <i class="stamp_wool"></i>
+                                                <i class="stamp_backlight"></i>
+                                                <i class="stamp_brakes"></i>
+                                                <i class="stamp_heat-cold"></i>
+                                                <i class="stamp_leatherinsole"></i>
+                                                <i class="stamp_doubleKnitting"></i>
+                                                <i class="stamp_singleKnitting"></i>
+                                            </div>
                                         </a>
                                     </div>
                                     <div class="product-button">
@@ -651,13 +551,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 pull-left product-item">
-                                <div class="new-label">New</div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
@@ -679,13 +577,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 pull-left product-item">
-                                <div class="new-label">New</div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
@@ -707,13 +603,129 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 pull-left product-item">
-                                <div class="new-label">New</div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="product-button">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
+                                            <i class="fa fa-shopping-bag"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-detail">
+                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                    <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                        </span>
+                                    <div class="col-md-12 pull-left goodsCount_price">
+                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                                <div class="product-item-inner">
+                                    <div class="product-img-wrap">
+                                        <a href="#!">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                            <div class="productIcons">
+                                                <i class="stamp_leather"></i>
+                                                <i class="stamp_snake"></i>
+                                                <i class="stamp_wool"></i>
+                                                <i class="stamp_backlight"></i>
+                                                <i class="stamp_brakes"></i>
+                                                <i class="stamp_heat-cold"></i>
+                                                <i class="stamp_leatherinsole"></i>
+                                                <i class="stamp_doubleKnitting"></i>
+                                                <i class="stamp_singleKnitting"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="product-button">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
+                                            <i class="fa fa-shopping-bag"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-detail">
+                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                    <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                        </span>
+                                    <div class="col-md-12 pull-left goodsCount_price">
+                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                                <div class="product-item-inner">
+                                    <div class="product-img-wrap">
+                                        <a href="#!">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="product-button">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
+                                            <i class="fa fa-shopping-bag"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-detail">
+                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                    <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                        </span>
+                                    <div class="col-md-12 pull-left goodsCount_price">
+                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                                <div class="product-item-inner">
+                                    <div class="product-img-wrap">
+                                        <a href="#!">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="product-button">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
+                                            <i class="fa fa-shopping-bag"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-detail">
+                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                    <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                        </span>
+                                    <div class="col-md-12 pull-left goodsCount_price">
+                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                                <div class="product-item-inner">
+                                    <div class="product-img-wrap">
+                                        <a href="#!">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
@@ -757,7 +769,7 @@
                             <div class="col-12 mb-30">
                                 <!-- banner No.1 -->
                                 <div class="promo-banner-wrap">
-                                    <a href="#" class="promo-image-wrap">
+                                    <a href="category" class="promo-image-wrap">
                                         <img src="{{'img/promo-banner4.jpg'}}" alt="Accesories">
                                     </a>
                                 </div>
@@ -765,7 +777,7 @@
                             <div class="col-12 mb-sm-30">
                                 <!-- banner No.2 -->
                                 <div class="promo-banner-wrap">
-                                    <a href="#" class="promo-image-wrap">
+                                    <a href="category" class="promo-image-wrap">
                                         <img src="{{'img/promo-banner3.jpg'}}" alt="Accesories">
                                     </a>
                                 </div>
@@ -779,7 +791,7 @@
                             <div class="col-12 mb-30">
                                 <!-- banner No.3 -->
                                 <div class="promo-banner-wrap">
-                                    <a href="#" class="promo-image-wrap">
+                                    <a href="category" class="promo-image-wrap">
                                         <img src="{{'img/promo-banner2.jpg'}}" alt="Accesories">
                                     </a>
                                 </div>
@@ -787,7 +799,7 @@
                             <div class="col-12 mb-sm-30">
                                 <!-- banner No.4 -->
                                 <div class="promo-banner-wrap">
-                                    <a href="#" class="promo-image-wrap">
+                                    <a href="category" class="promo-image-wrap">
                                         <img src="{{'img/promo-banner5.jpg'}}" alt="Accesories">
                                     </a>
                                 </div>
@@ -798,7 +810,7 @@
                     <div class="col-12">
                         <!-- banner No.4 -->
                         <div class="promo-banner-wrap large">
-                            <a href="#" class="promo-image-wrap">
+                            <a href="category" class="promo-image-wrap">
                                 <img src="{{'img/promo_bannerBig.png'}}" alt="">
                             </a>
                         </div>
@@ -822,7 +834,7 @@
                                     <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                 </a>
                             </div>
-                            <div class="product-button">
+                            <div class="product-show">
                                 <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
                                     <i class="fa fa-eye"></i>
                                 </a>
@@ -845,7 +857,7 @@
                                     <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                 </a>
                             </div>
-                            <div class="product-button">
+                            <div class="product-show">
                                 <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
                                     <i class="fa fa-eye"></i>
                                 </a>
@@ -868,7 +880,7 @@
                                     <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                 </a>
                             </div>
-                            <div class="product-button">
+                            <div class="product-show">
                                 <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
                                     <i class="fa fa-eye"></i>
                                 </a>
@@ -891,7 +903,7 @@
                                     <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                 </a>
                             </div>
-                            <div class="product-button">
+                            <div class="product-show">
                                 <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
                                     <i class="fa fa-eye"></i>
                                 </a>
@@ -914,7 +926,7 @@
                                     <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                 </a>
                             </div>
-                            <div class="product-button">
+                            <div class="product-show">
                                 <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
                                     <i class="fa fa-eye"></i>
                                 </a>
@@ -937,7 +949,7 @@
                                     <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                 </a>
                             </div>
-                            <div class="product-button">
+                            <div class="product-show">
                                 <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
                                     <i class="fa fa-eye"></i>
                                 </a>
@@ -960,7 +972,7 @@
                                     <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                 </a>
                             </div>
-                            <div class="product-button">
+                            <div class="product-show">
                                 <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
                                     <i class="fa fa-eye"></i>
                                 </a>

@@ -4130,6 +4130,7 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
     background: -moz-linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%) repeat scroll 0 0;
     background: -webkit-linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%) repeat scroll 0 0;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#fff',GradientType=1 ); /* IE6-9 */
+    z-index: -1;
 }
 
 .promo-banner-wrap:hover:after {
@@ -4407,9 +4408,9 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 
 .product-item .product-button {
     background: #ffffff none repeat scroll 0 0;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.08);
-    -moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.08);
-    -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.08);
+    box-shadow: 0 0 5px rgba(0,0,0,0.08);
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,0.08);
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.08);
     opacity: 0;
     bottom: -50px;
     left: 50%;
@@ -4434,7 +4435,43 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
     font-size: 18px;
     padding: 15px 20px;
     display: table-cell;
-    /*vertical-align: middle;*/
+}
+
+.product-show a{
+    border-right: 1px solid #eeeeee;
+    font-size: 18px;
+    padding: 15px 20px;
+    display: table-cell;
+}
+
+.product-show {
+    background: #ffffff none repeat scroll 0 0;
+    box-shadow: 0 0 5px rgba(0,0,0,0.08);
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,0.08);
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.08);
+    opacity: 0;
+    bottom: -50px;
+    left: 50%;
+    visibility: hidden;
+    position: absolute;
+    transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -webkit-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    border: 1px solid #eeeeee;
+    transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    display: table;
+    text-align: center;
+}
+
+.product-item:hover .product-show {
+    opacity: 1;
+    visibility: visible;
+    bottom: 20px;
 }
 
 .product-button a:last-child {

@@ -171,6 +171,17 @@ ul {
 .product-list-view .product-item {
   border-bottom: 1px solid #eeeeee;
 }
+.categoryPage .product-img-wrap {
+  text-align: center;
+}
+.categoryPage .section-padding .container {
+  width: 1140px;
+}
+.categoryPage .container {
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
 .categoryPage .sidebar-container {
   padding: 0;
 }
@@ -582,6 +593,12 @@ input::-webkit-inner-spin-button {
 }
 .promo-banner-wrap.large {
   margin-top: 30px;
+}
+.product-sort-by.pull-right {
+  text-align: right;
+}
+.product-sort-by.pull-right span {
+  margin-left: 7px;
 }
 
 /*# sourceMappingURL=main.css.map */
