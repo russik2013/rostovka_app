@@ -219,3 +219,7 @@
 </section>
     </div>
 @endsection
+
+@section('auth_reg')
+<script type="text/javascript" src="{{asset('js/auth.js')}}"></script>
+@endsection

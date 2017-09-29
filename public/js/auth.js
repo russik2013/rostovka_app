@@ -1,3 +1,4 @@
+'use strict';
 $(document).ready(function() {
     $('#contact_form').bootstrapValidator({
         message: '',
@@ -11,7 +12,7 @@ $(document).ready(function() {
             first_name: {
                 validators: {
                     stringLength: {
-                        min: 2,
+                        min: 2
                     },
                     notEmpty: {
                         message: 'Введите имя'
@@ -21,7 +22,7 @@ $(document).ready(function() {
             last_name: {
                 validators: {
                     stringLength: {
-                        min: 2,
+                        min: 2
                     },
                     notEmpty: {
                         message: 'Введите фамилия'
@@ -37,7 +38,8 @@ $(document).ready(function() {
                         message: 'Введите корректный адрес эл. почты'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9_@\.]+$/
+                        regexp: /^[a-zA-Z0-9_@\.]+$/,
+                        message: 'Введите корректный адрес эл. почты'
                     }
                 }
             },
@@ -47,18 +49,17 @@ $(document).ready(function() {
                         message: 'Введите ваш номер телефона'
                     },
                     stringLength: {
-                        min: 10
+                        min: 10,
+                        message: 'Номер телефона вводите без +38'
                     },
                     regexp: {
-                        regexp: /^[0-9\.]+$/
+                        regexp: /^[0-9\.]+$/,
+                        message: 'Введите корректный номер телефона'
                     }
                 }
             },
             address: {
                 validators: {
-                    stringLength: {
-                        min: 8,
-                    },
                     notEmpty: {
                         message: 'Введите ваш адрес'
                     }
@@ -66,9 +67,6 @@ $(document).ready(function() {
             },
             city: {
                 validators: {
-                    stringLength: {
-                        min: 4,
-                    },
                     notEmpty: {
                         message: 'Введите ваш город проживания'
                     }
@@ -88,10 +86,11 @@ $(document).ready(function() {
                         message: 'Введите корректный почтовый индекс'
                     },
                     notEmpty: {
-                        message: ''
+                        message: 'Введите почтовый индекс'
                     },
                     regexp: {
-                        regexp: /^[0-9\.]+$/
+                        regexp: /^[0-9\.]+$/,
+                        message: 'Введите корректный почтовый индекс'
                     }
                 }
             },

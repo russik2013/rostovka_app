@@ -27,6 +27,19 @@ Route::get('/category', function () {
     return view('user.category_page.category');
 });
 
+Route::get('/checkout', function () {
+    return view('user.billing.checkout');
+});
+
+Route::get('/product_inner', function () {
+    return view('user.product.product_inner');
+});
+
+Route::get('/cart', function () {
+    return view('user.cart.cart');
+});
+
+
 
 Route::get('/product', 'ProductController@create');
 Route::post('/product','ProductController@add');

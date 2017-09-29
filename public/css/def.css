@@ -2698,7 +2698,7 @@ img.tp-caption {
 
 .sidebar-menu .cart-widget-footer .cart-total-hedding .cart-total-price {
     color: #63a4ff;
-    float: right;
+    margin-right: 0.3em;
 }
 
 .sidebar-menu .cart-widget-footer .cart-action-buttons {
@@ -5005,11 +5005,13 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 }
 
 .product-price {
-    margin-top: 30px;
     margin-bottom: 30px;
-    color: #63a4ff;
-    font-size: 36px;
+    color: #63a3ff;
+    text-align: center;
+    font-size: 24px;
+    padding-bottom: 25px;
     font-weight: 600;
+    border-bottom: 1px solid #eee;
 }
 
 .product-price del {
@@ -5100,11 +5102,10 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 
 .product-quantity {
     position: relative;
-    width: 120px;
+    width: 100%;
     float: left;
     display: block;
-    margin-right: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .product-quantity .quantity, .product-quantity .quantity:hover, .product-quantity .quantity:focus {
@@ -5135,7 +5136,7 @@ product-quantity input[type="number"]::-webkit-inner-spin-button {
     right: 0;
     cursor: pointer;
     height: 100%;
-    width: 30px;
+    width: 60px;
     top: 0;
 }
 
@@ -5770,7 +5771,7 @@ ul#shipping_method {
 .product-checkout .checkout-order-review {
     background-color: #f8f8f8;
     margin-top: 8px;
-    padding: 40px 30px;
+    padding: 40px 30px 20px 30px;
 }
 
 .product-checkout .checkout-order-review h3 {

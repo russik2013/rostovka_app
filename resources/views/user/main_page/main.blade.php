@@ -60,8 +60,8 @@
                 <div class="col-md-12 tab-content">
                     <!-- Tab1 - Latest Product -->
                     <div id="latest" role="tabpanel" class="tab-pane fade in active pull-left">
-                        <div class="col-md-12 pull-left productLine">
-                            <div class="col-md-3 pull-left product-item">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
@@ -80,480 +80,313 @@
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 pull-left product-item">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
-                                    <div class="new-label">New</div>
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod2.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 pull-left product-item">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod2.jpg')}}" alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 pull-left product-item">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-12 pull-left productLine">
-                            <div class="col-md-3 pull-left product-item">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 pull-left product-item">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod2.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 pull-left product-item">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 pull-left product-item">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod2.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-12 pull-left productLine">
-                            <div class="col-md-3 pull-left product-item">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 pull-left product-item">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod2.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 pull-left product-item">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 pull-left product-item">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod2.jpg')}}"
-                                                 alt="">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
@@ -572,119 +405,26 @@
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="new-label">New</div>
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod2.jpg')}}"
-                                                 alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod2.jpg')}}"
-                                                 alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 pull-left product-item">
+                                <div class="new-label">New</div>
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
@@ -693,34 +433,77 @@
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 pull-left product-item">
+                                <div class="new-label">New</div>
+                                <div class="product-item-inner">
+                                    <div class="product-img-wrap">
+                                        <a href="#!">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
+                                                 alt="">
+                                        </a>
+                                    </div>
+                                    <div class="product-button">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
+                                            <i class="fa fa-shopping-bag"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-detail">
+                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                    <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                        </span>
+                                    <div class="col-md-12 pull-left goodsCount_price">
+                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 pull-left product-item">
+                                <div class="new-label">New</div>
+                                <div class="product-item-inner">
+                                    <div class="product-img-wrap">
+                                        <a href="#!">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
+                                                 alt="">
+                                        </a>
+                                    </div>
+                                    <div class="product-button">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
+                                            <i class="fa fa-shopping-bag"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-detail">
+                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                    <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                        </span>
+                                    <div class="col-md-12 pull-left goodsCount_price">
+                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
@@ -736,78 +519,26 @@
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod2.jpg')}}"
-                                                 alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 pull-left product-item">
+                                <div class="new-label">New</div>
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
@@ -816,74 +547,77 @@
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3 pull-left product-item">
+                                <div class="new-label">New</div>
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod2.jpg')}}"
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
                                                  alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 pull-left product-item">
+                                <div class="new-label">New</div>
+                                <div class="product-item-inner">
+                                    <div class="product-img-wrap">
+                                        <a href="#!">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
+                                                 alt="">
+                                        </a>
+                                    </div>
+                                    <div class="product-button">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
+                                            <i class="fa fa-shopping-bag"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-detail">
+                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                    <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                        </span>
+                                    <div class="col-md-12 pull-left goodsCount_price">
+                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
@@ -899,78 +633,26 @@
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod2.jpg')}}"
-                                                 alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 pull-left product-item">
+                                <div class="new-label">New</div>
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
@@ -979,74 +661,77 @@
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3 pull-left product-item">
+                                <div class="new-label">New</div>
                                 <div class="product-item-inner">
                                     <div class="product-img-wrap">
                                         <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod2.jpg')}}"
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
                                                  alt="">
                                         </a>
                                     </div>
                                     <div class="product-button">
-                                        <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
                                             <i class="fa fa-shopping-bag"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-detail">
-                                    <a class="tag" href="#">Men Fashion</a>
                                     <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <div class="product-rating">
-                                        <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                             itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                            <span style="width: 60%"></span>
-                                        </div>
-                                        <a href="#" class="product-rating-count"><span class="count">3</span>
-                                            Reviews</a>
-                                    </div>
-                                    <p class="product-description">
-                                        When an unknown printer took a galley of type and scrambled it to make a type
-                                        specimen book. It has survived not only five centuries, but also the leap into
-                                        electronic remaining essentially unchanged.
-                                    </p>
                                     <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left">
+                                    <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 pull-left product-item">
+                                <div class="new-label">New</div>
+                                <div class="product-item-inner">
+                                    <div class="product-img-wrap">
+                                        <a href="#!">
+                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}"
+                                                 alt="">
+                                        </a>
+                                    </div>
+                                    <div class="product-button">
+                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
+                                            <i class="fa fa-shopping-bag"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-detail">
+                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                    <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                        </span>
+                                    <div class="col-md-12 pull-left goodsCount_price">
+                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                        <span class="hiddenPrice">1125</span>
                                     </div>
                                 </div>
                             </div>
@@ -1124,36 +809,22 @@
                     <div class="product-item">
                         <div class="product-item-inner">
                             <div class="product-img-wrap">
-                                <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                <a href="#!">
+                                    <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                </a>
                             </div>
                             <div class="product-button">
-                                <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
-                                    <i class="fa fa-shopping-bag"></i>
+                                <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
+                                    <i class="fa fa-eye"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="product-detail">
-                            <a class="tag" href="#">Men Fashion</a>
                             <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                            <div class="product-rating">
-                                <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                     itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                    <span style="width: 60%"></span>
-                                </div>
-                                <a href="#" class="product-rating-count"><span class="count">3</span> Reviews</a>
-                            </div>
-                            <p class="product-description">
-                                When an unknown printer took a galley of type and scrambled it to make a type specimen
-                                book. It has survived not only five centuries, but also the leap into electronic
-                                remaining essentially unchanged.
-                            </p>
-                            <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
                             <div class="col-md-12 pull-left">
                                 <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                <span class="hiddenPrice">1125</span>
                             </div>
                         </div>
                     </div>
@@ -1161,36 +832,22 @@
                     <div class="product-item">
                         <div class="product-item-inner">
                             <div class="product-img-wrap">
-                                <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                <a href="#!">
+                                    <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                </a>
                             </div>
                             <div class="product-button">
-                                <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
-                                    <i class="fa fa-shopping-bag"></i>
+                                <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
+                                    <i class="fa fa-eye"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="product-detail">
-                            <a class="tag" href="#">Men Fashion</a>
                             <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                            <div class="product-rating">
-                                <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                     itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                    <span style="width: 60%"></span>
-                                </div>
-                                <a href="#" class="product-rating-count"><span class="count">3</span> Reviews</a>
-                            </div>
-                            <p class="product-description">
-                                When an unknown printer took a galley of type and scrambled it to make a type specimen
-                                book. It has survived not only five centuries, but also the leap into electronic
-                                remaining essentially unchanged.
-                            </p>
-                            <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
                             <div class="col-md-12 pull-left">
                                 <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                <span class="hiddenPrice">1125</span>
                             </div>
                         </div>
                     </div>
@@ -1198,36 +855,22 @@
                     <div class="product-item">
                         <div class="product-item-inner">
                             <div class="product-img-wrap">
-                                <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                <a href="#!">
+                                    <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                </a>
                             </div>
                             <div class="product-button">
-                                <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
-                                    <i class="fa fa-shopping-bag"></i>
+                                <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
+                                    <i class="fa fa-eye"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="product-detail">
-                            <a class="tag" href="#">Men Fashion</a>
                             <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                            <div class="product-rating">
-                                <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                     itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                    <span style="width: 60%"></span>
-                                </div>
-                                <a href="#" class="product-rating-count"><span class="count">3</span> Reviews</a>
-                            </div>
-                            <p class="product-description">
-                                When an unknown printer took a galley of type and scrambled it to make a type specimen
-                                book. It has survived not only five centuries, but also the leap into electronic
-                                remaining essentially unchanged.
-                            </p>
-                            <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
                             <div class="col-md-12 pull-left">
                                 <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                <span class="hiddenPrice">1125</span>
                             </div>
                         </div>
                     </div>
@@ -1235,36 +878,22 @@
                     <div class="product-item">
                         <div class="product-item-inner">
                             <div class="product-img-wrap">
-                                <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                <a href="#!">
+                                    <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                </a>
                             </div>
                             <div class="product-button">
-                                <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
-                                    <i class="fa fa-shopping-bag"></i>
+                                <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
+                                    <i class="fa fa-eye"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="product-detail">
-                            <a class="tag" href="#">Men Fashion</a>
                             <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                            <div class="product-rating">
-                                <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                     itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                    <span style="width: 60%"></span>
-                                </div>
-                                <a href="#" class="product-rating-count"><span class="count">3</span> Reviews</a>
-                            </div>
-                            <p class="product-description">
-                                When an unknown printer took a galley of type and scrambled it to make a type specimen
-                                book. It has survived not only five centuries, but also the leap into electronic
-                                remaining essentially unchanged.
-                            </p>
-                            <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
                             <div class="col-md-12 pull-left">
                                 <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                <span class="hiddenPrice">1125</span>
                             </div>
                         </div>
                     </div>
@@ -1272,36 +901,22 @@
                     <div class="product-item">
                         <div class="product-item-inner">
                             <div class="product-img-wrap">
-                                <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                <a href="#!">
+                                    <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                </a>
                             </div>
                             <div class="product-button">
-                                <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
-                                    <i class="fa fa-shopping-bag"></i>
+                                <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
+                                    <i class="fa fa-eye"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="product-detail">
-                            <a class="tag" href="#">Men Fashion</a>
                             <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                            <div class="product-rating">
-                                <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                     itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                    <span style="width: 60%"></span>
-                                </div>
-                                <a href="#" class="product-rating-count"><span class="count">3</span> Reviews</a>
-                            </div>
-                            <p class="product-description">
-                                When an unknown printer took a galley of type and scrambled it to make a type specimen
-                                book. It has survived not only five centuries, but also the leap into electronic
-                                remaining essentially unchanged.
-                            </p>
-                            <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
                             <div class="col-md-12 pull-left">
                                 <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                <span class="hiddenPrice">1125</span>
                             </div>
                         </div>
                     </div>
@@ -1309,36 +924,22 @@
                     <div class="product-item">
                         <div class="product-item-inner">
                             <div class="product-img-wrap">
-                                <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                <a href="#!">
+                                    <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                </a>
                             </div>
                             <div class="product-button">
-                                <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
-                                    <i class="fa fa-shopping-bag"></i>
+                                <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
+                                    <i class="fa fa-eye"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="product-detail">
-                            <a class="tag" href="#">Men Fashion</a>
                             <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                            <div class="product-rating">
-                                <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                     itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                    <span style="width: 60%"></span>
-                                </div>
-                                <a href="#" class="product-rating-count"><span class="count">3</span> Reviews</a>
-                            </div>
-                            <p class="product-description">
-                                When an unknown printer took a galley of type and scrambled it to make a type specimen
-                                book. It has survived not only five centuries, but also the leap into electronic
-                                remaining essentially unchanged.
-                            </p>
-                            <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
                             <div class="col-md-12 pull-left">
                                 <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                <span class="hiddenPrice">1125</span>
                             </div>
                         </div>
                     </div>
@@ -1346,36 +947,22 @@
                     <div class="product-item">
                         <div class="product-item-inner">
                             <div class="product-img-wrap">
-                                <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                <a href="#!">
+                                    <img src="{{asset('img/product-img/prod1.jpg')}}" alt="">
+                                </a>
                             </div>
                             <div class="product-button">
-                                <a href="#" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину">
-                                    <i class="fa fa-shopping-bag"></i>
+                                <a href="#!" class="js_tooltip" data-mode="top" data-tip="Посмотреть товар">
+                                    <i class="fa fa-eye"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="product-detail">
-                            <a class="tag" href="#">Men Fashion</a>
                             <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                            <div class="product-rating">
-                                <div class="star-rating" itemprop="reviewRating" itemscope=""
-                                     itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
-                                    <span style="width: 60%"></span>
-                                </div>
-                                <a href="#" class="product-rating-count"><span class="count">3</span> Reviews</a>
-                            </div>
-                            <p class="product-description">
-                                When an unknown printer took a galley of type and scrambled it to make a type specimen
-                                book. It has survived not only five centuries, but also the leap into electronic
-                                remaining essentially unchanged.
-                            </p>
-                            <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
                             <div class="col-md-12 pull-left">
                                 <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                <h5 class="item-price col-md-6 pull-right">39.00 <span>грн</span></h5>
+                                <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
+                                <span class="hiddenPrice">1125</span>
                             </div>
                         </div>
                     </div>

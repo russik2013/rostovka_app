@@ -14,9 +14,9 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 
     <!-- Favicone Icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-    <link rel="icon" type="img/png" href="img/favicon.png">
-    <link rel="apple-touch-icon" href="img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/favicon.ico')}}">
+    <link rel="icon" type="img/png" href="{{asset('img/favicon.ico')}}">
+    <link rel="apple-touch-icon" href="{{asset('img/favicon.ico')}}">
 
     <!-- CSS -->
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css"/>
@@ -25,6 +25,7 @@
     <link href="{{asset('css/def.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('css/settings-ver.5.3.1.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('css/main.css')}}" rel="stylesheet" type="text/css"/>
+    @yield('productLibCSS')
 </head>
 <body class="">
 
@@ -39,7 +40,7 @@
 
         <!-- Cart Headiing -->
         <div class="cart-widget-heading">
-            <h4>Shopping Cart</h4>
+            <h4>КОРЗИНА</h4>
             <!-- Close Icon -->
             <a href="javascript:void(0)" id="sidebar_close_icon" class="close-icon-white"></a>
             <!-- End Close Icon -->
@@ -49,63 +50,8 @@
         <!-- Cart Product Content -->
         <div class="cart-widget-content">
             <div class="cart-widget-product ">
-
-                <!-- Empty Cart -->
-                <div class="cart-empty">
-                    <p>You have no items in your shopping cart.</p>
-                </div>
-                <!-- EndEmpty Cart -->
-
                 <!-- Cart Products -->
-                <ul class="cart-product-item">
-
-                    <!-- Item -->
-                    <li>
-                        <!--Item Image-->
-                        <a href="#" class="product-image">
-                            <img src="{{asset('img/product-img/prod1.jpg')}}" alt=""/></a>
-
-                        <!--Item Content-->
-                        <div class="product-content">
-                            <!-- Item Linkcollateral -->
-                            <a class="product-link" href="#">Alpha Block Black Polo T-Shirt</a>
-
-                            <!-- Item Cart Totle -->
-                            <div class="cart-collateral">
-                                <span class="qty-cart">1</span>&nbsp;<span>&#215;</span>&nbsp;<span
-                                        class="product-price-amount"><span class="currency-sign">$</span>399.00</span>
-                            </div>
-
-                            <!-- Item Remove Icon -->
-                            <a class="product-remove" href="javascript:void(0)"><i class="fa fa-times-circle"
-                                                                                   aria-hidden="true"></i></a>
-                        </div>
-                    </li>
-
-                    <!-- Item -->
-                    <li>
-                        <!--Item Image-->
-                        <a href="#" class="product-image">
-                            <img src="{{asset('img/product-img/prod1.jpg')}}" alt=""/></a>
-
-                        <!--Item Content-->
-                        <div class="product-content">
-                            <!-- Item Linkcollateral -->
-                            <a class="product-link" href="#">Red Printed Round Neck T-Shirt</a>
-
-                            <!-- Item Cart Totle -->
-                            <div class="cart-collateral">
-                                <span class="qty-cart">2</span>&nbsp;<span>&#215;</span>&nbsp;<span
-                                        class="product-price-amount"><span class="currency-sign">$</span>299.00</span>
-                            </div>
-
-                            <!-- Item Remove Icon -->
-                            <a class="product-remove" href="javascript:void(0)"><i class="fa fa-times-circle"
-                                                                                   aria-hidden="true"></i></a>
-                        </div>
-                    </li>
-
-                </ul>
+                <ul class="cart-product-item"></ul>
                 <!-- End Cart Products -->
 
             </div>
@@ -117,14 +63,20 @@
             <div class="cart-footer-inner">
 
                 <!-- Cart Total -->
-                <h4 class="cart-total-hedding normal"><span>Сумма :</span><span class="cart-total-price">$698.00</span>
+                <h4 class="cart-total-hedding normal pull-left col-md-12 no-padding">
+                    <span class="pull-left">Сумма :</span>
+                    <span class="pull-right">
+                        <span class="cart-total-price pull-left"></span>
+                        <span class="currency-sign pull-right">грн</span>
+                    </span>
+
                 </h4>
                 <!-- Cart Total -->
 
                 <!-- Cart Buttons -->
                 <div class="cart-action-buttons">
-                    <a href="cart.html" class="view-cart btn btn-md btn-gray">Перейти в корзину</a>
-                    <a href="checkout.html" class="checkout btn btn-md btn-color">Перейти к покупке</a>
+                    <a href="{{url('/cart')}}" class="view-cart btn btn-md btn-gray">Перейти в корзину</a>
+                    <a href="{{url('/checkout')}}" class="checkout btn btn-md btn-color">Перейти к покупке</a>
                 </div>
                 <!-- End Cart Buttons -->
 
@@ -146,12 +98,12 @@
         <!-- Search Form -->
         <form role="search" id="searchform" action="/search" method="get">
             <div class="search-icon-lg">
-                <img src="img/search-icon-lg.png" alt=""/>
+                <img src="{{asset('img/search-icon-lg.png')}}" alt=""/>
             </div>
-            <label class="h6 normal search-input-label" for="search-query">Enter keywords to Search Product</label>
-            <input value="" name="q" type="search" placeholder="Search..."/>
+            <label class="h6 normal search-input-label" for="search-query">Введите название товара</label>
+            <input value="" name="q" type="search" placeholder="Поиск..."/>
             <button type="submit">
-                <img src="img/search-lg-go-icon.png" alt=""/>
+                <img src="{{asset('img/search-lg-go-icon.png')}}" alt=""/>
             </button>
         </form>
         <!-- End Search Form -->
@@ -171,8 +123,17 @@
             <div class="header-topbar-inner">
                 <!--Topbar Left-->
                 <div class="topbar-left hidden-sm-down">
-                    <div class="phone"><i class="fa fa-phone left" aria-hidden="true"></i>Customer Support : <b>+77 7565
-                            348 576</b></div>
+                    <div class="phone pull-left">
+                        <div class="text-left pull-left">
+                            <i class="fa fa-phone left" aria-hidden="true"></i>
+                            <b>(067) 25-333-05</b>
+                        </div>
+
+                        <div class="text-left pull-left">
+                            <i class="fa fa-phone left" aria-hidden="true"></i>
+                            <b>(093) 350-43-82 (Viber)</b>
+                        </div>
+                    </div>
                 </div>
                 <!--End Topbar Left-->
 
@@ -181,49 +142,22 @@
                     <ul class="list-none">
                         <li>
                             <a href="login-register.html"><i class="fa fa-lock left" aria-hidden="true"></i><span
-                                        class="hidden-sm-down">Login</span></a>
+                                        class="hidden-sm-down">Авторизация</span></a>
                         </li>
                         <li class="dropdown-nav">
-                            <a href="login-register.html"><i class="fa fa-user left" aria-hidden="true"></i><span
-                                        class="hidden-sm-down">My Account</span><i class="fa fa-angle-down right"
-                                                                                   aria-hidden="true"></i></a>
+                            <a href="login-register.html"><i class="fa fa-user left" aria-hidden="true"></i>
+                                <span class="hidden-sm-down">Кабинет</span>
+                                <i class="fa fa-angle-down right" aria-hidden="true"></i>
+                            </a>
                             <!--Dropdown-->
                             <div class="dropdown-menu">
                                 <ul>
-                                    <li><a href="login-register.html">My Account</a></li>
-                                    <li><a href="#">Order History</a></li>
-                                    <li><a href="#">Returns</a></li>
-                                    <li><a href="#">My Wishlist</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                </ul>
-                                <span class="divider"></span>
-                                <ul>
-                                    <li><a href="login-register.html"><i class="fa fa-lock left" aria-hidden="true"></i>Login</a>
-                                    </li>
-                                    <li><a href="login-register.html"><i class="fa fa-user left" aria-hidden="true"></i>Create
-                                            an Account</a></li>
+                                    <li><a href="login-register">Моя информация</a></li>
+                                    <li><a href="#!">История покупок</a></li>
+                                    <li><a href="cart">Корзина</a></li>
                                 </ul>
                             </div>
                             <!--End Dropdown-->
-                        </li>
-                        <li class="dropdown-nav">
-                            <a href="#">USD<i class="fa fa-angle-down right" aria-hidden="true"></i></a>
-                            <!--Dropdown-->
-                            <div class="dropdown-menu">
-                                <ul>
-                                    <li><a href="#">USD</a></li>
-                                    <li><a href="#">EUR</a></li>
-                                    <li><a href="#">GBP</a></li>
-                                    <li><a href="#">AUD</a></li>
-                                </ul>
-                            </div>
-                            <!--End Dropdown-->
-                        </li>
-                        <li>
-                            <a href="about.html">About</a>
-                        </li>
-                        <li>
-                            <a href="contact.html">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -237,7 +171,7 @@
             <div class="header-main-inner">
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="#!">
+                    <a href="{{url('/')}}">
                         <img src="{{asset('img/logo_black.png')}}" alt="Rostovka"/>
                     </a>
                 </div>
@@ -253,22 +187,20 @@
                             <!-- Search-->
                             <li><a id="search-overlay-menu-btn"><i aria-hidden="true" class="fa fa-search"></i></a></li>
 
-                            <!-- Whishlist-->
-                            <li><a class="js_whishlist-btn"><i aria-hidden="true" class="fa fa-heart"></i><span
-                                            class="countTip">10</span></a></li>
-
                             <!-- Cart-->
-                            <li><a id="sidebar_toggle_btn">
+                            <li>
+                                <a id="sidebar_toggle_btn">
                                     <div class="cart-icon">
                                         <i aria-hidden="true" class="fa fa-shopping-bag"></i>
                                     </div>
 
                                     <div class="cart-title">
-                                        <span class="cart-count">2</span>
+                                        <span class="cart-count"></span>
                                         /
-                                        <span class="cart-price strong">$698.00</span>
+                                        <span class="cart-price closedSidebar strong"></span><span class="currency-sign">грн</span>
                                     </div>
-                                </a></li>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Sidebar Icon -->
@@ -287,155 +219,12 @@
                             <a href="category">Для мальчиков</a>
                         </li>
                         <li>
-                            <a href="category">Для девочек</a>
-                            <!-- Drodown Menu ------->
-                            <ul class="nav-dropdown js-nav-dropdown">
-                                <li class="container">
-                                    <ul class="row">
-                                        <!--Grid 1-->
-                                        <li class="nav-dropdown-grid">
-                                            <h6>New In</h6>
-                                            <ul>
-                                                <li><a href="#">New In Clothing</a></li>
-                                                <li><a href="#">New In Shoes<span class="new-label">New</span></a></li>
-                                                <li><a href="#">New In Bags</a></li>
-                                                <li><a href="#">New In Watches</a></li>
-                                                <li><a href="#">New In Accesories</a></li>
-                                            </ul>
-                                        </li>
-                                        <!--Grid 2-->
-                                        <li class="nav-dropdown-grid">
-                                            <h6>Clothing</h6>
-                                            <ul>
-                                                <li><a href="#">Polos & Tees</a></li>
-                                                <li><a href="#">Casual Shirts</a></li>
-                                                <li><a href="#">Jeans</a></li>
-                                                <li><a href="#">Casual Trousers</a></li>
-                                                <li><a href="#">Formal Shirts<span class="sale-label">Sale</span></a>
-                                                </li>
-                                                <li><a href="#">Formal Trousers</a></li>
-                                                <li><a href="#">Suits & Blazers</a></li>
-                                                <li><a href="#">Winter Jackets</a></li>
-                                                <li><a href="#">Track wear</a></li>
-                                            </ul>
-                                        </li>
-                                        <!--Grid 3-->
-                                        <li class="nav-dropdown-grid">
-                                            <h6>ACCESSORIES</h6>
-                                            <ul>
-                                                <li><a href="#">Mens Jewellery</a></li>
-                                                <li><a href="#">Bag</a></li>
-                                                <li><a href="#">Sunglasses</a></li>
-                                                <li><a href="#">Watches</a></li>
-                                                <li><a href="#">Hair Care</a></li>
-                                                <li><a href="#">Ties & Cufflinks</a></li>
-                                                <li><a href="#">Perfume</a></li>
-                                                <li><a href="#">Belt</a></li>
-                                            </ul>
-                                        </li>
-                                        <!--Grid 4-->
-                                        <li class="nav-dropdown-grid">
-                                            <h6>Brand</h6>
-                                            <ul>
-                                                <li><a href="#">Analog</a></li>
-                                                <li><a href="#">Chronograph</a></li>
-                                                <li><a href="#">Digital</a></li>
-                                                <li><a href="#">Watch Cases</a></li>
-                                                <li><a href="#">Samsung</a></li>
-                                                <li><a href="#">Apple</a></li>
-                                                <li><a href="#">Hitachi</a></li>
-                                            </ul>
-                                        </li>
-
-                                    </ul>
-                                </li>
-                            </ul>
-                            <!-- End Drodown Menu -->
-                        </li>
+                            <a href="category">Для девочек</a></li>
                         <li>
                             <a href="category">Для женщин</a>
-                            <!-- Drodown Menu ------->
-                            <ul class="nav-dropdown js-nav-dropdown">
-                                <li class="container">
-                                    <ul class="row">
-                                        <!--Grid 1-->
-                                        <li class="nav-dropdown-grid">
-                                            <h6>New In</h6>
-                                            <ul>
-                                                <li><a href="#">New In Clothing</a></li>
-                                                <li><a href="#">New In Shoes</a></li>
-                                                <li><a href="#">New In Bags</a></li>
-                                                <li><a href="#">New In Watches</a></li>
-                                                <li><a href="#">Sweaters</a></li>
-                                                <li><a href="#">Winter Shrugs</a></li>
-                                            </ul>
-                                        </li>
-                                        <!--Grid 2-->
-                                        <li class="nav-dropdown-grid">
-                                            <h6>Clothing</h6>
-                                            <ul>
-                                                <li><a href="#">Tops , tees & shirts</a></li>
-                                                <li><a href="#">Dresses & Jumpsuits</a></li>
-                                                <li><a href="#">Trousers & Jeans</a></li>
-                                                <li><a href="#">Leggings & Jeggings</a></li>
-                                                <li><a href="#">Capris,Shorts & Skirts</a></li>
-                                                <li><a href="#">Winter Jackets</a></li>
-                                                <li><a href="#">Clothing Accessories</a></li>
-                                                <li><a href="#">Sweaters</a></li>
-                                                <li><a href="#">Winter Shrugs</a></li>
-                                            </ul>
-                                        </li>
-                                        <!--Grid 3-->
-                                        <li class="nav-dropdown-grid">
-                                            <h6>Brand</h6>
-                                            <ul>
-                                                <li><a href="#">A&C Signature</a></li>
-                                                <li><a href="#">Angry Birds</a></li>
-                                                <li><a href="#">Macadamia</a></li>
-                                                <li><a href="#">Miller & Schweizer</a></li>
-                                                <li><a href="#">Stylet</a></li>
-                                                <li><a href="#">Van Heusen</a></li>
-                                                <li><a href="#">Wrangler</a></li>
-                                                <li><a href="#">Wills Lifestyle</a></li>
-                                                <li><a href="#">X'Pose</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="nav-dropdown-grid">
-                                            <a href="#" class="sub-banner">
-                                                <img src="{{asset('img/banner/banner_115145.jpg')}}" alt=""/></a>
-                                        </li>
-
-                                    </ul>
-                                </li>
-                            </ul>
-                            <!-- End Drodown Menu -->
                         </li>
                         <li>
                             <a href="category">Для мужчин</a>
-                            <!-- Drodown Menu ------->
-                            <ul class="nav-dropdown js-nav-dropdown">
-                                <li class="container">
-                                    <ul class="row">
-                                        <!--Grid 1-->
-                                        <li class="nav-dropdown-grid">
-                                            <h6>Kid's</h6>
-                                            <ul>
-                                                <li><a href="#">Tops & Tunics</a></li>
-                                                <li><a href="#">Shorts & Capris</a></li>
-                                                <li><a href="#">Twin Sets</a></li>
-                                                <li><a href="#">Jeans & Trousers</a></li>
-                                                <li><a href="#">Leggings & Jeggings</a></li>
-                                                <li><a href="#">Skirts</a></li>
-                                                <li><a href="#">Jumpsuits</a></li>
-                                                <li><a href="#">Casual Dresses</a></li>
-                                                <li><a href="#">Ethnic Wear</a></li>
-                                            </ul>
-                                        </li>
-
-                                    </ul>
-                                </li>
-                            </ul>
-                            <!-- End Drodown Menu -->
                         </li>
 
                         <li>
@@ -473,6 +262,8 @@
         @yield('login')
         @yield('category')
         @yield('mainPage')
+        @yield('billing')
+        @yield('product')
         <!-- End Page Content -->
 
         <!-- Footer Section -------------->
@@ -576,7 +367,7 @@
             <!-- Footer Copyright -->
             <div class="container">
                 <div class="copyrights">
-                    <p class="copyright">&copy; Developed by <a href="http://micore-studio.com/" target="_blank">MiCore
+                    <p class="copyright">&copy; Developed & Designed by <a href="http://micore-studio.com/" target="_blank">MiCore
                             Development</a></p>
                 </div>
             </div>
@@ -602,19 +393,22 @@
 <script type="text/javascript" src="{{asset('js/tether.min.js')}}"></script>
 <!--Bootstrap tooltips require Tether (Tether Js)-->
 <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
-<!-- bootstrap js -->
-<script type="text/javascript" src="{{asset('js/owl.carousel.js')}}"></script>
-<!-- OWL carousel js -->
-<script type="text/javascript" src="{{asset('js/slick.js')}}"></script>
-<!-- Slick Slider js -->
-<script type="text/javascript" src="{{asset('js/plugins-all.js')}}"></script>
-<!-- Validator -->
 <script type="text/javascript"
         src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>
+<!-- bootstrap js -->
+
+<script type="text/javascript" src="{{asset('js/owl.carousel.js')}}"></script>
+<!-- OWL carousel js -->
+<!-- Slick Slider js -->
+<script type="text/javascript" src="{{asset('js/slick.js')}}"></script>
+<!-- Validator -->
+@yield('productLib')
 <!-- Plugins All js -->
-<script type="text/javascript" src="{{asset('js/auth.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/plugins-all.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/sidebar_cart.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/cart.js')}}"></script>
+@yield('cartLib')
+@yield('auth_reg')
 <!-- custom js -->
 <!-- end jquery -->
 </body>
