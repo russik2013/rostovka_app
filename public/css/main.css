@@ -580,5 +580,8 @@ input::-webkit-inner-spin-button {
   right: 10px;
   color: inherit;
 }
+.promo-banner-wrap.large {
+  margin-top: 30px;
+}
 
 /*# sourceMappingURL=main.css.map */

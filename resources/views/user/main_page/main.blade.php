@@ -794,6 +794,15 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-12">
+                        <!-- banner No.4 -->
+                        <div class="promo-banner-wrap large">
+                            <a href="#" class="promo-image-wrap">
+                                <img src="{{'img/promo_bannerBig.png'}}" alt="">
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
