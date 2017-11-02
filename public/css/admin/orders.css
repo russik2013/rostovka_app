@@ -35,7 +35,8 @@
 }
 
 .datePicker{
-    padding-top: 8px;
+    background: #f4f3ef;
+    padding: 30px 10px 30px 10px;
 }
 
 .datePicker label{
@@ -73,7 +74,7 @@
     color: #fff;
     border: none;
     cursor: pointer;
-    padding: 7px 15px 4px 15px;
+    padding: 7px 35px 4px 35px;
     margin-left: -20px;
 }
 
@@ -113,4 +114,12 @@
 
 .datePicker .col-md-2 button:hover{
     background: #4a82cf;
+}
+
+.datePicker .min--title{
+    margin-top: -15px;
+    margin-bottom: 15px;
+    padding: 0;
+    padding-left: 0px;
+    padding-left: 7px;
 }

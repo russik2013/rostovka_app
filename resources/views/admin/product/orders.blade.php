@@ -15,16 +15,8 @@
                             <h4 class="title">Список заказов</h4>
                         </div>
                         <div class="content table-responsive table-full-width">
-                            <div class="span12 pull-right">
-                                <form id="custom-search-form" class="form-search form-horizontal pull-right">
-                                    <div class="input-append span12">
-                                        <input type="text" class="search-query" placeholder="Поиск">
-                                        <button type="submit" class="btn"><i class="ti-search"></i></button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="col-md-10 pull-left datePicker">
+                            <div class="col-md-12 pull-left datePicker">
+                                <span class="min--title pull-left col-md-12">Cписок заказов за период (PDF)</span>
                                 <div class="col-md-5 datePicker__Block">
                                     <label for="from">с </label>
                                     <input type="text" id="from" name="from">
@@ -44,11 +36,18 @@
                                     </select>
                                 </div>
 
-                                <div class="col-md-2">
-                                    <button>Показать</button>
+                                <div class="col-md-2 pull-right">
+                                    <button class="pull-right">Скачать</button>
                                 </div>
                             </div>
-
+                            <div class="col-md-12 span12 pull-right" style="margin-top: 20px">
+                                <form id="custom-search-form" class="form-search form-horizontal pull-right">
+                                    <div class="input-append span12">
+                                        <input type="text" class="search-query" placeholder="Поиск">
+                                        <button type="submit" class="btn"><i class="ti-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
 
                             <table class="table table-striped">
                                 <thead>
