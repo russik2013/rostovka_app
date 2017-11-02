@@ -1,0 +1,29 @@
+.mainPage--content{display: none}
+.articul input{
+    max-width: 100px;
+    overflow: hidden;
+    border: none;
+    background: transparent;
+}
+
+.span12.pull-right{
+    margin-bottom: 10px;
+}
+
+.input-append.span12{
+    max-width: 250px;
+    width: 250px;
+}
+.input-append.span12 input{width: 90%;}
+
+.btn-rotate{
+    float: left;
+    margin-top: 1px;
+    margin-left: 22px;
+    border-radius: 0;
+}
+
+.table-striped td a.remove__product{
+    position: absolute;
+    right: 8%;
+}

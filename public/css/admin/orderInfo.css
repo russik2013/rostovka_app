@@ -1,0 +1,37 @@
+.card label {padding-top: 11px;}
+.col-md-5{padding: 0}
+.orderInfo__input{margin-bottom: 20px}
+.col-md-6 .header{
+    padding: 0;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    margin-bottom: 20px;
+    padding-left: 13px;
+    border-bottom: 5px solid #f4f3ef;
+    padding-bottom: 10px;
+}
+
+.select2-selection.select2-selection--single{
+    padding-left: 5px !important;
+}
+
+.form-control.border-input {
+    border: 1px solid #CCC5B9;
+    padding-left: 13px;
+    padding-top: 9px;
+}
+
+.removePrudct{
+    font-size: 17px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.table thead tr > th, .table thead tr > td, .table tbody tr > th, .table tbody tr > td, .table tfoot tr > th, .table tfoot tr > td{
+    border-top: 0;
+    border-bottom: 5px solid #F4F3EF;
+}
+
+.product--list table tr:hover{
+    background: #f4f3ef;
+}

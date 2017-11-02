@@ -40,6 +40,45 @@ Route::get('/cart', function () {
 });
 
 
+Route::get('/admin_index', function () {
+    return view('admin.main');
+});
+
+Route::get('/user_edit', function () {
+    return view('admin.user_edit.edit');
+});
+
+Route::get('/products', function () {
+    return view('admin.product.products');
+});
+
+Route::get('/product_add', function () {
+    return view('admin.product.pdoructadd');
+});
+
+Route::get('/product_edit', function () {
+    return view('admin.product.productedit');
+});
+
+Route::get('/filters_page', function () {
+    return view('admin.filters');
+});
+
+Route::get('/orders', function () {
+    return view('admin.product.orders');
+});
+
+Route::get('/orderInfo', function () {
+    return view('admin.product.orderInfo');
+});
+
+Route::get('/options', function () {
+    return view('admin.product.options');
+});
+
+Route::get('/personal', function () {
+    return view('admin.user_edit.admin_edit');
+});
 
 Route::get('/product', 'ProductController@create');
 Route::post('/product','ProductController@add');
