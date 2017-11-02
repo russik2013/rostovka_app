@@ -18,8 +18,7 @@ $('.add--newFilter').on('click', function () {
 });
 
 function remFilter(event) {
-    console.log(event);
-    var filterName = event.currentTarget.parentNode.textContent,
+    var filterName = event.originalEvent.originalTarget.parentNode.parentNode.firstChild.nodeValue,
         filterID = event.currentTarget.parentNode.dataset.id,
         elemDelete = event.currentTarget.parentNode;
 

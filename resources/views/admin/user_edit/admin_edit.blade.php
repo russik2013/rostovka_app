@@ -1,6 +1,7 @@
 @section('edit_userCss')
     <link href="{{url('css/admin/edit-user.css')}}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
 @endsection
 
 @extends('admin.main')
@@ -25,10 +26,10 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-5">
+                                            <div class="col-md-5 product--add">
                                                 <div class="form-group">
                                                     <label>Тип пользователя</label>
-                                                    <input class="form-control border-input" type="text" value="Адмнистратор">
+                                                    <select class="form-control border-input user__type"></select>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -100,4 +101,6 @@
 @endsection
 
 @section('edit_userLib')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+    <script src="{{url('js/admin/user_edit.js')}}"></script>
 @endsection

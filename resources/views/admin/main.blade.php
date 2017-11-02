@@ -101,7 +101,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="user_edit">
+                            <a href="personal">
                                 <i class="ti-settings"></i>
                                 <p>Настройки</p>
                             </a>

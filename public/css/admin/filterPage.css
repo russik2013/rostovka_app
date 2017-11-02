@@ -74,3 +74,8 @@
 .text-center button{
     border-radius: 0;
 }
+
+.remove__Filter i{
+    color: #000;
+    font-weight: 100;
+}
