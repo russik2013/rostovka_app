@@ -33,58 +33,6 @@
 <div id="nlpopup_overlay"></div>
 <!-- End Newsletter Popup ------------------------------------------------>
 
-
-<!-- Sidebar Menu (Ca<!-- Sidebar Menu (Cart Menu) ------------------------------------------------>
-<section id="sidebar-right" class="sidebar-menu sidebar-right">
-    <div class="cart-sidebar-wrap">
-
-        <!-- Cart Headiing -->
-        <div class="cart-widget-heading">
-            <h4>КОРЗИНА</h4>
-            <!-- Close Icon -->
-            <a href="javascript:void(0)" id="sidebar_close_icon" class="close-icon-white"></a>
-            <!-- End Close Icon -->
-        </div>
-        <!-- End Cart Headiing -->
-
-        <!-- Cart Product Content -->
-        <div class="cart-widget-content">
-            <div class="cart-widget-product ">
-                <!-- Cart Products -->
-                <ul class="cart-product-item"></ul>
-                <!-- End Cart Products -->
-
-            </div>
-        </div>
-        <!-- End Cart Product Content -->
-
-        <!-- Cart Footer -->
-        <div class="cart-widget-footer">
-            <div class="cart-footer-inner">
-
-                <!-- Cart Total -->
-                <h4 class="cart-total-hedding normal pull-left col-md-12 no-padding">
-                    <span class="pull-left">Сумма :</span>
-                    <span class="pull-right">
-                        <span class="cart-total-price pull-left"></span>
-                        <span class="currency-sign pull-right">грн</span>
-                    </span>
-
-                </h4>
-                <!-- Cart Total -->
-
-                <!-- Cart Buttons -->
-                <div class="cart-action-buttons">
-                    <a href="{{url('/cart')}}" class="view-cart btn btn-md btn-gray">Перейти в корзину</a>
-                    <a href="{{url('/checkout')}}" class="checkout btn btn-md btn-color">Перейти к покупке</a>
-                </div>
-                <!-- End Cart Buttons -->
-
-            </div>
-        </div>
-        <!-- Cart Footer -->
-    </div>
-</section>
 <!--Overlay-->
 <div class="sidebar_overlay"></div>
 <!-- End Sidebar Menu (Cart Menu) -------------------------------------------->
@@ -141,11 +89,11 @@
                 <div class="topbar-right">
                     <ul class="list-none">
                         <li>
-                            <a href="login-register.html"><i class="fa fa-lock left" aria-hidden="true"></i><span
+                            <a href="login"><i class="fa fa-lock left" aria-hidden="true"></i><span
                                         class="hidden-sm-down">Авторизация</span></a>
                         </li>
                         <li class="dropdown-nav">
-                            <a href="login-register.html"><i class="fa fa-user left" aria-hidden="true"></i>
+                            <a href="register"><i class="fa fa-user left" aria-hidden="true"></i>
                                 <span class="hidden-sm-down">Кабинет</span>
                                 <i class="fa fa-angle-down right" aria-hidden="true"></i>
                             </a>
@@ -153,7 +101,6 @@
                             <div class="dropdown-menu">
                                 <ul>
                                     <li><a href="login-register">Моя информация</a></li>
-                                    <li><a href="#!">История покупок</a></li>
                                     <li><a href="cart">Корзина</a></li>
                                 </ul>
                             </div>
@@ -188,8 +135,8 @@
                             <li><a id="search-overlay-menu-btn"><i aria-hidden="true" class="fa fa-search"></i></a></li>
 
                             <!-- Cart-->
-                            <li>
-                                <a id="sidebar_toggle_btn">
+                            <li class="cartBl">
+                                <a href="cart">
                                     <div class="cart-icon">
                                         <i aria-hidden="true" class="fa fa-shopping-bag"></i>
                                     </div>
@@ -200,6 +147,23 @@
                                         <span class="cart-price closedSidebar strong"></span><span class="currency-sign">грн</span>
                                     </div>
                                 </a>
+
+                                <span class="dropdownCart">
+                                    <div class="arrow-up"></div>
+
+                                    <ul id="cartTemplate"></ul>
+
+                                    <span class="cartQuantity">
+                                        <span class="summ">Сумма:</span>
+                                        <span class="price">0 <span class="Total--priceCde">грн</span></span>
+                                    </span>
+
+                                    <span class="cartButton">
+                                        <a href="cart" class="button">Корзина</a>
+                                        <a href="checkout" class="button checkour_cart">Купить</a>
+                                    </span>
+                                </span>
+
                             </li>
                         </ul>
                     </div>
@@ -212,19 +176,15 @@
                 <nav class="navigation-menu">
                     <ul>
                         <li>
-                            <a href="#!">Главная</a>
-                        </li>
-
-                        <li>
-                            <a href="category">Для мальчиков</a>
+                            <a href="category">Детское</a>
                         </li>
                         <li>
-                            <a href="category">Для девочек</a></li>
+                            <a href="category">Мужское</a></li>
                         <li>
-                            <a href="category">Для женщин</a>
+                            <a href="category">Женское</a>
                         </li>
                         <li>
-                            <a href="category">Для мужчин</a>
+                            <a href="category">Перчатки</a>
                         </li>
 
                         <li>
@@ -242,21 +202,6 @@
 
     <!-- Page Content Wraper -->
     <div class="page-content-wraper">
-        <!-- Bread Crumb -->
-        <section class="breadcrumb">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <nav class="breadcrumb-link">
-                            <a href="#">Главная</a>
-                            <span>Регистрация</span>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Bread Crumb -->
-
         <!-- Page Content -->
         @yield('register')
         @yield('login')
@@ -378,6 +323,7 @@
     <!-- End Page Content Wraper -->
 </div>
 
+<script id="Cart_template" src="{{asset('cartTmpl/cart.html')}}" type="text/x-jquery-tmpl"></script>
 <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery-ui.js')}}"></script>
 <!-- jquery library js -->
@@ -406,10 +352,13 @@
 <!-- Plugins All js -->
 <script type="text/javascript" src="{{asset('js/plugins-all.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/sidebar_cart.js')}}"></script>
+<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 @yield('cartLib')
 @yield('auth_reg')
+@yield('category__Lib')
 <!-- custom js -->
 <!-- end jquery -->
+
 </body>
 </html>

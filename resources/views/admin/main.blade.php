@@ -35,6 +35,7 @@
     @yield('ordersCss')
     @yield('orderInfo_Css')
     @yield('optionsCss')
+    @yield('suppliersCss')
 </head>
 <body>
 
@@ -80,6 +81,13 @@
                     <a href="options">
                         <i class="ti-settings"></i>
                         <p>Свойства товара</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="suppliers">
+                        <i class="ti-package"></i>
+                        <p>Поставщики</p>
                     </a>
                 </li>
             </ul>
@@ -271,6 +279,7 @@
         @yield('orders_container')
         @yield('orderInfo_content')
         @yield('options_container')
+        @yield('suppliers_container')
 
         <footer class="footer">
             <div class="container-fluid">
@@ -320,4 +329,5 @@
 @yield('filterPage_Lib')
 @yield('ordersLib')
 @yield('optionsLib')
+@yield('suppliersLib')
 </html>

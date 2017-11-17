@@ -27,19 +27,23 @@ ul {
 .footer {
   padding-bottom: 0;
 }
+
 .footer .section-padding {
   padding-bottom: 0 !important;
 }
+
 .footer .copyrights {
   padding-top: 80px;
   padding-bottom: 10px;
 }
+
 .product-item {
   border: 1px solid transparent;
   padding-top: 15px;
   padding-bottom: 10px;
   min-height: 493px;
 }
+
 .owl-stage-outer .product-item {
   min-height: 100%;
 }
@@ -47,10 +51,10 @@ ul {
   border: 1px solid #eee;
 }
 .product-item:hover .product-title a {
-  color: #63a4ff;
+  color: #2c628f;
 }
 .product-item:hover b {
-  color: #63a4ff;
+  color: #2c628f;
 }
 .nav-link h2 {
   color: rgba(51, 51, 51, 0.48);
@@ -67,6 +71,12 @@ ul {
 .productLine:last-child .product-item {
   border-bottom: 1px solid #eeeeee;
 }
+.productLine:first-child{
+  margin-top: -20px;
+}
+.productLine{
+  margin-top: -50px;
+}
 .goods_amount {
   padding: 10px;
   color: #333333;
@@ -77,6 +87,11 @@ ul {
 }
 .product-item:hover .goods_amount {
   display: block;
+}
+
+.mainPage .product-item:hover .goods_amount {
+  display: block;
+  margin-top: 10px;
 }
 .product-item:hover .goodsCount_price {
   display: block;
@@ -95,7 +110,7 @@ ul {
 .aboutText a.btn {
   border: none;
   float: left;
-  background: #63a4ff;
+  background: #2c628f;
   color: #fff;
   margin-left: 40px;
   padding: 13px 30px 10px 30px;
@@ -156,11 +171,12 @@ ul {
 }
 .list-page-title h2 small {
   margin-left: 10px;
-  color: #63a4ff;
+  color: #2c628f;
 }
 .product-list-view .goods_amount {
   padding: 0;
   padding-bottom: 10px;
+  margin-top: 14px;
 }
 .product-list-view .goods_amount .col-md-6 {
   padding: 0;
@@ -187,11 +203,9 @@ ul {
 }
 .categoryPage .product-item {
   border: none;
-  min-height: 380px;
+  min-height: 470px;
 }
-.categoryPage .product-list-view .product-item {
-  min-height: 100% !important;
-}
+
 .categoryPage .product-list-view .goods_amount {
   display: block !important;
 }
@@ -222,7 +236,7 @@ ul {
   margin-right: 0 !important;
 }
 .categoryPage .checkbox:hover label {
-  color: #63a4ff;
+  color: #2c628f;
 }
 .categoryPage .product-item .product-item-inner img {
   width: 100%;
@@ -242,7 +256,7 @@ ul {
 .categoryPage .product-list-view .product-item-inner img {
   width: 100%;
   max-height: 390px;
-  max-width: 230px;
+  max-width: 250px;
   text-align: center;
   margin: 0 auto;
   float: none;
@@ -256,7 +270,7 @@ ul {
 }
 .categoryPage .submit_onChoose button {
   position: fixed;
-  background: #63a4ff;
+  background: #2c628f;
   padding: 11px 30px 10px 30px;
   color: #fff;
   border-radius: 8px 15px 15px 8px;
@@ -275,7 +289,7 @@ ul {
   height: 0;
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
-  border-right: 15px solid #63a4ff;
+  border-right: 15px solid #2c628f;
   transition: all 0.3s ease 0s !important;
   -moz-transition: all 0.3s ease 0s !important;
   -webkit-transition: all 0.3s ease 0s !important;
@@ -403,10 +417,7 @@ ul {
 .checkoutPage h5 {
   color: rgba(0, 0, 0, 0.23);
 }
-.checkoutPage .inputGroupContainer input {
-  border-bottom-right-radius: 55px !important;
-  border-top-right-radius: 55px !important;
-}
+
 .checkoutPage select {
   padding-top: 13px;
   padding-bottom: 13px;
@@ -461,10 +472,10 @@ input::-webkit-inner-spin-button {
   display: none;
 }
 .cart-sidebar-wrap .cart-total-hedding .currency-sign {
-  color: #63a4ff;
+  color: #2c628f;
 }
 .cart-title .currency-sign {
-  color: #63a4ff;
+  color: #97bf31;
   margin-left: .2em;
 }
 #product-detail .product-meta {
@@ -566,8 +577,8 @@ input::-webkit-inner-spin-button {
   }
 }
 .alert-success {
-  background-color: #63a3ff;
-  border-color: #63a3ff;
+  background-color: #2b618f;
+  border-color: #2b618f;
   color: #fff;
 }
 .top-alert {
@@ -602,3 +613,44 @@ input::-webkit-inner-spin-button {
 }
 
 /*# sourceMappingURL=main.css.map */
+
+.product-item .product-detail h5{
+  color: #97bf31;
+}
+
+.mainPage .product-item{
+  min-height: 460px;
+  max-width: 20%;
+}
+
+.mainPage .product-detail .pull-left{
+  padding: 0;
+}
+
+.mainPage .product-item{
+  border: 2px solid transparent;
+}
+.mainPage .product-item:hover{
+  border: 2px solid #2b618f !important;
+  z-index: 99;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.CFBlock{
+  display: none;
+  margin-bottom: 50px;
+}
+
+.appedned__item i{
+  float: right;
+  margin-right: 25px;
+  cursor: pointer;
+  margin-top: 5px;
+  color: #2d618f;
+  font-size: 15px;
+}
+
+.choosedFilter{
+  max-height: 150px;
+  overflow: scroll;
+}

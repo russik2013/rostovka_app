@@ -80,9 +80,13 @@ Route::get('/personal', function () {
     return view('admin.user_edit.admin_edit');
 });
 
+Route::get('/suppliers', function () {
+    return view('admin.product.suppliers');
+});
+
 Route::get('/product', 'ProductController@create');
 Route::post('/product','ProductController@add');
-
+//
 //return view('login_register.login');
-
+//
 //return view('login_register.register');

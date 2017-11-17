@@ -1,16 +1,16 @@
-@section('productsCss')
+@section('suppliersCss')
     <link href="{{url('css/admin/products.css')}}" rel="stylesheet">
 @endsection
 
 @extends('admin.main')
-@section('products_container')
+@section('suppliers_container')
     <div class="content products--content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h4 class="title">Список товаров</h4>
+                            <h4 class="title">Список поставщиков</h4>
                         </div>
                         <div class="content table-responsive table-full-width">
                             <div class="span12 pull-right">
@@ -23,7 +23,7 @@
                             </div>
 
                             <a href="product_add" class="btn btn-wd btn-info btn-fill btn-rotate" type="button">
-                                Добавить товар
+                                Добавить поставщика
                             </a>
 
                             <table class="table table-striped">
@@ -184,6 +184,6 @@
     </div>
 @endsection
 
-@section('productsLib')
-    <script src="{{url('js/admin/products.js')}}"></script>
+@section('suppliersLib')
+    <script src="{{url('js/admin/suppliers.js')}}"></script>
 @endsection

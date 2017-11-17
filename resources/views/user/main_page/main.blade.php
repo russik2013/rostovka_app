@@ -57,337 +57,296 @@
                         </a>
                     </li>
                 </ul>
-                <div class="col-md-12 tab-content">
+                <div class="col-md-12 tab-content mainPage">
                     <!-- Tab1 - Latest Product -->
                     <div id="latest" role="tabpanel" class="tab-pane fade in active pull-left">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine">
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                            <div class="productIcons">
-                                                <i class="stamp_leather"></i>
-                                                <i class="stamp_snake"></i>
-                                                <i class="stamp_wool"></i>
-                                                <i class="stamp_backlight"></i>
-                                                <i class="stamp_brakes"></i>
-                                                <i class="stamp_heat-cold"></i>
-                                                <i class="stamp_leatherinsole"></i>
-                                                <i class="stamp_doubleKnitting"></i>
-                                                <i class="stamp_singleKnitting"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                             alt="">
+                                    </a>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">1139 <span>грн</span></h5>
+                                    <span class="hiddenPrice">201125</span>
                                 </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">2339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">11125</span>
+                                </div>
 
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine">
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">3339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">21125</span>
+                                </div>
 
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine">
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                             alt="">
+                                    </a>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">4339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">31125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                             alt="">
+                                    </a>
                                 </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
                                             <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
                                             <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">1139 <span>грн</span></h5>
+                                    <span class="hiddenPrice">201125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">2339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">11125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">3339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">21125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">4339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">31125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">1139 <span>грн</span></h5>
+                                    <span class="hiddenPrice">201125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">2339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">11125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -401,17 +360,6 @@
                                     <div class="product-img-wrap">
                                         <a href="#!">
                                             <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                            <div class="productIcons">
-                                                <i class="stamp_leather"></i>
-                                                <i class="stamp_snake"></i>
-                                                <i class="stamp_wool"></i>
-                                                <i class="stamp_backlight"></i>
-                                                <i class="stamp_brakes"></i>
-                                                <i class="stamp_heat-cold"></i>
-                                                <i class="stamp_leatherinsole"></i>
-                                                <i class="stamp_doubleKnitting"></i>
-                                                <i class="stamp_singleKnitting"></i>
-                                            </div>
                                         </a>
                                     </div>
                                     <div class="product-button">
@@ -429,321 +377,7 @@
                                     <div class="col-md-12 pull-left goodsCount_price">
                                         <span class="item-price col-md-6 pull-left">25 - 35</span>
                                         <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine">
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                            <div class="productIcons">
-                                                <i class="stamp_leather"></i>
-                                                <i class="stamp_snake"></i>
-                                                <i class="stamp_wool"></i>
-                                                <i class="stamp_backlight"></i>
-                                                <i class="stamp_brakes"></i>
-                                                <i class="stamp_heat-cold"></i>
-                                                <i class="stamp_leatherinsole"></i>
-                                                <i class="stamp_doubleKnitting"></i>
-                                                <i class="stamp_singleKnitting"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine">
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                            <div class="productIcons">
-                                                <i class="stamp_leather"></i>
-                                                <i class="stamp_snake"></i>
-                                                <i class="stamp_wool"></i>
-                                                <i class="stamp_backlight"></i>
-                                                <i class="stamp_brakes"></i>
-                                                <i class="stamp_heat-cold"></i>
-                                                <i class="stamp_leatherinsole"></i>
-                                                <i class="stamp_doubleKnitting"></i>
-                                                <i class="stamp_singleKnitting"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
-                                        </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">1125</span>
+                                        <span class="hiddenPrice">121125</span>
                                     </div>
                                 </div>
                             </div>
@@ -845,7 +479,7 @@
                             <div class="col-md-12 pull-left">
                                 <span class="item-price col-md-6 pull-left">25 - 35</span>
                                 <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                <span class="hiddenPrice">1125</span>
+                                <span class="hiddenPrice">131125</span>
                             </div>
                         </div>
                     </div>
@@ -868,7 +502,7 @@
                             <div class="col-md-12 pull-left">
                                 <span class="item-price col-md-6 pull-left">25 - 35</span>
                                 <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                <span class="hiddenPrice">1125</span>
+                                <span class="hiddenPrice">141125</span>
                             </div>
                         </div>
                     </div>
@@ -891,7 +525,7 @@
                             <div class="col-md-12 pull-left">
                                 <span class="item-price col-md-6 pull-left">25 - 35</span>
                                 <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                <span class="hiddenPrice">1125</span>
+                                <span class="hiddenPrice">151125</span>
                             </div>
                         </div>
                     </div>
@@ -914,7 +548,7 @@
                             <div class="col-md-12 pull-left">
                                 <span class="item-price col-md-6 pull-left">25 - 35</span>
                                 <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                <span class="hiddenPrice">1125</span>
+                                <span class="hiddenPrice">161125</span>
                             </div>
                         </div>
                     </div>
@@ -937,7 +571,7 @@
                             <div class="col-md-12 pull-left">
                                 <span class="item-price col-md-6 pull-left">25 - 35</span>
                                 <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                <span class="hiddenPrice">1125</span>
+                                <span class="hiddenPrice">171125</span>
                             </div>
                         </div>
                     </div>
@@ -960,7 +594,7 @@
                             <div class="col-md-12 pull-left">
                                 <span class="item-price col-md-6 pull-left">25 - 35</span>
                                 <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                <span class="hiddenPrice">1125</span>
+                                <span class="hiddenPrice">181125</span>
                             </div>
                         </div>
                     </div>
@@ -983,7 +617,7 @@
                             <div class="col-md-12 pull-left">
                                 <span class="item-price col-md-6 pull-left">25 - 35</span>
                                 <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                <span class="hiddenPrice">1125</span>
+                                <span class="hiddenPrice">191125</span>
                             </div>
                         </div>
                     </div>

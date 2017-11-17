@@ -1,0 +1,17 @@
+{{each row}}
+<li data-id="${targetID}">
+    <img src="${imgUrl}">
+    <span class="title">
+        ${name}
+    </span>
+
+    <span class="price">
+    ${price}
+        <span class="priceCde">грн</span>
+        <span class="count">${quant}</span>
+    </span>
+    <span class="removeItem__cart">
+        <i class="fa fa-times" aria-hidden="true"></i>
+    </span>
+</li>
+{{/each}}

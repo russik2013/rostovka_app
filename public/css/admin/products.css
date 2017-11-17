@@ -27,3 +27,51 @@
     position: absolute;
     right: 8%;
 }
+
+.search input{
+    padding-right: 4px \9;
+    padding-left: 4px \9;
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border: 1px solid #ccc4b8;
+    border-radius: 0;
+    padding: 7px 10px 5px 10px;
+}
+
+.card .table tbody td:first-child, .card .table thead th:first-child{
+    padding: 0 !important;
+}
+
+.fht-cell input, .fht-cell select{
+    padding-right: 4px \9;
+    padding-left: 4px \9;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border: 1px solid #ccc4b8;
+    border-radius: 0;
+    padding: 7px 10px 5px 10px;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.fixed-table-container thead th .sortable{
+    cursor: pointer;
+    background-position: right;
+    background-repeat: no-repeat;
+    padding-right: 0 !important;
+    text-align: center;
+    padding-left: 0 !important;
+}
+
+.bootstrap-table .table thead>tr>th{
+    padding-bottom: 15px !important;
+}
+
+.fixed-table-toolbar .bars, .fixed-table-toolbar .columns, .fixed-table-toolbar .search{
+    float: right !important;
+}
+
+.table-full-width{
+    margin: 0 !important;
+}

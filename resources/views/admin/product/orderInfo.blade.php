@@ -32,6 +32,39 @@
 
                                             <div class="col-md-12 orderInfo__input">
                                                 <div class="col-md-5">
+                                                    <label>ФИО</label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <input class="form-control border-input" type="text" value="Полякова Оксана Владимировна">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 orderInfo__input">
+                                                <div class="col-md-5">
+                                                    <label>Телефон</label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <input class="form-control border-input" type="number" value="0509055848">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 orderInfo__input">
+                                                <div class="col-md-5">
+                                                    <label>Email</label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <input class="form-control border-input" type="text" value="ksena0283@gmail.com">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 orderInfo__input">
+                                                <div class="col-md-5">
                                                     <label>Способ доставки</label>
                                                 </div>
                                                 <div class="col-md-7">
@@ -54,50 +87,6 @@
 
                                             <div class="col-md-12 orderInfo__input">
                                                 <div class="col-md-5">
-                                                    <label>Скидка</label>
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <div class="form-group">
-                                                        <input class="form-control border-input" type="number" value="">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12 orderInfo__input">
-                                                <div class="col-md-5">
-                                                    <label>ФИО</label>
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <div class="form-group">
-                                                        <input class="form-control border-input" type="text" value="Полякова Оксана Владимировна">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12 orderInfo__input">
-                                                <div class="col-md-5">
-                                                    <label>Email</label>
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <div class="form-group">
-                                                        <input class="form-control border-input" type="text" value="ksena0283@gmail.com">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12 orderInfo__input">
-                                                <div class="col-md-5">
-                                                    <label>Телефон</label>
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <div class="form-group">
-                                                        <input class="form-control border-input" type="number" value="0509055848">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12 orderInfo__input">
-                                                <div class="col-md-5">
                                                     <label>Адрес доставки</label>
                                                 </div>
                                                 <div class="col-md-7">
@@ -114,28 +103,6 @@
                                                 <div class="col-md-7">
                                                     <div class="form-group">
                                                         <input class="form-control border-input" type="text" value="√3">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12 orderInfo__input">
-                                                <div class="col-md-5">
-                                                    <label>Комментарий пользователя</label>
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <div class="form-group">
-                                                        <textarea class="form-control border-input"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12 orderInfo__input">
-                                                <div class="col-md-5">
-                                                    <label>Комментарий администратора</label>
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <div class="form-group">
-                                                        <textarea class="form-control border-input"></textarea>
                                                     </div>
                                                 </div>
                                             </div>

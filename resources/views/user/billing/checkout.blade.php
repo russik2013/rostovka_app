@@ -49,30 +49,6 @@
                                         </div>
                                         <!-- Text input-->
 
-                                        <div class="col-md-6 form-field-wrapper form-group has-feedback">
-                                            @if ($errors->has('password'))
-                                                <p> {{$errors -> first('password')}} </p>
-                                            @endif
-                                            <label class="col-md-12 control-label">Ваш пароль</label>
-                                            <div class="col-md-12 inputGroupContainer">
-
-                                                <div class="input-group">
-                                                    <input name="password" placeholder="пароль" class="form-control"
-                                                           type="password" value="{{old('password')}}">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 form-field-wrapper form-group has-feedback">
-                                            <label class="col-md-12 control-label">Повторите пароль</label>
-                                            <div class="col-md-12 inputGroupContainer">
-
-                                                <div class="input-group">
-                                                    <input name="confirmPassword" placeholder="пароль" class="form-control"
-                                                           type="password" value="">
-                                                </div>
-                                            </div>
-                                        </div>
 
                                         <div class="col-md-6 form-field-wrapper form-group has-feedback">
                                             @if ($errors->has('email'))
@@ -102,88 +78,6 @@
                                             </div>
                                         </div>
 
-                                        <!-- Text input-->
-                                        <div class="col-md-12 form-field-wrapper form-group has-feedback">
-                                            @if ($errors->has('city'))
-                                                <p> {{$errors -> first('city')}} </p>
-                                            @endif
-                                            <label class="col-md-12 control-label">Ваш город</label>
-                                            <div class="col-md-12 inputGroupContainer">
-
-                                                <div class="input-group">
-                                                    <input name="city" placeholder="город" class="form-control" type="text" value="{{old('city')}}">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Select Basic -->
-                                        <div class="col-md-12 form-field-wrapper form-group has-feedback">
-                                            @if ($errors->has('state'))
-                                                <p> {{$errors -> first('state')}} </p>
-                                            @endif
-                                            <label class="col-md-12 control-label">Страна</label>
-                                            <div class="col-md-12 selectContainer">
-
-                                                <div class="input-group">
-                                                    <select name="state" class="form-control selectpicker">
-                                                        <option value=" ">выберите вашу страну</option>
-                                                        <option>Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>Arizona</option>
-                                                        <option>Arkansas</option>
-                                                        <option>California</option>
-                                                        <option>Colorado</option>
-                                                        <option>Connecticut</option>
-                                                        <option>Delaware</option>
-                                                        <option>District of Columbia</option>
-                                                        <option> Florida</option>
-                                                        <option>Georgia</option>
-                                                        <option>Hawaii</option>
-                                                        <option>daho</option>
-                                                        <option>Illinois</option>
-                                                        <option>Indiana</option>
-                                                        <option>Iowa</option>
-                                                        <option>Kansas</option>
-                                                        <option>Kentucky</option>
-                                                        <option>Louisiana</option>
-                                                        <option>Maine</option>
-                                                        <option>Maryland</option>
-                                                        <option>Mass</option>
-                                                        <option>Michigan</option>
-                                                        <option>Minnesota</option>
-                                                        <option>Mississippi</option>
-                                                        <option>Missouri</option>
-                                                        <option>Montana</option>
-                                                        <option>Nebraska</option>
-                                                        <option>Nevada</option>
-                                                        <option>New Hampshire</option>
-                                                        <option>New Jersey</option>
-                                                        <option>New Mexico</option>
-                                                        <option>New York</option>
-                                                        <option>North Carolina</option>
-                                                        <option>North Dakota</option>
-                                                        <option>Ohio</option>
-                                                        <option>Oklahoma</option>
-                                                        <option>Oregon</option>
-                                                        <option>Pennsylvania</option>
-                                                        <option>Rhode Island</option>
-                                                        <option>South Carolina</option>
-                                                        <option>South Dakota</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option> Uttah</option>
-                                                        <option>Vermont</option>
-                                                        <option>Virginia</option>
-                                                        <option>Washington</option>
-                                                        <option>West Virginia</option>
-                                                        <option>Wisconsin</option>
-                                                        <option>Wyoming</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Text input-->
-
                                         <div class="col-md-12 form-field-wrapper form-group has-feedback">
                                             @if ($errors->has('address'))
                                                 <p>  {{$errors -> first('address')}} </p>
@@ -202,7 +96,7 @@
                                             @if ($errors->has('zip'))
                                                 <p> {{$errors -> first('zip')}} </p>
                                             @endif
-                                            <label class="col-md-12 control-label">Ваш почтовый код</label>
+                                            <label class="col-md-12 control-label">Номер отделения</label>
                                             <div class="col-md-12 inputGroupContainer">
 
                                                 <div class="input-group">
@@ -291,10 +185,6 @@
                                                 <li>
                                                     <input id="payment_method_cod" name="payment_method" value="cod" type="radio" />
                                                     <label for="payment_method_cod">Наличными</label>
-                                                </li>
-                                                <li>
-                                                    <input id="payment_method_reg" name="payment_method" value="cod" type="checkbox" />
-                                                    <label for="payment_method_reg">Зарегистрироваться как клиент</label>
                                                 </li>
                                             </ul>
                                             <div class="col-md-12 form-field-wrapper form-group has-feedback">
