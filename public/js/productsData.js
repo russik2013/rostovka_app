@@ -85,7 +85,7 @@ var data = [
 
 $('#template').tmpl(data).appendTo('#target');
 
-var values = [], targetID = 0
+var values = [], targetID = 0;
 
 $('.sidebar-container input[type=checkbox]').on('change', function(){
     var target = $(this)[0].parentNode.parentNode.parentNode;
@@ -260,32 +260,30 @@ $(document).on('click', '.removeItem__cart', function () {
     Number ($('.cart-count')[0].innerText = counter);
 
     cartSumm(cart__summ);
-    console.log(cart__summ);
 });
 
 
-var plused_target = 0, updPrice = 0, mainPrice = 0;
+var target_id = 0, updPrice = 0, mainPrice = 0;
 $(document).on('click', '.Cart_Button_Plus', function (event) {
-    var targetID = $(this)[0].parentNode.parentNode.parentNode.offsetParent.dataset.id;
-    plused_target = data[targetID].full__price;
+    var target_dataset = $(this)[0].parentNode.parentNode.parentNode.offsetParent.dataset.id;
 
     for(var i = 0; i < Cart_data[0].row.length; i++){
-        if(targetID === Cart_data[0].row[i].targetID){
-            console.log(Cart_data[0].row[i])
+        if(target_dataset === Cart_data[0].row[i].targetID){
+            target_id = Cart_data[0].row[i].targetID.replace('added_', '');
+            mainPrice = Cart_data[0].row[i].price;
+            updPrice = Cart_data[0].row[i].quantityPrice + mainPrice;
+            Cart_data[0].row[i].quantity++;
         }
     }
-    // mainPrice = Cart_data[0].row[targetID].price;
-    // updPrice = Cart_data[0].row[targetID].quantityPrice + mainPrice;
-    // Cart_data[0].row[targetID].quantity++;
 
-    counterFn(mainPrice, event, targetID, updPrice);
+    console.log(target_id);
 
-    console.log(targetID)
+    counterFn(mainPrice, event, target_id, updPrice);
 });
 
 $(document).on('click', '.Cart_Button_Minus', function (event) {
     var targetID = $(this)[0].parentNode.parentNode.parentNode.offsetParent.dataset.id.replace('added_', '');
-    plused_target = data[targetID].full__price;
+    // plused_target = data[targetID].full__price;
 
     mainPrice = Cart_data[0].row[targetID].price;
     updPrice = Cart_data[0].row[targetID].quantityPrice - mainPrice;
@@ -306,16 +304,15 @@ function getPrice() {
     return allPrice
 }
 
-function counterFn(mainPrice, event, targetID) {
+function counterFn(mainPrice, event, target_id, updPrice) {
     var price = getPrice();
     if(price >= mainPrice){
-        Cart_data[0].row[targetID].quantityPrice = Cart_data[0].row[targetID].price * Cart_data[0].row[targetID].quantity;
-        event.target.parentElement.parentElement.parentElement.parentElement.offsetParent.children[2].children[0].innerText = Cart_data[0].row[targetID].quantityPrice;
+        updPrice = mainPrice * Cart_data[0].row[target_id].quantity;
+        event.target.parentElement.parentElement.parentElement.parentElement.offsetParent.children[2].children[0].innerText = Cart_data[0].row[target_id].quantityPrice;
 
         var cart__summ = price;
 
         cartSumm(cart__summ);
-        console.log(cart__summ);
     }
 }
 
