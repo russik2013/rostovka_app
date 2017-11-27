@@ -11,7 +11,7 @@ $(function () {
 
 var Cart_data = [
     {row: []}
-],hidden__price, cart__summ;
+],hidden__price, cart__summ, itemsinCart = $('.dropdownCart ul li');
 
 Cart_template(Cart_data);
 
@@ -26,13 +26,13 @@ $('.product-button a').on('click', function (event) {
 });
 
 
-if(Cart_data.length === 0){
+if(Cart_data[0].row.length === 0){
     $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>')
 }
 
-var qid = 0, counter = 0;
+var qid = 0, counter = 0, cart_amount = 0;
 function addtoCart(event) {
-    var imgurl, gTitle, gQuant, gprice;
+    var imgurl, gTitle, gQuant, gprice, cartQuantityPrice = $('.cartQuantity .price');
     $('.dropdownCart ul li').remove();
 
     qid++;
@@ -52,32 +52,88 @@ function addtoCart(event) {
 
     Cart_data[0].row.push({targetID: 'added_' + qid, imgUrl: imgurl, name: gTitle, quant: gQuant, price: gprice});
 
-    $('.cartQuantity .price')[0].innerText = Number (cart__summ) + Number (hidden__price);
+    $(cartQuantityPrice)[0].innerText = Number (cart__summ) + Number (hidden__price);
+
+    cart_amount = $(cartQuantityPrice)[0].innerText;
+    $(cartQuantityPrice)[0].innerText = cart_amount + ' грн';
 }
 
-$(document).on('click', '.removeItem__cart', function () {
-    var items = $('.dropdownCart ul li'),
-        targetID = $(this)[0].parentNode.dataset.id;
 
-    counter--;
-    Number ($('.cart-count')[0].innerText = counter);
-    for (var z = 0; z < Cart_data[0].row.length; z++){
-        if(targetID === Cart_data[0].row[z].targetID){
-            Cart_data[0].row.splice(Cart_data[0].row[z].targetID, 1);
-        }
-    }
-
-    for (var i = 0; i < $(items).length; i++){
-        $(this)[0].parentNode.remove();
-    }
-
-    if($(items).length === 1){
-        $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>')
-    }
-});
+// $(document).on('click', '.removeItem__cart', function () {
+//     var targetID = $(this)[0].parentNode.dataset.id, itemsinCart = $('.dropdownCart ul li'), clickedItems_price = $(this)[0].parentNode.children[2].childNodes[0].data,
+//         updatedPrice = Number ($.trim(clickedItems_price));
+//
+//     cart_amount -= updatedPrice;
+//
+//     $('.cart-title .cart-price')[0].innerText = cart_amount;
+//     $('.cartQuantity .price')[0].innerText = cart_amount + ' грн';
+//     counter--;
+//     Number ($('.cart-count')[0].innerText = counter);
+//     for (var z = 0; z < Cart_data[0].row.length; z++){
+//         if(targetID === Cart_data[0].row[z].targetID){
+//             Cart_data[0].row.splice(Cart_data[0].row[z].targetID, 1);
+//         }
+//     }
+//
+//     for (var i = 0; i < $(itemsinCart).length; i++){
+//         $(this)[0].parentNode.remove();
+//     }
+// });
 
 function Cart_template(Cart_data) {
     $.get('cartTmpl/cart.html', {}, function (templateBody) {
         $.tmpl(templateBody, Cart_data).appendTo('#cartTemplate');
     });
 }
+
+$(function () {
+    var $popover = $('.popover-markup>.trigger').popover({
+        html: true,
+        placement: 'bottom',
+        content: function () {
+            return $(this).parent().find('.content').html();
+        }
+    });
+
+    var passengers = [1,0,0];
+    $('.popover-markup>.trigger').click(function (e) {
+        e.stopPropagation();
+        $(".popover-content input").each(function(i) {
+            $(this).val(passengers[i]);
+        });
+    });
+    // close popover
+    $(document).click(function (e) {
+        if ($(e.target).is('.demise')) {
+            $('.popover-markup>.trigger').popover('hide');
+        }
+    });
+
+    $popover.on('hide.bs.popover', function () {
+        $(".popover-content input").each(function(i) {
+            passengers[i] = $(this).val();
+        });
+    });
+
+    $(document).on('click', '.number-spinner .fa', function () {
+        var btn = $(this),
+            input = btn.closest('.number-spinner').find('input'),
+            total = $('#passengers').val(),
+            oldValue = input.val().trim();
+
+        if (btn.attr('data-dir') == 'up') {
+            if(oldValue < input.attr('max')){
+                oldValue++;
+                total++;
+            }
+        } else {
+            if (oldValue > input.attr('min')) {
+                oldValue--;
+                total--;
+            }
+        }
+        $('#passengers').val(total);
+        input.val(oldValue);
+    });
+    $(".popover-markup>.trigger").popover('show');
+});

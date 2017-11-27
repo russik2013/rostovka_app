@@ -2010,6 +2010,7 @@ form label.error {
     float: left;
     text-align: left;
     margin-right: -30px;
+    margin-top: 5px;
 }
 
 .header-main .logo a {
@@ -4395,13 +4396,12 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 
 .product-item .product-item-inner {
     position: relative;
-    margin-bottom: 10px;
     overflow: hidden;
 }
 
 .product-item .product-item-inner img {
     width: 100%;
-    max-height: 390px;
+    max-height: 269px;
 }
 
 .product-item .product-button {
@@ -4560,6 +4560,13 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 
 .product-title a{
     font-size: 18px;
+    border-bottom: 1px solid transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-item:hover .product-title a{
     border-bottom: 1px solid #97bf31;
 }
 
@@ -5050,10 +5057,7 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 }
 
 .product-title {
-    text-transform: none;
-    font-weight: 400;
-    margin-bottom: 5px;
-    margin-top: 5px;
+    margin: 0 auto;
 }
 
 .product-price {
@@ -5957,11 +5961,9 @@ ul#shipping_method {
 }
 
 .checkbox-warning input[type="checkbox"]:checked + label::before {
-    background-color: #2c628f;
-    border-color: #2c628f;
 }
 .checkbox-warning input[type="checkbox"]:checked + label::after {
-    color: #fff;
+    color: #2c628f;
 }
 .checkbox {padding-left: 20px; }
 .checkbox label {
@@ -5988,7 +5990,7 @@ ul#shipping_method {
     width: 15px;
     height: 15px;
     left: 1px;
-    top: 0;
+    top: -1px;
     margin-left: -20px;
     padding-left: 3px;
     padding-top: 1px;
@@ -6125,6 +6127,9 @@ ul#shipping_method {
     max-width: 60px;
     width: 100%;
     margin-left: 20px;
+    max-height: 70px;
+    height: 100%;
+    margin-top: -3px;
 }
 
 .sidebar-icon-nav .dropdownCart .title{
@@ -6144,16 +6149,12 @@ ul#shipping_method {
 
 .sidebar-icon-nav .dropdownCart .price{
     font-size: 14px;
-    margin-left: 15px;
-    max-width: 180px;
-    overflow: hidden;
-    width: 100%;
-    margin-top: -30px;
-    float: right;
-    margin-right: 22px;
-    text-align: left;
+    float: left;
     color: #97bf31;
     font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 60px;
 }
 
 .sidebar-icon-nav .dropdownCart li{
@@ -6222,7 +6223,15 @@ ul#shipping_method {
     color: #0000004d;
     text-transform: uppercase;
     float: right;
-    margin-right: 10px;
+    max-width: 100px;
+    margin-top: -30px;
+    margin-right: 30px;
+}
+
+.dropdownCart .count .form-group{
+    float: left;
+    width: 100%;
+    margin-top: 5px;
 }
 
 .removeItem__cart{
@@ -6247,4 +6256,64 @@ ul#shipping_method {
     padding-bottom: 27px;
     text-transform: uppercase;
     font-size: 17px;
+}
+
+.fixed .cartBl{
+    padding-bottom: 10px !important;
+}
+
+.input-group.number-spinner{
+    float: right;
+    width: auto !important;
+    height: 25px;
+    margin-left: 20px;
+}
+
+.input-group-btn .fa{
+    margin-top: 8px;
+    margin-left: 0px;
+    color: #2c628f;
+    font-size: 10px;
+}
+
+.input-group-btn .fa.fa-plus{
+    margin-left: 0 !important;
+}
+
+.form-control.text-center{
+    background: none;
+    padding-top: 3px;
+}
+
+.input-group-btn .btn.btn-danger, .input-group-btn .btn.btn-info{
+    width: 20px;
+    border-radius: 0;
+    border: 0;
+}
+
+.input-group-btn .btn.btn-info{
+    border-left: 0 !important;
+}
+
+.input-group.number-spinner input{
+    padding: 0;
+    margin-top: 0;
+}
+
+.cartQuantity .price{float: right !important;}
+
+.priceCounte{
+    float: left;
+    max-width: 100px;
+    width: 100%;
+    margin-top: -25px;
+    margin-left: 97px;
+}
+
+.priceCounte .priceCde{
+    color: #97bf31;
+    font-size: 14px;
+    float: left;
+    margin-left: 5px;
+    font-weight: bold;
 }

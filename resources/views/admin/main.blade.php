@@ -20,7 +20,7 @@
     <!--  Paper Dashboard core CSS    -->
     <link href="{{url('css/admin/paper-dashboard.css')}}" rel="stylesheet"/>
 
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <!--  CSS for Demo Purpose, don't include it in your project -->
     <link href="{{url('css/admin/demo.css')}}" rel="stylesheet" />
 
     <!--  Fonts and icons     -->

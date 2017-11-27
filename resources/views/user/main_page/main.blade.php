@@ -64,16 +64,16 @@
                             <div class="product-item-inner">
                                 <div class="product-img-wrap">
                                     <a href="#!">
-                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i2.jpg')}}"
                                              alt="">
                                     </a>
                                 </div>
                             </div>
                             <div class="product-detail">
-                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <p class="product-title"><a href="#!">Сапоги Adrenij AY17</a></p>
                                 <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
                                         </span>
                                 <div class="col-md-12 pull-left goodsCount_price">
                                     <span class="item-price col-md-6 pull-left">25 - 35</span>
@@ -93,16 +93,16 @@
                             <div class="product-item-inner">
                                 <div class="product-img-wrap">
                                     <a href="#!">
-                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i3.jpg')}}"
                                              alt="">
                                     </a>
                                 </div>
                             </div>
                             <div class="product-detail">
-                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <p class="product-title"><a href="#!">Ботинки Zoom AK-35_pink</a></p>
                                 <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
                                         </span>
                                 <div class="col-md-12 pull-left goodsCount_price">
                                     <span class="item-price col-md-6 pull-left">25 - 35</span>
@@ -122,16 +122,16 @@
                             <div class="product-item-inner">
                                 <div class="product-img-wrap">
                                     <a href="#!">
-                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i4.jpg')}}"
                                              alt="">
                                     </a>
                                 </div>
                             </div>
                             <div class="product-detail">
-                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <p class="product-title"><a href="#!">Резинов. сапоги Lenase Fray3 зелено-зелен</a></p>
                                 <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                           <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
                                         </span>
                                 <div class="col-md-12 pull-left goodsCount_price">
                                     <span class="item-price col-md-6 pull-left">25 - 35</span>
@@ -157,10 +157,10 @@
                                 </div>
                             </div>
                             <div class="product-detail">
-                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <p class="product-title"><a href="#!">Дутики Lvovbaza Снежинка черный</a></p>
                                 <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
                                         </span>
                                 <div class="col-md-12 pull-left goodsCount_price">
                                     <span class="item-price col-md-6 pull-left">25 - 35</span>
@@ -180,16 +180,16 @@
                             <div class="product-item-inner">
                                 <div class="product-img-wrap">
                                     <a href="#!">
-                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i2.jpg')}}"
                                              alt="">
                                     </a>
                                 </div>
                             </div>
                             <div class="product-detail">
-                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <p class="product-title"><a href="#!">Дутики Lvovbaza Элит</a></p>
                                 <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
                                         </span>
                                 <div class="col-md-12 pull-left goodsCount_price">
                                     <span class="item-price col-md-6 pull-left">25 - 35</span>
@@ -209,16 +209,45 @@
                             <div class="product-item-inner">
                                 <div class="product-img-wrap">
                                     <a href="#!">
-                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i2.jpg')}}"
                                              alt="">
                                     </a>
                                 </div>
                             </div>
                             <div class="product-detail">
-                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <p class="product-title"><a href="#!">Сапоги Adrenij AY17</a></p>
                                 <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">1139 <span>грн</span></h5>
+                                    <span class="hiddenPrice">201125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i3.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Ботинки Zoom AK-35_pink</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
                                         </span>
                                 <div class="col-md-12 pull-left goodsCount_price">
                                     <span class="item-price col-md-6 pull-left">25 - 35</span>
@@ -238,16 +267,16 @@
                             <div class="product-item-inner">
                                 <div class="product-img-wrap">
                                     <a href="#!">
-                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i4.jpg')}}"
                                              alt="">
                                     </a>
                                 </div>
                             </div>
                             <div class="product-detail">
-                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <p class="product-title"><a href="#!">Резинов. сапоги Lenase Fray3 зелено-зелен</a></p>
                                 <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
                                         </span>
                                 <div class="col-md-12 pull-left goodsCount_price">
                                     <span class="item-price col-md-6 pull-left">25 - 35</span>
@@ -273,10 +302,10 @@
                                 </div>
                             </div>
                             <div class="product-detail">
-                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <p class="product-title"><a href="#!">Дутики Lvovbaza Снежинка черный</a></p>
                                 <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
                                         </span>
                                 <div class="col-md-12 pull-left goodsCount_price">
                                     <span class="item-price col-md-6 pull-left">25 - 35</span>
@@ -296,21 +325,79 @@
                             <div class="product-item-inner">
                                 <div class="product-img-wrap">
                                     <a href="#!">
-                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i2.jpg')}}"
                                              alt="">
                                     </a>
                                 </div>
                             </div>
                             <div class="product-detail">
-                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <p class="product-title"><a href="#!">Дутики Lvovbaza Элит</a></p>
                                 <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
                                         </span>
                                 <div class="col-md-12 pull-left goodsCount_price">
                                     <span class="item-price col-md-6 pull-left">25 - 35</span>
                                     <h5 class="item-price col-md-6 pull-right">1139 <span>грн</span></h5>
                                     <span class="hiddenPrice">201125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i3.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Ботинки Zoom AK-35_pink</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">2339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">11125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i4.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Резинов. сапоги Lenase Fray3 зелено-зелен</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">3339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">21125</span>
                                 </div>
 
                                 <div class="product-button">
@@ -331,10 +418,68 @@
                                 </div>
                             </div>
                             <div class="product-detail">
-                                <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
+                                <p class="product-title"><a href="#!">Дутики Lvovbaza Снежинка черный</a></p>
                                 <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">4339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">31125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i2.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Дутики Lvovbaza Элит</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">1139 <span>грн</span></h5>
+                                    <span class="hiddenPrice">201125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i3.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Ботинки Zoom AK-35_pink</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                           <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
                                         </span>
                                 <div class="col-md-12 pull-left goodsCount_price">
                                     <span class="item-price col-md-6 pull-left">25 - 35</span>
@@ -354,31 +499,440 @@
 
                     <!-- Tab2 - Best Sellar -->
                     <div id="best-sellar" role="tabpanel" class="tab-pane fade">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine">
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
-                                <div class="product-item-inner">
-                                    <div class="product-img-wrap">
-                                        <a href="#!">
-                                            <img class="img-responsive" src="{{asset('img/product-img/prod1.jpg')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-button">
-                                        <a href="#!" class="js_tooltip" data-mode="top" data-tip="Добавить в корзину" onclick="success('Товар добавлен в корзину')">
-                                            <i class="fa fa-shopping-bag"></i>
-                                        </a>
-                                    </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i4.jpg')}}"
+                                             alt="">
+                                    </a>
                                 </div>
-                                <div class="product-detail">
-                                    <p class="product-title"><a href="#!">United Colors of Benetton</a></p>
-                                    <span class="col-md-12 pull-left goods_amount">
-                                            <span class="col-md-6 pull-left">В ростовке - <b>8</b> пар</span>
-                                            <span class="col-md-6 pull-left">В ящике - <b>16</b> пар</span>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Резинов. сапоги Lenase Fray3 зелено-зелен</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
                                         </span>
-                                    <div class="col-md-12 pull-left goodsCount_price">
-                                        <span class="item-price col-md-6 pull-left">25 - 35</span>
-                                        <h5 class="item-price col-md-6 pull-right">39 <span>грн</span></h5>
-                                        <span class="hiddenPrice">121125</span>
-                                    </div>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">3339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">21125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Дутики Lvovbaza Снежинка черный</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">4339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">31125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i2.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Дутики Lvovbaza Элит</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">1139 <span>грн</span></h5>
+                                    <span class="hiddenPrice">201125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i3.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Ботинки Zoom AK-35_pink</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                           <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">2339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">11125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i2.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Сапоги Adrenij AY17</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                           <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">1139 <span>грн</span></h5>
+                                    <span class="hiddenPrice">201125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i3.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Ботинки Zoom AK-35_pink</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                           <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">2339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">11125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i4.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Резинов. сапоги Lenase Fray3 зелено-зелен</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                           <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">3339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">21125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Дутики Lvovbaza Снежинка черный</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                           <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">4339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">31125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i2.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Дутики Lvovbaza Элит</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">1139 <span>грн</span></h5>
+                                    <span class="hiddenPrice">201125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i2.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Сапоги Adrenij AY17</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                           <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">1139 <span>грн</span></h5>
+                                    <span class="hiddenPrice">201125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i3.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Ботинки Zoom AK-35_pink</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">2339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">11125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i2.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Дутики Lvovbaza Элит</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                           <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">1139 <span>грн</span></h5>
+                                    <span class="hiddenPrice">201125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i3.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Ботинки Zoom AK-35_pink</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                           <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">2339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">11125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/prod_i4.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Резинов. сапоги Lenase Fray3 зелено-зелен</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                           <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">3339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">21125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+                            <div class="product-item-inner">
+                                <div class="product-img-wrap">
+                                    <a href="#!">
+                                        <img class="img-responsive" src="{{asset('img/product-img/2img.jpg')}}"
+                                             alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <p class="product-title"><a href="#!">Дутики Lvovbaza Снежинка черный</a></p>
+                                <span class="col-md-12 pull-left goods_amount">
+                                            <span class="col-md-6 pull-left">Минимум - <b>8</b> пар</span>
+                                            <span class="col-md-6 pull-left">Ящик - <b>16</b> пар</span>
+                                        </span>
+                                <div class="col-md-12 pull-left goodsCount_price">
+                                    <span class="item-price col-md-6 pull-left">25 - 35</span>
+                                    <h5 class="item-price col-md-6 pull-right">4339 <span>грн</span></h5>
+                                    <span class="hiddenPrice">31125</span>
+                                </div>
+
+                                <div class="product-button">
+                                    <a href="#!"
+                                       onclick="success('Товар добавлен в корзину')">
+                                        Купить
+                                    </a>
                                 </div>
                             </div>
                         </div>

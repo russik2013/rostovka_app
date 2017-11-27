@@ -2,95 +2,94 @@
 
 var data = [
     {
+        dataID: 0,
         imgUrl: "img/product-img/2imv.jpg",
         name: "YG-109-B Style Baby",
         rostovka: "8",
         box: "16",
         type: "25-30",
-        price: "375",
-        full__price: "1230"
+        price: 375,
+        full__price: 1230
     },
     {
+        dataID: 1,
         imgUrl: "img/product-img/21imv.jpg",
         name: "M-165 Clibee ",
         rostovka: "8",
         box: "16",
         type: "31-36",
-        price: "175",
-        full__price: "1230"
+        price: 175,
+        full__price: 1630
     },
     {
+        dataID: 2,
         imgUrl: "img/product-img/22imv.jpg",
         name: "M-31-1 Clibee",
         rostovka: "16",
         box: "61",
         type: "26-30",
-        price: "230",
-        full__price: "2230"
+        price: 230,
+        full__price: 2230
     },
     {
+        dataID: 3,
         imgUrl: "img/product-img/23imv.jpg",
         name: "M-05 Style Clibee ",
         rostovka: "5",
         box: "5",
         type: "26-30",
-        price: "230",
-        full__price: "3230"
+        price: 230,
+        full__price: 3230
     },
     {
+        dataID: 4,
         imgUrl: "img/product-img/24imv.jpg",
         name: "CQ-23-pink Style Baby ",
         rostovka: "6",
         box: "6",
         type: "25-30",
-        price: "370",
-        full__price: "4230"
+        price: 370,
+        full__price: 7830
     },
     {
+        dataID: 5,
         imgUrl: "img/product-img/25imv.jpg",
         name: "CQ-23-pink Style Baby ",
         rostovka: "6",
         box: "6",
         type: "25-30",
-        price: "370",
-        full__price: "4230"
+        price: 370,
+        full__price: 4230
     },
     {
+        dataID: 6,
         imgUrl: "img/product-img/26imv.jpg",
         name: "CQ-23-pink Style Baby ",
         rostovka: "6",
         box: "6",
         type: "25-30",
-        price: "370",
-        full__price: "4230"
+        price: 370,
+        full__price: 4630
     },
     {
+        dataID: 7,
         imgUrl: "img/product-img/27imv.jpg",
         name: "CQ-23-pink Style Baby ",
         rostovka: "6",
         box: "6",
         type: "25-30",
-        price: "370",
-        full__price: "4230"
+        price: 370,
+        full__price: 5230
     }
 ];
 
 $('#template').tmpl(data).appendTo('#target');
 
-
-$('.product-button a').on('click', function () {
-    var hidden__price = $(this)[0].parentNode.parentNode.children[2].children[2].innerText,
-        cart__summ = $('.cart-price')[0].innerText;
-
-    Number ($('.cart-count')[0].innerText++);
-    $('.cart-price')[0].innerText = Number (cart__summ) + Number (hidden__price);
-});
-
-var values = [];
+var values = [], targetID = 0
 
 $('.sidebar-container input[type=checkbox]').on('change', function(){
-    var target = $(this)[0].parentNode.parentNode.parentNode,
-        targetID = $(this)[0].parentNode.childNodes[1].id;
+    var target = $(this)[0].parentNode.parentNode.parentNode;
+    targetID = $(this)[0].parentNode.childNodes[1].id;
 
     if($(this).is(':checked')) {
         values.push([targetID, $(this)[0].defaultValue, $(target)[0].childNodes[1].dataset.id]);
@@ -146,7 +145,6 @@ function RemoveItem() {
 
         $(this)[0].parentElement.remove();
 
-
         for (var y = 0; y < values.length; y++){
             if(clickedTarget === values[y][1]){
                 console.log('asda' + values.splice(y, 1))
@@ -177,7 +175,9 @@ $('.removeallFilters span').on('click', function () {
     if(values.length === 0){
         $('.CFBlock').css('display', 'none');
     }
+
     $('input[type=checkbox]').prop('checked', false);
+
 });
 
 $('.submit_onChoose button').on('click', function () {
@@ -185,3 +185,141 @@ $('.submit_onChoose button').on('click', function () {
     $('.submit_onChoose').removeClass('showed');
     $('input[type=checkbox]').prop('checked', false)
 });
+
+
+
+var Cart_data = [{
+    row: [], cartCount: 0
+}], hidden__price, targetID, cart__summ = 0;
+
+Cart_template(Cart_data);
+
+$('.product-button a').on('click', function (event) {
+    targetID = $(this)[0].offsetParent.offsetParent.dataset.id;
+    hidden__price = data[targetID].full__price;
+
+    addtoCart(event, targetID);
+    Cart_template(Cart_data);
+    getPrice();
+
+    cart__summ = Cart_data[0].cartCount;
+    cartSumm(cart__summ);
+});
+
+
+var qid = 0, counter = 0;
+function addtoCart(event, targetID) {
+    var imgurl, gTitle, gQuant, gprice, selected_quantity;
+
+    counter++;
+
+    Number ($('.cart-count')[0].innerText = counter);
+
+    if(Cart_data.length > 0){
+        $('.isClear').remove()
+    }
+
+    gTitle = data[targetID].name;
+    selected_quantity = 1;
+    gQuant = 0;
+    gprice = Number (data[targetID].full__price);
+    imgurl = data[targetID].imgUrl;
+
+    Cart_data[0].row.push({
+        targetID: 'added_' + qid,
+        imgUrl: imgurl,
+        name: gTitle,
+        quant: gQuant,
+        price: gprice,
+        quantity: selected_quantity,
+        quantityPrice: gprice
+    });
+
+    qid++;
+
+    $('.dropdownCart ul li').remove();
+}
+
+$(document).on('click', '.removeItem__cart', function () {
+    var clicked_targetID = $(this)[0].parentElement.dataset.id,
+        targetID = $(this)[0].parentElement.dataset.id.replace('added_', '');
+
+    for (var i = 0; i < Cart_data[0].row.length; i++){
+        if(Cart_data[0].row[i].targetID === clicked_targetID){
+            cart__summ = cart__summ - Cart_data[0].row[i].quantityPrice;
+            Cart_data[0].row.splice(i, 1);
+            $(this)[0].parentElement.remove();
+        }
+    }
+
+    if(Cart_data[0].row.length === 0){
+        $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>')
+    }
+
+    counter--;
+    Number ($('.cart-count')[0].innerText = counter);
+
+    cartSumm(cart__summ);
+    console.log(cart__summ);
+});
+
+
+var plused_target = 0, updPrice = 0, mainPrice = 0;
+$(document).on('click', '.Cart_Button_Plus', function (event) {
+    var targetID = $(this)[0].parentNode.parentNode.parentNode.offsetParent.dataset.id;
+    plused_target = data[targetID].full__price;
+
+    for(var i = 0; i < Cart_data[0].row.length; i++){
+        if(targetID === Cart_data[0].row[i].targetID){
+            console.log(Cart_data[0].row[i])
+        }
+    }
+    // mainPrice = Cart_data[0].row[targetID].price;
+    // updPrice = Cart_data[0].row[targetID].quantityPrice + mainPrice;
+    // Cart_data[0].row[targetID].quantity++;
+
+    counterFn(mainPrice, event, targetID, updPrice);
+
+    console.log(targetID)
+});
+
+$(document).on('click', '.Cart_Button_Minus', function (event) {
+    var targetID = $(this)[0].parentNode.parentNode.parentNode.offsetParent.dataset.id.replace('added_', '');
+    plused_target = data[targetID].full__price;
+
+    mainPrice = Cart_data[0].row[targetID].price;
+    updPrice = Cart_data[0].row[targetID].quantityPrice - mainPrice;
+
+    if(Cart_data[0].row[targetID].quantity > 1){
+        Cart_data[0].row[targetID].quantity--;
+    }
+
+    counterFn(mainPrice, event, targetID);
+});
+
+function getPrice() {
+    var allPrice = 0;
+    for (var i = 0; i < Cart_data[0].row.length; i++){
+        allPrice += Cart_data[0].row[i].price * Cart_data[0].row[i].quantity;
+    }
+    Cart_data[0].cartCount = allPrice;
+    return allPrice
+}
+
+function counterFn(mainPrice, event, targetID) {
+    var price = getPrice();
+    if(price >= mainPrice){
+        Cart_data[0].row[targetID].quantityPrice = Cart_data[0].row[targetID].price * Cart_data[0].row[targetID].quantity;
+        event.target.parentElement.parentElement.parentElement.parentElement.offsetParent.children[2].children[0].innerText = Cart_data[0].row[targetID].quantityPrice;
+
+        var cart__summ = price;
+
+        cartSumm(cart__summ);
+        console.log(cart__summ);
+    }
+}
+
+function cartSumm(cart__summ){
+    $.find('[data-set="cart-summ"]')[0].innerText = cart__summ;
+    $.find('[data-set="cart-inner-summ"]')[0].innerText = cart__summ + ' грн';
+}

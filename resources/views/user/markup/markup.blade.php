@@ -144,18 +144,19 @@
                                     <div class="cart-title">
                                         <span class="cart-count"></span>
                                         /
-                                        <span class="cart-price closedSidebar strong"></span><span class="currency-sign">грн</span>
+                                        <span class="cart-price closedSidebar strong" data-set="cart-summ"></span>
+                                        <span class="currency-sign">грн</span>
                                     </div>
                                 </a>
 
                                 <span class="dropdownCart">
                                     <div class="arrow-up"></div>
 
-                                    <ul id="cartTemplate"></ul>
+                                    <ul id="cartTemplate" data-set="cart-items"></ul>
 
                                     <span class="cartQuantity">
                                         <span class="summ">Сумма:</span>
-                                        <span class="price">0 <span class="Total--priceCde">грн</span></span>
+                                        <span class="price" data-set="cart-inner-summ">0 <span class="Total--priceCde">грн</span></span>
                                     </span>
 
                                     <span class="cartButton">

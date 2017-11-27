@@ -298,7 +298,7 @@
 
 
 <script id="template" type="x-jquery-tmpl">
-<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item">
+<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item" data-id=${dataID}>
 <div class="product-item-inner">
 <div class="product-img-wrap">
 <a href="#!">
@@ -309,13 +309,12 @@
 <div class="product-detail">
 <p class="product-title"><a href="#!">${name}</a></p>
 <span class="col-md-12 pull-left goods_amount">
-<span class="col-md-6 pull-left">В ростовке - <b>${rostovka}</b> пар</span>
-<span class="col-md-6 pull-left">В ящике - <b>${box}</b> пар</span>
+<span class="col-md-12 pull-left">Ящик - <b>${box}</b> пар</span>
+<span class="col-md-12 pull-left">Минимум - <b>${rostovka}</b> пар</span>
 </span>
 <div class="col-md-12 pull-left goodsCount_price">
 <span class="item-price col-md-6 pull-left">${type}</span>
 <h5 class="item-price col-md-6 pull-right">${price} <span>грн</span></h5>
-<span class="hiddenPrice">${full__price}</span>
 </div>
 
 <div class="product-button">
