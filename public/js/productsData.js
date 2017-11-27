@@ -263,22 +263,20 @@ $(document).on('click', '.removeItem__cart', function () {
 });
 
 
-var target_id = 0, updPrice = 0, mainPrice = 0;
+var target_price = 0, updPrice = 0, mainPrice = 0, quantity = 0, target;
 $(document).on('click', '.Cart_Button_Plus', function (event) {
     var target_dataset = $(this)[0].parentNode.parentNode.parentNode.offsetParent.dataset.id;
 
     for(var i = 0; i < Cart_data[0].row.length; i++){
         if(target_dataset === Cart_data[0].row[i].targetID){
-            target_id = Cart_data[0].row[i].targetID.replace('added_', '');
-            mainPrice = Cart_data[0].row[i].price;
-            updPrice = Cart_data[0].row[i].quantityPrice + mainPrice;
-            Cart_data[0].row[i].quantity++;
+            target_price = Cart_data[0].row[i].price;
+            target = Cart_data[0].row[i].quantityPrice;
         }
     }
 
-    console.log(target_id);
+    updPrice = target + target_price;
 
-    counterFn(mainPrice, event, target_id, updPrice);
+    counterFn(updPrice);
 });
 
 $(document).on('click', '.Cart_Button_Minus', function (event) {
@@ -304,19 +302,16 @@ function getPrice() {
     return allPrice
 }
 
-function counterFn(mainPrice, event, target_id, updPrice) {
+function counterFn(mainPrice, updPrice) {
     var price = getPrice();
     if(price >= mainPrice){
-        updPrice = mainPrice * Cart_data[0].row[target_id].quantity;
-        event.target.parentElement.parentElement.parentElement.parentElement.offsetParent.children[2].children[0].innerText = Cart_data[0].row[target_id].quantityPrice;
-
-        var cart__summ = price;
-
-        cartSumm(cart__summ);
+        cart__summ = price;
+        cartSumm(cart__summ, updPrice);
     }
 }
 
-function cartSumm(cart__summ){
+function cartSumm(cart__summ, updPrice){
     $.find('[data-set="cart-summ"]')[0].innerText = cart__summ;
     $.find('[data-set="cart-inner-summ"]')[0].innerText = cart__summ + ' грн';
+    $.find('[data-cart-summ="cartCount"]')[0].innerText = updPrice;
 }
