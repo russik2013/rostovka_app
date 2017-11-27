@@ -276,7 +276,7 @@ $(document).on('click', '.Cart_Button_Plus', function (event) {
 
     updPrice = target + target_price;
 
-    counterFn(updPrice);
+    counterFn(updPrice, target_price);
 });
 
 $(document).on('click', '.Cart_Button_Minus', function (event) {
@@ -302,9 +302,9 @@ function getPrice() {
     return allPrice
 }
 
-function counterFn(mainPrice, updPrice) {
+function counterFn(updPrice, target_price) {
     var price = getPrice();
-    if(price >= mainPrice){
+    if(price >= target_price){
         cart__summ = price;
         cartSumm(cart__summ, updPrice);
     }
