@@ -142,7 +142,7 @@
                                     </div>
 
                                     <div class="cart-title">
-                                        <span class="cart-count"></span>
+                                        <span class="cart-count" data-set="cartCount"></span>
                                         /
                                         <span class="cart-price closedSidebar strong" data-set="cart-summ"></span>
                                         <span class="currency-sign">грн</span>
@@ -352,12 +352,12 @@
 @yield('productLib')
 <!-- Plugins All js -->
 <script type="text/javascript" src="{{asset('js/plugins-all.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/sidebar_cart.js')}}"></script>
 <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 @yield('cartLib')
 @yield('auth_reg')
 @yield('category__Lib')
+<script type="text/javascript" src="{{asset('js/cart.js')}}"></script>
 <!-- custom js -->
 <!-- end jquery -->
 

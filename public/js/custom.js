@@ -9,54 +9,54 @@ $(function () {
 });
 
 
-var Cart_data = [
-    {row: []}
-],hidden__price, cart__summ, itemsinCart = $('.dropdownCart ul li');
-
-Cart_template(Cart_data);
-
-$('.product-button a').on('click', function (event) {
-    hidden__price = $(this)[0].parentNode.parentNode.children[2].children[2].innerText;
-    cart__summ = $('.cart-price')[0].innerText;
-
-    $('.cart-price')[0].innerText = Number (cart__summ) + Number (hidden__price);
-
-    addtoCart(event);
-    Cart_template(Cart_data);
-});
-
-
-if(Cart_data[0].row.length === 0){
-    $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>')
-}
-
-var qid = 0, counter = 0, cart_amount = 0;
-function addtoCart(event) {
-    var imgurl, gTitle, gQuant, gprice, cartQuantityPrice = $('.cartQuantity .price');
-    $('.dropdownCart ul li').remove();
-
-    qid++;
-    counter++;
-
-    Number ($('.cart-count')[0].innerText = counter);
-
-
-    if(Cart_data.length > 0){
-        $('.isClear').remove()
-    }
-
-    gTitle = $(event)[0].target.parentNode.parentNode.childNodes[1].innerText;
-    gprice = Number (hidden__price);
-    gQuant = 'Ящик';
-    imgurl = $(event)[0].target.parentNode.offsetParent.children[0].firstElementChild.children[0].children[0].currentSrc;
-
-    Cart_data[0].row.push({targetID: 'added_' + qid, imgUrl: imgurl, name: gTitle, quant: gQuant, price: gprice});
-
-    $(cartQuantityPrice)[0].innerText = Number (cart__summ) + Number (hidden__price);
-
-    cart_amount = $(cartQuantityPrice)[0].innerText;
-    $(cartQuantityPrice)[0].innerText = cart_amount + ' грн';
-}
+// var Cart_data = [
+//     {row: []}
+// ],hidden__price, cart__summ, itemsinCart = $('.dropdownCart ul li');
+//
+// Cart_template(Cart_data);
+//
+// $('.product-button a').on('click', function (event) {
+//     hidden__price = $(this)[0].parentNode.parentNode.children[2].children[2].innerText;
+//     cart__summ = $('.cart-price')[0].innerText;
+//
+//     $('.cart-price')[0].innerText = Number (cart__summ) + Number (hidden__price);
+//
+//     addtoCart(event);
+//     Cart_template(Cart_data);
+// });
+//
+//
+// if(Cart_data[0].row.length === 0){
+//     $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>')
+// }
+//
+// var qid = 0, counter = 0, cart_amount = 0;
+// function addtoCart(event) {
+//     var imgurl, gTitle, gQuant, gprice, cartQuantityPrice = $('.cartQuantity .price');
+//     $('.dropdownCart ul li').remove();
+//
+//     qid++;
+//     counter++;
+//
+//     Number ($('.cart-count')[0].innerText = counter);
+//
+//
+//     if(Cart_data.length > 0){
+//         $('.isClear').remove()
+//     }
+//
+//     gTitle = $(event)[0].target.parentNode.parentNode.childNodes[1].innerText;
+//     gprice = Number (hidden__price);
+//     gQuant = 'Ящик';
+//     imgurl = $(event)[0].target.parentNode.offsetParent.children[0].firstElementChild.children[0].children[0].currentSrc;
+//
+//     Cart_data[0].row.push({targetID: 'added_' + qid, imgUrl: imgurl, name: gTitle, quant: gQuant, price: gprice});
+//
+//     $(cartQuantityPrice)[0].innerText = Number (cart__summ) + Number (hidden__price);
+//
+//     cart_amount = $(cartQuantityPrice)[0].innerText;
+//     $(cartQuantityPrice)[0].innerText = cart_amount + ' грн';
+// }
 
 
 // $(document).on('click', '.removeItem__cart', function () {
@@ -137,3 +137,17 @@ $(function () {
     });
     $(".popover-markup>.trigger").popover('show');
 });
+
+window.success = function(msg) {
+    var dom = '<div class="top-alert"><div class="alert alert-success alert-dismissible fade in " role="alert"><i class="glyphicon glyphicon-ok"></i> ' + msg + '</div></div>';
+    var jdom = $(dom);
+    jdom.hide();
+    $("body").append(jdom);
+    jdom.fadeIn();
+    setTimeout(function() {
+        jdom.fadeOut(function() {
+            jdom.remove();
+        });
+    }, 2000);
+};
+

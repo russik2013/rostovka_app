@@ -316,7 +316,6 @@
 <span class="item-price col-md-6 pull-left">${type}</span>
 <h5 class="item-price col-md-6 pull-right">${price} <span>грн</span></h5>
 </div>
-
 <div class="product-button">
 <a href="#!" onclick="success('Товар добавлен в корзину')">
 Купить
