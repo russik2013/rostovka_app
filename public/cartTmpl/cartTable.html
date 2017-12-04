@@ -1,0 +1,51 @@
+{{each row}}
+<tr data-id="${targetID}" product-id="${productID}">
+    <td class="poduct--info">
+        <img src="${imgUrl}">
+        <span class="first-child">${name}</span>
+        <span>${quantityPrice} грн</span>
+    </td>
+
+    <td>
+        <span class="form-group">
+            <span class="input-group number-spinner" data-set="${targetID}">
+                <span class="input-group-btn">
+                    <a class="btn btn-danger">
+                        <span class="fa fa-minus Cart_Button_Minus" data-dir="dwn"></span>
+                    </a>
+                </span>
+
+                <input type="text" disabled name="adult" id="adult" data-set="quantity_counter" class="form-control text-center" value="${quantity}" max=9999 min=1>
+
+                <span class="input-group-btn">
+                    <a class="btn btn-info">
+                        <span class="fa fa-plus Cart_Button_Plus" data-dir="up"></span>
+                    </a>
+                </span>
+            </span>
+        </span>
+    </td>
+
+    <td class="type">
+        <div class="form-group select-style">
+            <select class="form-control">
+                <option value="Чебурашка">Ящик</option>
+                <option selected value="Крокодил Гена">Растовка</option>
+            </select>
+        </div>
+    </td>
+
+    <td class="price">
+        <span>${price} грн</span>
+    </td>
+
+    <td class="price counting">
+        <span data-set="productSumm">${quantityPrice} <span>грн</span></span>
+    </td>
+    <td class="remove--td">
+        <span class="removeItem">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </span>
+    </td>
+</tr>
+{{/each}}
