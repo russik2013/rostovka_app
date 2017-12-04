@@ -9,7 +9,8 @@ var data = [
         box: "16",
         type: "25-30",
         price: 375,
-        full__price: 1230
+        full__price: 1230,
+        rostovka__price: 600
     },
     {
         dataID: 1,
@@ -19,7 +20,8 @@ var data = [
         box: "16",
         type: "31-36",
         price: 175,
-        full__price: 1630
+        full__price: 1630,
+        rostovka__price: 800
     },
     {
         dataID: 2,
@@ -29,7 +31,8 @@ var data = [
         box: "61",
         type: "26-30",
         price: 230,
-        full__price: 2230
+        full__price: 2230,
+        rostovka__price: 1150
     },
     {
         dataID: 3,
@@ -39,7 +42,8 @@ var data = [
         box: "5",
         type: "26-30",
         price: 210,
-        full__price: 3230
+        full__price: 3230,
+        rostovka__price: 1615
     },
     {
         dataID: 4,
@@ -49,7 +53,8 @@ var data = [
         box: "6",
         type: "25-30",
         price: 370,
-        full__price: 7830
+        full__price: 7830,
+        rostovka__price: 3415
     },
     {
         dataID: 5,
@@ -59,7 +64,8 @@ var data = [
         box: "6",
         type: "25-30",
         price: 380,
-        full__price: 4230
+        full__price: 4230,
+        rostovka__price: 2115
     },
     {
         dataID: 6,
@@ -69,7 +75,8 @@ var data = [
         box: "6",
         type: "25-30",
         price: 390,
-        full__price: 4630
+        full__price: 4630,
+        rostovka__price: 2315
     },
     {
         dataID: 7,
@@ -79,7 +86,8 @@ var data = [
         box: "6",
         type: "25-30",
         price: 400,
-        full__price: 5230
+        full__price: 5230,
+        rostovka__price: 2115
     },
     {
         dataID: 8,
@@ -89,7 +97,8 @@ var data = [
         box: "6",
         type: "25-30",
         price: 410,
-        full__price: 6230
+        full__price: 6230,
+        rostovka__price: 3115
     },
     {
         dataID: 9,
@@ -99,7 +108,8 @@ var data = [
         box: "6",
         type: "25-30",
         price: 420,
-        full__price: 9230
+        full__price: 9230,
+        rostovka__price: 4115
     }
 ], TopSallesData= [
     {
