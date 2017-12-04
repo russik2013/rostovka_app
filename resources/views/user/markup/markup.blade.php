@@ -175,23 +175,7 @@
 
                 <!-- Navigation Menu -->
                 <nav class="navigation-menu">
-                    <ul>
-                        <li>
-                            <a href="category">Детское</a>
-                        </li>
-                        <li>
-                            <a href="category">Мужское</a></li>
-                        <li>
-                            <a href="category">Женское</a>
-                        </li>
-                        <li>
-                            <a href="category">Перчатки</a>
-                        </li>
-
-                        <li>
-                            <a href="category">Акции<span class="nav-label-sale"></span></a>
-                        </li>
-                    </ul>
+                    @include('user.markup.header')
                 </nav>
                 <!-- End Navigation Menu -->
 

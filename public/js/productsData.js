@@ -1,117 +1,10 @@
 'use strict';
 
-var data = [
-    {
-        dataID: 0,
-        imgUrl: "img/product-img/2imv.jpg",
-        name: "YG-109-B Style Baby",
-        rostovka: "8",
-        box: "16",
-        type: "25-30",
-        price: 375,
-        full__price: 1230,
-        rostovka__price: 600
-    },
-    {
-        dataID: 1,
-        imgUrl: "img/product-img/21imv.jpg",
-        name: "M-165 Clibee ",
-        rostovka: "8",
-        box: "16",
-        type: "31-36",
-        price: 175,
-        full__price: 1630,
-        rostovka__price: 800
-    },
-    {
-        dataID: 2,
-        imgUrl: "img/product-img/22imv.jpg",
-        name: "M-31-1 Clibee",
-        rostovka: "16",
-        box: "61",
-        type: "26-30",
-        price: 230,
-        full__price: 2230,
-        rostovka__price: 1150
-    },
-    {
-        dataID: 3,
-        imgUrl: "img/product-img/23imv.jpg",
-        name: "M-05 Style Clibee ",
-        rostovka: "5",
-        box: "5",
-        type: "26-30",
-        price: 210,
-        full__price: 3230,
-        rostovka__price: 1615
-    },
-    {
-        dataID: 4,
-        imgUrl: "img/product-img/24imv.jpg",
-        name: "CQ-23-pink Style Baby ",
-        rostovka: "6",
-        box: "6",
-        type: "25-30",
-        price: 370,
-        full__price: 7830,
-        rostovka__price: 3415
-    },
-    {
-        dataID: 5,
-        imgUrl: "img/product-img/25imv.jpg",
-        name: "CQ-23-pink Style Baby ",
-        rostovka: "6",
-        box: "6",
-        type: "25-30",
-        price: 380,
-        full__price: 4230,
-        rostovka__price: 2115
-    },
-    {
-        dataID: 6,
-        imgUrl: "img/product-img/26imv.jpg",
-        name: "CQ-23-pink Style Baby ",
-        rostovka: "6",
-        box: "6",
-        type: "25-30",
-        price: 390,
-        full__price: 4630,
-        rostovka__price: 2315
-    },
-    {
-        dataID: 7,
-        imgUrl: "img/product-img/27imv.jpg",
-        name: "CQ-23-pink Style Baby ",
-        rostovka: "6",
-        box: "6",
-        type: "25-30",
-        price: 400,
-        full__price: 5230,
-        rostovka__price: 2115
-    },
-    {
-        dataID: 8,
-        imgUrl: "img/product-img/prod1.jpg",
-        name: "CQ-23-pink Style Baby ",
-        rostovka: "6",
-        box: "6",
-        type: "25-30",
-        price: 410,
-        full__price: 6230,
-        rostovka__price: 3115
-    },
-    {
-        dataID: 9,
-        imgUrl: "img/product-img/prod2.jpg",
-        name: "CQ-23-pink Style Baby ",
-        rostovka: "6",
-        box: "6",
-        type: "25-30",
-        price: 420,
-        full__price: 9230,
-        rostovka__price: 4115
-    }
-], TopSallesData= [
+
+
+
+var data = [],
+    TopSallesData= [
     {
         dataID: 0,
         imgUrl: "img/product-img/22imv.jpg",
@@ -214,11 +107,11 @@ var data = [
     }
 ], productTheme = $('#template');
 
-$(productTheme).tmpl(data).appendTo('#target');
-
 $(productTheme).tmpl(TopSallesData).appendTo('#topSalles');
 
 var values = [], targetID = 0;
+
+
 
 $('.sidebar-container input[type=checkbox]').on('change', function(){
     var target = $(this)[0].parentNode.parentNode.parentNode;

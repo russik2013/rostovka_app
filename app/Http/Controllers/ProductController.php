@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\ProductRequest;
 use App\Manufacturer;
+use App\Product;
 use App\Season;
 use App\Size;
 use App\Type;
@@ -22,34 +24,24 @@ class ProductController extends Controller
 
     }
 
-    public function add(Request $request){
-
-        dd($request -> all());
+    public function add(ProductRequest $request){
 
 
-        $rules = [
-            'article' => 'required|string',
-            'name' => 'required|string',
-            'rostovka_count' => 'required|numeric',
-            'box_count' => 'required|numeric',
-            'prise' => 'required|numeric',
-            'manufacturer_id' => 'required|numeric',
-            'category_id' => 'required|numeric',
-            'show_product' => 'required',
-            'currency'  => 'required',
-            'discount' => 'required|string',
-            'accessibility' => 'required',
-            'image_url' => 'required|image',
-            'type_id' => 'required|numeric',
-            'season_id' => 'required|numeric',
-            'size_id' => 'required|numeric',
-        ];
 
-        $validator = Validator::make($request->all(),$rules);
+    }
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+    public function getProductsToCategory(Request $request){
+
+        $products = Product::where('category_id', '=', $request -> category_id) -> get();
+
+        foreach ($products as $product){
+
+            $product -> full__price = $product -> prise * $product -> box_count;
+            $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
+            $product -> types = $product -> type -> name;
         }
+
+        return $products;
 
     }
 }
