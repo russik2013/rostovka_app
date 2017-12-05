@@ -1,7 +1,7 @@
 @extends('user.markup.markup')
 @section('billing')
     <!-- Page Content -->
-<section class="content-page">
+<section class="content-page cart-container">
     <div class="container mb-80">
         <div class="row">
             <div class="col-sm-12">
@@ -11,70 +11,27 @@
                             <table>
                                 <thead>
                                 <tr>
-                                    <th class="product-remove"></th>
-                                    <th class="product-thumbnail"></th>
-                                    <th class="product-name">Продукт</th>
-                                    <th class="product-price">Цена</th>
-                                    <th class="product-quantity">Количество</th>
-                                    <th class="product-subtotal">Всего</th>
+                                    <th>Товар</th>
+                                    <th>Количество</th>
+                                    <th>Тип</th>
+                                    <th>Цена (рост./ящ.)</th>
+                                    <th>Итого</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="product-remove">
-                                        <a href="javascript:void(0)"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
-                                    </td>
-                                    <td class="product-thumbnail">
-                                        <a>
-                                            <img src="{{asset('img/product-img/prod1.jpg')}}" alt="" /></a>
-                                    </td>
-                                    <td class="product-name">
-                                        <a>Alpha Block Black Polo T-Shirt</a>
-                                    </td>
-                                    <td class="product-price">
-                                        <span class="product-price-amount amount">399 <span class="currency-sign">₴</span></span>
-                                    </td>
-                                    <td>
-                                        <div class="product-quantity">
-                                            <span data-value="+" class="quantity-btn quantityPlus"></span>
-                                            <input class="quantity input-lg" step="1" min="1" max="9" name="quantity" value="1" title="Quantity" type="number" />
-                                            <span data-value="-" class="quantity-btn quantityMinus"></span>
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">
-                                        <span class="product-price-sub_totle amount">399 <span class="currency-sign">₴</span></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="product-remove">
-                                        <a href="javascript:void(0)"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
-                                    </td>
-                                    <td class="product-thumbnail">
-                                        <a><img src="{{asset('img/product-img/prod2.jpg')}}" alt="" /></a>
-                                    </td>
-                                    <td class="product-name">
-                                        <a>Red Printed Round Neck T-Shirt</a>
-                                    </td>
-                                    <td class="product-price">
-                                        <span class="product-price-amount amount">299 <span class="currency-sign">₴</span></span>
-                                    </td>
-                                    <td>
-                                        <div class="product-quantity">
-                                            <span data-value="+" class="quantity-btn quantityPlus"></span>
-                                            <input class="quantity input-lg" step="1" min="1" max="9" name="quantity" value="2" title="Quantity" type="number" />
-                                            <span data-value="-" class="quantity-btn quantityMinus"></span>
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">
-                                        <span class="product-price-sub_totle amount">598 <span class="currency-sign">₴</span></span>
-                                    </td>
-                                </tr>
-                                </tbody>
+                                <tbody id="cartTableInner" data-set="tableCart"></tbody>
                             </table>
                         </div>
-                        <div class="row cart-actions pull-right">
-                            <div class="col-md-12">
-                                <a class="btn btn-lg btn-color form-full-width" href="{{url('checkout')}}">Оформить заказ</a>
+
+                        <div class="col-md-7 col-md-push-7 pull-right tableFooter">
+                            <span class="col-md-12 pull-left totalcoseTitle">Итоговая стоимость: </span>
+                            <span class="col-md-12 pull-left" data-set="totalCost"></span>
+
+                            <div class="row cart-actions col-md-12 pull-right">
+                                <div class="col-md-12">
+                                    <a class="col-md-5 pull-right btn btn-lg btn-color" href="{{url('checkout')}}">Оформить заказ</a>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -87,5 +44,5 @@
 @endsection
 
 @section('cartLib')
-    <script type="text/javascript" src="{{asset('js/cart.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/cartpage.js')}}"></script>
 @endsection

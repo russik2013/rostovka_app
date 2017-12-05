@@ -63,7 +63,7 @@
 <!--==========================================-->
 <!-- wrapper -->
 <!--==========================================-->
-<div class="wraper">
+<div class="wraper mainPage--Container">
     <!-- Header -->
     <header class="header">
         <!--Topbar-->
@@ -142,7 +142,7 @@
                                     </div>
 
                                     <div class="cart-title">
-                                        <span class="cart-count"></span>
+                                        <span class="cart-count" data-set="cartCount"></span>
                                         /
                                         <span class="cart-price closedSidebar strong" data-set="cart-summ"></span>
                                         <span class="currency-sign">грн</span>
@@ -175,23 +175,7 @@
 
                 <!-- Navigation Menu -->
                 <nav class="navigation-menu">
-                    <ul>
-                        <li>
-                            <a href="category">Детское</a>
-                        </li>
-                        <li>
-                            <a href="category">Мужское</a></li>
-                        <li>
-                            <a href="category">Женское</a>
-                        </li>
-                        <li>
-                            <a href="category">Перчатки</a>
-                        </li>
-
-                        <li>
-                            <a href="category">Акции<span class="nav-label-sale"></span></a>
-                        </li>
-                    </ul>
+                    @include('user.markup.header')
                 </nav>
                 <!-- End Navigation Menu -->
 
@@ -202,126 +186,125 @@
     <!-- End Header -->
 
     <!-- Page Content Wraper -->
-    <div class="page-content-wraper">
-        <!-- Page Content -->
-        @yield('register')
-        @yield('login')
-        @yield('category')
-        @yield('mainPage')
-        @yield('billing')
-        @yield('product')
-        <!-- End Page Content -->
-
-        <!-- Footer Section -------------->
-        <footer class="footer section-padding">
-            <!-- Footer Info -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-12 col-sm-12 mb-sm-45">
-                        <div class="footer-block about-us-block">
-                            <img src="{{'img/logo_white.png'}}" width="400" alt="">
-                            <p>Gumbo beet greens corn soko endive gum gourd. Parsley allot courgette tatsoi pea sprouts fava
-                                bean soluta nobis est ses eligendi optio.</p>
-                            <ul class="footer-social-icon list-none-ib">
-                                <li>
-                                    <a href="http://facebook.com/" target="_blank">
-                                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://twitter.com/" target="_blank">
-                                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.pinterest.com/" target="_blank">
-                                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://plus.google.com/" target="_blank">
-                                        <i class="fa fa-google-plus" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.instagram.com/" target="_blank">
-                                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 mb-sm-45">
-                        <div class="footer-block information-block">
-                            <h6>Information</h6>
-                            <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Delivery Information</a></li>
-                                <li><a href="#">Discount</a></li>
-                                <li><a href="#">Latest News</a></li>
-                                <li><a href="#">Our Sitemap</a></li>
-                                <li><a href="#">Terms &amp; Condition</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 mb-sm-45">
-                        <div class="footer-block links-block">
-                            <h6>Our Links</h6>
-                            <ul>
-                                <li><a href="#">Brands</a></li>
-                                <li><a href="#">Gift Vouchers</a></li>
-                                <li><a href="#">Affiliates</a></li>
-                                <li><a href="#">Special Event</a></li>
-                                <li><a href="#">Retunrs</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 mb-sm-45">
-                        <div class="footer-block extra-block">
-                            <h6>Extra</h6>
-                            <ul>
-                                <li><a href="#">New Collection</a></li>
-                                <li><a href="#">Women Dresses</a></li>
-                                <li><a href="#">Kids Collection</a></li>
-                                <li><a href="#">Mens Collection</a></li>
-                                <li><a href="#">Custom Service</a></li>
-                                <li><a href="#">Shipping policy</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="footer-block contact-block">
-                            <h6>Contact</h6>
-                            <ul>
-                                <li><i class="fa fa-map-marker" aria-hidden="true"></i>1 Wintergreen Dr. Huntley
-                                    <br>
-                                    IL 60142, Usa
-                                </li>
-                                <li><i class="fa fa-envelope" aria-hidden="true"></i><a
-                                            href="mailto:info@sky.com">info@sky.com</a>
-                                </li>
-                                <li><i class="fa fa-phone" aria-hidden="true"></i>(013) 456789</li>
-                                <li><i class="fa fa-fax" aria-hidden="true"></i>89567989</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Footer Info -->
-
-            <!-- Footer Copyright -->
-            <div class="container">
-                <div class="copyrights">
-                    <p class="copyright">&copy; Developed & Designed by <a href="http://micore-studio.com/" target="_blank">MiCore
-                            Development</a></p>
-                </div>
-            </div>
-            <!-- End Footer Copyright -->
-        </footer>
-        <!-- End Footer Section -------------->
-    </div>
+    <!-- Page Content -->
+    @yield('register')
+    @yield('login')
+    @yield('category')
+    @yield('mainPage')
+    @yield('billing')
+    @yield('product')
+    <!-- End Page Content -->
     <!-- End Page Content Wraper -->
+
+
+    <!-- Footer Section -------------->
+    <footer class="footer section-padding">
+        <!-- Footer Info -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-12 col-sm-12 mb-sm-45">
+                    <div class="footer-block about-us-block">
+                        <img src="{{'img/logo_white.png'}}" width="400" alt="">
+                        <p>Gumbo beet greens corn soko endive gum gourd. Parsley allot courgette tatsoi pea sprouts fava
+                            bean soluta nobis est ses eligendi optio.</p>
+                        <ul class="footer-social-icon list-none-ib">
+                            <li>
+                                <a href="http://facebook.com/" target="_blank">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/" target="_blank">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.pinterest.com/" target="_blank">
+                                    <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://plus.google.com/" target="_blank">
+                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/" target="_blank">
+                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 mb-sm-45">
+                    <div class="footer-block information-block">
+                        <h6>Information</h6>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Delivery Information</a></li>
+                            <li><a href="#">Discount</a></li>
+                            <li><a href="#">Latest News</a></li>
+                            <li><a href="#">Our Sitemap</a></li>
+                            <li><a href="#">Terms &amp; Condition</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 mb-sm-45">
+                    <div class="footer-block links-block">
+                        <h6>Our Links</h6>
+                        <ul>
+                            <li><a href="#">Brands</a></li>
+                            <li><a href="#">Gift Vouchers</a></li>
+                            <li><a href="#">Affiliates</a></li>
+                            <li><a href="#">Special Event</a></li>
+                            <li><a href="#">Retunrs</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 mb-sm-45">
+                    <div class="footer-block extra-block">
+                        <h6>Extra</h6>
+                        <ul>
+                            <li><a href="#">New Collection</a></li>
+                            <li><a href="#">Women Dresses</a></li>
+                            <li><a href="#">Kids Collection</a></li>
+                            <li><a href="#">Mens Collection</a></li>
+                            <li><a href="#">Custom Service</a></li>
+                            <li><a href="#">Shipping policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                    <div class="footer-block contact-block">
+                        <h6>Contact</h6>
+                        <ul>
+                            <li><i class="fa fa-map-marker" aria-hidden="true"></i>1 Wintergreen Dr. Huntley
+                                <br>
+                                IL 60142, Usa
+                            </li>
+                            <li><i class="fa fa-envelope" aria-hidden="true"></i><a
+                                        href="mailto:info@sky.com">info@sky.com</a>
+                            </li>
+                            <li><i class="fa fa-phone" aria-hidden="true"></i>(013) 456789</li>
+                            <li><i class="fa fa-fax" aria-hidden="true"></i>89567989</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Footer Info -->
+
+        <!-- Footer Copyright -->
+        <div class="container">
+            <div class="copyrights">
+                <p class="copyright">&copy; Developed & Designed by <a href="http://micore-studio.com/" target="_blank">MiCore
+                        Development</a></p>
+            </div>
+        </div>
+        <!-- End Footer Copyright -->
+    </footer>
+    <!-- End Footer Section -------------->
 </div>
 
 <script id="Cart_template" src="{{asset('cartTmpl/cart.html')}}" type="text/x-jquery-tmpl"></script>
@@ -352,12 +335,13 @@
 @yield('productLib')
 <!-- Plugins All js -->
 <script type="text/javascript" src="{{asset('js/plugins-all.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/sidebar_cart.js')}}"></script>
 <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
+@yield('mainPage_Lib')
 @yield('cartLib')
 @yield('auth_reg')
 @yield('category__Lib')
+<script type="text/javascript" src="{{asset('js/cart.js')}}"></script>
 <!-- custom js -->
 <!-- end jquery -->
 

@@ -1,5 +1,5 @@
 {{each row}}
-<li data-id="${targetID}">
+<li data-id="${targetID}" product-id="${productID}">
     <img src="${imgUrl}">
     <span class="title">
         ${name}
@@ -21,7 +21,7 @@
                     </a>
                 </span>
 
-                <input type="text" disabled name="adult" id="adult" class="form-control text-center" value="${quantity}" max=9999 min=1>
+                <input type="text" disabled name="adult" id="adult" class="form-control text-center" value="${quantity}" max=9999 min=1 data-set="quantity_counter">
 
                 <span class="input-group-btn">
                     <a class="btn btn-info">

@@ -23,9 +23,11 @@ Route::post('/register', 'HomeController@register');
 
 
 
-Route::get('/category', function () {
-    return view('user.category_page.category');
-});
+//Route::get('{id}/category', function () {
+//    return view('user.category_page.category');
+//});
+
+Route::get('{id}/category','CategoryController@show');
 
 Route::get('/checkout', function () {
     return view('user.billing.checkout');

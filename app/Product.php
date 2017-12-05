@@ -11,4 +11,34 @@ class Product extends Model
         'size_id'];
 
 
+    public function season(){
+
+        return $this -> belongsTo('App\Season','season_id','id');
+
+    }
+
+    public function manufacturer(){
+
+        return $this -> belongsTo('App\Manufacturer','manufacturer_id','id');
+
+    }
+
+    public function category(){
+
+        return $this -> belongsTo('App\Category','category_id','id');
+
+    }
+
+    public function type(){
+
+        return $this -> belongsTo('App\Type','type_id','id');
+
+    }
+
+    public function size(){
+
+        return $this -> belongsTo('App\Size','size_id','id');
+
+    }
+
 }

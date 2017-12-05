@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,6 +21,8 @@ class HomeController extends Controller
         return view('user.login_register.register');
 
     }
+
+
 
     public function auth(Request $request){
 
@@ -59,6 +62,14 @@ class HomeController extends Controller
         $client -> save();
 
         return redirect('login');
+
+    }
+
+    public function categories($view){
+
+        $categories = Category::all();
+
+        $view->with('categories', $categories );
 
     }
 }
