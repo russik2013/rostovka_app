@@ -7,7 +7,7 @@
                     <div class="col-md-10 push-md-2">
                         <!-- Title -->
                         <div class="list-page-title">
-                            <h2 class="">Детское</h2>
+                            <h2 class="">{{$category -> name}}</h2>
                         </div>
                         <!-- End Title -->
 

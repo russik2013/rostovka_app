@@ -72,12 +72,4 @@ class HomeController extends Controller
         $view->with('categories', $categories );
 
     }
-
-    public function categoriesName($view){
-
-        $categories = Category::all();
-
-        $view->with('categories', $categories );
-
-    }
 }
