@@ -1,8 +1,10 @@
 {{each row}}
 <tr data-id="${targetID}" product-id="${productID}">
     <td class="poduct--info">
-        <img src="${imgUrl}">
-        <span class="first-child">${name}</span>
+        <a href="${cart_product_url}">
+            <img src="${imgUrl}">
+            <span class="first-child">${name}</span>
+        </a>
         <span>${quantityPrice} грн</span>
     </td>
 

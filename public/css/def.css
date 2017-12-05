@@ -6088,7 +6088,7 @@ ul#shipping_method {
 }
 
 .sidebar-icon-nav .dropdownCart .title{
-    font-size: 15px;
+    font-size: 14px;
     margin-left: 15px;
     max-width: 160px;
     overflow: hidden;
@@ -6185,7 +6185,8 @@ ul#shipping_method {
 .dropdownCart .count .form-group{
     float: left;
     width: 100%;
-    margin-top: 5px;
+    margin-top: 7px;
+    margin-left: 17px;
 }
 
 .removeItem__cart{
@@ -6197,8 +6198,6 @@ ul#shipping_method {
     top: -6px;
     cursor: pointer;
 }
-
-
 
 .removeItem__cart:hover{
     color: #000;
@@ -6221,19 +6220,32 @@ ul#shipping_method {
 .input-group.number-spinner{
     float: right;
     width: auto !important;
-    height: 25px;
-    margin-left: 20px;
+    height: 20px;
+    margin-left: 30px;
 }
 
 .input-group-btn .fa{
-    margin-top: 8px;
-    margin-left: 0px;
+    margin-top: 6px;
+    margin-left: 0;
     color: #2c628f;
     font-size: 10px;
 }
 
+.dropdownCart #adult{
+    font-size: 12px;
+    padding-top: 2px;
+}
+
 .input-group-btn .fa.fa-plus{
     margin-left: 0 !important;
+}
+
+.form-group .input-group.number-spinner{
+    height: 25px;
+}
+
+.form-group .input-group.number-spinner #adult{
+    padding-top: 2px;
 }
 
 .form-control.text-center{
@@ -6417,3 +6429,8 @@ td.price span span{
 }
 
 .dropdownCart{z-index: 9999;}
+
+.poduct--info a, .dropdownCart a{
+    color: #2c628f;
+    font-weight: 600;
+}
