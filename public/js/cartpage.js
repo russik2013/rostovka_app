@@ -43,7 +43,6 @@ function Cart_template(Cart_data) {
     });
 }
 
-
 if(Cart_data[0].row.length === 0){
     $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>')
 }
@@ -73,4 +72,28 @@ if($.find('#cartTableInner').length !== 0){
             }
         }
     });
+}
+
+var targetID = 0, allProductsPrice = 0;
+function getSelect(event) {
+    allProductsPrice = Cart_data[0].cartProducts_summ;
+
+    targetID = event.target.parentElement.offsetParent.parentElement.attributes[1].nodeValue;
+    for (var i = 0; i < Cart_data[0].row.length; i++){
+        if(Number (Cart_data[0].row[i].productID) === Number (targetID)){
+            var rostovkaPrice = Cart_data[0].row[i].rostovka__price, itemPrice = 0;
+            $.find('[product-id="'+ targetID +'"] .item--price')[0].innerText = rostovkaPrice + ' грн';
+
+            itemPrice = Cart_data[0].row[i].quantity * rostovkaPrice;
+
+            Cart_data[0].row[i].quantityPrice = itemPrice;
+
+            allProductsPrice = Cart_data[0].cartProducts_summ - itemPrice;
+            Cart_data[0].cartProducts_summ = allProductsPrice;
+
+            $.find('[product-id="'+ targetID +'"] [data-set="productSumm"]')[0].innerText = itemPrice + ' грн';
+            $.find('[data-set="totalCost"]')[0].innerText = allProductsPrice + ' грн';
+            // localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+        }
+    }
 }

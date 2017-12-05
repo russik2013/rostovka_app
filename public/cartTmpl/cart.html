@@ -1,9 +1,11 @@
 {{each row}}
 <li data-id="${targetID}" product-id="${productID}">
-    <img src="${imgUrl}">
-    <span class="title">
-        ${name}
-    </span>
+    <a href="${cart_product_url}">
+        <img src="${imgUrl}">
+        <span class="title">
+            ${name}
+        </span>
+    </a>
 
     <div class="priceCounte">
         <span class="price" data-Cart-summ="cartCount">

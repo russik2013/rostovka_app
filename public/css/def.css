@@ -6013,15 +6013,16 @@ ul#shipping_method {
 }
 
 .sidebar-icon-nav .dropdownCart{
-    max-width: 300px;
+    max-width: 315px;
     position: absolute;
     background: #fff;
-    margin-left: -114px;
-    width: 300px;
+    margin-left: 0;
+    width: 315px;
     box-shadow: 0 0 4px rgba(0,0,0,0.19), 0 3px 6px rgba(0,0,0,0.23);
     margin-top: -2px;
     display: none;
     top: 65px;
+    right: 0;
 }
 .cartBl{padding-bottom: 20px}
 .cartBl:hover .dropdownCart{
@@ -6035,8 +6036,10 @@ ul#shipping_method {
     border-right: 10px solid transparent;
     border-bottom: 10px solid #e3e3e3;
     margin: 0 auto;
-    margin-top: 0px;
+    margin-top: 0;
     margin-top: -10px;
+    right: 65px;
+    position: absolute;
 }
 
 .sidebar-icon-nav .dropdownCart .button{
@@ -6085,18 +6088,17 @@ ul#shipping_method {
 }
 
 .sidebar-icon-nav .dropdownCart .title{
-    font-size: 15px;
+    font-size: 14px;
     margin-left: 15px;
     max-width: 160px;
     overflow: hidden;
     width: 100%;
-    margin-top: 7px;
+    margin-top: 3px;
     float: right;
-    margin-right: 12px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    margin-right: 44px;
+    margin-right: 58px;
 }
 
 .sidebar-icon-nav .dropdownCart .price{
@@ -6176,14 +6178,15 @@ ul#shipping_method {
     text-transform: uppercase;
     float: right;
     max-width: 100px;
-    margin-top: -30px;
-    margin-right: 30px;
+    margin-top: -33px;
+    margin-right: 42px;
 }
 
 .dropdownCart .count .form-group{
     float: left;
     width: 100%;
-    margin-top: 5px;
+    margin-top: 7px;
+    margin-left: 17px;
 }
 
 .removeItem__cart{
@@ -6192,7 +6195,7 @@ ul#shipping_method {
     font-weight: 100;
     font-size: 15px;
     color: #5f5f5f;
-    top: -3px;
+    top: -6px;
     cursor: pointer;
 }
 
@@ -6217,19 +6220,32 @@ ul#shipping_method {
 .input-group.number-spinner{
     float: right;
     width: auto !important;
-    height: 25px;
-    margin-left: 20px;
+    height: 20px;
+    margin-left: 30px;
 }
 
 .input-group-btn .fa{
-    margin-top: 8px;
-    margin-left: 0px;
+    margin-top: 6px;
+    margin-left: 0;
     color: #2c628f;
     font-size: 10px;
 }
 
+.dropdownCart #adult{
+    font-size: 12px;
+    padding-top: 2px;
+}
+
 .input-group-btn .fa.fa-plus{
     margin-left: 0 !important;
+}
+
+.form-group .input-group.number-spinner{
+    height: 25px;
+}
+
+.form-group .input-group.number-spinner #adult{
+    padding-top: 2px;
 }
 
 .form-control.text-center{
@@ -6258,7 +6274,7 @@ ul#shipping_method {
     float: left;
     max-width: 100px;
     width: 100%;
-    margin-top: -25px;
+    margin-top: -28px;
     margin-left: 97px;
 }
 
@@ -6410,4 +6426,11 @@ td.price span span{
 .Zero--height{
     min-height: 600px;
     height: 100%;
+}
+
+.dropdownCart{z-index: 9999;}
+
+.poduct--info a, .dropdownCart a{
+    color: #2c628f;
+    font-weight: 600;
 }
