@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="193d3dbc-6990-4cb2-bda5-0007cf53db7e" name="Default" comment="">
+    <list default="true" id="193d3dbc-6990-4cb2-bda5-0007cf53db7e" name="Default" comment="Cart update">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/cartTmpl/cart.html" afterPath="$PROJECT_DIR$/public/cartTmpl/cart.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/cartTmpl/cartTable.html" afterPath="$PROJECT_DIR$/public/cartTmpl/cartTable.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/def.css" afterPath="$PROJECT_DIR$/public/css/def.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/cart.js" afterPath="$PROJECT_DIR$/public/js/cart.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/cartpage.js" afterPath="$PROJECT_DIR$/public/js/cartpage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/productsData.js" afterPath="$PROJECT_DIR$/public/js/productsData.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/category_page/category.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/category_page/category.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -94,16 +89,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cart.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/cart/cart.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="27" column="75" lean-forward="false" selection-start-line="27" selection-start-column="61" selection-end-line="27" selection-end-column="75" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="cart.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/cart.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -146,14 +131,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="def.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="def.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/def.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="6197" column="20" lean-forward="false" selection-start-line="6197" selection-start-column="20" selection-end-line="6197" selection-end-column="20" />
+            <state relative-caret-position="608">
+              <caret line="6200" column="0" lean-forward="true" selection-start-line="6200" selection-start-column="0" selection-end-line="6200" selection-end-column="0" />
               <folding>
-                <marker date="1512465968000" expanded="true" signature="662:726" ph="{...}" />
+                <marker date="1512466124000" expanded="true" signature="662:726" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="84">
+              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -198,7 +193,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="FrontEnd" />
       </map>
     </option>
   </component>
@@ -248,7 +243,6 @@
         <option value="$PROJECT_DIR$/public/js/custom.js" />
         <option value="$PROJECT_DIR$/resources/views/user/markup/markup.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/cart/cart.blade.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/public/cartTmpl/cartTable.html" />
         <option value="$PROJECT_DIR$/public/js/cartpage.js" />
         <option value="$PROJECT_DIR$/public/js/productsData.js" />
@@ -256,6 +250,7 @@
         <option value="$PROJECT_DIR$/public/js/cart.js" />
         <option value="$PROJECT_DIR$/public/cartTmpl/cart.html" />
         <option value="$PROJECT_DIR$/public/css/def.css" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -591,7 +586,7 @@
       <workItem from="1512030075495" duration="11064000" />
       <workItem from="1512115989020" duration="17049000" />
       <workItem from="1512375664125" duration="17123000" />
-      <workItem from="1512461672690" duration="2956000" />
+      <workItem from="1512461672690" duration="3107000" />
     </task>
     <task id="LOCAL-00001" summary="markup">
       <created>1506337484664</created>
@@ -705,11 +700,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512385068146</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Cart update">
+      <created>1512466014238</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1512466014238</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="489007000" />
+    <option name="totallyTimeSpent" value="489158000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="23" width="2560" height="1417" extended-state="6" />
@@ -1061,13 +1063,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/cart/cart.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
@@ -1160,11 +1155,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/def.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="6197" column="20" lean-forward="false" selection-start-line="6197" selection-start-column="20" selection-end-line="6197" selection-end-column="20" />
+        <state relative-caret-position="608">
+          <caret line="6200" column="0" lean-forward="true" selection-start-line="6200" selection-start-column="0" selection-end-line="6200" selection-end-column="0" />
           <folding>
-            <marker date="1512465968000" expanded="true" signature="662:726" ph="{...}" />
+            <marker date="1512466124000" expanded="true" signature="662:726" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
