@@ -1,8 +1,6 @@
 'use strict';
 
 
-
-
 var data = [],
     TopSallesData= [
     {
@@ -106,6 +104,35 @@ var data = [],
         full__price: 1230
     }
 ], productTheme = $('#template');
+
+
+$.ajax({
+    method: "POST",
+    url: "../api/products",
+    data: {category_id : 1}
+}).done(function( msg ) {
+    for(var i= 0; i < msg.length; i++ ){
+        data[i] =  {
+            dataID: i,
+            imgUrl: "img/product-img/2imv.jpg",
+            name: msg[i].name,
+            rostovka: msg[i].rostovka_count,
+            box: msg[i].box_count,
+            type: msg[i].types,
+            price: msg[i].prise,
+            full__price: msg[i].full__price,
+            rostovka__price: msg[i].rostovka__price,
+            real_id: msg[i].id
+        };
+
+    }
+
+    getData(data);
+
+}) .fail(function( msg ) {
+
+});
+
 
 $(productTheme).tmpl(TopSallesData).appendTo('#topSalles');
 

@@ -1,29 +1,4 @@
-$.ajax({
-    method: "POST",
-    url: "../api/products",
-    data: {category_id : 1}
-}).done(function( msg ) {
-    for(var i= 0; i < msg.length; i++ ){
-        data[i] =  {
-            dataID: msg[i].id,
-            imgUrl: "img/product-img/2imv.jpg",
-            name: msg[i].name,
-            rostovka: msg[i].rostovka_count,
-            box: msg[i].box_count,
-            type: msg[i].types,
-            price: msg[i].prise,
-            full__price: msg[i].full__price,
-            rostovka__price: msg[i].rostovka__price
-        };
-
-    }
-
-    getData(data);
-
-}) .fail(function( msg ) {
-
-});
-
+'use strict'
 localStorage.clear();
 
 function getData(data) {
@@ -43,7 +18,8 @@ function getData(data) {
     $(buyButton).on('click', function (event) {
         var checkif_true = false;
         targetID = Number ($(this)[0].offsetParent.offsetParent.dataset.id);
-        var russik_test_index = 0;
+
+        console.log(targetID)
         for (var i = 0; i < data.length; i++){
             if(targetID == data[i].dataID){
                 hidden__price = data[i].full__price;

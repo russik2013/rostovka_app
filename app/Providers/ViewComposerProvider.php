@@ -14,6 +14,8 @@ class ViewComposerProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('user.markup.header', 'App\Http\Controllers\HomeController@categories');
+
+        view()->composer('user.markup.categoriesName', 'App\Http\Controllers\HomeController@categoriesName');
     }
 
     /**

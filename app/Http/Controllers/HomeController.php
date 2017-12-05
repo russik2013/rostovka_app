@@ -22,6 +22,8 @@ class HomeController extends Controller
 
     }
 
+
+
     public function auth(Request $request){
 
         if (Auth::attempt(['email' => $request->author, 'password' => $request->{'author-pass'}]))
@@ -64,6 +66,14 @@ class HomeController extends Controller
     }
 
     public function categories($view){
+
+        $categories = Category::all();
+
+        $view->with('categories', $categories );
+
+    }
+
+    public function categoriesName($view){
 
         $categories = Category::all();
 
