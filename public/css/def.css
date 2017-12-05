@@ -6013,15 +6013,16 @@ ul#shipping_method {
 }
 
 .sidebar-icon-nav .dropdownCart{
-    max-width: 300px;
+    max-width: 315px;
     position: absolute;
     background: #fff;
-    margin-left: -114px;
-    width: 300px;
+    margin-left: 0;
+    width: 315px;
     box-shadow: 0 0 4px rgba(0,0,0,0.19), 0 3px 6px rgba(0,0,0,0.23);
     margin-top: -2px;
     display: none;
     top: 65px;
+    right: 0;
 }
 .cartBl{padding-bottom: 20px}
 .cartBl:hover .dropdownCart{
@@ -6035,8 +6036,10 @@ ul#shipping_method {
     border-right: 10px solid transparent;
     border-bottom: 10px solid #e3e3e3;
     margin: 0 auto;
-    margin-top: 0px;
+    margin-top: 0;
     margin-top: -10px;
+    right: 65px;
+    position: absolute;
 }
 
 .sidebar-icon-nav .dropdownCart .button{
@@ -6090,13 +6093,12 @@ ul#shipping_method {
     max-width: 160px;
     overflow: hidden;
     width: 100%;
-    margin-top: 7px;
+    margin-top: 3px;
     float: right;
-    margin-right: 12px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    margin-right: 44px;
+    margin-right: 58px;
 }
 
 .sidebar-icon-nav .dropdownCart .price{
@@ -6176,8 +6178,8 @@ ul#shipping_method {
     text-transform: uppercase;
     float: right;
     max-width: 100px;
-    margin-top: -30px;
-    margin-right: 30px;
+    margin-top: -33px;
+    margin-right: 42px;
 }
 
 .dropdownCart .count .form-group{
@@ -6192,7 +6194,7 @@ ul#shipping_method {
     font-weight: 100;
     font-size: 15px;
     color: #5f5f5f;
-    top: -3px;
+    top: -6px;
     cursor: pointer;
 }
 
@@ -6258,7 +6260,7 @@ ul#shipping_method {
     float: left;
     max-width: 100px;
     width: 100%;
-    margin-top: -25px;
+    margin-top: -28px;
     margin-left: 97px;
 }
 
@@ -6411,3 +6413,5 @@ td.price span span{
     min-height: 600px;
     height: 100%;
 }
+
+.dropdownCart{z-index: 9999;}

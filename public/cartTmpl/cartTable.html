@@ -28,15 +28,15 @@
 
     <td class="type">
         <div class="form-group select-style">
-            <select class="form-control" onselect="getValue()">
-                <option selected value="Чебурашка">Ящик</option>
-                <option value="Крокодил Гена">Растовка</option>
+            <select class="form-control" onChange="getSelect(event)">
+                <option selected value="full__price">Ящик</option>
+                <option value="rostovka__price">Ростовка</option>
             </select>
         </div>
     </td>
 
     <td class="price">
-        <span>${price} грн</span>
+        <span class="item--price">${price} грн</span>
     </td>
 
     <td class="price counting">

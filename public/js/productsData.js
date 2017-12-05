@@ -10,7 +10,9 @@ var data = [
         type: "25-30",
         price: 375,
         full__price: 1230,
-        rostovka__price: 600
+        rostovka__price: 600,
+        real_id: 0,
+        product_url: 'product_inner'
     },
     {
         dataID: 1,
@@ -21,7 +23,9 @@ var data = [
         type: "31-36",
         price: 175,
         full__price: 1630,
-        rostovka__price: 800
+        rostovka__price: 800,
+        real_id: 1,
+        product_url: 'product_inner'
     },
     {
         dataID: 2,
@@ -32,7 +36,9 @@ var data = [
         type: "26-30",
         price: 230,
         full__price: 2230,
-        rostovka__price: 1150
+        rostovka__price: 1150,
+        real_id: 2,
+        product_url: 'product_inner'
     },
     {
         dataID: 3,
@@ -43,7 +49,9 @@ var data = [
         type: "26-30",
         price: 210,
         full__price: 3230,
-        rostovka__price: 1615
+        rostovka__price: 1615,
+        real_id: 3,
+        product_url: 'product_inner'
     },
     {
         dataID: 4,
@@ -54,7 +62,9 @@ var data = [
         type: "25-30",
         price: 370,
         full__price: 7830,
-        rostovka__price: 3415
+        rostovka__price: 3415,
+        real_id: 4,
+        product_url: 'product_inner'
     },
     {
         dataID: 5,
@@ -65,7 +75,9 @@ var data = [
         type: "25-30",
         price: 380,
         full__price: 4230,
-        rostovka__price: 2115
+        rostovka__price: 2115,
+        real_id: 5,
+        product_url: 'product_inner'
     },
     {
         dataID: 6,
@@ -76,7 +88,9 @@ var data = [
         type: "25-30",
         price: 390,
         full__price: 4630,
-        rostovka__price: 2315
+        rostovka__price: 2315,
+        real_id: 6,
+        product_url: 'product_inner'
     },
     {
         dataID: 7,
@@ -87,7 +101,9 @@ var data = [
         type: "25-30",
         price: 400,
         full__price: 5230,
-        rostovka__price: 2115
+        rostovka__price: 2115,
+        real_id: 7,
+        product_url: 'product_inner'
     },
     {
         dataID: 8,
@@ -98,7 +114,9 @@ var data = [
         type: "25-30",
         price: 410,
         full__price: 6230,
-        rostovka__price: 3115
+        rostovka__price: 3115,
+        real_id: 8,
+        product_url: 'product_inner'
     },
     {
         dataID: 9,
@@ -109,7 +127,9 @@ var data = [
         type: "25-30",
         price: 420,
         full__price: 9230,
-        rostovka__price: 4115
+        rostovka__price: 4115,
+        real_id: 9,
+        product_url: 'product_inner'
     }
 ], TopSallesData= [
     {

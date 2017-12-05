@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="193d3dbc-6990-4cb2-bda5-0007cf53db7e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/cartTmpl/cart.html" afterPath="$PROJECT_DIR$/public/cartTmpl/cart.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/cartTmpl/cartTable.html" afterPath="$PROJECT_DIR$/public/cartTmpl/cartTable.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/def.css" afterPath="$PROJECT_DIR$/public/css/def.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/cart.js" afterPath="$PROJECT_DIR$/public/js/cart.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/cartpage.js" afterPath="$PROJECT_DIR$/public/js/cartpage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/productsData.js" afterPath="$PROJECT_DIR$/public/js/productsData.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/category_page/category.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/category_page/category.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,8 +41,8 @@
       <file leaf-file-name="category.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/category_page/category.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="3" column="36" lean-forward="false" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="36" />
+            <state relative-caret-position="63">
+              <caret line="300" column="100" lean-forward="false" selection-start-line="300" selection-start-column="100" selection-end-line="300" selection-end-column="100" />
               <folding />
             </state>
           </provider>
@@ -46,7 +51,7 @@
       <file leaf-file-name="main.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/main_page/main.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
+            <state relative-caret-position="28">
               <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
               <folding />
             </state>
@@ -56,24 +61,24 @@
       <file leaf-file-name="productsData.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/productsData.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="763">
-              <caret line="319" column="3" lean-forward="false" selection-start-line="319" selection-start-column="3" selection-end-line="319" selection-end-column="3" />
+            <state relative-caret-position="538">
+              <caret line="131" column="36" lean-forward="false" selection-start-line="131" selection-start-column="36" selection-end-line="131" selection-end-column="36" />
               <folding>
-                <element signature="e#2601#4851#0" expanded="false" />
-                <element signature="e#2607#2821#0" expanded="false" />
-                <element signature="e#2827#3048#0" expanded="false" />
-                <element signature="e#3054#3267#0" expanded="false" />
-                <element signature="e#3273#3490#0" expanded="false" />
-                <element signature="e#3496#3717#0" expanded="false" />
-                <element signature="e#3723#3944#0" expanded="false" />
-                <element signature="e#3950#4171#0" expanded="false" />
-                <element signature="e#4177#4398#0" expanded="false" />
-                <element signature="e#4404#4625#0" expanded="false" />
-                <element signature="e#4631#4849#0" expanded="false" />
-                <element signature="e#5095#6751#0" expanded="false" />
+                <element signature="e#3181#5431#0" expanded="false" />
+                <element signature="e#3187#3401#0" expanded="false" />
+                <element signature="e#3407#3628#0" expanded="false" />
+                <element signature="e#3634#3847#0" expanded="false" />
+                <element signature="e#3853#4070#0" expanded="false" />
+                <element signature="e#4076#4297#0" expanded="false" />
+                <element signature="e#4303#4524#0" expanded="false" />
+                <element signature="e#4530#4751#0" expanded="false" />
+                <element signature="e#4757#4978#0" expanded="false" />
+                <element signature="e#4984#5205#0" expanded="false" />
+                <element signature="e#5211#5429#0" expanded="false" />
+                <element signature="e#5675#7331#0" expanded="false" />
                 <element signature="n#!!block;n#RemoveItem#0" expanded="false" />
-                <element signature="e#7529#7829#0" expanded="false" />
-                <element signature="e#7886#8008#0" expanded="false" />
+                <element signature="e#8109#8409#0" expanded="false" />
+                <element signature="e#8466#8588#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -82,7 +87,7 @@
       <file leaf-file-name="markup.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/markup/markup.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10052">
+            <state relative-caret-position="623">
               <caret line="359" column="70" lean-forward="false" selection-start-line="359" selection-start-column="70" selection-end-line="359" selection-end-column="70" />
               <folding />
             </state>
@@ -92,18 +97,8 @@
       <file leaf-file-name="cart.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/cart/cart.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
+            <state relative-caret-position="203">
               <caret line="27" column="75" lean-forward="false" selection-start-line="27" selection-start-column="61" selection-end-line="27" selection-end-column="75" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cartpage.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/cartpage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="539">
-              <caret line="67" column="76" lean-forward="false" selection-start-line="67" selection-start-column="76" selection-end-line="67" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -112,30 +107,52 @@
       <file leaf-file-name="cart.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/cart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7296">
-              <caret line="263" column="21" lean-forward="false" selection-start-line="263" selection-start-column="17" selection-end-line="263" selection-end-column="21" />
+            <state relative-caret-position="623">
+              <caret line="121" column="24" lean-forward="false" selection-start-line="121" selection-start-column="8" selection-end-line="121" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cartTable.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cart.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/cartTmpl/cart.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="361">
+              <caret line="13" column="41" lean-forward="true" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cartTable.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/cartTmpl/cartTable.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+            <state relative-caret-position="483">
+              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="def.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="cartpage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/cartpage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="7" column="40" lean-forward="false" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+              <folding>
+                <element signature="e#1336#2432#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="def.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/css/def.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="847">
-              <caret line="6410" column="7" lean-forward="false" selection-start-line="6410" selection-start-column="7" selection-end-line="6410" selection-end-column="7" />
+            <state relative-caret-position="524">
+              <caret line="6197" column="20" lean-forward="false" selection-start-line="6197" selection-start-column="20" selection-end-line="6197" selection-end-column="20" />
               <folding>
-                <marker date="1512382666000" expanded="true" signature="662:726" ph="{...}" />
+                <marker date="1512465968000" expanded="true" signature="662:726" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -145,18 +162,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>td.product--image</find>
-      <find>poduct--info</find>
-      <find>removeItem__cart</find>
-      <find>quantity</find>
-      <find>full__price</find>
-      <find>price</find>
-      <find>.footer</find>
-      <find>content-page cart-container</find>
-      <find>(&quot; &quot;</find>
-      <find>updPrice</find>
-      <find>console.log(</find>
-      <find>td.poduct--info</find>
       <find>td.poduct--info span</find>
       <find>data-id</find>
       <find>data-set</find>
@@ -165,7 +170,6 @@
       <find>remoive</find>
       <find>replace</find>
       <find>('_add</find>
-      <find>remove</find>
       <find>remove--td</find>
       <find>removeItem</find>
       <find>find</find>
@@ -175,6 +179,19 @@
       <find>Cart</find>
       <find>Cart_data</find>
       <find>Data</find>
+      <find>push</find>
+      <find>price</find>
+      <find>item--price</find>
+      <find>remove</find>
+      <find>plus</find>
+      <find>conversion</find>
+      <find>buybu</find>
+      <find>.arrow-up</find>
+      <find>.sidebar-icon-nav .dropdownCart</find>
+      <find>.priceCounte</find>
+      <find>.dropdownCart .count</find>
+      <find>.sidebar-icon-nav .dropdownCart .title</find>
+      <find>.removeItem__cart</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -227,18 +244,18 @@
         <option value="$PROJECT_DIR$/resources/views/admin/main.blade.php" />
         <option value="$PROJECT_DIR$/public/css/main.css" />
         <option value="$PROJECT_DIR$/public/js/sidebar_cart.js" />
-        <option value="$PROJECT_DIR$/resources/views/user/category_page/category.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/main_page/main.blade.php" />
         <option value="$PROJECT_DIR$/public/js/custom.js" />
         <option value="$PROJECT_DIR$/resources/views/user/markup/markup.blade.php" />
-        <option value="$PROJECT_DIR$/public/cartTmpl/cart.html" />
         <option value="$PROJECT_DIR$/resources/views/user/cart/cart.blade.php" />
-        <option value="$PROJECT_DIR$/public/js/cart.js" />
-        <option value="$PROJECT_DIR$/public/css/def.css" />
-        <option value="$PROJECT_DIR$/public/js/productsData.js" />
-        <option value="$PROJECT_DIR$/public/js/cartpage.js" />
-        <option value="$PROJECT_DIR$/public/cartTmpl/cartTable.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/public/cartTmpl/cartTable.html" />
+        <option value="$PROJECT_DIR$/public/js/cartpage.js" />
+        <option value="$PROJECT_DIR$/public/js/productsData.js" />
+        <option value="$PROJECT_DIR$/resources/views/user/category_page/category.blade.php" />
+        <option value="$PROJECT_DIR$/public/js/cart.js" />
+        <option value="$PROJECT_DIR$/public/cartTmpl/cart.html" />
+        <option value="$PROJECT_DIR$/public/css/def.css" />
       </list>
     </option>
   </component>
@@ -252,7 +269,7 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="1" />
     <option name="y" value="23" />
     <option name="width" value="2560" />
@@ -397,8 +414,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -573,7 +590,8 @@
       <workItem from="1511943708777" duration="18169000" />
       <workItem from="1512030075495" duration="11064000" />
       <workItem from="1512115989020" duration="17049000" />
-      <workItem from="1512375664125" duration="7778000" />
+      <workItem from="1512375664125" duration="17123000" />
+      <workItem from="1512461672690" duration="2956000" />
     </task>
     <task id="LOCAL-00001" summary="markup">
       <created>1506337484664</created>
@@ -680,17 +698,24 @@
       <option name="project" value="LOCAL" />
       <updated>1512384892481</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Cart ended">
+      <created>1512385068146</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1512385068146</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="476706000" />
+    <option name="totallyTimeSpent" value="489007000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="23" width="2560" height="1417" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2859412" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28832406" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="ReactNative" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25448614" sideWeight="0.5015886" order="7" side_tool="true" content_ui="tabs" />
@@ -750,11 +775,12 @@
     <MESSAGE value="Update FrontAnd Branch" />
     <MESSAGE value="Update Local Storage" />
     <MESSAGE value="Cart ended" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cart ended" />
+    <MESSAGE value="Cart update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cart update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="17" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1028,14 +1054,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/category_page/category.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="3" column="36" lean-forward="false" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/custom.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="761">
@@ -1043,100 +1061,110 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/main_page/main.blade.php">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/cartTmpl/cart.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="710">
-          <caret line="36" column="11" lean-forward="true" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/markup/markup.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10052">
-          <caret line="359" column="70" lean-forward="false" selection-start-line="359" selection-start-column="70" selection-end-line="359" selection-end-column="70" />
-          <folding />
+        <state relative-caret-position="84">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/cart/cart.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
+        <state relative-caret-position="203">
           <caret line="27" column="75" lean-forward="false" selection-start-line="27" selection-start-column="61" selection-end-line="27" selection-end-column="75" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/def.css">
+    <entry file="file://$PROJECT_DIR$/resources/views/user/main_page/main.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="847">
-          <caret line="6410" column="7" lean-forward="false" selection-start-line="6410" selection-start-column="7" selection-end-line="6410" selection-end-column="7" />
-          <folding>
-            <marker date="1512382666000" expanded="true" signature="662:726" ph="{...}" />
-          </folding>
+        <state relative-caret-position="28">
+          <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/cart.js">
+    <entry file="file://$PROJECT_DIR$/resources/views/user/category_page/category.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7296">
-          <caret line="263" column="21" lean-forward="false" selection-start-line="263" selection-start-column="17" selection-end-line="263" selection-end-column="21" />
+        <state relative-caret-position="63">
+          <caret line="300" column="100" lean-forward="false" selection-start-line="300" selection-start-column="100" selection-end-line="300" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/markup/markup.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="359" column="70" lean-forward="false" selection-start-line="359" selection-start-column="70" selection-end-line="359" selection-end-column="70" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/productsData.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="763">
-          <caret line="319" column="3" lean-forward="false" selection-start-line="319" selection-start-column="3" selection-end-line="319" selection-end-column="3" />
+        <state relative-caret-position="538">
+          <caret line="131" column="36" lean-forward="false" selection-start-line="131" selection-start-column="36" selection-end-line="131" selection-end-column="36" />
           <folding>
-            <element signature="e#2601#4851#0" expanded="false" />
-            <element signature="e#2607#2821#0" expanded="false" />
-            <element signature="e#2827#3048#0" expanded="false" />
-            <element signature="e#3054#3267#0" expanded="false" />
-            <element signature="e#3273#3490#0" expanded="false" />
-            <element signature="e#3496#3717#0" expanded="false" />
-            <element signature="e#3723#3944#0" expanded="false" />
-            <element signature="e#3950#4171#0" expanded="false" />
-            <element signature="e#4177#4398#0" expanded="false" />
-            <element signature="e#4404#4625#0" expanded="false" />
-            <element signature="e#4631#4849#0" expanded="false" />
-            <element signature="e#5095#6751#0" expanded="false" />
+            <element signature="e#3181#5431#0" expanded="false" />
+            <element signature="e#3187#3401#0" expanded="false" />
+            <element signature="e#3407#3628#0" expanded="false" />
+            <element signature="e#3634#3847#0" expanded="false" />
+            <element signature="e#3853#4070#0" expanded="false" />
+            <element signature="e#4076#4297#0" expanded="false" />
+            <element signature="e#4303#4524#0" expanded="false" />
+            <element signature="e#4530#4751#0" expanded="false" />
+            <element signature="e#4757#4978#0" expanded="false" />
+            <element signature="e#4984#5205#0" expanded="false" />
+            <element signature="e#5211#5429#0" expanded="false" />
+            <element signature="e#5675#7331#0" expanded="false" />
             <element signature="n#!!block;n#RemoveItem#0" expanded="false" />
-            <element signature="e#7529#7829#0" expanded="false" />
-            <element signature="e#7886#8008#0" expanded="false" />
+            <element signature="e#8109#8409#0" expanded="false" />
+            <element signature="e#8466#8588#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/cartpage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="67" column="76" lean-forward="false" selection-start-line="67" selection-start-column="76" selection-end-line="67" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/cartTmpl/cartTable.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+        <state relative-caret-position="483">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/cart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="121" column="24" lean-forward="false" selection-start-line="121" selection-start-column="8" selection-end-line="121" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/cartTmpl/cart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="13" column="41" lean-forward="true" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/cartpage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="7" column="40" lean-forward="false" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+          <folding>
+            <element signature="e#1336#2432#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/def.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="6197" column="20" lean-forward="false" selection-start-line="6197" selection-start-column="20" selection-end-line="6197" selection-end-column="20" />
+          <folding>
+            <marker date="1512465968000" expanded="true" signature="662:726" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -32,7 +32,10 @@ $(buyButton).on('click', function (event) {
     else{
         checkDublicate(event, targetID, checkif_true);
     }
+
+    console.log(Cart_data)
 });
+
 
 function checkDublicate(event, targetID, checkif_true) {
     for (var i = 0; i < Cart_data[0].row.length; i++){
@@ -87,7 +90,7 @@ function dublicate(targetID) {
 
 var qid = 0, counter = 0;
 function addtoCart(event, targetID) {
-    var imgurl, gTitle, gQuant, gprice, productIndex, selected_quantity;
+    var imgurl, gTitle, gQuant, gprice, productIndex, selected_quantity, rostovkaPrice;
 
     counter++;
 
@@ -103,6 +106,7 @@ function addtoCart(event, targetID) {
     gQuant = 0;
     gprice = Number (data[targetID].full__price);
     imgurl = data[targetID].imgUrl;
+    rostovkaPrice = data[targetID].rostovka__price;
 
     Cart_data[0].row.push({
         productID: productIndex,
@@ -112,7 +116,10 @@ function addtoCart(event, targetID) {
         quant: gQuant,
         price: gprice,
         quantity: selected_quantity,
-        quantityPrice: gprice
+        quantityPrice: gprice,
+        rostovka__price: rostovkaPrice,
+        buy_real_id: data[targetID].real_id,
+        cart_product_url: data[targetID].product_url
     });
 
     qid++;
