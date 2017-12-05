@@ -13,5 +13,6 @@ class CategoryController extends Controller
 
         return view('user.category_page.category', compact('category'));
 
+
     }
 }
