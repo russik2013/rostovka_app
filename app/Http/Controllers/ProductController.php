@@ -30,6 +30,14 @@ class ProductController extends Controller
 
     }
 
+    public function show($id, $number = null){
+
+        $product = Product::find($id);
+
+        return view('user.product.product_inner', compact('product', 'number'));
+
+    }
+
     public function getProductsToCategory(Request $request){
 
         $products = Product::where('category_id', '=', $request -> category_id) -> get();
@@ -39,6 +47,7 @@ class ProductController extends Controller
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
             $product -> types = $product -> type -> name;
+            $product -> product_url = url($product ->id.'/product');
         }
 
         return $products;

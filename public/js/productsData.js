@@ -1,137 +1,6 @@
 'use strict';
 
-var data = [
-    {
-        dataID: 0,
-        imgUrl: "img/product-img/2imv.jpg",
-        name: "YG-109-B Style Baby",
-        rostovka: "8",
-        box: "16",
-        type: "25-30",
-        price: 375,
-        full__price: 1230,
-        rostovka__price: 600,
-        real_id: 0,
-        product_url: 'product_inner'
-    },
-    {
-        dataID: 1,
-        imgUrl: "img/product-img/21imv.jpg",
-        name: "M-165 Clibee ",
-        rostovka: "8",
-        box: "16",
-        type: "31-36",
-        price: 175,
-        full__price: 1630,
-        rostovka__price: 800,
-        real_id: 1,
-        product_url: 'product_inner'
-    },
-    {
-        dataID: 2,
-        imgUrl: "img/product-img/22imv.jpg",
-        name: "M-31-1 Clibee",
-        rostovka: "16",
-        box: "61",
-        type: "26-30",
-        price: 230,
-        full__price: 2230,
-        rostovka__price: 1150,
-        real_id: 2,
-        product_url: 'product_inner'
-    },
-    {
-        dataID: 3,
-        imgUrl: "img/product-img/23imv.jpg",
-        name: "M-05 Style Clibee ",
-        rostovka: "5",
-        box: "5",
-        type: "26-30",
-        price: 210,
-        full__price: 3230,
-        rostovka__price: 1615,
-        real_id: 3,
-        product_url: 'product_inner'
-    },
-    {
-        dataID: 4,
-        imgUrl: "img/product-img/24imv.jpg",
-        name: "CQ-23-pink Style Baby ",
-        rostovka: "6",
-        box: "6",
-        type: "25-30",
-        price: 370,
-        full__price: 7830,
-        rostovka__price: 3415,
-        real_id: 4,
-        product_url: 'product_inner'
-    },
-    {
-        dataID: 5,
-        imgUrl: "img/product-img/25imv.jpg",
-        name: "CQ-23-pink Style Baby ",
-        rostovka: "6",
-        box: "6",
-        type: "25-30",
-        price: 380,
-        full__price: 4230,
-        rostovka__price: 2115,
-        real_id: 5,
-        product_url: 'product_inner'
-    },
-    {
-        dataID: 6,
-        imgUrl: "img/product-img/26imv.jpg",
-        name: "CQ-23-pink Style Baby ",
-        rostovka: "6",
-        box: "6",
-        type: "25-30",
-        price: 390,
-        full__price: 4630,
-        rostovka__price: 2315,
-        real_id: 6,
-        product_url: 'product_inner'
-    },
-    {
-        dataID: 7,
-        imgUrl: "img/product-img/27imv.jpg",
-        name: "CQ-23-pink Style Baby ",
-        rostovka: "6",
-        box: "6",
-        type: "25-30",
-        price: 400,
-        full__price: 5230,
-        rostovka__price: 2115,
-        real_id: 7,
-        product_url: 'product_inner'
-    },
-    {
-        dataID: 8,
-        imgUrl: "img/product-img/prod1.jpg",
-        name: "CQ-23-pink Style Baby ",
-        rostovka: "6",
-        box: "6",
-        type: "25-30",
-        price: 410,
-        full__price: 6230,
-        rostovka__price: 3115,
-        real_id: 8,
-        product_url: 'product_inner'
-    },
-    {
-        dataID: 9,
-        imgUrl: "img/product-img/prod2.jpg",
-        name: "CQ-23-pink Style Baby ",
-        rostovka: "6",
-        box: "6",
-        type: "25-30",
-        price: 420,
-        full__price: 9230,
-        rostovka__price: 4115,
-        real_id: 9,
-        product_url: 'product_inner'
-    }
-], TopSallesData= [
+var data = [], TopSallesData= [
     {
         dataID: 0,
         imgUrl: "img/product-img/22imv.jpg",
@@ -234,6 +103,37 @@ var data = [
     }
 ], productTheme = $('#template');
 
+
+$.ajax({
+    method: "POST",
+    url: "../api/products",
+    data: {category_id : $('meta[name="category_id"]').attr('content')}
+}).done(function( msg ) {
+    for(var i= 0; i < msg.length; i++ ){
+        data[i] =  {
+            dataID: i,
+            imgUrl: "img/product-img/2imv.jpg",
+            name: msg[i].name,
+            rostovka: msg[i].rostovka_count,
+            box: msg[i].box_count,
+            type: msg[i].types,
+            price: msg[i].prise,
+            full__price: msg[i].full__price,
+            rostovka__price: msg[i].rostovka__price,
+            real_id: msg[i].id,
+            product_url: msg[i].product_url + '/' + i,
+            option_type: 'full__price' // Или full__price или rostovka__price
+        };
+
+    }
+
+    getData(data);
+
+}) .fail(function( msg ) {
+
+});
+
+
 $(productTheme).tmpl(data).appendTo('#target');
 
 $(productTheme).tmpl(TopSallesData).appendTo('#topSalles');
@@ -243,6 +143,8 @@ var values = [], targetID = 0;
 $('.sidebar-container input[type=checkbox]').on('change', function(){
     var target = $(this)[0].parentNode.parentNode.parentNode;
     targetID = $(this)[0].parentNode.childNodes[1].id;
+
+    console.log(targetID)
 
     if($(this).is(':checked')) {
         values.push([targetID, $(this)[0].defaultValue, $(target)[0].childNodes[1].dataset.id]);
@@ -289,6 +191,8 @@ $('.sidebar-container input[type=checkbox]').on('change', function(){
     if(values.length === 0) {
         $('.CFBlock').css('display', 'none');
     }
+
+    console.log(values)
 });
 
 function RemoveItem() {

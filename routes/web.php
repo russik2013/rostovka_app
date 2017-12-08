@@ -26,16 +26,19 @@ Route::post('/register', 'HomeController@register');
 //Route::get('{id}/category', function () {
 //    return view('user.category_page.category');
 //});
-
+//===================================================================================
 Route::get('{id}/category','CategoryController@show');
+Route::get('{id}/product/{number?}', 'ProductController@show');
+
+//===================================================================================
 
 Route::get('/checkout', function () {
     return view('user.billing.checkout');
 });
 
-Route::get('/product_inner', function () {
-    return view('user.product.product_inner');
-});
+//Route::get('/product_inner', function () {
+//    return view('user.product.product_inner');
+//});
 
 Route::get('/cart', function () {
     return view('user.cart.cart');

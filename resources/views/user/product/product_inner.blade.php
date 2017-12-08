@@ -7,7 +7,7 @@
 @section('product')
     <!-- Page Content -->
     <div class="productPage">
-        <section id="product-ID_XXXX" class="content-page single-product-content">
+        <section id="productID" class="content-page single-product-content" data-id="{{$product -> id}}">
 
     <!-- Product -->
     <div id="product-detail" class="container">
@@ -85,15 +85,15 @@
                     <!-- Product Content -->
                     <div class="col-lg-6 col-md-12 col-sm-12 mb-30">
                         <div class="product-page-content">
-                            <h2 class="product-title">LP - Black Solid Polo T-Shirt</h2>
+                            <h2 class="product-title">{{$product -> name}}</h2>
                             <div class="product-meta">
-                                <span>Производитель : <span class="sku" itemprop="sku">Fabullok</span></span>
-                                <span>Категория : <span class="category" itemprop="category"> <a href="#!">Для мальчиков</a></span></span>
-                                <span>Пар в ростовке: <span class="sku" itemprop="sku">8</span></span>
-                                <span>Пар в ящике : <span class="category" itemprop="category">7</span></span>
-                                <span>Тип : <span class="category" itemprop="category">Ботинки</span></span>
-                                <span>Сезон : <span class="category" itemprop="category">Зима</span></span>
-                                <span>Размеры : <span class="category" itemprop="category">28-35</span></span>
+                                <span>Производитель : <span class="sku" itemprop="sku">{{$product -> manufacturer -> name}}</span></span>
+                                <span>Категория : <span class="category" itemprop="category"> <a href="#!">{{$product -> category -> name}}</a></span></span>
+                                <span>Пар в ростовке: <span class="sku" itemprop="sku">{{$product -> rostovka_count}}</span></span>
+                                <span>Пар в ящике : <span class="category" itemprop="category">{{$product -> box_count}}</span></span>
+                                <span>Тип : <span class="category" itemprop="category">{{$product -> type -> name}}</span></span>
+                                <span>Сезон : <span class="category" itemprop="category">{{$product -> season -> name}}</span></span>
+                                <span>Размеры : <span class="category" itemprop="category">{{$product -> size -> name}}</span></span>
                             </div>
                         </div>
 
@@ -109,14 +109,14 @@
                         </div>
                         <div class="single-variation-wrap">
                             <div class="product-price">
-                                <span class="price">399 грн</span>
+                                <span class="price">{{$product -> prise}} грн</span>
                             </div>
 
                             <div class="col-md-12 chooseItem">
                                 <div class="radio lft choosed">
                                     <label>
                                         <input type="radio" name="optradio" style="width:25px; height:40px;" checked>Ящик
-                                        <span>1120 <sup>грн</sup> <span class="forBag">за 1 ящик</span></span>
+                                        <span>{{$product -> prise * $product -> box_count}} <sup>грн</sup> <span class="forBag">за 1 ящик</span></span>
                                     </label>
 
                                 </div>
@@ -124,7 +124,7 @@
                                     <label>
                                         <input type="radio" name="optradio" style="width:25px; height:40px;">
                                         Ростовка
-                                        <span>2399 <sup>грн</sup> <span class="forBag">за 1 ростовку</span></span>
+                                        <span>{{$product -> prise * $product -> rostovka_count}} <sup>грн</sup> <span class="forBag">за 1 ростовку</span></span>
                                     </label>
                                 </div>
 
