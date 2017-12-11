@@ -17,12 +17,12 @@ $(".chooseItem .radio input").change(function(){
         $(this.parentNode.parentNode).addClass('disable');
 });
 
-// console.log(sessionStorage.getItem('id'));
-// console.log($.find('#productID')[0].dataset.id = 1);
+console.log(sessionStorage.getItem('id'));
+console.log($.find('#productID')[0].dataset.id = 1);
 // var GetedlocalData = JSON.parse(localStorage.localData);
 //
 // for(var i = 0; i < GetedlocalData.length; i++){
 //     if()
 // }
-//
-// console.log(GetedlocalData);
+
+console.log();

@@ -14,11 +14,11 @@ window.success = function(msg) {
     jdom.hide();
     $(".sidebar-icon-nav").append(jdom);
     jdom.fadeIn();
-    setTimeout(function() {
-        jdom.fadeOut(function() {
-            jdom.remove();
-        });
-    }, 2000);
+    // setTimeout(function() {
+    //     jdom.fadeOut(function() {
+    //         jdom.remove();
+    //     });
+    // }, 2000);
 };
 
 $(function () {

@@ -9,7 +9,13 @@ var Cart_data = [{row: [], cartCount: 0, cartProducts_summ: 0}], hidden__price, 
 $(document).on("click", '[data-set="buyButton"]', function (event) {
     var checkif_true = false;
     targetID = Number (event.target.offsetParent.offsetParent.dataset.id);
-    hidden__price = data[targetID].full__price;
+
+    for (var i = 0; i < data.length; i++){
+        if(targetID === data[i].real_id){
+            hidden__price = data[i].full__price;
+        }
+    }
+
 
     if(Cart_data[0].row.length === 0){
         initAdd(event, targetID, Cart_data);

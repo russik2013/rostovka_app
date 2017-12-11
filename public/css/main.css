@@ -584,10 +584,11 @@ input::-webkit-inner-spin-button {
 .top-alert {
   position: absolute !important;
   top: 100px;
-  margin-left: 50px;
+  left: 0;
   z-index: 99;
   display: inline-block;
   text-align: center;
+  width: 320px;
 }
 .top-alert .alert {
   width: auto !important;
