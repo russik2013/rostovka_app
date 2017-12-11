@@ -222,7 +222,6 @@ function conversion(target_dataset, flag, minus) {
 }
 
 
-
 function getPrice() {
     var allPrice = 0;
     for (var i = 0; i < Cart_data[0].row.length; i++){

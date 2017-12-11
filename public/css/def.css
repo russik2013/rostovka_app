@@ -496,7 +496,6 @@ button, input, textarea, select {
 
 input, input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="password"], input[type="radio"], input[type="checkbox"], textarea, select {
     appearance: none;
-    -webkit-appearance: checkbox;
     border: 1px solid rgba(0, 0, 0, 0.10);
     background: #fff;
     color: #333;
@@ -4442,9 +4441,7 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
     padding: 5px 40px;
     display: table-cell;
     color: #fff;
-    text-transform: uppercase;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
+    text-transform: uppercase;  }
 
 .product-show a{
     border-right: 1px solid #eeeeee;
@@ -4503,7 +4500,6 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 .categoryPage .product-item:hover{
     border: 2px solid #2b618f !important;
     z-index: 99;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .product-item .product-detail .tag {
@@ -4571,10 +4567,6 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-.product-item:hover .product-title a{
-    border-bottom: 1px solid #97bf31;
 }
 
 .product-item .product-detail .item-price, .product-item .product-detail .star-rating {
@@ -6243,6 +6235,8 @@ ul#shipping_method {
 
 .form-group .input-group.number-spinner #adult{
     padding-top: 2px;
+    margin-top: -4px;
+    padding: 0;
 }
 
 .form-control.text-center{
@@ -6537,7 +6531,7 @@ li a.enabled{
     color: #333 !important;
 }
 
-.input-group-btn{
+.search--box .input-group-btn{
     position: absolute !important;
     right: 2px !important;
     top: 8px !important;
@@ -6551,4 +6545,12 @@ li a.enabled{
     text-align: left !important;
     font-size: 14px;
     text-transform: lowercase;
+}
+
+.top-alert .arrow-up{
+    position: absolute;
+    top: -13px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #2b608f;
 }

@@ -9,10 +9,10 @@ $(function () {
 
 
 window.success = function(msg) {
-    var dom = '<div class="top-alert"><div class="alert alert-success alert-dismissible fade in " role="alert"><i class="glyphicon glyphicon-ok"></i> ' + msg + '</div></div>';
+    var dom = '<div class="top-alert"><div class="arrow-up"></div><div class="alert alert-success alert-dismissible fade in " role="alert"><i class="glyphicon glyphicon-ok"></i> ' + msg + '</div></div>';
     var jdom = $(dom);
     jdom.hide();
-    $("body").append(jdom);
+    $(".sidebar-icon-nav").append(jdom);
     jdom.fadeIn();
     setTimeout(function() {
         jdom.fadeOut(function() {
