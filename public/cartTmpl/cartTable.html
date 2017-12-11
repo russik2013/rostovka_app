@@ -5,7 +5,7 @@
             <img src="${imgUrl}">
             <span class="first-child">${name}</span>
         </a>
-        <span>${quantityPrice} грн</span>
+        <span>${price_per_pair} грн</span>
     </td>
 
     <td>
@@ -30,9 +30,9 @@
 
     <td class="type">
         <div class="form-group select-style">
-            <select class="form-control" onChange="getSelect(event)">
-                <option selected value="full__price">Ящик</option>
-                <option value="rostovka__price">Ростовка</option>
+            <select class="form-control" onChange="getSelect(event, value)" data-set="select_box_type">
+                <option value="0">Ящик</option>
+                <option value="1">Ростовка</option>
             </select>
         </div>
     </td>

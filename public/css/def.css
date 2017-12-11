@@ -3802,9 +3802,6 @@ img.tp-caption {
     margin-bottom: 30px;
 }
 
-.product-list-view {
-}
-
 .product-list-view .product-item-element {
     width: 100%;
     max-width: 100%;
@@ -6433,4 +6430,125 @@ td.price span span{
 .poduct--info a, .dropdownCart a{
     color: #2c628f;
     font-weight: 600;
+}
+
+
+#pagination {
+    float: right;
+}
+
+li a.disabled{
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.4;
+}
+
+li a.enabled{
+    pointer-events: auto;
+    cursor: pointer;
+    opacity: 1;
+}
+
+#pagination a {
+    margin: 0 2px 0 2px;
+    cursor: pointer;
+    padding: 5px 10px 5px 10px;
+    border: 1px solid #F6F6F6;
+    background-color: #fff;
+    color: #000;
+}
+#pagination i {
+    margin: 0 3px 0 3px;
+}
+#pagination a.current, #pagination a.current:hover {
+    border: 1px solid #2C628F;
+    background-color: #2C628F;
+    color: #fff;
+}
+.previous_Item, .next_Item{
+    background: #f6f6f6 !important;
+    color: #000 !important;
+    padding: 6px 15px 6px 15px !important;
+    margin: 0 !important;
+}
+.previous_Item:hover, .next_Item:hover{
+    background: #dedede !important;
+}
+
+#pagination a:hover{
+    background: #f6f6f6;
+}
+
+.moveTo_start{
+    float: left;
+    background: #f6f6f6 !important;
+    color: #000 !important;
+    padding: 5px 15px 5px 15px !important;
+    margin-top: -5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.moveTo_end{
+    float: right;
+    background: #f6f6f6 !important;
+    color: #000 !important;
+    padding: 5px 15px 5px 15px !important;
+    margin-top: -5px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.moveTo_start:hover, moveTo_end:hover{
+    background: #dedede !important;
+}
+
+.commentArea{
+    resize: vertical;
+    width: 100%;
+    border-radius: 0;
+}
+
+.checkout-info{
+    float: left;
+    width: 100%;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.deliverySelect .nice-select-box{
+    width: 100%;
+    border-radius: 30px;
+}
+
+.deliverySelect .nice-select-box .list{
+    width: 100%;
+}
+
+.input-group-btn button{
+    background: none;
+    border-radius: 0;
+    border: none;
+}
+
+.search--box button i{
+    margin: 0 !important;
+    font-size: 16px !important;
+    color: #333 !important;
+}
+
+.input-group-btn{
+    position: absolute !important;
+    right: 2px !important;
+    top: 8px !important;
+    z-index: 3;
+}
+
+.search--box input{
+    border: 1px solid #e5e5e5 !important;
+    border-radius: 0 !important;
+    padding: 9px 10px 8px 10px !important;
+    text-align: left !important;
+    font-size: 14px;
+    text-transform: lowercase;
 }

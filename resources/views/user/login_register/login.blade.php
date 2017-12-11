@@ -52,3 +52,7 @@
         </div>
     </div>
 @endsection
+
+@section('auth_lib')
+    <script type="text/javascript" src="{{asset('js/resizer.js')}}"></script>
+@endsection

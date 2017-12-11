@@ -37,27 +37,6 @@
 <div class="sidebar_overlay"></div>
 <!-- End Sidebar Menu (Cart Menu) -------------------------------------------->
 
-<!-- Search Overlay Menu ----------------------------------------------------->
-<section class="search-overlay-menu">
-    <!-- Close Icon -->
-    <a href="javascript:void(0)" class="search-overlay-close"></a>
-    <!-- End Close Icon -->
-    <div class="container">
-        <!-- Search Form -->
-        <form role="search" id="searchform" action="/search" method="get">
-            <div class="search-icon-lg">
-                <img src="{{asset('img/search-icon-lg.png')}}" alt=""/>
-            </div>
-            <label class="h6 normal search-input-label" for="search-query">Введите название товара</label>
-            <input value="" name="q" type="search" placeholder="Поиск..."/>
-            <button type="submit">
-                <img src="{{asset('img/search-lg-go-icon.png')}}" alt=""/>
-            </button>
-        </form>
-        <!-- End Search Form -->
-
-    </div>
-</section>
 <!-- End Search Overlay Menu ------------------------------------------------>
 
 <!--==========================================-->
@@ -93,14 +72,14 @@
                                         class="hidden-sm-down">Авторизация</span></a>
                         </li>
                         <li class="dropdown-nav">
-                            <a href="register"><i class="fa fa-user left" aria-hidden="true"></i>
+                            <a href="#!"><i class="fa fa-user left" aria-hidden="true"></i>
                                 <span class="hidden-sm-down">Кабинет</span>
                                 <i class="fa fa-angle-down right" aria-hidden="true"></i>
                             </a>
                             <!--Dropdown-->
                             <div class="dropdown-menu">
                                 <ul>
-                                    <li><a href="login-register">Моя информация</a></li>
+                                    <li><a href="userinfo">Моя информация</a></li>
                                     <li><a href="cart">Корзина</a></li>
                                 </ul>
                             </div>
@@ -132,7 +111,16 @@
                     <div class="sidebar-icon-nav">
                         <ul class="list-none-ib">
                             <!-- Search-->
-                            <li><a id="search-overlay-menu-btn"><i aria-hidden="true" class="fa fa-search"></i></a></li>
+                            <li>
+                                <form class="navbar-form" role="search">
+                                    <div class="input-group search--box">
+                                        <input type="text" class="form-control" placeholder="Поиск" name="q">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
 
                             <!-- Cart-->
                             <li class="cartBl">
@@ -179,11 +167,13 @@
                         <li>
                             <a href="category">Детское</a>
                         </li>
+
                         <li>
                             <a href="category">Мужское</a></li>
                         <li>
                             <a href="category">Женское</a>
                         </li>
+
                         <li>
                             <a href="category">Перчатки</a>
                         </li>
@@ -339,8 +329,7 @@
 <script type="text/javascript" src="{{asset('js/tether.min.js')}}"></script>
 <!--Bootstrap tooltips require Tether (Tether Js)-->
 <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
-<script type="text/javascript"
-        src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>
+<script type="text/javascript" src="{{asset('js/bootstrapvalidator.min.js')}}"></script>
 <!-- bootstrap js -->
 
 <script type="text/javascript" src="{{asset('js/owl.carousel.js')}}"></script>
@@ -351,12 +340,13 @@
 @yield('productLib')
 <!-- Plugins All js -->
 <script type="text/javascript" src="{{asset('js/plugins-all.js')}}"></script>
-<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+<script type="text/javascript" src="{{asset('js/jquery.tmpl.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 @yield('mainPage_Lib')
 @yield('cartLib')
 @yield('auth_reg')
 @yield('category__Lib')
+@yield('auth_lib')
 <script type="text/javascript" src="{{asset('js/cart.js')}}"></script>
 <!-- custom js -->
 <!-- end jquery -->

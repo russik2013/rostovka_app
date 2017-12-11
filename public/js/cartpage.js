@@ -40,6 +40,8 @@ if(Cart_data[0].row.length < 5){
 function Cart_template(Cart_data) {
     $.get('cartTmpl/cartTable.html', {}, function (templateBody) {
         $.tmpl(templateBody, Cart_data).appendTo('#cartTableInner');
+
+        getSelectedValue();
     });
 }
 
@@ -74,26 +76,65 @@ if($.find('#cartTableInner').length !== 0){
     });
 }
 
-var targetID = 0, allProductsPrice = 0;
-function getSelect(event) {
-    allProductsPrice = Cart_data[0].cartProducts_summ;
-
+var targetID = 0;
+function getSelect(event, value) {
     targetID = event.target.parentElement.offsetParent.parentElement.attributes[1].nodeValue;
+
+    if(value === '1'){
+        var rostovka_Price = 0, recalculated_price = 0;
+
+        for (var i = 0; i < Cart_data[0].row.length; i++){
+            if(Number (targetID) === Cart_data[0].row[i].productID){
+                rostovka_Price = Cart_data[0].row[i].rostovka__price * Cart_data[0].row[i].quantity;
+                $.find('[product-id="'+ targetID +'"] .item--price')[0].innerText = Cart_data[0].row[i].rostovka__price + ' грн';
+                $.find('[product-id="'+ targetID +'"] [data-set="productSumm"]')[0].innerText = rostovka_Price + ' грн';
+                Cart_data[0].row[i].quantityPrice = rostovka_Price;
+                Cart_data[0].row[i].selected_value = value;
+                Cart_data[0].row[i].price = Cart_data[0].row[i].rostovka__price;
+            }
+            recalculated_price += Cart_data[0].row[i].quantityPrice;
+        }
+
+        Cart_data[0].cartProducts_summ = recalculated_price;
+        $.find('[data-set="totalCost"]')[0].innerText = recalculated_price + ' грн';
+        localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+    }
+
+    else{
+        var box_Price = 0, recalculatedP = 0;
+        for (var z = 0; z < Cart_data[0].row.length; z++){
+            if(Number (targetID) === Cart_data[0].row[z].productID){
+                Cart_data[0].row[z].price = Cart_data[0].row[z].box__price;
+                box_Price = Cart_data[0].row[z].price * Cart_data[0].row[z].quantity;
+                $.find('[product-id="'+ targetID +'"] .item--price')[0].innerText = Cart_data[0].row[z].price + ' грн';
+                $.find('[product-id="'+ targetID +'"] [data-set="productSumm"]')[0].innerText = box_Price + ' грн';
+                Cart_data[0].row[z].quantityPrice = box_Price;
+                Cart_data[0].row[z].selected_value = value;
+            }
+            recalculatedP += Cart_data[0].row[z].quantityPrice;
+        }
+
+        console.log(Cart_data[0].row);
+
+        Cart_data[0].cartProducts_summ = recalculatedP;
+        $.find('[data-set="totalCost"]')[0].innerText = recalculatedP + ' грн';
+        localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+    }
+}
+
+function getSelectedValue() {
     for (var i = 0; i < Cart_data[0].row.length; i++){
-        if(Number (Cart_data[0].row[i].productID) === Number (targetID)){
-            var rostovkaPrice = Cart_data[0].row[i].rostovka__price, itemPrice = 0;
-            $.find('[product-id="'+ targetID +'"] .item--price')[0].innerText = rostovkaPrice + ' грн';
 
-            itemPrice = Cart_data[0].row[i].quantity * rostovkaPrice;
+        if(Cart_data[0].row[i].selected_value !== null){
+            var options = $('[product-id="'+ Cart_data[0].row[i].productID +'"] select');
+            $(options).val(Cart_data[0].row[i].selected_value);
+        }
 
-            Cart_data[0].row[i].quantityPrice = itemPrice;
-
-            allProductsPrice = Cart_data[0].cartProducts_summ - itemPrice;
-            Cart_data[0].cartProducts_summ = allProductsPrice;
-
-            $.find('[product-id="'+ targetID +'"] [data-set="productSumm"]')[0].innerText = itemPrice + ' грн';
-            $.find('[data-set="totalCost"]')[0].innerText = allProductsPrice + ' грн';
-            // localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+        if(Cart_data[0].row[i].selected_value === '1'){
+            $.find('[product-id="'+ Cart_data[0].row[i].productID +'"] .item--price')[0].innerText = Cart_data[0].row[i].rostovka__price + ' грн';
+        }
+        else{
+            $.find('[product-id="'+ Cart_data[0].row[i].productID +'"] .item--price')[0].innerText = Cart_data[0].row[i].price + ' грн';
         }
     }
 }

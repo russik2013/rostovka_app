@@ -47,7 +47,7 @@
             <div class="container larger">
                 <ul class="product-filter nav" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#target" role="tab" data-toggle="tab">
+                        <a class="nav-link active" href="#newest" role="tab" data-toggle="tab">
                             <h2 class="page-title">Новинки</h2>
                         </a>
                     </li>
@@ -58,7 +58,7 @@
                     </li>
                 </ul>
                 <div class="col-md-12 tab-content mainPage">
-                    <div id="target" role="tabpanel" class="tab-pane fade in active pull-left"></div>
+                    <div id="newest" role="tabpanel" class="tab-pane fade in active pull-left"></div>
 
                     <div id="topSalles" role="tabpanel" class="tab-pane fade"></div>
                 </div>
@@ -416,13 +416,13 @@
 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item" data-id=${dataID}>
 <div class="product-item-inner">
 <div class="product-img-wrap">
-<a href="#!">
+<a href="${product_url}">
 <img class="img-responsive" src="${imgUrl}"alt="">
 </a>
 </div>
 </div>
 <div class="product-detail">
-<p class="product-title"><a href="#!">${name}</a></p>
+<p class="product-title"><a href="${product_url}">${name}</a></p>
 <span class="col-md-12 pull-left goods_amount">
 <span class="col-md-12 pull-left">Ящик - <b>${box}</b> пар</span>
 <span class="col-md-12 pull-left">Минимум - <b>${rostovka}</b> пар</span>
@@ -443,5 +443,5 @@
 @endsection
 
 @section('mainPage_Lib')
-    <script type="text/javascript" src="{{asset('js/productsData.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/mainPage_data.js')}}"></script>
 @endsection

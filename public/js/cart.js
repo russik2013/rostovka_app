@@ -4,26 +4,11 @@ function Cart_template(Cart_data) {
     });
 }
 
-window.success = function(msg) {
-    var dom = '<div class="top-alert"><div class="alert alert-success alert-dismissible fade in " role="alert"><i class="glyphicon glyphicon-ok"></i> ' + msg + '</div></div>';
-    var jdom = $(dom);
-    jdom.hide();
-    $("body").append(jdom);
-    jdom.fadeIn();
-    setTimeout(function() {
-        jdom.fadeOut(function() {
-            jdom.remove();
-        });
-    }, 2000);
-};
+var Cart_data = [{row: [], cartCount: 0, cartProducts_summ: 0}], hidden__price, targetID;
 
-var Cart_data = [{
-    row: [], cartCount: 0, cartProducts_summ: 0
-}], hidden__price, targetID, buyButton = $.find('[data-set="buyButton"]');
-
-$(buyButton).on('click', function (event) {
+$(document).on("click", '[data-set="buyButton"]', function (event) {
     var checkif_true = false;
-    targetID = Number ($(this)[0].offsetParent.offsetParent.dataset.id);
+    targetID = Number (event.target.offsetParent.offsetParent.dataset.id);
     hidden__price = data[targetID].full__price;
 
     if(Cart_data[0].row.length === 0){
@@ -32,10 +17,7 @@ $(buyButton).on('click', function (event) {
     else{
         checkDublicate(event, targetID, checkif_true);
     }
-
-    console.log(Cart_data)
 });
-
 
 function checkDublicate(event, targetID, checkif_true) {
     for (var i = 0; i < Cart_data[0].row.length; i++){
@@ -64,7 +46,6 @@ function initAdd(event, targetID, Cart_data) {
 var arrayItemId = 0;
 function dublicate(targetID) {
     for (var i = 0; i < Cart_data[0].row.length; i++){
-        console.log();
         if(Cart_data[0].row[i].productID === targetID){
             Cart_data[0].row[i].quantity++;
             arrayItemId = i;
@@ -119,7 +100,10 @@ function addtoCart(event, targetID) {
         quantityPrice: gprice,
         rostovka__price: rostovkaPrice,
         buy_real_id: data[targetID].real_id,
-        cart_product_url: data[targetID].product_url
+        cart_product_url: data[targetID].product_url,
+        selected_value: null,
+        price_per_pair: data[targetID].price,
+        box__price: gprice
     });
 
     qid++;
