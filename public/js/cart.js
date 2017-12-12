@@ -1,23 +1,26 @@
-'use strict'
+'use strict';
 
 function getData(data) {
     $(productTheme).tmpl(data).appendTo('#target');
+}
 
-    function Cart_template(Cart_data) {
-        $.get('../cartTmpl/cart.html', {}, function (templateBody) {
-            $.tmpl(templateBody, Cart_data).appendTo('#cartTemplate');
-        });
-    }
+function Cart_template(Cart_data) {
+    $.get('../cartTmpl/cart.html', {}, function (templateBody) {
+        $.tmpl(templateBody, Cart_data).appendTo('#cartTemplate');
+    });
+}
 
 var Cart_data = [{row: [], cartCount: 0, cartProducts_summ: 0}], hidden__price, targetID;
 
 $(document).on("click", '[data-set="buyButton"]', function (event) {
     var checkif_true = false;
-    targetID = Number (event.target.offsetParent.offsetParent.dataset.id);
+    var domtargetID = Number (event.target.offsetParent.offsetParent.dataset.id);
+
 
     for (var i = 0; i < data.length; i++){
-        if(targetID === data[i].real_id){
+        if(domtargetID === data[i].real_id){
             hidden__price = data[i].full__price;
+            targetID = data[i].real_id;
         }
     }
 
@@ -32,7 +35,7 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
 
 function checkDublicate(event, targetID, checkif_true) {
     for (var i = 0; i < Cart_data[0].row.length; i++){
-        if (Number (targetID) === Number (Cart_data[0].row[i].productID)){
+        if (Number (targetID) === Number (Cart_data[0].row[i].buy_real_id)){
             checkif_true = false;
             dublicate(targetID);
             break;
@@ -57,7 +60,7 @@ function initAdd(event, targetID, Cart_data) {
 var arrayItemId = 0;
 function dublicate(targetID) {
     for (var i = 0; i < Cart_data[0].row.length; i++){
-        if(Cart_data[0].row[i].productID === targetID){
+        if(Cart_data[0].row[i].buy_real_id === targetID){
             Cart_data[0].row[i].quantity++;
             arrayItemId = i;
         }
@@ -92,7 +95,13 @@ function addtoCart(event, targetID) {
         $('.isClear').remove()
     }
 
-    productIndex = Number (data[targetID].dataID);
+    for (var z = 0; z < data.length; z++){
+        if(targetID === data[z].real_id){
+            targetID = z;
+        }
+    }
+
+    productIndex = Number (data[targetID].real_id);
     gTitle = data[targetID].name;
     selected_quantity = 1;
     gQuant = 0;

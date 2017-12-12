@@ -1,6 +1,6 @@
 'use strict';
 
-var data = [], TopSallesData= [
+var TopSallesData= [
     {
         dataID: 0,
         imgUrl: "img/product-img/22imv.jpg",
@@ -103,37 +103,6 @@ var data = [], TopSallesData= [
     }
 ], productTheme = $('#template');
 
-
-$.ajax({
-    method: "POST",
-    url: "../api/products",
-    data: {category_id : $('meta[name="category_id"]').attr('content')}
-}).done(function( msg ) {
-    for(var i= 0; i < msg.length; i++ ){
-        data[i] =  {
-            dataID: i,
-            imgUrl: "img/product-img/2imv.jpg",
-            name: msg[i].name,
-            rostovka: msg[i].rostovka_count,
-            box: msg[i].box_count,
-            type: msg[i].types,
-            price: msg[i].prise,
-            full__price: msg[i].full__price,
-            rostovka__price: msg[i].rostovka__price,
-            real_id: msg[i].id,
-            product_url: msg[i].product_url + '/' + i,
-            option_type: 'full__price' // Или full__price или rostovka__price
-        };
-
-    }
-
-    getData(data);
-
-}) .fail(function( msg ) {
-
-});
-
-
 $(productTheme).tmpl(data).appendTo('#target');
 
 $(productTheme).tmpl(TopSallesData).appendTo('#topSalles');
@@ -143,8 +112,6 @@ var values = [], targetID = 0;
 $('.sidebar-container input[type=checkbox]').on('change', function(){
     var target = $(this)[0].parentNode.parentNode.parentNode;
     targetID = $(this)[0].parentNode.childNodes[1].id;
-
-    console.log(targetID)
 
     if($(this).is(':checked')) {
         values.push([targetID, $(this)[0].defaultValue, $(target)[0].childNodes[1].dataset.id]);
@@ -191,8 +158,6 @@ $('.sidebar-container input[type=checkbox]').on('change', function(){
     if(values.length === 0) {
         $('.CFBlock').css('display', 'none');
     }
-
-    console.log(values)
 });
 
 function RemoveItem() {

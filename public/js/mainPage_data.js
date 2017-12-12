@@ -269,3 +269,6 @@ localStorage.setItem("localData", JSON.stringify(data));
 
 $(productTheme).tmpl(TopSallesData).appendTo('#topSalles');
 $(productTheme).tmpl(data).appendTo('#newest');
+
+
+localStorage.clear();
