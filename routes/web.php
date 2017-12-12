@@ -42,7 +42,7 @@ Route::get('/checkout', function () {
 
 Route::get('/cart', function () {
     return view('user.cart.cart');
-});
+})->name('cart');
 
 
 Route::get('/admin_index', function () {
