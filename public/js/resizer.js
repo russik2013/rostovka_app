@@ -1,7 +1,7 @@
-var intElemOffsetHeight = $( window ).height() - 575;
+var intElemOffsetHeight = $( window ).height() - 100;
 
 $(window).resize(function() {
-    intElemOffsetHeight = $( window ).height() - 575;
+    intElemOffsetHeight = $( window ).height();
     setHeight(intElemOffsetHeight);
 });
 function setHeight(intElemOffsetHeight) {
@@ -9,3 +9,5 @@ function setHeight(intElemOffsetHeight) {
 }
 
 setHeight(intElemOffsetHeight);
+
+console.log($('.content-page').length);

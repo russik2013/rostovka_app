@@ -26,7 +26,7 @@ function TotalCost() {
 
 
 if(Cart_data[0].row.length < 5){
-    var intElemOffsetHeight = $( window ).height() - 575;
+    var intElemOffsetHeight = $( window ).height() - 300;
     setHeight(intElemOffsetHeight);
     $(window).resize(function() {
         intElemOffsetHeight = $( window ).height() - 575;
