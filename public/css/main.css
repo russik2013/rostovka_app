@@ -582,12 +582,13 @@ input::-webkit-inner-spin-button {
   color: #fff;
 }
 .top-alert {
-  position: fixed !important;
-  top: 90px;
-  z-index: 100000;
-  right: 10px;
+  position: absolute !important;
+  top: 100px;
+  left: 0;
+  z-index: 99;
   display: inline-block;
   text-align: center;
+  width: 320px;
 }
 .top-alert .alert {
   width: auto !important;
@@ -595,6 +596,8 @@ input::-webkit-inner-spin-button {
   display: inline;
   position: relative;
   margin: 0;
+  font-family: 'Open Sans';
+  font-weight: 100;
 }
 .top-alert .alert .close {
   position: absolute;
@@ -633,7 +636,6 @@ input::-webkit-inner-spin-button {
 .mainPage .product-item:hover{
   border: 2px solid #2b618f !important;
   z-index: 99;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .CFBlock{

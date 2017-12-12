@@ -20,8 +20,7 @@
                                 <form class="product-sort-by col-xl-5 col-md-12 col-sm-12 col-xs-12">
                                     <label for="short-by">Сортировка</label>
                                     <select name="short-by" id="short-by" class="nice-select-box">
-                                        <option value="default_sorting" selected="selected">Последние поступления
-                                        </option>
+                                        <option value="default_sorting" selected="selected">Последние поступления</option>
                                         <option value="price_low_to_high">от дешевого к дорогому</option>
                                         <option value="price_high_to_low">от дорогого к дешевому</option>
                                         <option value="sort_by_newness">по дате</option>
@@ -29,11 +28,10 @@
                                 </form>
                                 <form class="product-sort-by pull-right col-xl-5 col-md-12 col-sm-12 col-xs-12">
                                     <label for="product-show">на странице по: </label>
-                                    <select name="product-show" id="product-show" class="nice-select-box">
-                                        <option value="15" selected="selected">9</option>
-                                        <option value="18">18</option>
-                                        <option value="21">27</option>
-                                        <option value="24">36</option>
+                                    <select name="product-show" id="product-show" class="nice-select-box" data-set="selectCount">
+                                        <option value="12" selected="selected">12</option>
+                                        <option value="20">20</option>
+                                        <option value="28">28</option>
                                     </select>
                                     <span>товаров</span>
                                 </form>
@@ -42,34 +40,11 @@
                         <!-- End Product Filter -->
 
                         <div class="row product-list-item product-list-view">
-                            <div id="target" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine">
-
-                            </div>
+                            <ul id="target" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine"></ul>
                         </div>
+
                         <div class="pagination-wraper">
-                            <div class="pagination">
-                                <ul class="pagination-numbers">
-                                    <li>
-                                        <a href="#" class="page-number current">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="page-number">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="page-number">3</a>
-                                    </li>
-                                    <li>
-                                        <span class="page-number dots">...</span>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="page-number">29</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="next page-number">
-                                            <i class="fa fa-angle-double-right"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
+                            <div id="pagination" onselectstart="return false" onmousedown="return false"></div>
                         </div>
                     </div>
 
@@ -95,7 +70,7 @@
 
 
 <script id="template" type="x-jquery-tmpl">
-<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item" data-id=${dataID}>
+<li class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item" data-id=${real_id}>
 <div class="product-item-inner">
 <div class="product-img-wrap">
 <a href="${product_url}">
@@ -120,10 +95,10 @@
 </a>
 </div>
 </div>
-</div>
+</li>
 </script>
 @endsection
 
 @section('category__Lib')
-    <script type="text/javascript" src="{{asset('js/productsData.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/categoryData.js')}}"></script>
 @endsection

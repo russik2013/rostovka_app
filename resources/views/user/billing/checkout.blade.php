@@ -7,9 +7,6 @@
         <div class="row">
             <div class="col-sm-12">
                 <article class="post-8">
-                    <p class="checkout-info">
-                        Вы наш клиент? <strong><a href="login-register.html"> Нажмите сюда и авторизуйтесь</a></strong>
-                    </p>
                     <form class="product-checkout mt-45" action="{{url('/register')}}" method="post" id="contact_form">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <input type="hidden" name="_method" value="POST">
@@ -93,14 +90,22 @@
 
                                         <!-- Text input-->
                                         <div class="col-md-12 form-field-wrapper form-group has-feedback">
-                                            @if ($errors->has('zip'))
-                                                <p> {{$errors -> first('zip')}} </p>
-                                            @endif
-                                            <label class="col-md-12 control-label">Номер отделения</label>
+                                            <label class="col-md-12 control-label">Информация по доставке</label>
                                             <div class="col-md-12 inputGroupContainer">
 
                                                 <div class="input-group">
-                                                    <input name="zip" placeholder="почтовый код" class="form-control" type="text" value="{{old('zip')}}">
+                                                    <input placeholder="привезти в отделения №3" class="form-control" type="text" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-12 form-field-wrapper form-group has-feedback">
+                                            <label class="col-md-12 control-label">Комментарий</label>
+                                            <div class="col-md-12 inputGroupContainer">
+
+                                                <div class="input-group">
+                                                    <textarea class="commentArea"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -113,26 +118,6 @@
                                     <div class="product-checkout-review-order">
                                         <div class="responsive-table">
                                             <table class="">
-                                                <thead>
-                                                <tr>
-                                                    <th class="product-name">Продукт</th>
-                                                    <th class="product-total">Сумма</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr class="cart_item">
-                                                    <td class="product-name">Alpha Block Black Polo T-Shirt<strong> x 1</strong></td>
-                                                    <td class="product-total">
-                                                        <span class="product-price-amount amount"><span class="currency-sign">$</span>399.00</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="cart_item">
-                                                    <td class="product-name">Red Printed Round Neck T-Shirt<strong> x 2</strong></td>
-                                                    <td class="product-total">
-                                                        <span class="product-price-amount amount"><span class="currency-sign">$</span>598.00</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
                                                 <tfoot>
                                                 <tr class="shipping">
                                                     <th>Доставка</th>
@@ -190,8 +175,11 @@
                                             <div class="col-md-12 form-field-wrapper form-group has-feedback">
                                                 <button type="submit" class="btn btn-warning submit btn btn-md btn-color">Оформить заказ</button>
                                             </div>
-                                        </div>
 
+                                            <p class="checkout-info">
+                                                Вы наш клиент? <strong><a href="login"> Нажмите сюда и авторизуйтесь</a></strong>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

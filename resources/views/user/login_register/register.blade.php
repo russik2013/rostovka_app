@@ -83,4 +83,5 @@
 
 @section('auth_reg')
 <script type="text/javascript" src="{{asset('js/auth.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/resizer.js')}}"></script>
 @endsection

@@ -89,6 +89,10 @@ Route::get('/suppliers', function () {
     return view('admin.product.suppliers');
 });
 
+Route::get('/userinfo', function () {
+    return view('user.userinfo');
+});
+
 Route::get('/product', 'ProductController@create');
 Route::post('/product','ProductController@add');
 //
