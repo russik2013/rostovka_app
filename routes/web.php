@@ -46,11 +46,7 @@ Route::post('/checkout', 'SaleController@makeOrder');
 Route::get('/cart', function () {
     return view('user.cart.cart');
 })->name('cart');
-Route::post('/checkout', function (\Illuminate\Http\Request $request){
 
-    dd($request ->all());
-
-});
 Route::get('/admin_index', function () {
     return view('admin.main');
 });

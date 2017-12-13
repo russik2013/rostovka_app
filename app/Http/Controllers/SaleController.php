@@ -8,7 +8,13 @@ class SaleController extends Controller
 {
     public function makeOrder(Request $request){
 
-        dd($request -> all());
+
+        print_r($_POST);
+
+        print_r($request -> all());
+
+
+
 
     }
 }

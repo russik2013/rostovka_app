@@ -1,6 +1,7 @@
 @extends('user.markup.markup')
 @section('billing')
 <!-- Page Content -->
+<meta name="checkout_url" content="{!! url('/checkout') !!}">
 <div class="logReg_page regPage checkoutPage">
     <section class="content-page">
     <div class="container mb-80">

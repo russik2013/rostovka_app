@@ -7,13 +7,17 @@ $(document).ready(function() {
         message: '',
         submitHandler: function(validator, form, submitButton) {
             var inputArray = $(form).serializeArray(), assembledАrray;
-            assembledАrray = inputArray.concat(Cart_data);
+            assembledАrray = inputArray.concat({'name' : 'dates','value': Cart_data[0]['cartCount']});
+
+            console.log(Cart_data[0]);
+
 
             $.ajax({
                 type: 'POST',
-                url: './checkout',
+                url: $('meta[name="checkout"]').attr('content'),
                 data: assembledАrray,
                 success: function(result) {
+                    console.log(result);
                     console.log(assembledАrray)
                 }
             });
