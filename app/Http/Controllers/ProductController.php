@@ -53,4 +53,14 @@ class ProductController extends Controller
         return $products;
 
     }
+
+
+    public function getNewsProduct(){
+
+        $products = Product::take(10) ->orderBy('id', 'desc') -> get();
+
+        return $products;
+        dd($products);
+
+    }
 }

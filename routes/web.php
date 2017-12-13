@@ -35,6 +35,9 @@ Route::get('{id}/product/{number?}', 'ProductController@show');
 Route::get('/checkout', function () {
     return view('user.billing.checkout');
 });
+Route::post('/checkout', 'SaleController@makeOrder');
+
+
 
 //Route::get('/product_inner', function () {
 //    return view('user.product.product_inner');

@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <article class="post-8">
-                    <form class="product-checkout mt-45" action="{{url('/register')}}" method="post" id="contact_form">
+                    <form class="product-checkout mt-45" action="{{url('/checkout')}}" method="post" id="contact_form">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <input type="hidden" name="_method" value="POST">
                         <div class="row">
