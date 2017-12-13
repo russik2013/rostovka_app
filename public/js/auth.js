@@ -6,19 +6,26 @@ $(document).ready(function() {
         submitButton: '[type="submit"]',
         message: '',
         submitHandler: function(validator, form, submitButton) {
-            var inputArray = $(form).serializeArray(), assembledАrray;
-            assembledАrray = inputArray.concat({'name' : 'dates','value': Cart_data[0]['cartCount']});
 
-            console.log(Cart_data[0]);
+
+            var inputArray = $(form).serializeArray();
+
+
+            for (var i = 0; i < Cart_data[0].row.length; i++){
+                inputArray = inputArray.concat({'name' : 'tovar['+i+'][product_id]','value': Cart_data[0].row[0].productID},
+                                               {'name' : 'tovar['+i+'][quantity]','value': Cart_data[0].row[0].quantity});
+
+            }
+
 
 
             $.ajax({
                 type: 'POST',
                 url: $('meta[name="checkout"]').attr('content'),
-                data: assembledАrray,
+                data: inputArray,
                 success: function(result) {
                     console.log(result);
-                    console.log(assembledАrray)
+                    console.log(inputArray)
                 }
             });
             return false;

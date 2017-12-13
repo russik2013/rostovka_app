@@ -125,27 +125,27 @@
                                                     <td>
                                                         <ul id="shipping_method">
                                                             <li>
-                                                                <input name="shipping_method[0]" data-index="0" id="shipping_method_0_legacy_flat_rate" value="legacy_flat_rate" class="shipping_method" checked="checked" type="radio">
+                                                                <input name="shipping_method" data-index="0" id="shipping_method_0_legacy_flat_rate" value="legacy_flat_rate" class="shipping_method" checked="checked" type="radio">
                                                                 <label for="shipping_method_0_legacy_flat_rate">Новая почта</label>
                                                             </li>
                                                             <li>
-                                                                <input name="shipping_method[0]" data-index="0" id="shipping_method_0_legacy_free_shipping" value="legacy_free_shipping" class="shipping_method" type="radio">
+                                                                <input name="shipping_method" data-index="0" id="shipping_method_0_legacy_free_shipping" value="legacy_free_shipping" class="shipping_method" type="radio">
                                                                 <label for="shipping_method_0_legacy_free_shipping">Delivery</label>
                                                             </li>
                                                             <li>
-                                                                <input name="shipping_method[0]" data-index="0" id="shipping_method_0_legacy_local_delivery" value="legacy_local_delivery" class="shipping_method" type="radio">
+                                                                <input name="shipping_method" data-index="0" id="shipping_method_0_legacy_local_delivery" value="legacy_local_delivery" class="shipping_method" type="radio">
                                                                 <label for="shipping_method_0_legacy_local_delivery">Автолюкс</label>
                                                             </li>
                                                             <li>
-                                                                <input name="shipping_method[0]" data-index="0" id="shipping_method_0_legacy_local_InTime" value="legacy_local_delivery" class="shipping_method" type="radio">
+                                                                <input name="shipping_method" data-index="0" id="shipping_method_0_legacy_local_InTime" value="legacy_local_delivery" class="shipping_method" type="radio">
                                                                 <label for="shipping_method_0_legacy_local_InTime">InTime</label>
                                                             </li>
                                                             <li>
-                                                                <input name="shipping_method[0]" data-index="0" id="shipping_method_0_legacy_local_bus" value="legacy_local_delivery" class="shipping_method" type="radio">
+                                                                <input name="shipping_method" data-index="0" id="shipping_method_0_legacy_local_bus" value="legacy_local_delivery" class="shipping_method" type="radio">
                                                                 <label for="shipping_method_0_legacy_local_bus">Подвести к автобусу</label>
                                                             </li>
                                                             <li>
-                                                                <input name="shipping_method[0]" data-index="0" id="shipping_method_0_legacy_local_your" value="legacy_local_delivery" class="shipping_method" type="radio">
+                                                                <input name="shipping_method" data-index="0" id="shipping_method_0_legacy_local_your" value="legacy_local_delivery" class="shipping_method" type="radio">
                                                                 <label for="shipping_method_0_legacy_local_your">Самовывоз</label>
                                                             </li>
                                                         </ul>
