@@ -56,7 +56,7 @@
                             </ul>
 
                             <div class="removeallFilters">
-                                <span>Сбросить фильтры <i class="fa fa-refresh" aria-hidden="true"></i></span>
+                                <span>Сбросить <i class="fa fa-refresh" aria-hidden="true"></i></span>
                             </div>
                         </div>
 
