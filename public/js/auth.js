@@ -1,7 +1,24 @@
 'use strict';
 $(document).ready(function() {
+    var success = null;
     $('#contact_form').bootstrapValidator({
+        live: 'enabled',
+        submitButton: '[type="submit"]',
         message: '',
+        submitHandler: function(validator, form, submitButton) {
+            var inputArray = $(form).serializeArray(), assembledАrray;
+            assembledАrray = inputArray.concat(Cart_data);
+
+            $.ajax({
+                type: 'POST',
+                url: './checkout',
+                data: assembledАrray,
+                success: function(result) {
+                    console.log(assembledАrray)
+                }
+            });
+            return false;
+        },
         // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -121,25 +138,40 @@ $(document).ready(function() {
                         message: 'Пароли должны совпадать'
                     }
                 }
-            },
+            }
         }
-    })
-        .on('success.form.bv', function(e) {
-            $('#success_message').slideDown({ opacity: "show" }, "slow");// Do something ...
-            $('#contact_form').data('bootstrapValidator').resetForm();
+    }).on('success.form.bv', function(e) {
+        $('#success_message').slideDown({ opacity: "show" }, "slow");// Do something ...
+        $('#contact_form').data('bootstrapValidator').resetForm();
 
-            // Prevent form submission
-            e.preventDefault();
+        // Prevent form submission
+        e.preventDefault();
 
-            // Get the form instance
-            var $form = $(e.target);
+        // Get the form instance
+        var $form = $(e.target);
 
-            // Get the BootstrapValidator instance
-            var bv = $form.data('bootstrapValidator');
+        // Get the BootstrapValidator instance
+        var bv = $form.data('bootstrapValidator');
 
-            // Use Ajax to submit form data
-            $.post($form.attr('action'), $form.serialize(), function(result) {
-                console.log(result);
-            }, 'json');
-        });
+        success = true;
+        console.log('console loged');
+
+        sendData();
+        // Use Ajax to submit form data
+        // $.post($form.attr('action'), $form.serialize(), function(result) {
+        //     console.log('ajax will be');
+        //     // $.ajax({
+        //     //     type: "POST",
+        //     //     data: 'arrray will be here',
+        //     //     url: "../checkout",
+        //     //     success: function(msg){
+        //     //         console.log(msg)
+        //    //     }
+        //     // });
+        // }, 'json');
+    });
 });
+
+function sendData() {
+    console.log(success)
+}

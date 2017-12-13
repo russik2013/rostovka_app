@@ -70,7 +70,7 @@
                                             <div class="col-md-12 inputGroupContainer">
 
                                                 <div class="input-group">
-                                                    <input name="phone" placeholder="063 111 11 11" class="form-control" type="text" value="{{old('phone')}}">
+                                                    <input name="phone" placeholder="063 111 11 11" class="form-control" type="number" value="{{old('phone')}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -198,3 +198,4 @@
 @section('auth_reg')
     <script type="text/javascript" src="{{asset('js/auth.js')}}"></script>
 @endsection
+

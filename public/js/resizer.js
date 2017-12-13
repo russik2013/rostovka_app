@@ -9,5 +9,3 @@ function setHeight(intElemOffsetHeight) {
 }
 
 setHeight(intElemOffsetHeight);
-
-console.log($('.content-page').length);

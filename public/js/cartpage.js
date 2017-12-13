@@ -26,10 +26,10 @@ function TotalCost() {
 
 
 if(Cart_data[0].row.length < 5){
-    var intElemOffsetHeight = $( window ).height() - 300;
+    var intElemOffsetHeight = $( window ).height() - 250;
     setHeight(intElemOffsetHeight);
     $(window).resize(function() {
-        intElemOffsetHeight = $( window ).height() - 575;
+        intElemOffsetHeight = $( window ).height() - 200;
         setHeight(intElemOffsetHeight);
     });
     function setHeight(intElemOffsetHeight) {
