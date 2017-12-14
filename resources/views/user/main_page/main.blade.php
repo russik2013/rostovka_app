@@ -1,9 +1,9 @@
 @extends('user.markup.markup')
 @section('mainPage')
 
-    <meta name="api_url" content="{{url('api/news')}}">
+    <meta name="api_url" content="{!! url('api/news') !!}">
+    <meta name="top_tovar_url" content="{!! url('api/topSales') !!}">
 
-    '_token': $('meta[name="csrf-token"]').attr('content')
 <div class="page-content-wraper">
     <!-- Intro -->
     <section id="intro" class="intro">

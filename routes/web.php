@@ -37,6 +37,7 @@ Route::get('/checkout', function () {
 });
 Route::post('/checkout', 'SaleController@makeOrder');
 
+Route::get('/testTopSales','SaleController@getTopSales');
 
 
 //Route::get('/product_inner', function () {

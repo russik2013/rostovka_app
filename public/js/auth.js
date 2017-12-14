@@ -10,14 +10,18 @@ $(document).ready(function() {
 
             var inputArray = $(form).serializeArray();
 
-
             for (var i = 0; i < Cart_data[0].row.length; i++){
-                inputArray = inputArray.concat({'name' : 'tovar['+i+'][product_id]','value': Cart_data[0].row[0].productID},
-                                               {'name' : 'tovar['+i+'][quantity]','value': Cart_data[0].row[0].quantity});
+                inputArray = inputArray.concat({'name' : 'tovar['+i+'][product_id]','value': Cart_data[0].row[i].productID},
+                                               {'name' : 'tovar['+i+'][quantity]','value': Cart_data[0].row[i].quantity},
+                                               {'name' : 'tovar['+i+'][quantityPrice]','value': Cart_data[0].row[i].quantityPrice});
 
             }
 
 
+            inputArray = inputArray.concat({'name' : 'summ','value': Cart_data[0].cartProducts_summ});
+
+
+            console.log(Cart_data[0])
 
             $.ajax({
                 type: 'POST',

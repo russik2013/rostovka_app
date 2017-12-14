@@ -95,7 +95,7 @@
                                             <div class="col-md-12 inputGroupContainer">
 
                                                 <div class="input-group">
-                                                    <input placeholder="привезти в отделения №3" class="form-control" type="text" value="">
+                                                    <input placeholder="привезти в отделения №3" name="info" class="form-control" type="text" value="">
                                                 </div>
                                             </div>
                                         </div>
@@ -106,7 +106,7 @@
                                             <div class="col-md-12 inputGroupContainer">
 
                                                 <div class="input-group">
-                                                    <textarea class="commentArea"></textarea>
+                                                    <textarea class="commentArea" name="komment"></textarea>
                                                 </div>
                                             </div>
                                         </div>
