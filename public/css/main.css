@@ -504,6 +504,7 @@ input::-webkit-inner-spin-button {
   font-size: 14px;
   float: left;
   width: 100%;
+  height: 23px;
 }
 #product-detail .chooseItem .lft,
 #product-detail .chooseItem .rth {

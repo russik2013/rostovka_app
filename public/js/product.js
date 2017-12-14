@@ -1,28 +1,25 @@
 'use strict';
 
-$('.chooseItem .radio').addClass('disable');
-var checked = $('input:checked', '.chooseItem'),
-    checker = $('input:checked', '.chooseItem');
-if($(checked).val() === 'on'){
-    $(checked[0].parentNode.parentNode).removeClass('disable');
+function getSelect(event) {
+    var domItem_price = Number (event.target.labels[0].children[1].children[0].innerText);
+    console.log(domItem_price);
+    checkSelect(event);
 }
 
-$(".chooseItem .radio input").change(function(){
-    $('.chooseItem .radio').addClass('disable');
+function checkSelect(event) {
+    var targetBox = $.find('[data-set="boxset"]')[0].classList;
+    var targetRostovka = $.find('[data-set="rotovkaset"]')[0].classList;
 
-    if($(this.parentNode.parentNode).hasClass('disable')){
-        $(this.parentNode.parentNode).removeClass('disable');
+    if(event.target.parentNode.parentNode.dataset.set === "rotovkaset"){
+        targetRostovka.remove('disable');
+        targetBox.add('disable');
     }
-    else
-        $(this.parentNode.parentNode).addClass('disable');
+    else{
+        targetRostovka.add('disable');
+        targetBox.remove('disable');
+    }
+}
+
+$('.buyProduct_inner').on('click', function() {
+
 });
-
-console.log(sessionStorage.getItem('id'));
-console.log($.find('#productID')[0].dataset.id = 1);
-// var GetedlocalData = JSON.parse(localStorage.localData);
-//
-// for(var i = 0; i < GetedlocalData.length; i++){
-//     if()
-// }
-
-console.log();

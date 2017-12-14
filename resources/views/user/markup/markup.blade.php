@@ -192,7 +192,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-12 col-sm-12 mb-sm-45">
                     <div class="footer-block about-us-block">
-                        <img src="{{'img/logo_white.png'}}" width="400" alt="">
+                        <img src="{{url('img/logo_white.png')}}" width="400" alt="">
                         <p>Gumbo beet greens corn soko endive gum gourd. Parsley allot courgette tatsoi pea sprouts fava
                             bean soluta nobis est ses eligendi optio.</p>
                         <ul class="footer-social-icon list-none-ib">

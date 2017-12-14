@@ -2956,19 +2956,21 @@ img.tp-caption {
 
 .product-filter li a {
     display: block;
-    padding: 0px 25px;
+    padding: 0 25px;
     color: #999;
 }
 
 .product-filter li a.active, .product-filter li.active a {
     color: #333;
 }
-
+.boxPrice{height: 10px}
+.iPrice{float: none !important;}
 /*------------------------------------------------------------------*/
 /* Tabs */
 /*------------------------------------------------------------------*/
 .tab-content .tab-pane.active {
     display: block;
+    width: 100%;
 }
 
 .tab-content .tab-pane {

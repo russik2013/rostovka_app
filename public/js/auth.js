@@ -6,11 +6,11 @@ $(document).ready(function() {
         submitButton: '[type="submit"]',
         message: '',
         submitHandler: function(validator, form, submitButton) {
-            var inputArray = $(form).serializeArray(), assembledАrray;
-            assembledАrray = inputArray.concat({'name' : 'dates','value': Cart_data[0]['cartCount']});
+            var inputArray = $(form).serializeArray(), assembledАrray, productsSumm = Cart_data[0].cartProducts_summ;
+            assembledАrray = inputArray.concat({'name' : 'dates[tovar][0]','value': Cart_data[0].row[0].name},
+                {'name' : 'dates[tovar][1]','value': Cart_data[0].row[1].name});
 
             console.log(Cart_data[0]);
-
 
             $.ajax({
                 type: 'POST',
