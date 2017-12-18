@@ -131,8 +131,7 @@ var TopSallesData= [
     }
 ],
     data = [],
-    productTheme = $('#template'),
-    localData = [];
+    productTheme = $('#template');
 
 
 $.ajax({
@@ -141,7 +140,6 @@ $.ajax({
     data: {category_id : 1}
 }).done(function( msg ) {
 
-    console.log(msg);
     for(var i= 0; i < msg.length; i++ ) {
         data[i] = {
             dataID: i,
@@ -159,7 +157,7 @@ $.ajax({
         };
 
     }
-    localStorage.setItem("localData", JSON.stringify(data));
+
     $(productTheme).tmpl(data).appendTo('#newest');
     // GetData(data)
 }) .fail(function( msg ) {
@@ -167,11 +165,5 @@ $.ajax({
 });
 
 
-
-//localStorage.setItem("localData", JSON.stringify(data));
-
 $(productTheme).tmpl(TopSallesData).appendTo('#topSalles');
 //$(productTheme).tmpl(data).appendTo('#newest');
-
-
-localStorage.clear();

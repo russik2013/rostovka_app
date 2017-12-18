@@ -7,7 +7,7 @@
 @section('product')
     <!-- Page Content -->
     <div class="productPage">
-        <section id="productID" class="content-page single-product-content" data-id="{{$product -> id}}">
+        <section id="productID" class="content-page single-product-content" data-prodid="{{$product -> id}}">
 
             <!-- Product -->
             <div id="product-detail" class="container">
@@ -135,7 +135,7 @@
                                                 <input class="quantity input-lg" step="1" min="1" name="quantity" value="1" title="Quantity" type="number" disabled/>
                                                 <span data-value="-" class="quantity-btn quantityMinus"></span>
                                             </div>
-                                            <button class="btn btn-lg btn-black buyProduct_inner btn-success" onclick="success('Товар добавлен в корзину')"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Купить</button>
+                                            <button class="btn btn-lg btn-black buyProduct_inner btn-success" data-set="buyButton" onclick="success('Товар добавлен в корзину')"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Купить</button>
                                         </div>
                                     </div>
                                 </div>

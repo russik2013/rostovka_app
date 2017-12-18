@@ -209,7 +209,6 @@ function GetData(data) {
 
 
 //Initialization
-
     var init = function () {
         Pagination.Init(document.getElementById('pagination'), {
             size: numberOfPages,
@@ -337,4 +336,24 @@ $('.submit_onChoose button').on('click', function () {
     values = [];
     $('.submit_onChoose').removeClass('showed');
     $('input[type=checkbox]').prop('checked', false)
+});
+
+
+// Slider from to
+$( function() {
+    $( "#slider-range" ).slider({
+        range: true,
+        min: 0,
+        max: 500,
+        values: [ 0, 500 ],
+        slide: function( event, ui ) {
+            $("#minchoose").val(ui.values[ 0 ]);
+            $("#amount").val(ui.values[ 1 ] );
+        },
+        change: function() {
+            console.log(this)
+        }
+    });
+    $( "#minchoose" ).val($( "#slider-range" ).slider( "values", 0 ));
+    $( "#amount" ).val($( "#slider-range" ).slider( "values", 1 ));
 });

@@ -217,8 +217,7 @@ ul {
 }
 .categoryPage .filterInner {
   max-height: 230px;
-  overflow: hidden;
-  overflow-y: scroll;
+  position: relative;
 }
 .categoryPage .sidebar-container {
   padding-right: 30px;

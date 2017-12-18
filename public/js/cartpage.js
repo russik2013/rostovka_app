@@ -87,7 +87,7 @@ function getSelect(event, value) {
             if(Number (targetID) === Cart_data[0].row[i].productID){
                 rostovka_Price = Cart_data[0].row[i].rostovka__price * Cart_data[0].row[i].quantity;
                 $.find('[product-id="'+ targetID +'"] .item--price')[0].innerText = Cart_data[0].row[i].rostovka__price + ' грн';
-                $.find('[product-id="'+ targetID +'"] [data-set="productSumm"]')[0].innerText = rostovka_Price + ' грн';
+                $.find('[product-id="'+ targetID +'"] .price.counting')[0].innerText = rostovka_Price + ' грн';
                 Cart_data[0].row[i].quantityPrice = rostovka_Price;
                 Cart_data[0].row[i].selected_value = value;
                 Cart_data[0].row[i].price = Cart_data[0].row[i].rostovka__price;
@@ -107,7 +107,7 @@ function getSelect(event, value) {
                 Cart_data[0].row[z].price = Cart_data[0].row[z].box__price;
                 box_Price = Cart_data[0].row[z].price * Cart_data[0].row[z].quantity;
                 $.find('[product-id="'+ targetID +'"] .item--price')[0].innerText = Cart_data[0].row[z].price + ' грн';
-                $.find('[product-id="'+ targetID +'"] [data-set="productSumm"]')[0].innerText = box_Price + ' грн';
+                $.find('[product-id="'+ targetID +'"] .price.counting')[0].innerText = box_Price + ' грн';
                 Cart_data[0].row[z].quantityPrice = box_Price;
                 Cart_data[0].row[z].selected_value = value;
             }
