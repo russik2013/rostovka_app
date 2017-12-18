@@ -60,7 +60,13 @@ class ProductController extends Controller
         $products = Product::take(10) ->orderBy('id', 'desc') -> get();
 
         return $products;
-        dd($products);
 
+    }
+
+    public function getProduct(Request $request){
+
+        $product = Product::find($request->id);
+
+        return $product;
     }
 }
