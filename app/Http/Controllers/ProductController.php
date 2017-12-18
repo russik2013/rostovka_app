@@ -67,6 +67,11 @@ class ProductController extends Controller
 
         $product = Product::find($request->id);
 
+        $product -> full__price = $product -> prise * $product -> box_count;
+        $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
+        $product -> types = $product -> type -> name;
+        $product -> product_url = url($product ->id.'/product');
+
         return $product;
     }
 }
