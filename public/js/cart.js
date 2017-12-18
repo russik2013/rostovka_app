@@ -27,7 +27,6 @@ var Cart_data = [{row: [], cartCount: 0, cartProducts_summ: 0}], hidden__price, 
 
 
 $(document).on("click", '[data-set="buyButton"]', function (event) {
-
     if($('#product-detail').length > 0){
         targetID  = Number ($('#productID')[0].dataset.prodid);
         var itemQuant = Number ($('.quantity').val()),
@@ -48,30 +47,80 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
         }
 
         if(trueTarget === false){
-            initAdd(event, targetID, Cart_data);
+            var poductinnerID = Number ($.find('[data-prodid]')[0].dataset.prodid);
+
+            $.ajax({
+                method: "POST",
+                url: "../../api/product",
+                data: {id : poductinnerID}
+            }).done(function( msg ) {
+                var imgurl, gTitle, gQuant, gprice, productIndex, selected_quantity, rostovkaPrice, productData = [];
+                productData.push(msg);
+
+                console.log(productData);
+
+                counter++;
+
+                Number ($('.cart-count')[0].innerText = counter);
+
+                productIndex = Number (productData[0].real_id);
+                gTitle = productData[0].name;
+                selected_quantity = 1;
+                gQuant = 0;
+                gprice = Number (productData[0].full__price);
+                imgurl = productData[0].imgUrl;
+                rostovkaPrice = productData[0].rostovka__price;
+
+                Cart_data[0].row.push({
+                    productID: productIndex,
+                    targetID: 'added_' + qid,
+                    imgUrl: imgurl,
+                    name: gTitle,
+                    quant: gQuant,
+                    price: gprice,
+                    quantity: selected_quantity,
+                    quantityPrice: gprice,
+                    rostovka__price: rostovkaPrice,
+                    buy_real_id: productData[0].real_id,
+                    cart_product_url: productData[0].product_url,
+                    selected_value: null,
+                    price_per_pair: productData[0].price,
+                    box__price: gprice
+                });
+
+                qid++;
+
+                $('.dropdownCart ul li').remove();
+                Cart_data[0].cartCount = Cart_data[0].row.length;
+
+                // localStorage.Cart_data = JSON.stringify(Cart_data);
+            }) .fail(function( msg ) {
+
+            });
         }
     }
 
-    else{
+    else {
         var checkif_true = false;
-        var domtargetID = Number (event.target.offsetParent.offsetParent.dataset.id);
+        var domtargetID = Number(event.target.offsetParent.offsetParent.dataset.id);
 
-        for (var i = 0; i < data.length; i++){
-            if(domtargetID === data[i].real_id){
+        for (var i = 0; i < data.length; i++) {
+            if (domtargetID === data[i].real_id) {
                 hidden__price = data[i].full__price;
                 targetID = data[i].real_id;
             }
         }
 
-
-        if(Cart_data[0].row.length === 0){
+        if (Cart_data[0].row.length === 0) {
             initAdd(event, targetID, Cart_data);
         }
-        else{
+
+        else {
             checkDublicate(event, targetID, checkif_true);
         }
     }
 });
+
 
 function additocart(targetID, itemQuant, domItem_price) {
     Cart_data[0].row[targetID].quantity += itemQuant;
@@ -92,15 +141,17 @@ function additocart(targetID, itemQuant, domItem_price) {
 
 
 function checkDublicate(event, targetID, checkif_true) {
-    for (var i = 0; i < Cart_data[0].row.length; i++){
-        if (Number (targetID) === Number (Cart_data[0].row[i].buy_real_id)){
-            checkif_true = false;
-            dublicate(targetID);
-            break;
-        }
 
-        else{
-            checkif_true = true;
+    if(checkif_true === false){
+        for (var i = 0; i < Cart_data[0].row.length; i++){
+            if (Number (targetID) === Number (Cart_data[0].row[i].buy_real_id)){
+                checkif_true = false;
+                dublicate(targetID);
+                break;
+            }
+            else{
+                checkif_true = true;
+            }
         }
     }
 
