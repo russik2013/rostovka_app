@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Rostovka</title>
-    <meta name="description" content="Philos Template"/>
-    <meta name="keywords" content="philos, WooCommerce, bootstrap, html template, philos template">
-    <meta name="author" content="philos"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content="">
+    <meta name="author" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
     <!--[if IE]>
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->

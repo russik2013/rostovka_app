@@ -40,7 +40,10 @@ function makeData(page_num, count_on_page) {
                 option_type: 'full__price' // Или full__price или rostovka__price
             };
         }
-
+        $(document).ready(function () {
+            $('.moveTo_start').addClass('not-active');
+            $('.previous_Item').addClass('not-active');
+        });
         GetData(data)
     }) .fail(function( msg ) {
 
@@ -80,10 +83,24 @@ function NextData(page_num, count_on_page) {
             $('.next_Item').addClass('not-active');
             $('.moveTo_end').addClass('not-active');
         }
+
         if(Number (page_num) !== Number (paginationCount)){
             $('.next_Item').removeClass('not-active');
             $('.moveTo_end').removeClass('not-active');
         }
+
+        if(page_num === 1){
+            $(document).ready(function () {
+                $('.moveTo_start').addClass('not-active');
+                $('.previous_Item').addClass('not-active');
+            });
+        }else {
+            $(document).ready(function () {
+                $('.moveTo_start').removeClass('not-active');
+                $('.previous_Item').removeClass('not-active');
+            })
+        }
+
 
     }) .fail(function( msg ) {
 
@@ -133,9 +150,11 @@ function GetData(data) {
                     Pagination.page = 1;
                 }
 
-
                 Pagination.Start();
                 scrolltop();
+
+                page_num = Pagination.page;
+                NextData(page_num, count_on_page);
             },
 
             Next: function () {
@@ -147,6 +166,9 @@ function GetData(data) {
                 page_num = Pagination.page;
                 Pagination.Start();
                 scrolltop();
+
+                page_num = Pagination.page;
+                NextData(page_num, count_on_page);
             },
 
             First_Page: function () {
@@ -154,10 +176,11 @@ function GetData(data) {
                 if (Pagination.page < 1) {
                     Pagination.page = 1;
                 }
-
-                page_num = Pagination.page;
                 Pagination.Start();
                 scrolltop();
+
+                page_num = Pagination.page;
+                NextData(page_num, count_on_page);
             },
 
             Last_Page: function () {
@@ -167,7 +190,9 @@ function GetData(data) {
                 }
                 Pagination.Start();
                 scrolltop();
+
                 page_num = Pagination.page;
+                NextData(page_num, count_on_page);
             },
 
             Bind: function () {
@@ -216,11 +241,11 @@ function GetData(data) {
 
             Create: function (e) {
                 var html = [
-                    '<div class="moveTo_start scrollUp" onclick="Pagination.First_Page()"><i class="fa fa-angle-double-left"></i></div>',
+                    // '<div class="moveTo_start scrollUp" onclick="Pagination.First_Page()"><i class="fa fa-angle-double-left"></i></div>',
                     '<a class="previous_Item scrollUp">← предыдущая</a>',
                     '<span class="paginationItems scrollUp"></span>',
                     '<a class="next_Item scrollUp">следующая →</a>',
-                    '<div class="moveTo_end scrollUp" onclick="Pagination.Last_Page()"><i class="fa fa-angle-double-right"></i></div>'
+                    // '<div class="moveTo_end scrollUp" onclick="Pagination.Last_Page()"><i class="fa fa-angle-double-right"></i></div>'
                 ];
 
                 e.innerHTML = html.join('');
