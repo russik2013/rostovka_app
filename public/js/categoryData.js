@@ -366,7 +366,8 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
         $.ajax({
             method: 'POST',
             url: "../api/products",
-            data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page}
+            data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
+                filters: values}
         }).done(function( msg ) {})
     }
 

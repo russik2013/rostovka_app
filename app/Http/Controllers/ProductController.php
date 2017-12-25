@@ -41,7 +41,11 @@ class ProductController extends Controller
     public function getProductsToCategory(Request $request){
 
         $products = Product::where('category_id', '=', $request -> category_id)
-           ->skip($request -> count_on_page * ($request ->page_num - 1)) -> take($request -> count_on_page)-> get();
+            ->whereIn('season_id', $this -> seasonFilter($request ->filters))
+            ->whereIn('type_id', $this -> typeFilter($request ->filters))
+            ->whereIn('manufacturer_id', $this -> manufacturerFilter($request ->filters))
+           ->skip($request -> count_on_page * ($request ->page_num - 1)) -> take($request -> count_on_page)
+            ->with('photo') ->groupBy('id') ->  get();
 
         foreach ($products as $product){
 
@@ -51,11 +55,63 @@ class ProductController extends Controller
             $product -> product_url = url($product ->id.'/product');
         }
 
-        //dd($products);
-
         return $products;
 
     }
+
+
+    protected function seasonFilter($filters){
+        $seasons = [];
+        if($filters) {
+            foreach ($filters as $filter) {
+
+                if ($filter[2] == 'season') {
+
+                    $seasons[] = $filter[1];
+
+                }
+
+            }
+            return Season::whereIn('name', $seasons) -> pluck('id');
+        }
+        return Season::all() -> pluck('id');
+    }
+
+    protected function typeFilter($filters){
+        $types = [];
+        if($filters) {
+            foreach ($filters as $filter) {
+
+                if ($filter[2] == 'tip') {
+
+                    $types[] = $filter[1];
+
+                }
+
+            }
+            return Type::whereIn('name', $types) -> pluck('id');
+        }
+        return Type::all() -> pluck('id');
+    }
+
+    protected function manufacturerFilter($filters){
+        $manufacturers = [];
+        if($filters) {
+            foreach ($filters as $filter) {
+
+                if ($filter[2] == 'manufacturers') {
+
+                    $manufacturers[] = $filter[1];
+
+                }
+
+            }
+            return Manufacturer::whereIn('name', $manufacturers) -> pluck('id');
+        }
+        return Manufacturer::all() -> pluck('id');
+    }
+
+
 
     public function getPaginationPageCount(Request $request){
 
