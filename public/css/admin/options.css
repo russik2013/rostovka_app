@@ -115,7 +115,7 @@
     padding-left: 20px;
     padding-right: 20px;
 }
-.ex--rates--table{margin-top: 30px}
+.ex--rates--table{margin-top: 30px; width: 100%}
 .ex--rates--table table thead th{
     font-size: 14px;
     text-transform: uppercase;
@@ -149,4 +149,12 @@
     float: right;
     cursor: pointer;
     margin-top: -2px;
+}
+
+.ex--rates--table .table tbody td{
+    padding-left: 10px !important;
+}
+
+.ex--rates--table.table tbody td:first-child, .ex--rates--table .table thead th:first-child{
+    padding-left: 10px !important;
 }

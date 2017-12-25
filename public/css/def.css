@@ -34,12 +34,12 @@ body {
 }
 
 ::-moz-selection {
-    background-color: #2c628f;
+    background-color: #96c032;
     color: #ffffff;
 }
 
 ::selection {
-    background-color: #2c628f;
+    background-color: #96c032;
     color: #ffffff;
 }
 
@@ -4593,7 +4593,7 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 .product-title a{
     font-size: 18px;
     border-bottom: 1px solid transparent;
-    white-space: nowrap;
+    white-space: pre-wrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -5091,7 +5091,7 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 
 .product-price {
     margin-bottom: 30px;
-    color: #63a3ff;
+    color: #a7c957;
     text-align: center;
     font-size: 24px;
     padding-bottom: 25px;
@@ -6624,4 +6624,8 @@ li a.enabled{
 .sizeBlock .filterInner .pull-left{
     width: 45px;
     padding: 0;
+}
+
+.not-active{
+    display: none;
 }

@@ -31,72 +31,28 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
         targetID  = Number ($('#productID')[0].dataset.prodid);
         var itemQuant = Number ($('.quantity').val()),
             domItem_price = Number ($.find('.choosed')[0].firstElementChild.lastElementChild.firstChild.innerText),
-            trueTarget = true;
+            trueTarget = false;
 
-        for (var l = 0; l < Cart_data[0].row.length; l++){
-            if(targetID === Cart_data[0].row[l].buy_real_id){
-                targetID = l;
-                additocart(targetID, itemQuant, domItem_price);
-
-                return false
-            }
-
-            else{
-                trueTarget = false;
-            }
+        if(Cart_data[0].row.length === 0){
+            getProductData(targetID, itemQuant, domItem_price);
         }
+        else {
+            for (var l = 0; l < Cart_data[0].row.length; l++){
+                if(targetID === Cart_data[0].row[l].buy_real_id){
+                    targetID = l;
+                    additocart(targetID, itemQuant, domItem_price);
 
-        if(trueTarget === false){
-            var poductinnerID = Number ($.find('[data-prodid]')[0].dataset.prodid);
+                    return false
+                }
 
-            $.ajax({
-                method: "POST",
-                url: "../../api/product",
-                data: {id : poductinnerID}
-            }).done(function( msg ) {
-                var imgurl, gTitle, gQuant, gprice, productIndex, selected_quantity, rostovkaPrice, productData = [];
-                productData.push(msg);
+                else{
+                    trueTarget = false;
+                }
+            }
 
-                console.log(productData);
-
-                counter++;
-
-                Number ($('.cart-count')[0].innerText = counter);
-
-                productIndex = Number (productData[0].real_id);
-                gTitle = productData[0].name;
-                selected_quantity = 1;
-                gQuant = 0;
-                gprice = Number (productData[0].full__price);
-                imgurl = productData[0].imgUrl;
-                rostovkaPrice = productData[0].rostovka__price;
-
-                Cart_data[0].row.push({
-                    productID: productIndex,
-                    targetID: 'added_' + qid,
-                    imgUrl: imgurl,
-                    name: gTitle,
-                    quant: gQuant,
-                    price: gprice,
-                    quantity: selected_quantity,
-                    quantityPrice: gprice,
-                    rostovka__price: rostovkaPrice,
-                    buy_real_id: productData[0].real_id,
-                    cart_product_url: productData[0].product_url,
-                    selected_value: null,
-                    price_per_pair: productData[0].price,
-                    box__price: gprice
-                });
-
-                qid++;
-
-                $('.dropdownCart ul li').remove();
-                Cart_data[0].cartCount = Cart_data[0].row.length;
-
-                // localStorage.Cart_data = JSON.stringify(Cart_data);
-            }) .fail(function( msg ) {
-
-            });
+            if(trueTarget === false){
+                getProductData(targetID, itemQuant, domItem_price);
+            }
         }
     }
 
@@ -121,6 +77,62 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
     }
 });
 
+// localStorage.clear();
+
+function getProductData(targetID, itemQuant, domItem_price) {
+    var poductinnerID = Number ($.find('[data-prodid]')[0].dataset.prodid),
+        productData = [];
+
+    $('button.buyProduct_inner').attr( "disabled", true );
+
+    $.ajax({
+        method: "POST",
+        url: "../../api/product",
+        data: {id : poductinnerID}
+    }).done(function( msg ) {
+        productData.push(msg);
+        if(Cart_data[0].row.length !== 0){
+            var lastElemnt = Number (Cart_data[0].row.slice(-1)[0].targetID.replace("added_", ""));
+            lastElemnt++;
+            pushtoCart();
+        }
+        else{
+            pushtoCart();
+            $('.isClear').remove()
+        }
+
+        function pushtoCart() {
+
+            Cart_data[0].row.push({
+                productID: productData[0].id,
+                targetID: 'added_' + lastElemnt,
+                imgUrl: '../img/product-img/prodimage1.jpeg',
+                name: productData[0].name,
+                quant: 'count',
+                price: Number ($('.choosed .iPrice')[0].innerText),
+                quantity: Number ($('.quantity.input-lg').val()),
+                quantityPrice: Number ($('.choosed .iPrice')[0].innerText) *  Number ($('.quantity.input-lg').val()),
+                rostovka__price: Number ($.find('[data-set="rotovkaset"] .iPrice')[0].innerText),
+                buy_real_id: productData[0].id,
+                cart_product_url: productData[0].product_url,
+                selected_value: null,
+                price_per_pair: productData[0].price,
+                box__price: Number ($.find('[data-set="boxset"] .iPrice')[0].innerText)
+            });
+
+            $('.dropdownCart ul li').remove();
+            Cart_data[0].cartCount = Cart_data[0].row.length;
+
+
+            targetID = lastElemnt;
+            getPrice();
+            cartSumm();
+            Cart_template(Cart_data);
+        }
+    }) .fail(function( msg ) {
+
+    });
+}
 
 function additocart(targetID, itemQuant, domItem_price) {
     Cart_data[0].row[targetID].quantity += itemQuant;
@@ -168,13 +180,16 @@ function initAdd(event, targetID, Cart_data) {
 }
 
 var arrayItemId = 0;
-function dublicate(targetID) {
+function dublicate(targetID, Cart_data) {
+
+    //если индификторы совпадают, увеличиваем колличество и записываем ID элемента в объекте
     for (var i = 0; i < Cart_data[0].row.length; i++){
         if(Cart_data[0].row[i].buy_real_id === targetID){
             Cart_data[0].row[i].quantity++;
             arrayItemId = i;
         }
     }
+    //если индификторы совпадают, увеличиваем колличество и записываем ID элемента в объекте
 
     mainPrice = Cart_data[0].row[arrayItemId].price;
     updPrice = mainPrice * Cart_data[0].row[arrayItemId].quantity;
@@ -191,6 +206,7 @@ function dublicate(targetID) {
 
     counterFn(mainPrice, targetID, updPrice);
 }
+
 
 
 var qid = 0, counter = 0;

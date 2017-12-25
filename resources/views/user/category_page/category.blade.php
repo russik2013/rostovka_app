@@ -81,8 +81,8 @@
 <div class="product-detail">
 <p class="product-title"><a href="${product_url}">${name}</a></p>
 <span class="col-md-12 pull-left goods_amount">
-<span class="col-md-12 pull-left">Ящик - <b>${box}</b> пар</span>
-<span class="col-md-12 pull-left">Минимум - <b>${rostovka}</b> пар</span>
+<span class="col-md-12 pull-left"><b>${box}</b> - в ящике</span>
+<span class="col-md-12 pull-left"><b>${rostovka}</b> - минимум</span>
 </span>
 <div class="col-md-12 pull-left goodsCount_price">
 <span class="item-price col-md-6 pull-left">${type}</span>

@@ -1,39 +1,96 @@
 'use strict';
-var data = [], productTheme = $('#template');
-
+var data = [], productTheme = $('#template'), page_num = 1, count_on_page = Number ($.find('#product-show option')[0].innerText), paginationNum, paginationCount = 0;
 
 $.ajax({
     method: "POST",
-    url: "../api/products",
-    data: {category_id : $('meta[name="category_id"]').attr('content')}
-}).done(function( msg ) {
-    for(var i= 0; i < msg.length; i++ ) {
-        data[i] = {
-            dataID: i,
-            imgUrl: "img/product-img/2imv.jpg",
-            name: msg[i].name,
-            rostovka: msg[i].rostovka_count,
-            box: msg[i].box_count,
-            type: msg[i].types,
-            price: msg[i].prise,
-            full__price: msg[i].full__price,
-            rostovka__price: msg[i].rostovka__price,
-            real_id: msg[i].id,
-            product_url: msg[i].product_url + '/' + i,
-            option_type: 'full__price' // Или full__price или rostovka__price
-        };
-
-    }
-
-    GetData(data)
-}) .fail(function( msg ) {
-
+    url: "../api/pagination",
+    data: {category_id : $('meta[name="category_id"]').attr('content'), count_on_page: count_on_page}
+}).done(function (msg) {
+    paginationNum = msg;
+    paginationCounter(paginationNum);
+    makeData(page_num, count_on_page);
 });
+
+var paginationCounter = function (paginationNum) {
+    paginationCount = paginationNum;
+    return paginationCount;
+};
+
+
+
+function makeData(page_num, count_on_page) {
+    $.ajax({
+        method: "POST",
+        url: "../api/products",
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page}
+    }).done(function( msg ) {
+        for(var i= 0; i < msg.length; i++ ) {
+            data[i] = {
+                dataID: i,
+                imgUrl: "img/product-img/2imv.jpg",
+                name: msg[i].name,
+                rostovka: msg[i].rostovka_count,
+                box: msg[i].box_count,
+                type: msg[i].types,
+                price: msg[i].prise,
+                full__price: msg[i].full__price,
+                rostovka__price: msg[i].rostovka__price,
+                real_id: msg[i].id,
+                product_url: msg[i].product_url + '/' + i,
+                option_type: 'full__price' // Или full__price или rostovka__price
+            };
+        }
+
+        GetData(data)
+    }) .fail(function( msg ) {
+
+    });
+}
 
 var numberPerPage = 12, pageList = [], currentPage = 1, numberOfPages = 0;
 
-function GetData(data) {
+function NextData(page_num, count_on_page) {
+    $.ajax({
+        method: "POST",
+        url: "../api/products",
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page}
+    }).done(function( msg ) {
+        for(var i= 0; i < msg.length; i++ ) {
+            data[i] = {
+                dataID: i,
+                imgUrl: "img/product-img/2imv.jpg",
+                name: msg[i].name,
+                rostovka: msg[i].rostovka_count,
+                box: msg[i].box_count,
+                type: msg[i].types,
+                price: msg[i].prise,
+                full__price: msg[i].full__price,
+                rostovka__price: msg[i].rostovka__price,
+                real_id: msg[i].id,
+                product_url: msg[i].product_url + '/' + i,
+                option_type: 'full__price' // Или full__price или rostovka__price
+            };
+        }
 
+        pageList = data;
+
+        drawItems(pageList);
+
+        if(Number (page_num) === Number (paginationCount)){
+            $('.next_Item').addClass('not-active');
+            $('.moveTo_end').addClass('not-active');
+        }
+        if(Number (page_num) !== Number (paginationCount)){
+            $('.next_Item').removeClass('not-active');
+            $('.moveTo_end').removeClass('not-active');
+        }
+
+    }) .fail(function( msg ) {
+
+    });
+}
+
+function GetData(data) {
     if (data.length > 0) {
         //work with pagination
         var Pagination = {
@@ -53,22 +110,30 @@ function GetData(data) {
 
             Last: function () {
                 Pagination.code += '<i>...</i><a>' + Pagination.size + '</a>';
+                page_num = Pagination.size;
             },
 
             First: function () {
                 Pagination.code += '<a>1</a><i>...</i>';
+                page_num = 1;
             },
 
             Click: function () {
+                page_num = Pagination.page = +this.innerHTML;
+                NextData(page_num, count_on_page);
                 Pagination.page = +this.innerHTML;
                 Pagination.Start();
             },
 
             Prev: function () {
                 Pagination.page--;
-                if (Pagination.page < 1) {
+
+                page_num = Pagination.page;
+                if (page_num < 1) {
                     Pagination.page = 1;
                 }
+
+
                 Pagination.Start();
                 scrolltop();
             },
@@ -78,6 +143,8 @@ function GetData(data) {
                 if (Pagination.page > Pagination.size) {
                     Pagination.page = Pagination.size;
                 }
+
+                page_num = Pagination.page;
                 Pagination.Start();
                 scrolltop();
             },
@@ -87,6 +154,8 @@ function GetData(data) {
                 if (Pagination.page < 1) {
                     Pagination.page = 1;
                 }
+
+                page_num = Pagination.page;
                 Pagination.Start();
                 scrolltop();
             },
@@ -98,6 +167,7 @@ function GetData(data) {
                 }
                 Pagination.Start();
                 scrolltop();
+                page_num = Pagination.page;
             },
 
             Bind: function () {
@@ -203,7 +273,8 @@ function GetData(data) {
         var end = begin + numberPerPage;
 
         pageList = data.slice(begin, end);
-        drawItems();
+
+        drawItems(pageList);
     }
 
 
@@ -211,7 +282,7 @@ function GetData(data) {
 //Initialization
     var init = function () {
         Pagination.Init(document.getElementById('pagination'), {
-            size: numberOfPages,
+            size: Number (paginationCount),
             page: 1,
             step: 3
         });
@@ -220,7 +291,7 @@ function GetData(data) {
     init();
 }
 
-function drawItems() {
+function drawItems(pageList) {
     var delay = 0;
     document.getElementById("target").innerHTML = "";
 
@@ -266,6 +337,12 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
                 '</li>');
         }
         RemoveItem();
+
+        $.ajax({
+            method: 'POST',
+            url: "../api/products",
+            data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page}
+        }).done(function( msg ) {})
     }
 
     if ($(this).is(':not(:checked)')) {
