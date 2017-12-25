@@ -11,6 +11,11 @@
 |
 */
 
+
+
+Route::get('/parsing', 'Parsing\ParsingController@index');
+
+//////////////////////////////////////////////////////////////////////////////
 Route::get('/', function () {
     return view('user.main_page.main');
 });

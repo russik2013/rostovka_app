@@ -34,7 +34,7 @@ class CreateProductsTable extends Migration
                 ->onDelete('cascade');
             $table->boolean('show_product');
             $table->string('currency', 228);
-            $table->text('full_description');
+            $table->text('full_description')->nullable();
             $table->string('discount',228);
             $table->boolean('accessibility');
             $table->integer('type_id');

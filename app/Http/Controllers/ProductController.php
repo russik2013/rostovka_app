@@ -40,7 +40,7 @@ class ProductController extends Controller
 
     public function getProductsToCategory(Request $request){
 
-        $products = Product::where('category_id', '=', $request -> category_id) -> get();
+        $products = Product::where('category_id', '=', $request -> category_id) -> take(100) -> get();
 
         foreach ($products as $product){
 
