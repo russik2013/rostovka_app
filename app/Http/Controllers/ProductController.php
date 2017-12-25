@@ -40,7 +40,8 @@ class ProductController extends Controller
 
     public function getProductsToCategory(Request $request){
 
-        $products = Product::where('category_id', '=', $request -> category_id) -> take(100) -> get();
+        $products = Product::where('category_id', '=', $request -> category_id)
+           ->skip($request -> count_on_page * ($request ->page_num - 1)) -> take($request -> count_on_page)-> get();
 
         foreach ($products as $product){
 
@@ -50,7 +51,19 @@ class ProductController extends Controller
             $product -> product_url = url($product ->id.'/product');
         }
 
+        //dd($products);
+
         return $products;
+
+    }
+
+    public function getPaginationPageCount(Request $request){
+
+        $products_count = Product::where('category_id', '=', $request -> category_id)
+            -> count();
+        $count_of_page = $products_count / $request ->count_on_page;
+
+        return ceil($count_of_page);
 
     }
 

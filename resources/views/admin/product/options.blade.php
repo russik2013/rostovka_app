@@ -16,84 +16,7 @@
                         </div>
 
                         <div class="col-md-12 option--Line">
-                            <div class="col-md-6">
-                                <span class="min--title">Скидки</span>
-
-                                <div class="col-md-12 orderInfo__input">
-                                    <div class="col-md-5">
-                                        <label>Укажите скидку на все товары</label>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <div class="form-group">
-                                            <input class="form-control border-input" type="number" placeholder="Укажите только число, без %">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12 discounts">
-                                        <div class="col-md-5">
-                                            <label>Скидки</label>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <ul>
-                                                <li data-id="1">5% <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
-                                                <li data-id="2">10% <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
-                                                <li data-id="3">15% <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
-                                                <li data-id="4">20% <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
-                                                <li data-id="5">25% <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
-                                                <li data-id="6">30% <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
-                                                <li data-id="7">35% <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
-                                            </ul>
-                                            <div class="col-md-12 addnewButton">
-                                                <input class="pull-left filter--inputs" type="number" placeholder="Введите скидку">
-                                                <button class="pull-left add--newFilter add_discount">Добавить</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 patMethods">
-                                <span class="min--title">Способы оплаты</span>
-
-                                <div class="col-md-5">
-                                    <div class="col-md-12 addnewButton">
-                                        <input class="pull-left filter--inputs add__payMethodVal" placeholder="Способ оплаты">
-                                        <button class="pull-left add--newFilter add__payMethod">Добавить</button>
-                                    </div>
-                                </div>
-                                <div class="col-md-5 Methods pull-right">
-                                    <ul>
-                                        <li data-id="1">Наличными <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
-                                        <li data-id="2">На карту "ПриватБанка" <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-12 option--Line">
-                            <div class="col-md-6 deliveryBlock">
-                                <span class="min--title">Способы доставки</span>
-
-                                <div class="col-md-5">
-                                    <div class="col-md-12 addnewButton">
-                                        <input class="pull-left filter--inputs delivery__val" placeholder="Способ доставки">
-                                        <button class="pull-left add--newFilter delivery__method">Добавить</button>
-                                    </div>
-                                </div>
-                                <div class="col-md-5 Methods pull-right deliveryMethods">
-                                    <ul>
-                                        <li data-id="1">Новая почта <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
-                                        <li data-id="2">Delivery <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
-                                        <li data-id="2">Автолюкс <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
-                                        <li data-id="2">InTime <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
-                                        <li data-id="2">Подвести к автобусу <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
-                                        <li data-id="2">Самовывоз <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <span class="min--title">Валюта</span>
 
                                 <div class="col-md-12">
@@ -101,7 +24,7 @@
                                         <input class="pull-left filter--inputs exrateName" placeholder="Введите имя валюты">
                                         <input class="pull-left filter--inputs exrateCode" placeholder="Введите знак валюты">
                                         <input class="pull-left filter--inputs exrateCourse" type="number" placeholder="Введите курс">
-                                        <button class="pull-right add--newFilter ex_rates__add">Добавить</button>
+                                        <button class="pull-left add--newFilter ex_rates__add">Добавить</button>
                                     </div>
                                 </div>
                                 <div class="col-md-12 Methods pull-right ex--rates--table">
@@ -126,6 +49,47 @@
                                         </tr>
                                         </tbody>
                                     </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12 option--Line">
+                            <div class="col-md-6 deliveryBlock">
+                                <span class="min--title">Способы доставки</span>
+
+                                <div class="col-md-7 col-sm-12 col-xs-12">
+                                    <div class="col-md-12 addnewButton">
+                                        <input class="pull-left filter--inputs delivery__val" placeholder="Способ доставки">
+                                        <button class="pull-left add--newFilter delivery__method">Добавить</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 Methods pull-right deliveryMethods">
+                                    <ul>
+                                        <li data-id="1">Новая почта <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
+                                        <li data-id="2">Delivery <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
+                                        <li data-id="2">Автолюкс <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
+                                        <li data-id="2">InTime <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
+                                        <li data-id="2">Подвести к автобусу <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
+                                        <li data-id="2">Самовывоз <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 patMethods">
+                                <span class="min--title">Способы оплаты</span>
+
+                                <div class="col-md-7 col-sm-12 col-xs-12">
+                                    <div class="col-md-12 addnewButton">
+                                        <input class="pull-left filter--inputs add__payMethodVal" placeholder="Способ оплаты">
+                                        <button class="pull-left add--newFilter add__payMethod">Добавить</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 Methods pull-right">
+                                    <ul>
+                                        <li data-id="1">Наличными <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
+                                        <li data-id="2">На карту "ПриватБанка" <a class="remove__Filter" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

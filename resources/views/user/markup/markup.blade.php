@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Rostovka</title>
-    <meta name="description" content="Philos Template"/>
-    <meta name="keywords" content="philos, WooCommerce, bootstrap, html template, philos template">
-    <meta name="author" content="philos"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content="">
+    <meta name="author" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
     <!--[if IE]>
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
@@ -192,7 +192,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-12 col-sm-12 mb-sm-45">
                     <div class="footer-block about-us-block">
-                        <img src="{{'img/logo_white.png'}}" width="400" alt="">
+                        <img src="{{url('img/logo_white.png')}}" width="400" alt="">
                         <p>Gumbo beet greens corn soko endive gum gourd. Parsley allot courgette tatsoi pea sprouts fava
                             bean soluta nobis est ses eligendi optio.</p>
                         <ul class="footer-social-icon list-none-ib">

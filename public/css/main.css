@@ -91,8 +91,35 @@ ul {
 
 .mainPage .product-item:hover .goods_amount {
   display: block;
-  margin-top: 10px;
+  max-width: 110px;
+  text-align: left;
+  width: 100%;
+  margin: 0 auto;
+  float: none;
+  padding-left: 8px;
+  padding-top: 7px;
 }
+
+
+.categoryPage .product-item .goods_amount {
+  display: block;
+  max-width: 110px;
+  text-align: left;
+  width: 100%;
+  margin: 0 auto;
+  float: none;
+  padding-left: 8px;
+  padding-top: 7px;
+}
+
+
+.goods_amount b{
+  float: left;
+  padding-right: 4px;
+}
+
+.col-md-12.pull-left.goodsCount_price{margin-top: 8px}
+
 .product-item:hover .goodsCount_price {
   display: block;
 }
@@ -201,9 +228,11 @@ ul {
 .categoryPage .sidebar-container {
   padding: 0;
 }
+
 .categoryPage .product-item {
   border: none;
   min-height: 470px;
+  overflow: hidden;
 }
 
 .categoryPage .product-list-view .goods_amount {
@@ -217,7 +246,9 @@ ul {
 }
 .categoryPage .filterInner {
   max-height: 230px;
+  position: relative;
   overflow: hidden;
+  box-shadow: 0 0 black;
   overflow-y: scroll;
 }
 .categoryPage .sidebar-container {
@@ -504,6 +535,7 @@ input::-webkit-inner-spin-button {
   font-size: 14px;
   float: left;
   width: 100%;
+  height: 23px;
 }
 #product-detail .chooseItem .lft,
 #product-detail .chooseItem .rth {
@@ -516,7 +548,7 @@ input::-webkit-inner-spin-button {
 }
 #product-detail .chooseItem .lft span,
 #product-detail .chooseItem .rth span {
-  color: #63a3ff;
+  color: #96c032;
   float: right;
   font-size: 17px;
   font-family: "Montserrat";

@@ -5,43 +5,165 @@ function getData(data) {
 }
 
 function Cart_template(Cart_data) {
-    $.get('../cartTmpl/cart.html', {}, function (templateBody) {
+    if($('.categoryPage').length > 0){
+        $.get('../cartTmpl/cart.html', {}, function (templateBody) {
+            $.tmpl(templateBody, Cart_data).appendTo('#cartTemplate');
+        });
+    } else if($('#productID').length > 0) {
+        $.get('../../cartTmpl/cart.html', {}, function (templateBody) {
+            $.tmpl(templateBody, Cart_data).appendTo('#cartTemplate');
+        });
+    } else if($('.section-padding-b').length > 0){
+        $.get('cartTmpl/cart.html', {}, function (templateBody) {
+            $.tmpl(templateBody, Cart_data).appendTo('#cartTemplate');
+        });
+    }else
+        $.get('cartTmpl/cart.html', {}, function (templateBody) {
         $.tmpl(templateBody, Cart_data).appendTo('#cartTemplate');
     });
 }
 
 var Cart_data = [{row: [], cartCount: 0, cartProducts_summ: 0}], hidden__price, targetID;
 
+
 $(document).on("click", '[data-set="buyButton"]', function (event) {
-    var checkif_true = false;
-    var domtargetID = Number (event.target.offsetParent.offsetParent.dataset.id);
+    if($('#product-detail').length > 0){
+        targetID  = Number ($('#productID')[0].dataset.prodid);
+        var itemQuant = Number ($('.quantity').val()),
+            domItem_price = Number ($.find('.choosed')[0].firstElementChild.lastElementChild.firstChild.innerText),
+            trueTarget = false;
 
+        if(Cart_data[0].row.length === 0){
+            getProductData(targetID, itemQuant, domItem_price);
+        }
+        else {
+            for (var l = 0; l < Cart_data[0].row.length; l++){
+                if(targetID === Cart_data[0].row[l].buy_real_id){
+                    targetID = l;
+                    additocart(targetID, itemQuant, domItem_price);
 
-    for (var i = 0; i < data.length; i++){
-        if(domtargetID === data[i].real_id){
-            hidden__price = data[i].full__price;
-            targetID = data[i].real_id;
+                    return false
+                }
+
+                else{
+                    trueTarget = false;
+                }
+            }
+
+            if(trueTarget === false){
+                getProductData(targetID, itemQuant, domItem_price);
+            }
         }
     }
 
+    else {
+        var checkif_true = false;
+        var domtargetID = Number(event.target.offsetParent.offsetParent.dataset.id);
 
-    if(Cart_data[0].row.length === 0){
-        initAdd(event, targetID, Cart_data);
-    }
-    else{
-        checkDublicate(event, targetID, checkif_true);
+        for (var i = 0; i < data.length; i++) {
+            if (domtargetID === data[i].real_id) {
+                hidden__price = data[i].full__price;
+                targetID = data[i].real_id;
+            }
+        }
+
+        if (Cart_data[0].row.length === 0) {
+            initAdd(event, targetID, Cart_data);
+        }
+
+        else {
+            checkDublicate(event, targetID, checkif_true);
+        }
     }
 });
 
-function checkDublicate(event, targetID, checkif_true) {
-    for (var i = 0; i < Cart_data[0].row.length; i++){
-        if (Number (targetID) === Number (Cart_data[0].row[i].buy_real_id)){
-            checkif_true = false;
-            dublicate(targetID);
-            break;
+// localStorage.clear();
+
+function getProductData(targetID, itemQuant, domItem_price) {
+    var poductinnerID = Number ($.find('[data-prodid]')[0].dataset.prodid),
+        productData = [];
+
+    $('button.buyProduct_inner').attr( "disabled", true );
+
+    $.ajax({
+        method: "POST",
+        url: "../../api/product",
+        data: {id : poductinnerID}
+    }).done(function( msg ) {
+        productData.push(msg);
+        if(Cart_data[0].row.length !== 0){
+            var lastElemnt = Number (Cart_data[0].row.slice(-1)[0].targetID.replace("added_", ""));
+            lastElemnt++;
+            pushtoCart();
         }
         else{
-            checkif_true = true;
+            pushtoCart();
+            $('.isClear').remove()
+        }
+
+        function pushtoCart() {
+
+            Cart_data[0].row.push({
+                productID: productData[0].id,
+                targetID: 'added_' + lastElemnt,
+                imgUrl: '../img/product-img/prodimage1.jpeg',
+                name: productData[0].name,
+                quant: 'count',
+                price: Number ($('.choosed .iPrice')[0].innerText),
+                quantity: Number ($('.quantity.input-lg').val()),
+                quantityPrice: Number ($('.choosed .iPrice')[0].innerText) *  Number ($('.quantity.input-lg').val()),
+                rostovka__price: Number ($.find('[data-set="rotovkaset"] .iPrice')[0].innerText),
+                buy_real_id: productData[0].id,
+                cart_product_url: productData[0].product_url,
+                selected_value: null,
+                price_per_pair: productData[0].price,
+                box__price: Number ($.find('[data-set="boxset"] .iPrice')[0].innerText)
+            });
+
+            $('.dropdownCart ul li').remove();
+            Cart_data[0].cartCount = Cart_data[0].row.length;
+
+
+            targetID = lastElemnt;
+            getPrice();
+            cartSumm();
+            Cart_template(Cart_data);
+        }
+    }) .fail(function( msg ) {
+
+    });
+}
+
+function additocart(targetID, itemQuant, domItem_price) {
+    Cart_data[0].row[targetID].quantity += itemQuant;
+    Cart_data[0].row[targetID].quantityPrice = Cart_data[0].row[targetID].quantity * domItem_price;
+    Cart_data[0].row[targetID].price = domItem_price;
+
+    var allPrice = 0;
+    for (var i = 0; i < Cart_data[0].row.length; i++){
+        allPrice += domItem_price * Cart_data[0].row[i].quantity;
+    }
+    Cart_data[0].cartProducts_summ = allPrice;
+
+    cartSumm();
+    localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+    $('.dropdownCart ul li').remove();
+    Cart_template(Cart_data);
+}
+
+
+function checkDublicate(event, targetID, checkif_true) {
+
+    if(checkif_true === false){
+        for (var i = 0; i < Cart_data[0].row.length; i++){
+            if (Number (targetID) === Number (Cart_data[0].row[i].buy_real_id)){
+                checkif_true = false;
+                dublicate(targetID);
+                break;
+            }
+            else{
+                checkif_true = true;
+            }
         }
     }
 
@@ -58,13 +180,16 @@ function initAdd(event, targetID, Cart_data) {
 }
 
 var arrayItemId = 0;
-function dublicate(targetID) {
+function dublicate(targetID, Cart_data) {
+
+    //если индификторы совпадают, увеличиваем колличество и записываем ID элемента в объекте
     for (var i = 0; i < Cart_data[0].row.length; i++){
         if(Cart_data[0].row[i].buy_real_id === targetID){
             Cart_data[0].row[i].quantity++;
             arrayItemId = i;
         }
     }
+    //если индификторы совпадают, увеличиваем колличество и записываем ID элемента в объекте
 
     mainPrice = Cart_data[0].row[arrayItemId].price;
     updPrice = mainPrice * Cart_data[0].row[arrayItemId].quantity;
@@ -81,6 +206,7 @@ function dublicate(targetID) {
 
     counterFn(mainPrice, targetID, updPrice);
 }
+
 
 
 var qid = 0, counter = 0;
@@ -281,7 +407,6 @@ function getData() {
 }
 
 getData();
-
 
 if(Cart_data[0].row.length === 0){
     $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>')

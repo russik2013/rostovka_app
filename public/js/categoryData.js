@@ -1,39 +1,113 @@
 'use strict';
-var data = [], productTheme = $('#template');
-
+var data = [], productTheme = $('#template'), page_num = 1, count_on_page = Number ($.find('#product-show option')[0].innerText), paginationNum, paginationCount = 0;
 
 $.ajax({
     method: "POST",
-    url: "../api/products",
-    data: {category_id : $('meta[name="category_id"]').attr('content')}
-}).done(function( msg ) {
-    for(var i= 0; i < msg.length; i++ ) {
-        data[i] = {
-            dataID: i,
-            imgUrl: "img/product-img/2imv.jpg",
-            name: msg[i].name,
-            rostovka: msg[i].rostovka_count,
-            box: msg[i].box_count,
-            type: msg[i].types,
-            price: msg[i].prise,
-            full__price: msg[i].full__price,
-            rostovka__price: msg[i].rostovka__price,
-            real_id: msg[i].id,
-            product_url: msg[i].product_url + '/' + i,
-            option_type: 'full__price' // Или full__price или rostovka__price
-        };
-
-    }
-
-    GetData(data)
-}) .fail(function( msg ) {
-
+    url: "../api/pagination",
+    data: {category_id : $('meta[name="category_id"]').attr('content'), count_on_page: count_on_page}
+}).done(function (msg) {
+    paginationNum = msg;
+    paginationCounter(paginationNum);
+    makeData(page_num, count_on_page);
 });
+
+var paginationCounter = function (paginationNum) {
+    paginationCount = paginationNum;
+    return paginationCount;
+};
+
+
+
+function makeData(page_num, count_on_page) {
+    $.ajax({
+        method: "POST",
+        url: "../api/products",
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page}
+    }).done(function( msg ) {
+        for(var i= 0; i < msg.length; i++ ) {
+            data[i] = {
+                dataID: i,
+                imgUrl: "img/product-img/2imv.jpg",
+                name: msg[i].name,
+                rostovka: msg[i].rostovka_count,
+                box: msg[i].box_count,
+                type: msg[i].types,
+                price: msg[i].prise,
+                full__price: msg[i].full__price,
+                rostovka__price: msg[i].rostovka__price,
+                real_id: msg[i].id,
+                product_url: msg[i].product_url + '/' + i,
+                option_type: 'full__price' // Или full__price или rostovka__price
+            };
+        }
+        $(document).ready(function () {
+            $('.moveTo_start').addClass('not-active');
+            $('.previous_Item').addClass('not-active');
+        });
+        GetData(data)
+    }) .fail(function( msg ) {
+
+    });
+}
 
 var numberPerPage = 12, pageList = [], currentPage = 1, numberOfPages = 0;
 
-function GetData(data) {
+function NextData(page_num, count_on_page) {
+    $.ajax({
+        method: "POST",
+        url: "../api/products",
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page}
+    }).done(function( msg ) {
+        for(var i= 0; i < msg.length; i++ ) {
+            data[i] = {
+                dataID: i,
+                imgUrl: "img/product-img/2imv.jpg",
+                name: msg[i].name,
+                rostovka: msg[i].rostovka_count,
+                box: msg[i].box_count,
+                type: msg[i].types,
+                price: msg[i].prise,
+                full__price: msg[i].full__price,
+                rostovka__price: msg[i].rostovka__price,
+                real_id: msg[i].id,
+                product_url: msg[i].product_url + '/' + i,
+                option_type: 'full__price' // Или full__price или rostovka__price
+            };
+        }
 
+        pageList = data;
+
+        drawItems(pageList);
+
+        if(Number (page_num) === Number (paginationCount)){
+            $('.next_Item').addClass('not-active');
+            $('.moveTo_end').addClass('not-active');
+        }
+
+        if(Number (page_num) !== Number (paginationCount)){
+            $('.next_Item').removeClass('not-active');
+            $('.moveTo_end').removeClass('not-active');
+        }
+
+        if(page_num === 1){
+            $(document).ready(function () {
+                $('.moveTo_start').addClass('not-active');
+                $('.previous_Item').addClass('not-active');
+            });
+        }else {
+            $(document).ready(function () {
+                $('.moveTo_start').removeClass('not-active');
+                $('.previous_Item').removeClass('not-active');
+            })
+        }
+
+
+    }) .fail(function( msg ) {
+
+    });
+}
+
+function GetData(data) {
     if (data.length > 0) {
         //work with pagination
         var Pagination = {
@@ -53,24 +127,34 @@ function GetData(data) {
 
             Last: function () {
                 Pagination.code += '<i>...</i><a>' + Pagination.size + '</a>';
+                page_num = Pagination.size;
             },
 
             First: function () {
                 Pagination.code += '<a>1</a><i>...</i>';
+                page_num = 1;
             },
 
             Click: function () {
+                page_num = Pagination.page = +this.innerHTML;
+                NextData(page_num, count_on_page);
                 Pagination.page = +this.innerHTML;
                 Pagination.Start();
             },
 
             Prev: function () {
                 Pagination.page--;
-                if (Pagination.page < 1) {
+
+                page_num = Pagination.page;
+                if (page_num < 1) {
                     Pagination.page = 1;
                 }
+
                 Pagination.Start();
                 scrolltop();
+
+                page_num = Pagination.page;
+                NextData(page_num, count_on_page);
             },
 
             Next: function () {
@@ -78,8 +162,13 @@ function GetData(data) {
                 if (Pagination.page > Pagination.size) {
                     Pagination.page = Pagination.size;
                 }
+
+                page_num = Pagination.page;
                 Pagination.Start();
                 scrolltop();
+
+                page_num = Pagination.page;
+                NextData(page_num, count_on_page);
             },
 
             First_Page: function () {
@@ -89,6 +178,9 @@ function GetData(data) {
                 }
                 Pagination.Start();
                 scrolltop();
+
+                page_num = Pagination.page;
+                NextData(page_num, count_on_page);
             },
 
             Last_Page: function () {
@@ -98,6 +190,9 @@ function GetData(data) {
                 }
                 Pagination.Start();
                 scrolltop();
+
+                page_num = Pagination.page;
+                NextData(page_num, count_on_page);
             },
 
             Bind: function () {
@@ -146,11 +241,11 @@ function GetData(data) {
 
             Create: function (e) {
                 var html = [
-                    '<div class="moveTo_start scrollUp" onclick="Pagination.First_Page()"><i class="fa fa-angle-double-left"></i></div>',
+                    // '<div class="moveTo_start scrollUp" onclick="Pagination.First_Page()"><i class="fa fa-angle-double-left"></i></div>',
                     '<a class="previous_Item scrollUp">← предыдущая</a>',
                     '<span class="paginationItems scrollUp"></span>',
                     '<a class="next_Item scrollUp">следующая →</a>',
-                    '<div class="moveTo_end scrollUp" onclick="Pagination.Last_Page()"><i class="fa fa-angle-double-right"></i></div>'
+                    // '<div class="moveTo_end scrollUp" onclick="Pagination.Last_Page()"><i class="fa fa-angle-double-right"></i></div>'
                 ];
 
                 e.innerHTML = html.join('');
@@ -203,16 +298,16 @@ function GetData(data) {
         var end = begin + numberPerPage;
 
         pageList = data.slice(begin, end);
-        drawItems();
+
+        drawItems(pageList);
     }
 
 
 
 //Initialization
-
     var init = function () {
         Pagination.Init(document.getElementById('pagination'), {
-            size: numberOfPages,
+            size: Number (paginationCount),
             page: 1,
             step: 3
         });
@@ -221,7 +316,7 @@ function GetData(data) {
     init();
 }
 
-function drawItems() {
+function drawItems(pageList) {
     var delay = 0;
     document.getElementById("target").innerHTML = "";
 
@@ -267,6 +362,12 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
                 '</li>');
         }
         RemoveItem();
+
+        $.ajax({
+            method: 'POST',
+            url: "../api/products",
+            data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page}
+        }).done(function( msg ) {})
     }
 
     if ($(this).is(':not(:checked)')) {
@@ -337,4 +438,24 @@ $('.submit_onChoose button').on('click', function () {
     values = [];
     $('.submit_onChoose').removeClass('showed');
     $('input[type=checkbox]').prop('checked', false)
+});
+
+
+// Slider from to
+$( function() {
+    $( "#slider-range" ).slider({
+        range: true,
+        min: 0,
+        max: 500,
+        values: [ 0, 500 ],
+        slide: function( event, ui ) {
+            $("#minchoose").val(ui.values[ 0 ]);
+            $("#amount").val(ui.values[ 1 ] );
+        },
+        change: function() {
+            console.log(this)
+        }
+    });
+    $( "#minchoose" ).val($( "#slider-range" ).slider( "values", 0 ));
+    $( "#amount" ).val($( "#slider-range" ).slider( "values", 1 ));
 });

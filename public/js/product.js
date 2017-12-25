@@ -1,28 +1,19 @@
 'use strict';
 
-$('.chooseItem .radio').addClass('disable');
-var checked = $('input:checked', '.chooseItem'),
-    checker = $('input:checked', '.chooseItem');
-if($(checked).val() === 'on'){
-    $(checked[0].parentNode.parentNode).removeClass('disable');
-}
+function getSelect(event) {
+    var targetBox = $.find('[data-set="boxset"]')[0].classList;
+    var targetRostovka = $.find('[data-set="rotovkaset"]')[0].classList;
 
-$(".chooseItem .radio input").change(function(){
-    $('.chooseItem .radio').addClass('disable');
-
-    if($(this.parentNode.parentNode).hasClass('disable')){
-        $(this.parentNode.parentNode).removeClass('disable');
+    if (event.target.parentNode.parentNode.dataset.set === "rotovkaset") {
+        targetRostovka.remove('disable');
+        targetRostovka.add('choosed');
+        targetBox.add('disable');
+        targetBox.remove('choosed');
     }
-    else
-        $(this.parentNode.parentNode).addClass('disable');
-});
-
-console.log(sessionStorage.getItem('id'));
-console.log($.find('#productID')[0].dataset.id = 1);
-// var GetedlocalData = JSON.parse(localStorage.localData);
-//
-// for(var i = 0; i < GetedlocalData.length; i++){
-//     if()
-// }
-
-console.log();
+    else {
+        targetRostovka.add('disable');
+        targetRostovka.remove('choosed');
+        targetBox.remove('disable');
+        targetBox.add('choosed');
+    }
+}

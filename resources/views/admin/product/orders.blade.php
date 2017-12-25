@@ -14,17 +14,19 @@
                         <div class="header">
                             <h4 class="title">Список заказов</h4>
                         </div>
+
                         <div class="content table-responsive table-full-width">
                             <div class="col-md-12 pull-left datePicker">
-                                <span class="min--title pull-left col-md-12">Cписок заказов за период (PDF)</span>
-                                <div class="col-md-5 datePicker__Block">
+                                <span class="min--title pull-left col-md-12">Скачать список заказов за период (PDF)</span>
+
+                                <div class="col-md-5 datePicker__Block col-xs-12 col-sm-12">
                                     <label for="from">с </label>
                                     <input type="text" id="from" name="from">
                                     <label for="to"> по </label>
                                     <input type="text" id="to" name="to">
                                 </div>
 
-                                <div class="col-md-5">
+                                <div class="col-md-6 col-xs-12 col-sm-12">
                                     <select class="sorting__Option" name="options">
                                         <option value="1">Респределить по доставк</option>
                                         <option value="2">Респределить по производителю</option>
@@ -36,11 +38,11 @@
                                     </select>
                                 </div>
 
-                                <div class="col-md-2 pull-right">
+                                <div class="col-md-1 downloadButton">
                                     <button class="pull-right">Скачать</button>
                                 </div>
                             </div>
-                            <div class="col-md-12 span12 pull-right" style="margin-top: 20px">
+                            <div class="col-md-12 span12 pull-right searchbox">
                                 <form id="custom-search-form" class="form-search form-horizontal pull-right">
                                     <div class="input-append span12">
                                         <input type="text" class="search-query" placeholder="Поиск">

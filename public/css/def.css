@@ -34,12 +34,12 @@ body {
 }
 
 ::-moz-selection {
-    background-color: #2c628f;
+    background-color: #96c032;
     color: #ffffff;
 }
 
 ::selection {
-    background-color: #2c628f;
+    background-color: #96c032;
     color: #ffffff;
 }
 
@@ -515,12 +515,12 @@ input, input[type="text"], input[type="email"], input[type="tel"], input[type="n
 }
 
 input[type="text"]:hover, input[type="email"]:hover, input[type="tel"]:hover, input[type="number"]:hover, input[type="radio"]:hover, input[type="checkbox"]:hover, input[type="password"]:hover, textarea:hover, select:hover {
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid transparent;
 }
 
 input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="number"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focus, input[type="password"]:focus, textarea:focus {
-    border: 1px solid rgba(0, 0, 0, 0.7);
-    color: #333;
+    border: 1px solid transparent;
+    color: #000;
 }
 
 input.input-xs, .input-xs {
@@ -2057,6 +2057,8 @@ form label.error {
     position: static;
     text-transform: uppercase;
     text-align: center;
+    width: 50%;
+    margin: 0 auto;
 }
 
 .navigation-menu ul > li > a {
@@ -2956,19 +2958,21 @@ img.tp-caption {
 
 .product-filter li a {
     display: block;
-    padding: 0px 25px;
+    padding: 0 25px;
     color: #999;
 }
 
 .product-filter li a.active, .product-filter li.active a {
     color: #333;
 }
-
+.boxPrice{height: 10px}
+.iPrice{float: none !important;}
 /*------------------------------------------------------------------*/
 /* Tabs */
 /*------------------------------------------------------------------*/
 .tab-content .tab-pane.active {
     display: block;
+    width: 100%;
 }
 
 .tab-content .tab-pane {
@@ -3247,8 +3251,8 @@ img.tp-caption {
 
 .widget-sidebar {
     border-bottom: 1px solid #eee;
-    padding-bottom: 40px;
-    margin-bottom: 40px;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 .widget-sidebar:last-child {
@@ -3350,6 +3354,31 @@ img.tp-caption {
 
 .ui-slider-range {
     height: 100%;
+}
+
+.filterInner .ui-slider-range{
+    height: 5px !important;
+    margin-top: -2px;
+}
+
+.filterInner .ui-slider-handle{
+    height: 20px;
+    width: 20px;
+    display: block;
+    margin-top: -10px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    cursor: w-resize;
+}
+
+#slider-range{
+    background: #eee;
+    height: 3px;
+    margin-top: 20px;
+    position: relative;
+    width: 89%;
+    margin-bottom: 40px;
 }
 
 .ui-slider-handle {
@@ -4564,7 +4593,7 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 .product-title a{
     font-size: 18px;
     border-bottom: 1px solid transparent;
-    white-space: nowrap;
+    white-space: pre-wrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -5046,13 +5075,14 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 }
 
 .product-image-slider-thumbnails .slick-next {
-    right: 0px;
+    right: 0;
 }
 
 /*------------------------------------------------------------------*/
 /* Product Content */
 /*------------------------------------------------------------------*/
-.product-page-content {
+.product-page-content .product-meta{
+    width: 100% !important;
 }
 
 .product-title {
@@ -5061,7 +5091,7 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 
 .product-price {
     margin-bottom: 30px;
-    color: #63a3ff;
+    color: #a7c957;
     text-align: center;
     font-size: 24px;
     padding-bottom: 25px;
@@ -6553,4 +6583,49 @@ li a.enabled{
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-bottom: 10px solid #2b608f;
+}
+
+.product-meta .category{
+    text-transform: lowercase;
+}
+
+.product-meta .category a{
+    color: #2d618f;
+}
+
+.filterInner input{
+    color:#000;
+    font-weight:bold;
+    text-align: center;
+    padding: 0;
+}
+
+.sizeBlock .filterInner .sintype{
+    margin-left: 10px;
+}
+
+.sizeBlock{border: none !important;}
+
+.sizeBlock .widget-title {
+    margin-bottom: 12px;
+}
+
+.sizeBlock .filterInner input{
+    color:#000;
+    font-weight:bold;
+    width: 45px;
+    text-align: center;
+    height: 40px;
+    border: 1px solid #eeeeee;
+    padding: 0;
+    margin-left: 25px;
+}
+
+.sizeBlock .filterInner .pull-left{
+    width: 45px;
+    padding: 0;
+}
+
+.not-active{
+    display: none;
 }

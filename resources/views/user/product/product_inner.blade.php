@@ -7,7 +7,7 @@
 @section('product')
     <!-- Page Content -->
     <div class="productPage">
-        <section id="productID" class="content-page single-product-content" data-id="{{$product -> id}}">
+        <section id="productID" class="content-page single-product-content" data-prodid="{{$product -> id}}">
 
             <!-- Product -->
             <div id="product-detail" class="container">
@@ -113,28 +113,29 @@
                             </div>
 
                             <div class="col-md-12 chooseItem">
-                                <div class="radio lft choosed">
+                                <div class="radio lft choosed" data-set="boxset">
                                     <label>
-                                        <input type="radio" name="optradio" style="width:25px; height:40px;" checked>Ящик
-                                        <span>{{$product -> prise * $product -> box_count}} <sup>грн</sup> <span class="forBag">за 1 ящик</span></span>
+                                        <input type="radio" name="optradio" style="width:25px; height:40px;" checked onclick="getSelect(event)" data-id="box">Ящик
+                                        <span class="boxPrice"><span class="iPrice">{{$product -> prise * $product -> box_count}}</span> <sup>грн</sup> <span class="forBag">за 1 ящик</span></span>
                                     </label>
-
                                 </div>
-                                <div class="radio rth">
+
+
+                                <div class="radio rth disable" data-set="rotovkaset">
                                     <label>
-                                        <input type="radio" name="optradio" style="width:25px; height:40px;">
+                                        <input type="radio" name="optradio" style="width:25px; height:40px;" onclick="getSelect(event)">
                                         Ростовка
-                                        <span>{{$product -> prise * $product -> rostovka_count}} <sup>грн</sup> <span class="forBag">за 1 ростовку</span></span>
+                                        <span><span class="iPrice">{{$product -> prise * $product -> rostovka_count}}</span> <sup>грн</sup> <span class="forBag">за 1 ростовку</span></span>
                                     </label>
                                 </div>
 
                                         <div class="buttonPrice">
                                             <div class="product-quantity">
                                                 <span data-value="+" class="quantity-btn quantityPlus"></span>
-                                                <input class="quantity input-lg" step="1" min="1" name="quantity" value="1" title="Quantity" type="number" />
+                                                <input class="quantity input-lg" step="1" min="1" name="quantity" value="1" title="Quantity" type="number" disabled/>
                                                 <span data-value="-" class="quantity-btn quantityMinus"></span>
                                             </div>
-                                            <button class="btn btn-lg btn-black buyProduct_inner btn-success" onclick="success('Товар добавлен в корзину')"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Купить</button>
+                                            <button class="btn btn-lg btn-black buyProduct_inner btn-success" data-set="buyButton" onclick="success('Товар добавлен в корзину')"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Купить</button>
                                         </div>
                                     </div>
                                 </div>
