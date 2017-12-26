@@ -1,12 +1,13 @@
 'use strict';
 var data = [], productTheme = $('#template'), page_num = 1, count_on_page = Number ($.find('#product-show option')[0].innerText), paginationNum, paginationCount = 0;
-initData();
+initData(count_on_page);
 
 $('#product-show').on('change', function () {
-    console.log($.find('#product-show option selected'))
+    count_on_page = Number ($.find('.product-sort-by.pull-right .nice-select-box .current')[0].innerText);
+    initData(count_on_page);
 });
 
-function initData() {
+function initData(count_on_page) {
     $.ajax({
         method: "POST",
         url: "../api/pagination",
@@ -14,7 +15,7 @@ function initData() {
     }).done(function (msg) {
         paginationNum = msg;
         paginationCounter(paginationNum);
-        makeData(page_num, count_on_page);
+        makeData(1, count_on_page);
     });
 }
 
@@ -24,9 +25,7 @@ var paginationCounter = function (paginationNum) {
     return paginationCount;
 };
 
-
-
-function makeData(page_num, count_on_page) {
+function makeData(page_num, count_on_page, filtered_Data) {
     $.ajax({
         method: "POST",
         url: "../api/products",
@@ -53,9 +52,7 @@ function makeData(page_num, count_on_page) {
             $('.previous_Item').addClass('not-active');
         });
         GetData(data)
-    }) .fail(function( msg ) {
-
-    });
+    }) .fail(function( msg ) {});
 }
 
 var numberPerPage = 12, pageList = [], currentPage = 1, numberOfPages = 0;
@@ -115,7 +112,7 @@ function NextData(page_num, count_on_page) {
     });
 }
 
-function GetData(data) {
+function GetData(data, filtered_data) {
     if (data.length > 0) {
         //work with pagination
         var Pagination = {
@@ -271,11 +268,6 @@ function GetData(data) {
         $(document).on('click', '.nice-select-box .list', function () {
             numberPerPage = Number($.find('.nice-select-box .option.selected')[1].dataset.value);
             pageList = [];
-            currentPage = 1;
-            numberOfPages = 0;
-            makePagination();
-            loadList();
-            init();
         });
 }
 
@@ -377,7 +369,19 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             url: "../api/products",
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
                 filters: values}
-        }).done(function( msg ) {})
+        }).done(function(msg) {
+            var filtered_data = msg;
+            GetData(filtered_data);
+        });
+
+        $.ajax({
+            method: 'POST',
+            url: "../api/pagination",
+            data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
+                filters: values}
+        }).done(function(msg) {
+            count_on_page = msg;
+        })
     }
 
     if ($(this).is(':not(:checked)')) {
@@ -394,6 +398,25 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
                 values.splice(i, 1);
             }
         }
+
+        $.ajax({
+            method: 'POST',
+            url: "../api/products",
+            data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
+                filters: values}
+        }).done(function(msg) {
+            var filtered_data = msg;
+            GetData(filtered_data)
+        });
+
+        $.ajax({
+            method: 'POST',
+            url: "../api/pagination",
+            data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
+                filters: values}
+        }).done(function(msg) {
+            count_on_page = msg;
+        })
     }
 
     if (values.length === 0) {
@@ -430,7 +453,19 @@ function RemoveItem() {
             url: "../api/products",
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
                 filters: values}
-        }).done(function( msg ) {})
+        }).done(function( msg ) {
+            var filtered_data = msg;
+            GetData(filtered_data)
+        });
+
+        $.ajax({
+            method: 'POST',
+            url: "../api/pagination",
+            data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
+                filters: values}
+        }).done(function(msg) {
+            count_on_page = msg;
+        })
     });
 }
 
@@ -448,6 +483,26 @@ $('.removeallFilters span').on('click', function () {
     }
 
     $('input[type=checkbox]').prop('checked', false);
+
+    $.ajax({
+        method: 'POST',
+        url: "../api/products",
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
+            filters: values}
+    }).done(function( msg ) {
+        var filtered_data = msg;
+        GetData(filtered_data)
+    });
+
+    $.ajax({
+        method: 'POST',
+        url: "../api/pagination",
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
+            filters: values}
+    }).done(function(msg) {
+        count_on_page = msg;
+        initData(count_on_page);
+    })
 
 });
 

@@ -4439,6 +4439,16 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
     max-height: 269px;
 }
 
+.product-item .product-button:hover{
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #2b618f;
+}
+
+.product-item .product-button:hover a{
+    color: #000;
+    height: 34px;
+}
+
 .product-item .product-button {
     background: #2b618f none repeat scroll 0 0;
     box-shadow: 0 0 5px rgba(0,0,0,0.08);
