@@ -17,17 +17,17 @@ class FilterController extends Controller
 
         $types = Type::whereIn('id', Product::where('category_id', '=', $view -> category -> id) ->distinct()
             ->groupBy('type_id')
-            ->pluck('type_id'));
+            ->pluck('type_id')) -> get();
 
         $seasons = Season::whereIn('id', Product::where('category_id', '=', $view -> category -> id) ->distinct()
             ->groupBy('season_id')
-            ->pluck('season_id'));
+            ->pluck('season_id')) -> get();
 
         $sizes = Size::all();
 
         $manufacturers = Manufacturer::whereIn('id', Product::where('category_id', '=', $view -> category -> id) ->distinct()
             ->groupBy('manufacturer_id')
-            ->pluck('manufacturer_id'));
+            ->pluck('manufacturer_id')) -> get();
 
 
 
