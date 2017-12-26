@@ -116,6 +116,9 @@ class ProductController extends Controller
     public function getPaginationPageCount(Request $request){
 
         $products_count = Product::where('category_id', '=', $request -> category_id)
+            ->whereIn('season_id', $this -> seasonFilter($request ->filters))
+            ->whereIn('type_id', $this -> typeFilter($request ->filters))
+            ->whereIn('manufacturer_id', $this -> manufacturerFilter($request ->filters))
             -> count();
         $count_of_page = $products_count / $request ->count_on_page;
 
