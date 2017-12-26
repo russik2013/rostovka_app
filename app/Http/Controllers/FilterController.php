@@ -13,19 +13,27 @@ class FilterController extends Controller
 {
     public function getFiltersValues($view){
 
-        $types = Type::all();
 
-        $seasons = Season::all();
+
+        $types = Type::whereIn('id', Product::where('category_id', '=', $view -> category -> id) ->distinct()
+            ->groupBy('type_id')
+            ->pluck('type_id'));
+
+        $seasons = Season::whereIn('id', Product::where('category_id', '=', $view -> category -> id) ->distinct()
+            ->groupBy('season_id')
+            ->pluck('season_id'));
 
         $sizes = Size::all();
 
-        $manufacturers = Manufacturer::all();
+        $manufacturers = Manufacturer::whereIn('id', Product::where('category_id', '=', $view -> category -> id) ->distinct()
+            ->groupBy('manufacturer_id')
+            ->pluck('manufacturer_id'));
 
 
 
 //        dd(Product::where('category_id', '=', $view -> category -> id) ->distinct()
-//            ->groupBy('manufacturer_id')
-//            ->pluck('manufacturer_id'));
+//            ->groupBy('season_id')
+//            ->pluck('season_id'));
 
         $view->with(['types' => $types, 'seasons' => $seasons, 'sizes' => $sizes, 'manufacturers' => $manufacturers]);
 
