@@ -62,7 +62,7 @@ class ProductController extends Controller
 
     protected function seasonFilter($filters){
         $seasons = [];
-        if($filters) {
+        if($filters && !empty($filters)) {
             foreach ($filters as $filter) {
 
                 if ($filter[2] == 'season') {
@@ -79,7 +79,7 @@ class ProductController extends Controller
 
     protected function typeFilter($filters){
         $types = [];
-        if($filters) {
+        if($filters  && !empty($filters)) {
             foreach ($filters as $filter) {
 
                 if ($filter[2] == 'tip') {
@@ -96,7 +96,7 @@ class ProductController extends Controller
 
     protected function manufacturerFilter($filters){
         $manufacturers = [];
-        if($filters) {
+        if($filters  && !empty($filters)) {
             foreach ($filters as $filter) {
 
                 if ($filter[2] == 'manufacturers') {

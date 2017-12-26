@@ -4528,7 +4528,7 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 
 .categoryPage .product-item:hover{
     border: 2px solid #2b618f !important;
-    z-index: 99;
+    z-index: 90;
 }
 
 .product-item .product-detail .tag {

@@ -1,15 +1,23 @@
 'use strict';
 var data = [], productTheme = $('#template'), page_num = 1, count_on_page = Number ($.find('#product-show option')[0].innerText), paginationNum, paginationCount = 0;
+initData();
 
-$.ajax({
-    method: "POST",
-    url: "../api/pagination",
-    data: {category_id : $('meta[name="category_id"]').attr('content'), count_on_page: count_on_page}
-}).done(function (msg) {
-    paginationNum = msg;
-    paginationCounter(paginationNum);
-    makeData(page_num, count_on_page);
+$('#product-show').on('change', function () {
+    console.log($.find('#product-show option selected'))
 });
+
+function initData() {
+    $.ajax({
+        method: "POST",
+        url: "../api/pagination",
+        data: {category_id : $('meta[name="category_id"]').attr('content'), count_on_page: count_on_page}
+    }).done(function (msg) {
+        paginationNum = msg;
+        paginationCounter(paginationNum);
+        makeData(page_num, count_on_page);
+    });
+}
+
 
 var paginationCounter = function (paginationNum) {
     paginationCount = paginationNum;
@@ -171,29 +179,29 @@ function GetData(data) {
                 NextData(page_num, count_on_page);
             },
 
-            First_Page: function () {
-                Pagination.page = 1;
-                if (Pagination.page < 1) {
-                    Pagination.page = 1;
-                }
-                Pagination.Start();
-                scrolltop();
+            // First_Page: function () {
+            //     Pagination.page = 1;
+            //     if (Pagination.page < 1) {
+            //         Pagination.page = 1;
+            //     }
+            //     Pagination.Start();
+            //     scrolltop();
+            //
+            //     page_num = Pagination.page;
+            //     NextData(page_num, count_on_page);
+            // },
 
-                page_num = Pagination.page;
-                NextData(page_num, count_on_page);
-            },
-
-            Last_Page: function () {
-                Pagination.page = Pagination.size;
-                if (Pagination.page < 1) {
-                    Pagination.page = 1;
-                }
-                Pagination.Start();
-                scrolltop();
-
-                page_num = Pagination.page;
-                NextData(page_num, count_on_page);
-            },
+            // Last_Page: function () {
+            //     Pagination.page = Pagination.size;
+            //     if (Pagination.page < 1) {
+            //         Pagination.page = 1;
+            //     }
+            //     Pagination.Start();
+            //     scrolltop();
+            //
+            //     page_num = Pagination.page;
+            //     NextData(page_num, count_on_page);
+            // },
 
             Bind: function () {
                 var a = Pagination.e.getElementsByTagName('a');
@@ -331,6 +339,7 @@ function scrolltop() {
     body.stop().animate({scrollTop: 0}, 500, 'swing');
 }
 
+
 ///work with filters
 var values = [], targetID = 0;
 
@@ -415,6 +424,13 @@ function RemoveItem() {
         if (values.length === 0) {
             $('.CFBlock').css('display', 'none');
         }
+
+        $.ajax({
+            method: 'POST',
+            url: "../api/products",
+            data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
+                filters: values}
+        }).done(function( msg ) {})
     });
 }
 
