@@ -47,6 +47,8 @@ class ProductController extends Controller
            ->skip($request -> count_on_page * ($request ->page_num - 1)) -> take($request -> count_on_page)
             ->with('photo') ->groupBy('id') ->  get();
 
+
+
         foreach ($products as $product){
 
             $product -> full__price = $product -> prise * $product -> box_count;
@@ -72,6 +74,8 @@ class ProductController extends Controller
                 }
 
             }
+        }
+        if($seasons){
             return Season::whereIn('name', $seasons) -> pluck('id');
         }
         return Season::all() -> pluck('id');
@@ -89,8 +93,12 @@ class ProductController extends Controller
                 }
 
             }
+        }
+
+        if($types){
             return Type::whereIn('name', $types) -> pluck('id');
         }
+
         return Type::all() -> pluck('id');
     }
 
@@ -106,6 +114,9 @@ class ProductController extends Controller
                 }
 
             }
+        }
+
+        if($manufacturers){
             return Manufacturer::whereIn('name', $manufacturers) -> pluck('id');
         }
         return Manufacturer::all() -> pluck('id');
@@ -116,9 +127,6 @@ class ProductController extends Controller
     public function getPaginationPageCount(Request $request){
 
         $products_count = Product::where('category_id', '=', $request -> category_id)
-            ->whereIn('season_id', $this -> seasonFilter($request ->filters))
-            ->whereIn('type_id', $this -> typeFilter($request ->filters))
-            ->whereIn('manufacturer_id', $this -> manufacturerFilter($request ->filters))
             -> count();
         $count_of_page = $products_count / $request ->count_on_page;
 
