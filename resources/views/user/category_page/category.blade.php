@@ -5,7 +5,7 @@
         <section class="content-page">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-10 push-md-2">
+                    <div class="col-md-10 push-md-2 product--block">
                         <!-- Title -->
                         <div class="list-page-title">
                             <h2 class="">{{$category -> name}}</h2>

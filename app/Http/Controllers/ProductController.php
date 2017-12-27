@@ -41,7 +41,7 @@ class ProductController extends Controller
     public function getProductsToCategory(Request $request){
 
         //return response($request);
-
+        //print_r($request ->all());
         $products = Product::where('category_id', '=', $request -> category_id)
             ->whereIn('season_id', $this -> seasonFilter($request ->filters))
             ->whereIn('type_id', $this -> typeFilter($request ->filters))
@@ -59,7 +59,7 @@ class ProductController extends Controller
             $product -> product_url = url($product ->id.'/product');
         }
 
-        return $products;
+        return response($products);
 
     }
 

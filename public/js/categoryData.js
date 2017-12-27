@@ -1,5 +1,5 @@
 'use strict';
-var data = [], productTheme = $('#template'), page_num = 1, count_on_page = Number ($.find('#product-show option')[0].innerText), paginationNum, paginationCount = 0;
+var data = [], productTheme = $('#template'), page_num = 1, count_on_page = Number ($.find('#product-show option')[0].innerText), paginationNum, paginationCount = 0, filter_value = [];
 initData(count_on_page);
 
 $('#product-show').on('change', function () {
@@ -11,7 +11,7 @@ function initData(count_on_page) {
     $.ajax({
         method: "POST",
         url: "../api/pagination",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), count_on_page: count_on_page}
+        data: {category_id : $('meta[name="category_id"]').attr('content'), count_on_page: count_on_page, filters: filter_value}
     }).done(function (msg) {
         paginationNum = msg;
         paginationCounter(paginationNum);
@@ -19,17 +19,16 @@ function initData(count_on_page) {
     });
 }
 
-
 var paginationCounter = function (paginationNum) {
     paginationCount = paginationNum;
     return paginationCount;
 };
 
-function makeData(page_num, count_on_page, filtered_Data) {
+function makeData(page_num, count_on_page) {
     $.ajax({
         method: "POST",
         url: "../api/products",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page}
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page, filters: filter_value}
     }).done(function( msg ) {
         for(var i= 0; i < msg.length; i++ ) {
             data[i] = {
@@ -112,7 +111,7 @@ function NextData(page_num, count_on_page) {
     });
 }
 
-function GetData(data, filtered_data) {
+function GetData(data) {
     if (data.length > 0) {
         //work with pagination
         var Pagination = {
@@ -343,7 +342,6 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
         values.push([targetID, $(this)[0].defaultValue, $(target)[0].childNodes[1].dataset.id]);
     }
 
-
     if (values.length !== 0) {
         var AppendedList = $('.choosedFilter li');
         $('.CFBlock').css('display', 'block');
@@ -364,14 +362,23 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
         }
         RemoveItem();
 
+
+        $('.product--block').append('<div class="preloader"><i></i></div>');
+
         $.ajax({
             method: 'POST',
             url: "../api/products",
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
                 filters: values}
         }).done(function(msg) {
-            var filtered_data = msg;
-            GetData(filtered_data);
+            if(msg.length > 0){
+                var filtered_data = msg;
+                GetData(filtered_data);
+                $('.preloader').remove();
+            }
+            else{
+                return false
+            }
         });
 
         $.ajax({
@@ -380,9 +387,19 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
                 filters: values}
         }).done(function(msg) {
-            count_on_page = msg;
-        })
+            paginationNum = msg;
+            paginationCounter(paginationNum);
+        });
+
+
+        localStorage.setItem('filterValues', values);
+
+        console.log(localStorage.getItem('filterValues'));
+        filter_value = values;
+        return filter_value;
     }
+
+
 
     if ($(this).is(':not(:checked)')) {
         var unchecked = $(this)[0].parentNode.childNodes[1].defaultValue,
@@ -399,6 +416,7 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             }
         }
 
+        $('.product--block').append('<div class="preloader"><i></i></div>');
         $.ajax({
             method: 'POST',
             url: "../api/products",
@@ -406,7 +424,8 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
                 filters: values}
         }).done(function(msg) {
             var filtered_data = msg;
-            GetData(filtered_data)
+            GetData(filtered_data);
+            $('.preloader').remove();
         });
 
         $.ajax({
@@ -415,7 +434,8 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
                 filters: values}
         }).done(function(msg) {
-            count_on_page = msg;
+            paginationNum = msg;
+            paginationCounter(paginationNum);
         })
     }
 
@@ -448,6 +468,10 @@ function RemoveItem() {
             $('.CFBlock').css('display', 'none');
         }
 
+
+        $('.product--block').append('<div class="preloader"><i></i></div>');
+
+
         $.ajax({
             method: 'POST',
             url: "../api/products",
@@ -455,7 +479,8 @@ function RemoveItem() {
                 filters: values}
         }).done(function( msg ) {
             var filtered_data = msg;
-            GetData(filtered_data)
+            GetData(filtered_data);
+            $('.preloader').remove();
         });
 
         $.ajax({
@@ -464,11 +489,11 @@ function RemoveItem() {
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
                 filters: values}
         }).done(function(msg) {
-            count_on_page = msg;
+            paginationNum = msg;
+            paginationCounter(paginationNum);
         })
     });
 }
-
 
 $('.removeallFilters span').on('click', function () {
     values = [];
@@ -484,6 +509,8 @@ $('.removeallFilters span').on('click', function () {
 
     $('input[type=checkbox]').prop('checked', false);
 
+    $('.product--block').append('<div class="preloader"><i></i></div>');
+
     $.ajax({
         method: 'POST',
         url: "../api/products",
@@ -491,7 +518,8 @@ $('.removeallFilters span').on('click', function () {
             filters: values}
     }).done(function( msg ) {
         var filtered_data = msg;
-        GetData(filtered_data)
+        GetData(filtered_data);
+        $('.preloader').remove();
     });
 
     $.ajax({
@@ -500,8 +528,8 @@ $('.removeallFilters span').on('click', function () {
         data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
             filters: values}
     }).done(function(msg) {
-        count_on_page = msg;
-        initData(count_on_page);
+        paginationNum = msg;
+        paginationCounter(paginationNum);
     })
 
 });
@@ -531,3 +559,15 @@ $( function() {
     $( "#minchoose" ).val($( "#slider-range" ).slider( "values", 0 ));
     $( "#amount" ).val($( "#slider-range" ).slider( "values", 1 ));
 });
+
+var savedFilters = localStorage.getItem('filterValues'), getSavedFilters;
+getSavedFilters = savedFilters.split(' ', 1);
+
+if(getSavedFilters.length > 0){
+    for (var i = 0; i < $.find('.checkbox-circle input').length; i++){
+        console.log($.find('.checkbox-circle input')[i]);
+        if(getSavedFilters[i].split(',')[0] === 'type3'){
+            console.log($.find('.checkbox-circle input')[i])
+        }
+    }
+}
