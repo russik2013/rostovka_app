@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('article', 228);
             $table->string('name',228);
+            $table->string('sex',228)->nullable();
             $table->integer('rostovka_count');
             $table->integer('box_count');
             $table->integer('prise');

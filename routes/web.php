@@ -103,6 +103,12 @@ Route::get('/userinfo', function () {
 
 Route::get('/product', 'ProductController@create');
 Route::post('/product','ProductController@add');
+
+
+
+Route::get('/csvLoad','Admin\CSV\CsvLoadController@index');
+Route::post('/csvLoad','Admin\CSV\CsvLoadController@csvShoesLoad') -> name('load');
+
 //
 //return view('login_register.login');
 //
