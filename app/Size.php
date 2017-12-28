@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Size extends Model
 {
-    protected $fillable = ['min', 'max'];
+    protected $fillable = ['name','min', 'max'];
 
     public function products(){
 

@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Admin\CSV;
 use App\Category;
 use App\Http\Requests\CsvPostRequest;
 use App\Manufacturer;
+use App\Product;
+use App\ProductPhotos;
 use App\Season;
 use App\Size;
 use App\Type;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use ZipArchive;
 
 class CsvLoadController extends Controller
 {
@@ -27,16 +30,52 @@ class CsvLoadController extends Controller
         $products = Excel::load($path, function($reader) {
         })->get();
 
-
         $products = $this ->checkEmpty($products);
 
 
 
-        dd($this -> formInsertArray($products));
+        //Product::insert($this -> formInsertArray($products));
+
+        //ProductPhotos::insert($this -> formPhotoInsertArray($request,$products));
+
+    }
+
+    protected function photosRename($photos, $products){
 
 
 
-        dd($products);
+    }
+
+    protected function formPhotoInsertArray($photos, $products){
+
+        $zip = new ZipArchive;
+        $zip->open($photos -> photo -> getRealPath());
+        $zip->extractTo('../image/products/');
+        $zip->close();
+
+        $products_mass = [];
+
+        foreach ($products as $product){
+
+            $products_mass[$product ->artikul.'_'.$product ->{'brend'}] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
+
+        }
+
+        $data_base_products = Product::whereIn('name', array_keys($products_mass)) -> pluck('id', 'name') ->toArray();
+
+        $photos_to_products_insert_array = [];
+
+        foreach ($products_mass as $key => $photo_to_product_value){
+
+            foreach ($photo_to_product_value[0] as $item){
+                if($item)
+                $photos_to_products_insert_array[] = ['photo_url' => $item.'.jpg',
+                                                      'product_id' => $data_base_products[$key]];
+
+            }
+        }
+
+       return $photos_to_products_insert_array;
 
     }
 
@@ -58,6 +97,8 @@ class CsvLoadController extends Controller
 
     }
 
+
+
     protected function formInsertArray($products){
 
         $types = Type::all() -> pluck('id', 'name') -> toArray();
@@ -67,14 +108,31 @@ class CsvLoadController extends Controller
         $manufacturers = Manufacturer::all() -> pluck('id', 'name') -> toArray();
         $insert_array = [];
 
-        //dd($sizes);
-
-
         foreach ($products as $product){
-            dd($sizes[$product -> razmer_ot.'-'.$product -> razmer_do]);
 
-            dd($product -> razmer_ot, $product -> razmer_do);
+            if($product -> kategoriya == 'Мужское')
+                $sex = 'Мужское';
+            if($product -> kategoriya == 'Женское')
+                $sex = 'Женское';
+            if($product -> kategoriya == 'Детское')
+                $sex = $product -> pol;
 
+
+            if($product -> razmer_ot > $product -> razmer_do){
+                if(isset($sizes[$product -> razmer_do.'-'.$product -> razmer_ot]))
+                    $size = $sizes[$product -> razmer_do.'-'.$product -> razmer_ot];
+                else{
+                    $sizes = array_merge($sizes, $this ->addSize($product -> razmer_do, $product -> razmer_ot));
+                    $size = $sizes[$product -> razmer_do.'-'.$product -> razmer_ot];
+                }
+            }else{
+                if(isset($sizes[$product -> razmer_ot.'-'.$product -> razmer_do]))
+                    $size = $sizes[$product -> razmer_ot.'-'.$product -> razmer_do];
+                else{
+                    $sizes = array_merge($sizes, $this ->addSize($product -> razmer_ot, $product -> razmer_do));
+                    $size = $sizes[$product -> razmer_ot.'-'.$product -> razmer_do];
+                }
+            }
 
             if(isset($manufacturers[$product ->{'brend'}]))
                 $manufacturer = $manufacturers[$product ->{'brend'}];
@@ -102,33 +160,63 @@ class CsvLoadController extends Controller
                 $season = $seasons[$product ->{'sezon'}];
             }
 
+//            $tovar = new Product();
+//
+//            $tovar-> article = $product ->artikul;
+//            $tovar-> name = $product ->artikul.'_'.$product ->{'brend'};     ///////////////////////////// уточнить
+//            $tovar-> rostovka_count = $product ->{"min._kol"};
+//            $tovar-> box_count = $product ->kol_v_yashchike;
+//            $tovar-> prise = $product ->tsena_prodazhi;
+//            $tovar-> manufacturer_id = $manufacturer;
+//            $tovar-> category_id = $categories[$product ->kategoriya];
+//            $tovar-> show_product = $show;
+//            $tovar-> currency =  'грн';
+//            $tovar-> full_description = $product ->opisanie;
+//            $tovar-> discount = $product ->skidka."%";
+//            $tovar-> accessibility = $show;
+//            $tovar-> type_id = $type;
+//            $tovar-> season_id = $season;
+//            $tovar-> size_id = $size;
+//            $tovar-> sex = $sex;
+//            $tovar-> save();
 
-
-            //if(isset($sizes[$product ->{'sezon'}]))
-
-
-            dd('russik');
-
-//            $insert_array[] = [ 'article' => $product ->artikul,
-//                                'name' => $product -> name,     ///////////////////////////// уточнить
-//                                'rostovka_count' => $product ->{"min._kol"},
-//                                'box_count' => $product ->kol_v_yashchike,
-//                                'prise' => $product ->tsena_prodazhi,
-//                                'manufacturer_id' => $manufacturer,
-//                                'category_id' => $categories[$product ->kategoriya],
-//                                'show_product' => $show,
-//                                'currency' =>  'грн',
-//                                'full_description' => $product ->opisanie,
-//                                'discount' => $product ->skidka."%",
-//                                'accessibility' => $show,
-//                                'type_id' => $type,
-//                                'season_id' => $season,
-//                                'size_id' => $product ->,
-//                                'sex' => $product ->];
-
-            dd($product ->{"min._kol"});
-
+            $insert_array[] = [ 'article' => $product ->artikul,
+                                'name' => $product ->artikul.'_'.$product ->{'brend'},     ///////////////////////////// уточнить
+                                'rostovka_count' => $product ->{"min._kol"},
+                                'box_count' => $product ->kol_v_yashchike,
+                                'prise' => $product ->tsena_prodazhi,
+                                'manufacturer_id' => $manufacturer,
+                                'category_id' => $categories[$product ->kategoriya],
+                                'show_product' => $show,
+                                'currency' =>  'грн',
+                                'full_description' => $product ->opisanie,
+                                'discount' => $product ->skidka."%",
+                                'accessibility' => $show,
+                                'type_id' => $type,
+                                'season_id' => $season,
+                                'size_id' => $size,
+                                'sex' => $sex];
         }
+
+//        dd('stop');
+
+        return $insert_array;
+
+    }
+
+    protected function addSize($min, $max){
+
+        $size = new Size();
+
+        $size ->name = $min.'-'.$max;
+
+        $size ->min = $min;
+
+        $size ->max = $max;
+
+        $size -> save();
+
+        return [$min.'-'.$max => $size -> id];
 
     }
 
