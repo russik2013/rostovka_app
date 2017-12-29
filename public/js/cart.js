@@ -322,7 +322,6 @@ $(document).on('click', '.Cart_Button_Minus', function () {
     }
 });
 
-
 function conversion(target_dataset, flag, minus) {
     if(minus !== true){
         for(var i = 0; i < Cart_data[0].row.length; i++){
@@ -366,7 +365,6 @@ function conversion(target_dataset, flag, minus) {
 
     counterFn(mainPrice, targetID, updPrice);
 }
-
 
 function getPrice() {
     var allPrice = 0;
