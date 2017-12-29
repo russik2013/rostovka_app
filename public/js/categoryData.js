@@ -140,6 +140,8 @@ if(saved_count_on_page !== null){
     localStorage.setItem('selectedCount',  JSON.stringify(count_on_page));
 }
 
+localStorage.clear()
+
 if(getSavedFilters !== null){
     var get_saved_count_on_page = 12;
 
@@ -265,13 +267,14 @@ function makeData(page_num, count_on_page) {
 
 var numberPerPage = 12, pageList = [], currentPage = 1, numberOfPages = 0;
 
+
 function NextData(page_num, count_on_page, filter_value) {
     $('.product--block').append('<div class="preloader"><i></i></div>');
     $.ajax({
         method: "POST",
         url: "../api/products",
         data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page, filters: filter_value}
-    }).done(function( msg ) {
+    }).done(function(msg) {
         $('.preloader').remove();
         for(var i= 0; i < msg.length; i++ ) {
             data[i] = {
@@ -511,7 +514,6 @@ function GetData(data) {
         drawItems(pageList);
     }
 
-
 //Initialization
     var init = function () {
         Pagination.Init(document.getElementById('pagination'), {
@@ -529,7 +531,6 @@ $('.product--block').append('<div class="preloader"><i></i></div>');
 function drawItems(pageList) {
     var delay = 0;
     document.getElementById("target").innerHTML = "";
-
     $(productTheme).tmpl(pageList).appendTo('#target').each(function () {
         delay += 0.1;
         $(this).addClass('animated fadeIn').css('animation-delay', delay + 's');
@@ -677,6 +678,7 @@ $( function() {
 
             $('.product--block').append('<div class="preloader"><i></i></div>');
 
+
             $.ajax({
                 method: "POST",
                 url: "../api/products",
@@ -697,7 +699,6 @@ $( function() {
             }).done(function(msg) {
                 paginationNum = msg;
                 paginationCounter(paginationNum);
-                console.log(paginationNum)
             });
         }
     });
