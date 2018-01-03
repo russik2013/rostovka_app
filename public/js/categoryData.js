@@ -714,35 +714,63 @@ $(function() {
             max = Number ($.find('#amount')[0].value);
 
             for (var y = 0; y < filter_value.length; y++){
+                console.log(filter_value[y]);
                 if (filter_value[y].sizes){
                     filter_value.splice(y, 1);
                     pushValue();
                 }
             }
-
+            var flag = false;
             if(changeFlag === false){
+                for(var i = 0; i < filter_value.length; i++){
+                    if(filter_value[i][0] === "size_min"){
+                        filter_value[i][1] = min;
+                        flag = true;
+                    }
+                    if(filter_value[i][0] === "size_max"){
+                        filter_value[i][1] = max;
+                        flag = true;
+                    }
+                }
                 sizes['Sizes'] = [min, max];
-                filter_value.push({'sizes': sizes});
+                if(flag === false){
+                    filter_value.push(['size_min', min, 'size']);
+                    filter_value.push(['size_max', max, 'size']);
+                }
                 changeFlag = true;
             }
 
             function pushValue() {
-                sizes['Sizes'] = [min, max];
-                filter_value.push({'sizes': sizes});
+                var flag = false;
+
+                for(var i = 0; i < filter_value.length; i++){
+                    if(filter_value[i][0] === "size_min"){
+                        filter_value[i][1] = min;
+                        flag = true;
+                    }
+                    if(filter_value[i][0] === "size_max"){
+                        filter_value[i][1] = max;
+                        flag = true;
+                    }
+                }
+
+                if(flag === false){
+                    filter_value.push(['size_min', min, 'size']);
+                    filter_value.push(['size_max', max, 'size']);
+                }
                 changeFlag = true;
             }
 
             $('.product--block').append('<div class="preloader"><i></i></div>');
 
-
             $.ajax({
                 method: "POST",
                 url: "../api/products",
-                data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page, filters: filter_value}
+                data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page,
+                    filters: filter_value}
             }).done(function( msg ) {
                 $('.preloader').remove();
-                var filtered_data = msg;
-                GetData(filtered_data);
+                makeFilterData(msg)
             }) .fail(function( msg ) {
 
             });
