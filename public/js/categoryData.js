@@ -161,8 +161,10 @@ if(getSavedFilters !== null){
                 $.find('.checkbox-circle input')[b].setAttribute("checked", "checked");
             }
         }
+    }
 
-        values = getSavedFilters;
+    values = getSavedFilters;
+    if(values.length !== 0){
         var AppendedList = $('.choosedFilter li');
         $('.CFBlock').css('display', 'block');
 
@@ -183,7 +185,6 @@ if(getSavedFilters !== null){
         RemoveItem();
     }
 
-
     $('.product--block').append('<div class="preloader"><i></i></div>');
 
     $.ajax({
@@ -195,7 +196,7 @@ if(getSavedFilters !== null){
         if(msg.length > 0){
             for(var i= 0; i < msg.length; i++ ) {
                 data[i] = {
-                    dataID: i,
+                    dataID: msg[i].id,
                     imgUrl: "img/product-img/2imv.jpg",
                     name: msg[i].name,
                     rostovka: msg[i].rostovka_count,
@@ -248,7 +249,14 @@ var paginationCounter = function (paginationNum) {
         return paginationCount;
     }
     else {
+        $('.pagination-wraper a').remove();
+        $('.pagination-wraper span').remove();
+        $('.productLine li').remove();
         $('.preloader').remove();
+        scrolltop();
+        if($('.filter--null').length > 0){
+            $('.filter--null').remove();
+        }
         $('#target').append('<div class="filter--null">По вашим критериям нет товаров ;(</div>')
     }
 };
@@ -261,7 +269,7 @@ function makeData(page_num, count_on_page) {
     }).done(function( msg ) {
         for(var i= 0; i < msg.length; i++ ) {
             data[i] = {
-                dataID: i,
+                dataID: msg[i].id,
                 imgUrl: "img/product-img/2imv.jpg",
                 name: msg[i].name,
                 rostovka: msg[i].rostovka_count,
@@ -297,7 +305,7 @@ function NextData(page_num, count_on_page, filter_value) {
         $('.preloader').remove();
         for(var i= 0; i < msg.length; i++ ) {
             data[i] = {
-                dataID: i,
+                dataID: msg[i].id,
                 imgUrl: "img/product-img/2imv.jpg",
                 name: msg[i].name,
                 rostovka: msg[i].rostovka_count,
@@ -376,6 +384,7 @@ function GetData(data) {
                 NextData(page_num, count_on_page, filter_value);
                 Pagination.page = +this.innerHTML;
                 Pagination.Start();
+                scrolltop();
             },
 
             Prev: function () {
@@ -436,8 +445,8 @@ function GetData(data) {
                 for (var i = 0; i < a.length; i++) {
                     if (+a[i].innerHTML === Pagination.page) a[i].className = 'current';
                     a[i].addEventListener('click', Pagination.Click, false);
-                    scrolltop();
                 }
+                scrolltop();
             },
 
             Finish: function () {
@@ -467,6 +476,7 @@ function GetData(data) {
 
                 var pageNum = Pagination.page;
                 nextPage(pageNum);
+                scrolltop();
             },
 
             Buttons: function (e) {
@@ -666,7 +676,7 @@ function makeFilterData(msg) {
     var filtered_data;
     for(var i= 0; i < msg.length; i++ ) {
         data[i] = {
-            dataID: i,
+            dataID: msg[i].id,
             imgUrl: "img/product-img/2imv.jpg",
             name: msg[i].name,
             rostovka: msg[i].rostovka_count,

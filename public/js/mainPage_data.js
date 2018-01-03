@@ -1,7 +1,6 @@
 var TopSallesData= [],
     data = [],
-    productTheme = $('#template'),
-    localData = [];
+    productTheme = $('#template');
 
 $.ajax({
     method: "POST",
@@ -10,7 +9,7 @@ $.ajax({
 }).done(function( msg ) {
     for(var i= 0; i < msg.length; i++ ) {
         data[i] = {
-            dataID: i,
+            dataID: msg[i].id,
             imgUrl: "img/product-img/2imv.jpg",
             name: msg[i].name,
             rostovka: msg[i].rostovka_count,
@@ -25,12 +24,9 @@ $.ajax({
         };
     }
     $(productTheme).tmpl(data).appendTo('#newest');
-    // GetData(data)
 }) .fail(function( msg ) {
 
 });
-
-// localStorage.clear()
 
 
 $.ajax({
@@ -56,13 +52,6 @@ $.ajax({
 
     }
     $(productTheme).tmpl(TopSallesData).appendTo('#topSalles');
-    // GetData(data)
 }) .fail(function( msg ) {
 
 });
-
-
-//localStorage.setItem("localData", JSON.stringify(data));
-
-//$(productTheme).tmpl(TopSallesData).appendTo('#topSalles');
-//$(productTheme).tmpl(data).appendTo('#newest');

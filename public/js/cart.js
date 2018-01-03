@@ -1,8 +1,6 @@
 'use strict';
-
-function getData(data) {
-    $(productTheme).tmpl(data).appendTo('#target');
-}
+Cart_data = localStorage.getItem('Cart_data');
+Cart_data = JSON.parse(Cart_data);
 
 function Cart_template(Cart_data) {
     if($('.categoryPage').length > 0){
@@ -24,7 +22,6 @@ function Cart_template(Cart_data) {
 }
 
 var Cart_data = [{row: [], cartCount: 0, cartProducts_summ: 0}], hidden__price, targetID;
-
 
 $(document).on("click", '[data-set="buyButton"]', function (event) {
     if($.find('.one--product').length > 0){
@@ -59,15 +56,15 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
     else {
         var checkif_true = false;
         var domtargetID = Number(event.target.offsetParent.offsetParent.dataset.id);
-
-        console.log(data)
         for (var i = 0; i < data.length; i++) {
-            if (domtargetID === data[i].dataID) {
+            if (domtargetID === Number (data[i].dataID)) {
                 hidden__price = data[i].full__price;
-                targetID = data[i].real_id;
             }
         }
 
+        targetID = domtargetID;
+
+        console.log(event)
         if (Cart_data[0].row.length === 0) {
             initAdd(event, targetID, Cart_data);
         }
@@ -77,8 +74,6 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
         }
     }
 });
-
-// localStorage.clear();
 
 function getProductData(targetID, itemQuant, domItem_price) {
     var poductinnerID = Number ($.find('[data-prodid]')[0].dataset.prodid),
@@ -151,14 +146,12 @@ function additocart(targetID, itemQuant, domItem_price) {
     Cart_template(Cart_data);
 }
 
-
 function checkDublicate(event, targetID, checkif_true) {
-
     if(checkif_true === false){
         for (var i = 0; i < Cart_data[0].row.length; i++){
-            if (Number (targetID) === Number (Cart_data[0].row[i].buy_real_id)){
+            if (targetID === Number (Cart_data[0].row[i].productID)){
                 checkif_true = false;
-                dublicate(targetID);
+                dublicate(targetID, Cart_data);
                 break;
             }
             else{
@@ -172,6 +165,7 @@ function checkDublicate(event, targetID, checkif_true) {
     }
 }
 
+
 function initAdd(event, targetID, Cart_data) {
     addtoCart(event, targetID);
     Cart_template(Cart_data);
@@ -181,10 +175,9 @@ function initAdd(event, targetID, Cart_data) {
 
 var arrayItemId = 0;
 function dublicate(targetID, Cart_data) {
-
     //если индификторы совпадают, увеличиваем колличество и записываем ID элемента в объекте
-    for (var i = 0; i < Cart_data[0].row.length; i++){
-        if(Cart_data[0].row[i].buy_real_id === targetID){
+    for (var i = 0; i < Cart_data[0].row.length; i++) {
+        if (Cart_data[0].row[i].buy_real_id === targetID) {
             Cart_data[0].row[i].quantity++;
             arrayItemId = i;
         }
@@ -194,14 +187,14 @@ function dublicate(targetID, Cart_data) {
     mainPrice = Cart_data[0].row[arrayItemId].price;
     updPrice = mainPrice * Cart_data[0].row[arrayItemId].quantity;
 
-    var valueofPrice = $.find('[product-id="'+ targetID +'"] .price');
+    var valueofPrice = $.find('[product-id="' + targetID + '"] .price');
     $(valueofPrice)[0].innerText = updPrice;
 
     Cart_data[0].row[arrayItemId].quantityPrice = updPrice;
 
     localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
 
-    var valueofQuantity = $.find('[product-id="'+ targetID +'"] input');
+    var valueofQuantity = $.find('[product-id="' + targetID + '"] input');
     $(valueofQuantity).val(Cart_data[0].row[arrayItemId].quantity);
 
     counterFn(mainPrice, targetID, updPrice);

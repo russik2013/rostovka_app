@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="193d3dbc-6990-4cb2-bda5-0007cf53db7e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
-      <change beforePath="$PROJECT_DIR$/public/css/main.css" afterPath="$PROJECT_DIR$/public/css/main.css" />
       <change beforePath="$PROJECT_DIR$/public/js/cart.js" afterPath="$PROJECT_DIR$/public/js/cart.js" />
       <change beforePath="$PROJECT_DIR$/public/js/categoryData.js" afterPath="$PROJECT_DIR$/public/js/categoryData.js" />
+      <change beforePath="$PROJECT_DIR$/public/js/custom.js" afterPath="$PROJECT_DIR$/public/js/custom.js" />
       <change beforePath="$PROJECT_DIR$/public/js/mainPage_data.js" afterPath="$PROJECT_DIR$/public/js/mainPage_data.js" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/product/product_inner.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/product/product_inner.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -62,8 +60,8 @@
       <file leaf-file-name="cartpage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/cartpage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="4" column="58" lean-forward="false" selection-start-line="4" selection-start-column="58" selection-end-line="4" selection-end-column="58" />
+            <state relative-caret-position="301">
+              <caret line="116" column="38" lean-forward="true" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -72,8 +70,8 @@
       <file leaf-file-name="filters.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/category_page/filters.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="14" column="14" lean-forward="false" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+            <state relative-caret-position="196">
+              <caret line="7" column="49" lean-forward="false" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
               <folding>
                 <marker date="1514454589364" expanded="true" signature="210:225" ph="..." />
                 <marker date="1514454589364" expanded="true" signature="336:347" ph="..." />
@@ -104,12 +102,16 @@
       <file leaf-file-name="cart.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/cart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="62" column="24" lean-forward="false" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
+            <state relative-caret-position="726">
+              <caret line="66" column="25" lean-forward="false" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
               <folding>
                 <element signature="n#!!block;n#Cart_template#0" expanded="false" />
-                <element signature="e#9104#9698#0" expanded="false" />
-                <element signature="e#9760#10353#0" expanded="false" />
+                <element signature="e#1079#1995#0" expanded="false" />
+                <element signature="n#!!block;n#getProductData#0" expanded="false" />
+                <element signature="n#!!block;n#additocart#0" expanded="false" />
+                <element signature="n#!!block;n#initAdd#0" expanded="false" />
+                <element signature="e#9082#9676#0" expanded="false" />
+                <element signature="e#9738#10331#0" expanded="false" />
                 <element signature="n#!!block;n#conversion#0" expanded="false" />
               </folding>
             </state>
@@ -120,7 +122,7 @@
         <entry file="file://$PROJECT_DIR$/resources/views/user/product/product_inner.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="178">
-              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
                 <marker date="1514977478895" expanded="true" signature="9:24" ph="..." />
                 <marker date="1514977478895" expanded="true" signature="44:83" ph="..." />
@@ -186,7 +188,7 @@
       <file leaf-file-name="category.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/category_page/category.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
+            <state relative-caret-position="481">
               <caret line="80" column="26" lean-forward="false" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="26" />
               <folding>
                 <marker date="1514557114817" expanded="true" signature="9:29" ph="..." />
@@ -201,58 +203,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="categoryData.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="categoryData.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/categoryData.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="665" column="22" lean-forward="false" selection-start-line="665" selection-start-column="22" selection-end-line="665" selection-end-column="22" />
+            <state relative-caret-position="23">
+              <caret line="241" column="35" lean-forward="true" selection-start-line="241" selection-start-column="35" selection-end-line="241" selection-end-column="35" />
               <folding>
                 <element signature="e#544#4036#0" expanded="false" />
                 <element signature="e#702#2038#0" expanded="false" />
-                <element signature="e#2278#3925#0" expanded="false" />
-                <element signature="e#3104#3335#0" expanded="false" />
-                <element signature="e#3356#3492#0" expanded="false" />
-                <element signature="e#3511#3744#0" expanded="false" />
-                <element signature="e#3765#3855#0" expanded="false" />
                 <element signature="e#4068#4106#0" expanded="false" />
                 <element signature="e#4218#4531#0" expanded="false" />
                 <element signature="e#4567#4715#0" expanded="false" />
-                <element signature="e#4745#7978#0" expanded="false" />
-                <element signature="e#4818#4892#0" expanded="false" />
-                <element signature="e#5320#6378#0" expanded="false" />
-                <element signature="e#6466#6696#0" expanded="false" />
-                <element signature="e#6717#7628#0" expanded="false" />
-                <element signature="e#6745#7622#0" expanded="false" />
-                <element signature="e#7983#8015#0" expanded="false" />
-                <element signature="n#!!block;n#initData#0" expanded="false" />
-                <element signature="e#8448#8716#0" expanded="false" />
-                <element signature="n#!!block;n#makeData#0" expanded="false" />
-                <element signature="e#9056#9664#0" expanded="false" />
-                <element signature="e#9703#9825#0" expanded="false" />
+                <element signature="e#4745#8016#0" expanded="false" />
+                <element signature="e#5637#6409#0" expanded="false" />
+                <element signature="e#6496#6726#0" expanded="false" />
+                <element signature="e#8021#8053#0" expanded="false" />
+                <element signature="e#8486#8999#0" expanded="false" />
                 <element signature="n#!!block;n#NextData#0" expanded="false" />
                 <element signature="n#!!block;n#GetData#0" expanded="false" />
                 <element signature="n#!!block;n#drawItems#0" expanded="false" />
                 <element signature="n#!!block;n#scrolltop#0" expanded="false" />
-                <element signature="n#!!block;n#RemoveItem#0" expanded="false" />
-                <element signature="e#19731#19962#0" expanded="false" />
-                <element signature="e#19985#20116#0" expanded="false" />
-                <element signature="e#20017#20068#0" expanded="false" />
-                <element signature="e#20135#20368#0" expanded="false" />
-                <element signature="e#20221#20358#0" expanded="false" />
-                <element signature="e#20389#20479#0" expanded="false" />
-                <element signature="e#20616#21745#0" expanded="false" />
-                <element signature="e#21802#21924#0" expanded="false" />
-                <element signature="e#22727#24887#0" expanded="false" />
+                <element signature="e#20084#20315#0" expanded="false" />
+                <element signature="e#20370#20421#0" expanded="false" />
+                <element signature="e#20488#20721#0" expanded="false" />
+                <element signature="e#20574#20711#0" expanded="false" />
+                <element signature="e#22155#22277#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mainPage_data.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mainPage_data.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/mainPage_data.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+            <state relative-caret-position="204">
+              <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -268,36 +253,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="681">
-              <caret line="697" column="17" lean-forward="false" selection-start-line="697" selection-start-column="17" selection-end-line="697" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.clea</find>
-      <find>draw</find>
-      <find>pageList</find>
-      <find>.clear</find>
-      <find>initData(count_on_page)</find>
-      <find>paginationCounter(paginationNum);</find>
-      <find>paginationCounter(paginationNum)</find>
-      <find>removeall</find>
-      <find>preload</find>
-      <find>paginatip</find>
-      <find>pagination</find>
-      <find>paginationCounter</find>
-      <find>nextPage</find>
-      <find>nextPage(pageNum)</find>
-      <find>next_Item</find>
-      <find>NextData(page_num, coun</find>
       <find>makeData</find>
       <find>NextData</find>
       <find>option</find>
@@ -312,6 +271,22 @@
       <find>§</find>
       <find>addtoCart</find>
       <find>targetID</find>
+      <find>append</find>
+      <find>removeAll</find>
+      <find>ПО ВАШИМ КРИТЕРИЯМ НЕТ ТОВАРОВ</find>
+      <find>scrolltop</find>
+      <find>scrolltop();</find>
+      <find>по вашии</find>
+      <find>consolea</find>
+      <find>console</find>
+      <find>Cart_data</find>
+      <find>.push</find>
+      <find>cart</find>
+      <find>cart_da</find>
+      <find>json</find>
+      <find>dublicate</find>
+      <find>ajax</find>
+      <find>url: &quot;../api/products&quot;</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -335,7 +310,6 @@
         <option value="$PROJECT_DIR$/public/css/admin/products.css" />
         <option value="$USER_HOME$/Desktop/Clibee last.csv" />
         <option value="$PROJECT_DIR$/public/js/sidebar_cart.js" />
-        <option value="$PROJECT_DIR$/public/js/custom.js" />
         <option value="$PROJECT_DIR$/resources/views/user/cart/cart.blade.php" />
         <option value="$PROJECT_DIR$/public/cartTmpl/cart.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -374,11 +348,12 @@
         <option value="$PROJECT_DIR$/public/js/cartpage.js" />
         <option value="$PROJECT_DIR$/resources/views/user/category_page/category.blade.php" />
         <option value="$PROJECT_DIR$/public/css/main.css" />
-        <option value="$PROJECT_DIR$/public/js/categoryData.js" />
         <option value="$PROJECT_DIR$/resources/views/user/product/product_inner.blade.php" />
-        <option value="$PROJECT_DIR$/public/js/cart.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
+        <option value="$PROJECT_DIR$/public/js/custom.js" />
         <option value="$PROJECT_DIR$/public/js/mainPage_data.js" />
+        <option value="$PROJECT_DIR$/public/js/cart.js" />
+        <option value="$PROJECT_DIR$/public/js/categoryData.js" />
       </list>
     </option>
   </component>
@@ -800,7 +775,7 @@
       <workItem from="1514879076327" duration="34000" />
       <workItem from="1514879125437" duration="82000" />
       <workItem from="1514967193426" duration="41000" />
-      <workItem from="1514967248329" duration="12650000" />
+      <workItem from="1514967248329" duration="17860000" />
     </task>
     <task id="LOCAL-00001" summary="markup">
       <created>1506337484664</created>
@@ -970,11 +945,18 @@
       <option name="project" value="LOCAL" />
       <updated>1514559862481</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Filters ---- Done&#10;MainPage ---- Done">
+      <created>1514980857330</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1514980857330</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="610522000" />
+    <option name="totallyTimeSpent" value="615732000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="23" width="1680" height="1027" extended-state="6" />
@@ -985,6 +967,7 @@
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25448614" sideWeight="0.5015886" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16361788" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35721493" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1001,7 +984,6 @@
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1049,16 +1031,16 @@
     <MESSAGE value="Cart update" />
     <MESSAGE value="Category update" />
     <MESSAGE value="filtersUpdate" />
-    <option name="LAST_COMMIT_MESSAGE" value="filtersUpdate" />
+    <MESSAGE value="Filters ---- Done&#10;MainPage ---- Done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Filters ---- Done&#10;MainPage ---- Done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="47" />
+      <option name="time" value="49" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js" />
     <entry file="file://$PROJECT_DIR$/app/Order.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1372,44 +1354,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/cartpage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="4" column="58" lean-forward="false" selection-start-line="4" selection-start-column="58" selection-end-line="4" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/category_page/filters.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="14" lean-forward="false" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-          <folding>
-            <marker date="1514454589364" expanded="true" signature="210:225" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="336:347" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="363:374" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="403:416" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="438:449" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="492:503" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="534:547" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="826:845" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="959:972" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="1006:1019" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="1032:1047" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="1071:1084" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="1078:1084" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="1129:1142" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="1173:1188" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="2056:2087" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="2207:2226" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="2255:2276" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="2306:2325" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="2376:2395" ph="..." />
-            <marker date="1514454589364" expanded="true" signature="2426:2447" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/product/orders.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
@@ -1427,84 +1371,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/category_page/category.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="80" column="26" lean-forward="false" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="26" />
-          <folding>
-            <marker date="1514557114817" expanded="true" signature="9:29" ph="..." />
-            <marker date="1514557114817" expanded="true" signature="40:50" ph="..." />
-            <marker date="1514557114817" expanded="true" signature="92:107" ph="..." />
-            <marker date="1514557114817" expanded="true" signature="457:474" ph="..." />
-            <marker date="1514557114817" expanded="true" signature="3430:3458" ph="..." />
-            <marker date="1514557114817" expanded="true" signature="4519:4534" ph="..." />
-            <marker date="1514557114817" expanded="true" signature="4578:4605" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/categoryData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="665" column="22" lean-forward="false" selection-start-line="665" selection-start-column="22" selection-end-line="665" selection-end-column="22" />
-          <folding>
-            <element signature="e#544#4036#0" expanded="false" />
-            <element signature="e#702#2038#0" expanded="false" />
-            <element signature="e#2278#3925#0" expanded="false" />
-            <element signature="e#3104#3335#0" expanded="false" />
-            <element signature="e#3356#3492#0" expanded="false" />
-            <element signature="e#3511#3744#0" expanded="false" />
-            <element signature="e#3765#3855#0" expanded="false" />
-            <element signature="e#4068#4106#0" expanded="false" />
-            <element signature="e#4218#4531#0" expanded="false" />
-            <element signature="e#4567#4715#0" expanded="false" />
-            <element signature="e#4745#7978#0" expanded="false" />
-            <element signature="e#4818#4892#0" expanded="false" />
-            <element signature="e#5320#6378#0" expanded="false" />
-            <element signature="e#6466#6696#0" expanded="false" />
-            <element signature="e#6717#7628#0" expanded="false" />
-            <element signature="e#6745#7622#0" expanded="false" />
-            <element signature="e#7983#8015#0" expanded="false" />
-            <element signature="n#!!block;n#initData#0" expanded="false" />
-            <element signature="e#8448#8716#0" expanded="false" />
-            <element signature="n#!!block;n#makeData#0" expanded="false" />
-            <element signature="e#9056#9664#0" expanded="false" />
-            <element signature="e#9703#9825#0" expanded="false" />
-            <element signature="n#!!block;n#NextData#0" expanded="false" />
-            <element signature="n#!!block;n#GetData#0" expanded="false" />
-            <element signature="n#!!block;n#drawItems#0" expanded="false" />
-            <element signature="n#!!block;n#scrolltop#0" expanded="false" />
-            <element signature="n#!!block;n#RemoveItem#0" expanded="false" />
-            <element signature="e#19731#19962#0" expanded="false" />
-            <element signature="e#19985#20116#0" expanded="false" />
-            <element signature="e#20017#20068#0" expanded="false" />
-            <element signature="e#20135#20368#0" expanded="false" />
-            <element signature="e#20221#20358#0" expanded="false" />
-            <element signature="e#20389#20479#0" expanded="false" />
-            <element signature="e#20616#21745#0" expanded="false" />
-            <element signature="e#21802#21924#0" expanded="false" />
-            <element signature="e#22727#24887#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/cart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="62" column="24" lean-forward="false" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
-          <folding>
-            <element signature="n#!!block;n#Cart_template#0" expanded="false" />
-            <element signature="e#9104#9698#0" expanded="false" />
-            <element signature="e#9760#10353#0" expanded="false" />
-            <element signature="n#!!block;n#conversion#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/product/product_inner.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
             <marker date="1514977478895" expanded="true" signature="9:24" ph="..." />
             <marker date="1514977478895" expanded="true" signature="44:83" ph="..." />
@@ -1574,11 +1444,121 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/cartpage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="116" column="38" lean-forward="true" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="3" column="153" lean-forward="false" selection-start-line="3" selection-start-column="153" selection-end-line="3" selection-end-column="153" />
+          <folding>
+            <marker date="1514981315221" expanded="true" signature="4624:4631" ph="—" />
+            <marker date="1514981315221" expanded="true" signature="4873:4880" ph="—" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/category_page/filters.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="7" column="49" lean-forward="false" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
+          <folding>
+            <marker date="1514454589364" expanded="true" signature="210:225" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="336:347" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="363:374" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="403:416" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="438:449" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="492:503" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="534:547" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="826:845" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="959:972" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="1006:1019" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="1032:1047" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="1071:1084" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="1078:1084" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="1129:1142" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="1173:1188" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="2056:2087" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="2207:2226" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="2255:2276" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="2306:2325" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="2376:2395" ph="..." />
+            <marker date="1514454589364" expanded="true" signature="2426:2447" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/mainPage_data.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+        <state relative-caret-position="204">
+          <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="29" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/category_page/category.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="80" column="26" lean-forward="false" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="26" />
+          <folding>
+            <marker date="1514557114817" expanded="true" signature="9:29" ph="..." />
+            <marker date="1514557114817" expanded="true" signature="40:50" ph="..." />
+            <marker date="1514557114817" expanded="true" signature="92:107" ph="..." />
+            <marker date="1514557114817" expanded="true" signature="457:474" ph="..." />
+            <marker date="1514557114817" expanded="true" signature="3430:3458" ph="..." />
+            <marker date="1514557114817" expanded="true" signature="4519:4534" ph="..." />
+            <marker date="1514557114817" expanded="true" signature="4578:4605" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/cart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="66" column="25" lean-forward="false" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
+          <folding>
+            <element signature="n#!!block;n#Cart_template#0" expanded="false" />
+            <element signature="e#1079#1995#0" expanded="false" />
+            <element signature="n#!!block;n#getProductData#0" expanded="false" />
+            <element signature="n#!!block;n#additocart#0" expanded="false" />
+            <element signature="n#!!block;n#initAdd#0" expanded="false" />
+            <element signature="e#9082#9676#0" expanded="false" />
+            <element signature="e#9738#10331#0" expanded="false" />
+            <element signature="n#!!block;n#conversion#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/categoryData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="241" column="35" lean-forward="true" selection-start-line="241" selection-start-column="35" selection-end-line="241" selection-end-column="35" />
+          <folding>
+            <element signature="e#544#4036#0" expanded="false" />
+            <element signature="e#702#2038#0" expanded="false" />
+            <element signature="e#4068#4106#0" expanded="false" />
+            <element signature="e#4218#4531#0" expanded="false" />
+            <element signature="e#4567#4715#0" expanded="false" />
+            <element signature="e#4745#8016#0" expanded="false" />
+            <element signature="e#5637#6409#0" expanded="false" />
+            <element signature="e#6496#6726#0" expanded="false" />
+            <element signature="e#8021#8053#0" expanded="false" />
+            <element signature="e#8486#8999#0" expanded="false" />
+            <element signature="n#!!block;n#NextData#0" expanded="false" />
+            <element signature="n#!!block;n#GetData#0" expanded="false" />
+            <element signature="n#!!block;n#drawItems#0" expanded="false" />
+            <element signature="n#!!block;n#scrolltop#0" expanded="false" />
+            <element signature="e#20084#20315#0" expanded="false" />
+            <element signature="e#20370#20421#0" expanded="false" />
+            <element signature="e#20488#20721#0" expanded="false" />
+            <element signature="e#20574#20711#0" expanded="false" />
+            <element signature="e#22155#22277#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
