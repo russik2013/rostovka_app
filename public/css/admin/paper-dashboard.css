@@ -2829,6 +2829,7 @@ textarea.form-control {
 }
 
 #custom-search-form .search-query {
+  float: right;
   padding-right: 4px \9;
   padding-left: 4px \9;
   /* IE7-8 doesn't have border-radius, so don't indent the padding */
@@ -2845,12 +2846,11 @@ textarea.form-control {
 #custom-search-form button {
   border: 0;
   background: none;
-  /** belows styles are working good */
   padding: 2px 5px;
-  margin-top: 2px;
-  position: relative;
-  left: -28px;
-  /* IE7-8 doesn't have border-radius, so don't indent the padding */
+  margin-top: 6px;
+  position: absolute;
+  float: right;
+  right: 17px;
   margin-bottom: 0;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;

@@ -75,3 +75,26 @@
 .table-full-width{
     margin: 0 !important;
 }
+
+.header--add--buttons{
+    padding-left: 20px;
+}
+.header--add--buttons i:hover{
+    color: #63a3ff;
+}
+.upload--buttons, .update--buttons, .remove--buttons{
+    font-size: 30px;
+    border: none;
+    background: transparent;
+    margin-right: 20px;
+    float: left;
+    padding: 0;
+}
+
+.update--buttons i{
+    margin-top: 5px;
+}
+
+.modal-footer .btn:hover{
+    background: transparent;
+}

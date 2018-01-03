@@ -4,27 +4,43 @@
 
 @extends('admin.main')
 @section('products_container')
+    <div class="col-md-12">
+        <div class="col-md-12 header">
+            <h4 class="title">Список товаров</h4>
+        </div>
+        <div class="col-md-12">
+            <div class="content table-responsive table-full-width">
+
+                <div class="header--add--buttons">
+                    <button class="upload--buttons upload_button" data-toggle="tooltip" title="Загрузить товары"><i class="fa fa-upload"></i></button>
+                    <button class="remove--buttons" data-toggle="tooltip" title="Удалить товары"><i class="fa fa-trash-o"></i></button>
+                    <button class="update--buttons" data-toggle="tooltip" title="Редактировать товары"><i class="fa fa-pencil-square-o"></i></button>
+                </div>
+
+                <div class="span12 pull-right">
+                    <form id="custom-search-form" class="form-search form-horizontal pull-right">
+                        <div class="input-append span12">
+                            <input type="text" class="search-query" placeholder="Поиск">
+                            <button type="submit" class="btn"><i class="ti-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+
+
+
+
+                {{--<a href="product_add" class="btn btn-wd btn-info btn-fill btn-rotate" type="button">--}}
+                {{--Добавить товар--}}
+                {{--</a>--}}
+            </div>
+        </div>
+    </div>
     <div class="content products--content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="header">
-                            <h4 class="title">Список товаров</h4>
-                        </div>
                         <div class="content table-responsive table-full-width">
-                            <div class="span12 pull-right">
-                                <form id="custom-search-form" class="form-search form-horizontal pull-right">
-                                    <div class="input-append span12">
-                                        <input type="text" class="search-query" placeholder="Поиск">
-                                        <button type="submit" class="btn"><i class="ti-search"></i></button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <a href="product_add" class="btn btn-wd btn-info btn-fill btn-rotate" type="button">
-                                Добавить товар
-                            </a>
 
                             <table class="table table-striped">
                                 <thead>
@@ -183,7 +199,25 @@
         </div>
     </div>
 @endsection
+<div class="modal fade upload_modal" role="dialog">
+    <div class="modal-dialog">
 
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Загрузить товары</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success pull-left" data-dismiss="modal">Загрузиить</button>
+                <button type="button" class="btn btn-info pull-right" data-dismiss="modal">Отмена</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 @section('productsLib')
     <script src="{{url('js/admin/products.js')}}"></script>
 @endsection

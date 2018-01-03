@@ -26,6 +26,7 @@ var Cart_data = [{row: [], cartCount: 0, cartProducts_summ: 0}], hidden__price, 
 $(document).on("click", '[data-set="buyButton"]', function (event) {
     if($.find('.one--product').length > 0){
         targetID  = Number ($('#productID')[0].dataset.prodid);
+
         var itemQuant = Number ($('.quantity').val()),
             domItem_price = Number ($.find('.choosed')[0].firstElementChild.lastElementChild.firstChild.innerText),
             trueTarget = false;
@@ -74,6 +75,8 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
     }
 });
 
+
+//TODO
 function getProductData(targetID, itemQuant, domItem_price) {
     var poductinnerID = Number ($.find('[data-prodid]')[0].dataset.prodid),
         productData = [];
@@ -82,7 +85,7 @@ function getProductData(targetID, itemQuant, domItem_price) {
 
     $.ajax({
         method: "POST",
-        url: "../../api/product",
+        url: "../api/product",
         data: {id : poductinnerID}
     }).done(function( msg ) {
         productData.push(msg);

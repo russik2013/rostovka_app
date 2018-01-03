@@ -33,3 +33,8 @@ var trBoldBlue = $("table");
 $(trBoldBlue).on("click", "tr", function (){
     $(this).toggleClass("bold-blue");
 });
+
+
+$(".upload_button").click(function(){
+    $(".upload_modal").modal();
+});
