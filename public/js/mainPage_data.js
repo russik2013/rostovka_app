@@ -3,13 +3,11 @@ var TopSallesData= [],
     productTheme = $('#template'),
     localData = [];
 
-
 $.ajax({
     method: "POST",
     url: $('meta[name="api_url"]').attr('content'),
     data: {category_id : 1}
 }).done(function( msg ) {
-
     for(var i= 0; i < msg.length; i++ ) {
         data[i] = {
             dataID: i,
@@ -25,15 +23,14 @@ $.ajax({
             product_url: msg[i].product_url + '/' + i,
             option_type: 'full__price' // Или full__price или rostovka__price
         };
-
     }
-
     $(productTheme).tmpl(data).appendTo('#newest');
     // GetData(data)
 }) .fail(function( msg ) {
 
 });
 
+// localStorage.clear()
 
 
 $.ajax({
@@ -41,8 +38,6 @@ $.ajax({
     url: $('meta[name="top_tovar_url"]').attr('content'),
     data: {category_id : 1}
 }).done(function( msg ) {
-
-    console.log(msg);
     for(var i= 0; i < msg.length; i++ ) {
         TopSallesData[i] = {
             dataID: i,

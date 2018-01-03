@@ -10,7 +10,7 @@
         <section id="productID" class="content-page single-product-content" data-prodid="{{$product -> id}}">
 
             <!-- Product -->
-            <div id="product-detail" class="container">
+            <div id="product-detail" class="container one--product">
                 <div class="row">
                     <div class="col-lg-9 col-md-12 product-content sidebar-position-right">
                         <div class="row">

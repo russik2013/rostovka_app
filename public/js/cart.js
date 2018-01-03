@@ -27,7 +27,7 @@ var Cart_data = [{row: [], cartCount: 0, cartProducts_summ: 0}], hidden__price, 
 
 
 $(document).on("click", '[data-set="buyButton"]', function (event) {
-    if($('#product-detail').length > 0){
+    if($.find('.one--product').length > 0){
         targetID  = Number ($('#productID')[0].dataset.prodid);
         var itemQuant = Number ($('.quantity').val()),
             domItem_price = Number ($.find('.choosed')[0].firstElementChild.lastElementChild.firstChild.innerText),
@@ -60,8 +60,9 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
         var checkif_true = false;
         var domtargetID = Number(event.target.offsetParent.offsetParent.dataset.id);
 
+        console.log(data)
         for (var i = 0; i < data.length; i++) {
-            if (domtargetID === data[i].real_id) {
+            if (domtargetID === data[i].dataID) {
                 hidden__price = data[i].full__price;
                 targetID = data[i].real_id;
             }
@@ -102,7 +103,6 @@ function getProductData(targetID, itemQuant, domItem_price) {
         }
 
         function pushtoCart() {
-
             Cart_data[0].row.push({
                 productID: productData[0].id,
                 targetID: 'added_' + lastElemnt,

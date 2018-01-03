@@ -38,8 +38,9 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
                 filters: values}
         }).done(function(msg) {
-            var filtered_data = msg;
-            GetData(filtered_data);
+            if(msg.length > 0){
+                makeFilterData(msg)
+            }
             $('.preloader').remove();
         });
 
@@ -92,8 +93,7 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
                 filters: values}
         }).done(function(msg) {
             if(msg.length > 0){
-                var filtered_data = msg;
-                GetData(filtered_data);
+                makeFilterData(msg);
                 $('.preloader').remove();
             }
         });
@@ -140,8 +140,6 @@ if(saved_count_on_page !== null){
     localStorage.setItem('selectedCount',  JSON.stringify(count_on_page));
 }
 
-localStorage.clear()
-
 if(getSavedFilters !== null){
     var get_saved_count_on_page = 12;
 
@@ -149,38 +147,42 @@ if(getSavedFilters !== null){
         get_saved_count_on_page = JSON.parse(saved_count_on_page);
     }
 
-    for (var y = 0; y < $.find('[data-set="selectCount"] option').length; y++){
-        if(Number ($.find('[data-set="selectCount"] option')[y].attributes[0].value) === get_saved_count_on_page) {
-            $.find('[data-set="selectCount"] option')[y].setAttribute('selected', 'selected')
+    for (var l = 0; l < $.find('[data-set="selectCount"] option').length; l++){
+        if(Number ($.find('[data-set="selectCount"] option')[l].attributes[0].value) === get_saved_count_on_page) {
+            $.find('[data-set="selectCount"] option')[l].setAttribute('selected', 'selected')
         }
     }
 
 
-    for (var i = 0; i < getSavedFilters.length ; i++){
-        if(getSavedFilters[i][0] === $.find('.checkbox-circle input')[i].dataset.value){
-            $.find('.checkbox-circle input')[i].setAttribute("checked", "checked");
-
-            values = getSavedFilters;
-            var AppendedList = $('.choosedFilter li');
-            $('.CFBlock').css('display', 'block');
-
-            Number(AppendedList.length++);
-            for (var y = 0; y < values.length; y++) {
-                for (var z = 0; z < AppendedList.length; z++) {
-                    if ($.find('.checkbox-circle input')[z].dataset.value === values[y][z]) {
-                        $(AppendedList)[z].remove();
-                    }
-                }
-
-                $('.choosedFilter').append('' +
-                    '<li class="appedned__item">' +
-                    '<span class="item" data-type="' + values[y][0] + '">' + values[y][1] + '</span>' +
-                    '<i class="fa fa-times-circle removeAppended__Item" aria-hidden="true"></i>' +
-                    '</li>');
+    var items_Count = Number ($.find('.checkbox-circle').length);
+    for (var i = 0; i < getSavedFilters.length; i++){
+        for(var b = 0; b < items_Count; b++){
+            if($.find('.checkbox-circle input')[b].dataset.value === getSavedFilters[i][0]){
+                $.find('.checkbox-circle input')[b].setAttribute("checked", "checked");
             }
-            RemoveItem();
         }
+
+        values = getSavedFilters;
+        var AppendedList = $('.choosedFilter li');
+        $('.CFBlock').css('display', 'block');
+
+        Number(AppendedList.length++);
+        for (var y = 0; y < values.length; y++) {
+            for (var z = 0; z < AppendedList.length; z++) {
+                if ($.find('.checkbox-circle input')[z].dataset.value === values[y][z]) {
+                    $(AppendedList)[z].remove();
+                }
+            }
+
+            $('.choosedFilter').append('' +
+                '<li class="appedned__item">' +
+                '<span class="item" data-type="' + values[y][0] + '">' + values[y][1] + '</span>' +
+                '<i class="fa fa-times-circle removeAppended__Item" aria-hidden="true"></i>' +
+                '</li>');
+        }
+        RemoveItem();
     }
+
 
     $('.product--block').append('<div class="preloader"><i></i></div>');
 
@@ -191,16 +193,28 @@ if(getSavedFilters !== null){
             filters: values}
     }).done(function(msg) {
         if(msg.length > 0){
+            for(var i= 0; i < msg.length; i++ ) {
+                data[i] = {
+                    dataID: i,
+                    imgUrl: "img/product-img/2imv.jpg",
+                    name: msg[i].name,
+                    rostovka: msg[i].rostovka_count,
+                    box: msg[i].box_count,
+                    type: msg[i].types,
+                    price: msg[i].prise,
+                    full__price: msg[i].full__price,
+                    rostovka__price: msg[i].rostovka__price,
+                    real_id: msg[i].id,
+                    product_url: msg[i].product_url + '/' + i,
+                    option_type: 'full__price' // Или full__price или rostovka__price
+                };
+            }
             var filtered_data = msg;
             GetData(filtered_data);
             drawItems(filtered_data);
             $('.preloader').remove();
         }
-        else{
-            return false
-        }
     });
-
 
     $.ajax({
         method: 'POST',
@@ -216,7 +230,6 @@ else{
     initData(count_on_page);
 }
 
-
 function initData(count_on_page) {
     $.ajax({
         method: "POST",
@@ -230,8 +243,14 @@ function initData(count_on_page) {
 }
 
 var paginationCounter = function (paginationNum) {
-    paginationCount = paginationNum;
-    return paginationCount;
+    if(Number (paginationNum) !== 0){
+        paginationCount = paginationNum;
+        return paginationCount;
+    }
+    else {
+        $('.preloader').remove();
+        $('#target').append('<div class="filter--null">По вашим критериям нет товаров ;(</div>')
+    }
 };
 
 function makeData(page_num, count_on_page) {
@@ -294,7 +313,6 @@ function NextData(page_num, count_on_page, filter_value) {
         }
 
         pageList = data;
-
         drawItems(pageList);
 
         if(Number (page_num) === Number (paginationCount)){
@@ -502,10 +520,10 @@ function GetData(data) {
 
     function nextPage(pageNum) {
         currentPage = pageNum;
-        loadList();
+        loadList(currentPage);
     }
 
-    function loadList() {
+    function loadList(currentPage) {
         var begin = ((currentPage - 1) * numberPerPage);
         var end = begin + numberPerPage;
 
@@ -525,6 +543,7 @@ function GetData(data) {
 
     init();
 }
+
 
 $('.product--block').append('<div class="preloader"><i></i></div>');
 
@@ -576,8 +595,9 @@ function RemoveItem() {
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
                 filters: values}
         }).done(function( msg ) {
-            var filtered_data = msg;
-            GetData(filtered_data);
+            if(msg.length > 0){
+                makeFilterData(msg)
+            }
             $('.preloader').remove();
         });
 
@@ -617,8 +637,9 @@ $('.removeallFilters span').on('click', function () {
         data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
             filters: values}
     }).done(function( msg ) {
-        var filtered_data = msg;
-        GetData(filtered_data);
+        if(msg.length > 0){
+            makeFilterData(msg)
+        }
         $('.preloader').remove();
     });
 
@@ -640,9 +661,34 @@ $('.submit_onChoose button').on('click', function () {
     $('input[type=checkbox]').prop('checked', false)
 });
 
+//Making sorted data
+function makeFilterData(msg) {
+    var filtered_data;
+    for(var i= 0; i < msg.length; i++ ) {
+        data[i] = {
+            dataID: i,
+            imgUrl: "img/product-img/2imv.jpg",
+            name: msg[i].name,
+            rostovka: msg[i].rostovka_count,
+            box: msg[i].box_count,
+            type: msg[i].types,
+            price: msg[i].prise,
+            full__price: msg[i].full__price,
+            rostovka__price: msg[i].rostovka__price,
+            real_id: msg[i].id,
+            product_url: msg[i].product_url + '/' + i,
+            option_type: 'full__price' // Или full__price или rostovka__price
+        };
+    }
+
+    pageList = data;
+    filtered_data = data;
+    drawItems(pageList);
+    GetData(filtered_data);
+}
 
 // Slider from to
-$( function() {
+$(function() {
     $( "#slider-range" ).slider({
         range: true,
         min: 0,
