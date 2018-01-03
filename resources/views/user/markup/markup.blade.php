@@ -330,6 +330,7 @@
 @yield('category__Lib')
 @yield('auth_lib')
 <script type="text/javascript" src="{{asset('js/cart.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/close_tab.js')}}"></script>
 <!-- custom js -->
 <!-- end jquery -->
 

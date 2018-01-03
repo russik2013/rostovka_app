@@ -6,7 +6,7 @@ var data = [],
     paginationNum,
     paginationCount = 0,
     filter_value = [],
-    savedFilters = localStorage.getItem('filterValues'),
+    savedFilters = sessionStorage.getItem('filterValues'),
     getSavedFilters,
     selectedCount = Number ($.find('#product-show option')[0].innerText);
 
@@ -54,13 +54,13 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             paginationCounter(paginationNum);
         });
 
-        localStorage.setItem('filterValues', JSON.stringify(values));
+        sessionStorage.setItem('filterValues', JSON.stringify(values));
     }
 
     if ($(this).is(':checked')) {
         values.push([targetID, $(this)[0].defaultValue, $(target)[0].childNodes[1].dataset.id]);
 
-        localStorage.setItem('filterValues', JSON.stringify(values));
+        sessionStorage.setItem('filterValues', JSON.stringify(values));
     }
 
     if (values.length !== 0) {
@@ -124,20 +124,20 @@ if(getSavedFilters !== null){
     filter_value = getSavedFilters
 }
 
-var saved_count_on_page = localStorage.getItem('selectedCount');
+var saved_count_on_page = sessionStorage.getItem('selectedCount');
 
 $('#product-show').on('change', function () {
     count_on_page = Number ($.find('.product-sort-by.pull-right .nice-select-box .current')[0].innerText);
     $('.product--block').append('<div class="preloader"><i></i></div>');
     initData(count_on_page);
-    localStorage.setItem('selectedCount',  JSON.stringify(count_on_page));
+    sessionStorage.setItem('selectedCount',  JSON.stringify(count_on_page));
     return count_on_page;
 });
 
 if(saved_count_on_page !== null){
     count_on_page = JSON.parse(saved_count_on_page);
     drawItems();
-    localStorage.setItem('selectedCount',  JSON.stringify(count_on_page));
+    sessionStorage.setItem('selectedCount',  JSON.stringify(count_on_page));
 }
 
 if(getSavedFilters !== null){
@@ -193,7 +193,7 @@ if(getSavedFilters !== null){
         data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: Number (get_saved_count_on_page),
             filters: values}
     }).done(function(msg) {
-        
+
         if(msg.length > 0){
             for(var i= 0; i < msg.length; i++ ) {
                 data[i] = {
@@ -623,7 +623,7 @@ function RemoveItem() {
             paginationCounter(paginationNum);
         });
 
-        localStorage.setItem('filterValues', JSON.stringify(values));
+        sessionStorage.setItem('filterValues', JSON.stringify(values));
     });
 }
 
@@ -664,7 +664,7 @@ $('.removeallFilters span').on('click', function () {
         paginationNum = msg;
         paginationCounter(paginationNum);
     });
-    localStorage.setItem('filterValues', JSON.stringify(values));
+    sessionStorage.setItem('filterValues', JSON.stringify(values));
 });
 
 $('.submit_onChoose button').on('click', function () {

@@ -78,7 +78,3 @@ $(document).on('click', '.product-item-inner a', function (event) {
     var clickeID = Number (event.target.parentElement.parentElement.parentElement.parentElement.dataset.id);
     sessionStorage.setItem('id', data[clickeID].dataID);
 });
-
-$( window ).on("beforeunload", function() {
-    alert("call")
-});

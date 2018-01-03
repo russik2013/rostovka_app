@@ -1,5 +1,5 @@
 'use strict';
-Cart_data = localStorage.getItem('Cart_data');
+Cart_data = sessionStorage.getItem('Cart_data');
 Cart_data = JSON.parse(Cart_data);
 
 function Cart_template(Cart_data) {
@@ -64,7 +64,6 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
 
         targetID = domtargetID;
 
-        console.log(event)
         if (Cart_data[0].row.length === 0) {
             initAdd(event, targetID, Cart_data);
         }
@@ -141,7 +140,7 @@ function additocart(targetID, itemQuant, domItem_price) {
     Cart_data[0].cartProducts_summ = allPrice;
 
     cartSumm();
-    localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+    sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
     $('.dropdownCart ul li').remove();
     Cart_template(Cart_data);
 }
@@ -192,7 +191,7 @@ function dublicate(targetID, Cart_data) {
 
     Cart_data[0].row[arrayItemId].quantityPrice = updPrice;
 
-    localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+    sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
 
     var valueofQuantity = $.find('[product-id="' + targetID + '"] input');
     $(valueofQuantity).val(Cart_data[0].row[arrayItemId].quantity);
@@ -250,7 +249,7 @@ function addtoCart(event, targetID) {
     $('.dropdownCart ul li').remove();
     Cart_data[0].cartCount = Cart_data[0].row.length;
 
-    localStorage.Cart_data = JSON.stringify(Cart_data);
+    sessionStorage.Cart_data = JSON.stringify(Cart_data);
 }
 
 $(document).on('click', '.removeItem__cart', function () {
@@ -272,7 +271,7 @@ $(document).on('click', '.removeItem__cart', function () {
     counter--;
     Number ($('.cart-count')[0].innerText = counter);
 
-    localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+    sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
     cartSumm();
 });
 
@@ -327,7 +326,7 @@ function conversion(target_dataset, flag, minus) {
 
         updPrice = mainPrice * Cart_data[0].row[target_id].quantity;
         Cart_data[0].row[target_id].quantityPrice = updPrice;
-        localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+        sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
     }
     else{
         for(var y = 0; y < Cart_data[0].row.length; y++){
@@ -346,7 +345,7 @@ function conversion(target_dataset, flag, minus) {
             Cart_data[0].row[target_id].quantityPrice = updPrice;
         }
         Cart_data[0].row[target_id].quantityPrice = updPrice;
-        localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+        sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
     }
 
     if(flag !== false){
@@ -365,7 +364,7 @@ function getPrice() {
         allPrice += Cart_data[0].row[i].price * Cart_data[0].row[i].quantity;
     }
     Cart_data[0].cartProducts_summ = allPrice;
-    localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+    sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
     return allPrice
 }
 
@@ -388,7 +387,7 @@ function cartSumm(){
 cartSumm();
 
 function getData() {
-    var retrievedData = localStorage.getItem("Cart_data");
+    var retrievedData = sessionStorage.getItem("Cart_data");
     if(retrievedData !== null){
         Cart_data = JSON.parse(retrievedData);
         $('.isClear').remove();
