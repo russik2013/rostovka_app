@@ -4603,7 +4603,7 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 .product-title a{
     font-size: 18px;
     border-bottom: 1px solid transparent;
-    white-space: pre-wrap;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -5097,6 +5097,9 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 
 .product-title {
     margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .product-price {

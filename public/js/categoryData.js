@@ -193,6 +193,7 @@ if(getSavedFilters !== null){
         data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: Number (get_saved_count_on_page),
             filters: values}
     }).done(function(msg) {
+        
         if(msg.length > 0){
             for(var i= 0; i < msg.length; i++ ) {
                 data[i] = {
@@ -210,7 +211,8 @@ if(getSavedFilters !== null){
                     option_type: 'full__price' // Или full__price или rostovka__price
                 };
             }
-            var filtered_data = msg;
+
+            var filtered_data = data;
             GetData(filtered_data);
             drawItems(filtered_data);
             $('.preloader').remove();
@@ -714,7 +716,6 @@ $(function() {
             max = Number ($.find('#amount')[0].value);
 
             for (var y = 0; y < filter_value.length; y++){
-                console.log(filter_value[y]);
                 if (filter_value[y].sizes){
                     filter_value.splice(y, 1);
                     pushValue();
