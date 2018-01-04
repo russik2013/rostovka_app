@@ -20,6 +20,7 @@ class SaleController extends Controller
         $order -> save();
 
         $this ->addOrderDetais($request -> tovar, $order -> id);
+
         $this ->setTopTovar($request -> tovar);
 
     }

@@ -125,28 +125,28 @@
                                                     <td>
                                                         <ul id="shipping_method">
                                                             <li>
-                                                                <input name="shipping_method" data-index="0" id="shipping_method_0_legacy_flat_rate" value="legacy_flat_rate" class="shipping_method" checked="checked" type="radio">
-                                                                <label for="shipping_method_0_legacy_flat_rate">Новая почта</label>
+                                                                <input name="shipping_method" data-index="0" id="new_post" value="new_post" class="shipping_method" checked="checked" type="radio">
+                                                                <label for="new_post">Новая почта</label>
                                                             </li>
                                                             <li>
-                                                                <input name="shipping_method" data-index="0" id="shipping_method_0_legacy_free_shipping" value="legacy_free_shipping" class="shipping_method" type="radio">
-                                                                <label for="shipping_method_0_legacy_free_shipping">Delivery</label>
+                                                                <input name="shipping_method" data-index="0" id="delivery_method" value="delivery_method" class="shipping_method" type="radio">
+                                                                <label for="delivery_method">Delivery</label>
                                                             </li>
                                                             <li>
-                                                                <input name="shipping_method" data-index="0" id="shipping_method_0_legacy_local_delivery" value="legacy_local_delivery" class="shipping_method" type="radio">
-                                                                <label for="shipping_method_0_legacy_local_delivery">Автолюкс</label>
+                                                                <input name="shipping_method" data-index="0" id="avtolux_method" value="avtolux_method" class="shipping_method" type="radio">
+                                                                <label for="avtolux_method">Автолюкс</label>
                                                             </li>
                                                             <li>
-                                                                <input name="shipping_method" data-index="0" id="shipping_method_0_legacy_local_InTime" value="legacy_local_delivery" class="shipping_method" type="radio">
-                                                                <label for="shipping_method_0_legacy_local_InTime">InTime</label>
+                                                                <input name="shipping_method" data-index="0" id="intime_method" value="intime_method" class="shipping_method" type="radio">
+                                                                <label for="intime_method">InTime</label>
                                                             </li>
                                                             <li>
-                                                                <input name="shipping_method" data-index="0" id="shipping_method_0_legacy_local_bus" value="legacy_local_delivery" class="shipping_method" type="radio">
-                                                                <label for="shipping_method_0_legacy_local_bus">Подвести к автобусу</label>
+                                                                <input name="shipping_method" data-index="0" id="bus_method" value="bus_method" class="shipping_method" type="radio">
+                                                                <label for="bus_method">Подвести к автобусу</label>
                                                             </li>
                                                             <li>
-                                                                <input name="shipping_method" data-index="0" id="shipping_method_0_legacy_local_your" value="legacy_local_delivery" class="shipping_method" type="radio">
-                                                                <label for="shipping_method_0_legacy_local_your">Самовывоз</label>
+                                                                <input name="shipping_method" data-index="0" id="self_pickup" value="self_pickup" class="shipping_method" type="radio">
+                                                                <label for="self_pickup">Самовывоз</label>
                                                             </li>
                                                         </ul>
                                                     </td>
@@ -154,7 +154,7 @@
                                                 <tr class="order-total">
                                                     <th>Сумма</th>
                                                     <td>
-                                                        <span class="product-price-amount amount"><span class="currency-sign">$</span>1009.00</span>
+                                                        <span class="product-price-amount amount"></span>
                                                     </td>
                                                 </tr>
                                                 </tfoot>
@@ -165,12 +165,12 @@
                                             <span>Оплата</span>
                                             <ul>
                                                 <li>
-                                                    <input id="payment_method_bacs" name="payment_method" value="bacs" checked="checked" type="radio" />
-                                                    <label for="payment_method_bacs">На карту "ПриватБанка"</label>
+                                                    <input id="privatBank_cart" name="payment_method" value="privatBank_cart" checked="checked" type="radio" />
+                                                    <label for="privatBank_cart">На карту "ПриватБанка"</label>
                                                 </li>
                                                 <li>
-                                                    <input id="payment_method_cod" name="payment_method" value="cod" type="radio" />
-                                                    <label for="payment_method_cod">Наличными</label>
+                                                    <input id="hand_in_cash" name="payment_method" value="hand_in_cash" type="radio" />
+                                                    <label for="hand_in_cash">Наличными</label>
                                                 </li>
                                             </ul>
                                             <div class="col-md-12 form-field-wrapper form-group has-feedback">
@@ -196,7 +196,28 @@
 <!-- End Page Content -->
 @endsection
 
+
+<div class="successful_Buy modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="fa fa-check-circle"></i>
+                </div>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">Ваш заказ принят</p>
+                <p class="text-center min--info">Наш менеджер свяжется с Вами в ближайшее время </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section('auth_reg')
     <script type="text/javascript" src="{{asset('js/auth.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/checkout.js')}}"></script>
 @endsection
 

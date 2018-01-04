@@ -18,7 +18,7 @@ Route::get('/parsing', 'Parsing\ParsingController@index');
 //////////////////////////////////////////////////////////////////////////////
 Route::get('/', function () {
     return view('user.main_page.main');
-});
+})->name('root');
 Route::get('/login', 'HomeController@login');
 Route::post('/login', 'HomeController@auth');
 

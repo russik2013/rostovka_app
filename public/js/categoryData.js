@@ -703,9 +703,9 @@ function makeFilterData(msg) {
 $(function() {
     $( "#slider-range" ).slider({
         range: true,
-        min: 0,
-        max: 500,
-        values: [0, 500],
+        min: 10,
+        max: 50,
+        values: [10, 50],
         slide: function(event, ui) {
             $("#minchoose").val(ui.values[ 0 ]);
             $("#amount").val(ui.values[ 1 ] );

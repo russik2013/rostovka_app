@@ -31,7 +31,7 @@ $(function () {
     });
 
     var passengers = [1,0,0];
-    $('.popover-markup>.trigger').click(function (e) {
+    $('.popover-markup > .trigger').click(function (e) {
         e.stopPropagation();
         $(".popover-content input").each(function(i) {
             $(this).val(passengers[i]);
@@ -77,4 +77,8 @@ $(function () {
 $(document).on('click', '.product-item-inner a', function (event) {
     var clickeID = Number (event.target.parentElement.parentElement.parentElement.parentElement.dataset.id);
     sessionStorage.setItem('id', data[clickeID].dataID);
+});
+
+$('.cartBl').on('scroll', function (ev) {
+    ev.preventDefault();
 });

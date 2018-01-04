@@ -3,20 +3,7 @@ Cart_data = sessionStorage.getItem('Cart_data');
 Cart_data = JSON.parse(Cart_data);
 
 function Cart_template(Cart_data) {
-    if($('.categoryPage').length > 0){
-        $.get('../cartTmpl/cart.html', {}, function (templateBody) {
-            $.tmpl(templateBody, Cart_data).appendTo('#cartTemplate');
-        });
-    } else if($('#productID').length > 0) {
-        $.get('../../cartTmpl/cart.html', {}, function (templateBody) {
-            $.tmpl(templateBody, Cart_data).appendTo('#cartTemplate');
-        });
-    } else if($('.section-padding-b').length > 0){
-        $.get('cartTmpl/cart.html', {}, function (templateBody) {
-            $.tmpl(templateBody, Cart_data).appendTo('#cartTemplate');
-        });
-    }else
-        $.get('cartTmpl/cart.html', {}, function (templateBody) {
+    $.get($('meta[name="root-site"]').attr('content') + '/cartTmpl/cart.html', {}, function (templateBody) {
         $.tmpl(templateBody, Cart_data).appendTo('#cartTemplate');
     });
 }
@@ -25,6 +12,7 @@ var Cart_data = [{row: [], cartCount: 0, cartProducts_summ: 0}], hidden__price, 
 
 $(document).on("click", '[data-set="buyButton"]', function (event) {
     if($.find('.one--product').length > 0){
+
         targetID  = Number ($('#productID')[0].dataset.prodid);
 
         var itemQuant = Number ($('.quantity').val()),
@@ -76,7 +64,6 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
 });
 
 
-//TODO
 function getProductData(targetID, itemQuant, domItem_price) {
     var poductinnerID = Number ($.find('[data-prodid]')[0].dataset.prodid),
         productData = [];
@@ -85,13 +72,12 @@ function getProductData(targetID, itemQuant, domItem_price) {
 
     $.ajax({
         method: "POST",
-        url: "../api/product",
+        url: $('meta[name="root-site"]').attr('content') + "/api/product",
         data: {id : poductinnerID}
     }).done(function( msg ) {
+        $('button.buyProduct_inner').attr( "disabled", false );
         productData.push(msg);
         if(Cart_data[0].row.length !== 0){
-            var lastElemnt = Number (Cart_data[0].row.slice(-1)[0].targetID.replace("added_", ""));
-            lastElemnt++;
             pushtoCart();
         }
         else{
@@ -102,7 +88,7 @@ function getProductData(targetID, itemQuant, domItem_price) {
         function pushtoCart() {
             Cart_data[0].row.push({
                 productID: productData[0].id,
-                targetID: 'added_' + lastElemnt,
+                targetID: productData[0].id,
                 imgUrl: '../img/product-img/prodimage1.jpeg',
                 name: productData[0].name,
                 quant: 'count',
@@ -113,15 +99,13 @@ function getProductData(targetID, itemQuant, domItem_price) {
                 buy_real_id: productData[0].id,
                 cart_product_url: productData[0].product_url,
                 selected_value: null,
-                price_per_pair: productData[0].price,
+                price_per_pair: productData[0].prise,
                 box__price: Number ($.find('[data-set="boxset"] .iPrice')[0].innerText)
             });
 
             $('.dropdownCart ul li').remove();
             Cart_data[0].cartCount = Cart_data[0].row.length;
 
-
-            targetID = lastElemnt;
             getPrice();
             cartSumm();
             Cart_template(Cart_data);
@@ -167,7 +151,6 @@ function checkDublicate(event, targetID, checkif_true) {
     }
 }
 
-
 function initAdd(event, targetID, Cart_data) {
     addtoCart(event, targetID);
     Cart_template(Cart_data);
@@ -202,8 +185,6 @@ function dublicate(targetID, Cart_data) {
     counterFn(mainPrice, targetID, updPrice);
 }
 
-
-
 var qid = 0, counter = 0;
 function addtoCart(event, targetID) {
     var imgurl, gTitle, gQuant, gprice, productIndex, selected_quantity, rostovkaPrice;
@@ -232,7 +213,7 @@ function addtoCart(event, targetID) {
 
     Cart_data[0].row.push({
         productID: productIndex,
-        targetID: 'added_' + qid,
+        targetID: productIndex,
         imgUrl: imgurl,
         name: gTitle,
         quant: gQuant,
@@ -256,7 +237,7 @@ function addtoCart(event, targetID) {
 }
 
 $(document).on('click', '.removeItem__cart', function () {
-    var clicked_targetID = $(this)[0].parentElement.dataset.id;
+    var clicked_targetID = Number ($(this)[0].parentElement.dataset.id);
 
     for (var i = 0; i < Cart_data[0].row.length; i++){
         if(Cart_data[0].row[i].targetID === clicked_targetID){
