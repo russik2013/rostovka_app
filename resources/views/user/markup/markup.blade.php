@@ -287,8 +287,7 @@
         <!-- Footer Copyright -->
         <div class="container">
             <div class="copyrights">
-                <p class="copyright">&copy; Developed & Designed by <a href="http://micore-studio.com/" target="_blank">MiCore
-                        Development</a></p>
+                <p class="copyright">&copy; Developed & Designed by <a href="http://comnd-x.com/" target="_blank">Commnd+X Studio</a></p>
             </div>
         </div>
         <!-- End Footer Copyright -->

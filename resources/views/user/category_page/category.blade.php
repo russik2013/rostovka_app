@@ -17,15 +17,15 @@
                             <div class="product-filter-content-inner">
 
                                 <!--Product Sort By-->
-                                <form class="product-sort-by col-xl-5 col-md-12 col-sm-12 col-xs-12">
-                                    <label for="short-by">Сортировка</label>
-                                    <select name="short-by" id="short-by" class="nice-select-box">
-                                        <option value="default_sorting" selected="selected">Последние поступления</option>
-                                        <option value="price_low_to_high">от дешевого к дорогому</option>
-                                        <option value="price_high_to_low">от дорогого к дешевому</option>
-                                        <option value="sort_by_newness">по дате</option>
-                                    </select>
-                                </form>
+                                {{--<form class="product-sort-by col-xl-5 col-md-12 col-sm-12 col-xs-12">--}}
+                                    {{--<label for="short-by">Сортировка</label>--}}
+                                    {{--<select name="short-by" id="short-by" class="nice-select-box">--}}
+                                        {{--<option value="default_sorting" selected="selected">Последние поступления</option>--}}
+                                        {{--<option value="price_low_to_high">от дешевого к дорогому</option>--}}
+                                        {{--<option value="price_high_to_low">от дорогого к дешевому</option>--}}
+                                        {{--<option value="sort_by_newness">по дате</option>--}}
+                                    {{--</select>--}}
+                                {{--</form>--}}
                                 <form class="product-sort-by pull-right col-xl-5 col-md-12 col-sm-12 col-xs-12">
                                     <label for="product-show">на странице по: </label>
                                     <select name="product-show" id="product-show" class="nice-select-box" data-set="selectCount">

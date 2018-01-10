@@ -75,9 +75,10 @@
 .table-full-width{
     margin: 0 !important;
 }
-
+.header--add--buttons .col-md-12{padding: 0}
 .header--add--buttons{
-    padding-left: 20px;
+    float: left;
+    padding: 0;
 }
 .header--add--buttons i:hover{
     color: #63a3ff;
@@ -97,4 +98,64 @@
 
 .modal-footer .btn:hover{
     background: transparent;
+}
+
+.sorting__Option {
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: rgb(204, 196, 184);
+    padding: 6px 10px 3px 10px;
+    text-align: center;
+    float: none;
+    border-radius: 0;
+    margin-bottom: 10px;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 6px;
+    background: url(../../img/sel__Arrow.png) white no-repeat 98.5% !important;
+    background: url(../../img/sel__Arrow.png) white no-repeat calc(100% - 10px) !important;
+}
+
+.header--add--buttons button{
+    background: #63a3ff;
+    color: #fff;
+    padding: 6px 20px 4px 20px;
+    float: right;
+    margin-bottom: 10px;
+    position: absolute;
+    right: -100px;
+    top: 20px;
+}
+
+.file-input-wrapper{
+    border-radius: 0;
+    border: 1px solid #a6a6a6;
+    background: #fff;
+    float: left;
+    padding: 5px 20px 4px 20px;
+    margin-bottom: 10px;
+    margin-right: 6px;
+}
+
+.file-input-wrapper:hover{
+    background: transparent;
+}
+
+.alert-danger{
+    position: fixed;
+    top: 10px;
+    z-index: 999;
+    right: 10px;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+
+.alert--xsl{
+    top: 60px;
 }

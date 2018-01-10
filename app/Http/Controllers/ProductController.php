@@ -149,6 +149,8 @@ class ProductController extends Controller
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
             $product -> types = $product -> type -> name;
             $product -> product_url = url($product ->id.'/product');
+            $product -> image_url = $product ->photo->photo_url;
+
         }
 
         return $products;

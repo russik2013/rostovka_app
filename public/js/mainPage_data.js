@@ -10,7 +10,7 @@ $.ajax({
     for(var i= 0; i < msg.length; i++ ) {
         data[i] = {
             dataID: msg[i].id,
-            imgUrl: "img/product-img/2imv.jpg",
+            imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,
             name: msg[i].name,
             rostovka: msg[i].rostovka_count,
             box: msg[i].box_count,
@@ -37,7 +37,7 @@ $.ajax({
     for(var i= 0; i < msg.length; i++ ) {
         TopSallesData[i] = {
             dataID: i,
-            imgUrl: "img/product-img/2imv.jpg",
+            imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,
             name: msg[i].name,
             rostovka: msg[i].rostovka_count,
             box: msg[i].box_count,
@@ -49,7 +49,6 @@ $.ajax({
             product_url: msg[i].product_url + '/' + i,
             option_type: 'full__price' // Или full__price или rostovka__price
         };
-
     }
     $(productTheme).tmpl(TopSallesData).appendTo('#topSalles');
 }) .fail(function( msg ) {

@@ -9,29 +9,34 @@
             <h4 class="title">Список товаров</h4>
         </div>
         <div class="col-md-12">
-            <div class="content table-responsive table-full-width">
+            <div class="header--add--buttons col-md-4 col-sm-12 col-xs-12">
+                <select class="sorting__Option col-md-5 col-sm-12 col-xs-12" name="goods">
+                    <option value="1">Перчатки</option>
+                    <option value="2">Обувь</option>
+                </select>
 
-                <div class="header--add--buttons">
-                    <button class="upload--buttons upload_button" data-toggle="tooltip" title="Загрузить товары"><i class="fa fa-upload"></i></button>
-                    <button class="remove--buttons" data-toggle="tooltip" title="Удалить товары"><i class="fa fa-trash-o"></i></button>
-                    <button class="update--buttons" data-toggle="tooltip" title="Редактировать товары"><i class="fa fa-pencil-square-o"></i></button>
+                <select class="sorting__Option col-md-5 col-sm-12 col-xs-12" name="uploadOptions" onChange="getSelect(event)">
+                    <option value="upload">Загрузить</option>
+                    <option value="edit">Редактировать</option>
+                    <option value="delete">Удалить</option>
+                </select>
+
+                <div class="col-md-12 inputs--group">
+                    <input type="file" data-filename-placement="inside" title="Выбрать фотографии" accept=".zip" class="col-md-5 col-sm-12 col-xs-12" onChange="getFile()">
+
+                    <input type="file" data-filename-placement="inside" title="Выбрать XLS" accept=".xls, .xlsx" class="col-md-5 col-sm-12 col-xs-12" onChange="getFileXls()">
                 </div>
 
-                <div class="span12 pull-right">
-                    <form id="custom-search-form" class="form-search form-horizontal pull-right">
-                        <div class="input-append span12">
-                            <input type="text" class="search-query" placeholder="Поиск">
-                            <button type="submit" class="btn"><i class="ti-search"></i></button>
-                        </div>
-                    </form>
-                </div>
+                <button class="upload col-md-4 col-sm-12 col-xs-12" >Загрузить</button>
+            </div>
 
-
-
-
-                {{--<a href="product_add" class="btn btn-wd btn-info btn-fill btn-rotate" type="button">--}}
-                {{--Добавить товар--}}
-                {{--</a>--}}
+            <div class="span12 pull-right col-md-3 col-sm-12 col-xs-12">
+                <form id="custom-search-form" class="form-search form-horizontal pull-right col-sm-12 col-xs-12">
+                    <div class="input-append col-sm-12 col-xs-12">
+                        <input type="text" class="search-query col-sm-12 col-xs-12" placeholder="Поиск">
+                        <button type="submit" class="btn"><i class="ti-search"></i></button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -199,25 +204,7 @@
         </div>
     </div>
 @endsection
-<div class="modal fade upload_modal" role="dialog">
-    <div class="modal-dialog">
-
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Загрузить товары</h4>
-            </div>
-            <div class="modal-body">
-                <p>Some text in the modal.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success pull-left" data-dismiss="modal">Загрузиить</button>
-                <button type="button" class="btn btn-info pull-right" data-dismiss="modal">Отмена</button>
-            </div>
-        </div>
-
-    </div>
-</div>
 @section('productsLib')
+    <script src="{{url('js/admin/bootstrap.file-input.js')}}"></script>
     <script src="{{url('js/admin/products.js')}}"></script>
 @endsection

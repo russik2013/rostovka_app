@@ -89,7 +89,7 @@ function getProductData(targetID, itemQuant, domItem_price) {
             Cart_data[0].row.push({
                 productID: productData[0].id,
                 targetID: productData[0].id,
-                imgUrl: '../img/product-img/prodimage1.jpeg',
+                imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,
                 name: productData[0].name,
                 quant: 'count',
                 price: Number ($('.choosed .iPrice')[0].innerText),
@@ -269,12 +269,11 @@ $(document).on('click', '.Cart_Button_Plus', function () {
         target_dataset = $(this)[0].parentElement.parentElement.offsetParent.dataset.set;
         flag = false;
         conversion(target_dataset, flag, minus);
-
         $.find('[data-set="totalCost"]')[0].innerHTML = Cart_data[0].cartProducts_summ + ' грн';
     }
 
     else{
-        target_dataset = $(this)[0].parentNode.parentNode.parentNode.offsetParent.dataset.id;
+        target_dataset = Number ($(this)[0].parentElement.parentElement.parentElement.dataset.set);
         flag = true;
         conversion(target_dataset, flag, minus);
     }
@@ -292,7 +291,7 @@ $(document).on('click', '.Cart_Button_Minus', function () {
     }
 
     else{
-        target_dataset = $(this)[0].parentNode.parentNode.parentNode.offsetParent.dataset.id;
+        target_dataset = Number ($(this)[0].parentElement.parentElement.parentElement.dataset.set);
         flag = true;
         conversion(target_dataset, flag, minus);
     }
@@ -301,7 +300,7 @@ $(document).on('click', '.Cart_Button_Minus', function () {
 function conversion(target_dataset, flag, minus) {
     if(minus !== true){
         for(var i = 0; i < Cart_data[0].row.length; i++){
-            if(target_dataset === Cart_data[0].row[i].targetID){
+            if(Number (target_dataset) === Cart_data[0].row[i].targetID){
                 target_id = i;
                 mainPrice = Cart_data[0].row[i].price;
                 Cart_data[0].row[i].quantity++;
@@ -314,7 +313,7 @@ function conversion(target_dataset, flag, minus) {
     }
     else{
         for(var y = 0; y < Cart_data[0].row.length; y++){
-            if(target_dataset === Cart_data[0].row[y].targetID){
+            if(Number (target_dataset) === Cart_data[0].row[y].targetID){
                 target_id = y;
                 mainPrice = Cart_data[0].row[y].price;
             }

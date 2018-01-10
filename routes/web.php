@@ -73,20 +73,12 @@ Route::get('/product_edit', function () {
     return view('admin.product.productedit');
 });
 
-Route::get('/filters_page', function () {
-    return view('admin.filters');
-});
-
 Route::get('/orders', function () {
     return view('admin.product.orders');
 });
 
 Route::get('/orderInfo', function () {
     return view('admin.product.orderInfo');
-});
-
-Route::get('/options', function () {
-    return view('admin.product.options');
 });
 
 Route::get('/personal', function () {

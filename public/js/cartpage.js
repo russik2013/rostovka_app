@@ -20,10 +20,6 @@ $(document).ready(function () {
     }
 });
 
-function removeItems(el) {
-    console.log(el)
-}
-
 getData();
 
 if(Cart_data[0].row.length === 0){
@@ -127,8 +123,6 @@ function getSelect(event, value) {
             }
             recalculatedP += Cart_data[0].row[z].quantityPrice;
         }
-
-        console.log(Cart_data[0].row);
 
         Cart_data[0].cartProducts_summ = recalculatedP;
         $.find('[data-set="totalCost"]')[0].innerText = recalculatedP + ' грн';
