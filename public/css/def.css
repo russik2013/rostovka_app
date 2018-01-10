@@ -6820,3 +6820,12 @@ tr .type .form-control{
     color: #6c757a;
     border-radius: 0;
 }
+
+.product--is--inCart{
+    background: rgba(238, 238, 238, .5);
+    text-align: center;
+    padding: 80px;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #2c618f;
+}

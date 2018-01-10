@@ -74,7 +74,7 @@ function getProductData(targetID, itemQuant, domItem_price) {
         method: "POST",
         url: $('meta[name="root-site"]').attr('content') + "/api/product",
         data: {id : poductinnerID}
-    }).done(function( msg ) {
+    }).done(function(msg) {
         $('button.buyProduct_inner').attr( "disabled", false );
         productData.push(msg);
         if(Cart_data[0].row.length !== 0){
@@ -84,12 +84,11 @@ function getProductData(targetID, itemQuant, domItem_price) {
             pushtoCart();
             $('.isClear').remove()
         }
-
         function pushtoCart() {
             Cart_data[0].row.push({
                 productID: productData[0].id,
                 targetID: productData[0].id,
-                imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,
+                imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/' + msg.photo.photo_url,
                 name: productData[0].name,
                 quant: 'count',
                 price: Number ($('.choosed .iPrice')[0].innerText),

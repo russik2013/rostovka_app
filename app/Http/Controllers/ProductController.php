@@ -159,7 +159,7 @@ class ProductController extends Controller
 
     public function getProduct(Request $request){
 
-        $product = Product::find($request->id);
+        $product = Product::with('photo')  ->find($request->id);
 
         $product -> full__price = $product -> prise * $product -> box_count;
         $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
