@@ -267,7 +267,6 @@ function makeData(page_num, count_on_page) {
         url: $('meta[name="root-site"]').attr('content') + "/api/products",
         data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page, filters: filter_value}
     }).done(function( msg ) {
-        console.log(msg)
         for(var i= 0; i < msg.length; i++ ) {
             data[i] = {
                 dataID: msg[i].id,
@@ -295,6 +294,22 @@ function makeData(page_num, count_on_page) {
 }
 
 var numberPerPage = 12, pageList = [], currentPage = 1, numberOfPages = 0;
+
+
+function checkMinMax() {
+    var MinMaxCounter = [];
+    for (var i = 0; i < data.length; i++){
+        if(data[i].box === data[i].rostovka){
+            MinMaxCounter.push(data[i].real_id);
+        }
+    }
+
+    $(document).ready(function () {
+        for (var y = 0; y < MinMaxCounter.length; y++){
+            $('[data-id='+ MinMaxCounter[y] +']')[0].lastElementChild.children[1].lastElementChild.style.visibility = 'hidden';
+        }
+    });
+}
 
 
 function NextData(page_num, count_on_page, filter_value) {
@@ -354,6 +369,7 @@ function NextData(page_num, count_on_page, filter_value) {
 }
 
 function GetData(data) {
+    checkMinMax();
     if (data.length > 0) {
         //work with pagination
         var Pagination = {

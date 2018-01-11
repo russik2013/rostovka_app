@@ -81,7 +81,7 @@
                             <div class="dropdown-menu">
                                 <ul>
                                     <li><a href="userinfo">Моя информация</a></li>
-                                    <li><a href="cart">Корзина</a></li>
+                                    <li><a href="{{url('/cart')}}">Корзина</a></li>
                                 </ul>
                             </div>
                             <!--End Dropdown-->

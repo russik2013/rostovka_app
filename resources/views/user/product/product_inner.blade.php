@@ -22,75 +22,17 @@
                                          data-pswp-uid="3">
                                         <div class="item">
                                             <a class="product-gallery-item"
-                                               href="{{asset('img/product-img/prodimage1.jpeg')}}" data-size=""
-                                               data-med="{{asset('img/product-img/prodimage1.jpeg')}}" data-med-size="">
-                                                <img src="{{asset('img/product-img/prodimage1.jpeg')}}" alt="image 1"/>
-                                            </a>
-                                        </div>
-                                        <div class="item">
-                                            <a class="product-gallery-item"
-                                               href="{{asset('img/product-img/prodImage2.jpeg')}}" data-size=""
-                                               data-med="{{asset('img/product-img/prodImage2.jpeg')}}" data-med-size="">
-                                                <img src="{{asset('img/product-img/prodImage2.jpeg')}}" alt="image 2"/>
-                                            </a>
-                                        </div>
-                                        <div class="item">
-                                            <a class="product-gallery-item"
-                                               href="{{asset('img/product-img/prodImage3.jpeg')}}" data-size=""
-                                               data-med="{{asset('img/product-img/prodImage3.jpeg')}}" data-med-size="">
-                                                <img src="{{asset('img/product-img/prodImage3.jpeg')}}" alt="image 3"/>
-                                            </a>
-                                        </div>
-                                        <div class="item">
-                                            <a class="product-gallery-item"
-                                               href="{{asset('img/product-img/prodImage4.jpeg')}}" data-size=""
-                                               data-med="{{asset('img/product-img/prodImage4.jpeg')}}" data-med-size="">
-                                                <img src="{{asset('img/product-img/prodImage4.jpeg')}}" alt="image 4"/>
-                                            </a>
-                                        </div>
-                                        <div class="item">
-                                            <a class="product-gallery-item"
-                                               href="{{asset('img/product-img/prodImage5.jpg')}}" data-size=""
-                                               data-med="{{asset('img/product-img/prodImage5.jpg')}}" data-med-size="">
-                                                <img src="{{asset('img/product-img/prodImage5.jpg')}}" alt="image 5"/>
-                                            </a>
-                                        </div>
-                                        <div class="item">
-                                            <a class="product-gallery-item"
-                                               href="{{asset('img/product-img/prodimage6.jpg')}}" data-size=""
-                                               data-med="{{asset('img/product-img/prodimage6.jpg')}}" data-med-size="">
-                                                <img src="{{asset('img/product-img/prodimage6.jpg')}}" alt="image 6"/>
+                                               href="{{asset('images/products/'.$product -> photo -> photo_url)}}" data-size=""
+                                               data-med="{{asset('images/products/'.$product -> photo -> photo_url)}}" data-med-size="">
+                                                <img src="{{asset('images/products/'.$product -> photo -> photo_url)}}" alt="image 1"/>
                                             </a>
                                         </div>
                                     </div>
                                     <!-- End Slick Image Slider -->
 
                                     <a href="javascript:void(0)" id="zoom-images-button" class="zoom-images-button"><i
-                                                class="fa fa-expand" aria-hidden="true"></i></a>
+                                                class="" aria-hidden="true"></i></a>
 
-
-                                </div>
-
-                                <!-- Slick Thumb Slider -->
-                                <div class="product-image-slider-thumbnails">
-                                    <div class="item">
-                                        <img src="{{asset('img/product-img/prodimage1.jpeg')}}" alt="image 1"/>
-                                    </div>
-                                    <div class="item">
-                                        <img src="{{asset('img/product-img/prodImage2.jpeg')}}" alt="image 1"/>
-                                    </div>
-                                    <div class="item">
-                                        <img src="{{asset('img/product-img/prodImage3.jpeg')}}" alt="image 1"/>
-                                    </div>
-                                    <div class="item">
-                                        <img src="{{asset('img/product-img/prodImage4.jpeg')}}" alt="image 1"/>
-                                    </div>
-                                    <div class="item">
-                                        <img src="{{asset('img/product-img/prodImage5.jpg')}}" alt="image 1"/>
-                                    </div>
-                                    <div class="item">
-                                        <img src="{{asset('img/product-img/prodimage6.jpg')}}" alt="image 1"/>
-                                    </div>
                                 </div>
                                 <!-- End Slick Thumb Slider -->
                             </div>

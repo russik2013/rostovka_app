@@ -5017,8 +5017,9 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 }
 
 .zoom-images-button {
-    background: #fff;
-    border: 1px solid #ddd;
+    background: transparent;
+    border: 0 solid #ddd;
+    z-index: -1;
     font-size: 19px;
     color: #777;
     width: 50px;
@@ -6265,10 +6266,13 @@ ul#shipping_method {
 }
 
 .input-group-btn .fa{
-    margin-top: 6px;
+    margin-top: -4px;
+    padding-top: 10px;
     margin-left: 0;
     color: #2c628f;
     font-size: 10px;
+    height: 29px;
+    width: 100%;
 }
 
 .dropdownCart #adult{
@@ -6580,10 +6584,13 @@ li a.enabled{
     border: none;
 }
 
+
 .search--box button i{
     margin: 0 !important;
     font-size: 16px !important;
     color: #333 !important;
+    height: auto !important;
+    padding-top: 0 !important;
 }
 
 .search--box .input-group-btn{
@@ -6828,4 +6835,20 @@ tr .type .form-control{
     font-size: 20px;
     text-transform: uppercase;
     color: #2c618f;
+    position: relative;
+}
+
+.move--to--cart{
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translate(-50%);
+    background: #2d608f;
+    padding: 7px 0 8px 0;
+}
+
+.move--to--cart a{
+    color: #fff !important;
+    font-size: 15px;
+    padding: 10px 20px 10px 20px;
 }

@@ -142,14 +142,14 @@ class ProductController extends Controller
 
     public function getNewsProduct(){
 
-        $products = Product::take(10) ->orderBy('id', 'desc') -> get();
+        $products = Product::take(10) ->with('photo') ->orderBy('id', 'desc') -> get();
         //$products = Product::take(10)  -> get();
         foreach ($products as $product){
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
             $product -> types = $product -> type -> name;
             $product -> product_url = url($product ->id.'/product');
-            $product -> image_url = $product ->photo->photo_url;
+            //$product -> image_url = $product ->photo->photo_url;
 
         }
 
