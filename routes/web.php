@@ -61,9 +61,7 @@ Route::get('/user_edit', function () {
     return view('admin.user_edit.edit');
 });
 
-Route::get('/products', function () {
-    return view('admin.product.products');
-});
+Route::get('/products', 'Admin\ProductController@index');
 
 Route::get('/product_add', function () {
     return view('admin.product.pdoructadd');

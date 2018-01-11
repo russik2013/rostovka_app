@@ -39,132 +39,20 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td class="articul"><input value="azlaD123112" disabled></td>
-                                    <td>Dakota</td>
-                                    <td>Rice</td>
-                                    <td>Madness</td>
-                                    <td>10%</td>
-                                    <td>нет</td>
-                                    <td>20.01.1980 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="zxczcassd1231" disabled></td>
-                                    <td>Dakota</td>
-                                    <td>Rice</td>
-                                    <td>Madness</td>
-                                    <td>10%</td>
-                                    <td>нет</td>
-                                    <td>13.02.1990 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="bbrgfd1212" disabled></td>
-                                    <td>Dakota</td>
-                                    <td>Rice</td>
-                                    <td>Madness</td>
-                                    <td>10%</td>
-                                    <td>нет</td>
-                                    <td>09.08.1991 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="azlaD123112" disabled></td>
-                                    <td>Dakota</td>
-                                    <td>Rice</td>
-                                    <td>Madness</td>
-                                    <td>10%</td>
-                                    <td>нет</td>
-                                    <td>05.05.1995 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="fbwd1" disabled></td>
-                                    <td>Dakota</td>
-                                    <td>Rice</td>
-                                    <td>Madness</td>
-                                    <td>10%</td>
-                                    <td>нет</td>
-                                    <td>15.02.1992 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="94388ffs" disabled></td>
-                                    <td>Dakota</td>
-                                    <td>Rice</td>
-                                    <td>Madness</td>
-                                    <td>10%</td>
-                                    <td>нет</td>
-                                    <td>16.02.1990 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="134411dsfs" disabled></td>
-                                    <td>Dakota</td>
-                                    <td>Rice</td>
-                                    <td>Madness</td>
-                                    <td>10%</td>
-                                    <td>нет</td>
-                                    <td>13.02.1990 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="oololalsd" disabled></td>
-                                    <td>Dakota</td>
-                                    <td>Rice</td>
-                                    <td>Madness</td>
-                                    <td>10%</td>
-                                    <td>нет</td>
-                                    <td>13.02.1990 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="0u100u" disabled></td>
-                                    <td>Dakota</td>
-                                    <td>Rice</td>
-                                    <td>Madness</td>
-                                    <td>10%</td>
-                                    <td>нет</td>
-                                    <td>13.02.1990 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="123123dada" disabled></td>
-                                    <td>Dakota</td>
-                                    <td>Rice</td>
-                                    <td>Madness</td>
-                                    <td>10%</td>
-                                    <td>нет</td>
-                                    <td>13.02.1990 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="12313asdad123" disabled></td>
-                                    <td>Dakota</td>
-                                    <td>Rice</td>
-                                    <td>Madness</td>
-                                    <td>10%</td>
-                                    <td>нет</td>
-                                    <td>13.02.1990 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="12314rda12" disabled></td>
-                                    <td>Dakota</td>
-                                    <td>Rice</td>
-                                    <td>Madness</td>
-                                    <td>10%</td>
-                                    <td>нет</td>
-                                    <td>13.02.1990 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="xcxvvsdfsdf" disabled></td>
-                                    <td>Dakota</td>
-                                    <td>Rice</td>
-                                    <td>Madness</td>
-                                    <td>10%</td>
-                                    <td>нет</td>
-                                    <td>13.02.1990 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="zxcxvvssd1y9" disabled></td>
-                                    <td>Dakota</td>
-                                    <td>Rice</td>
-                                    <td>Madness</td>
-                                    <td>10%</td>
-                                    <td>нет</td>
-                                    <td>13.02.1990 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
+
+                                @foreach($products as $product)
+                                    <tr>
+                                        <td class="articul"><input value="{{$product -> article}}" disabled></td>
+                                        <td>{{$product -> name}}</td>
+                                        <td>{{$product -> category -> name}}</td>
+                                        <td>{{$product -> manufacturer -> name}}</td>
+                                        <td>{{$product -> discount}}</td>
+
+                                        <td>@if($product ->show_product == 1) да @else нет @endif</td>
+                                        <td>{{$product -> created_at}} <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                    </tr>
+
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
