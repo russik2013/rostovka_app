@@ -92,3 +92,36 @@ $('.removePrudct').on('click', function () {
         console.log('Prod. Name ' + productName + ' -- -- ' + 'ProductID ' + productID )
     });
 });
+
+
+$('.addProduct i').on('click', function(){
+    $("#productsModal").modal();
+});
+
+$('.add--product--in').on('click', function () {
+    var checkedProduct = 0;
+    if($.find('.check--good')[0].checked === true){
+        checkedProduct = Number ($.find('.check--good')[0].parentElement.parentElement.dataset.poductId);
+        $('.product--list').append('<div class="preloader"><i></i></div>');
+    }
+
+    if(checkedProduct > 0){
+        $("#productsModal").modal('hide');
+        console.log(checkedProduct)
+    }
+});
+$('.search--good').on('click', function () {
+    if($('[data-set="searchProduct"]').val() !== ''){
+        $('.modal-body').append('<div class="preloader"><i></i></div>');
+        $('[data-set="searchProduct"]').val('');
+        console.log($('[data-set="searchProduct"]').val());
+    }
+});
+var searchData = [];
+$.get($('meta[name="root-site"]').attr('content') + '/admin_resources/tmpl/search_tmpl.html', {}, function (templateBody) {
+    $.tmpl(templateBody, searchData).appendTo('#tmpl');
+});
+
+if(searchData.length === 0){
+    $('.founded--good').css('display', 'none');
+}

@@ -2,6 +2,7 @@
 @section('billing')
     <!-- Page Content -->
 <section class="content-page cart-container">
+    
     <div class="container mb-80">
         <div class="row">
             <div class="col-sm-12">

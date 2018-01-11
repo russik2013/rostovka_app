@@ -10,6 +10,7 @@
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
+    <meta name="root-site" content="{!!route('root')!!}">
 
     <!-- Bootstrap core CSS     -->
     <link href="{{url('css/admin/bootstrap.min.css')}}" rel="stylesheet" />
@@ -50,41 +51,27 @@
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li id="users" class="active">
                     <a href="admin_index">
                         <i class="ti-user"></i>
                         <p>Пользователи</p>
                     </a>
                 </li>
-                <li>
+                <li id="products">
                     <a href="products">
                         <i class="ti-view-list-alt"></i>
                         <p>Товары</p>
                     </a>
                 </li>
 
-                <li>
-                    <a href="filters_page">
-                        <i class="ti-panel"></i>
-                        <p>Фильтры</p>
-                    </a>
-                </li>
-
-                <li>
+                <li id="orders">
                     <a href="orders">
                         <i class="ti-pencil-alt2"></i>
                         <p>Заказы</p>
                     </a>
                 </li>
 
-                <li>
-                    <a href="options">
-                        <i class="ti-settings"></i>
-                        <p>Свойства товара</p>
-                    </a>
-                </li>
-
-                <li>
+                <li id="suppliers">
                     <a href="suppliers">
                         <i class="ti-package"></i>
                         <p>Поставщики</p>
@@ -104,7 +91,7 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" target="_blank" href="#">Перейти на сайт</a>
+                    <a class="navbar-brand" target="_blank" href="./">Перейти на сайт</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -115,7 +102,6 @@
                             </a>
                         </li>
                     </ul>
-
                 </div>
             </div>
         </nav>
@@ -322,6 +308,8 @@
 
 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{url('js/admin/demo.js')}}"></script>
+
+<script type="text/javascript" src="{{asset('js/jquery.tmpl.min.js')}}"></script>
 
 @yield('edit_userLib')
 @yield('productsLib')

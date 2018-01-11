@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="root-site" content="{!!route('root')!!}">
 
     <title>Rostovka</title>
     <meta name="description" content=""/>
@@ -80,7 +81,7 @@
                             <div class="dropdown-menu">
                                 <ul>
                                     <li><a href="userinfo">Моя информация</a></li>
-                                    <li><a href="cart">Корзина</a></li>
+                                    <li><a href="{{url('/cart')}}">Корзина</a></li>
                                 </ul>
                             </div>
                             <!--End Dropdown-->
@@ -286,8 +287,7 @@
         <!-- Footer Copyright -->
         <div class="container">
             <div class="copyrights">
-                <p class="copyright">&copy; Developed & Designed by <a href="http://micore-studio.com/" target="_blank">MiCore
-                        Development</a></p>
+                <p class="copyright">&copy; Developed & Designed by <a href="http://comnd-x.com/" target="_blank">Commnd+X Studio</a></p>
             </div>
         </div>
         <!-- End Footer Copyright -->
@@ -330,6 +330,7 @@
 @yield('category__Lib')
 @yield('auth_lib')
 <script type="text/javascript" src="{{asset('js/cart.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/close_tab.js')}}"></script>
 <!-- custom js -->
 <!-- end jquery -->
 

@@ -5,7 +5,7 @@
         <section class="content-page">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-10 push-md-2">
+                    <div class="col-md-10 push-md-2 product--block">
                         <!-- Title -->
                         <div class="list-page-title">
                             <h2 class="">{{$category -> name}}</h2>
@@ -17,15 +17,15 @@
                             <div class="product-filter-content-inner">
 
                                 <!--Product Sort By-->
-                                <form class="product-sort-by col-xl-5 col-md-12 col-sm-12 col-xs-12">
-                                    <label for="short-by">Сортировка</label>
-                                    <select name="short-by" id="short-by" class="nice-select-box">
-                                        <option value="default_sorting" selected="selected">Последние поступления</option>
-                                        <option value="price_low_to_high">от дешевого к дорогому</option>
-                                        <option value="price_high_to_low">от дорогого к дешевому</option>
-                                        <option value="sort_by_newness">по дате</option>
-                                    </select>
-                                </form>
+                                {{--<form class="product-sort-by col-xl-5 col-md-12 col-sm-12 col-xs-12">--}}
+                                    {{--<label for="short-by">Сортировка</label>--}}
+                                    {{--<select name="short-by" id="short-by" class="nice-select-box">--}}
+                                        {{--<option value="default_sorting" selected="selected">Последние поступления</option>--}}
+                                        {{--<option value="price_low_to_high">от дешевого к дорогому</option>--}}
+                                        {{--<option value="price_high_to_low">от дорогого к дешевому</option>--}}
+                                        {{--<option value="sort_by_newness">по дате</option>--}}
+                                    {{--</select>--}}
+                                {{--</form>--}}
                                 <form class="product-sort-by pull-right col-xl-5 col-md-12 col-sm-12 col-xs-12">
                                     <label for="product-show">на странице по: </label>
                                     <select name="product-show" id="product-show" class="nice-select-box" data-set="selectCount">
@@ -82,7 +82,7 @@
 <p class="product-title"><a href="${product_url}">${name}</a></p>
 <span class="col-md-12 pull-left goods_amount">
 <span class="col-md-12 pull-left"><b>${box}</b> - в ящике</span>
-<span class="col-md-12 pull-left"><b>${rostovka}</b> - минимум</span>
+<span class="col-md-12 pull-left" data-set="minimum"><b>${rostovka}</b> - минимум</span>
 </span>
 <div class="col-md-12 pull-left goodsCount_price">
 <span class="item-price col-md-6 pull-left">${type}</span>

@@ -2,13 +2,23 @@ $('.cartBl').remove();
 var Cart_data = [{row: []}];
 
 function getData() {
-    var retrievedData = localStorage.getItem("Cart_data");
+    var retrievedData = sessionStorage.getItem("Cart_data");
     if(retrievedData !== null){
         Cart_data = JSON.parse(retrievedData);
         $('.cartPage_article').remove();
         Cart_template(Cart_data);
     }
 }
+
+$(document).ready(function () {
+    for (var i = 0; i < Cart_data[0].row.length; i++){
+        if(Cart_data[0].row[i].box__price === Cart_data[0].row[i].rostovka__price){
+            $.find('[data-select-id="'+ Number (Cart_data[0].row[i].productID) +'"]')[0].offsetParent.children[0].remove();
+            $.find('[product-id="'+ Number (Cart_data[0].row[i].productID) +'"]')[0].children[2].innerHTML =
+                "<div class='form-group select-style'><input class='form-control' type=\"number\" placeholder=\"в ящике\" disabled></div>"
+        }
+    }
+});
 
 getData();
 
@@ -62,7 +72,7 @@ if($.find('#cartTableInner').length !== 0){
 
                 Cart_data[0].row.splice(i, 1);
                 Cart_data[0].cartCount--;
-                localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+                sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
 
                 if(Cart_data[0].row.length === 0){
                     $('.cart-form').remove();
@@ -97,7 +107,7 @@ function getSelect(event, value) {
 
         Cart_data[0].cartProducts_summ = recalculated_price;
         $.find('[data-set="totalCost"]')[0].innerText = recalculated_price + ' грн';
-        localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+        sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
     }
 
     else{
@@ -114,11 +124,9 @@ function getSelect(event, value) {
             recalculatedP += Cart_data[0].row[z].quantityPrice;
         }
 
-        console.log(Cart_data[0].row);
-
         Cart_data[0].cartProducts_summ = recalculatedP;
         $.find('[data-set="totalCost"]')[0].innerText = recalculatedP + ' грн';
-        localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+        sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
     }
 }
 

@@ -40,6 +40,8 @@ class ProductController extends Controller
 
     public function getProductsToCategory(Request $request){
 
+        //return response($request);
+        //print_r($request ->all());
         $products = Product::where('category_id', '=', $request -> category_id)
             ->whereIn('season_id', $this -> seasonFilter($request ->filters))
             ->whereIn('type_id', $this -> typeFilter($request ->filters))
@@ -57,14 +59,14 @@ class ProductController extends Controller
             $product -> product_url = url($product ->id.'/product');
         }
 
-        return $products;
+        return response($products);
 
     }
 
 
     protected function seasonFilter($filters){
         $seasons = [];
-        if($filters) {
+        if($filters && !empty($filters)) {
             foreach ($filters as $filter) {
 
                 if ($filter[2] == 'season') {
@@ -83,7 +85,7 @@ class ProductController extends Controller
 
     protected function typeFilter($filters){
         $types = [];
-        if($filters) {
+        if($filters  && !empty($filters)) {
             foreach ($filters as $filter) {
 
                 if ($filter[2] == 'tip') {
@@ -104,7 +106,7 @@ class ProductController extends Controller
 
     protected function manufacturerFilter($filters){
         $manufacturers = [];
-        if($filters) {
+        if($filters  && !empty($filters)) {
             foreach ($filters as $filter) {
 
                 if ($filter[2] == 'manufacturers') {
@@ -127,6 +129,9 @@ class ProductController extends Controller
     public function getPaginationPageCount(Request $request){
 
         $products_count = Product::where('category_id', '=', $request -> category_id)
+            ->whereIn('season_id', $this -> seasonFilter($request ->filters))
+            ->whereIn('type_id', $this -> typeFilter($request ->filters))
+            ->whereIn('manufacturer_id', $this -> manufacturerFilter($request ->filters))
             -> count();
         $count_of_page = $products_count / $request ->count_on_page;
 
@@ -137,7 +142,16 @@ class ProductController extends Controller
 
     public function getNewsProduct(){
 
-        $products = Product::take(10) ->orderBy('id', 'desc') -> get();
+        $products = Product::take(10) ->with('photo') ->orderBy('id', 'desc') -> get();
+        //$products = Product::take(10)  -> get();
+        foreach ($products as $product){
+            $product -> full__price = $product -> prise * $product -> box_count;
+            $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
+            $product -> types = $product -> type -> name;
+            $product -> product_url = url($product ->id.'/product');
+            //$product -> image_url = $product ->photo->photo_url;
+
+        }
 
         return $products;
 
@@ -145,7 +159,7 @@ class ProductController extends Controller
 
     public function getProduct(Request $request){
 
-        $product = Product::find($request->id);
+        $product = Product::with('photo')  ->find($request->id);
 
         $product -> full__price = $product -> prise * $product -> box_count;
         $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
@@ -154,4 +168,5 @@ class ProductController extends Controller
 
         return $product;
     }
+
 }

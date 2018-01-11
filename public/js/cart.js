@@ -1,34 +1,20 @@
 'use strict';
-
-function getData(data) {
-    $(productTheme).tmpl(data).appendTo('#target');
-}
+Cart_data = sessionStorage.getItem('Cart_data');
+Cart_data = JSON.parse(Cart_data);
 
 function Cart_template(Cart_data) {
-    if($('.categoryPage').length > 0){
-        $.get('../cartTmpl/cart.html', {}, function (templateBody) {
-            $.tmpl(templateBody, Cart_data).appendTo('#cartTemplate');
-        });
-    } else if($('#productID').length > 0) {
-        $.get('../../cartTmpl/cart.html', {}, function (templateBody) {
-            $.tmpl(templateBody, Cart_data).appendTo('#cartTemplate');
-        });
-    } else if($('.section-padding-b').length > 0){
-        $.get('cartTmpl/cart.html', {}, function (templateBody) {
-            $.tmpl(templateBody, Cart_data).appendTo('#cartTemplate');
-        });
-    }else
-        $.get('cartTmpl/cart.html', {}, function (templateBody) {
+    $.get($('meta[name="root-site"]').attr('content') + '/cartTmpl/cart.html', {}, function (templateBody) {
         $.tmpl(templateBody, Cart_data).appendTo('#cartTemplate');
     });
 }
 
 var Cart_data = [{row: [], cartCount: 0, cartProducts_summ: 0}], hidden__price, targetID;
 
-
 $(document).on("click", '[data-set="buyButton"]', function (event) {
-    if($('#product-detail').length > 0){
+    if($.find('.one--product').length > 0){
+
         targetID  = Number ($('#productID')[0].dataset.prodid);
+
         var itemQuant = Number ($('.quantity').val()),
             domItem_price = Number ($.find('.choosed')[0].firstElementChild.lastElementChild.firstChild.innerText),
             trueTarget = false;
@@ -41,7 +27,6 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
                 if(targetID === Cart_data[0].row[l].buy_real_id){
                     targetID = l;
                     additocart(targetID, itemQuant, domItem_price);
-
                     return false
                 }
 
@@ -59,13 +44,13 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
     else {
         var checkif_true = false;
         var domtargetID = Number(event.target.offsetParent.offsetParent.dataset.id);
-
         for (var i = 0; i < data.length; i++) {
-            if (domtargetID === data[i].real_id) {
+            if (domtargetID === Number (data[i].dataID)) {
                 hidden__price = data[i].full__price;
-                targetID = data[i].real_id;
             }
         }
+
+        targetID = domtargetID;
 
         if (Cart_data[0].row.length === 0) {
             initAdd(event, targetID, Cart_data);
@@ -77,7 +62,22 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
     }
 });
 
-// localStorage.clear();
+function removeItemAdd() {
+    $('.chooseItem').remove();
+    $('.product-price').remove();
+    $('.single-variation-wrap').append('' +
+        '<div class="product--is--inCart">' +
+        '<span>Товар в корзине</span>' +
+        '<div class="move--to--cart"><a class="cart--url">Перейти в корзну</a></div>' +
+        '</div>');
+    setUrl();
+}
+
+function setUrl() {
+    var url = $('meta[name="root-site"]').attr('content') + '/cart';
+    $('.cart--url').attr("href", url);
+}
+
 
 function getProductData(targetID, itemQuant, domItem_price) {
     var poductinnerID = Number ($.find('[data-prodid]')[0].dataset.prodid),
@@ -87,26 +87,23 @@ function getProductData(targetID, itemQuant, domItem_price) {
 
     $.ajax({
         method: "POST",
-        url: "../../api/product",
+        url: $('meta[name="root-site"]').attr('content') + "/api/product",
         data: {id : poductinnerID}
-    }).done(function( msg ) {
+    }).done(function(msg) {
+        $('button.buyProduct_inner').attr( "disabled", false );
         productData.push(msg);
         if(Cart_data[0].row.length !== 0){
-            var lastElemnt = Number (Cart_data[0].row.slice(-1)[0].targetID.replace("added_", ""));
-            lastElemnt++;
             pushtoCart();
         }
         else{
             pushtoCart();
             $('.isClear').remove()
         }
-
         function pushtoCart() {
-
             Cart_data[0].row.push({
                 productID: productData[0].id,
-                targetID: 'added_' + lastElemnt,
-                imgUrl: '../img/product-img/prodimage1.jpeg',
+                targetID: productData[0].id,
+                imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/' + msg.photo.photo_url,
                 name: productData[0].name,
                 quant: 'count',
                 price: Number ($('.choosed .iPrice')[0].innerText),
@@ -116,15 +113,13 @@ function getProductData(targetID, itemQuant, domItem_price) {
                 buy_real_id: productData[0].id,
                 cart_product_url: productData[0].product_url,
                 selected_value: null,
-                price_per_pair: productData[0].price,
+                price_per_pair: productData[0].prise,
                 box__price: Number ($.find('[data-set="boxset"] .iPrice')[0].innerText)
             });
 
             $('.dropdownCart ul li').remove();
             Cart_data[0].cartCount = Cart_data[0].row.length;
-
-
-            targetID = lastElemnt;
+            removeItemAdd();
             getPrice();
             cartSumm();
             Cart_template(Cart_data);
@@ -146,19 +141,17 @@ function additocart(targetID, itemQuant, domItem_price) {
     Cart_data[0].cartProducts_summ = allPrice;
 
     cartSumm();
-    localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+    sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
     $('.dropdownCart ul li').remove();
     Cart_template(Cart_data);
 }
 
-
 function checkDublicate(event, targetID, checkif_true) {
-
     if(checkif_true === false){
         for (var i = 0; i < Cart_data[0].row.length; i++){
-            if (Number (targetID) === Number (Cart_data[0].row[i].buy_real_id)){
+            if (targetID === Number (Cart_data[0].row[i].productID)){
                 checkif_true = false;
-                dublicate(targetID);
+                dublicate(targetID, Cart_data);
                 break;
             }
             else{
@@ -181,10 +174,9 @@ function initAdd(event, targetID, Cart_data) {
 
 var arrayItemId = 0;
 function dublicate(targetID, Cart_data) {
-
     //если индификторы совпадают, увеличиваем колличество и записываем ID элемента в объекте
-    for (var i = 0; i < Cart_data[0].row.length; i++){
-        if(Cart_data[0].row[i].buy_real_id === targetID){
+    for (var i = 0; i < Cart_data[0].row.length; i++) {
+        if (Cart_data[0].row[i].buy_real_id === targetID) {
             Cart_data[0].row[i].quantity++;
             arrayItemId = i;
         }
@@ -194,20 +186,18 @@ function dublicate(targetID, Cart_data) {
     mainPrice = Cart_data[0].row[arrayItemId].price;
     updPrice = mainPrice * Cart_data[0].row[arrayItemId].quantity;
 
-    var valueofPrice = $.find('[product-id="'+ targetID +'"] .price');
+    var valueofPrice = $.find('[product-id="' + targetID + '"] .price');
     $(valueofPrice)[0].innerText = updPrice;
 
     Cart_data[0].row[arrayItemId].quantityPrice = updPrice;
 
-    localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+    sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
 
-    var valueofQuantity = $.find('[product-id="'+ targetID +'"] input');
+    var valueofQuantity = $.find('[product-id="' + targetID + '"] input');
     $(valueofQuantity).val(Cart_data[0].row[arrayItemId].quantity);
 
     counterFn(mainPrice, targetID, updPrice);
 }
-
-
 
 var qid = 0, counter = 0;
 function addtoCart(event, targetID) {
@@ -237,7 +227,7 @@ function addtoCart(event, targetID) {
 
     Cart_data[0].row.push({
         productID: productIndex,
-        targetID: 'added_' + qid,
+        targetID: productIndex,
         imgUrl: imgurl,
         name: gTitle,
         quant: gQuant,
@@ -257,11 +247,11 @@ function addtoCart(event, targetID) {
     $('.dropdownCart ul li').remove();
     Cart_data[0].cartCount = Cart_data[0].row.length;
 
-    localStorage.Cart_data = JSON.stringify(Cart_data);
+    sessionStorage.Cart_data = JSON.stringify(Cart_data);
 }
 
 $(document).on('click', '.removeItem__cart', function () {
-    var clicked_targetID = $(this)[0].parentElement.dataset.id;
+    var clicked_targetID = Number ($(this)[0].parentElement.dataset.id);
 
     for (var i = 0; i < Cart_data[0].row.length; i++){
         if(Cart_data[0].row[i].targetID === clicked_targetID){
@@ -279,7 +269,7 @@ $(document).on('click', '.removeItem__cart', function () {
     counter--;
     Number ($('.cart-count')[0].innerText = counter);
 
-    localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+    sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
     cartSumm();
 });
 
@@ -293,12 +283,11 @@ $(document).on('click', '.Cart_Button_Plus', function () {
         target_dataset = $(this)[0].parentElement.parentElement.offsetParent.dataset.set;
         flag = false;
         conversion(target_dataset, flag, minus);
-
         $.find('[data-set="totalCost"]')[0].innerHTML = Cart_data[0].cartProducts_summ + ' грн';
     }
 
     else{
-        target_dataset = $(this)[0].parentNode.parentNode.parentNode.offsetParent.dataset.id;
+        target_dataset = Number ($(this)[0].parentElement.parentElement.parentElement.dataset.set);
         flag = true;
         conversion(target_dataset, flag, minus);
     }
@@ -316,17 +305,16 @@ $(document).on('click', '.Cart_Button_Minus', function () {
     }
 
     else{
-        target_dataset = $(this)[0].parentNode.parentNode.parentNode.offsetParent.dataset.id;
+        target_dataset = Number ($(this)[0].parentElement.parentElement.parentElement.dataset.set);
         flag = true;
         conversion(target_dataset, flag, minus);
     }
 });
 
-
 function conversion(target_dataset, flag, minus) {
     if(minus !== true){
         for(var i = 0; i < Cart_data[0].row.length; i++){
-            if(target_dataset === Cart_data[0].row[i].targetID){
+            if(Number (target_dataset) === Cart_data[0].row[i].targetID){
                 target_id = i;
                 mainPrice = Cart_data[0].row[i].price;
                 Cart_data[0].row[i].quantity++;
@@ -335,11 +323,11 @@ function conversion(target_dataset, flag, minus) {
 
         updPrice = mainPrice * Cart_data[0].row[target_id].quantity;
         Cart_data[0].row[target_id].quantityPrice = updPrice;
-        localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+        sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
     }
     else{
         for(var y = 0; y < Cart_data[0].row.length; y++){
-            if(target_dataset === Cart_data[0].row[y].targetID){
+            if(Number (target_dataset) === Cart_data[0].row[y].targetID){
                 target_id = y;
                 mainPrice = Cart_data[0].row[y].price;
             }
@@ -354,7 +342,7 @@ function conversion(target_dataset, flag, minus) {
             Cart_data[0].row[target_id].quantityPrice = updPrice;
         }
         Cart_data[0].row[target_id].quantityPrice = updPrice;
-        localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+        sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
     }
 
     if(flag !== false){
@@ -367,14 +355,13 @@ function conversion(target_dataset, flag, minus) {
     counterFn(mainPrice, targetID, updPrice);
 }
 
-
 function getPrice() {
     var allPrice = 0;
     for (var i = 0; i < Cart_data[0].row.length; i++){
         allPrice += Cart_data[0].row[i].price * Cart_data[0].row[i].quantity;
     }
     Cart_data[0].cartProducts_summ = allPrice;
-    localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+    sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
     return allPrice
 }
 
@@ -397,7 +384,7 @@ function cartSumm(){
 cartSumm();
 
 function getData() {
-    var retrievedData = localStorage.getItem("Cart_data");
+    var retrievedData = sessionStorage.getItem("Cart_data");
     if(retrievedData !== null){
         Cart_data = JSON.parse(retrievedData);
         $('.isClear').remove();

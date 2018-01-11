@@ -13,7 +13,7 @@
             <span class="input-group number-spinner" data-set="${targetID}">
                 <span class="input-group-btn">
                     <a class="btn btn-danger">
-                        <span class="fa fa-minus Cart_Button_Minus" data-dir="dwn"></span>
+                        <span class="fa fa-minus Cart_Button_Minus" data-dir="dwn" data-set="${productID}"></span>
                     </a>
                 </span>
 
@@ -21,7 +21,7 @@
 
                 <span class="input-group-btn">
                     <a class="btn btn-info">
-                        <span class="fa fa-plus Cart_Button_Plus" data-dir="up"></span>
+                        <span class="fa fa-plus Cart_Button_Plus" data-dir="up" data-set="${productID}"></span>
                     </a>
                 </span>
             </span>
@@ -30,9 +30,9 @@
 
     <td class="type">
         <div class="form-group select-style">
-            <select class="form-control" onChange="getSelect(event, value)" data-set="select_box_type">
-                <option value="0">Ящик</option>
-                <option value="1">Ростовка</option>
+            <select class="form-control" onChange="getSelect(event, value)" data-set="select_box_type" data-select-id="${productID}">
+                <option value="0">в ящике</option>
+                <option value="1">минимум</option>
             </select>
         </div>
     </td>

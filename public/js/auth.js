@@ -7,29 +7,32 @@ $(document).ready(function() {
         message: '',
         submitHandler: function(validator, form, submitButton) {
 
-
             var inputArray = $(form).serializeArray();
 
             for (var i = 0; i < Cart_data[0].row.length; i++){
-                inputArray = inputArray.concat({'name' : 'tovar['+i+'][product_id]','value': Cart_data[0].row[i].productID},
-                                               {'name' : 'tovar['+i+'][quantity]','value': Cart_data[0].row[i].quantity},
-                                               {'name' : 'tovar['+i+'][quantityPrice]','value': Cart_data[0].row[i].quantityPrice});
-
+                inputArray = inputArray.concat(
+                    {'name' : 'tovar['+i+'][product_id]','value': Cart_data[0].row[i].productID},
+                    {'name' : 'tovar['+i+'][quantity]','value': Cart_data[0].row[i].quantity},
+                    {'name' : 'tovar['+i+'][quantityPrice]','value': Cart_data[0].row[i].quantityPrice});
             }
 
 
             inputArray = inputArray.concat({'name' : 'summ','value': Cart_data[0].cartProducts_summ});
-
-
-            console.log(Cart_data[0])
-
+console.log(inputArray);
             $.ajax({
+
                 type: 'POST',
                 url: $('meta[name="checkout"]').attr('content'),
                 data: inputArray,
                 success: function(result) {
-                    console.log(result);
-                    console.log(inputArray)
+                    $('.successful_Buy').modal();
+                    $('.form-field-wrapper input').val('');
+                    sessionStorage.clear();
+                    $.find('[data-set="cart-summ"]')[0].innerText = 0;
+                    $.find('[data-set="cartCount"]')[0].innerText = 0;
+                    $.find('[data-set="cart-inner-summ"]')[0].innerText = 0;
+                    $('.dropdownCart ul li').remove();
+                    $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>');
                 }
             });
             return false;

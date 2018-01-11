@@ -688,3 +688,18 @@ input::-webkit-inner-spin-button {
   max-height: 150px;
   overflow: scroll;
 }
+
+.filter--null{
+  font-size: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  color: #2c618f;
+}
+
+
+.product-content .col-md-5{
+  padding: 0;
+  margin-right: auto;
+}
