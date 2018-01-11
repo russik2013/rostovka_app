@@ -109,6 +109,9 @@ Route::post('/product','ProductController@add');
 Route::get('/csvLoad','Admin\CSV\CsvLoadController@index');
 Route::post('/csvLoad','Admin\CSV\CsvLoadController@csvShoesLoad') -> name('load');
 
+Route::get('/csvLoadUpdate','Admin\CSV\CsvLoadController@edit');
+Route::post('/csvLoadUpdate','Admin\CSV\CsvLoadController@csvShoesUpdate') -> name('update');
+
 //
 //return view('login_register.login');
 //
