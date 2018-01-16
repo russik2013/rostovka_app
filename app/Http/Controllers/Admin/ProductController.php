@@ -20,4 +20,10 @@ class ProductController extends Controller
 
         return view('admin.product.products', compact('products', 'pagination'));
     }
+
+    public function finder(Request $request){
+
+        return Product::where('name','like', '%'.$request->name.'%')->get();
+
+    }
 }

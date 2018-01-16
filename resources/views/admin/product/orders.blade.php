@@ -65,311 +65,40 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td class="articul"><input value="1" disabled></td>
-                                    <td class="costomer--Info"><a href="#!">Иван Иваныч Иванов</a></td>
-                                    <td>Новая почта</td>
-                                    <td>На карту "ПриватБанка"</td>
-                                    <td>3200</td>
-                                    <td class="paid--Status">да</td>
-                                    <td>20.01.1980</td>
-                                    <td class="options">
-                                        <a href="#!">
-                                            <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
-                                        </a>
-                                        <a href="orderInfo">
-                                            <i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i>
-                                        </a>
 
-                                        <a class="remove__order" href="#!">
-                                            <i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="2" disabled></td>
-                                    <td class="costomer--Info"><a href="#!">Ив Ив</a></td>
-                                    <td>Новая почта</td>
-                                    <td>На карту "ПриватБанка"</td>
-                                    <td>3200</td>
-                                    <td>нет</td>
-                                    <td>13.02.1990</td>
-                                    <td class="options">
-                                        <a href="#!">
-                                            <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
-                                        </a>
-                                        <a href="orderInfo">
-                                            <i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i>
-                                        </a>
+                                @foreach($orders as $order)
+                                    <tr>
+                                        <td class="articul"><input value="{{$order -> id}}" disabled></td>
+                                        <td class="costomer--Info"><a href="#!">{{$order -> first_name, $order -> last_name}}</a></td>
+                                        <td>{{$order -> shipping_method}}</td>
+                                        <td>{{$order -> payment_method}}</td>
+                                        <td>{{$order -> all_prise}}</td>
+                                        <td @if($order ->paid == 0 || $order ->paid == 2) class="paid--Status" @else @endif >@if($order ->paid == 0 || $order ->paid == 2) да @else нет @endif</td>
+                                        <td>{{$order -> created_at}}</td>
+                                        <td class="options">
+                                            <a href="#!">
+                                                <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
+                                            </a>
+                                            <a href="{{url('orderInfo/'.$order -> id)}}">
+                                                <i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i>
+                                            </a>
 
-                                        <a class="remove__order" href="#!">
-                                            <i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="3" disabled></td>
-                                    <td class="costomer--Info"><a href="#!">Моф Афанас</a></td>
-                                    <td>Новая почта</td>
-                                    <td>На карту "ПриватБанка"</td>
-                                    <td>3200</td>
-                                    <td class="paid--Status">да</td>
-                                    <td>09.08.1991</td>
-                                    <td class="options">
-                                        <a href="#!">
-                                            <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
-                                        </a>
-                                        <a href="orderInfo">
-                                            <i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i>
-                                        </a>
-
-                                        <a class="remove__order" href="#!">
-                                            <i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="4" disabled></td>
-                                    <td class="costomer--Info"><a href="#!">Ростислав Комиссаров</a></td>
-                                    <td>Новая почта</td>
-                                    <td>На карту "ПриватБанка"</td>
-                                    <td>3200</td>
-                                    <td>нет</td>
-                                    <td>05.05.1995</td>
-                                    <td class="options">
-                                        <a href="#!">
-                                            <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
-                                        </a>
-                                        <a href="orderInfo">
-                                            <i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i>
-                                        </a>
-
-                                        <a class="remove__order" href="#!">
-                                            <i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="5" disabled></td>
-                                    <td class="costomer--Info"><a href="#!">Сергей Горшков</a></td>
-                                    <td>Новая почта</td>
-                                    <td>На карту "ПриватБанка"</td>
-                                    <td>3200</td>
-                                    <td>нет</td>
-                                    <td>15.02.1992</td>
-                                    <td class="options">
-                                        <a href="#!">
-                                            <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
-                                        </a>
-                                        <a href="orderInfo">
-                                            <i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i>
-                                        </a>
-
-                                        <a class="remove__order" href="#!">
-                                            <i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="6" disabled></td>
-                                    <td class="costomer--Info"><a href="#!">Леонид Копылов</a></td>
-                                    <td>Новая почта</td>
-                                    <td>На карту "ПриватБанка"</td>
-                                    <td>3200</td>
-                                    <td>нет</td>
-                                    <td>16.02.1990</td>
-                                    <td class="options">
-                                        <a href="#!">
-                                            <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
-                                        </a>
-                                        <a href="orderInfo">
-                                            <i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i>
-                                        </a>
-
-                                        <a class="remove__order" href="#!">
-                                            <i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="7" disabled></td>
-                                    <td class="costomer--Info"><a href="#!">Максим Рыбаков</a></td>
-                                    <td>Новая почта</td>
-                                    <td>На карту "ПриватБанка"</td>
-                                    <td>3200</td>
-                                    <td>нет</td>
-                                    <td>13.02.1990</td>
-                                    <td class="options">
-                                        <a href="#!">
-                                            <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
-                                        </a>
-                                        <a href="orderInfo">
-                                            <i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i>
-                                        </a>
-
-                                        <a class="remove__order" href="#!">
-                                            <i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="8" disabled></td>
-                                    <td class="costomer--Info"><a href="#!">Иван Корнилов</a></td>
-                                    <td>Новая почта</td>
-                                    <td>На карту "ПриватБанка"</td>
-                                    <td>3200</td>
-                                    <td>нет</td>
-                                    <td>13.02.1990</td>
-                                    <td class="options">
-                                        <a href="#!">
-                                            <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
-                                        </a>
-                                        <a href="orderInfo">
-                                            <i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i>
-                                        </a>
-
-                                        <a class="remove__order" href="#!">
-                                            <i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="9" disabled></td>
-                                    <td class="costomer--Info"><a href="#!">Роман Агафонов</a></td>
-                                    <td>Новая почта</td>
-                                    <td>На карту "ПриватБанка"</td>
-                                    <td>3200</td>
-                                    <td class="paid--Status">да</td>
-                                    <td>13.02.1990</td>
-                                    <td class="options">
-                                        <a href="#!">
-                                            <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
-                                        </a>
-                                        <a href="orderInfo">
-                                            <i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i>
-                                        </a>
-
-                                        <a class="remove__order" href="#!">
-                                            <i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="10" disabled></td>
-                                    <td class="costomer--Info"><a href="#!">Никита Иванов</a></td>
-                                    <td>Новая почта</td>
-                                    <td>На карту "ПриватБанка"</td>
-                                    <td>3200</td>
-                                    <td>нет</td>
-                                    <td>13.02.1990</td>
-                                    <td class="options">
-                                        <a href="#!">
-                                            <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
-                                        </a>
-                                        <a href="orderInfo">
-                                            <i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i>
-                                        </a>
-
-                                        <a class="remove__order" href="#!">
-                                            <i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="11" disabled></td>
-                                    <td class="costomer--Info"><a href="#!">Владимир Самойлов</a></td>
-                                    <td>Новая почта</td>
-                                    <td>На карту "ПриватБанка"</td>
-                                    <td>3200</td>
-                                    <td>нет</td>
-                                    <td>13.02.1990</td>
-                                    <td class="options">
-                                        <a href="#!">
-                                            <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
-                                        </a>
-                                        <a href="orderInfo">
-                                            <i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i>
-                                        </a>
-
-                                        <a class="remove__order" href="#!">
-                                            <i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="12" disabled></td>
-                                    <td class="costomer--Info"><a href="#!">Виктор Игнатьев</a></td>
-                                    <td>Новая почта</td>
-                                    <td>На карту "ПриватБанка"</td>
-                                    <td>3200</td>
-                                    <td class="paid--Status">да</td>
-                                    <td>13.02.1990</td>
-                                    <td class="options">
-                                        <a href="#!">
-                                            <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
-                                        </a>
-                                        <a href="orderInfo">
-                                            <i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i>
-                                        </a>
-
-                                        <a class="remove__order" href="#!">
-                                            <i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="13" disabled></td>
-                                    <td class="costomer--Info"><a href="#!">Валентин Носков</a></td>
-                                    <td>Новая почта</td>
-                                    <td>На карту "ПриватБанка"</td>
-                                    <td>3200</td>
-                                    <td>нет</td>
-                                    <td>13.02.1990</td>
-                                    <td class="options">
-                                        <a href="#!">
-                                            <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
-                                        </a>
-                                        <a href="orderInfo">
-                                            <i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i>
-                                        </a>
-
-                                        <a class="remove__order" href="#!">
-                                            <i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="articul"><input value="14" disabled></td>
-                                    <td class="costomer--Info"><a href="#!">Степан Макаров</a></td>
-                                    <td>Новая почта</td>
-                                    <td>На карту "ПриватБанка"</td>
-                                    <td>3200</td>
-                                    <td>нет</td>
-                                    <td>13.02.1990</td>
-                                    <td class="options">
-                                        <a href="#!">
-                                            <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
-                                        </a>
-                                        <a href="orderInfo">
-                                            <i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i>
-                                        </a>
-
-                                        <a class="remove__order" href="#!">
-                                            <i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                            <a class="remove__order" href="#!">
+                                                <i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <ul class="pagination">
                         <li><a href="!#">&laquo;</a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="!#">3</a></li>
-                        <li><a href="!#">4</a></li>
-                        <li><a href="!#">5</a></li>
+                        @for($i = 1; $i < $pagination + 1; $i++)
+
+                            <li  @if($i == 0)class="active" @endif><a href="{{url('orders/'.$i)}}">{{$i}}</a></li>
+                        @endfor
                         <li><a href="!#">&raquo;</a></li>
                     </ul>
                 </div>

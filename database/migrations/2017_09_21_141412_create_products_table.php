@@ -18,9 +18,11 @@ class CreateProductsTable extends Migration
             $table->string('article', 228);
             $table->string('name',228);
             $table->string('sex',228)->nullable();
+            $table->string('material',228)->nullable();
+            $table->string('tip_vyazki',228)->nullable();
             $table->integer('rostovka_count');
             $table->integer('box_count');
-            $table->integer('prise');
+            $table->float('prise');
             $table->integer('manufacturer_id');
             $table->foreign('manufacturer_id')
                 ->references('id')
@@ -56,6 +58,7 @@ class CreateProductsTable extends Migration
                 ->on('sizes')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

@@ -40,15 +40,13 @@ class ProductController extends Controller
 
     public function getProductsToCategory(Request $request){
 
-        //return response($request);
-        //print_r($request ->all());
         $products = Product::where('category_id', '=', $request -> category_id)
             ->whereIn('season_id', $this -> seasonFilter($request ->filters))
             ->whereIn('type_id', $this -> typeFilter($request ->filters))
             ->whereIn('manufacturer_id', $this -> manufacturerFilter($request ->filters))
+            ->whereIn('size_id', $this -> sizeFilter($request ->filters))
            ->skip($request -> count_on_page * ($request ->page_num - 1)) -> take($request -> count_on_page)
             ->with('photo') ->groupBy('id') ->  get();
-
 
 
         foreach ($products as $product){
@@ -63,6 +61,40 @@ class ProductController extends Controller
 
     }
 
+
+    protected function sizeFilter($filters){
+
+        $sizes_min = 0;
+        $sizes_max = 0;
+
+        if($filters && !empty($filters)){
+
+            foreach ($filters as $filter){
+
+                if ($filter[2] == 'size') {
+
+                    if($filter[0] == 'size_min')
+                        $sizes_min = $filter[1];
+
+                    if($filter[0] == 'size_max')
+                        $sizes_max = $filter[1];
+
+                }
+
+            }
+
+        }
+
+
+
+        if($sizes_min != 0 && $sizes_max != 0){
+            return Size::where('min', '>=', $sizes_min) -> where('max','<=', $sizes_max)
+                ->pluck('id');
+        }
+
+        return Size::all() ->pluck('id');
+
+    }
 
     protected function seasonFilter($filters){
         $seasons = [];

@@ -36,7 +36,7 @@
                                                 </div>
                                                 <div class="col-md-7">
                                                     <div class="form-group">
-                                                        <input class="form-control border-input" type="text" value="Полякова Оксана Владимировна">
+                                                        <input class="form-control border-input" type="text" value="{{$order -> first_name}} {{ $order -> last_name}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -47,7 +47,7 @@
                                                 </div>
                                                 <div class="col-md-7">
                                                     <div class="form-group">
-                                                        <input class="form-control border-input" type="number" value="0509055848">
+                                                        <input class="form-control border-input" type="number" value="{{$order ->  phone}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -58,7 +58,7 @@
                                                 </div>
                                                 <div class="col-md-7">
                                                     <div class="form-group">
-                                                        <input class="form-control border-input" type="text" value="ksena0283@gmail.com">
+                                                        <input class="form-control border-input" type="text" value="{{$order ->  email}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -91,7 +91,7 @@
                                                 </div>
                                                 <div class="col-md-7">
                                                     <div class="form-group">
-                                                        <input class="form-control border-input" type="text" value="Прилуки">
+                                                        <input class="form-control border-input" type="text" value="{{$order -> address}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -120,33 +120,23 @@
 
                                                 <table class="table table-condensed">
                                                     <tbody>
-                                                        <tr data-id="1">
-                                                            <td><img src="{{asset('img/info__productImage.jpg')}}"></td>
-                                                            <td>azlaD123112</td>
-                                                            <td><a href="#!">Сапоги Clibee L438 Black</a></td>
-                                                            <td>2280 <span>грн</span></td>
-                                                            <td>Ящик</td>
-                                                            <td>10</td>
+
+                                                    @foreach($order -> details as $detail)
+                                                        <tr data-id="{{$detail -> id}}">
+                                                            <td><img src="{{asset('image/products/'.$detail -> image)}}"></td>
+                                                            <td>{{$detail -> article}}</td>
+                                                            <td><a href="#!">{{$detail -> tovar_name}}</a></td>
+                                                            <td>{{$detail -> this_tovar_in_order_price}}<span>{{$detail -> currency}}</span></td>
+                                                            <td>@if(($detail -> this_tovar_in_order_price / $detail -> tovar_in_order_count)/ $detail -> prise == $detail -> box_count)
+                                                                    Ящик
+                                                                @else
+                                                                    Ростовка
+                                                                @endif
+                                                            </td>
+                                                            <td>{{$detail -> tovar_in_order_count}}</td>
                                                             <td><i class="removePrudct table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></td>
                                                         </tr>
-                                                        <tr data-id="2">
-                                                            <td><img src="{{asset('img/info__productImage.jpg')}}"></td>
-                                                            <td>azlaD123112</td>
-                                                            <td><a href="#!">Сапоги LuX L438 Black</a></td>
-                                                            <td>3280 <span>грн</span></td>
-                                                            <td>Ростовка</td>
-                                                            <td>10</td>
-                                                            <td><i class="removePrudct table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></td>
-                                                        </tr>
-                                                        <tr data-id="3">
-                                                            <td><img src="{{asset('img/info__productImage.jpg')}}"></td>
-                                                            <td>azlaD123112</td>
-                                                            <td><a href="#!">Сапоги Free L438 Black</a></td>
-                                                            <td>1280 <span>грн</span></td>
-                                                            <td>Ящик</td>
-                                                            <td>10</td>
-                                                            <td><i class="removePrudct table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></td>
-                                                        </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>

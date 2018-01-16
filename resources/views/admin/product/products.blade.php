@@ -68,11 +68,9 @@
                                         <td>{{$product -> category -> name}}</td>
                                         <td>{{$product -> manufacturer -> name}}</td>
                                         <td>{{$product -> discount}}</td>
-
                                         <td>@if($product ->show_product == 1) да @else нет @endif</td>
                                         <td>{{$product -> created_at}} <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
                                     </tr>
-
                                     @endforeach
                                 </tbody>
                             </table>
@@ -80,11 +78,10 @@
                     </div>
                     <ul class="pagination">
                         <li><a href="!#">&laquo;</a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="!#">3</a></li>
-                        <li><a href="!#">4</a></li>
-                        <li><a href="!#">5</a></li>
+                        @for($i = 1; $i < $pagination + 1; $i++)
+
+                            <li  @if($i == 0)class="active" @endif><a href="{{url('products/'.$i)}}">{{$i}}</a></li>
+                        @endfor
                         <li><a href="!#">&raquo;</a></li>
                     </ul>
                 </div>

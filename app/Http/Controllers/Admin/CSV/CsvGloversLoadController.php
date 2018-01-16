@@ -2,65 +2,36 @@
 
 namespace App\Http\Controllers\Admin\CSV;
 
-use App\Category;
+use App\GloverHelper;
 use App\Http\Requests\CsvPostRequest;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Category;
 use App\Manufacturer;
 use App\Product;
 use App\ProductPhotos;
 use App\Season;
 use App\Size;
 use App\Type;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use ZipArchive;
 use Illuminate\Support\Facades\File;
 
-class CsvLoadController extends Controller
+class CsvGloversLoadController extends Controller
 {
     public function index(){
 
-        return view('csv_load');
+        return view('csv_glovers_load');
 
     }
 
     public function edit(){
 
-        return view('csv_load_edit');
+        return view('csv_glovers_edit');
 
     }
 
-    public function checkDooble($products){
-
-        $check_array = [];
-
-        foreach ($products as $product){
-
-            $check_array[] = [$product -> artikul, $product -> brend];
-
-        }
-
-        for($i = 0; $i < count($check_array); $i ++){
-
-            for($j = 0; $j < count($check_array); $j ++){
-
-                if($i != $j && $check_array[$i][0] == $check_array[$j][0] && $check_array[$i][1] == $check_array[$j][1]){
-
-                    return true;
-
-                }
-
-            }
-
-        }
-
-        return false;
-
-    }
-
-
-
-    public function csvShoesDelete(CsvPostRequest $request){
+    public function csvGloversDelete(CsvPostRequest $request){
 
         $path = $request->file('files')->getRealPath();
 
@@ -91,8 +62,7 @@ class CsvLoadController extends Controller
 
     }
 
-
-    public function csvShoesUpdate(CsvPostRequest $request){
+    public function csvGloversUpdate(CsvPostRequest $request){
 
         $path = $request->file('files')->getRealPath();
 
@@ -109,6 +79,7 @@ class CsvLoadController extends Controller
 
             $this->photosRename($products);
         }
+
 
     }
 
@@ -141,7 +112,7 @@ class CsvLoadController extends Controller
 
     }
 
-    public function productsUpdate($products){
+    protected function productsUpdate($products){
 
         $types = Type::all() -> pluck('id', 'name') -> toArray();
         $seasons = Season::all() -> pluck('id', 'name') -> toArray();
@@ -151,28 +122,11 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
-            if($product -> kategoriya == 'Мужское')
-                $sex = 'Мужское';
-            if($product -> kategoriya == 'Женское')
-                $sex = 'Женское';
-            if($product -> kategoriya == 'Детское')
-                $sex = $product -> pol;
-
-
-            if($product -> razmer_ot > $product -> razmer_do){
-                if(isset($sizes[$product -> razmer_do.'-'.$product -> razmer_ot]))
-                    $size = $sizes[$product -> razmer_do.'-'.$product -> razmer_ot];
-                else{
-                    $sizes = array_merge($sizes, $this ->addSize($product -> razmer_do, $product -> razmer_ot));
-                    $size = $sizes[$product -> razmer_do.'-'.$product -> razmer_ot];
-                }
-            }else{
-                if(isset($sizes[$product -> razmer_ot.'-'.$product -> razmer_do]))
-                    $size = $sizes[$product -> razmer_ot.'-'.$product -> razmer_do];
-                else{
-                    $sizes = array_merge($sizes, $this ->addSize($product -> razmer_ot, $product -> razmer_do));
-                    $size = $sizes[$product -> razmer_ot.'-'.$product -> razmer_do];
-                }
+            if(isset($sizes[$product -> razmer]))
+                $size = $sizes[$product -> razmer];
+            else{
+                $sizes = array_merge($sizes, $this ->addSize($product -> razmer));
+                $size = $sizes[$product -> razmer];
             }
 
             if(isset($manufacturers[$product ->{'brend'}]))
@@ -187,11 +141,11 @@ class CsvLoadController extends Controller
             else
                 $show = 0;
 
-            if (isset($types[$product ->{'tip_obuvi'}]))
-                $type = $types[$product ->{'tip_obuvi'}];
+            if (isset($types['перчатки']))
+                $type = $types['перчатки'];
             else{
-                $types = array_merge($types, $this ->addType($product ->{'tip_obuvi'}));
-                $type = $types[$product ->{'tip_obuvi'}];
+                $types = array_merge($types, $this ->addType('перчатки'));
+                $type = $types['перчатки'];
             }
 
             if(isset($seasons[$product ->{'sezon'}]))
@@ -201,30 +155,39 @@ class CsvLoadController extends Controller
                 $season = $seasons[$product ->{'sezon'}];
             }
 
+
+
+            if($product -> valyuta == "$")
+                $valyuta = "usd";
+            else $valyuta = "грн";
+
             $insert_array = [ 'article' => $product ->artikul,
                 'name' => $product ->artikul.'_'.$product ->{'brend'},     ///////////////////////////// уточнить
                 'rostovka_count' => $product ->{"min._kol"},
-                'box_count' => $product ->kol_v_yashchike,
+                'box_count' => $product ->kol_v_palete,
                 'prise' => $product ->tsena_prodazhi,
                 'manufacturer_id' => $manufacturer,
-                'category_id' => $categories[$product ->kategoriya],
+                'category_id' => $categories["Перчатки"],
                 'show_product' => $show,
-                'currency' =>  'грн',
-                'full_description' => $product ->opisanie,
+                'currency' =>  $valyuta,
+                'full_description' => null,
                 'discount' => $product ->skidka."%",
                 'accessibility' => $show,
                 'type_id' => $type,
                 'season_id' => $season,
                 'size_id' => $size,
-                'sex' => $sex];
-
+                'sex' => $product -> pol,
+                'material' => $product ->{'material'},
+                'tip_vyazki' => $product ->{'tip_vyazki'}
+            ];
             Product::find($product->id)->update($insert_array);
-
         }
 
     }
 
-    public function csvShoesLoad(CsvPostRequest $request){
+
+
+    public function csvGloversLoad(CsvPostRequest $request){
 
         $path = $request->file('files')->getRealPath();
 
@@ -245,6 +208,34 @@ class CsvLoadController extends Controller
 
             return 'all date was upload';
         }
+
+    }
+
+    public function checkDooble($products){
+
+        $check_array = [];
+
+        foreach ($products as $product){
+
+            $check_array[] = [$product -> artikul, $product -> brend];
+
+        }
+
+        for($i = 0; $i < count($check_array); $i ++){
+
+            for($j = 0; $j < count($check_array); $j ++){
+
+                if($i != $j && $check_array[$i][0] == $check_array[$j][0] && $check_array[$i][1] == $check_array[$j][1]){
+
+                    return true;
+
+                }
+
+            }
+
+        }
+
+        return false;
 
     }
 
@@ -294,13 +285,157 @@ class CsvLoadController extends Controller
 
             foreach ($photo_to_product_value[0] as $item){
                 if($item)
-                $photos_to_products_insert_array[] = ['photo_url' => $data_base_products[$key]."_". $item.'.jpg',
-                                                      'product_id' => $data_base_products[$key]];
+                    $photos_to_products_insert_array[] = ['photo_url' => $data_base_products[$key]."_". $item.'.jpg',
+                        'product_id' => $data_base_products[$key]];
 
             }
         }
 
-       return $photos_to_products_insert_array;
+        return $photos_to_products_insert_array;
+
+    }
+
+    protected function formInsertArray($products){
+
+        $types = Type::all() -> pluck('id', 'name') -> toArray();
+        $seasons = Season::all() -> pluck('id', 'name') -> toArray();
+        $sizes = Size::all()  -> pluck('id', 'name') -> toArray();
+        $categories = Category::all() -> pluck('id', 'name') -> toArray();
+        $manufacturers = Manufacturer::all() -> pluck('id', 'name') -> toArray();
+        $insert_array = [];
+
+        foreach ($products as $product){
+
+            if(isset($sizes[$product -> razmer]))
+                $size = $sizes[$product -> razmer];
+            else{
+                $sizes = array_merge($sizes, $this ->addSize($product -> razmer));
+                $size = $sizes[$product -> razmer];
+            }
+
+            if(isset($manufacturers[$product ->{'brend'}]))
+                $manufacturer = $manufacturers[$product ->{'brend'}];
+            else{
+                $manufacturers = array_merge($manufacturers, $this ->addManufacturer($product ->{'brend'}));
+                $manufacturer = $manufacturers[$product ->{'brend'}];
+            }
+
+            if($product ->nalichie == 'Есть')
+                $show = 1;
+            else
+                $show = 0;
+
+            if (isset($types['перчатки']))
+                $type = $types['перчатки'];
+            else{
+                $types = array_merge($types, $this ->addType('перчатки'));
+                $type = $types['перчатки'];
+            }
+
+            if(isset($seasons[$product ->{'sezon'}]))
+                $season = $seasons[$product ->{'sezon'}];
+            else{
+                $seasons = array_merge($seasons, $this ->addSeason($product ->{'sezon'}));
+                $season = $seasons[$product ->{'sezon'}];
+            }
+
+
+
+            if($product -> valyuta == "$")
+                $valyuta = "usd";
+            else $valyuta = "грн";
+
+            $insert_array[] = [ 'article' => $product ->artikul,
+                'name' => $product ->artikul.'_'.$product ->{'brend'},     ///////////////////////////// уточнить
+                'rostovka_count' => $product ->{"min._kol"},
+                'box_count' => $product ->kol_v_palete,
+                'prise' => $product ->tsena_prodazhi,
+                'manufacturer_id' => $manufacturer,
+                'category_id' => $categories["Перчатки"],
+                'show_product' => $show,
+                'currency' =>  $valyuta,
+                'full_description' => null,
+                'discount' => $product ->skidka."%",
+                'accessibility' => $show,
+                'type_id' => $type,
+                'season_id' => $season,
+                'size_id' => $size,
+                'sex' => $product -> pol,
+                'material' => $product ->{'material'},
+                'tip_vyazki' => $product ->{'tip_vyazki'}
+
+
+            ];
+        }
+
+        return $insert_array;
+
+    }
+
+
+    protected function addGloverHelper($help){
+
+        $season = new GloverHelper();
+
+        $season -> name = $help;
+
+        $season -> save();
+
+        return [$help => $season -> id];
+
+    }
+
+    protected function addSeason($sezon){
+
+        $season = new Season();
+
+        $season -> name = $sezon;
+
+        $season -> save();
+
+        return [$sezon => $season -> id];
+
+
+
+    }
+
+    protected function addType($tip){
+
+        $type = new Type();
+
+        $type -> name = $tip;
+
+        $type -> save();
+
+        return [$tip => $type -> id];
+
+    }
+
+    protected function addManufacturer($brend){
+
+        $manufacturer = new Manufacturer();
+
+        $manufacturer -> name = $brend;
+
+        $manufacturer -> save();
+
+        return [$brend => $manufacturer -> id];
+
+    }
+
+    protected function addSize($razmer){
+
+        $size = new Size();
+
+        $size ->name = $razmer;
+
+        $size ->min = null;
+
+        $size ->max = null;
+
+        $size -> save();
+
+        return [$razmer => $size -> id];
 
     }
 
@@ -321,145 +456,4 @@ class CsvLoadController extends Controller
         return $products;
 
     }
-
-
-
-    protected function formInsertArray($products){
-
-        $types = Type::all() -> pluck('id', 'name') -> toArray();
-        $seasons = Season::all() -> pluck('id', 'name') -> toArray();
-        $sizes = Size::all()  -> pluck('id', 'name') -> toArray();
-        $categories = Category::all() -> pluck('id', 'name') -> toArray();
-        $manufacturers = Manufacturer::all() -> pluck('id', 'name') -> toArray();
-        $insert_array = [];
-
-        foreach ($products as $product){
-
-            if($product -> kategoriya == 'Мужское')
-                $sex = 'Мужское';
-            if($product -> kategoriya == 'Женское')
-                $sex = 'Женское';
-            if($product -> kategoriya == 'Детское')
-                $sex = $product -> pol;
-
-
-            if($product -> razmer_ot > $product -> razmer_do){
-                if(isset($sizes[$product -> razmer_do.'-'.$product -> razmer_ot]))
-                    $size = $sizes[$product -> razmer_do.'-'.$product -> razmer_ot];
-                else{
-                    $sizes = array_merge($sizes, $this ->addSize($product -> razmer_do, $product -> razmer_ot));
-                    $size = $sizes[$product -> razmer_do.'-'.$product -> razmer_ot];
-                }
-            }else{
-                if(isset($sizes[$product -> razmer_ot.'-'.$product -> razmer_do]))
-                    $size = $sizes[$product -> razmer_ot.'-'.$product -> razmer_do];
-                else{
-                    $sizes = array_merge($sizes, $this ->addSize($product -> razmer_ot, $product -> razmer_do));
-                    $size = $sizes[$product -> razmer_ot.'-'.$product -> razmer_do];
-                }
-            }
-
-            if(isset($manufacturers[$product ->{'brend'}]))
-                $manufacturer = $manufacturers[$product ->{'brend'}];
-            else{
-                $manufacturers = array_merge($manufacturers, $this ->addManufacturer($product ->{'brend'}));
-                $manufacturer = $manufacturers[$product ->{'brend'}];
-            }
-
-            if($product ->nalichie == 'Есть')
-                $show = 1;
-            else
-                $show = 0;
-
-            if (isset($types[$product ->{'tip_obuvi'}]))
-                $type = $types[$product ->{'tip_obuvi'}];
-            else{
-                $types = array_merge($types, $this ->addType($product ->{'tip_obuvi'}));
-                $type = $types[$product ->{'tip_obuvi'}];
-            }
-
-            if(isset($seasons[$product ->{'sezon'}]))
-                $season = $seasons[$product ->{'sezon'}];
-            else{
-                $seasons = array_merge($seasons, $this ->addSeason($product ->{'sezon'}));
-                $season = $seasons[$product ->{'sezon'}];
-            }
-
-            $insert_array[] = [ 'article' => $product ->artikul,
-                                'name' => $product ->artikul.'_'.$product ->{'brend'},     ///////////////////////////// уточнить
-                                'rostovka_count' => $product ->{"min._kol"},
-                                'box_count' => $product ->kol_v_yashchike,
-                                'prise' => $product ->tsena_prodazhi,
-                                'manufacturer_id' => $manufacturer,
-                                'category_id' => $categories[$product ->kategoriya],
-                                'show_product' => $show,
-                                'currency' =>  'грн',
-                                'full_description' => $product ->opisanie,
-                                'discount' => $product ->skidka."%",
-                                'accessibility' => $show,
-                                'type_id' => $type,
-                                'season_id' => $season,
-                                'size_id' => $size,
-                                'sex' => $sex];
-        }
-
-        return $insert_array;
-
-    }
-
-    protected function addSize($min, $max){
-
-        $size = new Size();
-
-        $size ->name = $min.'-'.$max;
-
-        $size ->min = $min;
-
-        $size ->max = $max;
-
-        $size -> save();
-
-        return [$min.'-'.$max => $size -> id];
-
-    }
-
-    protected function addManufacturer($brend){
-
-        $manufacturer = new Manufacturer();
-
-        $manufacturer -> name = $brend;
-
-        $manufacturer -> save();
-
-        return [$brend => $manufacturer -> id];
-
-    }
-
-    protected function addType($tip){
-
-        $type = new Type();
-
-        $type -> name = $tip;
-
-        $type -> save();
-
-        return [$tip => $type -> id];
-
-    }
-
-    protected function addSeason($sezon){
-
-        $season = new Season();
-
-        $season -> name = $sezon;
-
-        $season -> save();
-
-        return [$sezon => $season -> id];
-
-
-
-    }
-
-
 }
