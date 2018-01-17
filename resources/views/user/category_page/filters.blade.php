@@ -1,5 +1,32 @@
 <form id="form1">
     <!-- Filter By Size -->
+
+    @if($category -> id == 1)
+
+        <div class="widget-sidebar widget-filter-size">
+            <h6 class="widget-title" data-id="sex">Пол</h6>
+            <div class="filterInner">
+
+
+                <div class="checkbox checkbox-warning checkbox-circle">
+                    <input id="sex1" name="sex1" type="checkbox" value="мальчик" data-value="sex1">
+                    <label for="sex1">
+                        мальчик
+                    </label>
+                </div>
+
+                <div class="checkbox checkbox-warning checkbox-circle">
+                    <input id="sex2" name="sex2" type="checkbox" value="девочка" data-value="sex2">
+                    <label for="sex2">
+                        девочка
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+    @endif
+
     <div class="widget-sidebar widget-filter-size">
         <h6 class="widget-title" data-id="tip">Тип</h6>
         <div class="filterInner">
@@ -14,6 +41,8 @@
                 @endforeach
         </div>
     </div>
+
+
 
     <div class="widget-sidebar widget-filter-size">
         <h6 class="widget-title" data-id="season">Сезон</h6>

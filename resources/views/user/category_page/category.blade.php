@@ -85,7 +85,7 @@
 <span class="col-md-12 pull-left" data-set="minimum"><b>${rostovka}</b> - минимум</span>
 </span>
 <div class="col-md-12 pull-left goodsCount_price">
-<span class="item-price col-md-6 pull-left">${type}</span>
+<span class="item-price col-md-6 pull-left">${size}</span>
 <h5 class="item-price col-md-6 pull-right">${price} <span>грн</span></h5>
 </div>
 

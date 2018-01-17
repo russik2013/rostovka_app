@@ -126,55 +126,8 @@
 
             <!-- Product Content Tab -->
             <div class="product-tabs-wrapper container">
-                <ul class="product-content-tabs nav nav-tabs" role="tablist">
-
-                    <li class="nav-item">
-                        <a class="active" href="#tab_description" role="tab" data-toggle="tab">Описание</a>
-                    </li>
-                </ul>
-                <div class="product-content-Tabs_wraper tab-content container">
-                    <div id="tab_description" role="tabpanel" class="tab-pane fade in active">
-                        <!-- Accordian Title -->
-                        <h6 class="product-collapse-title" data-toggle="collapse" data-target="#tab_description-coll">
-                            Description</h6>
-                        <!-- End Accordian Title -->
-                        <!-- Accordian Content -->
-                        <div id="tab_description-coll" class="shop_description product-collapse collapse container">
-                            <div class="row">
-                                <div class=" col-md-6">
-                                    <p>
-                                        Etiam molestie sit amet arcu vel dictum. Integer mattis est nec porta porttitor.
-                                        Maecenas condimentum sapien eget urna condimentum, non sagittis ante dapibus.
-                                        Donec congue libero ut ex malesuada auctor. Vivamus at urna et erat aliquam
-                                        pharetra. Nulla facilisi. Morbi feugiat tortor finibus elit aliquet tempor.
-                                        Generated 5 paragraphs, 453 words, 3065 bytes of Lorem Ipsum
-                                    </p>
-                                    <h4>Vivamus at urna</h4>
-                                    <ul>
-                                        <li>Etiam molestie sit amet arcu vel dictum</li>
-                                        <li>Integer mattis est nec porta porttitor</li>
-                                        <li>Maecenas condimentum sapien eget urna condimentum</li>
-                                        <li>Donec congue libero ut ex malesuada auctor</li>
-                                        <li>Generated 5 paragraphs, 453 words</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>
-                                        Etiam molestie sit amet arcu vel dictum. Integer mattis est nec porta porttitor.
-                                        Maecenas condimentum sapien eget urna condimentum, non sagittis ante dapibus.
-                                        Donec congue libero ut ex malesuada auctor. Vivamus at urna et erat aliquam
-                                        pharetra. Nulla facilisi. Morbi feugiat tortor finibus elit aliquet tempor.
-                                        Generated 5 paragraphs, 453 words, 3065 bytes of Lorem Ipsum
-                                    </p>
-                                    <h4>hadding four</h4>
-                                    <h5>hadding five</h5>
-                                    <h6>hadding six</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Accordian Content -->
-                    </div>
-                </div>
+                <h4>Популярные товары</h4>
+                <div class="best--seller" id="newest"></div>
             </div>
             <!-- End Product Content Tab -->
 
@@ -182,6 +135,8 @@
     </div>
     <!-- End Page Content -->
 @endsection
+
+
 
 @section('productLib')
     <script type="text/javascript" src="{{asset('js/photoswipe.min.js')}}"></script>

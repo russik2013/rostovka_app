@@ -208,6 +208,7 @@ if(getSavedFilters !== null){
                     rostovka__price: msg[i].rostovka__price,
                     real_id: msg[i].id,
                     product_url: msg[i].product_url + '/' + i,
+                    size: msg[i].size.name,
                     option_type: 'full__price' // Или full__price или rostovka__price
                 };
             }
@@ -280,6 +281,7 @@ function makeData(page_num, count_on_page) {
                 rostovka__price: msg[i].rostovka__price,
                 real_id: msg[i].id,
                 product_url: msg[i].product_url + '/' + i,
+                size: msg[i].size.name,
                 option_type: 'full__price' // Или full__price или rostovka__price
             };
         }
@@ -300,15 +302,17 @@ function checkMinMax() {
     var MinMaxCounter = [];
     for (var i = 0; i < data.length; i++){
         if(data[i].box === data[i].rostovka){
-            MinMaxCounter.push(data[i].real_id);
+            var id = data[i].real_id;
+            MinMaxCounter.push(id)
         }
     }
 
-    $(document).ready(function () {
-        for (var y = 0; y < MinMaxCounter.length; y++){
-            $('[data-id='+ MinMaxCounter[y] +']')[0].lastElementChild.children[1].lastElementChild.style.visibility = 'hidden';
+    $(document).ready(function(){
+        for(var y = 0; y < MinMaxCounter.length; y++){
+            $('[data-id="'+MinMaxCounter[y]+'"] [data-set="minimum"]').css('visibility', 'hidden');
         }
-    });
+
+    })
 }
 
 
@@ -333,6 +337,7 @@ function NextData(page_num, count_on_page, filter_value) {
                 rostovka__price: msg[i].rostovka__price,
                 real_id: msg[i].id,
                 product_url: msg[i].product_url + '/' + i,
+                size: msg[i].size.name,
                 option_type: 'full__price' // Или full__price или rostovka__price
             };
         }
@@ -369,7 +374,6 @@ function NextData(page_num, count_on_page, filter_value) {
 }
 
 function GetData(data) {
-    checkMinMax();
     if (data.length > 0) {
         //work with pagination
         var Pagination = {
@@ -528,7 +532,7 @@ function GetData(data) {
             numberPerPage = Number($.find('.nice-select-box .option.selected')[0].dataset.value);
             pageList = [];
         });
-}
+    }
 
     function load() {
         makePagination();
@@ -583,6 +587,7 @@ function drawItems(pageList) {
     $(productTheme).tmpl(pageList).appendTo('#target').each(function () {
         delay += 0.1;
         $(this).addClass('animated fadeIn').css('animation-delay', delay + 's');
+        checkMinMax();
     });
 }
 
@@ -707,6 +712,7 @@ function makeFilterData(msg) {
             rostovka__price: msg[i].rostovka__price,
             real_id: msg[i].id,
             product_url: msg[i].product_url + '/' + i,
+            size: msg[i].size.name,
             option_type: 'full__price' // Или full__price или rostovka__price
         };
     }
@@ -717,12 +723,26 @@ function makeFilterData(msg) {
     GetData(filtered_data);
 }
 
+getSizes();
+var min_range = 0, max_range = 0;
+function getSizes() {
+    $.ajax({
+        method: 'POST',
+        url: $('meta[name="root-site"]').attr('content') + "/api/getSizesMass"
+    }).done(function( msg ) {
+        slider(msg);
+    });
+
+}
+
 // Slider from to
-$(function() {
+function slider(msg) {
+    min_range = Number (msg[0]);
+    max_range = Number (msg[1]);
     $( "#slider-range" ).slider({
         range: true,
-        min: 10,
-        max: 50,
+        min: min_range,
+        max: max_range,
         values: [10, 50],
         slide: function(event, ui) {
             $("#minchoose").val(ui.values[ 0 ]);
@@ -785,11 +805,12 @@ $(function() {
             $.ajax({
                 method: "POST",
                 url: $('meta[name="root-site"]').attr('content') + "/api/products",
-                data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page,
+                data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
                     filters: filter_value}
             }).done(function( msg ) {
                 $('.preloader').remove();
-                makeFilterData(msg)
+                makeFilterData(msg);
+
             }) .fail(function( msg ) {
 
             });
@@ -800,6 +821,7 @@ $(function() {
                 data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
                     filters: filter_value}
             }).done(function(msg) {
+                console.log(msg);
                 paginationNum = msg;
                 paginationCounter(paginationNum);
             });
@@ -807,4 +829,5 @@ $(function() {
     });
     $( "#minchoose" ).val($( "#slider-range" ).slider( "values", 0 ));
     $( "#amount" ).val($( "#slider-range" ).slider( "values", 1 ));
-});
+}
+

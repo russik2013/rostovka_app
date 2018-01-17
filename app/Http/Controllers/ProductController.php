@@ -38,19 +38,20 @@ class ProductController extends Controller
 
     }
 
-    public function getProductsToCategory(Request $request){
+    public function getSizesMass(){
 
-        //return response($request);
-        //print_r($request ->all());
+        return [Size::min('min'),Size::max('max')];
+
+    }
+
+    public function getProductsToCategory(Request $request){
         $products = Product::where('category_id', '=', $request -> category_id)
             ->whereIn('season_id', $this -> seasonFilter($request ->filters))
             ->whereIn('type_id', $this -> typeFilter($request ->filters))
             ->whereIn('manufacturer_id', $this -> manufacturerFilter($request ->filters))
-           ->skip($request -> count_on_page * ($request ->page_num - 1)) -> take($request -> count_on_page)
-            ->with('photo') ->groupBy('id') ->  get();
-
-
-
+            ->whereIn('size_id', $this -> sizeFilter($request ->filters))
+            ->skip($request -> count_on_page * ($request ->page_num - 1)) -> take($request -> count_on_page)
+            ->with('photo','size') ->groupBy('id') ->  get();
         foreach ($products as $product){
 
             $product -> full__price = $product -> prise * $product -> box_count;
@@ -60,6 +61,40 @@ class ProductController extends Controller
         }
 
         return response($products);
+
+    }
+
+    protected function sizeFilter($filters){
+
+        $sizes_min = 0;
+        $sizes_max = 0;
+
+        if($filters && !empty($filters)){
+
+            foreach ($filters as $filter){
+
+                if ($filter[2] == 'size') {
+
+                    if($filter[0] == 'size_min')
+                        $sizes_min = $filter[1];
+
+                    if($filter[0] == 'size_max')
+                        $sizes_max = $filter[1];
+
+                }
+
+            }
+
+        }
+
+
+
+        if($sizes_min != 0 && $sizes_max != 0){
+            return Size::where('min', '>=', $sizes_min) -> where('max','<=', $sizes_max)
+                ->pluck('id');
+        }
+
+        return Size::all() ->pluck('id');
 
     }
 
@@ -132,6 +167,7 @@ class ProductController extends Controller
             ->whereIn('season_id', $this -> seasonFilter($request ->filters))
             ->whereIn('type_id', $this -> typeFilter($request ->filters))
             ->whereIn('manufacturer_id', $this -> manufacturerFilter($request ->filters))
+            ->whereIn('size_id', $this -> sizeFilter($request ->filters))
             -> count();
         $count_of_page = $products_count / $request ->count_on_page;
 
@@ -142,7 +178,7 @@ class ProductController extends Controller
 
     public function getNewsProduct(){
 
-        $products = Product::take(10) ->with('photo') ->orderBy('id', 'desc') -> get();
+        $products = Product::take(10) ->with('photo','size') ->orderBy('id', 'desc') -> get();
         //$products = Product::take(10)  -> get();
         foreach ($products as $product){
             $product -> full__price = $product -> prise * $product -> box_count;

@@ -20,6 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/products', 'ProductController@getProductsToCategory');
 Route::post('/product', 'ProductController@getProduct');
 
+Route::post('/getSizesMass', 'ProductController@getSizesMass');
+//Route::post('/getMaxSize', 'ProductController@getMaxSize');
+
 Route::post('/news', 'ProductController@getNewsProduct');
 Route::post('/topSales','SaleController@getTopSales');
 Route::post('/pagination', 'ProductController@getPaginationPageCount');

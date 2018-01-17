@@ -24,21 +24,14 @@
     <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('css/animate.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('css/def.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{asset('css/settings-ver.5.3.1.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('css/main.css')}}" rel="stylesheet" type="text/css"/>
     @yield('productLibCSS')
 </head>
 <body class="">
 
-<!-- Overlay -->
 <div id="nlpopup_overlay"></div>
-<!-- End Newsletter Popup ------------------------------------------------>
 
-<!--Overlay-->
 <div class="sidebar_overlay"></div>
-<!-- End Sidebar Menu (Cart Menu) -------------------------------------------->
-
-<!-- End Search Overlay Menu ------------------------------------------------>
 
 <!--==========================================-->
 <!-- wrapper -->
@@ -176,13 +169,13 @@
 
     <!-- Page Content Wraper -->
     <!-- Page Content -->
-    @yield('register')
-    @yield('login')
-    @yield('category')
-    @yield('mainPage')
-    @yield('billing')
-    @yield('product')
-    <!-- End Page Content -->
+@yield('register')
+@yield('login')
+@yield('category')
+@yield('mainPage')
+@yield('billing')
+@yield('product')
+<!-- End Page Content -->
     <!-- End Page Content Wraper -->
 
 
@@ -292,10 +285,9 @@
         </div>
         <!-- End Footer Copyright -->
     </footer>
-    <!-- End Footer Section -------------->
 </div>
 
-<script id="Cart_template" src="{{asset('cartTmpl/cart.html')}}" type="text/x-jquery-tmpl"></script>
+{{--<script id="Cart_template" src="{{asset('cartTmpl/cart.html')}}" type="text/x-jquery-tmpl"></script>--}}
 <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery-ui.js')}}"></script>
 <!-- jquery library js -->
@@ -319,7 +311,6 @@
 <!-- Slick Slider js -->
 <script type="text/javascript" src="{{asset('js/slick.js')}}"></script>
 <!-- Validator -->
-@yield('productLib')
 <!-- Plugins All js -->
 <script type="text/javascript" src="{{asset('js/plugins-all.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.tmpl.min.js')}}"></script>
@@ -329,8 +320,8 @@
 @yield('auth_reg')
 @yield('category__Lib')
 @yield('auth_lib')
+@yield('productLib')
 <script type="text/javascript" src="{{asset('js/cart.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/close_tab.js')}}"></script>
 <!-- custom js -->
 <!-- end jquery -->
 

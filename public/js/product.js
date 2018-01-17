@@ -1,6 +1,42 @@
 'use strict';
-var cartArray = sessionStorage.getItem('Cart_data');
+var cartArray = sessionStorage.getItem('Cart_data'), data = [];
 cartArray = JSON.parse(cartArray);
+
+$.ajax({
+    method: "POST",
+    url: $('meta[name="root-site"]').attr('content') + '/api/topSales',
+    data: {category_id : 1}
+}).done(function( msg ) {
+    console.log(msg)
+    for(var i= 0; i < msg.length; i++ ) {
+        data[i] = {
+            dataID: msg[i].id,
+            imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,
+            name: msg[i].name,
+            rostovka: msg[i].rostovka_count,
+            box: msg[i].box_count,
+            type: msg[i].types,
+            price: msg[i].prise,
+            full__price: msg[i].full__price,
+            rostovka__price: msg[i].rostovka__price,
+            real_id: msg[i].id,
+            product_url: msg[i].product_url + '/' + i,
+            option_type: 'full__price',
+            size: msg[i].size.name
+        };
+    }
+
+    drawBestSellers(data);
+}) .fail(function( msg ) {
+
+});
+
+function drawBestSellers(data) {
+    $.get($('meta[name="root-site"]').attr('content') + '/cartTmpl/product_best.html', {}, function (templateBody) {
+        $.tmpl(templateBody, data).appendTo('#newest');
+        makeSlider();
+    });
+}
 
 var init = function () {
     checkPrices();
@@ -33,10 +69,9 @@ function checkPrices() {
     }
 }
 
-var prodid = Number ($('[data-prodid]')[0].dataset.prodid);
-var checker = false;
 
 function cartCheck() {
+    var prodid = Number ($('[data-prodid]')[0].dataset.prodid);
     var cartArray = sessionStorage.getItem('Cart_data');
     cartArray = JSON.parse(cartArray);
     if (cartArray !== null) {
@@ -50,9 +85,6 @@ function cartCheck() {
                     '<div class="move--to--cart"><a class="cart--url">Перейти в корзну</a></div>' +
                     '</div>');
             }
-            else {
-                checker = true
-            }
         }
         setUrl();
     }
@@ -62,4 +94,15 @@ function cartCheck() {
 function setUrl() {
     var url = $('meta[name="root-site"]').attr('content') + '/cart';
     $('.cart--url').attr("href", url);
+}
+
+
+
+function makeSlider() {
+    $('.best--seller').slick({
+        dots: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1
+    })
 }

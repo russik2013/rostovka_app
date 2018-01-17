@@ -101,7 +101,7 @@ class SaleController extends Controller
 
     public function getTopSales(){
         $top = TopSale::orderBy('count','desc') -> take(10) -> pluck('product_id');
-        $products = Product::whereIn('id', $top) ->with('photo') ->get();
+        $products = Product::whereIn('id', $top) ->with('photo','size') ->get();
 
         foreach ($products as $product){
 

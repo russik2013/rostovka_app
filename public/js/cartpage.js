@@ -13,8 +13,8 @@ function getData() {
 $(document).ready(function () {
     for (var i = 0; i < Cart_data[0].row.length; i++){
         if(Cart_data[0].row[i].box__price === Cart_data[0].row[i].rostovka__price){
-            $.find('[data-select-id="'+ Number (Cart_data[0].row[i].productID) +'"]')[0].offsetParent.children[0].remove();
-            $.find('[product-id="'+ Number (Cart_data[0].row[i].productID) +'"]')[0].children[2].innerHTML =
+            $('[data-select-id="'+ Number (Cart_data[0].row[i].productID) +'"]').remove();
+            $('[product-id="'+ Number (Cart_data[0].row[i].productID) +'"] .type .select-style')[0].innerHTML =
                 "<div class='form-group select-style'><input class='form-control' type=\"number\" placeholder=\"в ящике\" disabled></div>"
         }
     }
@@ -46,6 +46,7 @@ if(Cart_data[0].row.length < 5){
         $('.cart-container').css('height', ''+intElemOffsetHeight+'');
     }
 }
+
 
 function Cart_template(Cart_data) {
     $.get('cartTmpl/cartTable.html', {}, function (templateBody) {

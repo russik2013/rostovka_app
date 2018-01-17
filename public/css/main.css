@@ -249,7 +249,7 @@ ul {
   position: relative;
   overflow: hidden;
   box-shadow: 0 0 black;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .categoryPage .sidebar-container {
   padding-right: 30px;
@@ -686,7 +686,8 @@ input::-webkit-inner-spin-button {
 
 .choosedFilter{
   max-height: 150px;
-  overflow: scroll;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .filter--null{
