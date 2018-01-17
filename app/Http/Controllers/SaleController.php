@@ -40,7 +40,7 @@ class SaleController extends Controller
     }
 
     public function addOrderDetais($tovars, $order_id){
-        $products = Product::whereIn('id',$this -> getAllTovarsInOrderIds($tovars)) -> get();
+        $products = Product::whereIn('id',$this -> product_id) -> with('photo') -> get();
         $insert_mass = [];
         foreach ($tovars as $tovar){
             foreach ($products as $product) {
@@ -65,6 +65,7 @@ class SaleController extends Controller
                         'this_tovar_in_order_price' => $tovar['quantityPrice'],
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now(),
+                        'image' => $product-> photo->photo_url
                     ];
 
 

@@ -8,7 +8,7 @@ class Product extends Model
 {
     protected $fillable =['article','name','rostovka_count','box_count','prise','manufacturer_id','category_id',
         'show_product','currency','full_description','discount','accessibility','image_url','type_id','season_id',
-        'size_id'];
+        'size_id','sex',"material", "tip_vyazki"];
 
 
     public function season(){

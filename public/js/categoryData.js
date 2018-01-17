@@ -808,6 +808,7 @@ function slider(msg) {
                 data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
                     filters: filter_value}
             }).done(function( msg ) {
+                console.log(msg);
                 $('.preloader').remove();
                 makeFilterData(msg);
 

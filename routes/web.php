@@ -61,9 +61,7 @@ Route::get('/user_edit', function () {
     return view('admin.user_edit.edit');
 });
 
-Route::get('/products', function () {
-    return view('admin.product.products');
-});
+Route::get('/products/{page_num?}', 'Admin\ProductController@index');
 
 Route::get('/product_add', function () {
     return view('admin.product.pdoructadd');
@@ -73,13 +71,9 @@ Route::get('/product_edit', function () {
     return view('admin.product.productedit');
 });
 
-Route::get('/orders', function () {
-    return view('admin.product.orders');
-});
+Route::get('/orders/{id?}', 'Admin\OrderController@index');
 
-Route::get('/orderInfo', function () {
-    return view('admin.product.orderInfo');
-});
+Route::get('/orderInfo/{id}', 'Admin\OrderController@orderInfo');
 
 Route::get('/personal', function () {
     return view('admin.user_edit.admin_edit');
@@ -95,6 +89,27 @@ Route::get('/userinfo', function () {
 
 Route::get('/product', 'ProductController@create');
 Route::post('/product','ProductController@add');
+
+
+
+Route::get('/csvGlovesLoad','Admin\CSV\CsvGloversLoadController@index');
+Route::post('/csvGlovesLoad','Admin\CSV\CsvGloversLoadController@csvGloversLoad') -> name('load_gloves');
+
+Route::get('/csvGlovesUpdate','Admin\CSV\CsvGloversLoadController@edit');
+Route::post('/csvGlovesUpdate','Admin\CSV\CsvGloversLoadController@csvGloversUpdate') -> name('update_gloves');
+
+Route::post('/csvGlovesDelete','Admin\CSV\CsvGloversLoadController@csvGloversDelete') -> name('delete_gloves');
+
+
+
+Route::get('/csvLoad','Admin\CSV\CsvLoadController@index');
+Route::post('/csvLoad','Admin\CSV\CsvLoadController@csvShoesLoad') -> name('load');
+
+Route::get('/csvLoadUpdate','Admin\CSV\CsvLoadController@edit');
+Route::post('/csvLoadUpdate','Admin\CSV\CsvLoadController@csvShoesUpdate') -> name('update');
+
+Route::post('/csvLoadDelete','Admin\CSV\CsvLoadController@csvShoesDelete') -> name('delete');
+
 //
 //return view('login_register.login');
 //
