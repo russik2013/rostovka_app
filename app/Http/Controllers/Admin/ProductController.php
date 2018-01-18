@@ -23,8 +23,6 @@ class ProductController extends Controller
 
     public function finder(Request $request){
 
-
-
         return Product::where('name','like', '%'.$request->name.'%') -> with('photo', 'manufacturer', 'category')->get();
 
     }

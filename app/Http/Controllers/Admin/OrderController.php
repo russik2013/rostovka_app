@@ -118,7 +118,7 @@ class OrderController extends Controller
 
                 }
 
-        return OrderDetails::insert($insert_mass);
+        OrderDetails::insert($insert_mass);
 
     }
 }
