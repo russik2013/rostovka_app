@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\ProductRequest;
 use App\Product;
 use App\ProductPhotos;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -24,6 +27,45 @@ class ProductController extends Controller
     public function finder(Request $request){
 
         return Product::where('name','like', '%'.$request->name.'%') -> with('photo', 'manufacturer', 'category')->get();
+
+    }
+
+
+    public function delete(Request $request){
+
+        File::delete('../image/products/'. Product::find($request -> id) -> photo() -> photo_url);
+
+        Product::find($request -> id) -> delete();
+
+    }
+
+    public function update(ProductRequest $request){
+
+        $product = Product::find($request -> id);
+
+        if($product){
+
+            $product -> fill($request ->all());
+
+            if($request -> image_url){
+
+                File::delete('../image/products/'. $product -> photo() -> photo_url);
+
+                $request->image_url->move('../image/products', "product_" . Carbon::now() . '.png');
+
+                $productPhoto = ProductPhotos::where('product_id','=', $product -> id) -> first();
+
+                $productPhoto -> photo_url = "product_" . Carbon::now() . '.png';
+
+                $productPhoto -> save();
+
+            }
+
+            $product -> save();
+
+            return response('done', 200);
+
+        }else return response('wrong product id', 404);
 
     }
 }

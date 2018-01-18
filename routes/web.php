@@ -98,6 +98,8 @@ Route::get('/userinfo', function () {
 
 Route::get('/product', 'ProductController@create');
 Route::post('/product','ProductController@add');
+Route::post('/product/delete','Admin/ProductController@delete'); // удаление товара - передавать id товара
+Route::post('/product/update','Admin/ProductController@update'); // редактирование товара - передавать id товара и массив редактирование (с/без фото)
 
 
 
