@@ -13,6 +13,10 @@ $('.remove__product').on('click', function () {
         cancelButtonText: 'Нет'
     }).then(function() {
         $(productRemove).remove();
+        // $.ajax({
+        //     method: 'POST',
+        //     url:
+        // })
         console.log('Prod. Name ' + productName + ' -- -- ', 'Articul ' + productArtiсul)
     });
 });

@@ -72,8 +72,17 @@ Route::get('/product_edit', function () {
 });
 
 Route::get('/orders/{id?}', 'Admin\OrderController@index');
-
 Route::get('/orderInfo/{id}', 'Admin\OrderController@orderInfo');
+Route::post('/deleteProductFromOrder','Admin\OrderController@deleteOrderDetail');//удаление товара из заказа передавать id из orderdetails
+Route::post('/deleteOrder','Admin\OrderController@deleteOrder');//удаление всего заказа передавать id заказа
+Route::post('/addOrderDetail','Admin\OrderController@addOrderDetail');// добавление товара(ов) в заказ, передавать: id заказа массив id товаров, колличества товаров
+
+
+
+Route::post('/finder','Admin\ProductController@finder');//пои сковик товаров по имени
+
+
+
 
 Route::get('/personal', function () {
     return view('admin.user_edit.admin_edit');

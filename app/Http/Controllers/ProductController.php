@@ -100,39 +100,7 @@ class ProductController extends Controller
     }
 
 
-    protected function sizeFilter($filters){
 
-        $sizes_min = 0;
-        $sizes_max = 0;
-
-        if($filters && !empty($filters)){
-
-            foreach ($filters as $filter){
-
-                if ($filter[2] == 'size') {
-
-                    if($filter[0] == 'size_min')
-                        $sizes_min = $filter[1];
-
-                    if($filter[0] == 'size_max')
-                        $sizes_max = $filter[1];
-
-                }
-
-            }
-
-        }
-
-
-
-        if($sizes_min != 0 && $sizes_max != 0){
-            return Size::where('min', '>=', $sizes_min) -> where('max','<=', $sizes_max)
-                ->pluck('id');
-        }
-
-        return Size::all() ->pluck('id');
-
-    }
 
     protected function seasonFilter($filters){
         $seasons = [];

@@ -1,6 +1,6 @@
 .mainPage--content{display: none}
 .articul input{
-    max-width: 100px;
+    max-width: 50px;
     overflow: hidden;
     border: none;
     background: transparent;
@@ -158,4 +158,8 @@ select {
 
 .alert--xsl{
     top: 60px;
+}
+
+.productsArt input{
+    max-width: 100% !important;
 }

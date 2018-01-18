@@ -11,6 +11,7 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <meta name="root-site" content="{!!route('root')!!}">
+    <meta name="csrf-token" content="{!! csrf_token() !!}">
 
     <!-- Bootstrap core CSS     -->
     <link href="{{url('css/admin/bootstrap.min.css')}}" rel="stylesheet" />
@@ -52,27 +53,27 @@
 
             <ul class="nav">
                 <li id="users" class="active">
-                    <a href="admin_index">
+                    <a href="{{url('admin_index')}}">
                         <i class="ti-user"></i>
                         <p>Пользователи</p>
                     </a>
                 </li>
                 <li id="products">
-                    <a href="products">
+                    <a href="{{url('products')}}">
                         <i class="ti-view-list-alt"></i>
                         <p>Товары</p>
                     </a>
                 </li>
 
                 <li id="orders">
-                    <a href="orders">
+                    <a href="{{url('orders')}}">
                         <i class="ti-pencil-alt2"></i>
                         <p>Заказы</p>
                     </a>
                 </li>
 
                 <li id="suppliers">
-                    <a href="suppliers">
+                    <a href="{{url('suppliers')}}">
                         <i class="ti-package"></i>
                         <p>Поставщики</p>
                     </a>

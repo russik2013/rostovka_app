@@ -44,18 +44,28 @@ class OrderController extends Controller
 
     public function deleteOrderDetail(Request $request){
 
-        return OrderDetails::find($request -> id) -> delete();
+        OrderDetails::find($request -> id) -> delete();
+
+    }
+
+
+    public function deleteOrder(Request $request){
+
+        Order::find($request -> id) ->details() -> delete();
+
+        Order::find($request -> id)  -> delete();
 
     }
 
 
     public function addOrderDetail(Request $request){
 
-        $products = Product::whereIn('id',$this -> getAllTovarsInOrderIds($tovars)) -> with('photo') -> get();
+        dd($request -> all());
+
+        $products = Product::whereIn('id',$request -> ids) -> with('photo') -> get();
         $insert_mass = [];
-        foreach ($tovars as $tovar){
             foreach ($products as $product) {
-                if ($product->id == $tovar['product_id']) {
+
                     $insert_mass[] = [
                         'article' => $product->article,
                         'tovar_name' => $product->name,
@@ -71,9 +81,9 @@ class OrderController extends Controller
                         'type_name' => $product->type->name,
                         'season_name' => $product->season->name,
                         'size_name' => $product->size->name,
-                        'order_id' => $order_id,
-                        'tovar_in_order_count' => $tovar['quantity'],
-                        'this_tovar_in_order_price' => $tovar['quantityPrice'],
+                        'order_id' => $request -> order_id,
+                        //'tovar_in_order_count' => $tovar['quantity'],
+                        //'this_tovar_in_order_price' => $tovar['quantityPrice'],
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now(),
                         'image' => $product-> photo->photo_url
@@ -81,9 +91,9 @@ class OrderController extends Controller
 
 
                 }
-            }
 
-        }
+
+
         //OrderDetails::insert($insert_mass);
 
         return OrderDetails::insert($insert_mass);

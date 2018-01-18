@@ -6,7 +6,7 @@
 
 @extends('admin.main')
 @section('orderInfo_content')
-    <div class="content product--add">
+    <div class="content product--add" data-orderid="{{$order -> id}}">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">

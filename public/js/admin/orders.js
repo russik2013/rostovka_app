@@ -65,6 +65,10 @@ $('.remove__order').on('click', function () {
         cancelButtonText: 'Нет'
     }).then(function() {
         $(productRemove).remove();
-        console.log('Prod. Name ' + productName + ' -- -- ' + 'ProductID ' + productID )
+        $.ajax({
+            method: 'POST',
+            url: $('meta[name="root-site"]').attr('content') + '/deleteOrder',
+            data: {'_token': $('meta[name="csrf-token"]').attr('content'), id: productID}
+        });
     });
 });

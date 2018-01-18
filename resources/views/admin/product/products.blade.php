@@ -63,7 +63,7 @@
 
                                 @foreach($products as $product)
                                     <tr>
-                                        <td class="articul"><input value="{{$product -> article}}" disabled></td>
+                                        <td class="articul productsArt"><input value="{{$product -> article}}" disabled></td>
                                         <td>{{$product -> name}}</td>
                                         <td>{{$product -> category -> name}}</td>
                                         <td>{{$product -> manufacturer -> name}}</td>

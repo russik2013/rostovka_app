@@ -7,7 +7,6 @@ $.ajax({
     url: $('meta[name="root-site"]').attr('content') + '/api/topSales',
     data: {category_id : 1}
 }).done(function( msg ) {
-    console.log(msg)
     for(var i= 0; i < msg.length; i++ ) {
         data[i] = {
             dataID: msg[i].id,
@@ -95,7 +94,6 @@ function setUrl() {
     var url = $('meta[name="root-site"]').attr('content') + '/cart';
     $('.cart--url').attr("href", url);
 }
-
 
 
 function makeSlider() {
