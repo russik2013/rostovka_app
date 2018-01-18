@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Order;
 use App\OrderDetails;
+use App\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -60,11 +62,35 @@ class OrderController extends Controller
 
     public function addOrderDetail(Request $request){
 
-        dd($request -> all());
+         $ids = [];
 
-        $products = Product::whereIn('id',$request -> ids) -> with('photo') -> get();
+         for($i = 0; $i < count($request -> data); $i ++){
+
+             $ids[] = $request -> data[$i]['id'];
+
+         }
+
+         $orderDates = [];
+
+        for($i = 0; $i < count($request -> data); $i ++){
+
+            $orderDates[ $request -> data[$i]['id']] = [$request -> data[$i]['orderID'], $request -> data[$i]['quantity'] , $request -> data[$i]['type']];
+
+        }
+
+        $products = Product::whereIn('id',$ids) -> with('photo') -> get();
         $insert_mass = [];
             foreach ($products as $product) {
+
+                if($orderDates[$product -> id][2] == 'box'){
+
+                    $this_tovar_in_order_price = $product->prise * $product->box_count * $orderDates[$product -> id][1];
+
+                }else {
+
+                    $this_tovar_in_order_price = $product->prise * $product->rostovka_count * $orderDates[$product -> id][1];
+
+                }
 
                     $insert_mass[] = [
                         'article' => $product->article,
@@ -81,9 +107,9 @@ class OrderController extends Controller
                         'type_name' => $product->type->name,
                         'season_name' => $product->season->name,
                         'size_name' => $product->size->name,
-                        'order_id' => $request -> order_id,
-                        //'tovar_in_order_count' => $tovar['quantity'],
-                        //'this_tovar_in_order_price' => $tovar['quantityPrice'],
+                        'order_id' => $orderDates[$product -> id][0],
+                        'tovar_in_order_count' => $orderDates[$product -> id][1],
+                        'this_tovar_in_order_price' => $this_tovar_in_order_price,
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now(),
                         'image' => $product-> photo->photo_url
@@ -91,10 +117,6 @@ class OrderController extends Controller
 
 
                 }
-
-
-
-        //OrderDetails::insert($insert_mass);
 
         return OrderDetails::insert($insert_mass);
 
