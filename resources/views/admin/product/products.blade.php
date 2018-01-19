@@ -69,7 +69,7 @@
                                         <td>{{$product -> manufacturer -> name}}</td>
                                         <td>{{$product -> discount}}</td>
                                         <td>@if($product ->show_product == 1) да @else нет @endif</td>
-                                        <td>{{$product -> created_at}} <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                        <td>{{$product -> created_at}} <a href="{{url('/product/'.$product->id.'/edit')}}"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

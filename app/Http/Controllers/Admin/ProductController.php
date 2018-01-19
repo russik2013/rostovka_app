@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Requests\ProductRequest;
+use App\Manufacturer;
 use App\Product;
 use App\ProductPhotos;
+use App\Season;
+use App\Size;
+use App\Type;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -66,6 +71,23 @@ class ProductController extends Controller
             return response('done', 200);
 
         }else return response('wrong product id', 404);
+
+    }
+
+    public function edit($id){
+
+        $manufacturer = Manufacturer::all();
+        $categories = Category::all();
+        $types = Type::all();
+        $seasons = Season::all();
+        $sizes = Size::all();
+        $product = Product::with('photo') -> find($id);
+
+        if($product )
+
+            return view('admin.product.productedit', compact('manufacturer', 'categories', 'types', 'seasons', 'sizes', 'product'));
+
+        else return response('Wrong product id', 404);
 
     }
 }

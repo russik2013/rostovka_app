@@ -158,7 +158,7 @@ class CsvGloversLoadController extends Controller
 
 
             if($product -> valyuta == "$")
-                $valyuta = "usd";
+                $valyuta = "дол";
             else $valyuta = "грн";
 
             $insert_array = [ 'article' => $product ->artikul,
@@ -342,7 +342,7 @@ class CsvGloversLoadController extends Controller
 
 
             if($product -> valyuta == "$")
-                $valyuta = "usd";
+                $valyuta = "дол";
             else $valyuta = "грн";
 
             $insert_array[] = [ 'article' => $product ->artikul,

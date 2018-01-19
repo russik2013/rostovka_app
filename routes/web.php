@@ -61,15 +61,12 @@ Route::get('/user_edit', function () {
     return view('admin.user_edit.edit');
 });
 
-Route::get('/products/{page_num?}', 'Admin\ProductController@index');
+
 
 Route::get('/product_add', function () {
     return view('admin.product.pdoructadd');
 });
 
-Route::get('/product_edit', function () {
-    return view('admin.product.productedit');
-});
 
 Route::get('/orders/{id?}', 'Admin\OrderController@index');
 Route::get('/orderInfo/{id}', 'Admin\OrderController@orderInfo');
@@ -96,10 +93,12 @@ Route::get('/userinfo', function () {
     return view('user.userinfo');
 });
 
+Route::get('/products/{page_num?}', 'Admin\ProductController@index');//вывод списка всех товаров
 Route::get('/product', 'ProductController@create');
 Route::post('/product','ProductController@add');
-Route::post('/product/delete','Admin/ProductController@delete'); // удаление товара - передавать id товара
-Route::post('/product/update','Admin/ProductController@update'); // редактирование товара - передавать id товара и массив редактирование (с/без фото)
+Route::post('/product/delete','Admin\ProductController@delete'); // удаление товара - передавать id товара
+Route::post('/product/update','Admin\ProductController@update'); // редактирование товара - передавать id товара и массив редактирование (с/без фото)
+Route::get('/product/{id}/edit','Admin\ProductController@edit'); // редактирование товара - ссылка на страницу редактирование
 
 
 
