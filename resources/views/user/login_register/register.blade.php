@@ -27,14 +27,68 @@
                                 </div>
 
                                 <div class="col-md-6 form-field-wrapper form-group has-feedback">
+                                    @if ($errors->has('phone'))
+                                        <p>  {{$errors -> first('phone')}} </p>
+                                    @endif
+                                    <label class="col-md-12 control-label">Ваш номер телефона</label>
+                                    <div class="col-md-12 inputGroupContainer">
+
+                                        <div class="input-group">
+                                            <input name="phone'" placeholder="Номер телефона" class="form-control" type="number" value="{{old('phone')}}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 form-field-wrapper form-group has-feedback">
                                     @if ($errors->has('first_name'))
                                         <p> {{$errors -> first('first_name')}} </p>
                                     @endif
-                                    <label class="col-md-12 control-label">ФИО</label>
+                                    <label class="col-md-12 control-label">Имя</label>
                                     <div class="col-md-12 inputGroupContainer">
 
                                         <div class="input-group">
                                             <input name="first_name" placeholder="имя" class="input-md form-full-width form-control" type="text" value="{{old('first_name')}}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 form-field-wrapper form-group has-feedback">
+                                    @if ($errors->has('last_name'))
+                                        <p> {{$errors -> first('last_name')}} </p>
+                                    @endif
+                                    <label class="col-md-12 control-label">Фамилия</label>
+                                    <div class="col-md-12 inputGroupContainer">
+
+                                        <div class="input-group">
+                                            <input name="last_name" placeholder="фамилия" class="input-md form-full-width form-control" type="text" value="{{old('last_name')}}">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6 form-field-wrapper form-group has-feedback">
+                                    @if ($errors->has('address'))
+                                        <p> {{$errors -> first('address')}} </p>
+                                    @endif
+                                    <label class="col-md-12 control-label">Адрес</label>
+                                    <div class="col-md-12 inputGroupContainer">
+
+                                        <div class="input-group">
+                                            <input name="address" placeholder="Адрес" class="input-md form-full-width form-control" type="text" value="{{old('address')}}">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6 form-field-wrapper form-group has-feedback">
+                                    @if ($errors->has('city'))
+                                        <p> {{$errors -> first('city')}} </p>
+                                    @endif
+                                    <label class="col-md-12 control-label">Город</label>
+                                    <div class="col-md-12 inputGroupContainer">
+
+                                        <div class="input-group">
+                                            <input name="city" placeholder="Адрес" class="input-md form-full-width form-control" type="text" value="{{old('city')}}">
                                         </div>
                                     </div>
                                 </div>
