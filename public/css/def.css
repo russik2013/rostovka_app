@@ -6904,3 +6904,7 @@ tr .type .form-control{
 .best--seller .product-item .product-item-inner{
     height: auto;
 }
+
+fieldset input:hover{
+    border: 1px solid #e5e5e5 !important;
+}
