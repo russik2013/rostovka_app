@@ -20,7 +20,7 @@
                                             <label class="col-md-12 control-label">Ваш E-Mail</label>
                                             <div class="col-md-12 inputGroupContainer">
                                                 <div class="input-group">
-                                                    <input name="email" placeholder="" class="form-control" type="text" value="one@two.com">
+                                                    <input name="email" placeholder="" class="form-control" type="text" value="{{$client -> email}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -33,7 +33,7 @@
                                             <div class="col-md-12 inputGroupContainer">
 
                                                 <div class="input-group">
-                                                    <input name="first_name" placeholder="имя" class="input-md form-full-width form-control" type="text" value="Пупкин Иван Иванович">
+                                                    <input name="first_name" placeholder="имя" class="input-md form-full-width form-control" type="text" value="{{$client -> first_name}} {{$client -> last_name}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -46,7 +46,7 @@
                                             <label class="col-md-12 control-label">Ваш Телефон</label>
                                             <div class="col-md-12 inputGroupContainer">
                                                 <div class="input-group">
-                                                    <input placeholder="" class="form-control" type="text" value="0631111">
+                                                    <input placeholder="" class="form-control" type="text" value="{{$client -> phone}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -55,36 +55,36 @@
                                             <label class="col-md-12 control-label">Ваш Адрес</label>
                                             <div class="col-md-12 inputGroupContainer">
                                                 <div class="input-group">
-                                                    <input placeholder="" class="form-control" type="text" value="Бугаевка, Одесса, 65000">
+                                                    <input placeholder="" class="form-control" type="text" value="{{$client -> address}}">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="form-field-wrapper form-center col-sm-12">
-                                        <div class="col-md-6 form-field-wrapper form-group has-feedback">
-                                            <label class="col-md-12 control-label">Способ доставки</label>
-                                            <div class="input-group col-md-12 deliverySelect">
-                                                <select name="deliveryMethod" id="deliveryMethod" class="nice-select-box">
-                                                    <option selected="selected" value="1">Новая почта</option>
-                                                    <option value="1">Delivery</option>
-                                                    <option value="1">Автолюкс</option>
-                                                    <option value="1">InTime</option>
-                                                    <option value="1">Подвести к автобусу</option>
-                                                    <option value="1">Самовывоз</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                                    {{--<div class="form-field-wrapper form-center col-sm-12">--}}
+                                        {{--<div class="col-md-6 form-field-wrapper form-group has-feedback">--}}
+                                            {{--<label class="col-md-12 control-label">Способ доставки</label>--}}
+                                            {{--<div class="input-group col-md-12 deliverySelect">--}}
+                                                {{--<select name="deliveryMethod" id="deliveryMethod" class="nice-select-box">--}}
+                                                    {{--<option selected="selected" value="1">Новая почта</option>--}}
+                                                    {{--<option value="1">Delivery</option>--}}
+                                                    {{--<option value="1">Автолюкс</option>--}}
+                                                    {{--<option value="1">InTime</option>--}}
+                                                    {{--<option value="1">Подвести к автобусу</option>--}}
+                                                    {{--<option value="1">Самовывоз</option>--}}
+                                                {{--</select>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
 
-                                        <div class="col-md-6 form-field-wrapper form-group has-feedback">
-                                            <label class="col-md-12 control-label">Информация по доставке</label>
-                                            <div class="col-md-12 inputGroupContainer">
-                                                <div class="input-group">
-                                                    <input placeholder="" class="form-control" type="text" value="Доставьте в отделение №3">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        {{--<div class="col-md-6 form-field-wrapper form-group has-feedback">--}}
+                                            {{--<label class="col-md-12 control-label">Информация по доставке</label>--}}
+                                            {{--<div class="col-md-12 inputGroupContainer">--}}
+                                                {{--<div class="input-group">--}}
+                                                    {{--<input placeholder="" class="form-control" type="text" value="Доставьте в отделение №3">--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
 
                                     <div class="col-md-6 form-field-wrapper form-group has-feedback">
                                         @if ($errors->has('password'))

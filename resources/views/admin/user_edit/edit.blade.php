@@ -22,20 +22,26 @@
                                         <div class="col-md-1">
                                             <div class="form-group">
                                                 <label>ID</label>
-                                                <input class="form-control border-input" disabled="" type="text" value="1">
+                                                <input class="form-control border-input" disabled="" type="text" value="{{$client -> id}}">
                                             </div>
                                         </div>
 
                                         <div class="col-md-5 product--add">
                                             <div class="form-group">
                                                 <label>Тип пользователя</label>
-                                                <select class="form-control border-input user__type"></select>
+                                                <select class="form-control border-input user__type">
+
+                                                    <option @if($client -> type == 'admin') selected @endif>Администратор</option>
+                                                    <option>Модератор</option>
+                                                    <option @if($client -> type == 'user') selected @endif>Пользователь</option>
+
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email адрес</label>
-                                                <input class="form-control border-input" type="email" value="d.rice@gmail.com">
+                                                <input class="form-control border-input" type="email" value="{{$client -> email}}">
                                             </div>
                                         </div>
                                     </div>
@@ -44,13 +50,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>First Name</label>
-                                                <input class="form-control border-input" type="text" value="Chet">
+                                                <input class="form-control border-input" type="text" value="{{$client -> first_name}}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Last Name</label>
-                                                <input class="form-control border-input" type="text" value="Faker">
+                                                <input class="form-control border-input" type="text" value="{{$client -> last_name}}">
                                             </div>
                                         </div>
                                     </div>
@@ -59,7 +65,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Address</label>
-                                                <input class="form-control border-input" placeholder="Home Address" type="text" value="Melbourne, Australia">
+                                                <input class="form-control border-input" placeholder="Home Address" type="text" value="{{$client -> address}}">
                                             </div>
                                         </div>
                                     </div>
@@ -68,21 +74,21 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>City</label>
-                                                <input class="form-control border-input" placeholder="City" type="text" value="Melbourne">
+                                                <input class="form-control border-input" placeholder="City" type="text" value="{{$client -> city}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Country</label>
-                                                <input class="form-control border-input" placeholder="Country" type="text" value="Australia">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input class="form-control border-input" placeholder="ZIP Code" type="number">
-                                            </div>
-                                        </div>
+                                        {{--<div class="col-md-4">--}}
+                                            {{--<div class="form-group">--}}
+                                                {{--<label>Country</label>--}}
+                                                {{--<input class="form-control border-input" placeholder="Country" type="text" value="Australia">--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-4">--}}
+                                            {{--<div class="form-group">--}}
+                                                {{--<label>Postal Code</label>--}}
+                                                {{--<input class="form-control border-input" placeholder="ZIP Code" type="number">--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
                                     </div>
 
                                     <div class="text-center">

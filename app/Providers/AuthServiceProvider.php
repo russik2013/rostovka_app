@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Client;
+use App\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -27,14 +28,14 @@ class AuthServiceProvider extends ServiceProvider
     {
 
         Validator::extend('valid_email', function ($attribute, $value){
-            if(Client::where('email', '=', $value)->first())
+            if(User::where('email', '=', $value)->first())
             return false;
             else return true;
 
         },'Email is already exist in Data Base');
 
         Validator::extend('valid_phone', function ($attribute, $value){
-            if(Client::where('phone', '=', $value)->first())
+            if(User::where('phone', '=', $value)->first())
             return false;
             else return true;
 

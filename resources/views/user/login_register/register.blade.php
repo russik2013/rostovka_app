@@ -8,7 +8,7 @@
                 <h3>Регистрация</h3>
                 <div class="container">
 
-                    <form class="well form-horizontal" action="{{url('/register')}}" method="post" id="contact_form">
+                    <form class="well form-horizontal" action="{{route('register')}}" method="post" id="contact_form">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <input type="hidden" name="_method" value="POST">
                         <fieldset>
@@ -34,7 +34,7 @@
                                     <div class="col-md-12 inputGroupContainer">
 
                                         <div class="input-group">
-                                            <input name="phone'" placeholder="Номер телефона" class="form-control" type="number" value="{{old('phone')}}">
+                                            <input name="phone" placeholder="Номер телефона" class="form-control" type="number" value="{{old('phone')}}">
                                         </div>
                                     </div>
                                 </div>

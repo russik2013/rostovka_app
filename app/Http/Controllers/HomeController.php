@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Client;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +28,10 @@ class HomeController extends Controller
 
         if (Auth::attempt(['email' => $request->author, 'password' => $request->{'author-pass'}]))
         {
-            return redirect()->intended('category');
+            if(Auth::user()->type == 'user' )
+                return redirect()->intended('userinfo');
+            if(Auth::user()->type == 'admin' )
+                return redirect()->intended('admin_index');
         }
 
         return back()->withErrors(array('login_error' => 'Не верные данные'));
@@ -37,13 +40,8 @@ class HomeController extends Controller
 
     public function register(Request $request){
 
-        $rules = ['first_name' => 'required|string',
-            'last_name' => 'required|string',
+        $rules = [
             'email' => 'required|email|valid_email',
-            'address' => 'required|string',
-            'city' => 'required|string',
-            'state' => 'required|string',
-            'zip' => 'required|numeric',
             'phone' => 'required|numeric|valid_phone',
             'password' => 'required'];
 
@@ -53,15 +51,23 @@ class HomeController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $client = new Client();
+
+        $client = new User();
 
         $client -> fill($request -> all());
+
+        $client -> country = $request -> city;
+
+        $client -> postal_code = 1;
+
+        $client -> name = $request -> first_name;
+
+        $client -> type = 'user';
 
         $client -> password = bcrypt($request->password);
 
         $client -> save();
 
-        return redirect('login');
 
     }
 
