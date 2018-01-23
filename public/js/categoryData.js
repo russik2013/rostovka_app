@@ -118,7 +118,6 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
     return filter_value
 });
 
-
 var saved_count_on_page = sessionStorage.getItem('selectedCount');
 
 $('#product-show').on('change', function () {
@@ -478,7 +477,6 @@ function GetData(data) {
         init();
     }
 }
-
 
 $('.product--block').append('<div class="preloader"><i></i></div>');
 
