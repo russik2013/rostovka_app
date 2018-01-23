@@ -142,7 +142,7 @@
                                     </span>
 
                                     <span class="cartButton">
-                                        <a href="{{route('cart')}}" class="button">Корзина</a>
+                                        <a href="{{route('cart')}}" class="button movein--cart">Корзина</a>
                                         <a href="checkout" class="button checkour_cart">Купить</a>
                                     </span>
                                 </span>

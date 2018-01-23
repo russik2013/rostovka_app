@@ -40,10 +40,11 @@ class SaleController extends Controller
     }
 
     public function addOrderDetais($tovars, $order_id){
-        $products = Product::whereIn('id',$this -> product_id) -> with('photo') -> get();
+        $products = Product::whereIn('id',$this -> getAllTovarsInOrderIds($tovars)) -> with('photo') -> get();
         $insert_mass = [];
         foreach ($tovars as $tovar){
             foreach ($products as $product) {
+
                 if ($product->id == $tovar['product_id']) {
                     $insert_mass[] = [
                         'article' => $product->article,
@@ -74,8 +75,6 @@ class SaleController extends Controller
 
         }
         OrderDetails::insert($insert_mass);
-
-
     }
 
 

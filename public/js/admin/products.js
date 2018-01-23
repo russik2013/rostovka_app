@@ -1,6 +1,6 @@
 $('.remove__product').on('click', function () {
     var productName = $(this)[0].parentElement.parentNode.children[1].innerText,
-        productArtiсul = $(this)[0].parentNode.parentNode.children[0].childNodes[0].value,
+        productID = $(this)[0].parentNode.parentNode.dataset.id,
         productRemove = $(this)[0].parentNode.parentNode;
 
     swal({
@@ -13,11 +13,12 @@ $('.remove__product').on('click', function () {
         cancelButtonText: 'Нет'
     }).then(function() {
         $(productRemove).remove();
-        // $.ajax({
-        //     method: 'POST',
-        //     url:
-        // })
-        console.log('Prod. Name ' + productName + ' -- -- ', 'Articul ' + productArtiсul)
+        $.ajax({
+            method: 'POST',
+            url: $('meta[name="root-site"]').attr('content') + '/product/delete',
+            data: {'_token': $('meta[name="csrf-token"]').attr('content'), id: productID}
+        }).done(function(msg) {
+        });
     });
 });
 

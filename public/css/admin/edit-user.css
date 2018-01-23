@@ -215,3 +215,108 @@
 
 .file-drag-handle{display: none !important;}
 .file-zoom-dialog .btn-next, .file-zoom-dialog .btn-prev{border: none;}
+
+
+.successful_Buy .modal-confirm{
+    max-width: 500px;
+    width: 100% !important;
+}
+
+.successful_Buy .modal-confirm {
+    color: #636363;
+    width: 325px;
+}
+
+.successful_Buy .modal-confirm .modal-body{
+    padding: 0;
+}
+
+.successful_Buy .modal-confirm .text-center{
+    text-transform: uppercase;
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+.successful_Buy .modal-confirm .min--info{
+    font-size: 14px;
+    text-transform: initial;
+    margin: 0;
+}
+
+.successful_Buy .modal-confirm .modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    padding-bottom: 2px;
+}
+
+.successful_Buy .modal-confirm .modal-header {
+    border-bottom: none;
+    position: relative;
+}
+
+.successful_Buy .modal-confirm h4 {
+    text-align: center;
+    font-size: 26px;
+    margin: 30px 0 -15px;
+}
+.successful_Buy .modal-confirm .form-control, .successful_Buy .modal-confirm .btn {
+    min-height: 40px;
+    border-radius: 3px;
+}
+.successful_Buy .modal-confirm .close {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+.successful_Buy .modal-confirm .modal-footer {
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 13px;
+    padding-top: 35px;
+}
+.successful_Buy .modal-confirm .icon-box {
+    color: #fff;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: -83px;
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    text-align: center;
+    z-index: 9;
+    background: #2c628f;
+    padding: 15px;
+    padding-left: 0;
+    text-align: center;
+    box-shadow: 0 1px 14px rgba(0, 0, 0, 0.43);
+}
+.successful_Buy .modal-confirm .icon-box i {
+    font-size: 58px;
+    position: relative;
+    top: 3px;
+    left: -5px;
+}
+.successful_Buy .modal-confirm.modal-dialog {
+    margin-top: 80px;
+}
+.successful_Buy .modal-confirm .btn {
+    color: #fff;
+    border-radius: 4px;
+    background: #2c628f;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    border: none;
+}
+.successful_Buy .modal-confirm .btn:hover, .successful_Buy .modal-confirm .btn:focus {
+    background: #6fb32b;
+    outline: none;
+}
+
+.successful_Buy .modal-confirm .btn-block{
+    margin: 0 auto;
+    width: 40%;
+}

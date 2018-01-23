@@ -48,7 +48,8 @@ class HomeController extends Controller
         $validator = Validator::make($request->all(),$rules);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            return redirect()->back()->withErrors($validator);
+            //return $validator->messages();
         }
 
 

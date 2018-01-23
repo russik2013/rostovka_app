@@ -27,7 +27,7 @@ class HomeController extends Controller
 
     public function deleteClient($id){
 
-        User::delete($id);
+        User::find($id)->delete();
 
     }
 

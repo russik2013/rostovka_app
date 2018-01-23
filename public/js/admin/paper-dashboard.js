@@ -170,8 +170,13 @@ $('.remove').on('click', function () {
         confirmButtonText: 'Да',
         cancelButtonText: 'Нет'
     }).then(function() {
-        $(userRemove).remove();
-        console.log(userName, userID)
+        $.ajax({
+            method: 'POST',
+            url: $('meta[name="root-site"]').attr('content') + '/user_delete/' + userID,
+            data: {'_token': $('meta[name="csrf-token"]').attr('content')}
+        }).done(function(msg) {
+            $(userRemove).remove();
+        });
     });
 });
 
