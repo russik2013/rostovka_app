@@ -18,9 +18,8 @@ $(document).ready(function() {
 
 
             inputArray = inputArray.concat({'name' : 'summ','value': Cart_data[0].cartProducts_summ});
-console.log(inputArray);
-            $.ajax({
 
+            $.ajax({
                 type: 'POST',
                 url: $('meta[name="checkout"]').attr('content'),
                 data: inputArray,
@@ -190,6 +189,6 @@ console.log(inputArray);
     });
 });
 
-function sendData() {
-    console.log(success)
-}
+// function sendData() {
+//     console.log(success)
+// }

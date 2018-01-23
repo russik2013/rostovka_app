@@ -6,11 +6,7 @@ var data = [],
     paginationNum,
     paginationCount = 0,
     filter_value = [],
-    savedFilters = sessionStorage.getItem('filterValues'),
-    getSavedFilters,
     selectedCount = Number ($.find('#product-show option')[0].innerText);
-
-getSavedFilters = JSON.parse(savedFilters);
 
 ///work with filters
 var values = [], targetID = 0;
@@ -86,6 +82,8 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
 
         $('.product--block').append('<div class="preloader"><i></i></div>');
 
+
+        console.log(values);
         $.ajax({
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + "/api/products",
@@ -120,10 +118,6 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
     return filter_value
 });
 
-if(getSavedFilters !== null){
-    filter_value = getSavedFilters
-}
-
 var saved_count_on_page = sessionStorage.getItem('selectedCount');
 
 $('#product-show').on('change', function () {
@@ -140,99 +134,7 @@ if(saved_count_on_page !== null){
     sessionStorage.setItem('selectedCount',  JSON.stringify(count_on_page));
 }
 
-if(getSavedFilters !== null){
-    var get_saved_count_on_page = 12;
-
-    if(saved_count_on_page > 0) {
-        get_saved_count_on_page = JSON.parse(saved_count_on_page);
-    }
-
-    for (var l = 0; l < $.find('[data-set="selectCount"] option').length; l++){
-        if(Number ($.find('[data-set="selectCount"] option')[l].attributes[0].value) === get_saved_count_on_page) {
-            $.find('[data-set="selectCount"] option')[l].setAttribute('selected', 'selected')
-        }
-    }
-
-
-    var items_Count = Number ($.find('.checkbox-circle').length);
-    for (var i = 0; i < getSavedFilters.length; i++){
-        for(var b = 0; b < items_Count; b++){
-            if($.find('.checkbox-circle input')[b].dataset.value === getSavedFilters[i][0]){
-                $.find('.checkbox-circle input')[b].setAttribute("checked", "checked");
-            }
-        }
-    }
-
-    values = getSavedFilters;
-    if(values.length !== 0){
-        var AppendedList = $('.choosedFilter li');
-        $('.CFBlock').css('display', 'block');
-
-        Number(AppendedList.length++);
-        for (var y = 0; y < values.length; y++) {
-            for (var z = 0; z < AppendedList.length; z++) {
-                if ($.find('.checkbox-circle input')[z].dataset.value === values[y][z]) {
-                    $(AppendedList)[z].remove();
-                }
-            }
-
-            $('.choosedFilter').append('' +
-                '<li class="appedned__item">' +
-                '<span class="item" data-type="' + values[y][0] + '">' + values[y][1] + '</span>' +
-                '<i class="fa fa-times-circle removeAppended__Item" aria-hidden="true"></i>' +
-                '</li>');
-        }
-        RemoveItem();
-    }
-
-    $('.product--block').append('<div class="preloader"><i></i></div>');
-
-    $.ajax({
-        method: 'POST',
-        url: $('meta[name="root-site"]').attr('content') + "/api/products",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: Number (get_saved_count_on_page),
-            filters: values}
-    }).done(function(msg) {
-
-        if(msg.length > 0){
-            for(var i= 0; i < msg.length; i++ ) {
-                data[i] = {
-                    dataID: msg[i].id,
-                    imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,
-                    name: msg[i].name,
-                    rostovka: msg[i].rostovka_count,
-                    box: msg[i].box_count,
-                    type: msg[i].types,
-                    price: msg[i].prise,
-                    full__price: msg[i].full__price,
-                    rostovka__price: msg[i].rostovka__price,
-                    real_id: msg[i].id,
-                    product_url: msg[i].product_url + '/' + i,
-                    size: msg[i].size.name,
-                    option_type: 'full__price' // Или full__price или rostovka__price
-                };
-            }
-
-            var filtered_data = data;
-            GetData(filtered_data);
-            drawItems(filtered_data);
-            $('.preloader').remove();
-        }
-    });
-
-    $.ajax({
-        method: 'POST',
-        url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: Number (get_saved_count_on_page),
-            filters: values}
-    }).done(function(msg) {
-        paginationNum = msg;
-        paginationCounter(paginationNum);
-    });
-}
-else{
-    initData(count_on_page);
-}
+initData(count_on_page);
 
 function initData(count_on_page) {
     $.ajax({
@@ -297,7 +199,6 @@ function makeData(page_num, count_on_page) {
 
 var numberPerPage = 12, pageList = [], currentPage = 1, numberOfPages = 0;
 
-
 function checkMinMax() {
     var MinMaxCounter = [];
     for (var i = 0; i < data.length; i++){
@@ -314,7 +215,6 @@ function checkMinMax() {
 
     })
 }
-
 
 function NextData(page_num, count_on_page, filter_value) {
     $('.product--block').append('<div class="preloader"><i></i></div>');
@@ -577,7 +477,6 @@ function GetData(data) {
         init();
     }
 }
-
 
 $('.product--block').append('<div class="preloader"><i></i></div>');
 

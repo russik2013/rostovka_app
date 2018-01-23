@@ -135,6 +135,26 @@
     </div>
 @endsection
 
+
+<div class="successful_Buy modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="fa fa-check-circle"></i>
+                </div>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">Вы успешно зарегистрировались</p>
+                <p class="text-center min--info"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section('auth_reg')
 <script type="text/javascript" src="{{asset('js/auth.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/resizer.js')}}"></script>

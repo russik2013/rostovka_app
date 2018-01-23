@@ -38,7 +38,10 @@ class ProductController extends Controller
 
     public function delete(Request $request){
 
-        File::delete('../image/products/'. Product::find($request -> id) -> photo() -> photo_url);
+        if(Product::find($request -> id) -> photo -> photo_url)
+
+            //dd(Product::find($request -> id) -> photo -> photo_url);
+        File::delete('../image/products/'. Product::find($request -> id) -> photo -> photo_url);
 
         Product::find($request -> id) -> delete();
 

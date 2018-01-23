@@ -11,8 +11,9 @@ function Cart_template(Cart_data) {
 var Cart_data = [{row: [], cartCount: 0, cartProducts_summ: 0}], hidden__price, targetID;
 
 $(document).on("click", '[data-set="buyButton"]', function (event) {
+    $('.dropdownCart .cartButton').css('display', 'block');
+    $('.cartButton').css('margin', '0');
     if($.find('.one--product').length > 0){
-
         targetID  = Number ($('#productID')[0].dataset.prodid);
 
         var itemQuant = Number ($('.quantity').val()),
@@ -263,7 +264,9 @@ $(document).on('click', '.removeItem__cart', function () {
 
     Cart_data[0].cartCount = Cart_data[0].row.length;
     if(Cart_data[0].row.length === 0){
-        $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>')
+        $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>');
+        $('.dropdownCart .cartButton').css('display', 'none');
+        $('.cartButton').css('margin', '0');
     }
 
     counter--;
@@ -396,5 +399,7 @@ function getData() {
 getData();
 
 if(Cart_data[0].row.length === 0){
-    $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>')
+    $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>');
+    $('.dropdownCart .cartButton').css('display', 'none');
+    $('.cartButton').css('margin', '0')
 }
