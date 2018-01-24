@@ -61,10 +61,13 @@
                 <!--Topbar Right-->
                 <div class="topbar-right">
                     <ul class="list-none">
+                        @if(!Auth::user())
                         <li>
-                            <a href="login"><i class="fa fa-lock left" aria-hidden="true"></i><span
+                            <a href="{{url('/login')}}"><i class="fa fa-lock left" aria-hidden="true"></i><span
                                         class="hidden-sm-down">Авторизация</span></a>
                         </li>
+                        @endif
+                        @if(Auth::user())
                         <li class="dropdown-nav">
                             <a href="#!"><i class="fa fa-user left" aria-hidden="true"></i>
                                 <span class="hidden-sm-down">Кабинет</span>
@@ -73,12 +76,13 @@
                             <!--Dropdown-->
                             <div class="dropdown-menu">
                                 <ul>
-                                    <li><a href="userinfo">Моя информация</a></li>
+                                    <li><a href="{{url('/userinfo')}}">Моя информация</a></li>
                                     <li><a href="{{url('/cart')}}">Корзина</a></li>
                                 </ul>
                             </div>
                             <!--End Dropdown-->
                         </li>
+                            @endif
                     </ul>
                 </div>
                 <!-- End Topbar Right -->
@@ -118,7 +122,7 @@
 
                             <!-- Cart-->
                             <li class="cartBl">
-                                <a href="cart">
+                                <a href="{{url('/cart')}}">
                                     <div class="cart-icon">
                                         <i aria-hidden="true" class="fa fa-shopping-bag"></i>
                                     </div>
