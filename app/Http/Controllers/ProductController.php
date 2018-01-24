@@ -52,17 +52,28 @@ class ProductController extends Controller
             $sex = $this->sexFilter($request->filters);
 
         if($sex == false)
-            $sex = ['мальчик', 'девочка'];
+            $sex = null;
 
-
-        $products = Product::where('category_id', '=', $request -> category_id)
-            ->whereIn('season_id', $this -> seasonFilter($request ->filters))
-            ->whereIn('type_id', $this -> typeFilter($request ->filters))
-            ->whereIn('manufacturer_id', $this -> manufacturerFilter($request ->filters))
-            ->whereIn('size_id', $this -> sizeFilter($request ->filters))
-            ->whereIn('sex', $sex)
-            ->skip($request -> count_on_page * ($request ->page_num - 1)) -> take($request -> count_on_page)
-            ->with('photo','size') ->groupBy('id') ->  get();
+        if($sex == null) {
+            $products = Product::where('category_id', '=', $request->category_id)
+                ->whereIn('season_id', $this->seasonFilter($request->filters))
+                ->whereIn('type_id', $this->typeFilter($request->filters))
+                ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
+                ->whereIn('size_id', $this->sizeFilter($request->filters))
+                ->whereNull('sex')
+                ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
+                ->with('photo', 'size')->groupBy('id')->get();
+        }
+        else {
+            $products = Product::where('category_id', '=', $request->category_id)
+                ->whereIn('season_id', $this->seasonFilter($request->filters))
+                ->whereIn('type_id', $this->typeFilter($request->filters))
+                ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
+                ->whereIn('size_id', $this->sizeFilter($request->filters))
+                ->whereIn('sex', $sex)
+                ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
+                ->with('photo', 'size')->groupBy('id')->get();
+        }
 
         foreach ($products as $product){
 
