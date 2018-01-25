@@ -46,9 +46,9 @@ Route::get('/cart', function () {
 })->name('cart');
 
 
-Route::get('/product_add', function () {
-    return view('admin.product.pdoructadd');
-});
+//Route::get('/product_add', function () {
+//    return view('admin.product.pdoructadd');
+//});
 
 
 Route::get('/suppliers', function () {
@@ -101,7 +101,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
 
-
+    Route::post('/logout', 'HomeController@logout');
 
     Route::get('/userinfo', 'ClientController@index');
 

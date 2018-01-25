@@ -82,8 +82,6 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
 
         $('.product--block').append('<div class="preloader"><i></i></div>');
 
-
-        console.log(values);
         $.ajax({
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + "/api/products",
@@ -91,6 +89,7 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
                 filters: values}
         }).done(function(msg) {
             if(msg.length > 0){
+                console.log(msg)
                 makeFilterData(msg);
                 $('.preloader').remove();
             }

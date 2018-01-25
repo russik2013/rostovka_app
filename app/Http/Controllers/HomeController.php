@@ -79,4 +79,10 @@ class HomeController extends Controller
         $view->with('categories', $categories );
 
     }
+
+    public function logout(){
+
+        Auth::logout();
+
+    }
 }

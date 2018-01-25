@@ -46,13 +46,35 @@ class ProductController extends Controller
 
     public function getProductsToCategory(Request $request){
 
-        $products = Product::where('category_id', '=', $request -> category_id)
-            ->whereIn('season_id', $this -> seasonFilter($request ->filters))
-            ->whereIn('type_id', $this -> typeFilter($request ->filters))
-            ->whereIn('manufacturer_id', $this -> manufacturerFilter($request ->filters))
-            ->whereIn('size_id', $this -> sizeFilter($request ->filters))
-            ->skip($request -> count_on_page * ($request ->page_num - 1)) -> take($request -> count_on_page)
-            ->with('photo','size') ->groupBy('id') ->  get();
+        $sex = $this -> getSex($request -> category_id);
+
+        if($sex == false)
+            $sex = $this->sexFilter($request->filters);
+
+        if($sex == false)
+            $sex = null;
+
+        if($sex == null) {
+            $products = Product::where('category_id', '=', $request->category_id)
+                ->whereIn('season_id', $this->seasonFilter($request->filters))
+                ->whereIn('type_id', $this->typeFilter($request->filters))
+                ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
+                ->whereIn('size_id', $this->sizeFilter($request->filters))
+                ->whereNull('sex')
+                ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
+                ->with('photo', 'size')->groupBy('id')->get();
+        }
+        else {
+            $products = Product::where('category_id', '=', $request->category_id)
+                ->whereIn('season_id', $this->seasonFilter($request->filters))
+                ->whereIn('type_id', $this->typeFilter($request->filters))
+                ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
+                ->whereIn('size_id', $this->sizeFilter($request->filters))
+                ->whereIn('sex', $sex)
+                ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
+                ->with('photo', 'size')->groupBy('id')->get();
+        }
+
         foreach ($products as $product){
 
             $product -> full__price = $product -> prise * $product -> box_count;
@@ -61,7 +83,42 @@ class ProductController extends Controller
             $product -> product_url = url($product ->id.'/product');
         }
 
+
+
         return response($products);
+
+    }
+
+    protected function getSex($category_id){
+
+        if($category_id == 2)
+            return array('Мужское');
+        if($category_id == 3)
+            return array('Женское');
+
+        return false;
+
+    }
+
+    protected function sexFilter($filters){
+
+        $sexs = [];
+        if($filters && !empty($filters)) {
+            foreach ($filters as $filter) {
+
+                if ($filter[2] == 'sex') {
+
+                    $sexs[] = $filter[1];
+
+                }
+
+            }
+        }
+        if($sexs)
+
+            return $sexs;
+
+        else return false;
 
     }
 
@@ -98,8 +155,6 @@ class ProductController extends Controller
         return Size::all() ->pluck('id');
 
     }
-
-
 
 
     protected function seasonFilter($filters){
