@@ -2,7 +2,7 @@
     "use strict";
     var i = e(window), a = e(document);
     e(function () {
-        e(".navigation-menu > ul > li:has( > ul)").addClass("menu-dropdown-icon"), e(".navigation-menu > ul > li.menu-dropdown-icon").append('<div class="dropworn-arrow"></div>'), e(".navigation-menu > ul > li > ul:not(:has(ul))").addClass("normal-sub"), e(".navigation-menu > ul").before('<a href="#" class="menu-mobile">Меню</a>');
+        e(".navigation-menu > ul > li:has( > ul)").addClass("menu-dropdown-icon"), e(".navigation-menu > ul > li.menu-dropdown-icon").append('<div class="dropworn-arrow"></div>'), e(".navigation-menu > ul > li > ul:not(:has(ul))").addClass("normal-sub"), e(".navigation-menu > ul").before('<a href="#" class="menu-mobile"></a>');
         var a = e(".navigation-menu > ul > li"), t = e(".menu-mobile");
         a.on("mouseenter mouseleave", function (a) {
             i.width() > parseInt(979) && (e(this).children(".js-nav-dropdown").stop(!0, !1).fadeToggle(150), e(this).children(".dropworn-arrow").stop(!0, !1).fadeToggle(150), a.preventDefault())

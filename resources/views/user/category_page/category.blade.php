@@ -9,6 +9,7 @@
                         <!-- Title -->
                         <div class="list-page-title">
                             <h2 class="">{{$category -> name}}</h2>
+                            <div class="filter--mobileButton"><i class="fa fa-filter" aria-hidden="true"></i>Фильтры</div>
                         </div>
                         <!-- End Title -->
 
@@ -48,7 +49,7 @@
                         </div>
                     </div>
 
-                    <div class="sidebar-container col-md-2 pull-md-10">
+                    <div class="sidebar-container col-md-2 pull-md-10 category--Filters">
                         <div class="CFBlock">
                             <h6 class="widget-title" data-id="tip">Выбранные фильтры</h6>
                             <ul class="choosedFilter">

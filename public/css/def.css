@@ -240,7 +240,7 @@ b, strong, .strong {
 }
 
 i.left {
-    margin-right: 5px;
+    font-size: 20px;
 }
 
 i.right {
@@ -1930,22 +1930,75 @@ form label.error {
 
     .header-topbar .topbar-right {
         text-align: center;
-        float: none;
+        float: right;
         display: block;
     }
 }
 
 @media (max-width: 1220px) {
     .header-topbar, .header-main {
-        padding-left: 40px;
-        padding-right: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }
 
 @media (max-width: 1080px) {
     .header-topbar, .header-main {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: center;
+    }
+
+    .dropdown-nav .dropdown-menu{
+        left: -155px;
+    }
+
+    .sidebar-icon-nav {
+        position: relative;
+        width: 100%;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    .header-main {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        text-align: center;
+    }
+
+    .list-none-ib{
+        width: 100%;
+        padding-top: 15px;
+        padding-bottom: 10px;
         padding-left: 20px;
         padding-right: 20px;
+    }
+
+    .list-none-ib li{
+        display: inline-block;
+        width: auto;
+        text-align: center;
+        margin-right: 6px;
+        margin: 0 auto;
+        float: none;
+    }
+
+    .list-none-ib .cartBl{
+        float: right;
+        margin-top: 5px !important;
+    }
+    .footer-block.contact-block li i{
+        position: relative !important;
+        left: 0;
+        line-height: inherit;
+        padding-right: 10px;
+        margin-left: -10px;
     }
 }
 
@@ -1955,6 +2008,7 @@ form label.error {
         display: inline-block;
         margin: 20px auto;
         width: auto;
+        display: none;
     }
 
     .header-main .logo a {
@@ -1963,6 +2017,9 @@ form label.error {
 
     .sidebar-icon-nav ul li {
         margin: 28px 12px;
+    }
+    .header-topbar .topbar-right > ul > li > a{
+        padding: 0;
     }
 }
 
@@ -2031,12 +2088,14 @@ form label.error {
 
 .header-main .logo a img {
     vertical-align: middle;
-    padding-top: 7px;
+    padding-top: 0;
+    margin-left: 20px;
+    margin-top: -4px;
 }
 
 @media only screen and (max-width: 420px) {
     .header-main .logo {
-        display: block;
+        display: none;
         margin: 30px auto 10px;
         width: 100%;
         float: none;
@@ -2044,10 +2103,6 @@ form label.error {
 
     .header-main .logo a {
         margin: 0 auto !important;
-    }
-
-    .sidebar-icon-nav ul li {
-        margin: 20px 12px !important;
     }
 }
 
@@ -2324,17 +2379,50 @@ form label.error {
         -webkit-transition: all 0.3s ease 0s;
     }
 }
+.mobileNav{
+    display: none;
+}
 /*Mobile style's*/
 @media only screen and (max-width: 979px) {
-
+    .mobileNav{
+        position: absolute;
+        top: 0;
+        background: #fff;
+        left: 0;
+        width: 100%;
+        height: auto;
+        z-index: 99;
+        display: none;
+    }
+    .mobileNav.display{
+        display: block;
+    }
+    .mobileNav li{
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: center;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.0784313725490196);
+    }
     .navigation-menu {
         display: block;
-        float: none;
-        position: relative;
         text-transform: uppercase;
         clear: both;
         z-index: 99;
+        width: auto;
+        float: left;
+        position: absolute;
+        top: -50px;
+        left: 20px;
     }
+
+    .menu-mobile:after{
+        content: none;
+    }
+
+
 
     .navigation-menu ul > li > a {
         padding: 8px 15px;
@@ -2346,7 +2434,7 @@ form label.error {
     }
 
     .nav-dropdown .nav-dropdown-grid ul li > a {
-        border: none 0px;
+        border: none 0;
     }
 
     .nav-dropdown .nav-dropdown-grid {
@@ -2355,14 +2443,17 @@ form label.error {
 
     .nav-dropdown {
         padding-top: 30px;
-        padding-bottom: 0px;
+        padding-bottom: 0;
     }
 
     .navigation-menu > ul {
         display: none;
-        position: absolute;
+        position: fixed;
         top: 100%;
         width: 100%;
+        top: 0;
+        left: 0;
+        height: 100vh;
     }
 
     .navigation-menu > ul > li {
@@ -2381,6 +2472,14 @@ form label.error {
 
     .menu-mobile {
         display: block;
+        padding: 0;
+        margin: 0;
+        background: none;
+    }
+
+    .menu-mobile .fa{
+        font-size: 30px;
+        color: #fff;
     }
 
     .menu-dropdown-icon:before {
@@ -6907,4 +7006,21 @@ tr .type .form-control{
 
 fieldset input:hover{
     border: 1px solid #e5e5e5 !important;
+}
+
+.about-us-block ul{
+    margin-top: 20px;
+}
+
+@media (min-width: 1100px) and (max-width: 4800px){
+    i.left {
+        font-size: 20px;
+        padding-right: 7px;
+        float: left;
+        padding-top: 1px;
+    }
+}
+
+.footer-block.contact-block{
+    text-align: left;
 }
