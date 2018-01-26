@@ -2075,10 +2075,14 @@ form label.error {
 }
 
 .header-main .logo a {
-    margin-top: 5px;
+    margin-top: 7px;
     width: 255px;
     display: block;
     margin-left: -60px;
+}
+
+.product-filter-content{
+    display: none;
 }
 
 .header-main.fixed .logo a {
@@ -2091,6 +2095,7 @@ form label.error {
     padding-top: 0;
     margin-left: 20px;
     margin-top: -4px;
+    width: 89%;
 }
 
 @media only screen and (max-width: 420px) {
@@ -4643,8 +4648,7 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 }
 
 .categoryPage .product-item:hover{
-    border: 2px solid #2b618f !important;
-    z-index: 90;
+    z-index: 99;
 }
 
 .product-item .product-detail .tag {
@@ -7023,4 +7027,18 @@ fieldset input:hover{
 
 .footer-block.contact-block{
     text-align: left;
+}
+
+.filter--mobileButton{
+    display: none;
+}
+
+.error--message{
+    text-align: center;
+    float: left;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 10%;
+    font-size: 16px;
 }

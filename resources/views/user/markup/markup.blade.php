@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="root-site" content="{!!route('root')!!}">
+    <meta name="csrf-token" content="{!! csrf_token() !!}">
 
     <title>Rostovka</title>
     <meta name="description" content=""/>
@@ -62,26 +63,30 @@
                 <div class="topbar-right">
                     <ul class="list-none">
                         @if(!Auth::user())
-                        <li>
-                            <a href="{{url('/login')}}"><i class="fa fa-lock left" aria-hidden="true"></i><span
-                                        class="hidden-sm-down">Авторизация</span></a>
-                        </li>
+                            <li>
+                                <a href="{{url('/login')}}"><i class="fa fa-lock left" aria-hidden="true"></i><span
+                                            class="hidden-sm-down">Авторизация</span></a>
+                            </li>
                         @endif
                         @if(Auth::user())
-                        <li class="dropdown-nav">
-                            <a href="#!"><i class="fa fa-user left" aria-hidden="true"></i>
-                                <span class="hidden-sm-down">Кабинет</span>
-                            </a>
-                            <!--Dropdown-->
-                            <div class="dropdown-menu">
-                                <ul>
-                                    <li><a href="{{url('/userinfo')}}">Моя информация</a></li>
-                                    <li><a href="{{url('/cart')}}">Корзина</a></li>
-                                </ul>
-                            </div>
-                            <!--End Dropdown-->
-                        </li>
-                            @endif
+                            <li class="dropdown-nav">
+                                <a href="#!"><i class="fa fa-user left" aria-hidden="true"></i>
+                                    <span class="hidden-sm-down">Кабинет</span>
+                                </a>
+                                <!--Dropdown-->
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a href="{{url('/userinfo')}}">Моя информация</a></li>
+                                        <li>
+                                            <a class="logOutButton" href="javascript:void(0)">
+                                                <span class="hidden-sm-down">Выход</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--End Dropdown-->
+                            </li>
+                        @endif
                     </ul>
                 </div>
                 <!-- End Topbar Right -->
@@ -113,7 +118,8 @@
                                     <div class="input-group search--box">
                                         <input type="text" class="form-control" placeholder="Поиск" name="q">
                                         <div class="input-group-btn">
-                                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i>
+                                            </button>
                                         </div>
                                     </div>
                                 </form>
@@ -187,59 +193,32 @@
 
 
     <!-- Footer Section -------------->
-    <footer class="footer section-padding">
+    <footer class="footer section-padding" style="padding-top: 10px; padding-bottom: 10px;">
         <!-- Footer Info -->
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-12 col-sm-12 mb-sm-45">
+                <div class="col-md-3 col-sm-12 mb-sm-45 offset-md-0" style="margin-right: auto;">
                     <div class="footer-block about-us-block">
                         <img src="{{url('img/logo_white.png')}}" width="400" alt="">
-                        <ul class="footer-social-icon list-none-ib">
-                            <li>
-                                <a href="http://facebook.com/" target="_blank">
-                                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="http://vk.com/" target="_blank">
-                                    <i class="fa fa-vk" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 mb-sm-45">
-                    <div class="footer-block information-block">
-                        <h6>Разделы</h6>
-                        <ul>
-                            <li><a href="#">ДЕТСКОЕ</a></li>
-                            <li><a href="#">МУЖСКОЕ</a></li>
-                            <li><a href="#">Женское</a></li>
-                            <li><a href="#">ПЕРЧАТКИ</a></li>
-                            <li><a href="#">АКЦИИ</a></li>
-                        </ul>
-                    </div>
+
+                <div class="copyrights">
+                    <p class="copyright">&copy; Developed & Designed by <a href="http://comnd-x.com/" target="_blank">Commnd+X
+                            Studio</a></p>
                 </div>
-                <div class="col-lg-2 col-md-12 col-sm-12">
-                    <div class="footer-block contact-block">
-                        <h6>Одесса</h6>
-                        <ul>
-                            <li><i class="fa fa-phone" aria-hidden="true"></i>(067) 25-333-05</li>
-                            <li><i class="fa fa-vimeo" aria-hidden="true"></i>(093) 350-43-82 (VIBER)</li>
-                        </ul>
+
+
+                <div class="col-md-4 col-sm-12" style="float: left; margin-left: auto; color: #fff;">
+                    <div class="footer-block contact-block" style="float: right; padding-top: 15px; padding-top: 20px;">
+                        <span style="float: left; margin-right: 15px;"><i class="fa fa-phone" aria-hidden="true" style="margin-right: 10px;"></i>(067) 25-333-05</span>
+                        <span style="float: left; margin-right: 15px;"><i class="fa fa-vimeo" aria-hidden="true" style="margin-right: 10px;"></i>(093) 350-43-82 (VIBER)</span>
                     </div>
                 </div>
             </div>
         </div>
         <!-- End Footer Info -->
 
-        <!-- Footer Copyright -->
-        <div class="container">
-            <div class="copyrights">
-                <p class="copyright">&copy; Developed & Designed by <a href="http://comnd-x.com/" target="_blank">Commnd+X Studio</a></p>
-            </div>
-        </div>
-        <!-- End Footer Copyright -->
     </footer>
 </div>
 

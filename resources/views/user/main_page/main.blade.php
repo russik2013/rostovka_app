@@ -47,7 +47,7 @@
     <div class="page-content-wraper">
 
         <!-- Product (Tab with Slider) -->
-        <section class="section-padding-b">
+        <section class="section-padding-b mainpageGoodsBlock">
             <div class="container larger">
                 <ul class="product-filter nav" role="tablist">
                     <li class="nav-item">
@@ -62,9 +62,9 @@
                     </li>
                 </ul>
                 <div class="col-md-12 tab-content mainPage">
-                    <div id="newest" role="tabpanel" class="tab-pane fade in active pull-left"></div>
+                    <ul id="newest" role="tabpanel" class="tab-pane fade in active pull-left"></ul>
 
-                    <div id="topSalles" role="tabpanel" class="tab-pane fade"></div>
+                    <ul id="topSalles" role="tabpanel" class="tab-pane fade"></ul>
                 </div>
             </div>
         </section>
@@ -244,7 +244,8 @@
 </div>
 
 <script id="template" type="x-jquery-tmpl">
-<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item" data-id="${dataID}">
+<li class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item" data-id=${real_id}>
+<div class="prod--innerSide">
 <div class="product-item-inner">
 <div class="product-img-wrap">
 <a href="${product_url}">
@@ -270,6 +271,7 @@
 </div>
 </div>
 </div>
+</li>
 </script>
 @endsection
 

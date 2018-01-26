@@ -54,6 +54,8 @@ class ProductController extends Controller
         if($sex == false)
             $sex = null;
 
+
+
         if($sex == null) {
             $products = Product::where('category_id', '=', $request->category_id)
                 ->whereIn('season_id', $this->seasonFilter($request->filters))

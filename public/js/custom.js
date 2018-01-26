@@ -82,3 +82,13 @@ $(document).on('click', '.product-item-inner a', function (event) {
 $('.cartBl').on('scroll', function (ev) {
     ev.preventDefault();
 });
+
+$('.logOutButton').on('click', function () {
+    $.ajax({
+        method: 'POST',
+        url: $('meta[name="root-site"]').attr('content') + '/logout',
+        data: {'_token': $('meta[name="csrf-token"]').attr('content')}
+    }).done(function () {
+        location.reload();
+    })
+});
