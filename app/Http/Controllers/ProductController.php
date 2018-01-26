@@ -46,6 +46,32 @@ class ProductController extends Controller
 
     public function getProductsToCategory(Request $request){
 
+        $orderType = 'desc';
+        $order = 'id';
+        if(isset($request -> order_type)) {
+            if ($request->order_type == 0) {
+
+                $orderType = 'asc';
+                $order = 'id';
+
+            }
+
+            if ($request->order_type == 1) {
+
+                $orderType = 'asc';
+                $order = 'prise';
+
+            }
+
+            if ($request->order_type == 2) {
+
+                $orderType = 'desc';
+                $order = 'prise';
+
+            }
+        }
+
+
         $sex = $this -> getSex($request -> category_id);
 
         if($sex == false)
@@ -62,7 +88,7 @@ class ProductController extends Controller
                 ->whereIn('size_id', $this->sizeFilter($request->filters))
                 ->whereNull('sex')
                 ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
-                ->with('photo', 'size')->groupBy('id')->get();
+                ->with('photo', 'size')->orderBy($order,$orderType)->get();
         }
         else {
             $products = Product::where('category_id', '=', $request->category_id)
@@ -72,7 +98,7 @@ class ProductController extends Controller
                 ->whereIn('size_id', $this->sizeFilter($request->filters))
                 ->whereIn('sex', $sex)
                 ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
-                ->with('photo', 'size')->groupBy('id')->get();
+                ->with('photo', 'size')->orderBy($order,$orderType)->get();
         }
 
         foreach ($products as $product){
@@ -221,12 +247,32 @@ class ProductController extends Controller
 
     public function getPaginationPageCount(Request $request){
 
-        $products_count = Product::where('category_id', '=', $request -> category_id)
-            ->whereIn('season_id', $this -> seasonFilter($request ->filters))
-            ->whereIn('type_id', $this -> typeFilter($request ->filters))
-            ->whereIn('manufacturer_id', $this -> manufacturerFilter($request ->filters))
-            ->whereIn('size_id', $this -> sizeFilter($request ->filters))
-            -> count();
+        $sex = $this -> getSex($request -> category_id);
+
+        if($sex == false)
+            $sex = $this->sexFilter($request->filters);
+
+        if($sex == false)
+            $sex = null;
+
+        if($sex == null) {
+            $products_count = Product::where('category_id', '=', $request->category_id)
+                ->whereIn('season_id', $this->seasonFilter($request->filters))
+                ->whereIn('type_id', $this->typeFilter($request->filters))
+                ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
+                ->whereIn('size_id', $this->sizeFilter($request->filters))
+                ->whereNull('sex')
+                -> count();
+        }
+        else {
+            $products_count = Product::where('category_id', '=', $request->category_id)
+                ->whereIn('season_id', $this->seasonFilter($request->filters))
+                ->whereIn('type_id', $this->typeFilter($request->filters))
+                ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
+                ->whereIn('size_id', $this->sizeFilter($request->filters))
+                ->whereIn('sex', $sex)
+                -> count();
+        }
         $count_of_page = $products_count / $request ->count_on_page;
 
         return ceil($count_of_page);
