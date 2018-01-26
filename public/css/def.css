@@ -1710,7 +1710,7 @@ form label.error {
     }
 
     .mb-sm-45 {
-        margin-bottom: 45px;
+        margin-bottom: 0;
     }
 
     /* 30 */
@@ -1749,6 +1749,10 @@ form label.error {
 
     .mb-sm-0 {
         margin-bottom: 0px;
+    }
+
+    .footer .copyrights{
+        margin: 0 auto;
     }
 }
 
@@ -2075,14 +2079,10 @@ form label.error {
 }
 
 .header-main .logo a {
-    margin-top: 7px;
+    margin-top: 5px;
     width: 255px;
     display: block;
     margin-left: -60px;
-}
-
-.product-filter-content{
-    display: none;
 }
 
 .header-main.fixed .logo a {
@@ -2093,12 +2093,16 @@ form label.error {
 .header-main .logo a img {
     vertical-align: middle;
     padding-top: 0;
-    margin-left: 20px;
+    margin-left: 61px;
     margin-top: -4px;
     width: 89%;
 }
 
 @media only screen and (max-width: 420px) {
+    .product-filter-content{
+        display: none;
+    }
+
     .header-main .logo {
         display: none;
         margin: 30px auto 10px;

@@ -127,7 +127,7 @@
 
                             <!-- Cart-->
                             <li class="cartBl">
-                                <a href="{{url('/cart')}}">
+                                <a href="javascript:void(0)">
                                     <div class="cart-icon">
                                         <i aria-hidden="true" class="fa fa-shopping-bag"></i>
                                     </div>
