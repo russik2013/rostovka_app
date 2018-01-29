@@ -21,9 +21,9 @@
                                 <form class="product-sort-by col-xl-5 col-md-12 col-sm-12 col-xs-12">
                                     <label for="short-by">Сортировка</label>
                                     <select name="short-by" id="short-by" class="nice-select-box">
-                                        <option value="1" selected="selected">Последние поступления</option>
-                                        <option value="2">от дешевого к дорогому</option>
-                                        <option value="3">от дорогого к дешевому</option>
+                                        <option value="0" selected="selected">Последние поступления</option>
+                                        <option value="1">от дешевого к дорогому</option>
+                                        <option value="2">от дорогого к дешевому</option>
                                         {{--<option value="sort_by_newness">по дате</option>--}}
                                     </select>
                                 </form>

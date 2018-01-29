@@ -6,11 +6,13 @@ var data = [],
     paginationNum,
     paginationCount = 0,
     filter_value = [],
-    selectedCount = Number ($.find('#product-show option')[0].innerText);
+    selectedCount = Number ($.find('#product-show option')[0].innerText),
+    choosedType = 0;
 
 ///work with filters
 var values = [], targetID = 0;
 
+$(".sidebar-container input[type=checkbox]").val([]);
 
 $('.sidebar-container input[type=checkbox]').on('change', function () {
     var target = $(this)[0].parentNode.parentNode.parentNode;
@@ -33,7 +35,7 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + "/api/products",
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
-                filters: values}
+                filters: values, choosedType: choosedType}
         }).done(function(msg) {
             if(msg.length > 0){
                 makeFilterData(msg);
@@ -48,19 +50,19 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
-                filters: values}
+                filters: values, choosedType: choosedType}
         }).done(function(msg) {
             paginationNum = msg;
             paginationCounter(paginationNum);
         });
 
-        localStorage.setItem('filterValues', JSON.stringify(values));
+        // localStorage.setItem('filterValues', JSON.stringify(values));
     }
 
     if ($(this).is(':checked')) {
         values.push([targetID, $(this)[0].defaultValue, $(target)[0].childNodes[1].dataset.id]);
 
-        localStorage.setItem('filterValues', JSON.stringify(values));
+        // localStorage.setItem('filterValues', JSON.stringify(values));
     }
 
     if (values.length !== 0) {
@@ -90,7 +92,7 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + "/api/products",
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
-                filters: values}
+                filters: values, choosedType: choosedType}
         }).done(function(msg) {
             if(msg.length > 0){
                 makeFilterData(msg);
@@ -110,7 +112,7 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
-                filters: values}
+                filters: values, choosedType: choosedType}
         }).done(function(msg) {
             paginationNum = msg;
             paginationCounter(paginationNum);
@@ -128,29 +130,30 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
     return filter_value
 });
 
-var saved_count_on_page = localStorage.getItem('selectedCount');
+initData(count_on_page);
+
+// var saved_count_on_page = localStorage.getItem('selectedCount');
 
 $('#product-show').on('change', function () {
     count_on_page = Number ($.find('.product-sort-by.pull-right .nice-select-box .current')[0].innerText);
     $('.product--block').append('<div class="preloader"><i></i></div>');
     initData(count_on_page);
-    localStorage.setItem('selectedCount',  JSON.stringify(count_on_page));
+    // localStorage.setItem('selectedCount',  JSON.stringify(count_on_page));
     return count_on_page;
 });
 
-if(saved_count_on_page !== null){
-    count_on_page = JSON.parse(saved_count_on_page);
-    drawItems();
-    localStorage.setItem('selectedCount',  JSON.stringify(count_on_page));
-}
-
-initData(count_on_page);
+//
+// if(saved_count_on_page !== null){
+//     count_on_page = JSON.parse(saved_count_on_page);
+//     drawItems();
+//     // localStorage.setItem('selectedCount',  JSON.stringify(count_on_page));
+// }
 
 function initData(count_on_page) {
     $.ajax({
         method: "POST",
         url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), count_on_page: count_on_page, filters: filter_value}
+        data: {category_id : $('meta[name="category_id"]').attr('content'), count_on_page: count_on_page, filters: filter_value, choosedType: choosedType}
     }).done(function (msg) {
         paginationNum = msg;
         paginationCounter(paginationNum);
@@ -178,7 +181,7 @@ function makeData(page_num, count_on_page) {
     $.ajax({
         method: "POST",
         url: $('meta[name="root-site"]').attr('content') + "/api/products",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page, filters: filter_value}
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page, filters: filter_value, choosedType: choosedType}
     }).done(function( msg ) {
         for(var i= 0; i < msg.length; i++ ) {
             data[i] = {
@@ -209,28 +212,12 @@ function makeData(page_num, count_on_page) {
 
 var numberPerPage = 12, pageList = [], currentPage = 1, numberOfPages = 0;
 
-function checkMinMax(pageList) {
-    var MinMaxCounter = [];
-    for (var i = 0; i < pageList.length; i++){
-        if(pageList[i].box === pageList[i].rostovka){
-            var id = pageList[i].real_id;
-            MinMaxCounter.push(id);
-        }
-    }
-
-    $(document).ready(function(){
-        for(var y = 0; y < MinMaxCounter.length; y++){
-            $('[data-id="'+MinMaxCounter[y]+'"] [data-set="minimum"]').css('visibility', 'hidden');
-        }
-    })
-}
-
 function NextData(page_num, count_on_page, filter_value) {
     $('.product--block').append('<div class="preloader"><i></i></div>');
     $.ajax({
         method: "POST",
         url: $('meta[name="root-site"]').attr('content') + "/api/products",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page, filters: filter_value}
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page, filters: filter_value, choosedType: choosedType}
     }).done(function(msg) {
         $('.preloader').remove();
         for(var i= 0; i < msg.length; i++ ) {
@@ -443,12 +430,11 @@ function GetData(data) {
         });
     }
 
+    // load();
     function load() {
         makePagination();
         loadList();
     }
-
-    load();
 
 /// Work with Data
     function makePagination() {
@@ -469,7 +455,7 @@ function GetData(data) {
         var end = begin + numberPerPage;
 
         pageList = data.slice(begin, end);
-
+        pageList = data;
         drawItems(pageList);
     }
 
@@ -495,8 +481,24 @@ function drawItems(pageList) {
     $(productTheme).tmpl(pageList).appendTo('#target').each(function () {
         delay += 0.1;
         $(this).addClass('animated fadeIn').css('animation-delay', delay + 's');
-        checkMinMax(pageList);
     });
+    checkMinMax(pageList);
+}
+
+function checkMinMax(pageList) {
+    var MinMaxCounter = [];
+    for (var i = 0; i < pageList.length; i++){
+        if(pageList[i].box === pageList[i].rostovka){
+            var id = pageList[i].real_id;
+            MinMaxCounter.push(id);
+        }
+    }
+
+    $(document).ready(function(){
+        for(var y = 0; y < MinMaxCounter.length; y++){
+            $('[data-id="'+MinMaxCounter[y]+'"] [data-set="minimum"]').css('visibility', 'hidden');
+        }
+    })
 }
 
 function scrolltop() {
@@ -540,7 +542,7 @@ function RemoveItem() {
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + "/api/products",
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
-                filters: values}
+                filters: values, choosedType: choosedType}
         }).done(function( msg ) {
             if(msg.length > 0){
                 makeFilterData(msg)
@@ -552,13 +554,13 @@ function RemoveItem() {
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
-                filters: values}
+                filters: values, choosedType: choosedType}
         }).done(function(msg) {
             paginationNum = msg;
             paginationCounter(paginationNum);
         });
 
-        localStorage.setItem('filterValues', JSON.stringify(values));
+        // localStorage.setItem('filterValues', JSON.stringify(values));
     });
 }
 
@@ -584,7 +586,7 @@ $('.removeallFilters span').on('click', function () {
         method: 'POST',
         url: $('meta[name="root-site"]').attr('content') + "/api/products",
         data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
-            filters: values}
+            filters: values, choosedType: choosedType}
     }).done(function( msg ) {
         if(msg.length > 0){
             makeFilterData(msg)
@@ -596,12 +598,12 @@ $('.removeallFilters span').on('click', function () {
         method: 'POST',
         url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
         data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
-            filters: values}
+            filters: values, choosedType: choosedType}
     }).done(function(msg) {
         paginationNum = msg;
         paginationCounter(paginationNum);
     });
-    localStorage.setItem('filterValues', JSON.stringify(values));
+    // localStorage.setItem('filterValues', JSON.stringify(values));
 });
 
 $('.submit_onChoose button').on('click', function () {
@@ -654,19 +656,40 @@ function getSizes() {
 
 // Sorting Type
 $('#short-by').on('change', function () {
-    var choosedType = $('#short-by :selected').val();
+    choosedType = $('#short-by :selected').val();
+    data = [];
 
-    if(filter_value.length > 0){
-        filter_value.push({
-            choosedType: choosedType
-        });
-    } else {
+    $.ajax({
+        method: "POST",
+        url: $('meta[name="root-site"]').attr('content') + "/api/products",
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page, filters: filter_value, choosedType: choosedType}
+    }).done(function(msg) {
+        $('.preloader').remove();
+        for(var i= 0; i < msg.length; i++ ) {
+            data[i] = {
+                dataID: msg[i].id,
+                imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,
+                name: msg[i].name,
+                rostovka: msg[i].rostovka_count,
+                box: msg[i].box_count,
+                type: msg[i].types,
+                price: msg[i].prise,
+                full__price: msg[i].full__price,
+                rostovka__price: msg[i].rostovka__price,
+                real_id: msg[i].id,
+                product_url: msg[i].product_url + '/' + i,
+                size: msg[i].size.name,
+                option_type: 'full__price' // Или full__price или rostovka__price
+            };
+        }
 
-    }
+        pageList = data;
+        drawItems(pageList);
+    }) .fail(function( msg ) {
 
-
-    console.log(filter_value);
+    });
 });
+
 
 // Slider from to
 function slider(msg) {
@@ -738,7 +761,7 @@ function slider(msg) {
             $.ajax({
                 method: "POST",
                 url: $('meta[name="root-site"]').attr('content') + "/api/products",
-                data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
+                data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page, choosedType: choosedType,
                     filters: filter_value}
             }).done(function( msg ) {
                 $('.preloader').remove();

@@ -54,18 +54,45 @@ function getFileXls() {
     return fileChoosedXLS
 }
 
+function getManufactures(e) {
+    console.log(e);
+}
+
 function getSelect(e) {
     if(e.srcElement.value === 'delete'){
         $('.file--uploader').css('display', 'none');
-        $('button.upload').css('top', '-1px');
+        $('.xsl--uploader').css('display', 'block');
+        $('button.upload').css('top', '20px');
+        $('button.upload').css('display', 'block');
+        $('.header--add--buttons').css('display', 'block');
+        $('select.manufacturer_Options').css('display', 'none');
     }
+
     else{
         $('.file--uploader').css('display', 'block');
         $('button.upload').css('top', '20px');
+        $('button.upload').css('display', 'block');
+        $('button.download').css('display', 'none');
+        $('select.manufacturer_Options').css('display', 'none');
+    }
+
+    if(e.srcElement.value === 'upload') {
+        $('.file--uploader').css('display', 'block');
+        $('.xsl--uploader').css('display', 'block');
+        $('button.upload').css('display', 'block');
+        $('select.manufacturer_Options').css('display', 'none');
     }
 
     if(e.srcElement.value === 'edit'){
         getFile();
+    }
+
+    if(e.srcElement.value === 'download'){
+        $('.file--uploader').css('display', 'none');
+        $('.xsl--uploader').css('display', 'none');
+        $('button.upload').css('display', 'none');
+        $('.header--add--buttons').append("<button class='download col-md-4 col-sm-12 col-xs-12'>Скачать</button>");
+        $('select.manufacturer_Options').css('display', 'block');
     }
 }
 
