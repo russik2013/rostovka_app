@@ -6490,7 +6490,6 @@ td.poduct--info{
     width: 275px;
 }
 
-
 td.poduct--info span{
     float: left;
     width: 100%;
@@ -6559,6 +6558,10 @@ td.price span span{
 }
 
 .removeItem{cursor: pointer;}
+
+.removeItem .fa{
+    color: rgb(245, 81, 81);
+}
 
 .tableFooter{
     padding-top: 40px;

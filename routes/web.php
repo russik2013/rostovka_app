@@ -63,7 +63,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/user_edit/{id}', 'Admin\HomeController@editClient');
         Route::post('/user_delete/{id}', 'Admin\HomeController@deleteClient');
         Route::post('/user_update', 'Admin\HomeController@updateClient');
-
+        Route::get('/suppliers_edit', 'Admin\HomeController@supplier');
 
         Route::post('/finder','Admin\ProductController@finder');//пои сковик товаров по имени
 

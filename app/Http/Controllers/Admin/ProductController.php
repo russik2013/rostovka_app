@@ -19,6 +19,9 @@ class ProductController extends Controller
 {
     public function index($page_num = 1, $count_on_page = 20){
 
+        $manufactures = Manufacturer::all();
+        $seasons = Season::all();
+
         $products = Product::skip($count_on_page * ($page_num - 1)) -> take($count_on_page)
             ->with('category','manufacturer') ->groupBy('id') ->  get();
 
@@ -26,7 +29,7 @@ class ProductController extends Controller
 
         $pagination = ceil($all_product_count/$count_on_page);
 
-        return view('admin.product.products', compact('products', 'pagination'));
+        return view('admin.product.products', compact('products', 'pagination', 'manufactures', 'seasons'));
     }
 
     public function finder(Request $request){

@@ -80,7 +80,7 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             $('.choosedFilter').append('' +
                 '<li class="appedned__item">' +
                 '<span class="item" data-type="' + values[y][0] + '">' + values[y][1] + '</span>' +
-                '<i class="fa fa-times-circle removeAppended__Item" aria-hidden="true"></i>' +
+                '<i class="fa fa-times removeAppended__Item" aria-hidden="true"></i>' +
                 '</li>');
         }
         RemoveItem();

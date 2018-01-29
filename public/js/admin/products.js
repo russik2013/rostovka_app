@@ -58,6 +58,10 @@ function getManufactures(e) {
     console.log(e);
 }
 
+function getSeason(e) {
+    console.log(e);
+}
+
 function getSelect(e) {
     if(e.srcElement.value === 'delete'){
         $('.file--uploader').css('display', 'none');
@@ -66,6 +70,7 @@ function getSelect(e) {
         $('button.upload').css('display', 'block');
         $('.header--add--buttons').css('display', 'block');
         $('select.manufacturer_Options').css('display', 'none');
+        $('.seasone_Options').css('display', 'none');
     }
 
     else{
@@ -74,6 +79,7 @@ function getSelect(e) {
         $('button.upload').css('display', 'block');
         $('button.download').css('display', 'none');
         $('select.manufacturer_Options').css('display', 'none');
+        $('.seasone_Options').css('display', 'none');
     }
 
     if(e.srcElement.value === 'upload') {
@@ -81,6 +87,7 @@ function getSelect(e) {
         $('.xsl--uploader').css('display', 'block');
         $('button.upload').css('display', 'block');
         $('select.manufacturer_Options').css('display', 'none');
+        $('.seasone_Options').css('display', 'none');
     }
 
     if(e.srcElement.value === 'edit'){
@@ -93,6 +100,7 @@ function getSelect(e) {
         $('button.upload').css('display', 'none');
         $('.header--add--buttons').append("<button class='download col-md-4 col-sm-12 col-xs-12'>Скачать</button>");
         $('select.manufacturer_Options').css('display', 'block');
+        $('.seasone_Options').css('display', 'block');
     }
 }
 

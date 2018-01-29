@@ -952,7 +952,7 @@ input::-webkit-inner-spin-button {
   margin-right: 25px;
   cursor: pointer;
   margin-top: 5px;
-  color: #f44336;
+  color: rgb(244, 67, 54);
   font-size: 15px;
 }
 

@@ -25,81 +25,105 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Название</th>
-                                    <th>Скидка</th>
-                                    <th>Дата создания</th>
+                                    <th>Поставщик</th>
+                                    <th>Улица</th>
+                                    <th>Номер <br/> контейнера</th>
+                                    <th>Имя</th>
+                                    <th>Фамилия</th>
+                                    <th>Телефон</th>
+                                    <th>Cкидка</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>Dakota</td>
+                                    <th>Dakota</th>
+                                    <th>Улица</th>
+                                    <th>12</th>
+                                    <th>Вясилий</th>
+                                    <td>Петровч</td>
+                                    <td>+380631111111</td>
                                     <td>10%</td>
-                                    <td>20.01.1980 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
                                 </tr>
                                 <tr>
-                                    <td>Dakota</td>
+                                    <th>Dakota</th>
+                                    <th>Улица</th>
+                                    <th>12</th>
+                                    <th>Вясилий</th>
+                                    <td>Петровч</td>
+                                    <td>+380631111111</td>
                                     <td>10%</td>
-                                    <td>20.01.1980 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
                                 </tr>
                                 <tr>
-                                    <td>Dakota</td>
+                                    <th>Dakota</th>
+                                    <th>Улица</th>
+                                    <th>12</th>
+                                    <th>Вясилий</th>
+                                    <td>Петровч</td>
+                                    <td>+380631111111</td>
                                     <td>10%</td>
-                                    <td>20.01.1980 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
                                 </tr>
                                 <tr>
-                                    <td>Dakota</td>
+                                    <th>Dakota</th>
+                                    <th>Улица</th>
+                                    <th>12</th>
+                                    <th>Вясилий</th>
+                                    <td>Петровч</td>
+                                    <td>+380631111111</td>
                                     <td>10%</td>
-                                    <td>20.01.1980 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
                                 </tr>
                                 <tr>
-                                    <td>Dakota</td>
+                                    <th>Dakota</th>
+                                    <th>Улица</th>
+                                    <th>12</th>
+                                    <th>Вясилий</th>
+                                    <td>Петровч</td>
+                                    <td>+380631111111</td>
                                     <td>10%</td>
-                                    <td>20.01.1980 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
                                 </tr>
                                 <tr>
-                                    <td>Dakota</td>
+                                    <th>Dakota</th>
+                                    <th>Улица</th>
+                                    <th>12</th>
+                                    <th>Вясилий</th>
+                                    <td>Петровч</td>
+                                    <td>+380631111111</td>
                                     <td>10%</td>
-                                    <td>20.01.1980 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
                                 </tr>
                                 <tr>
-                                    <td>Dakota</td>
+                                    <th>Dakota</th>
+                                    <th>Улица</th>
+                                    <th>12</th>
+                                    <th>Вясилий</th>
+                                    <td>Петровч</td>
+                                    <td>+380631111111</td>
                                     <td>10%</td>
-                                    <td>20.01.1980 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
                                 </tr>
                                 <tr>
-                                    <td>Dakota</td>
+                                    <th>Dakota</th>
+                                    <th>Улица</th>
+                                    <th>12</th>
+                                    <th>Вясилий</th>
+                                    <td>Петровч</td>
+                                    <td>+380631111111</td>
                                     <td>10%</td>
-                                    <td>20.01.1980 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
                                 </tr>
                                 <tr>
-                                    <td>Dakota</td>
+                                    <th>Dakota</th>
+                                    <th>Улица</th>
+                                    <th>12</th>
+                                    <th>Вясилий</th>
+                                    <td>Петровч</td>
+                                    <td>+380631111111</td>
                                     <td>10%</td>
-                                    <td>20.01.1980 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Dakota</td>
-                                    <td>10%</td>
-                                    <td>20.01.1980 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Dakota</td>
-                                    <td>10%</td>
-                                    <td>20.01.1980 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Dakota</td>
-                                    <td>10%</td>
-                                    <td>20.01.1980 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Dakota</td>
-                                    <td>10%</td>
-                                    <td>20.01.1980 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Dakota</td>
-                                    <td>10%</td>
-                                    <td>20.01.1980 <a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
                                 </tr>
                                 </tbody>
                             </table>

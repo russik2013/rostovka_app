@@ -80,7 +80,7 @@
                                             @if ($errors->has('address'))
                                                 <p>  {{$errors -> first('address')}} </p>
                                             @endif
-                                            <label class="col-md-12 control-label">Адрес доставки</label>
+                                            <label class="col-md-12 control-label">Адрес доставки (Город)</label>
                                             <div class="col-md-12 inputGroupContainer">
 
                                                 <div class="input-group">
@@ -91,7 +91,7 @@
 
                                         <!-- Text input-->
                                         <div class="col-md-12 form-field-wrapper form-group has-feedback">
-                                            <label class="col-md-12 control-label">Информация по доставке</label>
+                                            <label class="col-md-12 control-label">Информация по доставке (Номер отделения)</label>
                                             <div class="col-md-12 inputGroupContainer">
 
                                                 <div class="input-group">

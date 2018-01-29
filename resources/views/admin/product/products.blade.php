@@ -27,11 +27,22 @@
 
                     <input type="file" data-filename-placement="inside" title="Выбрать XLS" accept=".xls, .xlsx" class="col-md-5 col-sm-12 col-xs-12" onChange="getFileXls()">
 
-                    <select class="sorting__Option manufacturer_Options col-md-5 col-sm-12 col-xs-12" name="manufactures" onChange="getManufactures(event)" style="display: none">
-                        <option value="upload">manufacture 1</option>
-                        <option value="upload">manufacture 2</option>
-                        <option value="upload">manufacture 3</option>
-                        <option value="upload">manufacture 4</option>
+                    <select class="sorting__Option manufacturer_Options col-md-5 col-sm-12 col-xs-12" name="manufactures" onChange="getManufactures(event)" style="display: none; float: left; margin-right: 5px;">
+
+                        @foreach($manufactures as $manufacture)
+
+                            <option value="{{$manufacture -> id}}">{{$manufacture -> name}}</option>
+
+                        @endforeach
+                    </select>
+
+
+                    <select class="sorting__Option seasone_Options col-md-5 col-sm-12 col-xs-12" name="season" onChange="getSeason(event)" style="display: none">
+                        @foreach($seasons as $season)
+
+                            <option value="{{$season -> id}}">{{$season -> name}}</option>
+
+                        @endforeach
                     </select>
                 </div>
 

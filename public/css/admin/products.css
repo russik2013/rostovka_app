@@ -25,7 +25,7 @@
 
 .table-striped td a.remove__product{
     position: absolute;
-    right: 8%;
+    right: 80%;
 }
 
 .search input{
@@ -162,4 +162,8 @@ select {
 
 .productsArt input{
     max-width: 100% !important;
+}
+
+.table.table-striped th{
+    font-weight: normal;
 }
