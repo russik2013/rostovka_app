@@ -34,9 +34,8 @@ function TotalCost() {
     $.find('[data-set="totalCost"]')[0].innerHTML = Cart_data[0].cartProducts_summ + ' грн';
 }
 
-
 if(Cart_data[0].row.length < 5){
-    var intElemOffsetHeight = $( window ).height() - 250;
+    var intElemOffsetHeight = $( window ).height();
     setHeight(intElemOffsetHeight);
     $(window).resize(function() {
         intElemOffsetHeight = $( window ).height() - 200;
