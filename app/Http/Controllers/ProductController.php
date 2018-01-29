@@ -51,7 +51,7 @@ class ProductController extends Controller
         if(isset($request -> order_type)) {
             if ($request->order_type == 0) {
 
-                $orderType = 'asc';
+                $orderType = 'desc';
                 $order = 'id';
 
             }

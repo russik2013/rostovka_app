@@ -216,6 +216,7 @@ class CsvLoadController extends Controller
                 'type_id' => $type,
                 'season_id' => $season,
                 'size_id' => $size,
+                "material" => $product ->material,
                 'sex' => $sex];
 
             Product::find($product->id)->update($insert_array);
