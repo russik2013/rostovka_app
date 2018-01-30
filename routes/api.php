@@ -27,3 +27,6 @@ Route::post('/news', 'ProductController@getNewsProduct');
 Route::post('/topSales','SaleController@getTopSales');
 Route::post('/pagination', 'ProductController@getPaginationPageCount');
 
+
+//Route::get('/csvDownload','Admin\CSV\CsvDownloadController@getCsvFileWithProduct') -> name('download');
+

@@ -17,19 +17,14 @@ use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
-    public function index($page_num = 1, $count_on_page = 20){
+    public function index($count_on_page = 20){
 
         $manufactures = Manufacturer::all();
         $seasons = Season::all();
 
-        $products = Product::skip($count_on_page * ($page_num - 1)) -> take($count_on_page)
-            ->with('category','manufacturer') ->groupBy('id') ->  get();
+        $products = Product::with('category','manufacturer')  ->groupBy('id') ->paginate($count_on_page);
 
-        $all_product_count = Product::count();
-
-        $pagination = ceil($all_product_count/$count_on_page);
-
-        return view('admin.product.products', compact('products', 'pagination', 'manufactures', 'seasons'));
+        return view('admin.product.products', compact('products', 'manufactures', 'seasons'));
     }
 
     public function finder(Request $request){

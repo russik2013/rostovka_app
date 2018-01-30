@@ -96,14 +96,16 @@
                             </table>
                         </div>
                     </div>
-                    <ul class="pagination">
-                        <li><a href="!#">&laquo;</a></li>
-                        @for($i = 1; $i < $pagination + 1; $i++)
+                    {{--<ul class="pagination">--}}
+                        {{--<li><a href="!#">&laquo;</a></li>--}}
+                        {{--@for($i = 1; $i < $pagination + 1; $i++)--}}
 
-                            <li  @if($i == 0)class="active" @endif><a href="{{url('products/'.$i)}}">{{$i}}</a></li>
-                        @endfor
-                        <li><a href="!#">&raquo;</a></li>
-                    </ul>
+                            {{--<li  @if($i == 0)class="active" @endif><a href="{{url('products/'.$i)}}">{{$i}}</a></li>--}}
+                        {{--@endfor--}}
+                        {{--<li><a href="!#">&raquo;</a></li>--}}
+                    {{--</ul>--}}
+
+                    {{$products->links()}}
                 </div>
             </div>
         </div>

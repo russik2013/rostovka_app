@@ -98,6 +98,10 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('/csvLoadDelete','Admin\CSV\CsvLoadController@csvShoesDelete') -> name('delete');
 
+
+        Route::post('/csvDownload','Admin\CSV\CsvDownloadController@getCsvFileWithProduct') -> name('download');
+
+
     });
 
 
