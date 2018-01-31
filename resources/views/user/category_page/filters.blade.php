@@ -1,7 +1,7 @@
 <form id="form1">
     <!-- Filter By Size -->
 
-    @if($category -> id == 1)
+    @if($category -> id == 1 )
 
         <div class="widget-sidebar widget-filter-size">
             <h6 class="widget-title" data-id="sex">Пол</h6>

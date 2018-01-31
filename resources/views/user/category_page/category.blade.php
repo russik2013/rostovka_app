@@ -1,7 +1,7 @@
 @extends('user.markup.markup')
 @section('category')
     <meta name="category_id" content="{{$category -> id}}">
-    <div class="categoryPage">
+    <div class="categoryPage" dataID="{{$category -> id}}">
         <section class="content-page">
             <div class="container">
                 <div class="row">
@@ -60,8 +60,10 @@
                             </div>
                         </div>
 
-                    @include('user.category_page.filters')
+                        @if($category -> id != 5)
+                            @include('user.category_page.filters')
 
+                            @endif
                     </div>
                 </div>
             </div>

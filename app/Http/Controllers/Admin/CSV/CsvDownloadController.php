@@ -11,8 +11,6 @@ class CsvDownloadController extends Controller
 {
     public function getCsvFileWithProduct(Request $request){
 
-
-
         $products = Product::with('category','manufacturer','season','type', 'size', 'photo')
             -> where('manufacturer_id', $request -> manufacturer_id) -> get();
 

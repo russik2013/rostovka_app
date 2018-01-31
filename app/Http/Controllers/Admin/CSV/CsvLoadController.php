@@ -217,6 +217,7 @@ class CsvLoadController extends Controller
                 'season_id' => $season,
                 'size_id' => $size,
                 "material" => $product ->material,
+                "prise_zakup" => $product -> tsena_zakupki,
                 'sex' => $sex];
 
             Product::find($product->id)->update($insert_array);
@@ -327,6 +328,8 @@ class CsvLoadController extends Controller
 
     protected function formInsertArray($products){
 
+        dd($products);
+
         $types = Type::all() -> pluck('id', 'name') -> toArray();
         $seasons = Season::all() -> pluck('id', 'name') -> toArray();
         $sizes = Size::all()  -> pluck('id', 'name') -> toArray();
@@ -401,6 +404,7 @@ class CsvLoadController extends Controller
                                 'type_id' => $type,
                                 'season_id' => $season,
                                 'size_id' => $size,
+                                "prise_zakup" => $product -> tsena_zakupki,
                                 'sex' => $sex];
         }
 

@@ -102,6 +102,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/csvDownload','Admin\CSV\CsvDownloadController@getCsvFileWithProduct') -> name('download');
 
 
+
+        //Route::post('/csvDownloadOrders','Admin\CSV\CsvOrderController@getCsvFileWithOrders') -> name('downloadOrder');
+
+
     });
 
 

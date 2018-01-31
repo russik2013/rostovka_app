@@ -112,7 +112,8 @@ class OrderController extends Controller
                         'this_tovar_in_order_price' => $this_tovar_in_order_price,
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now(),
-                        'image' => $product-> photo->photo_url
+                        'image' => $product-> photo->photo_url,
+                        'prise_zakup' => $product-> prise_zakup
                     ];
 
 

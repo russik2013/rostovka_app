@@ -101,6 +101,14 @@ class ProductController extends Controller
                 ->with('photo', 'size')->orderBy($order,$orderType)->get();
         }
 
+        if($request->category_id == 5){
+
+            $products = Product::whereNotNull('discount')
+                ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
+                ->with('photo', 'size')->orderBy($order,$orderType)->get();
+
+        }
+
         foreach ($products as $product){
 
             $product -> full__price = $product -> prise * $product -> box_count;
