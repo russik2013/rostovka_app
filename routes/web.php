@@ -61,6 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/suppliers', 'Admin\SuppliersController@index');
         Route::get('/suppliers_edit/{id}', 'Admin\SuppliersController@edit');
+        Route::post('/suppliers_update', 'Admin\SuppliersController@update');
 
         Route::get('/admin_index', 'Admin\HomeController@index');
         Route::get('/user_edit/{id}', 'Admin\HomeController@editClient');

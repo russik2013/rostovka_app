@@ -29,4 +29,20 @@ class SuppliersController extends Controller
 
 
     }
+
+    public function update(Request $request){
+
+        $manufacturer = Manufacturer::find($request -> id);
+
+        if($manufacturer){
+
+            $manufacturer -> fill($request -> all());
+
+            $manufacturer -> save();
+
+            return response('done');
+
+        } else return response('wrong id');
+
+    }
 }

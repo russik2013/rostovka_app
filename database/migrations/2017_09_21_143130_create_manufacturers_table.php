@@ -22,6 +22,7 @@ class CreateManufacturersTable extends Migration
             $table->string('secondName')->nullable();
             $table->string('phone')->nullable();
             $table->string('discount')->nullable();
+            $table->float('koorse')->nullable();
             $table->timestamps();
         });
     }

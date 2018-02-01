@@ -22,7 +22,7 @@
                                             <div class="col-md-1">
                                                 <div class="form-group">
                                                     <label>ID</label>
-                                                    <input class="form-control border-input" data-userid="{{$client -> id}}" disabled="" type="text" value="{{$client -> id}}">
+                                                    <input class="form-control border-input" data-userid="{{$manufacturer -> id}}" disabled="" type="text" value="{{$manufacturer -> id}}">
                                                 </div>
                                             </div>
 
@@ -30,14 +30,14 @@
                                                 <div class="form-group">
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">Улица</label>
-                                                        <input class="form-control border-input" type="text" placeholder="Улица" data-userEmail="stree" value="Улица какая-то 1">
+                                                        <input class="form-control border-input" type="text" placeholder="Улица" data-userEmail="stree" value="{{$manufacturer -> street}}">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Номер контейнера</label>
-                                                    <input class="form-control border-input" type="text" placeholder="10E" data-userContainer="containerNam" value="10E">
+                                                    <input class="form-control border-input" type="text" placeholder="10E" data-userContainer="containerNam" value="{{$manufacturer -> numberContainer}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -46,13 +46,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Имя</label>
-                                                    <input class="form-control border-input" type="text" placeholder="Имя" data-userName="userName" value="{{$client -> first_name}}">
+                                                    <input class="form-control border-input" type="text" placeholder="Имя" data-userName="userName" value="{{$manufacturer -> firstName}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Фамилия</label>
-                                                    <input class="form-control border-input" type="text" placeholder="Фамилия" data-userLastName="userLastName" value="{{$client -> last_name}}">
+                                                    <input class="form-control border-input" type="text" placeholder="Фамилия" data-userLastName="userLastName" value="{{$manufacturer -> secondName}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -61,14 +61,14 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Телефон</label>
-                                                    <input class="form-control border-input" placeholder="Телефон" data-userPhone="userPhone" type="text" value="">
+                                                    <input class="form-control border-input" placeholder="Телефон" data-userPhone="userPhone" type="text" value="{{$manufacturer -> phone}}">
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Скидка</label>
-                                                    <input class="form-control border-input" placeholder="Скидка" data-userDiscount="userCity" type="text" value="10%">
+                                                    <input class="form-control border-input" placeholder="Скидка" data-userDiscount="userCity" type="text" value="{{$manufacturer -> discount}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -90,13 +90,13 @@
                                                 </div>
 
                                                 <div class="form-group currency">
-                                                    <input class="form-control border-input" type="number" name="exchange_rate" placeholder="Введит курс валюты">
+                                                    <input class="form-control border-input" type="number" name="exchange_rate" placeholder="{{$manufacturer -> koorse}}">
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="text-center">
-                                            <button class="btn btn-info btn-fill btn-wd" type="submit">Обновить профиль</button>
+                                            <button class="btn btn-info btn-fill btn-wd" type="submit">Обновить поставщика</button>
                                         </div>
                                         <div class="clearfix"></div>
                                     </form>
