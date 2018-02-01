@@ -19,9 +19,12 @@ class ProductController extends Controller
 {
     public function index($count_on_page = 20){
 
+        $manufactures = Manufacturer::all();
+        $seasons = Season::all();
+
         $products = Product::with('category','manufacturer')  ->groupBy('id') ->paginate($count_on_page);
 
-        return view('admin.product.products', compact('products'));
+        return view('admin.product.products', compact('products', 'manufactures', 'seasons'));
     }
 
     public function finder(Request $request){

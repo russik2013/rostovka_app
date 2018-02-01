@@ -11,12 +11,13 @@
         <div class="col-md-12">
             <div class="header--add--buttons col-md-4 col-sm-12 col-xs-12">
                 <select class="sorting__Option col-md-5 col-sm-12 col-xs-12" name="goods">
-                    <option value="1">Перчатки</option>
-                    <option value="2">Обувь</option>
+                    <option value="1">Обувь</option>
+                    <option value="2">Перчатки</option>
                 </select>
 
                 <select class="sorting__Option col-md-5 col-sm-12 col-xs-12" name="uploadOptions" onChange="getSelect(event)">
                     <option value="upload">Загрузить</option>
+                    <option value="download">Скачать</option>
                     <option value="edit">Редактировать</option>
                     <option value="delete">Удалить</option>
                 </select>
@@ -25,6 +26,24 @@
                     <input type="file" data-filename-placement="inside" title="Выбрать фотографии" accept=".zip" class="col-md-5 col-sm-12 col-xs-12" onChange="getFile()">
 
                     <input type="file" data-filename-placement="inside" title="Выбрать XLS" accept=".xls, .xlsx" class="col-md-5 col-sm-12 col-xs-12" onChange="getFileXls()">
+
+                    <select class="sorting__Option manufacturer_Options col-md-5 col-sm-12 col-xs-12" name="manufactures" onChange="getManufactures(event)" style="display: none; float: left; margin-right: 5px;">
+
+                        @foreach($manufactures as $manufacture)
+
+                            <option value="{{$manufacture -> id}}">{{$manufacture -> name}}</option>
+
+                        @endforeach
+                    </select>
+
+
+                    <select class="sorting__Option seasone_Options col-md-5 col-sm-12 col-xs-12" name="season" onChange="getSeason(event)" style="display: none">
+                        @foreach($seasons as $season)
+
+                            <option value="{{$season -> id}}">{{$season -> name}}</option>
+
+                        @endforeach
+                    </select>
                 </div>
 
                 <button class="upload col-md-4 col-sm-12 col-xs-12" >Загрузить</button>

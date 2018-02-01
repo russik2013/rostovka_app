@@ -17,6 +17,16 @@ class HomeController extends Controller
 
     }
 
+    public function supplier(){
+
+        $client = User::find(2);
+
+        return view('admin.product.supplier_edit', compact('client'));
+
+    }
+
+
+
     public function editClient($id){
 
         $client = User::find($id);

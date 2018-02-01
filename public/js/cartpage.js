@@ -2,7 +2,7 @@ $('.cartBl').remove();
 var Cart_data = [{row: []}];
 
 function getData() {
-    var retrievedData = sessionStorage.getItem("Cart_data");
+    var retrievedData = localStorage.getItem("Cart_data");
     if(retrievedData !== null){
         Cart_data = JSON.parse(retrievedData);
         $('.cartPage_article').remove();
@@ -34,9 +34,8 @@ function TotalCost() {
     $.find('[data-set="totalCost"]')[0].innerHTML = Cart_data[0].cartProducts_summ + ' грн';
 }
 
-
 if(Cart_data[0].row.length < 5){
-    var intElemOffsetHeight = $( window ).height() - 250;
+    var intElemOffsetHeight = $( window ).height();
     setHeight(intElemOffsetHeight);
     $(window).resize(function() {
         intElemOffsetHeight = $( window ).height() - 200;
@@ -73,7 +72,7 @@ if($.find('#cartTableInner').length !== 0){
 
                 Cart_data[0].row.splice(i, 1);
                 Cart_data[0].cartCount--;
-                sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+                localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
 
                 if(Cart_data[0].row.length === 0){
                     $('.cart-form').remove();
@@ -108,7 +107,7 @@ function getSelect(event, value) {
 
         Cart_data[0].cartProducts_summ = recalculated_price;
         $.find('[data-set="totalCost"]')[0].innerText = recalculated_price + ' грн';
-        sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+        localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
     }
 
     else{
@@ -127,7 +126,7 @@ function getSelect(event, value) {
 
         Cart_data[0].cartProducts_summ = recalculatedP;
         $.find('[data-set="totalCost"]')[0].innerText = recalculatedP + ' грн';
-        sessionStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+        localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
     }
 }
 

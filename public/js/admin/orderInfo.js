@@ -182,12 +182,3 @@ $('.add--product--in').on('click', function () {
         $("#productsModal").modal('hide');
     }
 });
-
-document.onkeydown = function (evt) {
-    var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
-    if (keyCode === 13) {
-        $('.search--good').click();
-    } else {
-        return true;
-    }
-};

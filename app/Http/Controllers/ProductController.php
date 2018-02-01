@@ -46,24 +46,26 @@ class ProductController extends Controller
 
     public function getProductsToCategory(Request $request){
 
+        //dd($request -> all());
+
         $orderType = 'desc';
         $order = 'id';
-        if(isset($request -> order_type)) {
-            if ($request->order_type == 0) {
+        if(isset($request -> choosedType)) {
+            if ($request->choosedType== 0) {
 
                 $orderType = 'desc';
                 $order = 'id';
 
             }
 
-            if ($request->order_type == 1) {
+            if ($request->choosedType == 1) {
 
                 $orderType = 'asc';
                 $order = 'prise';
 
             }
 
-            if ($request->order_type == 2) {
+            if ($request->choosedType == 2) {
 
                 $orderType = 'desc';
                 $order = 'prise';
@@ -79,6 +81,8 @@ class ProductController extends Controller
 
         if($sex == false)
             $sex = null;
+
+
 
         if($sex == null) {
             $products = Product::where('category_id', '=', $request->category_id)
