@@ -236,7 +236,9 @@ class CsvLoadController extends Controller
         $products = $this ->checkEmpty($products);
 
         if($this ->checkDooble($products))
-            return 'Check file, program find doodles';
+
+            return response('Check file, program find doodles', 404);
+        
         else {
 
             Product::insert($this->formInsertArray($products));
@@ -245,7 +247,7 @@ class CsvLoadController extends Controller
 
             $this->photosRename($products);
 
-            return 'all date was upload';
+            return response('all date was upload', 200);
         }
 
     }

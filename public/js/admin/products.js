@@ -66,11 +66,15 @@ function getSelect(e) {
     if(e.srcElement.value === 'delete'){
         $('.file--uploader').css('display', 'none');
         $('.xsl--uploader').css('display', 'block');
-        $('button.upload').css('top', '20px');
-        $('button.upload').css('display', 'block');
         $('.header--add--buttons').css('display', 'block');
         $('select.manufacturer_Options').css('display', 'none');
         $('.seasone_Options').css('display', 'none');
+        $('.type_Options').css('display', 'none');
+        $('button.upload').css('display', 'none');
+        $('.edit').remove();
+        $('.header--add--buttons').append('' +
+            '<button class="remove col-md-4 col-sm-12 col-xs-12" style="top: 20px; display: block;">Удалить</button>');
+        getFileXls();
     }
 
     else{
@@ -80,6 +84,9 @@ function getSelect(e) {
         $('button.download').css('display', 'none');
         $('select.manufacturer_Options').css('display', 'none');
         $('.seasone_Options').css('display', 'none');
+        $('.type_Options').css('display', 'none');
+        $('.edit').remove();
+        $('.remove').remove();
     }
 
     if(e.srcElement.value === 'upload') {
@@ -88,10 +95,20 @@ function getSelect(e) {
         $('button.upload').css('display', 'block');
         $('select.manufacturer_Options').css('display', 'none');
         $('.seasone_Options').css('display', 'none');
+        $('.type_Options').css('display', 'none');
+        $('.edit').remove();
+        $('.remove').remove();
     }
 
     if(e.srcElement.value === 'edit'){
+        $('.xsl--uploader').css('display', 'block');
+        $('.file--uploader').css('display', 'block');
+        $('.upload').css('display', 'none');
+        $('.header--add--buttons').append('' +
+            '<button class="edit col-md-4 col-sm-12 col-xs-12" style="top: 20px; display: block;">Загрузить</button>');
         getFile();
+        getFileXls();
+        $('.remove').remove();
     }
 
     if(e.srcElement.value === 'download'){
@@ -99,8 +116,12 @@ function getSelect(e) {
         $('.xsl--uploader').css('display', 'none');
         $('button.upload').css('display', 'none');
         $('.header--add--buttons').append("<button class='download col-md-4 col-sm-12 col-xs-12'>Скачать</button>");
+        $('.header--add--buttons').append("<button class='download for_Supliers col-md-4 col-sm-12 col-xs-12'>Скачать для поставщиков</button>");
         $('select.manufacturer_Options').css('display', 'block');
         $('.seasone_Options').css('display', 'block');
+        $('.type_Options').css('display', 'block');
+        $('.edit').remove();
+        $('.remove').remove();
     }
 }
 
@@ -116,6 +137,95 @@ $(document).ready(function () {
     });
 });
 
+$(document).on('click', 'button.edit', function () {
+    if (fileChoosedZip === true && fileChoosedXLS === true) {
+        var zip_data = new FormData();
+        zip_data.append('_token', $('meta[name="csrf-token"]').attr('content'));
+        zip_data.append('photo', $('#archive').prop('files')[0]);
+        zip_data.append('files', $('#xslsx').prop('files')[0]);
+
+
+        $.ajax({
+            method: 'POST',
+            headers: {'Content-Type': undefined},
+            url: $('meta[name="root-site"]').attr('content') + '/csvLoadUpdate',
+            processData: false,
+            contentType: false,
+            data: zip_data,
+            success: function(){
+                $('.table-responsive').append(
+                    '<div class="alert alert-success" role="alert" style="position: absolute;\n' +
+                    '    top: -140px;\n' +
+                    '    width: 100%;\n' +
+                    '    left: 0;">\n' +
+                    '<a href="#" class="alert-link">Товары умпешно загруженны</a>\n' +
+                    '</div>'
+                );
+
+                if($('.alert')){
+                    setTimeout(removeAlert, 2000);
+                }
+            },
+            error: function () {
+                $('.table-responsive').append(
+                    '<div class="alert alert-danger" role="alert" style="position: absolute;\n' +
+                    '    top: -140px;\n' +
+                    '    width: 100%;\n' +
+                    '    left: 0;">\n' +
+                    '<a href="#" class="alert-link">ОШБИКА! Выберите файлы</a>\n' +
+                    '</div>'
+                );
+
+                if($('.alert')){
+                    setTimeout(removeAlert, 2000);
+                }
+            }
+        });
+    }
+});
+
+$(document).on('click', 'button.remove', function () {
+    if(fileChoosedXLS === false){
+        $(targetError).css('border', '1px solid red');
+        $('body').append('' +
+            '<div class="alert alert-danger alert--xsl">\n' +
+            '  <strong>Внимане!</strong> Для загрузки товаров, выберите .XLS файл с товарами с рабочего стола' +
+            '</div>');
+        setInterval(function () {
+            $('.alert--xsl').remove()
+        }, 5000);
+    }
+    else{
+        var zip_data = new FormData();
+        zip_data.append('_token', $('meta[name="csrf-token"]').attr('content'));
+        zip_data.append('files', $('#xslsx').prop('files')[0]);
+
+        $.ajax({
+            method: 'POST',
+            headers: {'Content-Type': undefined},
+            url: $('meta[name="root-site"]').attr('content') + '/csvLoadDelete',
+            processData: false,
+            contentType: false,
+            data: zip_data,
+            success: function(){
+                $('.table-responsive').append(
+                    '<div class="alert alert-success" role="alert" style="position: absolute;\n' +
+                    '    top: -140px;\n' +
+                    '    width: 100%;\n' +
+                    '    left: 0;">\n' +
+                    '<a href="#" class="alert-link">Товары успешно удалены</a>\n' +
+                    '</div>'
+                );
+
+                if($('.alert')){
+                    setTimeout(removeAlert, 2000);
+                }
+            },
+            error: function () {}
+        });
+    }
+});
+
 $(document).on('click', 'button.upload', function () {
     if(fileChoosedZip === false){
         $(targetError).css('border', '1px solid red');
@@ -125,19 +235,64 @@ $(document).on('click', 'button.upload', function () {
             '</div>');
         setInterval(function() { $('.alert').remove() }, 5000);
     }
-    else{
-        $(targetError).css('border', '1px solid #ccc4b8');
-    }
 
-    if(fileChoosedXLS === false){
+    if(fileChoosedXLS === false) {
         $('.xsl--uploader').css('border', '1px solid red');
         $('body').append('' +
             '<div class="alert alert-danger alert--xsl">\n' +
             '  <strong>Внимане!</strong> Для загрузки товаров, выберите .XLS файл с товарами с рабочего стола' +
             '</div>');
-        setInterval(function() { $('.alert--xsl').remove() }, 5000);
+        setInterval(function () {
+            $('.alert--xsl').remove()
+        }, 5000);
     }
-    else{
-        $('.xsl--uploader').css('border', '1px solid #ccc4b8');
+
+    if (fileChoosedZip === true && fileChoosedXLS === true) {
+        var zip_data = new FormData();
+        zip_data.append('_token', $('meta[name="csrf-token"]').attr('content'));
+        zip_data.append('photo', $('#archive').prop('files')[0]);
+        zip_data.append('files', $('#xslsx').prop('files')[0]);
+
+
+        $.ajax({
+            method: 'POST',
+            headers: {'Content-Type': undefined},
+            url: $('meta[name="root-site"]').attr('content') + '/csvLoad',
+            processData: false,
+            contentType: false,
+            data: zip_data,
+            success: function(){
+                $('.table-responsive').append(
+                    '<div class="alert alert-success" role="alert" style="position: absolute;\n' +
+                    '    top: -140px;\n' +
+                    '    width: 100%;\n' +
+                    '    left: 0;">\n' +
+                    '<a href="#" class="alert-link">Товары умпешно загруженны</a>\n' +
+                    '</div>'
+                );
+
+                if($('.alert')){
+                    setTimeout(removeAlert, 2000);
+                }
+            },
+            error: function () {
+                $('.table-responsive').append(
+                    '<div class="alert alert-danger" role="alert" style="position: absolute;\n' +
+                    '    top: -140px;\n' +
+                    '    width: 100%;\n' +
+                    '    left: 0;">\n' +
+                    '<a href="#" class="alert-link">ОШБИКА! В товарах найденны дубли</a>\n' +
+                    '</div>'
+                );
+
+                if($('.alert')){
+                    setTimeout(removeAlert, 2000);
+                }
+            }
+        });
     }
 });
+
+function removeAlert() {
+    $('.alert').remove();
+}

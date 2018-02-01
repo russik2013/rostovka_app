@@ -1,7 +1,7 @@
 csv load test
 
 
-<form  method="post" action="{{route('load')}}" enctype="multipart/form-data" accept-charset="UTF-8">
+<form  method="post" action="{{url('api/checkData')}}" enctype="multipart/form-data" accept-charset="UTF-8">
     <input type="hidden" name="_token" value="{{csrf_token()}}">
     <input type="hidden" name="_method" value="POST">
 
