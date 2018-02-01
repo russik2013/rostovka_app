@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Manufacturer extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name','street','numberContainer','firstName','secondName','phone','discount'];
 
     public function products(){
 
@@ -14,3 +14,6 @@ class Manufacturer extends Model
 
     }
 }
+
+
+

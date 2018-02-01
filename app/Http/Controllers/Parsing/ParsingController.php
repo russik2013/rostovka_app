@@ -26,9 +26,19 @@ class ParsingController extends Controller
     protected $options = [];
 
     public function index(){
-        $inset_array = Manufacturer::all();
+        $inset_array = Manufacturer::pluck('name');
 
-        dd($inset_array);
+        $date = [];
+
+        foreach($inset_array as $item){
+
+            $date[] = ['name' => $item];
+
+        }
+
+        Manuf::insert($date);
+
+        dd($date);
 
 
         return view('debug', compact('insert_array'));

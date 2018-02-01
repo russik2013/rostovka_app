@@ -22,7 +22,7 @@
                                             <div class="col-md-1">
                                                 <div class="form-group">
                                                     <label>ID</label>
-                                                    <input class="form-control border-input" data-userid="{{$client -> id}}" disabled="" type="text" value="{{$client -> id}}">
+                                                    <input class="form-control border-input" data-userid="{{$manufacturer -> id}}" disabled="" type="text" value="{{$manufacturer -> id}}">
                                                 </div>
                                             </div>
 
@@ -30,14 +30,14 @@
                                                 <div class="form-group">
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">Улица</label>
-                                                        <input class="form-control border-input" type="text" placeholder="Улица" data-userEmail="stree" value="Улица какая-то 1">
+                                                        <input class="form-control border-input" type="text" placeholder="Улица" data-userEmail="stree" value="{{$manufacturer -> street}}">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">Email адрес</label>
-                                                    <input class="form-control border-input" type="email" placeholder="Email адрес" data-userEmail="userEmail" value="{{$client -> email}}">
+                                                    <label for="exampleInputEmail1">Телефон</label>
+                                                    <input class="form-control border-input" type="email" placeholder="Email адрес" data-userEmail="userEmail" value="{{$manufacturer -> phone}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -46,13 +46,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Имя</label>
-                                                    <input class="form-control border-input" type="text" placeholder="Имя" data-userName="userName" value="{{$client -> first_name}}">
+                                                    <input class="form-control border-input" type="text" placeholder="Имя" data-userName="userName" value="{{$manufacturer -> first_name}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Фамилия</label>
-                                                    <input class="form-control border-input" type="text" placeholder="Фамилия" data-userLastName="userLastName" value="{{$client -> last_name}}">
+                                                    <input class="form-control border-input" type="text" placeholder="Фамилия" data-userLastName="userLastName" value="{{$manufacturer -> last_name}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -61,14 +61,14 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Адрес</label>
-                                                    <input class="form-control border-input" placeholder="Адрес доставки" data-userAddress="userAddress" type="text" value="{{$client -> address}}">
+                                                    <input class="form-control border-input" placeholder="Адрес доставки" data-userAddress="userAddress" type="text" value="{{$manufacturer -> address}}">
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Город</label>
-                                                    <input class="form-control border-input" placeholder="Город" data-userCity="userCity" type="text" value="{{$client -> city}}">
+                                                    <input class="form-control border-input" placeholder="Город" data-userCity="userCity" type="text" value="{{$manufacturer -> city}}">
                                                 </div>
                                             </div>
                                         </div>

@@ -16,6 +16,12 @@ class CreateManufacturersTable extends Migration
         Schema::create('manufacturers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('street')->nullable();
+            $table->integer('numberContainer')->nullable();
+            $table->string('firstName')->nullable();
+            $table->string('secondName')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('discount')->nullable();
             $table->timestamps();
         });
     }

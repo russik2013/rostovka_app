@@ -35,109 +35,27 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th>Dakota</th>
-                                    <th>Улица</th>
-                                    <th>12</th>
-                                    <th>Вясилий</th>
-                                    <td>Петровч</td>
-                                    <td>+380631111111</td>
-                                    <td>10%</td>
-                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <th>Dakota</th>
-                                    <th>Улица</th>
-                                    <th>12</th>
-                                    <th>Вясилий</th>
-                                    <td>Петровч</td>
-                                    <td>+380631111111</td>
-                                    <td>10%</td>
-                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <th>Dakota</th>
-                                    <th>Улица</th>
-                                    <th>12</th>
-                                    <th>Вясилий</th>
-                                    <td>Петровч</td>
-                                    <td>+380631111111</td>
-                                    <td>10%</td>
-                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <th>Dakota</th>
-                                    <th>Улица</th>
-                                    <th>12</th>
-                                    <th>Вясилий</th>
-                                    <td>Петровч</td>
-                                    <td>+380631111111</td>
-                                    <td>10%</td>
-                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <th>Dakota</th>
-                                    <th>Улица</th>
-                                    <th>12</th>
-                                    <th>Вясилий</th>
-                                    <td>Петровч</td>
-                                    <td>+380631111111</td>
-                                    <td>10%</td>
-                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <th>Dakota</th>
-                                    <th>Улица</th>
-                                    <th>12</th>
-                                    <th>Вясилий</th>
-                                    <td>Петровч</td>
-                                    <td>+380631111111</td>
-                                    <td>10%</td>
-                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <th>Dakota</th>
-                                    <th>Улица</th>
-                                    <th>12</th>
-                                    <th>Вясилий</th>
-                                    <td>Петровч</td>
-                                    <td>+380631111111</td>
-                                    <td>10%</td>
-                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <th>Dakota</th>
-                                    <th>Улица</th>
-                                    <th>12</th>
-                                    <th>Вясилий</th>
-                                    <td>Петровч</td>
-                                    <td>+380631111111</td>
-                                    <td>10%</td>
-                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <th>Dakota</th>
-                                    <th>Улица</th>
-                                    <th>12</th>
-                                    <th>Вясилий</th>
-                                    <td>Петровч</td>
-                                    <td>+380631111111</td>
-                                    <td>10%</td>
-                                    <td><a href="product_edit"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                </tr>
+                                @foreach($manufacturers as $manufacturer)
+
+                                    <tr>
+                                        <th>{{$manufacturer -> name}}</th>
+                                        <th>{{$manufacturer -> street}}</th>
+                                        <th>{{$manufacturer -> numberContainer}}</th>
+                                        <th>{{$manufacturer -> firstName}}</th>
+                                        <td>{{$manufacturer -> secondName}}</td>
+                                        <td>{{$manufacturer -> phone}}</td>
+                                        <td>{{$manufacturer -> discount}}</td>
+                                        <td><a href="{{url('/suppliers_edit/'.$manufacturer -> id)}}"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                    </tr>
+
+                                    @endforeach
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <ul class="pagination">
-                        <li><a href="!#">&laquo;</a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="!#">3</a></li>
-                        <li><a href="!#">4</a></li>
-                        <li><a href="!#">5</a></li>
-                        <li><a href="!#">&raquo;</a></li>
-                    </ul>
+
+                    {{$manufacturers->links()}}
                 </div>
             </div>
         </div>

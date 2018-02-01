@@ -51,19 +51,22 @@ Route::get('/cart', function () {
 //});
 
 
-Route::get('/suppliers', function () {
-    return view('admin.product.suppliers');
-});
+//Route::get('/suppliers', function () {
+//    return view('admin.product.suppliers');
+//});
 
 Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'admin'], function () {
 
+        Route::get('/suppliers', 'Admin\SuppliersController@index');
+        Route::get('/suppliers_edit/{id}', 'Admin\SuppliersController@edit');
+
         Route::get('/admin_index', 'Admin\HomeController@index');
         Route::get('/user_edit/{id}', 'Admin\HomeController@editClient');
         Route::post('/user_delete/{id}', 'Admin\HomeController@deleteClient');
         Route::post('/user_update', 'Admin\HomeController@updateClient');
-        Route::get('/suppliers_edit', 'Admin\HomeController@supplier');
+
 
         Route::post('/finder','Admin\ProductController@finder');//пои сковик товаров по имени
 
