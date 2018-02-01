@@ -93,7 +93,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/csvLoad','Admin\CSV\CsvLoadController@index');
         Route::post('/csvLoad','Admin\CSV\CsvLoadController@csvShoesLoad') -> name('load');
 
-        Route::get('/csvLoadUpdate','Admin\CSV\CsvLoadController@edit');
+        //Route::get('/csvLoadUpdate','Admin\CSV\CsvLoadController@edit');
         Route::post('/csvLoadUpdate','Admin\CSV\CsvLoadController@csvShoesUpdate') -> name('update');
 
         Route::post('/csvLoadDelete','Admin\CSV\CsvLoadController@csvShoesDelete') -> name('delete');

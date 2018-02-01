@@ -4,7 +4,7 @@
 
 @extends('admin.main')
 @section('products_container')
-    <div class="col-md-12">
+    <div class="col-md-12 ">
         <div class="col-md-12 header">
             <h4 class="title">Список товаров</h4>
         </div>
@@ -23,9 +23,9 @@
                 </select>
 
                 <div class="col-md-12 inputs--group">
-                    <input type="file" data-filename-placement="inside" title="Выбрать фотографии" accept=".zip" class="col-md-5 col-sm-12 col-xs-12" onChange="getFile()">
+                    <input type="file" id="archive" data-filename-placement="inside" name="zip" title="Выбрать фотографии" accept=".zip" class="col-md-5 col-sm-12 col-xs-12" onChange="getFile()">
 
-                    <input type="file" data-filename-placement="inside" title="Выбрать XLS" accept=".xls, .xlsx" class="col-md-5 col-sm-12 col-xs-12" onChange="getFileXls()">
+                    <input type="file" id="xslsx" data-filename-placement="inside" name="xlsx" title="Выбрать XLS" accept=".xls, .xlsx" class="col-md-5 col-sm-12 col-xs-12" onChange="getFileXls()">
 
                     <select class="sorting__Option manufacturer_Options col-md-5 col-sm-12 col-xs-12" name="manufactures" onChange="getManufactures(event)" style="display: none; float: left; margin-right: 5px;">
 
@@ -44,6 +44,15 @@
 
                         @endforeach
                     </select>
+
+
+                    <select class="sorting__Option type_Options col-md-5 col-sm-12 col-xs-12" name="manufactures" onChange="getManufactures(event)" style="display: none; float: left; margin-right: 5px;">
+                        @foreach($types as $type)
+
+                            <option value="{{$type -> id}}">{{$type -> name}}</option>
+
+                        @endforeach
+                    </select>
                 </div>
 
                 <button class="upload col-md-4 col-sm-12 col-xs-12" >Загрузить</button>
@@ -59,7 +68,7 @@
             </div>
         </div>
     </div>
-    <div class="content products--content">
+    <div class="content products--content produtsTablePage">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">

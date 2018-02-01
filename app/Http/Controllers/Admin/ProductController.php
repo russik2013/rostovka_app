@@ -21,10 +21,11 @@ class ProductController extends Controller
 
         $manufactures = Manufacturer::all();
         $seasons = Season::all();
+        $types = Type::all();
 
         $products = Product::with('category','manufacturer')  ->groupBy('id') ->paginate($count_on_page);
 
-        return view('admin.product.products', compact('products', 'manufactures', 'seasons'));
+        return view('admin.product.products', compact('products', 'manufactures', 'seasons', 'types'));
     }
 
     public function finder(Request $request){

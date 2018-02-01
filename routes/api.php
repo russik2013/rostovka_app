@@ -17,7 +17,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::post('/products', 'ProductController@getProductsToCategory');
+
+Route::post('/checkData', function (Request $request){
+
+    ///dd( $request -> all() );
+    return $request -> all();
+
+});
+
+
 Route::post('/product', 'ProductController@getProduct');
 
 Route::post('/getSizesMass', 'ProductController@getSizesMass');

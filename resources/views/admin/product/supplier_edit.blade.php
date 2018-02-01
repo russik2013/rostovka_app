@@ -14,7 +14,7 @@
                         <div class="col-lg-12 col-md-12">
                             <div class="card">
                                 <div class="header">
-                                    <h4 class="title">Редактирование поставщика - <b>Dakota</b></h4>
+                                    <h4 class="title">Поставщика - <b>Dakota</b></h4>
                                 </div>
                                 <div class="content">
                                     <form>
@@ -36,8 +36,8 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">Email адрес</label>
-                                                    <input class="form-control border-input" type="email" placeholder="Email адрес" data-userEmail="userEmail" value="{{$client -> email}}">
+                                                    <label for="exampleInputEmail1">Номер контейнера</label>
+                                                    <input class="form-control border-input" type="text" placeholder="10E" data-userContainer="containerNam" value="10E">
                                                 </div>
                                             </div>
                                         </div>
@@ -60,34 +60,40 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Адрес</label>
-                                                    <input class="form-control border-input" placeholder="Адрес доставки" data-userAddress="userAddress" type="text" value="{{$client -> address}}">
+                                                    <label>Телефон</label>
+                                                    <input class="form-control border-input" placeholder="Телефон" data-userPhone="userPhone" type="text" value="">
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Город</label>
-                                                    <input class="form-control border-input" placeholder="Город" data-userCity="userCity" type="text" value="{{$client -> city}}">
+                                                    <label>Скидка</label>
+                                                    <input class="form-control border-input" placeholder="Скидка" data-userDiscount="userCity" type="text" value="10%">
                                                 </div>
                                             </div>
                                         </div>
 
-                                        {{--<div class="row">--}}
-                                        {{----}}
-                                        {{--<div class="col-md-4">--}}
-                                        {{--<div class="form-group">--}}
-                                        {{--<label>Country</label>--}}
-                                        {{--<input class="form-control border-input" placeholder="Country" type="text" value="Australia">--}}
-                                        {{--</div>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col-md-4">--}}
-                                        {{--<div class="form-group">--}}
-                                        {{--<label>Postal Code</label>--}}
-                                        {{--<input class="form-control border-input" placeholder="ZIP Code" type="number">--}}
-                                        {{--</div>--}}
-                                        {{--</div>--}}
-                                        {{--</div>--}}
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group currency col-md-3" style="padding: 0;">
+                                                    <label>Валюта</label>
+                                                    <select class="form-control border-input currency--select" disabled="">
+                                                        <option value="дол">Дол $</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="chooseBox" style="float: left;margin-top: 35px;margin-left: 20px;">
+                                                    <label for="justBox">
+                                                        <input type="checkbox" name="justBox" id="justBox">
+                                                        Только в ящике
+                                                    </label>
+                                                </div>
+
+                                                <div class="form-group currency">
+                                                    <input class="form-control border-input" type="number" name="exchange_rate" placeholder="Введит курс валюты">
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="text-center">
                                             <button class="btn btn-info btn-fill btn-wd" type="submit">Обновить профиль</button>

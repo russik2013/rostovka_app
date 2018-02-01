@@ -24,7 +24,7 @@ class CsvPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'files' => 'required|csv_validation'
+            //'files' => 'required|csv_validation'
         ];
     }
 }
