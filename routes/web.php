@@ -107,8 +107,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('/csvDownloadOrders','Admin\CSV\CsvOrderController@getCsvFileWithOrders')-> name('downloadOrder'); //передать дату с и доту по. Возвращает xlsx файл.
         Route::post('/csvDownloadOrdersImages','Admin\CSV\CsvOrderController@getCsvFileWithOrdersImages')-> name('downloadOrderWithImages');//передать дату с и доту по. Возвращает xlsx файл.
+        //Route::post('/csvDownloadOrdersToSend','Admin\CSV\CsvOrderController@getCsvFileWithOrdersToSend')-> name('downloadOrderToSend');
 
-        //Route::post('/csvDownloadOrders','Admin\CSV\CsvOrderController@getCsvFileWithOrders') -> name('downloadOrder');
 
 
     });
