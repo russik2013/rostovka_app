@@ -17,38 +17,21 @@ $(document).ready(function () {
     }
 });
 
-$( function() {
-    var dateFormat = "mm/dd/yy",
-        from = $( "#from" )
-            .datepicker({
-                defaultDate: "+1w",
-                changeMonth: true,
-                numberOfMonths: 1
-            })
-            .on( "change", function() {
-                to.datepicker( "option", "minDate", getDate( this ) );
-            }),
-        to = $( "#to" ).datepicker({
-            defaultDate: "+1w",
+$(document).ready(function () {
+    var userLang = navigator.language || navigator.userLanguage;
+
+    var options = $.extend({},
+        $.datepicker.regional["ja"], {
+            dateFormat: "yy-mm-dd",
             changeMonth: true,
-            numberOfMonths: 1,
-            regional: 'ru'
-        })
-            .on( "change", function() {
-                from.datepicker( "option", "maxDate", getDate( this ) );
-            });
-
-    function getDate( element ) {
-        var date;
-        try {
-            date = $.datepicker.parseDate( dateFormat, element.value );
-        } catch( error ) {
-            date = null;
+            changeYear: true,
+            highlightWeek: true
         }
+    );
 
-        return date;
-    }
-} );
+    $("#from").datepicker(options);
+    $("#to").datepicker(options);
+});
 
 $('.remove__order').on('click', function () {
     var productName = $(this)[0].parentElement.parentNode.children[1].innerText,
@@ -71,4 +54,29 @@ $('.remove__order').on('click', function () {
             data: {'_token': $('meta[name="csrf-token"]').attr('content'), id: productID}
         });
     });
+});
+
+$('.downloadButton button').on('click', function () {
+    var dataFrom = $('#from'),
+        dataTo = $('#to'),
+        sortOption,
+        withPhoto;
+
+    if(dataFrom.length > 0 && dataTo.length > 0){
+        dataFrom.css('border', 'none');
+        dataTo.css('border', 'none');
+
+        $.ajax({
+            method: 'GET',
+            data: {'_token': $('meta[name="csrf-token"]').attr('content'), dataFrom: dataFrom.val(), dataTo: dataTo.val()},
+            success: function(){
+                window.location = $('meta[name="root-site"]').attr('content') + '/csvDownloadOrdersToSends?dataFrom='+dataFrom.val()+'&dataTo='+dataTo.val();
+            }
+        });
+    }
+
+    else{
+        dataFrom.css('border', '1px solid red');
+        dataTo.css('border', '1px solid red');
+    }
 });

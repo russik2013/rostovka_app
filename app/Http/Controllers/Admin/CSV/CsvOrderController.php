@@ -199,6 +199,8 @@ class CsvOrderController extends Controller
 
     public function getCsvFileWithOrders(Request $request){
 
+       // dd($request -> all());
+
         $orders = Order::with('details')
             -> where('created_at', '>', $request -> dataFrom)
             -> where('created_at', '<', $request -> dataTo)
