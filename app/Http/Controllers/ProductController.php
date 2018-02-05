@@ -92,7 +92,7 @@ class ProductController extends Controller
                 ->whereIn('size_id', $this->sizeFilter($request->filters))
                 ->whereNull('sex')
                 ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
-                ->with('photo', 'size')->orderBy($order,$orderType)->get();
+                ->with('photo', 'size', 'manufacturer')->orderBy($order,$orderType)->get();
         }
         else {
             $products = Product::where('category_id', '=', $request->category_id)
@@ -102,7 +102,7 @@ class ProductController extends Controller
                 ->whereIn('size_id', $this->sizeFilter($request->filters))
                 ->whereIn('sex', $sex)
                 ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
-                ->with('photo', 'size')->orderBy($order,$orderType)->get();
+                ->with('photo', 'size', 'manufacturer')->orderBy($order,$orderType)->get();
         }
 
         if($request->category_id == 5){
@@ -115,8 +115,18 @@ class ProductController extends Controller
 
         foreach ($products as $product){
 
-            $product -> full__price = $product -> prise * $product -> box_count;
-            $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
+            if($product -> manufacturer ->koorse != "" || $product -> manufacturer ->koorse != 0){
+
+
+                $product -> full__price = $product -> prise * $product -> box_count* $product -> manufacturer ->koorse;
+                $product -> rostovka__price = $product -> prise * $product -> rostovka_count * $product -> manufacturer ->koorse;
+                $product -> prise = $product -> prise * $product -> manufacturer ->koorse;
+            }else{
+                    $product -> full__price = $product -> prise * $product -> box_count;
+                    $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
+                    //$product -> price = $product -> prise;
+                }
+
             $product -> types = $product -> type -> name;
             $product -> product_url = url($product ->id.'/product');
         }

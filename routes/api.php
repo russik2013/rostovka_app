@@ -39,8 +39,8 @@ Route::post('/pagination', 'ProductController@getPaginationPageCount');
 
 //Route::post('');
 
-Route::get('/csvDownloadOrdersToSend','Admin\CSV\CsvOrderController@getCsvFileWithOrdersToSend');
-Route::get('/csvDownloadOrdersToManufacturer','Admin\CSV\CsvDownloadController@getCsvFileWithOrdersToManufacturer');
+//Route::get('/csvDownloadOrdersToSend','Admin\CSV\CsvOrderController@getCsvFileWithOrdersToSend');
+//Route::get('/csvDownloadOrdersToManufacturer','Admin\CSV\CsvDownloadController@getCsvFileWithOrdersToManufacturer');
 //Route::get('/csvDownload','Admin\CSV\CsvDownloadController@getCsvFileWithProduct') -> name('download');
 //Route::get('/csvDownloadOrders','Admin\CSV\CsvOrderController@getCsvFileWithOrders') -> name('downloadOrder');
 //Route::post('/csvDownloadOrders','Admin\CSV\CsvOrderController@getCsvFileWithOrders');

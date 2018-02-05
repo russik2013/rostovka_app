@@ -105,10 +105,12 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('/csvDownload','Admin\CSV\CsvDownloadController@getCsvFileWithProduct') -> name('download');
 
-        Route::post('/csvDownloadOrders','Admin\CSV\CsvOrderController@getCsvFileWithOrders')-> name('downloadOrder'); //передать дату с и доту по. Возвращает xlsx файл.
-        Route::post('/csvDownloadOrdersImages','Admin\CSV\CsvOrderController@getCsvFileWithOrdersImages')-> name('downloadOrderWithImages');//передать дату с и доту по. Возвращает xlsx файл.
-        //Route::post('/csvDownloadOrdersToSend','Admin\CSV\CsvOrderController@getCsvFileWithOrdersToSend')-> name('downloadOrderToSend');
 
+        Route::get('/csvDownloadOrders','Admin\CSV\CsvOrderController@getCsvFileWithOrders')-> name('downloadOrder'); //передать дату с и доту по. Возвращает xlsx файл.
+        Route::get('/csvDownloadOrdersImages','Admin\CSV\CsvOrderController@getCsvFileWithOrdersImages')-> name('downloadOrderWithImages');//передать дату с и доту по. Возвращает xlsx файл.
+
+        Route::get('/csvDownloadOrdersToSend','Admin\CSV\CsvOrderController@getCsvFileWithOrdersToSend')-> name('downloadOrderToSend');
+        Route::get('/csvDownloadOrdersToManufacturer','Admin\CSV\CsvDownloadController@getCsvFileWithOrdersToManufacturer')-> name('downloadProductToManufacturer');
 
 
     });
