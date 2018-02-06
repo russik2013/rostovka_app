@@ -59,7 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'admin'], function () {
 
-        Route::get('/suppliers', 'Admin\SuppliersController@index');
+        Route::get('/suppliers', 'Admin\SuppliersController@index')->name('suppliers');
         Route::get('/suppliers_edit/{id}', 'Admin\SuppliersController@edit');
         Route::post('/suppliers_update', 'Admin\SuppliersController@update');
 
@@ -71,12 +71,12 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('/finder','Admin\ProductController@finder');//пои сковик товаров по имени
 
-        Route::get('/orders/{id?}', 'Admin\OrderController@index');
+        Route::get('/orders', 'Admin\OrderController@index')->name('orders');
         Route::get('/orderInfo/{id}', 'Admin\OrderController@orderInfo');
         Route::post('/deleteProductFromOrder','Admin\OrderController@deleteOrderDetail');//удаление товара из заказа передавать id из orderdetails
         Route::post('/deleteOrder','Admin\OrderController@deleteOrder');//удаление всего заказа передавать id заказа
         Route::post('/addOrderDetail','Admin\OrderController@addOrderDetail');// добавление товара(ов) в заказ, передавать: id заказа массив id товаров, колличества товаров
-
+        Route::post('/orderUpdate', 'Admin\OrderController@update');
 
         Route::get('/products/{page_num?}', 'Admin\ProductController@index');//вывод списка всех товаров
         Route::get('/product', 'ProductController@create');

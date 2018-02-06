@@ -17,7 +17,13 @@
                                     <h4 class="title">Поставщика - <b>Dakota</b></h4>
                                 </div>
                                 <div class="content">
-                                    <form>
+                                    @if($errors->any())
+                                        <h4 class="back--error">{{$errors->first()}}</h4>
+                                    @endif
+                                    <form method="POST" action="{{url('suppliers_update')}}">
+
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="id" value="{!! $manufacturer -> id !!}">
                                         <div class="row">
                                             <div class="col-md-1">
                                                 <div class="form-group">
@@ -30,14 +36,14 @@
                                                 <div class="form-group">
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">Улица</label>
-                                                        <input class="form-control border-input" type="text" placeholder="Улица" data-userEmail="stree" value="{{$manufacturer -> street}}">
+                                                        <input class="form-control border-input" name="street" type="text" placeholder="Улица" data-userEmail="stree" value="{{$manufacturer -> street}}">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Номер контейнера</label>
-                                                    <input class="form-control border-input" type="text" placeholder="10E" data-userContainer="containerNam" value="{{$manufacturer -> numberContainer}}">
+                                                    <input class="form-control border-input" name="numberContainer" type="text" placeholder="10E" data-userContainer="containerNam" value="{{$manufacturer -> numberContainer}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -46,13 +52,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Имя</label>
-                                                    <input class="form-control border-input" type="text" placeholder="Имя" data-userName="userName" value="{{$manufacturer -> firstName}}">
+                                                    <input class="form-control border-input" name="firstName" type="text" placeholder="Имя" data-userName="userName" value="{{$manufacturer -> firstName}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Фамилия</label>
-                                                    <input class="form-control border-input" type="text" placeholder="Фамилия" data-userLastName="userLastName" value="{{$manufacturer -> secondName}}">
+                                                    <input class="form-control border-input" name="secondName" type="text" placeholder="Фамилия" data-userLastName="userLastName" value="{{$manufacturer -> secondName}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -61,14 +67,14 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Телефон</label>
-                                                    <input class="form-control border-input" placeholder="Телефон" data-userPhone="userPhone" type="text" value="{{$manufacturer -> phone}}">
+                                                    <input class="form-control border-input" name="phone" placeholder="Телефон" data-userPhone="userPhone" type="text" value="{{$manufacturer -> phone}}">
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Скидка</label>
-                                                    <input class="form-control border-input" placeholder="Скидка" data-userDiscount="userCity" type="text" value="{{$manufacturer -> discount}}">
+                                                    <label>Скидка (записывается в формате **% или **грн, например: 10% и 123 грн)</label>
+                                                    <input class="form-control border-input" name="discount" placeholder="Скидка" data-userDiscount="userCity" value="{{$manufacturer -> discount}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -90,7 +96,7 @@
                                                 </div>
 
                                                 <div class="form-group currency">
-                                                    <input class="form-control border-input" type="number" name="exchange_rate" placeholder="{{$manufacturer -> koorse}}">
+                                                    <input class="form-control border-input" type="number" name="koorse" placeholder="{{$manufacturer -> koorse}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -131,5 +137,5 @@
 
 @section('edit_userLib')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
-    <script src="{{url('js/admin/user_edit.js')}}"></script>
+    {{--<script src="{{url('js/admin/user_edit.js')}}"></script>--}}
 @endsection

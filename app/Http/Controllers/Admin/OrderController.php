@@ -11,10 +11,9 @@ use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
-    public function index($page_num = 1, $count_on_page = 14){
+    public function index(){
 
-        $orders = Order::skip($count_on_page * ($page_num - 1)) -> take($count_on_page)
-            ->with('details') ->groupBy('id') ->  get();
+        $orders = Order::with('details') ->groupBy('id') ->  paginate(14);
 
         foreach ($orders as $order){
 
@@ -26,11 +25,7 @@ class OrderController extends Controller
 
         }
 
-        $all_order_count = Order::count();
-
-        $pagination = ceil($all_order_count/$count_on_page);
-
-        return view('admin.product.orders', compact('orders', 'pagination'));
+        return view('admin.product.orders', compact('orders'));
 
     }
 
@@ -41,6 +36,18 @@ class OrderController extends Controller
         //dd($order);
 
         return view('admin.product.orderInfo', compact('order'));
+
+    }
+
+    public function update(Request $request){
+
+        $order = Order::find($request -> id);
+
+        $order -> fill($request -> all());
+
+        $order -> save();
+
+        return redirect()->route('orders');
 
     }
 
