@@ -227,7 +227,8 @@ ul {
   min-height: 480px;
   position: absolute;
   margin: 0 auto;
-  border: 2px solid #2b618f !important;
+  border: 2px solid #eeeeee !important;
+  /*box-shadow: 0 8px 25px 0 #dedede;*/
   z-index: 90;
   width: 100%;
   height: 100%;

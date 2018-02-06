@@ -16,13 +16,14 @@ class CsvOrderController extends Controller
 
     public function getCsvFileWithOrdersToSend(Request $request){
 
+
         $orders = Order::where('created_at', '>', $request -> dataFrom)
             -> where('created_at', '<', $request -> dataTo) -> whereIn('paid', [0,3])
             -> get();
 
         $data = [];
 
-        if($orders) {
+        if($orders->count() > 0) {
             foreach ($orders as $order) {
 
                 $data[$order->shipping_method][] = [
@@ -62,7 +63,7 @@ class CsvOrderController extends Controller
 
 
             })->export('xls');
-        }else return response('not find dates');
+        }else return redirect()->back()->withInput()->withErrors(['msg'=> 'Not find items']);
 
 
     }
@@ -74,7 +75,7 @@ class CsvOrderController extends Controller
             -> where('created_at', '<', $request -> dataTo) -> whereIn('paid', [0,3])
             -> get();
 
-        if($orders) {
+        if($orders->count() > 0) {
 
             $data = [];
 
@@ -196,7 +197,7 @@ class CsvOrderController extends Controller
 
             })->export('xls');
 
-        }else return response('not find dates');
+        }else return redirect()->back()->withInput()->withErrors(['msg'=>'Not find items']);
 
     }
 
@@ -211,7 +212,7 @@ class CsvOrderController extends Controller
 
         $data = [];
 
-        if($orders) {
+        if($orders->count() > 0) {
 
             foreach ($orders as $order) {
 
@@ -304,7 +305,7 @@ class CsvOrderController extends Controller
 
 
             })->export('xls');
-        }else return response('not find dates');
+        }else return redirect()->back()->withInput()->withErrors(['msg' => 'Not find items']);
 
     }
 }

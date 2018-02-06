@@ -56,27 +56,81 @@ $('.remove__order').on('click', function () {
     });
 });
 
+function getSortItem(event) {
+    if(Number (event.target.value) === 2){
+        $('.image__Option').css('display', 'block')
+    }
+    else{
+        $('.image__Option').css('display', 'none')
+    }
+}
+
 $('.downloadButton button').on('click', function () {
     var dataFrom = $('#from'),
         dataTo = $('#to'),
-        sortOption,
-        withPhoto;
+        sortOption = Number ($('.sorting__Option option:selected').val()),
+        withPhoto = Number ($('.image__Option option:selected').val());
 
-    if(dataFrom.length > 0 && dataTo.length > 0){
-        dataFrom.css('border', 'none');
-        dataTo.css('border', 'none');
+    console.log(sortOption, withPhoto);
+    if(sortOption === 1 && withPhoto === 1){
+        if(dataFrom.length > 0 && dataTo.length > 0){
+            dataFrom.css('border', 'none');
+            dataTo.css('border', 'none');
 
-        $.ajax({
-            method: 'GET',
-            data: {'_token': $('meta[name="csrf-token"]').attr('content'), dataFrom: dataFrom.val(), dataTo: dataTo.val()},
-            success: function(){
-                window.location = $('meta[name="root-site"]').attr('content') + '/csvDownloadOrdersToSends?dataFrom='+dataFrom.val()+'&dataTo='+dataTo.val();
-            }
-        });
+            $.ajax({
+                method: 'GET',
+                data: {'_token': $('meta[name="csrf-token"]').attr('content'), dataFrom: dataFrom.val(), dataTo: dataTo.val()},
+                success: function(){
+                    window.location = $('meta[name="root-site"]').attr('content') + '/csvDownloadOrdersToSend?dataFrom='+dataFrom.val()+'&dataTo='+dataTo.val();
+                }
+            });
+        }
+
+        else{
+            dataFrom.css('border', '1px solid red');
+            dataTo.css('border', '1px solid red');
+        }
     }
 
-    else{
-        dataFrom.css('border', '1px solid red');
-        dataTo.css('border', '1px solid red');
+    if(sortOption === 2 && withPhoto === 1){
+        if(dataFrom.length > 0 && dataTo.length > 0){
+            dataFrom.css('border', 'none');
+            dataTo.css('border', 'none');
+
+            $.ajax({
+                method: 'GET',
+                data: {'_token': $('meta[name="csrf-token"]').attr('content'), dataFrom: dataFrom.val(), dataTo: dataTo.val()},
+                success: function(){
+                    window.location = $('meta[name="root-site"]').attr('content') + '/csvDownloadOrders?dataFrom='+dataFrom.val()+'&dataTo='+dataTo.val();
+                }
+            });
+        }
+
+        else{
+            dataFrom.css('border', '1px solid red');
+            dataTo.css('border', '1px solid red');
+        }
     }
+
+
+    if(sortOption === 2 && withPhoto === 2){
+        if(dataFrom.length > 0 && dataTo.length > 0){
+            dataFrom.css('border', 'none');
+            dataTo.css('border', 'none');
+
+            $.ajax({
+                method: 'GET',
+                data: {'_token': $('meta[name="csrf-token"]').attr('content'), dataFrom: dataFrom.val(), dataTo: dataTo.val()},
+                success: function(){
+                    window.location = $('meta[name="root-site"]').attr('content') + '/csvDownloadOrdersImages?dataFrom='+dataFrom.val()+'&dataTo='+dataTo.val();
+                }
+            });
+        }
+
+        else{
+            dataFrom.css('border', '1px solid red');
+            dataTo.css('border', '1px solid red');
+        }
+    }
+
 });

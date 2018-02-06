@@ -30,9 +30,9 @@
                                 <form class="product-sort-by pull-right col-xl-5 col-md-12 col-sm-12 col-xs-12">
                                     <label for="product-show">на странице по: </label>
                                     <select name="product-show" id="product-show" class="nice-select-box" data-set="selectCount">
-                                        <option value="12" selected="selected">12</option>
-                                        <option value="20">20</option>
-                                        <option value="28">28</option>
+                                        <option value="24" selected="selected">24</option>
+                                        <option value="36">36</option>
+                                        <option value="48">48</option>
                                     </select>
                                     <span>товаров</span>
                                 </form>

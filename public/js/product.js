@@ -1,5 +1,5 @@
 'use strict';
-var cartArray = sessionStorage.getItem('Cart_data'), data = [];
+var cartArray = localStorage.getItem('Cart_data'), data = [];
 cartArray = JSON.parse(cartArray);
 
 $.ajax({
@@ -71,7 +71,7 @@ function checkPrices() {
 
 function cartCheck() {
     var prodid = Number ($('[data-prodid]')[0].dataset.prodid);
-    var cartArray = sessionStorage.getItem('Cart_data');
+    var cartArray = localStorage.getItem('Cart_data');
     cartArray = JSON.parse(cartArray);
     if (cartArray !== null) {
         for (var i = 0; i < cartArray[0].row.length; i++) {

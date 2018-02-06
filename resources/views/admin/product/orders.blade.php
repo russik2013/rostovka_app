@@ -17,6 +17,9 @@
 
                         <div class="content table-responsive table-full-width">
                             <div class="col-md-12 pull-left datePicker">
+                                @if($errors->any())
+                                    <h4 class="back--error">{{$errors->first()}}</h4>
+                                    @endif
                                 <span class="min--title pull-left col-md-12">Скачать список заказов за период (PDF)</span>
 
                                 <div class="col-md-5 datePicker__Block col-xs-12 col-sm-12">
@@ -27,12 +30,12 @@
                                 </div>
 
                                 <div class="col-md-6 col-xs-12 col-sm-12">
-                                    <select class="sorting__Option" name="options">
+                                    <select class="sorting__Option" name="options" onchange="getSortItem(event)">
                                         <option value="1">Респределить по доставк</option>
                                         <option value="2">Респределить по производителю</option>
                                     </select>
 
-                                    <select class="image__Option" name="options">
+                                    <select class="image__Option" name="options" style="display: none">
                                         <option value="1">Без фотографий</option>
                                         <option value="2">С фотографиями</option>
                                     </select>
@@ -76,9 +79,9 @@
                                         <td @if($order ->paid == 0 || $order ->paid == 2) class="paid--Status" @else @endif >@if($order ->paid == 0 || $order ->paid == 2) да @else нет @endif</td>
                                         <td>{{$order -> created_at}}</td>
                                         <td class="options">
-                                            <a href="#!">
-                                                <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
-                                            </a>
+                                            {{--<a href="#!">--}}
+                                                {{--<i class="ti-printer" data-toggle="tooltip" title="PDF"></i>--}}
+                                            {{--</a>--}}
                                             <a href="{{url('orderInfo/'.$order -> id)}}">
                                                 <i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i>
                                             </a>

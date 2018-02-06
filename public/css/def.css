@@ -1796,7 +1796,7 @@ form label.error {
 /*------------------------------------------------------------------*/
 .header-topbar {
     display: table;
-    background: #2c628f;
+    background: rgb(22, 102, 175);
     color: #fff;
     width: 100%;
     font-size: 12px;
@@ -2127,8 +2127,8 @@ form label.error {
 
 .navigation-menu ul > li > a {
     font-family: 'Open Sans';
-    font-weight: 700;
-    font-size: 13px;
+    font-weight: 600;
+    font-size: 15px;
     padding: 29px 14px;
     display: block;
 }
@@ -3456,7 +3456,7 @@ img.tp-caption {
 }
 
 .ui-slider-range, .ui-slider-handle {
-    background: #2c628f;
+    background: rgb(22, 102, 175);
     position: absolute;
 }
 
@@ -4568,7 +4568,7 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 }
 
 .product-item .product-button {
-    background: #2b618f none repeat scroll 0 0;
+    background: rgb(22, 102, 175) none repeat scroll 0 0;
     box-shadow: 0 0 5px rgba(0,0,0,0.08);
     -moz-box-shadow: 0 0 5px rgba(0,0,0,0.08);
     -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.08);
@@ -6070,7 +6070,10 @@ ul#shipping_method {
 .checkbox label {
     display: inline-block;
     position: relative;
-    padding-left: 5px; }
+    padding-left: 5px;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
 .checkbox label::before {
     content: "";
     display: inline-block;
@@ -6192,7 +6195,7 @@ ul#shipping_method {
 }
 
 .sidebar-icon-nav .dropdownCart .button{
-    background: #2c628f;
+    background: rgb(22, 102, 175);
     font-size: 13px;
     text-transform: uppercase;
     color: #fff;
@@ -6594,7 +6597,7 @@ td.price span span{
 .dropdownCart{z-index: 9999;}
 
 .poduct--info a, .dropdownCart a{
-    color: #2c628f;
+    color: rgb(22, 101, 175);
     font-weight: 600;
 }
 
@@ -6627,8 +6630,8 @@ li a.enabled{
     margin: 0 3px 0 3px;
 }
 #pagination a.current, #pagination a.current:hover {
-    border: 1px solid #2C628F;
-    background-color: #2C628F;
+    border: 1px solid rgb(22, 102, 175);
+    background-color: rgb(22, 102, 175);
     color: #fff;
 }
 .previous_Item, .next_Item{
@@ -7044,11 +7047,18 @@ fieldset input:hover{
 }
 
 .error--message{
-    text-align: center;
-    float: left;
+    position: relative;
+    top: -30px;
+    left: 50%;
+    z-index: 999;
+    background: #c51313;
+    transform: translate(-50%);
     width: 100%;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-top: 10%;
+    padding-top: 10px;
+    padding-bottom: 7px;
+    color: #fff;
+    padding-right: 30px;
     font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
 }
