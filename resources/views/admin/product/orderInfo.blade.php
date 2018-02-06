@@ -141,6 +141,8 @@
                                                 </table>
                                             </div>
                                         </div>
+
+                                        <input class="submit--save" type="submit" value="Сохранить">
                                     </div>
                                 </div>
                             </div>
