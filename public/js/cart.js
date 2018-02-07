@@ -311,7 +311,8 @@ $(document).on('click', '.Cart_Button_Plus', function () {
 $(document).on('click', '.Cart_Button_Minus', function () {
     var target_dataset, flag = false, minus = true;
 
-    if($(this)[0].parentNode.parentNode.parentNode.offsetParent.dataset.id === undefined){
+    console.log($(this)[0].parentNode.parentNode.parentNode.offsetParent.dataset.id);
+    if($(this)[0].parentNode.parentNode.parentNode.offsetParent.dataset.id === undefined) {
         target_dataset = $(this)[0].parentElement.parentElement.offsetParent.dataset.set;
         flag = false;
         conversion(target_dataset, flag, minus);
@@ -319,7 +320,7 @@ $(document).on('click', '.Cart_Button_Minus', function () {
         $.find('[data-set="totalCost"]')[0].innerHTML = Cart_data[0].cartProducts_summ + ' грн';
     }
 
-    else{
+    else {
         target_dataset = Number ($(this)[0].parentElement.parentElement.parentElement.dataset.set);
         flag = true;
         conversion(target_dataset, flag, minus);

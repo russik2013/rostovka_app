@@ -90,7 +90,7 @@
                                 <tbody>
 
                                 @foreach($products as $product)
-                                    <tr data-id="{{$product -> article}}">
+                                    <tr data-id="{{$product -> id}}">
                                         <td class="articul productsArt"><input value="{{$product -> article}}" disabled></td>
                                         <td>{{$product -> name}}</td>
                                         <td>{{$product -> category -> name}}</td>
