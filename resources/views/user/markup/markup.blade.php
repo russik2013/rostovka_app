@@ -188,6 +188,7 @@
 @yield('mainPage')
 @yield('billing')
 @yield('product')
+@yield('search_result')
 <!-- End Page Content -->
     <!-- End Page Content Wraper -->
 
