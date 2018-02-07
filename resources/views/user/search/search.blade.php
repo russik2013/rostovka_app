@@ -4,7 +4,8 @@
         <section class="content-page">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12 push-md-2 product--block">
+                    <div class="col-md-12 product--block">
+                        <h3 style="text-align: center; padding-top: 20px; padding-bottom: 20px">Результат поиска</h3>
                         <div class="row product-list-item product-list-view">
                             <ul class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine">
                                 <li class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item" data-id=${real_id}>
