@@ -21,7 +21,7 @@ Route::get('/', function () {
 })->name('root');
 
 
-Route::get('/login', 'HomeController@login');
+Route::get('/login', 'HomeController@login') -> name("login");
 Route::post('/login', 'HomeController@auth');
 
 
