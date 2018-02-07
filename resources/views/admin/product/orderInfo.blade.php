@@ -116,6 +116,7 @@
 
                                                               <option @if($order -> payment_method == "privatBank_cart") selected @endif>На карту "ПриватБанка"</option>
                                                               <option @if($order -> payment_method == "hand_in_cash") selected @endif>Наличными</option>
+                                                              <option @if($order -> payment_method == "c_o_d") selected @endif>Наложенный платеж</option>
 
 
                                                             </select>

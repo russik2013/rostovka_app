@@ -19,22 +19,16 @@ class ClientController extends Controller
 
     public function update(Request $request){
 
-        $rules = [
-            'email' => 'required|email|valid_email',
-            'phone' => 'required|numeric|valid_phone',
-            'password' => 'required'];
-
-        $validator = Validator::make($request->all(),$rules);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
         $client = User::find(Auth::user()->id);
 
         $client -> fill($request -> all());
 
+        if($request -> password)
+            $client -> password = bcrypt($request -> password);
+
         $client -> save();
+
+        return redirect() -> back();
 
     }
 }

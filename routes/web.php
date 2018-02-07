@@ -126,6 +126,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/logout', 'HomeController@logout');
 
     Route::get('/userinfo', 'ClientController@index');
+    Route::post('/userUpdate', "ClientController@update");
 
 
 
