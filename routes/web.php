@@ -50,6 +50,12 @@ Route::get('/cart', function () {
 //    return view('admin.product.pdoructadd');
 //});
 
+Route::get('showFinderFinal', function () {
+
+    return view('user.search.search');
+
+});
+
 
 //Route::get('/suppliers', function () {
 //    return view('admin.product.suppliers');

@@ -115,14 +115,40 @@ function getSelect(e) {
         $('.file--uploader').css('display', 'none');
         $('.xsl--uploader').css('display', 'none');
         $('button.upload').css('display', 'none');
-        $('.header--add--buttons').append("<button class='download col-md-4 col-sm-12 col-xs-12'>Скачать</button>");
-        $('.header--add--buttons').append("<button class='download for_Supliers col-md-4 col-sm-12 col-xs-12'>Скачать для поставщиков</button>");
+        $('.header--add--buttons').append("<button class='download allProducts col-md-4 col-sm-12 col-xs-12' onclick='getUserAllProducts()'>Скачать</button>");
+        $('.header--add--buttons').append("<button class='download for_Supliers col-md-4 col-sm-12 col-xs-12' onclick='getManufacturesAllProducts()'>Скачать для поставщиков</button>");
         $('select.manufacturer_Options').css('display', 'block');
         $('.seasone_Options').css('display', 'block');
         $('.type_Options').css('display', 'block');
         $('.edit').remove();
         $('.remove').remove();
     }
+}
+
+function getUserAllProducts() {
+    $.ajax({
+        method: 'GET',
+        data: {'_token': $('meta[name="csrf-token"]').attr('content')},
+        manufacturer_id: $('.sorting__Option.manufacturer_Options option:selected').val(),
+        type_id: $('.sorting__Option.seasone_Options option:selected').val(),
+        season_id: $('.sorting__Option.type_Options option:selected').val(),
+        success: function(){
+            window.location = $('meta[name="root-site"]').attr('content') + '/csvDownload?manufacturer_id='+ $('.sorting__Option.manufacturer_Options option:selected').val() +'&season_id='+ $('.sorting__Option.seasone_Options option:selected').val() + '&type_id='+ $('.sorting__Option.type_Options option:selected').val();
+        }
+    });
+}
+
+function getManufacturesAllProducts() {
+    $.ajax({
+        method: 'GET',
+        data: {'_token': $('meta[name="csrf-token"]').attr('content')},
+            manufacturer_id: $('.sorting__Option.manufacturer_Options option:selected').val(),
+            type_id: $('.sorting__Option.seasone_Options option:selected').val(),
+            season_id: $('.sorting__Option.type_Options option:selected').val(),
+        success: function(){
+            window.location = $('meta[name="root-site"]').attr('content') + '/csvDownloadOrdersToManufacturer?manufacturer_id='+ $('.sorting__Option.manufacturer_Options option:selected').val() +'&season_id='+ $('.sorting__Option.seasone_Options option:selected').val() + '&type_id='+ $('.sorting__Option.type_Options option:selected').val();
+        }
+    });
 }
 
 $(document).ready(function () {

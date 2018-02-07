@@ -1,4 +1,4 @@
-var intElemOffsetHeight = $( window ).height() - 100;
+var intElemOffsetHeight = $( window ).height();
 
 $(window).resize(function() {
     intElemOffsetHeight = $( window ).height();

@@ -9,17 +9,6 @@ function getData() {
         Cart_template(Cart_data);
     }
 }
-
-$(document).ready(function () {
-    for (var i = 0; i < Cart_data[0].row.length; i++){
-        if(Cart_data[0].row[i].box__price === Cart_data[0].row[i].rostovka__price){
-            $('[data-select-id="'+ Number (Cart_data[0].row[i].productID) +'"]').remove();
-            $('[product-id="'+ Number (Cart_data[0].row[i].productID) +'"] .type .select-style')[0].innerHTML =
-                "<div class='form-group select-style'><input class='form-control' type=\"number\" placeholder=\"в ящике\" disabled></div>"
-        }
-    }
-});
-
 getData();
 
 if(Cart_data[0].row.length === 0){
@@ -38,7 +27,7 @@ if(Cart_data[0].row.length < 5){
     var intElemOffsetHeight = $( window ).height();
     setHeight(intElemOffsetHeight);
     $(window).resize(function() {
-        intElemOffsetHeight = $( window ).height() - 200;
+        intElemOffsetHeight = $( window ).height() + 200;
         setHeight(intElemOffsetHeight);
     });
     function setHeight(intElemOffsetHeight) {
@@ -52,6 +41,14 @@ function Cart_template(Cart_data) {
         $.tmpl(templateBody, Cart_data).appendTo('#cartTableInner');
 
         getSelectedValue();
+
+        for (var i = 0; i < Cart_data[0].row.length; i++){
+            if(Cart_data[0].row[i].box__price === Cart_data[0].row[i].rostovka__price){
+                $('[data-select-id="'+ Cart_data[0].row[i].productID +'"]').remove();
+                $('[product-id="'+ Cart_data[0].row[i].productID +'"] .type .select-style')[0].innerHTML =
+                    "<div class='form-group select-style'><input class='form-control' type=\"number\" placeholder=\"в ящике\" disabled></div>"
+            }
+        }
     });
 }
 

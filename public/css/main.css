@@ -588,9 +588,31 @@ input::-webkit-inner-spin-button {
   color: #000 !important;
 }
 @media (min-width: 280px) and (max-width: 1200px) {
+  .logo, .move--to--cart{display: none !important;}
+  .header-rightside-nav{width: 100%}
+  .col-md-10.push-md-2.product--block{
+    width: 100%;
+    padding: 0;
+    max-width: 100%;
+    left: 0;
+    flex: 100%;
+  }
   .product-sort-by,
   .product-filter-content form {
     margin-bottom: 2em;
+  }
+  .categoryPage .product-item .prod--innerSide{
+    pointer-events: all;
+  }
+  .input-group.search--box{
+    max-width: 100px;
+  }
+  .content-page{
+    height: auto !important;
+  }
+
+  .sidebar-icon-nav .dropdownCart .title{
+    text-align: left;
   }
   .goods_amount {
     display: block;
@@ -601,6 +623,10 @@ input::-webkit-inner-spin-button {
     float: none;
     padding-left: 14px !important;
     padding-top: 7px !important;
+  }
+  .categoryPage .product-item{
+    pointer-events:none;
+    border: none;
   }
   .larger {
     width: 100%;
@@ -633,10 +659,10 @@ input::-webkit-inner-spin-button {
     visibility: visible;
     border-radius: 20px;
     position: absolute;
-    transition: all 0.3s ease 0s;
-    -moz-transition: all 0.3s ease 0s;
-    -webkit-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
+    transition: none;
+    -moz-transition: none;
+    -webkit-transition: none;
+    -o-transition: none;
     border: 1px solid #eeeeee;
     transform: translateX(-50%);
     -moz-transform: translateX(-50%);
@@ -646,6 +672,7 @@ input::-webkit-inner-spin-button {
     display: table;
     text-align: center;
     border: none;
+    pointer-events: all;
   }
 
   .mainPage .product-detail .item-price{
@@ -712,7 +739,15 @@ input::-webkit-inner-spin-button {
   }
 
   .categoryPage .product-item:hover .product-button{
-    bottom: 10px;
+    bottom: 67px;
+    position: absolute;
+    display: inline-block;
+    left: 49%;
+    margin: 0 auto;
+    text-align: center;
+    transform: translate(-50%);
+    pointer-events: all;
+    transition: none !important;
   }
 
   .categoryPage .product-filter-content{

@@ -83,8 +83,8 @@ $(document).ready(function() {
                         message: 'Введите ваш номер телефона'
                     },
                     stringLength: {
-                        min: 10,
-                        message: 'Номер телефона вводите без +38'
+                        min: 8,
+                        message: 'Введите корректный номер телефон'
                     },
                     regexp: {
                         regexp: /^[0-9\.]+$/,

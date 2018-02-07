@@ -10,4 +10,10 @@ class OrderDetails extends Model{
         'full_description','discount','accessibility','type_name','season_name','size_name','order_id','order_id',
         'tovar_in_order_count','this_tovar_in_order_price', 'image'
     ];
+
+    public function product(){
+
+        return $this -> hasOne('App\Product','article','article');
+
+    }
 }

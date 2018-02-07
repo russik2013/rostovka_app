@@ -13,178 +13,176 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="col-lg-12 col-md-12">
-                            <div class="card">
-                                <div class="row">
-                                    <div class="content">
-                                        <form method="POST" action="{{url('orderUpdate')}}">
+                        <div class="row">
+                            <div class="content">
+                                <form method="POST" action="{{url('orderUpdate')}}">
 
-                                            {{csrf_field()}}
-                                            <input type="hidden" name="id" value="{!! $order -> id !!}">
+                                    {{csrf_field()}}
+                                    <input type="hidden" name="id" value="{!! $order -> id !!}">
+                                    <div class="col-md-5">
+                                        <div class="header">
+                                            <h4 class="title">Информация о заказе</h4>
+                                        </div>
+                                        <div class="col-md-12 orderInfo__input">
                                             <div class="col-md-5">
-                                                <div class="header">
-                                                    <h4 class="title">Информация о заказе</h4>
+                                                <label>Статус</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="form-group">
+                                                    <select class="form-control border-input" name="paid">
+                                                        <option value="0" @if($order -> paid == 0) selected @endif>Новый</option>
+                                                        <option value="1" @if($order -> paid == 1) selected @endif>Оплачен</option>
+                                                        <option value="2" @if($order -> paid == 2) selected @endif>Отправлен</option>
+                                                        <option value="3" @if($order -> paid == 3) selected @endif>В обработке</option>
+                                                        <option value="4" @if($order -> paid == 4) selected @endif>Не собирать</option>
+                                                    </select>
                                                 </div>
-                                                <div class="col-md-12 orderInfo__input">
-                                                    <div class="col-md-5">
-                                                        <label>Статус</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <div class="form-group">
-                                                            <select class="form-control border-input status--select" name="paid">
-                                                                <option value="0" @if($order -> paid == 0) selected @endif>Новый</option>
-                                                                <option value="1" @if($order -> paid == 1) selected @endif>Оплачен</option>
-                                                                <option value="2" @if($order -> paid == 2) selected @endif>Отправлен</option>
-                                                                <option value="3" @if($order -> paid == 3) selected @endif>В обработке</option>
-                                                                <option value="4" @if($order -> paid == 4) selected @endif>Не собирать</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 orderInfo__input">
+                                            <div class="col-md-5">
+                                                <label>Имя</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="form-group">
+                                                    <input class="form-control border-input" name="first_name" type="text" value="{{$order -> first_name}}">
                                                 </div>
+                                            </div>
+                                        </div>
 
-                                                <div class="col-md-12 orderInfo__input">
-                                                    <div class="col-md-5">
-                                                        <label>Имя</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <div class="form-group">
-                                                            <input class="form-control border-input" name="first_name" type="text" value="{{$order -> first_name}}">
-                                                        </div>
-                                                    </div>
+                                        <div class="col-md-12 orderInfo__input">
+                                            <div class="col-md-5">
+                                                <label>Фамилия</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="form-group">
+                                                    <input class="form-control border-input" name="last_name" type="text" value="{{ $order -> last_name}}">
                                                 </div>
+                                            </div>
+                                        </div>
 
-                                                <div class="col-md-12 orderInfo__input">
-                                                    <div class="col-md-5">
-                                                        <label>Фамилия</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <div class="form-group">
-                                                            <input class="form-control border-input" name="last_name" type="text" value="{{ $order -> last_name}}">
-                                                        </div>
-                                                    </div>
+                                        <div class="col-md-12 orderInfo__input">
+                                            <div class="col-md-5">
+                                                <label>Телефон</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="form-group">
+                                                    <input class="form-control border-input" name="phone" type="number" value="{{$order ->  phone}}">
                                                 </div>
+                                            </div>
+                                        </div>
 
-                                                <div class="col-md-12 orderInfo__input">
-                                                    <div class="col-md-5">
-                                                        <label>Телефон</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <div class="form-group">
-                                                            <input class="form-control border-input" name="phone" type="number" value="{{$order ->  phone}}">
-                                                        </div>
-                                                    </div>
+                                        <div class="col-md-12 orderInfo__input">
+                                            <div class="col-md-5">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="form-group">
+                                                    <input class="form-control border-input" name="email" type="text" value="{{$order ->  email}}">
                                                 </div>
+                                            </div>
+                                        </div>
 
-                                                <div class="col-md-12 orderInfo__input">
-                                                    <div class="col-md-5">
-                                                        <label>Email</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <div class="form-group">
-                                                            <input class="form-control border-input" name="email" type="text" value="{{$order ->  email}}">
-                                                        </div>
-                                                    </div>
+                                        <div class="col-md-12 orderInfo__input">
+                                            <div class="col-md-5">
+                                                <label>Способ доставки</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="form-group">
+
+                                                    <select name="shipping_method" class="form-control border-input delivery--select">
+                                                        <option value="new_post" @if($order ->shipping_method == "new_post") selected @endif>Новая почта</option>
+                                                        <option value="delivery_method" @if($order ->shipping_method == "delivery_method")selected @endif>Delivery</option>
+                                                        <option value="avtolux_method" @if($order ->shipping_method == "avtolux_method")selected @endif>Автолюкс</option>
+                                                        <option value="intime_method" @if($order ->shipping_method == "intime_method")selected @endif>InTime</option>
+                                                        <option value="bus_method" @if($order ->shipping_method == "bus_method")selected @endif>Подвести к автобусу</option>
+                                                        <option value="self_pickup" @if($order ->shipping_method == "self_pickup")selected @endif>Самовывоз</option>
+                                                        {{--"new_post"--}}
+                                                    </select>
                                                 </div>
+                                            </div>
+                                        </div>
 
-                                                <div class="col-md-12 orderInfo__input">
-                                                    <div class="col-md-5">
-                                                        <label>Способ доставки</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <div class="form-group">
-
-                                                            <select name="shipping_method" class="form-control border-input delivery--select">
-                                                                <option value="new_post" @if($order ->shipping_method == "new_post") selected @endif>Новая почта</option>
-                                                                <option value="delivery_method" @if($order ->shipping_method == "delivery_method")selected @endif>Delivery</option>
-                                                                <option value="avtolux_method" @if($order ->shipping_method == "avtolux_method")selected @endif>Автолюкс</option>
-                                                                <option value="intime_method" @if($order ->shipping_method == "intime_method")selected @endif>InTime</option>
-                                                                <option value="bus_method" @if($order ->shipping_method == "bus_method")selected @endif>Подвести к автобусу</option>
-                                                                <option value="self_pickup" @if($order ->shipping_method == "self_pickup")selected @endif>Самовывоз</option>
-                                                                {{--"new_post"--}}
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12 orderInfo__input">
-                                                    <div class="col-md-5">
-                                                        <label>Способ оплаты</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <div class="form-group">
-                                                            <select class="form-control border-input payment--select" name="payment_method">
+                                        <div class="col-md-12 orderInfo__input">
+                                            <div class="col-md-5">
+                                                <label>Способ оплаты</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="form-group">
+                                                    <select class="form-control border-input payment--select" name="payment_method">
 
                                                               <option @if($order -> payment_method == "privatBank_cart") selected @endif>На карту "ПриватБанка"</option>
                                                               <option @if($order -> payment_method == "hand_in_cash") selected @endif>Наличными</option>
                                                               <option @if($order -> payment_method == "c_o_d") selected @endif>Наложенный платеж</option>
 
 
-                                                            </select>
-                                                        </div>
-                                                    </div>
+                                                    </select>
                                                 </div>
+                                            </div>
+                                        </div>
 
-                                                <div class="col-md-12 orderInfo__input">
-                                                    <div class="col-md-5">
-                                                        <label>Адрес доставки</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <div class="form-group">
-                                                            <input class="form-control border-input" name="address" type="text" value="{{$order -> address}}">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12 orderInfo__input">
-                                                    <div class="col-md-5">
-                                                        <label>Номер отделения компании перевозчика</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <div class="form-group">
-                                                            <input class="form-control border-input" name="info" type="text" value="{{$order -> info}}">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                        <div class="col-md-12 orderInfo__input">
+                                            <div class="col-md-5">
+                                                <label>Адрес доставки</label>
                                             </div>
                                             <div class="col-md-7">
-                                                <div class="header col-md-12">
-                                                    <div class="col-md-12">
-                                                    <h4 class="title col-md-4">Продукты</h4>
-                                                        <div class="col-md-4 addProduct pull-right">
-                                                            <i class="fa fa-plus-square pull-right" data-toggle="tooltip" data-target="#productsModal" title="Добавить товар"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12 product--list">
-
-                                                    <table class="table table-condensed">
-                                                        <tbody>
-
-                                                        @foreach($order -> details as $detail)
-                                                            <tr data-id="{{$detail -> id}}">
-                                                                <td><img src="{{asset('image/products/'.$detail -> image)}}"></td>
-                                                                <td>{{$detail -> article}}</td>
-                                                                <td><a href="#!">{{$detail -> tovar_name}}</a></td>
-                                                                <td>{{$detail -> this_tovar_in_order_price}}<span>{{$detail -> currency}}</span></td>
-                                                                <td>@if(($detail -> this_tovar_in_order_price / $detail -> tovar_in_order_count)/ $detail -> prise == $detail -> box_count)
-                                                                        Ящик
-                                                                    @else
-                                                                        Ростовка
-                                                                    @endif
-                                                                </td>
-                                                                <td>{{$detail -> tovar_in_order_count}}</td>
-                                                                <td><i class="removePrudct table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></td>
-                                                            </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
+                                                <div class="form-group">
+                                                    <input class="form-control border-input" name="address" type="text" value="{{$order -> address}}">
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <input class="submit--save" type="submit" value="Сохранить">
-                                        </form>
+                                        <div class="col-md-12 orderInfo__input">
+                                            <div class="col-md-5">
+                                                <label>Номер отделения компании перевозчика</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="form-group">
+                                                    <input class="form-control border-input" name="info" type="text" value="{{$order -> info}}">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="col-md-7">
+                                        <div class="header col-md-12" style="margin-top: -14px;">
+                                            <div class="col-md-12" style="padding-left: 0">
+                                                <h4 class="title col-md-4" style="padding-left: 0">Продукты</h4>
+                                                <div class="col-md-4 addProduct pull-right">
+                                                    <i class="fa fa-plus-square pull-right" data-toggle="tooltip" data-target="#productsModal" title="Добавить товар"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 product--list">
+
+                                            <table class="table table-condensed">
+                                                <tbody>
+
+                                                @foreach($order -> details as $detail)
+
+
+                                                    <tr data-id="{{$detail -> id}}">
+                                                        <td><a href="{{url($detail -> product -> id."/product")}}" target="_blank"><img style="max-width: 90px;" src="{{url('/images/products/'.$detail -> image)}}"></a></td>
+                                                        <td>{{$detail ->  article}}</td>
+                                                        <td><a href="{{url($detail -> product-> id."/product")}}" target="_blank">{{$detail -> tovar_name}}</a></td>
+                                                        <td>{{$detail -> this_tovar_in_order_price}}<span>{{$detail -> currency}}</span></td>
+                                                        <td>@if(($detail -> this_tovar_in_order_price / $detail -> tovar_in_order_count)/ $detail -> prise == $detail -> box_count)
+                                                                Ящик
+                                                            @else
+                                                                Ростовка
+                                                            @endif
+                                                        </td>
+                                                        <td>{{$detail -> tovar_in_order_count}}</td>
+                                                        <td><i class="removePrudct table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <input class="submit--save" type="submit" value="Сохранить">
+                                </form>
                             </div>
                         </div>
                     </div>

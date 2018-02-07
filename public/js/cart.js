@@ -294,33 +294,36 @@ var updPrice = 0, mainPrice = 0, quantity = 0, target, target_id = 0;
 $(document).on('click', '.Cart_Button_Plus', function () {
     var target_dataset, flag = false, minus = false;
 
-    if($(this)[0].parentNode.parentNode.parentNode.offsetParent.dataset.id === undefined){
-        target_dataset = $(this)[0].parentElement.parentElement.offsetParent.dataset.set;
+    if($(this).closest('li').attr('data-id') === undefined){
+        target_dataset = $(this).closest('li').attr('data-id');
         flag = false;
         conversion(target_dataset, flag, minus);
         $.find('[data-set="totalCost"]')[0].innerHTML = Cart_data[0].cartProducts_summ + ' грн';
     }
 
     else{
-        target_dataset = Number ($(this)[0].parentElement.parentElement.parentElement.dataset.set);
+        target_dataset = Number ($(this).closest('li').attr('data-id'));
         flag = true;
         conversion(target_dataset, flag, minus);
+
+        console.log(target_dataset);
     }
 });
 
 $(document).on('click', '.Cart_Button_Minus', function () {
     var target_dataset, flag = false, minus = true;
 
-    if($(this)[0].parentNode.parentNode.parentNode.offsetParent.dataset.id === undefined){
-        target_dataset = $(this)[0].parentElement.parentElement.offsetParent.dataset.set;
+    if($(this).closest('li').attr('data-id') === undefined) {
+        target_dataset = $(this).closest('li').attr('data-id');
         flag = false;
         conversion(target_dataset, flag, minus);
+
 
         $.find('[data-set="totalCost"]')[0].innerHTML = Cart_data[0].cartProducts_summ + ' грн';
     }
 
-    else{
-        target_dataset = Number ($(this)[0].parentElement.parentElement.parentElement.dataset.set);
+    else {
+        target_dataset = Number ($(this).closest('li').attr('data-id'));
         flag = true;
         conversion(target_dataset, flag, minus);
     }
@@ -345,16 +348,20 @@ function conversion(target_dataset, flag, minus) {
             if(Number (target_dataset) === Cart_data[0].row[y].targetID){
                 target_id = y;
                 mainPrice = Cart_data[0].row[y].price;
+                console.log('asdada');
             }
-            if(Cart_data[0].row[target_id].quantity > 1) {
-                Cart_data[0].row[target_id].quantity--;
-            }
+        }
+        if(Cart_data[0].row[target_id].quantity > 1) {
+            Cart_data[0].row[target_id].quantity--;
+            console.log(Cart_data[0].row[target_id].quantity);
         }
 
         if(Cart_data[0].row[target_id].quantityPrice > mainPrice){
             updPrice = Cart_data[0].row[target_id].quantityPrice;
             updPrice -= mainPrice;
+
             Cart_data[0].row[target_id].quantityPrice = updPrice;
+            console.log(updPrice);
         }
         Cart_data[0].row[target_id].quantityPrice = updPrice;
         localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
@@ -377,6 +384,7 @@ function getPrice() {
     }
     Cart_data[0].cartProducts_summ = allPrice;
     localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+
     return allPrice
 }
 
