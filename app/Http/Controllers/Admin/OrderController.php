@@ -31,9 +31,7 @@ class OrderController extends Controller
 
     public function orderInfo($id){
 
-        $order = Order::with('details') -> find($id);
-
-        //dd($order);
+        $order = Order::with('details', 'details.product') -> find($id);
 
         return view('admin.product.orderInfo', compact('order'));
 

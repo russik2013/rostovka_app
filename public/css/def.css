@@ -106,6 +106,12 @@ img {
 
 .cart-price{
     color: #97bf31;
+    max-width: 41px;
+    width: auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-left: 6px;
 }
 
 .overlay-black, .overlay-black20, .overlay-black30, .overlay-black40, .overlay-black60, .overlay-black80, .overlay-black90, .overlay-light, .overlay-light20, .overlay-light40, .overlay-light60, .overlay-light80, .overlay-light90 {
@@ -1877,7 +1883,6 @@ form label.error {
     font-size: 13px;
     font-weight: 400;
     position: absolute;
-    left: -39px;
     width: 180px;
     background: #fff;
     border: 1px solid #eee;
@@ -1885,6 +1890,8 @@ form label.error {
     z-index: 2000;
     list-style: none;
     margin: -4px 0 0 0;
+    left: auto;
+    right: 0;
     padding: 15px;
     text-transform: none;
     box-shadow: 0 0 5px rgba(0,0,0, 0.05);
@@ -2381,7 +2388,7 @@ form label.error {
 
     .header-main.fixed .header-main-inner .sidebar-icon-nav ul li {
         margin-top: 20px;
-        margin-bottom: 19px;
+        margin-bottom: 5px;
         transition: all 0.3s ease 0s;
         -moz-transition: all 0.3s ease 0s;
         -o-transition: all 0.3s ease 0s;
@@ -6173,7 +6180,8 @@ ul#shipping_method {
     box-shadow: 0 0 4px rgba(0,0,0,0.19), 0 3px 6px rgba(0,0,0,0.23);
     margin-top: -2px;
     display: none;
-    top: 65px;
+    margin-top: 8px;
+    bottom: auto;
     right: 0;
 }
 .cartBl{padding-bottom: 20px}

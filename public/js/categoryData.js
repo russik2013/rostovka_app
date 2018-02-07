@@ -195,7 +195,7 @@ function makeData(page_num, count_on_page) {
                 full__price: msg[i].full__price,
                 rostovka__price: msg[i].rostovka__price,
                 real_id: msg[i].id,
-                product_url: msg[i].product_url + '/' + i,
+                product_url: msg[i].product_url , // раньше было так msg[i].product_url + '/' + i
                 size: msg[i].size.name,
                 option_type: 'full__price' // Или full__price или rostovka__price
             };

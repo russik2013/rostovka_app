@@ -8,6 +8,10 @@
         <div class="col-md-12 header">
             <h4 class="title">Список товаров</h4>
         </div>
+
+        @if($errors->any())
+            <h4 class="back--error">{{$errors->first()}}</h4>
+        @endif
         <div class="col-md-12">
             <div class="header--add--buttons col-md-4 col-sm-12 col-xs-12">
                 <select class="sorting__Option col-md-5 col-sm-12 col-xs-12" name="goods">
@@ -84,7 +88,6 @@
                                     <th>Произвоитель</th>
                                     <th>Скидка</th>
                                     <th>Доступность</th>
-                                    <th>Дата создания</th>
                                 </tr>
                                 </thead>
                                 <tbody>

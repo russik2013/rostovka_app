@@ -135,8 +135,8 @@
                                     <div class="cart-title">
                                         <span class="cart-count" data-set="cartCount"></span>
                                         /
-                                        <span class="cart-price closedSidebar strong" data-set="cart-summ"></span>
-                                        <span class="currency-sign">грн</span>
+                                        <span class="currency-sign" style="float: right">грн</span>
+                                        <span class="cart-price closedSidebar strong" data-set="cart-summ" style="float: right"></span>
                                     </div>
                                 </a>
 
