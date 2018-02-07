@@ -63,7 +63,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/suppliers_edit/{id}', 'Admin\SuppliersController@edit');
         Route::post('/suppliers_update', 'Admin\SuppliersController@update');
 
-        Route::get('/admin_index', 'Admin\HomeController@index');
+        Route::get('/admin_index', 'Admin\HomeController@index') -> name("adminIndex");
         Route::get('/user_edit/{id}', 'Admin\HomeController@editClient');
         Route::post('/user_delete/{id}', 'Admin\HomeController@deleteClient');
         Route::post('/user_update', 'Admin\HomeController@updateClient');
@@ -78,7 +78,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/addOrderDetail','Admin\OrderController@addOrderDetail');// добавление товара(ов) в заказ, передавать: id заказа массив id товаров, колличества товаров
         Route::post('/orderUpdate', 'Admin\OrderController@update');
 
-        Route::get('/products/{page_num?}', 'Admin\ProductController@index');//вывод списка всех товаров
+        Route::get('/products/{name?}', 'Admin\ProductController@index') ->name('products');//вывод списка всех товаров
         Route::get('/product', 'ProductController@create');
         Route::post('/product','ProductController@add');
         Route::post('/product/delete','Admin\ProductController@delete'); // удаление товара - передавать id товара
@@ -116,6 +116,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/csvDownloadOrdersToManufacturer','Admin\CSV\CsvDownloadController@getCsvFileWithOrdersToManufacturer')-> name('downloadProductToManufacturer');
         Route::get('/csvDownload','Admin\CSV\CsvDownloadController@getCsvFileWithProduct') -> name('download');
         ////////////////////////////////////////////////////////////////
+
+        Route::get('/personal', 'Admin\HomeController@personal');
+        Route::post('/personal/update', 'Admin\HomeController@personalUpdate');
+
     });
 
 
@@ -123,9 +127,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/userinfo', 'ClientController@index');
 
-    Route::get('/personal', function () {
-        return view('admin.user_edit.admin_edit');
-    });
+
 
 
 });
