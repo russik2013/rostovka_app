@@ -17,13 +17,22 @@ use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
-    public function index($count_on_page = 20){
+    public function index($name = ""){
 
         $manufactures = Manufacturer::all();
         $seasons = Season::all();
         $types = Type::all();
 
-        $products = Product::with('category','manufacturer')  ->groupBy('id') ->paginate($count_on_page);
+        if($name != "")
+
+            $products = Product::with('category','manufacturer') ->
+            where('name', "like", "%".$name."%")
+                ->groupBy('id') ->paginate(15);
+
+        else
+            $products = Product::with('category','manufacturer')   ->groupBy('id') ->paginate(15);
+
+        //dd($products -> get());
 
         return view('admin.product.products', compact('products', 'manufactures', 'seasons', 'types'));
     }

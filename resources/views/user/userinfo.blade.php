@@ -8,7 +8,7 @@
                         <h3>Информация</h3>
                         <div class="container">
 
-                            <form class="well form-horizontal" action="{{url('/register')}}" method="post" id="contact_form">
+                            <form class="well form-horizontal" action="{{url('/userUpdate')}}" method="post" >
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 <input type="hidden" name="_method" value="POST">
                                 <fieldset>
@@ -29,11 +29,24 @@
                                             @if ($errors->has('first_name'))
                                                 <p> {{$errors -> first('first_name')}} </p>
                                             @endif
-                                            <label class="col-md-12 control-label">ФИО</label>
+                                            <label class="col-md-12 control-label">Имя</label>
                                             <div class="col-md-12 inputGroupContainer">
 
                                                 <div class="input-group">
-                                                    <input name="first_name" placeholder="имя" class="input-md form-full-width form-control" type="text" value="{{$client -> first_name}} {{$client -> last_name}}">
+                                                    <input name="first_name" placeholder="имя" class="input-md form-full-width form-control" type="text" value="{{$client -> first_name}}">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 form-field-wrapper form-group has-feedback">
+                                            @if ($errors->has('last_name'))
+                                                <p> {{$errors -> first('last_name')}} </p>
+                                            @endif
+                                            <label class="col-md-12 control-label">Фамилия</label>
+                                            <div class="col-md-12 inputGroupContainer">
+
+                                                <div class="input-group">
+                                                    <input name="last_name" placeholder="имя" class="input-md form-full-width form-control" type="text" value="{{$client -> last_name}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -46,7 +59,7 @@
                                             <label class="col-md-12 control-label">Ваш Телефон</label>
                                             <div class="col-md-12 inputGroupContainer">
                                                 <div class="input-group">
-                                                    <input placeholder="" class="form-control" type="text" value="{{$client -> phone}}">
+                                                    <input placeholder="" name="phone" class="form-control" type="text" value="{{$client -> phone}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -55,7 +68,7 @@
                                             <label class="col-md-12 control-label">Ваш Адрес</label>
                                             <div class="col-md-12 inputGroupContainer">
                                                 <div class="input-group">
-                                                    <input placeholder="" class="form-control" type="text" value="{{$client -> address}}">
+                                                    <input placeholder="" name="address" class="form-control" type="text" value="{{$client -> address}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -126,6 +139,6 @@
 @endsection
 
 @section('auth_reg')
-    <script type="text/javascript" src="{{asset('js/auth.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/resizer.js')}}"></script>
+    {{--<script type="text/javascript" src="{{asset('js/auth.js')}}"></script>--}}
+    {{--<script type="text/javascript" src="{{asset('js/resizer.js')}}"></script>--}}
 @endsection

@@ -26,7 +26,14 @@
                                                 <div class="col-md-12 inputGroupContainer">
 
                                                     <div class="input-group">
-                                                        <input name="first_name" placeholder="имя" class="input-md form-full-width form-control" type="text" value="{{old('first_name')}}">
+                                                        <input name="first_name" placeholder="имя"
+                                                               class="input-md form-full-width form-control"
+                                                               type="text"
+                                                               @if(Auth::user())
+                                                                value="{{old('first_name',Auth::user()->first_name)}}"
+                                                               @else
+                                                                value="{{old('first_name')}}"
+                                                                @endif>
                                                     </div>
                                                 </div>
                                             </div>
@@ -40,7 +47,12 @@
                                                 <div class="col-md-12 inputGroupContainer">
 
                                                     <div class="input-group">
-                                                        <input name="last_name" placeholder="фамилия" class="form-control" type="text" value="{{old('last_name')}}">
+                                                        <input name="last_name" placeholder="фамилия" class="form-control" type="text"
+                                                               @if(Auth::user())
+                                                                value="{{old('last_name',Auth::user()->last_name)}}"
+                                                               @else
+                                                                value="{{old('last_name')}}"
+                                                               @endif>
                                                     </div>
                                                 </div>
                                             </div>
@@ -56,11 +68,15 @@
                                             <div class="col-md-12 inputGroupContainer">
 
                                                 <div class="input-group">
-                                                    <input name="email" placeholder="e-mail" class="form-control" type="text" value="{{old('email')}}">
+                                                    <input name="email" placeholder="e-mail" class="form-control" type="text"
+                                                           @if(Auth::user())
+                                                            value="{{old('email',Auth::user()->email)}}"
+                                                           @else
+                                                            value="{{old('email')}}"
+                                                           @endif>
                                                 </div>
                                             </div>
                                         </div>
-
 
                                         <!-- Text input-->
                                         <div class="col-md-6 form-field-wrapper form-group has-feedback">
@@ -71,7 +87,12 @@
                                             <div class="col-md-12 inputGroupContainer">
 
                                                 <div class="input-group">
-                                                    <input name="phone" placeholder="063 111 11 11" class="form-control" type="number" value="{{old('phone')}}">
+                                                    <input name="phone" placeholder="063 111 11 11" class="form-control" type="number"
+                                                           @if(Auth::user())
+                                                           value="{{old('phone',Auth::user()->phone)}}"
+                                                           @else
+                                                           value="{{old('phone')}}"
+                                                           @endif>
                                                 </div>
                                             </div>
                                         </div>
@@ -84,7 +105,12 @@
                                             <div class="col-md-12 inputGroupContainer">
 
                                                 <div class="input-group">
-                                                    <input name="address" placeholder="адрес" class="form-control" type="text" value="{{old('address')}}">
+                                                    <input name="address" placeholder="адрес" class="form-control" type="text"
+                                                           @if(Auth::user())
+                                                           value="{{old('address',Auth::user()->address)}}"
+                                                           @else
+                                                           value="{{old('address')}}"
+                                                           @endif>
                                                 </div>
                                             </div>
                                         </div>
@@ -95,7 +121,7 @@
                                             <div class="col-md-12 inputGroupContainer">
 
                                                 <div class="input-group">
-                                                    <input placeholder="привезти в отделения №3" name="info" class="form-control" type="text" value="">
+                                                    <input placeholder="привезти в отделения №3" name="info" class="form-control" type="text">
                                                 </div>
                                             </div>
                                         </div>
@@ -172,14 +198,21 @@
                                                     <input id="hand_in_cash" name="payment_method" value="hand_in_cash" type="radio" />
                                                     <label for="hand_in_cash">Наличными</label>
                                                 </li>
+
+                                                <li>
+                                                    <input id="c_o_d" name="payment_method" value="c_o_d" type="radio" />
+                                                    <label for="c_o_d">Наложенный платеж</label>
+                                                </li>
+
                                             </ul>
                                             <div class="col-md-12 form-field-wrapper form-group has-feedback">
                                                 <button type="submit" class="btn btn-warning submit btn btn-md btn-color">Оформить заказ</button>
                                             </div>
-
-                                            <p class="checkout-info">
-                                                Вы наш клиент? <strong><a href="login"> Нажмите сюда и авторизуйтесь</a></strong>
-                                            </p>
+                                            @if(!Auth::user())
+                                                <p class="checkout-info">
+                                                    Вы наш клиент? <strong><a href="{{url('login')}}"> Нажмите сюда и авторизуйтесь</a></strong>
+                                                </p>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

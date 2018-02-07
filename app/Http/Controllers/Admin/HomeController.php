@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
@@ -44,12 +45,10 @@ class HomeController extends Controller
     public function updateClient(Request $request){
 
         $rules = [
-            'email' => 'required|email|valid_email',
-            'phone' => 'required|numeric|valid_phone',
-            'password' => 'required'];
+            'email' => 'required|email'
+            ];
 
         $validator = Validator::make($request->all(),$rules);
-
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
@@ -59,6 +58,28 @@ class HomeController extends Controller
         $client -> fill($request -> all());
 
         $client -> save();
+
+        return redirect()->route("adminIndex");
+
+    }
+
+    public function personal(){
+
+        $user = User::find(Auth::user()->id);
+
+        return view('admin.user_edit.admin_edit', compact('user'));
+
+    }
+
+    public function personalUpdate(Request $request){
+
+        $user = User::find($request -> id);
+
+        $user->fill($request -> all());
+
+        $user -> save();
+
+        return redirect() ->route("adminIndex");
 
     }
 }

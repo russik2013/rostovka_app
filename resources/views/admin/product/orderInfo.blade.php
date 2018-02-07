@@ -112,8 +112,9 @@
                                                 <div class="form-group">
                                                     <select class="form-control border-input payment--select" name="payment_method">
 
-                                                        <option @if($order -> payment_method == "privatBank_cart") selected @endif>На карту "ПриватБанка"</option>
-                                                        <option @if($order -> payment_method == "hand_in_cash") selected @endif>Наличными</option>
+                                                              <option @if($order -> payment_method == "privatBank_cart") selected @endif>На карту "ПриватБанка"</option>
+                                                              <option @if($order -> payment_method == "hand_in_cash") selected @endif>Наличными</option>
+                                                              <option @if($order -> payment_method == "c_o_d") selected @endif>Наложенный платеж</option>
 
 
                                                     </select>
@@ -238,5 +239,5 @@
 
 @section('product_addLib')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
-    <script src="{{url('js/admin/orderInfo.js')}}"></script>
+    {{--<script src="{{url('js/admin/orderInfo.js')}}"></script>--}}
 @endsection
