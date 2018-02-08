@@ -37,12 +37,13 @@ $(document).ready(function() {
                 success: function(result) {
                     $('.successful_Buy').modal();
                     $('.form-field-wrapper input').val('');
-                    sessionStorage.clear();
+                    localStorage.clear();
                     $.find('[data-set="cart-summ"]')[0].innerText = 0;
                     $.find('[data-set="cartCount"]')[0].innerText = 0;
                     $.find('[data-set="cart-inner-summ"]')[0].innerText = 0;
                     $('.dropdownCart ul li').remove();
                     $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>');
+                    location.reload();
                 }
             });
             return false;
@@ -88,6 +89,7 @@ $(document).ready(function() {
                     }
                 }
             },
+
             phone: {
                 validators: {
                     notEmpty: {
@@ -96,10 +98,6 @@ $(document).ready(function() {
                     stringLength: {
                         min: 8,
                         message: 'Введите корректный номер телефон'
-                    },
-                    regexp: {
-                        regexp: /^[0-9\.]+$/,
-                        message: 'Введите корректный номер телефона'
                     }
                 }
             },
@@ -185,18 +183,6 @@ $(document).ready(function() {
         console.log('console loged');
 
         sendData();
-        // Use Ajax to submit form data
-        // $.post($form.attr('action'), $form.serialize(), function(result) {
-        //     console.log('ajax will be');
-        //     $.ajax({
-        //         type: "POST",
-        //         data: 'arrray will be here',
-        //         url: "../checkout",
-        //         success: function(msg){
-        //             console.log(msg)
-        //        }
-        //     });
-        // }, 'json');
     });
 });
 

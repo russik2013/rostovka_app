@@ -2885,6 +2885,8 @@ img.tp-caption {
     -webkit-transition: all 0.3s ease-in-out 0s;
 }
 
+.navigation-menu ul > li > a.mainforMobile{display: none}
+
 .search-overlay-menu form .search-icon-lg {
     width: 42px;
     height: 44px;
