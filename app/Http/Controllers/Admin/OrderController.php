@@ -11,9 +11,18 @@ use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
-    public function index(){
+    public function index($name = ''){
 
-        $orders = Order::with('details') ->groupBy('id') ->  paginate(14);
+        if($name != '') {
+            if (is_numeric($name))
+                $orders = Order::with('details')->orderBy('id', 'desc')-> where('id', $name) -> paginate(1);
+            else
+            $orders = Order::with('details')
+                -> where('first_name', 'like', "%".$name."%")
+                -> where('last_name', 'like', "%".$name."%",'or')
+                ->orderBy('id', 'desc')->paginate(14);
+        }else
+            $orders = Order::with('details') ->orderBy('id', 'desc')->paginate(14);
 
         foreach ($orders as $order){
 

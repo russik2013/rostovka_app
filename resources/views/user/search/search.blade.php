@@ -19,16 +19,16 @@
                                         </div>
 
                                         <div class="product-detail">
-                                            <p class="product-title"><a href="#!">${name}</a></p>
+                                            <p class="product-title"><a href="#!">name</a></p>
 
                                             <span class="col-md-12 pull-left goods_amount">
-                                                <span class="col-md-12 pull-left"><b>${box}</b> - в ящике</span>
-                                                <span class="col-md-12 pull-left" data-set="minimum"><b>${rostovka}</b> - минимум</span>
+                                                <span class="col-md-12 pull-left"><b>box</b> - в ящике</span>
+                                                <span class="col-md-12 pull-left" data-set="minimum"><b>rostovka</b> - минимум</span>
                                             </span>
 
                                             <div class="col-md-12 pull-left goodsCount_price">
-                                                <span class="item-price col-md-6 pull-left">${size}</span>
-                                                <h5 class="item-price col-md-6 pull-right">${price} <span>грн</span></h5>
+                                                <span class="item-price col-md-6 pull-left">size</span>
+                                                <h5 class="item-price col-md-6 pull-right">price <span>грн</span></h5>
                                             </div>
 
                                             <div class="product-button">

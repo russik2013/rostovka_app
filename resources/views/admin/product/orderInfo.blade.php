@@ -112,10 +112,9 @@
                                                 <div class="form-group">
                                                     <select class="form-control border-input payment--select" name="payment_method">
 
-                                                              <option @if($order -> payment_method == "privatBank_cart") selected @endif>На карту "ПриватБанка"</option>
-                                                              <option @if($order -> payment_method == "hand_in_cash") selected @endif>Наличными</option>
-                                                              <option @if($order -> payment_method == "c_o_d") selected @endif>Наложенный платеж</option>
-
+                                                              <option value="privatBank_cart" @if($order -> payment_method == "privatBank_cart") selected @endif>На карту "ПриватБанка"</option>
+                                                              <option value="hand_in_cash" @if($order -> payment_method == "hand_in_cash") selected @endif>Наличными</option>
+                                                              <option value="c_o_d" @if($order -> payment_method == "c_o_d") selected @endif>Наложенный платеж</option>
 
                                                     </select>
                                                 </div>
@@ -140,6 +139,17 @@
                                             <div class="col-md-7">
                                                 <div class="form-group">
                                                     <input class="form-control border-input" name="info" type="text" value="{{$order -> info}}">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 orderInfo__input">
+                                            <div class="col-md-5">
+                                                <label>Дополнительная информация</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="form-group">
+                                                    <input class="form-control border-input" name="komment" type="text" value="{{$order -> komment}}">
                                                 </div>
                                             </div>
                                         </div>

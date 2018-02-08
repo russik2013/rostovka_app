@@ -72,11 +72,21 @@
                                 @foreach($orders as $order)
                                     <tr>
                                         <td class="articul"><input value="{{$order -> id}}" disabled></td>
-                                        <td class="costomer--Info"><a href="#!">{{$order -> first_name, $order -> last_name}}</a></td>
-                                        <td>{{$order -> shipping_method}}</td>
-                                        <td>{{$order -> payment_method}}</td>
+                                        <td class="costomer--Info"><a href="#!">{{$order -> first_name.' '.$order -> last_name}}</a></td>
+                                        <td>
+                                            @if($order -> shipping_method == "new_post") Новая почта
+                                                @elseif($order -> shipping_method == "delivery_method") Delivery
+                                                @elseif($order -> shipping_method == "avtolux_method") Автолюкс
+                                                @elseif($order -> shipping_method == "intime_method") InTime
+                                                @elseif($order -> shipping_method == "bus_method")Подвести к автобусу
+                                                @else Самовывоз
+                                            @endif
+                                        </td>
+                                        <td>@if($order -> payment_method == "privatBank_cart")	На карту "ПриватБанка"
+                                            @elseif($order -> payment_method == "c_o_d") Наложенный платеж
+                                            @else Наличными @endif</td>
                                         <td>{{$order -> all_prise}}</td>
-                                        <td @if($order ->paid == 0 || $order ->paid == 2) class="paid--Status" @else @endif >@if($order ->paid == 0 || $order ->paid == 2) да @else нет @endif</td>
+                                        <td @if($order ->paid == 1) class="paid--Status" @else @endif >@if($order ->paid == 1) да @else нет @endif</td>
                                         <td>{{$order -> created_at}}</td>
                                         <td class="options">
                                             {{--<a href="#!">--}}
@@ -104,6 +114,7 @@
                         {{--@endfor--}}
                         {{--<li><a href="!#">&raquo;</a></li>--}}
                     {{--</ul>--}}
+
                     {{$orders -> links()}}
                 </div>
             </div>
