@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="193d3dbc-6990-4cb2-bda5-0007cf53db7e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/public/css/def.css" afterPath="$PROJECT_DIR$/public/css/def.css" />
-      <change beforePath="$PROJECT_DIR$/public/css/main.css" afterPath="$PROJECT_DIR$/public/css/main.css" />
-      <change beforePath="$PROJECT_DIR$/public/js/checkout.js" afterPath="$PROJECT_DIR$/public/js/checkout.js" />
-      <change beforePath="$PROJECT_DIR$/public/js/custom.js" afterPath="$PROJECT_DIR$/public/js/custom.js" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/billing/checkout.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/billing/checkout.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/login_register/register.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/login_register/register.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/markup/header.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/markup/header.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -878,7 +871,7 @@
       <workItem from="1517905995598" duration="10066000" />
       <workItem from="1517994926019" duration="12976000" />
       <workItem from="1518029520227" duration="760000" />
-      <workItem from="1518080755753" duration="5443000" />
+      <workItem from="1518080755753" duration="5480000" />
     </task>
     <task id="LOCAL-00001" summary="markup">
       <created>1506337484664</created>
@@ -1132,11 +1125,18 @@
       <option name="project" value="LOCAL" />
       <updated>1518015417684</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="update + search page">
+      <created>1518089721543</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1518089721543</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="704203000" />
+    <option name="totallyTimeSpent" value="704240000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="23" width="1680" height="1027" extended-state="0" />
