@@ -65,7 +65,7 @@
                         @if($category -> id != 5)
                             @include('user.category_page.filters')
 
-                            @endif
+                        @endif
                     </div>
                 </div>
             </div>
