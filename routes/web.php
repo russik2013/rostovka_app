@@ -50,11 +50,7 @@ Route::get('/cart', function () {
 //    return view('admin.product.pdoructadd');
 //});
 
-Route::get('showFinderFinal', function () {
-
-    return view('user.search.search');
-
-});
+Route::get('showFinderFinal/{name}', "ProductController@filterProduct");
 
 
 //Route::get('/suppliers', function () {
