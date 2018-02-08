@@ -9,10 +9,13 @@ class CategoryController extends Controller
 {
     public function show($id){
 
-        if($id != 4) {
-            $category = Category::find($id);
+        $category = Category::find($id);
+        if($category) {
+            if ($id != 4) {
+                $category = Category::find($id);
 
-            return view('user.category_page.category', compact('category'));
+                return view('user.category_page.category', compact('category'));
+            }else return view('user.category_page.category', compact('category'));
         }else return redirect() ->back();
 
 

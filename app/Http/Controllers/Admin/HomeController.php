@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index(){
 
-        $clients = User::all();
+        $clients = User::paginate(15);
 
         return view('admin.all_user', compact('clients'));
 

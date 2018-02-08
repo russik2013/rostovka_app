@@ -113,6 +113,8 @@ class ProductController extends Controller
 
         }
 
+        //dd($products);
+
         foreach ($products as $product){
 
             $product -> full__price = $product -> prise * $product -> box_count;
@@ -373,6 +375,75 @@ class ProductController extends Controller
         $product -> product_url = url($product ->id.'/product');
 
         return $product;
+    }
+
+    public function filterProduct($name){
+
+            $products = Product::where('name', 'like', "%".$name."%")
+
+                ->with('photo', 'size', 'manufacturer')->orderBy('id',"desc")->paginate(16);
+
+        foreach ($products as $product){
+
+            $product -> full__price = $product -> prise * $product -> box_count;
+            $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
+
+            if($product -> manufacturer ->koorse != "" || $product -> manufacturer ->koorse != 0){
+
+                $product -> full__price = $product -> full__price *  $product -> manufacturer ->koorse;
+                $product -> rostovka__price = $product -> rostovka__price * $product -> manufacturer ->koorse;
+                $product -> prise = $product -> prise * $product -> manufacturer ->koorse;
+
+            }
+
+            if($product -> manufacturer ->discount !="" || $product -> manufacturer ->discount != 0) {
+
+
+                $hrivna_discount = explode("грн",$product -> manufacturer ->discount);
+
+                if(isset($hrivna_discount[1])){
+                    $product->full__price = $product -> full__price - $hrivna_discount[0];
+                    $product->rostovka__price = $product->rostovka__price - $hrivna_discount[0];
+                    $product->prise = $product->prise - $hrivna_discount[0];
+                }
+
+                $prozent_discount = explode("%",$product -> manufacturer ->discount);
+
+                if(isset($prozent_discount[1])){
+                    $product->full__price = $product -> full__price - ( $product -> full__price * ($prozent_discount[0]/100) );
+                    $product->rostovka__price = $product->rostovka__price - ( $product->rostovka__price * ($prozent_discount[0]/100) );
+                    $product->prise = $product->prise - ( $product->prise * ($prozent_discount[0]/100) );
+                }
+
+            }
+
+            if($product ->discount !="" || $product -> discount != 0) {
+
+                $hrivna_discount = explode("грн",$product ->discount);
+
+                if(isset($hrivna_discount[1])){
+                    $product->full__price = $product -> full__price - $hrivna_discount[0];
+                    $product->rostovka__price = $product->rostovka__price - $hrivna_discount[0];
+                    $product->prise = $product->prise - $hrivna_discount[0];
+                }
+
+                $prozent_discount = explode("%",$product -> discount);
+
+                if(isset($prozent_discount[1])){
+
+                    $product->full__price = $product -> full__price - ( $product -> full__price * ($prozent_discount[0]/100) );
+                    $product->rostovka__price = $product->rostovka__price - ( $product->rostovka__price * ($prozent_discount[0]/100) );
+                    $product->prise = $product->prise - ( $product->prise * ($prozent_discount[0]/100) ) ;
+                }
+
+            }
+
+            $product -> types = $product -> type -> name;
+            $product -> product_url = url($product ->id.'/product');
+        }
+
+        return view('user.search.search', compact('products'));
+
     }
 
 }

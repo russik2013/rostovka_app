@@ -41,6 +41,10 @@ class CsvDownloadController extends Controller
                     $sizes = explode('-', $product->size->name);
                 else $sizes = explode('-', 'none-none');
 
+                if($product -> photo)
+                    $photo_one = $product -> photo -> photo_url;
+                else $photo_one = '';
+
                 $data[] = [
 
                     "ID" => $product->id,
@@ -54,13 +58,19 @@ class CsvDownloadController extends Controller
                     "Сезон" => $product->season->name,
                     "Кол в ящике" => $product->box_count,
                     "Мин. Кол" => $product->rostovka_count,
+                    "Цена закупки" => $product->prise_zakup,
                     "Цена продажи" => $product->prise,
                     "Валюта" => $product->currency,
                     "Наличие" => $product->accessibility,
                     "Материал" => $product->material,
+                    "Цвет" => "",
                     "Скидка" => $product->discount,
+                    "Страна производитель" => "",
                     //"show_product" => $product ->show_product,
                     "Описание" => $product->full_description,
+                    "Фото1" => $photo_one,
+                    "Фото2" => "",
+                    "Фото3" => ""
 //                  "tip_vyazki" => $product ->tip_vyazki
 
                 ];
@@ -82,11 +92,23 @@ class CsvDownloadController extends Controller
 
     public function getCsvFileWithOrdersToManufacturer(Request $request){
 
-//        dd($request ->all());/
+
+        if(Type::where('id', $request -> type_id)->first())
+            if(Type::where('id', $request -> type_id) ->first() -> name == 'обувь')
+                $type = Type::all()->pluck('id')->toArray();
+            else  $type = Type::where('id', $request -> type_id)->pluck('id')->toArray();
+
+        if($request -> season_id == 1)
+            $season = Season::all()->pluck('id')->toArray();
+        else  $season = Season::where('id', $request -> season_id)->pluck('id')->toArray();
+
 
         $products = Product::with('category','manufacturer','season','type', 'size', 'photo')
-            -> where('manufacturer_id', $request -> manufacturer_id) ->where('type_id', $request -> type_id)
-            ->where('season_id', $request -> season_id)-> get();
+            -> where('manufacturer_id', $request -> manufacturer_id) ->whereIn('type_id', $type)
+            ->whereIn('season_id', $season)-> get();
+
+//        dd($request ->all());/
+
         if($products->count() > 0) {
             $data = [];
 
