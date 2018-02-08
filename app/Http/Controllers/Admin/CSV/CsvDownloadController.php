@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin\CSV;
 
 use App\Product;
+use App\Season;
+use App\Type;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
@@ -12,15 +14,32 @@ class CsvDownloadController extends Controller
 {
     public function getCsvFileWithProduct(Request $request){
 
+        //dd($request -> all());
+
+        if(Type::where('id', $request -> type_id)->first())
+            if(Type::where('id', $request -> type_id) ->first() -> name == 'обувь')
+                $type = Type::all()->pluck('id')->toArray();
+            else  $type = Type::where('id', $request -> type_id)->pluck('id')->toArray();
+
+        if($request -> season_id == 1)
+                $season = Season::all()->pluck('id')->toArray();
+            else  $season = Season::where('id', $request -> season_id)->pluck('id')->toArray();
+
+
         $products = Product::with('category','manufacturer','season','type', 'size', 'photo')
-            -> where('manufacturer_id', $request -> manufacturer_id) ->where('type_id', $request -> type_id)
-            ->where('season_id', $request -> season_id)-> get();
+            -> where('manufacturer_id', $request -> manufacturer_id) ->whereIn('type_id', $type)
+            ->whereIn('season_id', $season)-> get();
+
         if($products -> count() > 0) {
             $data = [];
-
+            $i = 0;
             foreach ($products as $product) {
 
-                $sizes = explode('-', $product->size->name);
+                $i++;
+
+                if($product->size)
+                    $sizes = explode('-', $product->size->name);
+                else $sizes = explode('-', 'none-none');
 
                 $data[] = [
 

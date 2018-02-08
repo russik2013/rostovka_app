@@ -16,6 +16,8 @@
                                 <div class="header">
                                     <h4 class="title">Личный кабинет</h4>
                                 </div>
+                                {{--{{dd($user -> id)}}--}}
+
                                 <div class="content">
                                     <form method="POST" action="{{url('/personal/update')}}">
                                         {{csrf_field()}}
