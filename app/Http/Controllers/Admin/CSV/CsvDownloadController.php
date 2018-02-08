@@ -41,6 +41,10 @@ class CsvDownloadController extends Controller
                     $sizes = explode('-', $product->size->name);
                 else $sizes = explode('-', 'none-none');
 
+                if($product -> photo)
+                    $photo_one = $product -> photo -> photo_url;
+                else $photo_one = '';
+
                 $data[] = [
 
                     "ID" => $product->id,
@@ -54,13 +58,19 @@ class CsvDownloadController extends Controller
                     "Сезон" => $product->season->name,
                     "Кол в ящике" => $product->box_count,
                     "Мин. Кол" => $product->rostovka_count,
+                    "Цена закупки" => $product->prise_zakup,
                     "Цена продажи" => $product->prise,
                     "Валюта" => $product->currency,
                     "Наличие" => $product->accessibility,
                     "Материал" => $product->material,
+                    "Цвет" => "",
                     "Скидка" => $product->discount,
+                    "Страна производитель" => "",
                     //"show_product" => $product ->show_product,
                     "Описание" => $product->full_description,
+                    "Фото1" => $photo_one,
+                    "Фото2" => "",
+                    "Фото3" => ""
 //                  "tip_vyazki" => $product ->tip_vyazki
 
                 ];
