@@ -109,15 +109,21 @@ class ProductController extends Controller
 
             $products = Product::whereNotNull('discount')
                 ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
-                ->with('photo', 'size')->orderBy($order,$orderType)->get();
+                ->with('photo', 'size', 'manufacturer')->orderBy($order,$orderType)->get();
 
         }
+
+
+
+        //return response($products);
 
         foreach ($products as $product){
 
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
 
+
+            if($product -> manufacturer)
             if($product -> manufacturer ->koorse != "" || $product -> manufacturer ->koorse != 0){
 
                 $product -> full__price = $product -> full__price *  $product -> manufacturer ->koorse;
@@ -125,7 +131,7 @@ class ProductController extends Controller
                 $product -> prise = $product -> prise * $product -> manufacturer ->koorse;
 
             }
-
+            if($product -> manufacturer)
             if($product -> manufacturer ->discount !="" || $product -> manufacturer ->discount != 0) {
 
 
@@ -338,6 +344,12 @@ class ProductController extends Controller
                 ->whereIn('size_id', $this->sizeFilter($request->filters))
                 ->whereIn('sex', $sex)
                 -> count();
+        }
+
+        if($request->category_id == 5){
+
+            $products_count = Product::whereNotNull('discount')->count();
+
         }
         $count_of_page = $products_count / $request ->count_on_page;
 

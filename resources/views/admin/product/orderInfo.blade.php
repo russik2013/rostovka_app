@@ -173,7 +173,6 @@
 
                                                     <tr data-id="{{$detail -> id}}">
                                                         <td><a href="{{url($detail -> product -> id."/product")}}" target="_blank"><img style="max-width: 90px;" src="{{url('/images/products/'.$detail -> image)}}"></a></td>
-                                                        <td>{{$detail ->  article}}</td>
                                                         <td><a href="{{url($detail -> product-> id."/product")}}" target="_blank">{{$detail -> tovar_name}}</a></td>
                                                         <td>{{$detail -> this_tovar_in_order_price}}<span>{{$detail -> currency}}</span></td>
                                                         <td>@if(($detail -> this_tovar_in_order_price / $detail -> tovar_in_order_count)/ $detail -> prise == $detail -> box_count)
@@ -249,5 +248,5 @@
 
 @section('product_addLib')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
-    {{--<script src="{{url('js/admin/orderInfo.js')}}"></script>--}}
+    <script src="{{url('js/admin/orderInfo.js')}}"></script>
 @endsection

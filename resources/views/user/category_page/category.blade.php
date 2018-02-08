@@ -5,7 +5,7 @@
         <section class="content-page">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-10 push-md-2 product--block">
+                    <div @if($category -> id == 5) class="col-md-12 product--block" style="min-height: 600px;" @else class="col-md-10 push-md-2 product--block" @endif >
                         <!-- Title -->
                         <div class="list-page-title">
                             <h2 class="">{{$category -> name}}</h2>

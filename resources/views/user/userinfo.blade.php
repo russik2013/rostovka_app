@@ -1,6 +1,6 @@
 @extends('user.markup.markup')
 @section('register')
-    <div class="logReg_page regPage">
+    <div class="logReg_page regPage" style="height: 100%;">
         <section class="content-page">
             <div class="container">
                 <div class="row">

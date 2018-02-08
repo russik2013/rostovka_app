@@ -23,8 +23,9 @@ $('.removePrudct').on('click', function () {
 });
 
 
+console.log('asdasdas');
 $('.addProduct i').on('click', function(){
-    $("#productsModal").modal();
+    $("#productsModal").modal('show');
 });
 
 var searchData = [];
@@ -44,6 +45,12 @@ $('.search--good').on('click', function () {
             for(var i = 0; i < msg.length; i++){
                 imageUrl.push({url: msg[i].photo.photo_url})
             }
+
+            if(searchData.length > 99){
+                $('.founded--good').css('display', 'none');
+                $('.modal-body').append('<div class="zero--result">Слишком много товаров :(</div>')
+            }
+
             if(searchData.length === 0){
                 $('.founded--good').css('display', 'none');
                 $('.modal-body').append('<div class="zero--result">Поиск не дал результатов :(</div>')

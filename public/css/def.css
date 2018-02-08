@@ -2903,7 +2903,6 @@ img.tp-caption {
     outline: none;
 }
 
-
 .search-overlay-menu form input {
     height: 120px;
     width: 100%;
@@ -7071,4 +7070,8 @@ fieldset input:hover{
     font-size: 16px;
     text-align: center;
     text-transform: uppercase;
+}
+
+.logReg_page.regPage{
+    height: 100%;
 }

@@ -173,7 +173,7 @@ var paginationCounter = function (paginationNum) {
         $('.preloader').remove();
         $('.product-filter-content').css('display', 'none');
         scrolltop();
-        $('#target').append('<div class="filter--null">По вашим критериям нет товаров ;(</div>')
+        // $('#target').append('<div class="filter--null">По вашим критериям нет товаров ;(</div>')
     }
 };
 
@@ -658,6 +658,7 @@ function getSizes() {
 $('#short-by').on('change', function () {
     choosedType = $('#short-by :selected').val();
     data = [];
+    $('.product--block').append('<div class="preloader"><i></i></div>');
 
     $.ajax({
         method: "POST",
@@ -683,6 +684,7 @@ $('#short-by').on('change', function () {
             };
         }
 
+        $('.preloader').remove();
         pageList = data;
         drawItems(pageList);
     }) .fail(function( msg ) {
