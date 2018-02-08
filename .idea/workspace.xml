@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="193d3dbc-6990-4cb2-bda5-0007cf53db7e" name="Default" comment="">
+    <list default="true" id="193d3dbc-6990-4cb2-bda5-0007cf53db7e" name="Default" comment="update scv download v0.2.4">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/all_user.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/all_user.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/category_page/category.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/category_page/category.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/search/search.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/search/search.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -55,21 +49,21 @@
       <file leaf-file-name="search.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/user/search/search.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="641">
-              <caret line="59" column="44" lean-forward="false" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
+            <state relative-caret-position="581">
+              <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
               <folding>
-                <marker date="1518103640000" expanded="true" signature="9:29" ph="..." />
-                <marker date="1518103640000" expanded="true" signature="40:55" ph="..." />
-                <marker date="1518103640000" expanded="true" signature="849:861" ph="..." />
-                <marker date="1518103640000" expanded="true" signature="999:1013" ph="..." />
-                <marker date="1518103640000" expanded="true" signature="1322:1352" ph="..." />
-                <marker date="1518103640000" expanded="true" signature="1803:1833" ph="..." />
-                <marker date="1518103640000" expanded="true" signature="1839:1855" ph="..." />
-                <marker date="1518103640000" expanded="true" signature="2062:2083" ph="..." />
-                <marker date="1518103640000" expanded="true" signature="2221:2247" ph="..." />
-                <marker date="1518103640000" expanded="true" signature="2537:2561" ph="..." />
-                <marker date="1518103640000" expanded="true" signature="2672:2689" ph="..." />
-                <marker date="1518103640000" expanded="true" signature="3735:3755" ph="..." />
+                <marker date="1518104276000" expanded="true" signature="9:29" ph="..." />
+                <marker date="1518104276000" expanded="true" signature="40:55" ph="..." />
+                <marker date="1518104276000" expanded="true" signature="849:861" ph="..." />
+                <marker date="1518104276000" expanded="true" signature="999:1013" ph="..." />
+                <marker date="1518104276000" expanded="true" signature="1322:1352" ph="..." />
+                <marker date="1518104276000" expanded="true" signature="1803:1833" ph="..." />
+                <marker date="1518104276000" expanded="true" signature="1839:1855" ph="..." />
+                <marker date="1518104276000" expanded="true" signature="2062:2083" ph="..." />
+                <marker date="1518104276000" expanded="true" signature="2221:2247" ph="..." />
+                <marker date="1518104276000" expanded="true" signature="2537:2561" ph="..." />
+                <marker date="1518104276000" expanded="true" signature="2672:2689" ph="..." />
+                <marker date="1518104276000" expanded="true" signature="3771:3791" ph="..." />
               </folding>
             </state>
           </provider>
@@ -1486,11 +1480,18 @@
       <option name="project" value="LOCAL" />
       <updated>1518098128072</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="update scv download v0.2.4">
+      <created>1518104097101</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1518104097101</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="683014000" />
+    <option name="totallyTimeSpent" value="683204000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
@@ -1586,7 +1587,8 @@
     <MESSAGE value="update scv download v0.2.1" />
     <MESSAGE value="update scv download v0.2.2" />
     <MESSAGE value="update scv download v0.2.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="update scv download v0.2.3" />
+    <MESSAGE value="update scv download v0.2.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="update scv download v0.2.4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2241,21 +2243,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/search/search.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="59" column="44" lean-forward="false" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
+        <state relative-caret-position="581">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding>
-            <marker date="1518103640000" expanded="true" signature="9:29" ph="..." />
-            <marker date="1518103640000" expanded="true" signature="40:55" ph="..." />
-            <marker date="1518103640000" expanded="true" signature="849:861" ph="..." />
-            <marker date="1518103640000" expanded="true" signature="999:1013" ph="..." />
-            <marker date="1518103640000" expanded="true" signature="1322:1352" ph="..." />
-            <marker date="1518103640000" expanded="true" signature="1803:1833" ph="..." />
-            <marker date="1518103640000" expanded="true" signature="1839:1855" ph="..." />
-            <marker date="1518103640000" expanded="true" signature="2062:2083" ph="..." />
-            <marker date="1518103640000" expanded="true" signature="2221:2247" ph="..." />
-            <marker date="1518103640000" expanded="true" signature="2537:2561" ph="..." />
-            <marker date="1518103640000" expanded="true" signature="2672:2689" ph="..." />
-            <marker date="1518103640000" expanded="true" signature="3735:3755" ph="..." />
+            <marker date="1518104276000" expanded="true" signature="9:29" ph="..." />
+            <marker date="1518104276000" expanded="true" signature="40:55" ph="..." />
+            <marker date="1518104276000" expanded="true" signature="849:861" ph="..." />
+            <marker date="1518104276000" expanded="true" signature="999:1013" ph="..." />
+            <marker date="1518104276000" expanded="true" signature="1322:1352" ph="..." />
+            <marker date="1518104276000" expanded="true" signature="1803:1833" ph="..." />
+            <marker date="1518104276000" expanded="true" signature="1839:1855" ph="..." />
+            <marker date="1518104276000" expanded="true" signature="2062:2083" ph="..." />
+            <marker date="1518104276000" expanded="true" signature="2221:2247" ph="..." />
+            <marker date="1518104276000" expanded="true" signature="2537:2561" ph="..." />
+            <marker date="1518104276000" expanded="true" signature="2672:2689" ph="..." />
+            <marker date="1518104276000" expanded="true" signature="3771:3791" ph="..." />
           </folding>
         </state>
       </provider>
