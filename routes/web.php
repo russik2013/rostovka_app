@@ -65,7 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'admin'], function () {
 
-        Route::get('/suppliers', 'Admin\SuppliersController@index')->name('suppliers');
+        Route::get('/suppliers/{name?}', 'Admin\SuppliersController@index')->name('suppliers');
         Route::get('/suppliers_edit/{id}', 'Admin\SuppliersController@edit');
         Route::post('/suppliers_update', 'Admin\SuppliersController@update');
 
@@ -77,7 +77,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('/finder','Admin\ProductController@finder');//пои сковик товаров по имени
 
-        Route::get('/orders', 'Admin\OrderController@index')->name('orders');
+        Route::get('/orders/{name?}', 'Admin\OrderController@index')->name('orders');
         Route::get('/orderInfo/{id}', 'Admin\OrderController@orderInfo');
         Route::post('/deleteProductFromOrder','Admin\OrderController@deleteOrderDetail');//удаление товара из заказа передавать id из orderdetails
         Route::post('/deleteOrder','Admin\OrderController@deleteOrder');//удаление всего заказа передавать id заказа

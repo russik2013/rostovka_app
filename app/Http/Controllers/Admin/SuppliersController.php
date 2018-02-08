@@ -8,9 +8,12 @@ use App\Http\Controllers\Controller;
 
 class SuppliersController extends Controller
 {
-    public function index(){
+    public function index($name = ""){
 
-        $manufacturers = Manufacturer::groupBy('id') ->paginate(15);
+        if($name != "")
+            $manufacturers = Manufacturer::where('name', 'like', '%'.$name.'%') -> groupBy('id') ->paginate(15);
+        else
+            $manufacturers = Manufacturer::groupBy('id') ->paginate(15);
 
         return view('admin.product.suppliers', compact('manufacturers'));
 

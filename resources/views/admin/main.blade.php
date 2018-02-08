@@ -92,7 +92,7 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" target="_blank" href="./">Перейти на сайт</a>
+                    <a class="navbar-brand" target="_blank" href="{{url("/")}}">Перейти на сайт</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
