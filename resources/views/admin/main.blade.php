@@ -46,33 +46,33 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="admin_index" class="simple-text">
+
+                <a href="{{url("admin_index")}}" class="simple-text">
                     Rostovka.net
                 </a>
             </div>
-
             <ul class="nav">
-                <li id="users" class="active">
+                <li id="users" @if(Request::route()->getName() == "adminIndex") class="active" @endif>
                     <a href="{{url('admin_index')}}">
                         <i class="ti-user"></i>
                         <p>Пользователи</p>
                     </a>
                 </li>
-                <li id="products">
+                <li id="products" @if(Request::route()->getName() == "products") class="active" @endif>
                     <a href="{{url('products')}}">
                         <i class="ti-view-list-alt"></i>
                         <p>Товары</p>
                     </a>
                 </li>
 
-                <li id="orders">
+                <li id="orders" @if(Request::route()->getName() == "orders") class="active" @endif>
                     <a href="{{url('orders')}}">
                         <i class="ti-pencil-alt2"></i>
                         <p>Заказы</p>
                     </a>
                 </li>
 
-                <li id="suppliers">
+                <li id="suppliers" @if(Request::route()->getName() == "suppliers") class="active" @endif >
                     <a href="{{url('suppliers')}}">
                         <i class="ti-package"></i>
                         <p>Поставщики</p>
@@ -97,7 +97,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="personal">
+                            <a href="{{url("/personal")}}">
                                 <i class="ti-settings"></i>
                                 <p>Настройки</p>
                             </a>

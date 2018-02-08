@@ -14,7 +14,7 @@
                         <div class="col-lg-12 col-md-12">
                             <div class="card">
                                 <div class="header">
-                                    <h4 class="title">Поставщика - <b>Dakota</b></h4>
+                                    <h4 class="title">Поставщика - <b>{{$manufacturer -> name}}</b></h4>
                                 </div>
                                 <div class="content">
                                     @if($errors->any())

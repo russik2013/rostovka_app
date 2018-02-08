@@ -22,12 +22,17 @@ class CsvOrderController extends Controller
             -> get();
 
         $data = [];
+        $score =[];
 
         if($orders->count() > 0) {
             foreach ($orders as $order) {
 
+               if(!isset($score[$order->shipping_method]))
+                   $score[$order->shipping_method] = 1;
+
+
                 $data[$order->shipping_method][] = [
-                    "№" => count($data) + 1,
+                    "№" => $score[$order->shipping_method],
                     "Фамилия имя отчество" => $order->first_name . ' ' . $order->last_name,
                     'Город.Номер отделения' => $order->address,
                     'Номер телефона' => $order->phone,
@@ -35,6 +40,8 @@ class CsvOrderController extends Controller
                     "Кол-во мест" => '',
                     "Галочка" => ""
                 ];
+
+                $score[$order->shipping_method] =  $score[$order->shipping_method] + 1;
 
             }
 
@@ -173,7 +180,8 @@ class CsvOrderController extends Controller
                         $sheet->setWidth('I', 8);
 
                         for ($i = 1; $i < count($value); $i++) {
-                            if (file_exists('image/products/' . $value[$i][2])) {
+                            //dump($value[$i]);
+                            if (file_exists('../image/products/' . $value[$i][2]) && $value[$i][2] != "") {
                                 $objDrawing = new PHPExcel_Worksheet_Drawing;
                                 $objDrawing->setPath(public_path('../image/products/' . $value[$i][2])); //your image path
                                 $objDrawing->setName('imageRussik');
@@ -182,7 +190,7 @@ class CsvOrderController extends Controller
                                 $objDrawing->setResizeProportional();
                                 $objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
                                 $objDrawing->setOffsetY(10);
-                                $objDrawing->setOffsetX(30);
+                                $objDrawing->setOffsetX(10);
                                 $objDrawing->setWidth(280);
                                 $objDrawing->setHeight(150);
                             }
