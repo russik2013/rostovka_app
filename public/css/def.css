@@ -7059,7 +7059,7 @@ fieldset input:hover{
     position: relative;
     top: -30px;
     left: 50%;
-    z-index: 999;
+    z-index: 99;
     background: #c51313;
     transform: translate(-50%);
     width: 100%;

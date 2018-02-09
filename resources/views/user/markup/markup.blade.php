@@ -118,8 +118,7 @@
                                     <div class="input-group search--box">
                                         <input type="text" class="form-control" placeholder="Поиск" name="q">
                                         <div class="input-group-btn">
-                                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i>
-                                            </button>
+                                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                                         </div>
                                     </div>
                                 </form>
@@ -260,6 +259,12 @@
 <script type="text/javascript" src="{{asset('js/cart.js')}}"></script>
 <!-- custom js -->
 <!-- end jquery -->
-
+<script>
+    $('.search--box button').on('click', function (e) {
+        e.preventDefault();
+        console.log(location);
+        $(location).attr('href', '{{url("showFinderFinal")}}/' + $('.search--box input').val() );
+    });
+</script>
 </body>
 </html>

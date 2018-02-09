@@ -8,7 +8,9 @@ $('.order-total span')[0].innerText = orderTotal + ' грн';
 if($('.checkoutPage')){
     $('.cartBl').css('display', 'none');
 }
-
+$('.successful_Buy button').on('click', function () {
+    location.reload();
+});
 'use strict';
 $(document).ready(function() {
     var success = null;
@@ -43,7 +45,6 @@ $(document).ready(function() {
                     $.find('[data-set="cart-inner-summ"]')[0].innerText = 0;
                     $('.dropdownCart ul li').remove();
                     $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>');
-                    location.reload();
                 }
             });
             return false;

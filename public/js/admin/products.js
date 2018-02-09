@@ -132,8 +132,12 @@ function getUserAllProducts() {
         manufacturer_id: $('.sorting__Option.manufacturer_Options option:selected').val(),
         type_id: $('.sorting__Option.seasone_Options option:selected').val(),
         season_id: $('.sorting__Option.type_Options option:selected').val(),
+        accessibility: $('.sorting__Option.availability option:selected').val(),
         success: function(){
-            window.location = $('meta[name="root-site"]').attr('content') + '/csvDownload?manufacturer_id='+ $('.sorting__Option.manufacturer_Options option:selected').val() +'&season_id='+ $('.sorting__Option.seasone_Options option:selected').val() + '&type_id='+ $('.sorting__Option.type_Options option:selected').val();
+            window.location = $('meta[name="root-site"]').attr('content') + '/csvDownload?manufacturer_id='+
+                $('.sorting__Option.manufacturer_Options option:selected').val() +'&season_id='+
+                $('.sorting__Option.seasone_Options option:selected').val() + '&type_id='+
+                $('.sorting__Option.type_Options option:selected').val();
         }
     });
 }

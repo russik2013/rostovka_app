@@ -103,3 +103,9 @@ $(document).ready(function () {
         }
     });
 });
+
+
+$('.navigation-menu ul li a').on('click', function () {
+    localStorage.removeItem('filterValues');
+    localStorage.removeItem('selectedCount');
+});

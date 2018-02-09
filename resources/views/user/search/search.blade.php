@@ -4,12 +4,12 @@
         <section class="content-page">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12 product--block">
-                        <h3 style="text-align: center; padding-top: 20px; padding-bottom: 20px">Результат поиска</h3>
+                    <div class="col-md-12 product--block" style="min-height: 700px">
+                        <h3 style="text-align: center; padding-top: 20px; padding-bottom: 20px">Результат поиска {{$name}}</h3>
                         <div class="row product-list-item product-list-view">
 
                             @if($products ->  count() ==  0)
-                                <h1>Ничего не найденно</h1>
+                                <h4 style="text-align: center; width: 100%; color: red;">Ничего не найденно</h4>
                             @else
                                 <ul class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine">
                                     @foreach($products as $product)
