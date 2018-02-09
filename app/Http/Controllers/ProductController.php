@@ -85,12 +85,13 @@ class ProductController extends Controller
 
 
         if($sex == null) {
+
             $products = Product::where('category_id', '=', $request->category_id)
                 ->whereIn('season_id', $this->seasonFilter($request->filters))
                 ->whereIn('type_id', $this->typeFilter($request->filters))
                 ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
                 ->whereIn('size_id', $this->sizeFilter($request->filters))
-                ->where('sex','')
+                ->where('sex', "")
                 ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
                 ->with('photo', 'size', 'manufacturer')->orderBy($order,$orderType)->get();
         }
@@ -109,23 +110,17 @@ class ProductController extends Controller
 
             $products = Product::whereNotNull('discount')
                 ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
-                ->with('photo', 'size', 'manufacturer')->orderBy($order,$orderType)->get();
+                ->with('photo', 'size')->orderBy($order,$orderType)->get();
 
         }
 
 
-
-        //return response($products);
-
-        //dd($products);
 
         foreach ($products as $product){
 
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
 
-
-            if($product -> manufacturer)
             if($product -> manufacturer ->koorse != "" || $product -> manufacturer ->koorse != 0){
 
                 $product -> full__price = $product -> full__price *  $product -> manufacturer ->koorse;
@@ -133,7 +128,7 @@ class ProductController extends Controller
                 $product -> prise = $product -> prise * $product -> manufacturer ->koorse;
 
             }
-            if($product -> manufacturer)
+
             if($product -> manufacturer ->discount !="" || $product -> manufacturer ->discount != 0) {
 
 
@@ -179,7 +174,13 @@ class ProductController extends Controller
 
             }
 
+            if($product -> manufacturer ->box == 1 ){
 
+                $product->rostovka__price = $product->full__price;
+                $product->rostovka__price = $product -> full__price;
+                $product -> rostovka_count = $product -> box_count;
+
+            }
             $product -> types = $product -> type -> name;
             $product -> product_url = url($product ->id.'/product');
         }
@@ -335,7 +336,7 @@ class ProductController extends Controller
                 ->whereIn('type_id', $this->typeFilter($request->filters))
                 ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
                 ->whereIn('size_id', $this->sizeFilter($request->filters))
-                ->where('sex','')
+                ->where('sex', '')
                 -> count();
         }
         else {
@@ -348,11 +349,11 @@ class ProductController extends Controller
                 -> count();
         }
 
-        if($request->category_id == 5){
-
-            $products_count = Product::whereNotNull('discount')->count();
-
-        }
+//        if($request->category_id == 5){
+//
+//            $products_count = Product::whereNotNull('discount')->count();
+//
+//        }
         $count_of_page = $products_count / $request ->count_on_page;
 
         return ceil($count_of_page);
@@ -450,11 +451,21 @@ class ProductController extends Controller
 
             }
 
+
+
+            if($product -> manufacturer ->box == 1 ){
+
+                $product->rostovka__price = $product->full__price;
+                $product->rostovka__price = $product -> full__price;
+                $product -> rostovka_count = $product -> box_count;
+
+            }
+
             $product -> types = $product -> type -> name;
             $product -> product_url = url($product ->id.'/product');
         }
 
-        return view('user.search.search', compact('products', 'name'));
+        return view('user.search.search', compact('products'));
 
     }
 
