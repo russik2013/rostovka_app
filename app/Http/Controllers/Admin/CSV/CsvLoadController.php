@@ -85,7 +85,7 @@ class CsvLoadController extends Controller
 
         foreach ($photos as $photo){
 
-            File::delete('../image/products/' . $photo);
+            File::delete('images/products/' . $photo);
 
         }
 
@@ -112,29 +112,32 @@ class CsvLoadController extends Controller
 
     }
 
-    public function productsPhotoUpdate($photos, $products){
+    public function productsPhotoUpdate($photos, $products)
+    {
 
-        $zip = new ZipArchive;
-        $zip->open($photos -> photo -> getRealPath());
-        $zip->extractTo('image/products/');
-        $zip->close();
+        if ($photos->photo != "undefined") {
+            $zip = new ZipArchive;
+            $zip->open($photos->photo->getRealPath());
+            $zip->extractTo('../images/products/');
+            $zip->close();
 
-        $products_mass = [];
+            $products_mass = [];
 
-        foreach ($products as $product){
+            foreach ($products as $product) {
 
-            $products_mass[$product ->artikul.'_'.$product ->{'brend'}] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
+                $products_mass[$product->artikul . '_' . $product->{'brend'}] = [[$product->foto1, $product->foto2, $product->foto3]];
 
-        }
+            }
 
-        $data_base_products = Product::whereIn('name', array_keys($products_mass)) -> pluck('id', 'name') ->toArray();
+            $data_base_products = Product::whereIn('name', array_keys($products_mass))->pluck('id', 'name')->toArray();
 
-        foreach ($products_mass as $key => $photo_to_product_value){
+            foreach ($products_mass as $key => $photo_to_product_value) {
 
-            foreach ($photo_to_product_value[0] as $item){
-                if($item){
-                    ProductPhotos::where('product_id', '=',$data_base_products[$key])
-                        ->update(['photo_url' => $data_base_products[$key]."_". $item.'.jpg']);
+                foreach ($photo_to_product_value[0] as $item) {
+                    if ($item) {
+                        ProductPhotos::where('product_id', '=', $data_base_products[$key])
+                            ->update(['photo_url' => $data_base_products[$key] . "_" . $item . '.jpg']);
+                    }
                 }
             }
         }
@@ -241,6 +244,10 @@ class CsvLoadController extends Controller
         
         else {
 
+            //return response($this->formInsertArray($products));
+
+            //dd($this->formInsertArray($products), 'russik');
+
             Product::insert($this->formInsertArray($products));
 
             ProductPhotos::insert($this->formPhotoInsertArray($request, $products));
@@ -267,8 +274,8 @@ class CsvLoadController extends Controller
         foreach ($products_mass as $key => $photo_to_product_value){
 
             foreach ($photo_to_product_value[0] as $item){
-                if($item)
-                    File::move('image/products/' . $item.'.jpg', '../image/products/' . $data_base_products[$key]."_". $item.'.jpg');
+                if($item && file_exists('..images/products/' . $item.'.jpg'))
+                    File::move('../images/products/' . $item.'.jpg', 'images/products/' . $data_base_products[$key]."_". $item.'.jpg');
 
             }
         }
@@ -279,7 +286,7 @@ class CsvLoadController extends Controller
 
         $zip = new ZipArchive;
         $zip->open($photos -> photo -> getRealPath());
-        $zip->extractTo('image/products/');
+        $zip->extractTo('../images/products/');
         $zip->close();
 
         $products_mass = [];
@@ -329,8 +336,6 @@ class CsvLoadController extends Controller
 
 
     protected function formInsertArray($products){
-
-        dd($products);
 
         $types = Type::all() -> pluck('id', 'name') -> toArray();
         $seasons = Season::all() -> pluck('id', 'name') -> toArray();

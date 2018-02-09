@@ -90,7 +90,7 @@
 
                                                 <div class="chooseBox" style="float: left;margin-top: 35px;margin-left: 20px;">
                                                     <label for="justBox">
-                                                        <input type="checkbox" name="justBox" id="justBox">
+                                                        <input type="checkbox" @if($manufacturer ->box == 1) checked @endif name="justBox" id="justBox">
                                                         Только в ящике
                                                     </label>
                                                 </div>

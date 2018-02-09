@@ -41,7 +41,9 @@ class SuppliersController extends Controller
 
             $manufacturer -> fill($request -> all());
 
-            //dd($manufacturer);
+            if($request ->justBox == "on")
+                $manufacturer -> box = 1;
+            else $manufacturer -> box = 0;
 
             $manufacturer -> save();
 
