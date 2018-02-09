@@ -14,7 +14,6 @@ class CsvDownloadController extends Controller
 {
     public function getCsvFileWithProduct(Request $request){
 
-        //dd($request -> all());
 
         if(Type::where('id', $request -> type_id)->first())
             if(Type::where('id', $request -> type_id) ->first() -> name == 'обувь')
@@ -107,20 +106,28 @@ class CsvDownloadController extends Controller
             -> where('manufacturer_id', $request -> manufacturer_id) ->whereIn('type_id', $type)
             ->whereIn('season_id', $season)-> get();
 
-//        dd($request ->all());/
+
 
         if($products->count() > 0) {
             $data = [];
 
+
             foreach ($products as $product) {
+
+                if($product->photo)
+                    $photo = $product->photo->photo_url;
+                else $photo = "";
+
+                if($product->size)
+                    $size = $product->size->name;
+                else $size = 'none';
 
                 $data[] = [
 
                     "№" => count($data) + 1,
-                    "Фото" => $product->photo->photo_url,
+                    "Фото" => $photo,
                     "Товар" => $product->name,
-                    "артикул" => $product->article,
-                    "размер" => $product->size->name,
+                    "размер" => $size,
                     "Пар в ящике" => $product->box_count,
                     "Цена закуп" => $product->prise_zakup,
                     "Цена сайт" => $product->prise,
@@ -128,6 +135,7 @@ class CsvDownloadController extends Controller
                 ];
 
             }
+
 
             Excel::create('Filename', function ($excel) use ($data) {
 
@@ -154,9 +162,11 @@ class CsvDownloadController extends Controller
                     $sheet->setWidth('H', 20);
 
                     for ($i = 1; $i < count($data); $i++) {
-                        if (file_exists('image/products/' . $data[$i]['Фото'])) {
+                        if($data[$i]['Фото'] != "")
+
+                        if (file_exists( 'images/products/' . $data[$i]['Фото'])) {
                             $objDrawing = new PHPExcel_Worksheet_Drawing;
-                            $objDrawing->setPath(public_path('../image/products/' . $data[$i]['Фото'])); //your image path
+                            $objDrawing->setPath(public_path('images/products/' . $data[$i]['Фото'])); //your image path
                             $objDrawing->setName('imageRussik');
                             $objDrawing->setWorksheet($sheet);
                             $objDrawing->setCoordinates('B' . ($i + 2));

@@ -53,9 +53,7 @@ Route::get('/cart', function () {
 Route::get('showFinderFinal/{name}', "ProductController@filterProduct");
 
 
-//Route::get('/suppliers', function () {
-//    return view('admin.product.suppliers');
-//});
+Route::get('/pdfLoad', 'Admin\PDF\ReceiptController@index');
 
 Route::group(['middleware' => 'auth'], function () {
 

@@ -85,12 +85,13 @@ class ProductController extends Controller
 
 
         if($sex == null) {
+
             $products = Product::where('category_id', '=', $request->category_id)
                 ->whereIn('season_id', $this->seasonFilter($request->filters))
                 ->whereIn('type_id', $this->typeFilter($request->filters))
                 ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
                 ->whereIn('size_id', $this->sizeFilter($request->filters))
-                ->whereNull('sex')
+                ->where('sex', "")
                 ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
                 ->with('photo', 'size', 'manufacturer')->orderBy($order,$orderType)->get();
         }
@@ -113,7 +114,7 @@ class ProductController extends Controller
 
         }
 
-        //dd($products);
+
 
         foreach ($products as $product){
 
@@ -173,7 +174,13 @@ class ProductController extends Controller
 
             }
 
+            if($product -> manufacturer ->box == 1 ){
 
+                $product->rostovka__price = $product->full__price;
+                $product->rostovka__price = $product -> full__price;
+                $product -> rostovka_count = $product -> box_count;
+
+            }
             $product -> types = $product -> type -> name;
             $product -> product_url = url($product ->id.'/product');
         }
@@ -329,7 +336,7 @@ class ProductController extends Controller
                 ->whereIn('type_id', $this->typeFilter($request->filters))
                 ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
                 ->whereIn('size_id', $this->sizeFilter($request->filters))
-                ->whereNull('sex')
+                ->where('sex', '')
                 -> count();
         }
         else {
@@ -435,6 +442,16 @@ class ProductController extends Controller
                     $product->rostovka__price = $product->rostovka__price - ( $product->rostovka__price * ($prozent_discount[0]/100) );
                     $product->prise = $product->prise - ( $product->prise * ($prozent_discount[0]/100) ) ;
                 }
+
+            }
+
+
+
+            if($product -> manufacturer ->box == 1 ){
+
+                $product->rostovka__price = $product->full__price;
+                $product->rostovka__price = $product -> full__price;
+                $product -> rostovka_count = $product -> box_count;
 
             }
 

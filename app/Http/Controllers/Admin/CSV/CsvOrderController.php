@@ -17,9 +17,11 @@ class CsvOrderController extends Controller
     public function getCsvFileWithOrdersToSend(Request $request){
 
 
-        $orders = Order::where('created_at', '>', $request -> dataFrom)
-            -> where('created_at', '<', $request -> dataTo) -> whereIn('paid', [0,3])
+        $orders = Order::where('created_at', '>=', $request -> dataFrom)
+            -> where('created_at', '<=', $request -> dataTo) -> whereIn('paid', [0,3])
             -> get();
+
+        //dd($orders, $request -> dataFrom, $request -> dataTo);
 
         $data = [];
         $score =[];
@@ -181,9 +183,12 @@ class CsvOrderController extends Controller
 
                         for ($i = 1; $i < count($value); $i++) {
                             //dump($value[$i]);
-                            if (file_exists('../image/products/' . $value[$i][2]) && $value[$i][2] != "") {
+
+                            if($value[$i][2] != "")
+
+                            if (file_exists('images/products/' . $value[$i][2]) && $value[$i][2] != "") {
                                 $objDrawing = new PHPExcel_Worksheet_Drawing;
-                                $objDrawing->setPath(public_path('../image/products/' . $value[$i][2])); //your image path
+                                $objDrawing->setPath(public_path('images/products/' . $value[$i][2])); //your image path
                                 $objDrawing->setName('imageRussik');
                                 $objDrawing->setWorksheet($sheet);
                                 $objDrawing->setCoordinates('C' . ($i + 2));

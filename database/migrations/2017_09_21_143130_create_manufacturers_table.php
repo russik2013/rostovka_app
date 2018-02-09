@@ -23,6 +23,7 @@ class CreateManufacturersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('discount')->nullable();
             $table->float('koorse')->nullable();
+            $table->boolean('box')->default(false);
             $table->timestamps();
         });
     }
