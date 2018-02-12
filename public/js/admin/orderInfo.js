@@ -17,13 +17,15 @@ $('.removePrudct').on('click', function () {
         $.ajax({
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + '/deleteProductFromOrder',
-            data: {'_token': $('meta[name="csrf-token"]').attr('content'), id: productID}
+            data: {'_token': $('meta[name="csrf-token"]').attr('content'), id: productID},
+            success: function(){
+                window.location.reload(true);
+            }
         });
     });
 });
 
 
-console.log('asdasdas');
 $('.addProduct i').on('click', function(){
     $("#productsModal").modal('show');
 });
@@ -105,9 +107,11 @@ $('.add--product--in').on('click', function () {
         $.ajax({
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + '/addOrderDetail',
-            data: {'_token': $('meta[name="csrf-token"]').attr('content'), data: choosedProducts}
+            data: {'_token': $('meta[name="csrf-token"]').attr('content'), data: choosedProducts},
+            success: function(){
+                window.location.reload(true);
+            }
         });
         $("#productsModal").modal('hide');
-        window.location.reload();
     }
 });
