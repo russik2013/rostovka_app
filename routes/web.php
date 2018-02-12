@@ -54,6 +54,7 @@ Route::get('showFinderFinal/{name}', "ProductController@filterProduct");
 
 
 Route::get('/pdfLoad', 'Admin\PDF\ReceiptController@index');
+Route::get('/pdfShow', 'Admin\PDF\ReceiptController@show');
 
 Route::group(['middleware' => 'auth'], function () {
 
