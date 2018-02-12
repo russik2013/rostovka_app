@@ -13,10 +13,11 @@ var data = [],
 
 getSavedFilters = JSON.parse(savedFilters);
 
+//Прелоадер при загрузке страницы
+$('.product--block').append('<div class="preloader"><i></i></div>');
 
-///work with filters
+///Работа с фильтрами, вызывается с DOM
 var values = [], targetID = 0;
-
 $('.sidebar-container input[type=checkbox]').on('change', function () {
     var target = $(this)[0].parentNode.parentNode.parentNode;
     targetID = $(this)[0].parentNode.childNodes[1].id;
@@ -133,17 +134,8 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
     return filter_value
 });
 
+//Получение сохраненного количество (24 - 36 - 48) товаров на странице
 var saved_count_on_page = Number (localStorage.getItem('selectedCount'));
-
-$('#product-show').on('change', function () {
-    saved_count_on_page = Number ($.find('.product-sort-by.pull-right .nice-select-box .current')[0].innerText);
-    $('.product--block').append('<div class="preloader"><i></i></div>');
-    initData(saved_count_on_page);
-    
-    localStorage.setItem('selectedCount',  JSON.stringify(saved_count_on_page));
-    return saved_count_on_page;
-});
-
 if(saved_count_on_page > 0){
     count_on_page = saved_count_on_page;
     drawItems();
@@ -154,8 +146,25 @@ if(saved_count_on_page > 0){
     localStorage.setItem('selectedCount',  JSON.stringify(count_on_page));
 }
 
+//Выбор количество элементов на странице
+$('#product-show').on('change', function () {
+    saved_count_on_page = Number ($.find('.product-sort-by.pull-right .nice-select-box .current')[0].innerText);
+    $('.product--block').append('<div class="preloader"><i></i></div>');
+    initData(saved_count_on_page);
+    
+    localStorage.setItem('selectedCount',  JSON.stringify(saved_count_on_page));
+});
+
+//Отрисвока данных сохрененных данных, если localstorage не пуст. Если пуст, заполняются дефолтовые значения
 setSavedOptionCount();
 function setSavedOptionCount() {
+    if(localStorage.getItem('pageNum') !== null) {
+        page_num = Number (localStorage.getItem('pageNum'));
+
+        drawItems(page_num);
+    } else {
+        page_num = 1;
+    }
     if(saved_count_on_page !== 0) {
         for (var l = 0; l < $.find('[data-set="selectCount"] option').length; l++){
             if(Number ($.find('[data-set="selectCount"] option')[l].attributes[0].value) === saved_count_on_page) {
@@ -254,14 +263,8 @@ else{
     initData(count_on_page);
 }
 
+//Инициализация созданние деф. данных
 function initData(count_on_page) {
-    if(localStorage.getItem('pageNum') !== null) {
-        page_num = Number (localStorage.getItem('pageNum'));
-    } else {
-        page_num = 1;
-    }
-    
-    console.log(page_num, count_on_page, filter_value, choosedType);
     $.ajax({
         method: "POST",
         url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
@@ -291,6 +294,7 @@ var paginationCounter = function (paginationNum) {
     }
 };
 
+//Создание дефолтовых данных
 function makeData(page_num, count_on_page) {
     $.ajax({
         method: "POST",
@@ -311,6 +315,7 @@ function makeData(page_num, count_on_page) {
                 real_id: msg[i].id,
                 product_url: msg[i].product_url , // раньше было так msg[i].product_url + '/' + i
                 size: msg[i].size.name,
+                old_prise: msg[i].old_prise,
                 option_type: 'full__price' // Или full__price или rostovka__price
             };
         }
@@ -324,13 +329,17 @@ function makeData(page_num, count_on_page) {
     }) .fail(function( msg ) {});
 }
 
+//Создание данных по фильтру
 var numberPerPage = 24, pageList = [], currentPage = 1, numberOfPages = 0;
 function NextData(page_num, count_on_page, filter_value) {
     $('.product--block').append('<div class="preloader"><i></i></div>');
     $.ajax({
         method: "POST",
         url: $('meta[name="root-site"]').attr('content') + "/api/products",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page, filters: filter_value, choosedType: choosedType}
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num,
+            count_on_page: count_on_page,
+            filters: filter_value,
+            choosedType: choosedType}
     }).done(function(msg) {
         $('.preloader').remove();
         for(var i= 0; i < msg.length; i++ ) {
@@ -381,6 +390,7 @@ function NextData(page_num, count_on_page, filter_value) {
     });
 }
 
+//Работа с пагинацией, массивом товаров
 function GetData(data) {
     if (data.length > 0) {
         //work with pagination
@@ -411,6 +421,7 @@ function GetData(data) {
             Click: function () {
                 page_num = Pagination.page = +this.innerHTML;
                 localStorage.setItem('pageNum', page_num);
+                console.log(page_num, filter_value);
                 NextData(page_num, count_on_page, filter_value);
                 Pagination.page = +this.innerHTML;
                 Pagination.Start();
@@ -545,7 +556,7 @@ function GetData(data) {
         };
     }
 
-    // load();
+    load();
     function load() {
         makePagination();
         loadList();
@@ -589,8 +600,7 @@ function GetData(data) {
     }
 }
 
-$('.product--block').append('<div class="preloader"><i></i></div>');
-
+//Отрисовка элементов TMPL
 function drawItems(pageList) {
     var delay = 0;
     document.getElementById("target").innerHTML = "";
@@ -601,6 +611,7 @@ function drawItems(pageList) {
     checkMinMax();
 }
 
+//Проверка дублей расстовки/ящика
 function checkMinMax() {
     var MinMaxCounter = [];
     for (var i = 0; i < data.length; i++) {
@@ -617,11 +628,7 @@ function checkMinMax() {
     })
 }
 
-function scrolltop() {
-    var body = $("html, body");
-    body.stop().animate({scrollTop: 0}, 500, 'swing');
-}
-
+//Удаление итема из фильтра
 function RemoveItem() {
     $('.removeAppended__Item').on('click', function () {
         var clickedTarget = $(this)[0].parentElement.textContent,
@@ -678,6 +685,7 @@ function RemoveItem() {
     });
 }
 
+//Очистка данных (Фильтры, локалсторейдж, установка данных на дефолтовые значения)
 $('.removeallFilters span').on('click', function (e) {
     values = [];
     localStorage.clear();
@@ -728,13 +736,7 @@ $('.removeallFilters span').on('click', function (e) {
     });
 });
 
-$('.submit_onChoose button').on('click', function () {
-    values = [];
-    $('.submit_onChoose').removeClass('showed');
-    $('input[type=checkbox]').prop('checked', false)
-});
-
-//Making sorted data
+//Создание данных после выбора фильтров
 function makeFilterData(msg) {
     var filtered_data, data = [];
     for(var i= 0; i < msg.length; i++ ) {
@@ -763,19 +765,7 @@ function makeFilterData(msg) {
     GetData(filtered_data);
 }
 
-getSizes();
-var min_range = 0, max_range = 0;
-function getSizes() {
-    $.ajax({
-        method: 'POST',
-        url: $('meta[name="root-site"]').attr('content') + "/api/getSizesMass"
-    }).done(function( msg ) {
-        slider(msg);
-    });
-
-}
-
-// Sorting Type
+// Сортировка данных
 $('#short-by').on('change', function () {
     choosedType = $('#short-by :selected').val();
     data = [];
@@ -814,10 +804,21 @@ $('#short-by').on('change', function () {
 });
 
 
-// Slider from to
+//Работа с размерамии, от - до
+getSizes();
+function getSizes() {
+    $.ajax({
+        method: 'POST',
+        url: $('meta[name="root-site"]').attr('content') + "/api/getSizesMass"
+    }).done(function( msg ) {
+        slider(msg);
+    });
+
+}
+// Слайдер от - до
 function slider(msg) {
-    min_range = Number (msg[0]);
-    max_range = Number (msg[1]);
+    var min_range = Number (msg[0]);
+    var max_range = Number (msg[1]);
     $( "#slider-range" ).slider({
         range: true,
         min: min_range,
@@ -909,11 +910,16 @@ function slider(msg) {
     $( "#amount" ).val($( "#slider-range" ).slider( "values", 1 ));
 }
 
-
+// Работа с иконками для моб. версии
 $('.filter--mobileButton').on('click', function () {
     $('.category--Filters').toggleClass('active');
 });
-
 $('.category--Filters .close-icon').on('click', function () {
     $('.category--Filters').removeClass('active');
 });
+
+// Медленный скролл
+function scrolltop() {
+    var body = $("html, body");
+    body.stop().animate({scrollTop: 0}, 500, 'swing');
+}

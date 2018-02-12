@@ -219,7 +219,7 @@ ul {
 
 .categoryPage .product-item {
   overflow: inherit;
-  min-height: 430px;
+  min-height: 450§px;
   padding: 0;
 }
 
@@ -976,6 +976,8 @@ input::-webkit-inner-spin-button {
 
 .product-item .product-detail h5{
   color: #97bf31;
+  margin-top: -10px;
+  margin-bottom: -20px;
 }
 
 .mainPage .product-detail .pull-left{
