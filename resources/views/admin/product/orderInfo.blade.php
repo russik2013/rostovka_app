@@ -168,11 +168,14 @@
                                         </div>
                                     </div>
                                     <div class="col-md-7">
-                                        <div class="header col-md-12" style="margin-top: -14px;">
-                                            <div class="col-md-12" style="padding-left: 0">
+                                        <div class="header col-md-12" style="margin-top: -14px; padding-right: 0">
+                                            <div class="col-md-12" style="padding-left: 0; padding-right: 0;">
                                                 <h4 class="title col-md-4" style="padding-left: 0">Продукты</h4>
+
                                                 <div class="col-md-4 addProduct pull-right">
                                                     <i class="fa fa-plus-square pull-right" data-toggle="tooltip" data-target="#productsModal" title="Добавить товар"></i>
+
+                                                    <i class="ti-printer pull-right" data-toggle="tooltip" data-target="printProducts" title="Распечатать чек" style="font-size: 16px;color: #fff;background: #63a2ff;padding: 0 3px 0 5px;font-weight: 100;margin-top: 1px;border-radius: 5px; cursor: pointer"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -184,7 +187,7 @@
                                                         <tr data-id="{{$detail -> id}}">
                                                             <td><a href="{{url($detail -> product -> id."/product")}}" target="_blank"><img style="max-width: 90px;" src="{{url('/images/products/'.$detail -> image)}}"></a></td>
                                                             <td><a href="{{url($detail -> product-> id."/product")}}" target="_blank">{{$detail -> tovar_name}}</a></td>
-                                                            <td>{{$detail -> this_tovar_in_order_price}}<span>{{$detail -> currency}}</span></td>
+                                                            <td>{{$detail -> this_tovar_in_order_price}}<span> грн</span></td>
                                                             <td>@if(($detail -> this_tovar_in_order_price / $detail -> tovar_in_order_count)/ $detail -> prise == $detail -> box_count)
                                                                     Ящик
                                                                 @else

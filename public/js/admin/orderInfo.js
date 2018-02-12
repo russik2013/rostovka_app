@@ -25,9 +25,11 @@ $('.removePrudct').on('click', function () {
     });
 });
 
-$('.addProduct i').on('click', function(){
+$('.addProduct .fa-plus-square').on('click', function(){
     $("#productsModal").modal('show');
 });
+
+
 
 var searchData = [];
 $('.search--good').on('click', function () {
