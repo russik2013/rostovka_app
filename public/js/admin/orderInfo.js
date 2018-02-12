@@ -25,7 +25,6 @@ $('.removePrudct').on('click', function () {
     });
 });
 
-
 $('.addProduct i').on('click', function(){
     $("#productsModal").modal('show');
 });
@@ -78,7 +77,6 @@ function searchResult(searchData, imageUrl) {
         })
     });
 }
-
 
 if(searchData.length === 0){
     $('.founded--good').css('display', 'none');

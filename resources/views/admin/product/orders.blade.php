@@ -72,7 +72,7 @@
                                 @foreach($orders as $order)
                                     <tr>
                                         <td class="articul"><input value="{{$order -> id}}" disabled></td>
-                                        <td class="costomer--Info"><a href="#!">{{$order -> first_name.' '.$order -> last_name}}</a></td>
+                                        <td class="costomer--Info">{{$order -> first_name.' '.$order -> last_name}}</td>
                                         <td>
                                             @if($order -> shipping_method == "new_post") Новая почта
                                                 @elseif($order -> shipping_method == "delivery_method") Delivery
