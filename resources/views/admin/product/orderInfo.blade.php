@@ -23,6 +23,19 @@
                                         <div class="header">
                                             <h4 class="title">Информация о заказе</h4>
                                         </div>
+
+                                        <div class="col-md-12 orderInfo__input">
+                                            <div class="col-md-5">
+                                                <label>Сумма</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="form-group">
+                                                    {{$order -> summ}}
+                                                </div>
+                                            </div>
+                                        </div>
+
+
                                         <div class="col-md-12 orderInfo__input">
                                             <div class="col-md-5">
                                                 <label>Статус</label>
@@ -167,24 +180,21 @@
 
                                             <table class="table table-condensed">
                                                 <tbody>
-
-                                                @foreach($order -> details as $detail)
-
-
-                                                    <tr data-id="{{$detail -> id}}">
-                                                        <td><a href="{{url($detail -> product -> id."/product")}}" target="_blank"><img style="max-width: 90px;" src="{{url('/images/products/'.$detail -> image)}}"></a></td>
-                                                        <td><a href="{{url($detail -> product-> id."/product")}}" target="_blank">{{$detail -> tovar_name}}</a></td>
-                                                        <td>{{$detail -> this_tovar_in_order_price}}<span>{{$detail -> currency}}</span></td>
-                                                        <td>@if(($detail -> this_tovar_in_order_price / $detail -> tovar_in_order_count)/ $detail -> prise == $detail -> box_count)
-                                                                Ящик
-                                                            @else
-                                                                Ростовка
-                                                            @endif
-                                                        </td>
-                                                        <td>{{$detail -> tovar_in_order_count}}</td>
-                                                        <td><i class="removePrudct table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></td>
-                                                    </tr>
-                                                @endforeach
+                                                    @foreach($order -> details as $detail)
+                                                        <tr data-id="{{$detail -> id}}">
+                                                            <td><a href="{{url($detail -> product -> id."/product")}}" target="_blank"><img style="max-width: 90px;" src="{{url('/images/products/'.$detail -> image)}}"></a></td>
+                                                            <td><a href="{{url($detail -> product-> id."/product")}}" target="_blank">{{$detail -> tovar_name}}</a></td>
+                                                            <td>{{$detail -> this_tovar_in_order_price}}<span>{{$detail -> currency}}</span></td>
+                                                            <td>@if(($detail -> this_tovar_in_order_price / $detail -> tovar_in_order_count)/ $detail -> prise == $detail -> box_count)
+                                                                    Ящик
+                                                                @else
+                                                                    Ростовка
+                                                                @endif
+                                                            </td>
+                                                            <td>{{$detail -> tovar_in_order_count}}</td>
+                                                            <td><i class="removePrudct table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></td>
+                                                        </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>

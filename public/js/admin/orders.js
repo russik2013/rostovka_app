@@ -17,8 +17,6 @@ $(document).ready(function () {
     }
 });
 
-$.datepicker.formatDate( "yy-mm-dd", new Date( 2007, 1 - 1, 26 ) );
-
 $(document).ready(function () {
     var options = $.extend({},
         $.datepicker.regional["ru"], {
