@@ -92,3 +92,15 @@ $('.logOutButton').on('click', function () {
         location.reload();
     })
 });
+
+
+//////Search
+$('.search--box button').on('click', function (e) {
+    e.preventDefault();
+    window.location = $('meta[name="root-site"]').attr('content') + '/category/' + $('.search-query').val();
+});
+
+$('.navigation-menu ul li a').on('click', function () {
+    localStorage.removeItem('filterValues');
+    localStorage.removeItem('selectedCount');
+});

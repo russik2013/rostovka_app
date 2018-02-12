@@ -37,7 +37,8 @@
                                 <tbody>
                                 @foreach($manufacturers as $manufacturer)
 
-                                    <tr>
+                                    <tr data-id="{{$manufacturer -> id}}">
+                                        <td class="articul productsArt" style="display: none;"><input value="{{$manufacturer -> id}}" disabled></td>
                                         <th>{{$manufacturer -> name}}</th>
                                         <th>{{$manufacturer -> street}}</th>
                                         <th>{{$manufacturer -> numberContainer}}</th>
@@ -45,7 +46,7 @@
                                         <td>{{$manufacturer -> secondName}}</td>
                                         <td>{{$manufacturer -> phone}}</td>
                                         <td>{{$manufacturer -> discount}}</td>
-                                        <td><a href="{{url('/suppliers_edit/'.$manufacturer -> id)}}"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                        <td><a href="{{url('/suppliers_edit/'.$manufacturer -> id)}}"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> </td>
                                     </tr>
 
                                     @endforeach
@@ -63,5 +64,5 @@
 @endsection
 
 @section('suppliersLib')
-    <script src="{{url('js/admin/suppliers.js')}}"></script>
+    <script src="{{url('js/suppliers.js')}}"></script>
 @endsection

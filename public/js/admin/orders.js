@@ -134,3 +134,8 @@ $('.downloadButton button').on('click', function () {
     }
 
 });
+
+$('.form-search button').on('click', function (e) {
+    e.preventDefault();
+    window.location = $('meta[name="root-site"]').attr('content') + '/orders/' + $('.search-query').val();
+});
