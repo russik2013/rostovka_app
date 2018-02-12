@@ -11,6 +11,8 @@ class ReceiptController extends Controller
     public function index(){
 
         $pdf = PDF::loadView('admin.pdf.invoice');
+        //$pdf -> setPaper('a4', 'landscape');
+
         return $pdf->download('invoice.pdf');
 
     }
