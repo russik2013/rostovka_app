@@ -94,6 +94,7 @@ class OrderController extends Controller
 
         $products = Product::whereIn('id',$ids) -> with('photo') -> get();
         $insert_mass = [];
+        $final_prise = 0;
             foreach ($products as $product) {
 
                 if($orderDates[$product -> id][2] == 'box'){
@@ -130,10 +131,18 @@ class OrderController extends Controller
                         'prise_zakup' => $product-> prise_zakup
                     ];
 
-
+                $final_prise += $this_tovar_in_order_price;
                 }
 
         OrderDetails::insert($insert_mass);
+
+
+        $order = Order::find($request -> data[0]['orderID']);
+
+        $order -> summ = $order -> summ + $final_prise;
+
+        $order -> save();
+
 
     }
 }
