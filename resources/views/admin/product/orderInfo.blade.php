@@ -175,7 +175,7 @@
                                                         <td><a href="{{url($detail -> product -> id."/product")}}" target="_blank"><img style="max-width: 90px;" src="{{url('/images/products/'.$detail -> image)}}"></a></td>
                                                         <td>{{$detail ->  article}}</td>
                                                         <td><a href="{{url($detail -> product-> id."/product")}}" target="_blank">{{$detail -> tovar_name}}</a></td>
-                                                        <td>{{$detail -> this_tovar_in_order_price}}<span>{{$detail -> currency}}</span></td>
+                                                        <td>{{$detail -> this_tovar_in_order_price}}<span>грн</span></td>
                                                         <td>@if(($detail -> this_tovar_in_order_price / $detail -> tovar_in_order_count)/ $detail -> prise == $detail -> box_count)
                                                                 Ящик
                                                             @else

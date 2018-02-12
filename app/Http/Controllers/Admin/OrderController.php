@@ -160,17 +160,15 @@ class OrderController extends Controller
 
                 }
 
-
                 if($orderDates[$product -> id][2] == 'box'){
 
-                        $this_tovar_in_order_price = ($order_tovar_prise * $product->box_count * $orderDates[$product -> id][1]) * $product -> manufacturer ->koorse;
+                        $this_tovar_in_order_price = $order_tovar_prise * $product->box_count * $orderDates[$product -> id][1];
 
                 }else {
 
                     $this_tovar_in_order_price = $order_tovar_prise * $product->rostovka_count * $orderDates[$product -> id][1];
 
                 }
-
                     $insert_mass[] = [
                         'article' => $product->article,
                         'tovar_name' => $product->name,
