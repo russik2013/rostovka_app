@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="193d3dbc-6990-4cb2-bda5-0007cf53db7e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/product/orderInfo.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/product/orderInfo.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -1083,14 +1081,7 @@
       <workItem from="1518167632095" duration="8822000" />
       <workItem from="1518189240704" duration="378000" />
       <workItem from="1518189800294" duration="405000" />
-      <workItem from="1518424688235" duration="14930000" />
-    </task>
-    <task id="LOCAL-00003" summary="FrontEnd Theme - DONE">
-      <created>1506690823640</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1506690823640</updated>
+      <workItem from="1518424688235" duration="15104000" />
     </task>
     <task id="LOCAL-00004" summary="FrontEnd Theme - DONE">
       <created>1506696221640</created>
@@ -1428,11 +1419,18 @@
       <option name="project" value="LOCAL" />
       <updated>1518448354417</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="update scv download v0.2.7">
+      <created>1518449662061</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1518449662061</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="707970000" />
+    <option name="totallyTimeSpent" value="708144000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
