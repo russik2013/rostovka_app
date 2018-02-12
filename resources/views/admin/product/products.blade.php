@@ -59,9 +59,9 @@
                     </select>
 
                     <select class="sorting__Option availability col-md-5 col-sm-12 col-xs-12" name="availability" style="display: none; float: left; margin-right: 5px;">
-                        <option value="0">Все</option>
+                        <option value="2">Все</option>
                         <option value="1">Да</option>
-                        <option value="2">Нет</option>
+                        <option value="0">Нет</option>
                     </select>
                 </div>
 

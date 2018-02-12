@@ -115,6 +115,7 @@ function getSelect(e) {
         $('.file--uploader').css('display', 'none');
         $('.xsl--uploader').css('display', 'none');
         $('button.upload').css('display', 'none');
+        $('.sorting__Option.availability').css('display', 'block');
         $('.header--add--buttons').append("<button class='download allProducts col-md-4 col-sm-12 col-xs-12' onclick='getUserAllProducts()'>Скачать</button>");
         $('.header--add--buttons').append("<button class='download for_Supliers col-md-4 col-sm-12 col-xs-12' onclick='getManufacturesAllProducts()'>Скачать для поставщиков</button>");
         $('select.manufacturer_Options').css('display', 'block');
@@ -137,7 +138,8 @@ function getUserAllProducts() {
             window.location = $('meta[name="root-site"]').attr('content') + '/csvDownload?manufacturer_id='+
                 $('.sorting__Option.manufacturer_Options option:selected').val() +'&season_id='+
                 $('.sorting__Option.seasone_Options option:selected').val() + '&type_id='+
-                $('.sorting__Option.type_Options option:selected').val();
+                $('.sorting__Option.type_Options option:selected').val() + '&accessibility' +
+                $('.sorting__Option.availability option:selected').val()
         }
     });
 }

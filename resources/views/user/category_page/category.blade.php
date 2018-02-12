@@ -24,10 +24,9 @@
                                         <option value="0" selected="selected">Последние поступления</option>
                                         <option value="1">от дешевого к дорогому</option>
                                         <option value="2">от дорогого к дешевому</option>
-                                        {{--<option value="sort_by_newness">по дате</option>--}}
                                     </select>
                                 </form>
-                                <form class="product-sort-by pull-right col-xl-5 col-md-12 col-sm-12 col-xs-12">
+                                <form class="product-sort-by pull-right col-xl-5 col-md-12 col-sm-12 col-xs-12" data-target="goodsCount">
                                     <label for="product-show">на странице по: </label>
                                     <select name="product-show" id="product-show" class="nice-select-box" data-set="selectCount">
                                         <option value="24" selected="selected">24</option>

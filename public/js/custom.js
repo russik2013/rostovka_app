@@ -74,10 +74,10 @@ $(function () {
 });
 
 
-$(document).on('click', '.product-item-inner a', function (event) {
-    var clickeID = Number (event.target.parentElement.parentElement.parentElement.parentElement.dataset.id);
-    sessionStorage.setItem('id', data[clickeID].dataID);
-});
+// $(document).on('click', '.product-item-inner a', function (event) {
+//     var clickeID = Number (event.target.parentElement.parentElement.parentElement.parentElement.dataset.id);
+//     localStorage.setItem('id', data[clickeID].dataID);
+// });
 
 $('.cartBl').on('scroll', function (ev) {
     ev.preventDefault();
