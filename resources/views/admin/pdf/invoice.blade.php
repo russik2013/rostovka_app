@@ -11,113 +11,135 @@
 
     body { font-family: DejaVu Sans, sans-serif; }
 
-    .table-container {
-        max-width: 1100px;
-        margin: 0 auto;
-        text-align: center;
-    }
-    .table-container .contacts {
-        display: flex;
-        flex-direction: row;
-    }
-    .table-container .contacts ul {
-        list-style: none;
-        padding: 0;
-        width: 50%;
-        text-align: right;
-    }
-    .table-container .contacts ul.table-contacts {
-        width: 65%;
-    }
-    .table-container .contacts ul.detailed-contacts {
-        width: 35%;
-    }
-    .table-container .contacts ul p {
-        text-align: right;
-    }
-    .table-container table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-    .table-container table th {
-        color: black;
-        padding: 10px;
-        text-align: center;
-        font-weight: normal;
-    }
-    .table-container table td {
-        padding: 10px;
-        color: black;
-        font-weight: normal;
-    }
-    .table-container .col1 {
-        width: 100px;
-    }
-    .table-container .col2 {
-        width: 500px;
-    }
-    .table-container .col-normal {
-        width: 100px;
-    }
-    .table-container .bottom-content p {
-        text-align: left;
-    }
-    .table-container .bottom-content .price {
-        font-weight: bold;
-        font-size: 20px;
-    }
+    .blocks{position: absolute; top: 0; left: 0;}
+    .bl1{width: 100%; min-height: 50%;}
+    .bl2{width: 100%; height: 50%; padding-top: 200px;}
+    .bl3{width: 100%; height: 100%;}
 
+    .border_table{
+        border: 1px solid black;
+    }
+    .col1 { vertical-align: top; }
 
 </style>
 
-<div class="table-container">
-    <div class="table-title">
-        <h1>№ заказа 3175</h1>
-    </div>
-    <div class="contacts">
+
+<div class="blocks">
+    <div class="bl1">
+        <div align="center">
+            <h2>№ заказа {{$order -> id}}</h2>
+        </div>
+        <table cellpadding ="4" cellspacing="0" >
+
+            <tr>
+                <td align="right" colspan="5">ФИО:</td>
+                <td align="right" colspan="2">{{$order -> first_name}} {{$order -> last_name}}</td>
+            </tr>
+            <tr>
+                <td align="right" colspan="5">Телефон:</td>
+                <td align="right" colspan="2">{{$order -> phone}}</td>
+            </tr>
+            <tr>
+                <td align="right" colspan="5">Адрес доставки:</td>
+                <td align="right" colspan="2">{{$order -> address}}</td>
+            </tr>
+            <tr>
+                <td align="right" colspan="5">Номер отделения компании перевозчика:</td>
+                <td align="right" colspan="2">{{$order -> info}}</td>
+            </tr>
+            <tr>
+                <td align="right" colspan="5">Способы доставки:</td>
+                <td align="right" colspan="2">
+                    @if($order ->shipping_method == "new_post") Новая почта
+                    @elseif($order ->shipping_method == "delivery_method") Delivery
+                    @elseif($order ->shipping_method == "avtolux_method") Автолюкс
+                    @elseif($order ->shipping_method == "intime_method") InTime
+                    @elseif($order ->shipping_method == "bus_method") Подвести к автобусу
+                    @elseif($order ->shipping_method == "self_pickup") Самовывоз
+                    @endif
+                </td>
+            </tr>
+            <tr>
+                <td align="right" colspan="5">Способы оплаты:</td>
+                <td align="right" colspan="2">
+                    @if($order -> payment_method == "privatBank_cart") На карту "ПриватБанка"
+                    @elseif($order -> payment_method == "hand_in_cash") Наличными
+                    @elseif($order -> payment_method == "c_o_d") Наложенный платеж
+                    @endif
+                </td>
+            </tr>
+
+            <tr>
+                <th colspan="2" class="border_table">Товар</th>
+                <th class="border_table">Тип</th>
+                <th class="border_table">Кол-во.</th>
+                <th class="border_table">Пар в ящ/рост.</th>
+                <th class="border_table">Цена за шт.</th>
+                <th class="border_table">Общая цена</th>
+            </tr>
+
+            @foreach($order -> details as $detail)
+
+                <tr>
+                    <td class="border_table"><img src="{{asset('images/products/'.$detail -> image)}}" width="70px" height="70px"></td>
+                    <td class="border_table">{{$detail -> tovar_name}} ({{$detail -> size_name}})</td>
+                    <td class="border_table">
+                        @if(($detail -> this_tovar_in_order_price / $detail -> tovar_in_order_count)/ $detail -> prise == $detail -> box_count)
+                            Ящик
+                        @else
+                            Ростовка
+                        @endif
+                    </td>
+                    <td class="border_table">{{$detail -> tovar_in_order_count}}</td>
+                    <td class="border_table">
+                        @if(($detail -> this_tovar_in_order_price / $detail -> tovar_in_order_count)/ $detail -> prise == $detail -> box_count)
+                            {{$detail -> box_count}}
+                        @else
+                            {{$detail -> rostovka_count}}
+                        @endif
+                    </td>
+                    <td class="border_table">{{$detail ->prise}}</td>
+                    <td class="border_table">{{$detail ->this_tovar_in_order_price}}</td>
+                </tr>
+
+                @endforeach
 
 
 
-        <ul class="table-contacts">
-            <li><p>ФИО:</p></li>
-            <li><p>Телефон:</p></li>
-            <li><p>Адрес доставки:</p></li>
-            <li><p>Номер отделения компании перевозчика:</p></li>
-            <li><p>Способы доставки:</p></li>
-            <li><p>Способы оплаты:</p></li>
-        </ul>
-        <ul class="detailed-contacts">
-            <li><p>Володина</p></li>
-            <li><p>(097) 990-11-85</p></li>
-            <li><p>Днепр</p></li>
-            <li><p>Новая Почта, 58</p></li>
-            <li><p>Новая Почта</p></li>
-            <li><p>На карту "ПриватБанка"</p></li>
-        </ul>
+
+
+            <tr>
+                <td colspan="7"><p>Всего к оплате:</p></td>
+
+            </tr>
+            <tr>
+
+                <td colspan="2" class="col1"><h2>{{$order -> details -> sum('this_tovar_in_order_price')}} грн.</h2></td>
+            </tr>
+
+        </table>
+
     </div>
-    <table width="1100" cellpadding="4" cellspacing="0" border="1">
-        <tr>
-            <th colspan="2">Товар</th>
-            <th>Тип</th>
-            <th>Кол-во.</th>
-            <th>Пар в ящ/рост.</th>
-            <th>Цена за шт.</th>
-            <th>Общая цена</th>
-        </tr>
-        <tr>
-            <td class="col1">1</td>
-            <td class="col2">2</td>
-            <td class="col-normal">3</td>
-            <td class="col-normal">4</td>
-            <td class="col-normal">5</td>
-            <td class="col-normal">6</td>
-            <td class="col-normal">7</td>
-        </tr>
-    </table>
-    <div class="bottom-content">
-        <p>Всего к оплате:</p>
-        <p class="price">2560.00 грн.</p>
-    </div>
+    {{--<div class="bl3">--}}
+        {{--<p>Всего к оплате:</p>--}}
+        {{--<p class="price"><h2> {{$order -> details -> sum('this_tovar_in_order_price')}}</h2> грн.</p>--}}
+    {{--</div>--}}
+
 </div>
+
+
+    {{--<div class="table-title">--}}
+        {{--<h1>№ заказа 3175</h1>--}}
+    {{--</div>--}}
+    {{--<div class="contacts">--}}
+
+
+
+    {{--</div>--}}
+
+    {{--<div class="bottom-content">--}}
+
+    {{--</div>--}}
+
 </body>
 </html>
