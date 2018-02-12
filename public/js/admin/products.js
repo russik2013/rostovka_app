@@ -328,3 +328,8 @@ $(document).on('click', 'button.upload', function () {
 function removeAlert() {
     $('.alert').remove();
 }
+
+$('.form-search button').on('click', function (e) {
+    e.preventDefault();
+    window.location = $('meta[name="root-site"]').attr('content') + '/products/' + $('.search-query').val();
+});

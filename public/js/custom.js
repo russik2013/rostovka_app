@@ -93,6 +93,12 @@ $('.logOutButton').on('click', function () {
     })
 });
 
+//////Search
+$('.search--box button').on('click', function (e) {
+    e.preventDefault();
+    window.location = $('meta[name="root-site"]').attr('content') + '/category/' + $('.search-query').val();
+});
+
 
 $(document).ready(function () {
     //called when key is pressed in textbox
