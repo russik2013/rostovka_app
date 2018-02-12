@@ -60,7 +60,25 @@ class OrderController extends Controller
 
     public function deleteOrderDetail(Request $request){
 
-        OrderDetails::find($request -> id) -> delete();
+        $order_detail = OrderDetails::find($request -> id);
+
+        if($order_detail){
+
+            $order = Order::find($order_detail -> order_id);
+
+            if($order){
+
+                $order -> summ = $order -> summ - $order_detail -> this_tovar_in_order_price;
+
+                $order -> save();
+
+                $order_detail -> delete();
+
+                return response()->json(['done' => 'deleted'], 200);
+
+            } else return response()->json(['error' => 'wrong id order'], 404);
+
+        }else return response()->json(['error' => 'wrong id detail'], 404);
 
     }
 
@@ -97,13 +115,59 @@ class OrderController extends Controller
         $final_prise = 0;
             foreach ($products as $product) {
 
+                $order_tovar_prise = $product->prise;
+
+                if($product -> manufacturer ->koorse != "" || $product -> manufacturer ->koorse != 0){
+
+                    $order_tovar_prise *= $product -> manufacturer ->koorse;
+
+                }
+
+                if($product -> manufacturer ->discount !="" || $product -> manufacturer ->discount != 0) {
+
+                    $hrivna_discount = explode("грн",$product -> manufacturer ->discount);
+
+                    if(isset($hrivna_discount[1])){
+
+                        $order_tovar_prise = $order_tovar_prise - $hrivna_discount[0];
+                    }
+
+                    $prozent_discount = explode("%",$product -> manufacturer ->discount);
+
+                    if(isset($prozent_discount[1])){
+
+                        $order_tovar_prise = $order_tovar_prise - ( $order_tovar_prise * ($prozent_discount[0]/100) );
+                    }
+
+                }
+
+                if($product ->discount !="" || $product -> discount != 0) {
+
+                    $hrivna_discount = explode("грн",$product ->discount);
+
+                    if(isset($hrivna_discount[1])){
+
+                        $order_tovar_prise =  $order_tovar_prise - $hrivna_discount[0];
+                    }
+
+                    $prozent_discount = explode("%",$product -> discount);
+
+                    if(isset($prozent_discount[1])){
+
+
+                        $order_tovar_prise =  $order_tovar_prise - ( $order_tovar_prise * ($prozent_discount[0]/100) ) ;
+                    }
+
+                }
+
+
                 if($orderDates[$product -> id][2] == 'box'){
 
-                    $this_tovar_in_order_price = $product->prise * $product->box_count * $orderDates[$product -> id][1];
+                        $this_tovar_in_order_price = ($order_tovar_prise * $product->box_count * $orderDates[$product -> id][1]) * $product -> manufacturer ->koorse;
 
                 }else {
 
-                    $this_tovar_in_order_price = $product->prise * $product->rostovka_count * $orderDates[$product -> id][1];
+                    $this_tovar_in_order_price = $order_tovar_prise * $product->rostovka_count * $orderDates[$product -> id][1];
 
                 }
 
@@ -112,7 +176,7 @@ class OrderController extends Controller
                         'tovar_name' => $product->name,
                         'rostovka_count' => $product->rostovka_count,
                         'box_count' => $product->box_count,
-                        'prise' => $product->prise,
+                        'prise' => $order_tovar_prise,
                         'manufacturer_name' => $product->manufacturer->name,
                         'category_name' => $product->category->name,
                         'currency' => $product->currency,
@@ -131,7 +195,8 @@ class OrderController extends Controller
                         'prise_zakup' => $product-> prise_zakup
                     ];
 
-                $final_prise += $this_tovar_in_order_price;
+
+                $final_prise +=  $this_tovar_in_order_price;
                 }
 
         OrderDetails::insert($insert_mass);
