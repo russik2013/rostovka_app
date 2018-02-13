@@ -160,7 +160,7 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
     return filter_value
 });
 
-//Получение сохраненного количество (24 - 36 - 48) товаров на странице
+//Получение сохраненного количество (24 - 36 - 48) товаров на страницеxw
 var saved_count_on_page = Number (localStorage.getItem('selectedCount'));
 
 //Выбор количество элементов на странице
@@ -203,7 +203,6 @@ function setSavedOptionCount() {
 
 if(getSavedFilters !== null) {
     setSavedOptionCount();
-
 
     var items_Count = Number ($.find('.checkbox-circle').length);
     for (var i = 0; i < getSavedFilters.length; i++){
@@ -269,7 +268,8 @@ if(getSavedFilters !== null) {
                     option_type: 'full__price' // Или full__price или rostovka__price
                 };
             }
-
+            checkMinMax(data);
+            checkPrices(data);
             pageList = data;
             GetData(pageList);
             drawItems(pageList);
@@ -373,6 +373,9 @@ function makeData(page_num, count_on_page) {
         });
         GetData(data);
         $('.preloader').remove();
+        //Проверка дублей
+        checkMinMax(data);
+        checkPrices(data);
     }) .fail(function( msg ) {});
 }
 
@@ -440,7 +443,6 @@ function NextData(page_num, count_on_page, filter_value) {
 
 //Работа с пагинацией, массивом товаров
 function GetData(data) {
-    // console.log(data);
     if (data.length > 0) {
         //work with pagination
         var Pagination = {
@@ -635,11 +637,10 @@ function drawItems(pageList) {
         delay += 0.1;
         $(this).addClass('animated fadeIn').css('animation-delay', delay + 's');
     });
-    checkMinMax();
 }
 
 //Проверка дублей расстовки/ящика
-function checkMinMax() {
+function checkMinMax(data) {
     var MinMaxCounter = [];
     for (var i = 0; i < data.length; i++) {
         if(data[i].box === data[i].rostovka) {
@@ -651,6 +652,25 @@ function checkMinMax() {
     $(document).ready(function(){
         for(var y = 0; y < MinMaxCounter.length; y++){
             $('[data-id="'+MinMaxCounter[y]+'"] [data-set="minimum"]').css('visibility', 'hidden');
+        }
+    })
+}
+
+
+// Проверка дублей скидок
+function checkPrices(data) {
+    var MinMaxCounter = [];
+    for (var i = 0; i < data.length; i++) {
+        if(data[i].price === data[i].old_prise) {
+            var id = data[i].real_id;
+            MinMaxCounter.push(id);
+        }
+    }
+
+    $(document).ready(function(){
+        for(var y = 0; y < MinMaxCounter.length; y++){
+            $('[data-id="'+MinMaxCounter[y]+'"] [data-set="old--Price"]').css('visibility', 'hidden');
+            $('[data-id="'+MinMaxCounter[y]+'"] [data-set="prodPrice"]').css('margin-top', '0');
         }
     })
 }
@@ -791,6 +811,9 @@ function makeFilterData(msg) {
 
     drawItems(pageList);
     GetData(filtered_data);
+    //Проверка дублей
+    checkMinMax(data);
+    checkPrices(data);
 }
 
 // Сортировка данных
