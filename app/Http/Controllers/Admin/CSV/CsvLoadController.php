@@ -237,10 +237,6 @@ class CsvLoadController extends Controller
         
         else {
 
-            //return response($this->formInsertArray($products));
-
-            //dd($this->formInsertArray($products), 'russik');
-
             Product::insert($this->formInsertArray($products));
 
             ProductPhotos::insert($this->formPhotoInsertArray($request, $products));
@@ -267,7 +263,8 @@ class CsvLoadController extends Controller
         foreach ($products_mass as $key => $photo_to_product_value){
 
             foreach ($photo_to_product_value[0] as $item){
-                if($item && file_exists('..images/products/' . $item.'.jpg'))
+
+                if($item && file_exists('../images/products/' . $item.'.jpg'))
                     File::move('../images/products/' . $item.'.jpg', 'images/products/' . $data_base_products[$key]."_". $item.'.jpg');
 
             }
@@ -281,6 +278,8 @@ class CsvLoadController extends Controller
         $zip->open($photos -> photo -> getRealPath());
         $zip->extractTo('../images/products/');
         $zip->close();
+
+
 
         $products_mass = [];
 
