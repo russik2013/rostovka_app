@@ -111,11 +111,11 @@ class SaleController extends Controller
 
             $product->old_price = $product->prise;
 
-            $product->prise;
-
             if($product -> manufacturer ->koorse != "" || $product -> manufacturer ->koorse != 0){
 
                 $product->prise *= $product -> manufacturer ->koorse;
+                $product->old_price *= $product -> manufacturer ->koorse;
+
 
             }
 
@@ -158,6 +158,15 @@ class SaleController extends Controller
 
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
+
+            if($product -> manufacturer ->box == 1 ){
+
+                $product->rostovka__price = $product->full__price;
+                $product -> rostovka_count = $product -> box_count;
+
+            }
+
+
             $product -> types = $product -> type -> name;
             $product -> product_url = url($product ->id.'/product');
         }

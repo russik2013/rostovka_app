@@ -162,21 +162,14 @@ class CsvLoadController extends Controller
                 $sex = $product -> pol;
 
 
-            if($product -> razmer_ot > $product -> razmer_do){
-                if(isset($sizes[$product -> razmer_do.'-'.$product -> razmer_ot]))
-                    $size = $sizes[$product -> razmer_do.'-'.$product -> razmer_ot];
-                else{
-                    $sizes = array_merge($sizes, $this ->addSize($product -> razmer_do, $product -> razmer_ot));
-                    $size = $sizes[$product -> razmer_do.'-'.$product -> razmer_ot];
-                }
-            }else{
-                if(isset($sizes[$product -> razmer_ot.'-'.$product -> razmer_do]))
-                    $size = $sizes[$product -> razmer_ot.'-'.$product -> razmer_do];
-                else{
-                    $sizes = array_merge($sizes, $this ->addSize($product -> razmer_ot, $product -> razmer_do));
-                    $size = $sizes[$product -> razmer_ot.'-'.$product -> razmer_do];
-                }
+
+            if(isset($sizes[$product -> razmer]))
+                $size = $sizes[$product -> razmer];
+            else{
+                $sizes = array_merge($sizes, $this ->addSize($product -> razmer));
+                $size = $sizes[$product -> razmer];
             }
+
 
             if(isset($manufacturers[$product ->{'brend'}]))
                 $manufacturer = $manufacturers[$product ->{'brend'}];
@@ -354,21 +347,14 @@ class CsvLoadController extends Controller
                 $sex = $product -> pol;
 
 
-            if($product -> razmer_ot > $product -> razmer_do){
-                if(isset($sizes[$product -> razmer_do.'-'.$product -> razmer_ot]))
-                    $size = $sizes[$product -> razmer_do.'-'.$product -> razmer_ot];
-                else{
-                    $sizes = array_merge($sizes, $this ->addSize($product -> razmer_do, $product -> razmer_ot));
-                    $size = $sizes[$product -> razmer_do.'-'.$product -> razmer_ot];
-                }
-            }else{
-                if(isset($sizes[$product -> razmer_ot.'-'.$product -> razmer_do]))
-                    $size = $sizes[$product -> razmer_ot.'-'.$product -> razmer_do];
-                else{
-                    $sizes = array_merge($sizes, $this ->addSize($product -> razmer_ot, $product -> razmer_do));
-                    $size = $sizes[$product -> razmer_ot.'-'.$product -> razmer_do];
-                }
+
+            if(isset($sizes[$product -> razmer]))
+                $size = $sizes[$product -> razmer];
+            else{
+                $sizes = array_merge($sizes, $this ->addSize($product -> razmer));
+                $size = $sizes[$product -> razmer];
             }
+
 
             if(isset($manufacturers[$product ->{'brend'}]))
                 $manufacturer = $manufacturers[$product ->{'brend'}];
@@ -419,19 +405,21 @@ class CsvLoadController extends Controller
 
     }
 
-    protected function addSize($min, $max){
+    protected function addSize($min){
 
         $size = new Size();
 
-        $size ->name = $min.'-'.$max;
+        $size ->name = $min;
 
-        $size ->min = $min;
+        $size_norm = explode('-', $min);
 
-        $size ->max = $max;
+        $size ->min = $size_norm[0];
+
+        $size ->max = $size_norm[1];
 
         $size -> save();
 
-        return [$min.'-'.$max => $size -> id];
+        return [$min => $size -> id];
 
     }
 

@@ -10,9 +10,14 @@ use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function index($name=""){
 
-        $clients = User::paginate(15);
+        if($name != "")
+            $clients = User::where('first_name', 'like', '%'.$name.'%')
+                -> where('last_name', 'like', '%'.$name.'%','or')
+                ->  paginate(15);
+        else
+            $clients = User::paginate(15);
 
         return view('admin.all_user', compact('clients'));
 
