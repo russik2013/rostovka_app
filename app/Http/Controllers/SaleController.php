@@ -105,9 +105,56 @@ class SaleController extends Controller
 
     public function getTopSales(){
         $top = TopSale::orderBy('count','desc') -> take(10) -> pluck('product_id');
-        $products = Product::whereIn('id', $top) ->with('photo','size') ->get();
+        $products = Product::whereIn('id', $top) ->with('photo','size','manufacturer') ->get();
 
         foreach ($products as $product){
+
+            $product->old_price = $product->prise;
+
+            $product->prise;
+
+            if($product -> manufacturer ->koorse != "" || $product -> manufacturer ->koorse != 0){
+
+                $product->prise *= $product -> manufacturer ->koorse;
+
+            }
+
+            if($product -> manufacturer ->discount !="" || $product -> manufacturer ->discount != 0) {
+
+                $hrivna_discount = explode("грн",$product -> manufacturer ->discount);
+
+                if(isset($hrivna_discount[1])){
+
+                    $product->prise = $product->prise - $hrivna_discount[0];
+                }
+
+                $prozent_discount = explode("%",$product -> manufacturer ->discount);
+
+                if(isset($prozent_discount[1])){
+
+                    $product->prise = $product->prise - ( $product->prise * ($prozent_discount[0]/100) );
+                }
+
+            }
+
+            if($product ->discount !="" || $product -> discount != 0) {
+
+                $hrivna_discount = explode("грн",$product ->discount);
+
+                if(isset($hrivna_discount[1])){
+
+                    $product->prise =  $product->prise - $hrivna_discount[0];
+                }
+
+                $prozent_discount = explode("%",$product -> discount);
+
+                if(isset($prozent_discount[1])){
+
+
+                    $product->prise =  $product->prise - ( $product->prise * ($prozent_discount[0]/100) ) ;
+                }
+
+            }
 
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
