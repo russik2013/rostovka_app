@@ -13,7 +13,7 @@ use PHPExcel_Worksheet_Drawing;
 class CsvDownloadController extends Controller
 {
     public function getCsvFileWithProduct(Request $request){
-
+        dd($request -> all());
 
         if(Type::where('id', $request -> type_id)->first())
             if(Type::where('id', $request -> type_id) ->first() -> name == 'обувь')
@@ -25,9 +25,28 @@ class CsvDownloadController extends Controller
             else  $season = Season::where('id', $request -> season_id)->pluck('id')->toArray();
 
 
+        $accessibility = [0,1];
+        if($request -> accessibility){
+
+            switch ($request -> accessibility){
+
+                case 0:
+                    $accessibility = [0];
+                    break;
+                case 1:
+                    $accessibility = [1];
+                    break;
+
+                default:
+                    $accessibility = [0,1];
+
+            }
+
+        }
+
         $products = Product::with('category','manufacturer','season','type', 'size', 'photo')
             -> where('manufacturer_id', $request -> manufacturer_id) ->whereIn('type_id', $type)
-            ->whereIn('season_id', $season)-> get();
+            ->whereIn('season_id', $season) -> whereIn('accessibility',$accessibility)-> get();
 
         if($products -> count() > 0) {
             $data = [];
@@ -90,7 +109,7 @@ class CsvDownloadController extends Controller
     }
 
     public function getCsvFileWithOrdersToManufacturer(Request $request){
-
+        dd($request -> all());
 
         if(Type::where('id', $request -> type_id)->first())
             if(Type::where('id', $request -> type_id) ->first() -> name == 'обувь')
@@ -101,10 +120,31 @@ class CsvDownloadController extends Controller
             $season = Season::all()->pluck('id')->toArray();
         else  $season = Season::where('id', $request -> season_id)->pluck('id')->toArray();
 
+        dd($request -> all());
+
+        $accessibility = [0,1];
+        if($request -> accessibility){
+
+            switch ($request -> accessibility){
+
+                case 0:
+                    $accessibility = [0];
+                    break;
+                case 1:
+                    $accessibility = [1];
+                    break;
+
+                default:
+                    $accessibility = [0,1];
+
+            }
+
+        }
+
 
         $products = Product::with('category','manufacturer','season','type', 'size', 'photo')
             -> where('manufacturer_id', $request -> manufacturer_id) ->whereIn('type_id', $type)
-            ->whereIn('season_id', $season)-> get();
+            ->whereIn('season_id', $season)-> whereIn('accessibility',$accessibility)-> get();
 
 
 
@@ -121,6 +161,49 @@ class CsvDownloadController extends Controller
                 if($product->size)
                     $size = $product->size->name;
                 else $size = 'none';
+
+                if($product -> manufacturer ->koorse != "" || $product -> manufacturer ->koorse != 0){
+
+                    $product->prise *= $product -> manufacturer ->koorse;
+
+                }
+
+                if($product -> manufacturer ->discount !="" || $product -> manufacturer ->discount != 0) {
+
+                    $hrivna_discount = explode("грн",$product -> manufacturer ->discount);
+
+                    if(isset($hrivna_discount[1])){
+
+                        $product->prise = $product->prise - $hrivna_discount[0];
+                    }
+
+                    $prozent_discount = explode("%",$product -> manufacturer ->discount);
+
+                    if(isset($prozent_discount[1])){
+
+                        $product->prise = $product->prise - ( $product->prise * ($prozent_discount[0]/100) );
+                    }
+
+                }
+
+                if($product ->discount !="" || $product -> discount != 0) {
+
+                    $hrivna_discount = explode("грн",$product ->discount);
+
+                    if(isset($hrivna_discount[1])){
+
+                        $product->prise =  $product->prise - $hrivna_discount[0];
+                    }
+
+                    $prozent_discount = explode("%",$product -> discount);
+
+                    if(isset($prozent_discount[1])){
+
+
+                        $product->prise =  $product->prise - ( $product->prise * ($prozent_discount[0]/100) ) ;
+                    }
+
+                }
 
                 $data[] = [
 
