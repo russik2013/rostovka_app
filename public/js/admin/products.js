@@ -71,6 +71,7 @@ function getSelect(e) {
         $('.seasone_Options').css('display', 'none');
         $('.type_Options').css('display', 'none');
         $('button.upload').css('display', 'none');
+        $('.sorting__Option.availability').css('display', 'none');
         $('.edit').remove();
         $('.header--add--buttons').append('' +
             '<button class="remove col-md-4 col-sm-12 col-xs-12" style="top: 20px; display: block;">Удалить</button>');
@@ -96,6 +97,7 @@ function getSelect(e) {
         $('select.manufacturer_Options').css('display', 'none');
         $('.seasone_Options').css('display', 'none');
         $('.type_Options').css('display', 'none');
+        $('.sorting__Option.availability').css('display', 'none');
         $('.edit').remove();
         $('.remove').remove();
     }
@@ -104,6 +106,7 @@ function getSelect(e) {
         $('.xsl--uploader').css('display', 'block');
         $('.file--uploader').css('display', 'block');
         $('.upload').css('display', 'none');
+        $('.sorting__Option.availability').css('display', 'none');
         $('.header--add--buttons').append('' +
             '<button class="edit col-md-4 col-sm-12 col-xs-12" style="top: 20px; display: block;">Загрузить</button>');
         getFile();
@@ -328,3 +331,8 @@ $(document).on('click', 'button.upload', function () {
 function removeAlert() {
     $('.alert').remove();
 }
+
+$('.form-search button').on('click', function (e) {
+    e.preventDefault();
+    window.location = $('meta[name="root-site"]').attr('content') + '/products/' + $('.search-query').val();
+});

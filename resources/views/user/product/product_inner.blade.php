@@ -22,9 +22,9 @@
                                          data-pswp-uid="3">
                                         <div class="item">
                                             <a class="product-gallery-item"
-                                               href="{{asset('../images/products/'.$product -> photo -> photo_url)}}" data-size=""
-                                               data-med="{{asset('../images/products/'.$product -> photo -> photo_url)}}" data-med-size="">
-                                                <img src="{{asset('../images/products/'.$product -> photo -> photo_url)}}" alt="image 1"/>
+                                               href="{{asset('images/products/'.$product -> photo -> photo_url)}}" data-size=""
+                                               data-med="{{asset('images/products/'.$product -> photo -> photo_url)}}" data-med-size="">
+                                                <img src="{{asset('images/products/'.$product -> photo -> photo_url)}}" alt="image 1"/>
                                             </a>
                                         </div>
                                     </div>

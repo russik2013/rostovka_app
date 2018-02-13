@@ -6173,11 +6173,11 @@ ul#shipping_method {
 }
 
 .sidebar-icon-nav .dropdownCart{
-    max-width: 315px;
+    max-width: 335px;
     position: absolute;
     background: #fff;
     margin-left: 0;
-    width: 315px;
+    width: 335px;
     box-shadow: 0 0 4px rgba(0,0,0,0.19), 0 3px 6px rgba(0,0,0,0.23);
     margin-top: -2px;
     display: none;

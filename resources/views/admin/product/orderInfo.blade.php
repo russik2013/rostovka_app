@@ -175,7 +175,7 @@
                                                 <div class="col-md-4 addProduct pull-right">
                                                     <i class="fa fa-plus-square pull-right" data-toggle="tooltip" data-target="#productsModal" title="Добавить товар"></i>
 
-                                                    <i class="ti-printer pull-right" data-toggle="tooltip" data-target="printProducts" title="Распечатать чек" style="font-size: 16px;color: #fff;background: #63a2ff;padding: 0 3px 0 5px;font-weight: 100;margin-top: 1px;border-radius: 5px; cursor: pointer"></i>
+                                                    <a href="{{url('/pdfLoad/'.$order->id)}}"><i class="ti-printer pull-right" data-toggle="tooltip" data-target="printProducts" style="font-size: 16px;color: #fff;background: #63a2ff;padding: 0 3px 0 5px;font-weight: 100;margin-top: 1px;border-radius: 5px; cursor: pointer"></i></a>
                                                 </div>
                                             </div>
                                         </div>

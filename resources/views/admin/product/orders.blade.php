@@ -89,7 +89,7 @@
                                         <td @if($order ->paid == 1) class="paid--Status" @else @endif >@if($order ->paid == 1) да @else нет @endif</td>
                                         <td>{{$order -> created_at}}</td>
                                         <td class="options">
-                                            <a href="#!">
+                                            <a href="{{url('/pdfLoad/'.$order->id)}}">
                                                 <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
                                             </a>
                                             <a href="{{url('orderInfo/'.$order -> id)}}">

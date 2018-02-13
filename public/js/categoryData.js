@@ -11,7 +11,33 @@ var data = [],
     selectedCount = Number ($.find('#product-show option')[0].innerText),
     choosedType = 0;
 
+if(localStorage.getItem('pageNum') !== null){
+
+} else {
+    localStorage.setItem('pageNum', page_num);
+}
+
 getSavedFilters = JSON.parse(savedFilters);
+
+function localData() {
+    if(localStorage.getItem('pageNum') !== null){
+        page_num = Number (localStorage.getItem('pageNum'));
+    } else {
+        page_num = 1;
+    }
+    
+    if(filter_value === null){
+        filter_value = [];
+    } else {
+        filter_value = JSON.parse(savedFilters);
+    }
+
+    if(selectedCount !== 0){
+        selectedCount = Number (localStorage.getItem('selectedCount'));
+    } else {
+        selectedCount = 24;
+    }
+}
 
 //Прелоадер при загрузке страницы
 $('.product--block').append('<div class="preloader"><i></i></div>');
@@ -136,23 +162,14 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
 
 //Получение сохраненного количество (24 - 36 - 48) товаров на странице
 var saved_count_on_page = Number (localStorage.getItem('selectedCount'));
-if(saved_count_on_page > 0){
-    count_on_page = saved_count_on_page;
-    drawItems();
-    localStorage.setItem('selectedCount',  JSON.stringify(count_on_page));
-} else {
-    count_on_page = 24;
-    drawItems();
-    localStorage.setItem('selectedCount',  JSON.stringify(count_on_page));
-}
 
 //Выбор количество элементов на странице
 $('#product-show').on('change', function () {
     saved_count_on_page = Number ($.find('.product-sort-by.pull-right .nice-select-box .current')[0].innerText);
     $('.product--block').append('<div class="preloader"><i></i></div>');
-    initData(saved_count_on_page);
-    
+
     localStorage.setItem('selectedCount',  JSON.stringify(saved_count_on_page));
+    initData(saved_count_on_page);
 });
 
 //Отрисвока данных сохрененных данных, если localstorage не пуст. Если пуст, заполняются дефолтовые значения
@@ -165,6 +182,7 @@ function setSavedOptionCount() {
     } else {
         page_num = 1;
     }
+
     if(saved_count_on_page !== 0) {
         for (var l = 0; l < $.find('[data-set="selectCount"] option').length; l++){
             if(Number ($.find('[data-set="selectCount"] option')[l].attributes[0].value) === saved_count_on_page) {
@@ -185,6 +203,17 @@ function setSavedOptionCount() {
 
 if(getSavedFilters !== null) {
     setSavedOptionCount();
+
+
+    var items_Count = Number ($.find('.checkbox-circle').length);
+    for (var i = 0; i < getSavedFilters.length; i++){
+        for(var b = 0; b < items_Count; b++){
+            if($.find('.checkbox-circle input')[b].dataset.value === getSavedFilters[i][0]){
+                $.find('.checkbox-circle input')[b].setAttribute("checked", "checked");
+            }
+        }
+    }
+
 
     values = getSavedFilters;
     if(values.length !== 0){
@@ -213,8 +242,13 @@ if(getSavedFilters !== null) {
     $.ajax({
         method: 'POST',
         url: "../api/products",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: Number (saved_count_on_page),
-            filters: values, choosedType: choosedType}
+        data: {
+            category_id : $('meta[name="category_id"]').attr('content'),
+            page_num: page_num,
+            count_on_page: Number (saved_count_on_page),
+            filters: values,
+            choosedType: choosedType
+        }
     }).done(function(msg) {
         if(msg.length > 0){
             for(var i= 0; i < msg.length; i++ ) {
@@ -231,6 +265,7 @@ if(getSavedFilters !== null) {
                     real_id: msg[i].id,
                     product_url: msg[i].product_url + '/' + i,
                     size: msg[i].size.name,
+                    old_prise: msg[i].old_prise,
                     option_type: 'full__price' // Или full__price или rostovka__price
                 };
             }
@@ -248,7 +283,6 @@ if(getSavedFilters !== null) {
         }
     });
 
-
     $.ajax({
         method: 'POST',
         url: "../api/pagination",
@@ -265,18 +299,24 @@ else{
 
 //Инициализация созданние деф. данных
 function initData(count_on_page) {
-    $.ajax({
-        method: "POST",
-        url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num,
-            count_on_page: count_on_page,
-            filters: filter_value,
-            choosedType: choosedType}
-    }).done(function (msg) {
-        paginationNum = msg;
-        paginationCounter(paginationNum);
-        makeData(page_num, count_on_page);
-    });
+    localData();
+    if(localStorage !== null){
+        $.ajax({
+            method: "POST",
+            url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
+            data: {
+                category_id : $('meta[name="category_id"]').attr('content'),
+                page_num: page_num,
+                count_on_page: count_on_page,
+                filters: filter_value,
+                choosedType: choosedType
+            }
+        }).done(function (msg) {
+            paginationNum = msg;
+            paginationCounter(paginationNum);
+            makeData(page_num, count_on_page);
+        });
+    }
 }
 
 var paginationCounter = function (paginationNum) {
@@ -294,17 +334,24 @@ var paginationCounter = function (paginationNum) {
     }
 };
 
-//Создание дефолтовых данных
+//Создание данных
 function makeData(page_num, count_on_page) {
+    data = [];
     $.ajax({
         method: "POST",
         url: $('meta[name="root-site"]').attr('content') + "/api/products",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page, filters: filter_value, choosedType: choosedType}
+        data: {
+            category_id : $('meta[name="category_id"]').attr('content'),
+            page_num: page_num,
+            count_on_page: count_on_page,
+            filters: filter_value,
+            choosedType: choosedType
+        }
     }).done(function( msg ) {
         for(var i= 0; i < msg.length; i++ ) {
             data[i] = {
                 dataID: msg[i].id,
-                imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,
+                imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/' + msg[i].photo.photo_url,
                 name: msg[i].name,
                 rostovka: msg[i].rostovka_count,
                 box: msg[i].box_count,
@@ -313,7 +360,7 @@ function makeData(page_num, count_on_page) {
                 full__price: msg[i].full__price,
                 rostovka__price: msg[i].rostovka__price,
                 real_id: msg[i].id,
-                product_url: msg[i].product_url , // раньше было так msg[i].product_url + '/' + i
+                product_url: msg[i].product_url, // раньше было так msg[i].product_url + '/' + i
                 size: msg[i].size.name,
                 old_prise: msg[i].old_prise,
                 option_type: 'full__price' // Или full__price или rostovka__price
@@ -355,6 +402,7 @@ function NextData(page_num, count_on_page, filter_value) {
                 rostovka__price: msg[i].rostovka__price,
                 real_id: msg[i].id,
                 product_url: msg[i].product_url + '/' + i,
+                old_prise: msg[i].old_prise,
                 size: msg[i].size.name,
                 option_type: 'full__price' // Или full__price или rostovka__price
             };
@@ -392,6 +440,7 @@ function NextData(page_num, count_on_page, filter_value) {
 
 //Работа с пагинацией, массивом товаров
 function GetData(data) {
+    // console.log(data);
     if (data.length > 0) {
         //work with pagination
         var Pagination = {
@@ -421,7 +470,10 @@ function GetData(data) {
             Click: function () {
                 page_num = Pagination.page = +this.innerHTML;
                 localStorage.setItem('pageNum', page_num);
-                console.log(page_num, filter_value);
+                count_on_page = Number (localStorage.getItem('selectedCount'));
+                if(getSavedFilters !== null){
+                    filter_value = getSavedFilters;
+                }
                 NextData(page_num, count_on_page, filter_value);
                 Pagination.page = +this.innerHTML;
                 Pagination.Start();
@@ -456,30 +508,6 @@ function GetData(data) {
                 page_num = Pagination.page;
                 NextData(page_num, count_on_page, filter_value);
             },
-
-            // First_Page: function () {
-            //     Pagination.page = 1;
-            //     if (Pagination.page < 1) {
-            //         Pagination.page = 1;
-            //     }
-            //     Pagination.Start();
-            //     scrolltop();
-            //
-            //     page_num = Pagination.page;
-            //     NextData(page_num, count_on_page);
-            // },
-
-            // Last_Page: function () {
-            //     Pagination.page = Pagination.size;
-            //     if (Pagination.page < 1) {
-            //         Pagination.page = 1;
-            //     }
-            //     Pagination.Start();
-            //     scrolltop();
-            //
-            //     page_num = Pagination.page;
-            //     NextData(page_num, count_on_page);
-            // },
 
             Bind: function () {
                 var a = Pagination.e.getElementsByTagName('a');
@@ -555,8 +583,7 @@ function GetData(data) {
             }
         };
     }
-
-    load();
+    
     function load() {
         makePagination();
         loadList();
@@ -754,6 +781,7 @@ function makeFilterData(msg) {
             real_id: msg[i].id,
             product_url: msg[i].product_url + '/' + i,
             size: msg[i].size.name,
+            old_prise: msg[i].old_prise,
             option_type: 'full__price' // Или full__price или rostovka__price
         };
     }
@@ -789,6 +817,7 @@ $('#short-by').on('change', function () {
                 full__price: msg[i].full__price,
                 rostovka__price: msg[i].rostovka__price,
                 real_id: msg[i].id,
+                old_prise: msg[i].old_prise,
                 product_url: msg[i].product_url + '/' + i,
                 size: msg[i].size.name,
                 option_type: 'full__price' // Или full__price или rostovka__price
@@ -819,6 +848,7 @@ function getSizes() {
 function slider(msg) {
     var min_range = Number (msg[0]);
     var max_range = Number (msg[1]);
+    
     $( "#slider-range" ).slider({
         range: true,
         min: min_range,
@@ -829,6 +859,10 @@ function slider(msg) {
             $("#amount").val(ui.values[ 1 ] );
         },
         change: function() {
+            page_num = Number (localStorage.getItem('pageNum'));
+            if(filter_value === null){
+                filter_value = []
+            }
             var min, max, sizes = [], changeFlag = false;
             min = Number ($.find('#minchoose')[0].value);
             max = Number ($.find('#amount')[0].value);
@@ -885,11 +919,34 @@ function slider(msg) {
             $.ajax({
                 method: "POST",
                 url: $('meta[name="root-site"]').attr('content') + "/api/products",
-                data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page, choosedType: choosedType,
-                    filters: filter_value}
+                data: {category_id : $('meta[name="category_id"]').attr('content'),
+                    page_num: page_num,
+                    count_on_page: count_on_page,
+                    choosedType: choosedType,
+                    filters: filter_value
+                }
             }).done(function( msg ) {
-                $('.preloader').remove();
-                makeFilterData(msg);
+
+                if(msg.length === 0){
+                    $('.preloader').remove();
+                    $('.product-list-view li').css('display', 'none');
+                    $('.pagination-wraper').css('display', 'none');
+                    $('.product-filter-content').css('display', 'none');
+                    if($('.alert.alert-warning').length < 1){
+                        $('#target').append('<div class="alert alert-warning">\n' +
+                            '  <strong>Поиск не дал результатов</strong>\n' +
+                            '</div>');
+                    }
+                }
+                else{
+                    $('.product-list-view li').css('display', 'block');
+                    $('.pagination-wraper').css('display', 'block');
+                    $('.product-filter-content').css('display', 'block');
+                    makeFilterData(msg);
+                    $('.alert.alert-warning').remove();
+                    $('.preloader').remove();
+                }
+
 
             }) .fail(function( msg ) {
 
@@ -901,8 +958,13 @@ function slider(msg) {
                 data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page,
                     filters: filter_value}
             }).done(function(msg) {
-                paginationNum = msg;
-                paginationCounter(paginationNum);
+                if(msg.length === 0){
+
+                }
+                else{
+                    paginationNum = msg;
+                    paginationCounter(paginationNum);
+                }
             });
         }
     });
