@@ -64,7 +64,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/suppliers_edit/{id}', 'Admin\SuppliersController@edit');
         Route::post('/suppliers_update', 'Admin\SuppliersController@update');
 
-        Route::get('/admin_index', 'Admin\HomeController@index') -> name("adminIndex");
+        Route::get('/admin_index/{name?}', 'Admin\HomeController@index') -> name("adminIndex");
         Route::get('/user_edit/{id}', 'Admin\HomeController@editClient');
         Route::post('/user_delete/{id}', 'Admin\HomeController@deleteClient');
         Route::post('/user_update', 'Admin\HomeController@updateClient');
@@ -103,7 +103,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('/csvLoadDelete','Admin\CSV\CsvLoadController@csvShoesDelete') -> name('delete');
 
-        Route::post('/csvDownload','Admin\CSV\CsvDownloadController@getCsvFileWithProduct') -> name('download');
+        //Route::post('/csvDownload','Admin\CSV\CsvDownloadController@getCsvFileWithProduct') -> name('download');
 
 
         /////////////////////////Page orders///////////////////////////////

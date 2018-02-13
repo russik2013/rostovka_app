@@ -16,21 +16,31 @@ class CsvOrderController extends Controller
 
     public function getCsvFileWithOrdersToSend(Request $request){
 
+        //dd($request -> dataFrom, $request -> dataTo);
+
         if(!$request -> dataFrom)
             $dataFrom = Carbon::now();
         if(!$request -> dataTo)
             $dataTo = Carbon::now();
 
-        if($request -> dataTo)
-            $dataFrom = $request -> dataTo;
+        if($request -> dataFrom)
+            $dataFrom = $request -> dataFrom;
         if($request -> dataTo)
             $dataTo = $request -> dataTo;
 
+
         if($dataFrom == $dataTo){
 
-            $orders = Order::where('created_at', '=', $dataFrom)
+            $str = strtotime($dataTo);
+
+            $dataToSecond = date('Y-m-d',($str+86400*1));
+
+
+            $orders = Order::where('created_at', '>=', $dataTo)
+                ->where('created_at', '<', $dataToSecond)
                 -> whereIn('paid', [0,3])
                 -> get();
+
 
         }else{
 
@@ -38,6 +48,8 @@ class CsvOrderController extends Controller
                 -> where('created_at', '<=', $dataTo) -> whereIn('paid', [0,3])
                 -> get();
         }
+
+
 
         $data = [];
         $score =[];
