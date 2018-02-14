@@ -13,7 +13,6 @@ use PHPExcel_Worksheet_Drawing;
 class CsvDownloadController extends Controller
 {
     public function getCsvFileWithProduct(Request $request){
-        dd($request -> all());
 
         if(Type::where('id', $request -> type_id)->first())
             if(Type::where('id', $request -> type_id) ->first() -> name == 'обувь')
@@ -26,27 +25,22 @@ class CsvDownloadController extends Controller
 
 
         $accessibility = [0,1];
-        if($request -> accessibility){
+        if($request -> accessibility)
+            dd("russi");
+        if($request -> accessibility == 0){
+            $accessibility = [0];
 
-            switch ($request -> accessibility){
-
-                case 0:
-                    $accessibility = [0];
-                    break;
-                case 1:
-                    $accessibility = [1];
-                    break;
-
-                default:
-                    $accessibility = [0,1];
-
-            }
+        }
+        if($request -> accessibility == 1){
+            $accessibility = [1];
 
         }
 
         $products = Product::with('category','manufacturer','season','type', 'size', 'photo')
             -> where('manufacturer_id', $request -> manufacturer_id) ->whereIn('type_id', $type)
             ->whereIn('season_id', $season) -> whereIn('accessibility',$accessibility)-> get();
+
+        dd($request -> all(), $season, $type, $products, $accessibility);
 
         if($products -> count() > 0) {
             $data = [];
@@ -55,9 +49,9 @@ class CsvDownloadController extends Controller
 
                 $i++;
 
-                if($product->size)
-                    $sizes = explode('-', $product->size->name);
-                else $sizes = explode('-', 'none-none');
+//                if($product->size)
+//                    $sizes = explode('-', $product->size->name);
+//                else $sizes = explode('-', 'none-none');
 
                 if($product -> photo)
                     $photo_one = $product -> photo -> photo_url;
@@ -68,8 +62,7 @@ class CsvDownloadController extends Controller
                     "ID" => $product->id,
                     "Артикул" => $product->article,
                     "Бренд" => $product->manufacturer->name,
-                    "Размер от" => $sizes[0],
-                    "Размер до" => $sizes[1],
+                    "Размер" => $product->size->name,
                     "Тип обуви" => $product->type->name,
                     "Категория" => $product->category->name,
                     "Пол" => $product->sex,
@@ -103,13 +96,12 @@ class CsvDownloadController extends Controller
 
                 });
 
-            })->export('xls');
+            })->export('xlsx');
         }else return redirect()->back()->withInput()->withErrors(['msg'=> 'Not find items']);
 
     }
 
     public function getCsvFileWithOrdersToManufacturer(Request $request){
-        dd($request -> all());
 
         if(Type::where('id', $request -> type_id)->first())
             if(Type::where('id', $request -> type_id) ->first() -> name == 'обувь')
@@ -120,24 +112,13 @@ class CsvDownloadController extends Controller
             $season = Season::all()->pluck('id')->toArray();
         else  $season = Season::where('id', $request -> season_id)->pluck('id')->toArray();
 
-        dd($request -> all());
-
         $accessibility = [0,1];
-        if($request -> accessibility){
+        if($request -> accessibility == 0){
+            $accessibility = [0];
 
-            switch ($request -> accessibility){
-
-                case 0:
-                    $accessibility = [0];
-                    break;
-                case 1:
-                    $accessibility = [1];
-                    break;
-
-                default:
-                    $accessibility = [0,1];
-
-            }
+        }
+        if($request -> accessibility == 1){
+            $accessibility = [1];
 
         }
 
@@ -265,7 +246,7 @@ class CsvDownloadController extends Controller
 
                 });
 
-            })->export('xls');
+            })->export('xlsx');
         }else return redirect()->back()->withInput()->withErrors(['msg'=> 'Not find items']);
     }
 }

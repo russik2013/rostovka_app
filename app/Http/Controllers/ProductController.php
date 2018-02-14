@@ -91,7 +91,7 @@ class ProductController extends Controller
                 ->whereIn('type_id', $this->typeFilter($request->filters))
                 ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
                 ->whereIn('size_id', $this->sizeFilter($request->filters))
-                ->where('sex', "")
+                ->where('sex', "!=","")
                 ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
                 ->with('photo', 'size', 'manufacturer')->orderBy($order,$orderType)->get();
         }
@@ -333,7 +333,7 @@ class ProductController extends Controller
                 ->whereIn('type_id', $this->typeFilter($request->filters))
                 ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
                 ->whereIn('size_id', $this->sizeFilter($request->filters))
-                ->where('sex', '')
+                ->where('sex', "!=",'')
                 -> count();
         }
         else {
