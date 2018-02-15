@@ -119,8 +119,8 @@ function getSelect(e) {
         $('.xsl--uploader').css('display', 'none');
         $('button.upload').css('display', 'none');
         $('.sorting__Option.availability').css('display', 'block');
-        $('.header--add--buttons').append("<button class='download allProducts col-md-4 col-sm-12 col-xs-12' onclick='getUserAllProducts(event)'>Скачать</button>");
-        $('.header--add--buttons').append("<button class='download for_Supliers col-md-4 col-sm-12 col-xs-12' onclick='getManufacturesAllProducts(event)'>Скачать для поставщиков</button>");
+        $('.header--add--buttons').append("<button class='download allProducts col-md-4 col-sm-12 col-xs-12' onclick='getUserAllProducts()'>Скачать</button>");
+        $('.header--add--buttons').append("<button class='download for_Supliers col-md-4 col-sm-12 col-xs-12' onclick='getManufacturesAllProducts()'>Скачать для поставщиков</button>");
         $('select.manufacturer_Options').css('display', 'block');
         $('.seasone_Options').css('display', 'block');
         $('.type_Options').css('display', 'block');
@@ -139,12 +139,12 @@ function getUserAllProducts(event) {
         season_id: $('.sorting__Option.type_Options option:selected').val(),
         success: function(){
             event.preventDefault();
+            $('.preloader').remove();
             window.location = $('meta[name="root-site"]').attr('content') + '/csvDownload?manufacturer_id='+
                 $('.sorting__Option.manufacturer_Options option:selected').val() +'&season_id='+
                 $('.sorting__Option.seasone_Options option:selected').val() + '&type_id='+
                 $('.sorting__Option.type_Options option:selected').val() + '&accessibility=' +
-                $('.sorting__Option.availability option:selected').val();
-            $('.preloader').remove();
+                $('.sorting__Option.availability option:selected').val()
         }
     });
 }
@@ -157,9 +157,14 @@ function getManufacturesAllProducts() {
             manufacturer_id: $('.sorting__Option.manufacturer_Options option:selected').val(),
             type_id: $('.sorting__Option.seasone_Options option:selected').val(),
             season_id: $('.sorting__Option.type_Options option:selected').val(),
+            accessibility: $('.sorting__Option.availability option:selected').val(),
         success: function(){
-            window.location = $('meta[name="root-site"]').attr('content') + '/csvDownloadOrdersToManufacturer?manufacturer_id='+ $('.sorting__Option.manufacturer_Options option:selected').val() +'&season_id='+ $('.sorting__Option.seasone_Options option:selected').val() + '&type_id='+ $('.sorting__Option.type_Options option:selected').val();
             $('.preloader').remove();
+            window.location = $('meta[name="root-site"]').attr('content') + '/csvDownloadOrdersToManufacturer?manufacturer_id='+
+                $('.sorting__Option.manufacturer_Options option:selected').val() +'&season_id='+
+                $('.sorting__Option.seasone_Options option:selected').val() + '&type_id='+
+                $('.sorting__Option.type_Options option:selected').val()  + '&accessibility=' +
+                $('.sorting__Option.availability option:selected').val()
         }
     });
 }

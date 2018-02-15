@@ -91,7 +91,9 @@ class ProductController extends Controller
                 ->whereIn('type_id', $this->typeFilter($request->filters))
                 ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
                 ->whereIn('size_id', $this->sizeFilter($request->filters))
-                ->where('sex', "")
+                ->where('sex', "!=","")
+                ->where('accessibility', 1)
+                ->where('show_product', 1)
                 ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
                 ->with('photo', 'size', 'manufacturer')->orderBy($order,$orderType)->get();
         }
@@ -102,6 +104,8 @@ class ProductController extends Controller
                 ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
                 ->whereIn('size_id', $this->sizeFilter($request->filters))
                 ->whereIn('sex', $sex)
+                ->where('accessibility', 1)
+                ->where('show_product', 1)
                 ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
                 ->with('photo', 'size', 'manufacturer')->orderBy($order,$orderType)->get();
         }
@@ -110,6 +114,8 @@ class ProductController extends Controller
 
             $products = Product::whereNotNull('discount')
                 ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
+                ->where('accessibility', 1)
+                ->where('show_product', 1)
                 ->with('photo', 'size')->orderBy($order,$orderType)->get();
 
         }
@@ -333,7 +339,9 @@ class ProductController extends Controller
                 ->whereIn('type_id', $this->typeFilter($request->filters))
                 ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
                 ->whereIn('size_id', $this->sizeFilter($request->filters))
-                ->where('sex', '')
+                ->where('accessibility', 1)
+                ->where('show_product', 1)
+                ->where('sex', "!=",'')
                 -> count();
         }
         else {
@@ -342,6 +350,8 @@ class ProductController extends Controller
                 ->whereIn('type_id', $this->typeFilter($request->filters))
                 ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
                 ->whereIn('size_id', $this->sizeFilter($request->filters))
+                ->where('accessibility', 1)
+                ->where('show_product', 1)
                 ->whereIn('sex', $sex)
                 -> count();
         }
@@ -360,7 +370,10 @@ class ProductController extends Controller
 
     public function getNewsProduct(){
 
-        $products = Product::take(10) ->with('photo','size','manufacturer') ->orderBy('id', 'desc') -> get();
+        $products = Product::take(10) ->with('photo','size','manufacturer')
+            ->where('accessibility', 1)
+            ->where('show_product', 1)
+            ->orderBy('id', 'desc') -> get();
         //$products = Product::take(10)  -> get();
         foreach ($products as $product){
 
@@ -446,8 +459,10 @@ class ProductController extends Controller
     public function filterProduct($name){
 
             $products = Product::where('name', 'like', "%".$name."%")
-
-                ->with('photo', 'size', 'manufacturer')->orderBy('id',"desc")->paginate(16);
+                ->with('photo', 'size', 'manufacturer')
+                ->where('accessibility', 1)
+                ->where('show_product', 1)
+                ->orderBy('id',"desc")->paginate(16);
 
         foreach ($products as $product){
 

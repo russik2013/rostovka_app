@@ -85,7 +85,7 @@ class CsvOrderController extends Controller
 
                         $sheet->setWidth('A', 8);
                         $sheet->setWidth('B', 30);
-                        $sheet->setWidth('C', 30);
+                        $sheet->setWidth('C', 20);
                         $sheet->setWidth('D', 30);
                         $sheet->setWidth('E', 10);
                         $sheet->setWidth('F', 20);
@@ -99,7 +99,7 @@ class CsvOrderController extends Controller
                 }
 
 
-            })->export('xls');
+            })->export('xlsx');
         }else return redirect()->back()->withInput()->withErrors(['msg'=> 'Not find items']);
 
 
@@ -107,10 +107,38 @@ class CsvOrderController extends Controller
 
     public function getCsvFileWithOrdersImages(Request $request){
 
-        $orders = Order::with('details')
-            -> where('created_at', '>', $request -> dataFrom)
-            -> where('created_at', '<', $request -> dataTo) -> whereIn('paid', [0,3])
-            -> get();
+
+        if(!$request -> dataFrom)
+            $dataFrom = Carbon::now();
+        if(!$request -> dataTo)
+            $dataTo = Carbon::now();
+
+        if($request -> dataFrom)
+            $dataFrom = $request -> dataFrom;
+        if($request -> dataTo)
+            $dataTo = $request -> dataTo;
+
+
+        if($dataFrom == $dataTo){
+
+            $str = strtotime($dataTo);
+
+            $dataToSecond = date('Y-m-d',($str+86400*1));
+
+
+            $orders = Order::where('created_at', '>=', $dataTo)
+                ->where('created_at', '<', $dataToSecond)
+                -> whereIn('paid', [0,3])
+                -> get();
+
+
+        }else{
+
+            $orders = Order::where('created_at', '>=', $dataFrom)
+                -> where('created_at', '<=', $dataTo) -> whereIn('paid', [0,3])
+                -> get();
+        }
+
 
         if($orders->count() > 0) {
 
@@ -122,9 +150,9 @@ class CsvOrderController extends Controller
 
                     $data[$detail->manufacturer_name][0] = [
 
-                        Carbon::now(),
-                        'Заказчик: Rostovka.net Сергей тел: 0672533305',
-                        'Поставщик: ' . $detail->manufacturer_name . ' Ул. Зеленая 1299, Оля Ли',
+                        implode("\r\n", explode(' ',  Carbon::now())),
+                        'Заказчик: Rostovka.net '."\r\n".'Сергей тел: 0672533305',
+                        'Поставщик: ' . $detail->manufacturer_name . "\r\n".' Ул. Зеленая 1299, Оля Ли',
                         'QRкод'
 
                     ];
@@ -191,7 +219,19 @@ class CsvOrderController extends Controller
 
                         for ($i = 1; $i < count($value); $i++) {
 
-                            $sheet->row(2 + $i, $value[$i]);
+                            $insertIntoTableValue = [
+                                $value[$i][0],
+                                $value[$i][1],
+                                "",
+                                $value[$i][3],
+                                $value[$i][4],
+                                $value[$i][5],
+                                $value[$i][6],
+                                $value[$i][7],
+                                $value[$i][8]
+                            ];
+
+                            $sheet->row(2 + $i, $insertIntoTableValue);
 
                             $count += $value[$i][6];
                             $all_prise += $value[$i][8];
@@ -199,9 +239,9 @@ class CsvOrderController extends Controller
                         }
 
                         $sheet->row(2 + $i, array("", "", "", "", "", "", $count, "", $all_prise));
-                        $sheet->setWidth('A', 25);
-                        $sheet->setWidth('B', 40);
-                        $sheet->setWidth('C', 40);
+                        $sheet->setWidth('A', 10);
+                        $sheet->setWidth('B', 25);
+                        $sheet->setWidth('C', 25);
                         $sheet->setWidth('D', 40);
                         $sheet->setWidth('E', 10);
                         $sheet->setWidth('F', 10);
@@ -221,11 +261,11 @@ class CsvOrderController extends Controller
                                 $objDrawing->setWorksheet($sheet);
                                 $objDrawing->setCoordinates('C' . ($i + 2));
                                 $objDrawing->setResizeProportional();
-                                $objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
-                                $objDrawing->setOffsetY(10);
-                                $objDrawing->setOffsetX(10);
-                                $objDrawing->setWidth(280);
-                                $objDrawing->setHeight(150);
+                                //$objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
+                                $objDrawing->setOffsetY(0);
+                                $objDrawing->setOffsetX(0);
+                                $objDrawing->setWidth(250);
+                                $objDrawing->setHeight(170);
                             }
 
                         }
@@ -236,7 +276,7 @@ class CsvOrderController extends Controller
                 }
 
 
-            })->export('xls');
+            })->export('xlsx');
 
         }else return redirect()->back()->withInput()->withErrors(['msg'=>'Not find items']);
 
@@ -244,12 +284,40 @@ class CsvOrderController extends Controller
 
     public function getCsvFileWithOrders(Request $request){
 
+
+        if(!$request -> dataFrom)
+            $dataFrom = Carbon::now();
+        if(!$request -> dataTo)
+            $dataTo = Carbon::now();
+
+        if($request -> dataFrom)
+            $dataFrom = $request -> dataFrom;
+        if($request -> dataTo)
+            $dataTo = $request -> dataTo;
+
+
+        if($dataFrom == $dataTo){
+
+            $str = strtotime($dataTo);
+
+            $dataToSecond = date('Y-m-d',($str+86400*1));
+
+
+            $orders = Order::where('created_at', '>=', $dataTo)
+                ->where('created_at', '<', $dataToSecond)
+                -> whereIn('paid', [0,3])
+                -> get();
+
+
+        }else{
+
+            $orders = Order::where('created_at', '>=', $dataFrom)
+                -> where('created_at', '<=', $dataTo) -> whereIn('paid', [0,3])
+                -> get();
+        }
+
        // dd($request -> all());
 
-        $orders = Order::with('details')
-            -> where('created_at', '>', $request -> dataFrom)
-            -> where('created_at', '<', $request -> dataTo) -> whereIn('paid', [0,3])
-            -> get();
 
         $data = [];
 
@@ -261,9 +329,9 @@ class CsvOrderController extends Controller
 
                     $data[$detail->manufacturer_name][0] = [
 
-                        Carbon::now(),
-                        'Заказчик: Rostovka.net Сергей тел: 0672533305',
-                        'Поставщик: ' . $detail->manufacturer_name . ' Ул. Зеленая 1299, Оля Ли',
+                        implode("\r\n", explode(' ',  Carbon::now())),
+                        'Заказчик: Rostovka.net '."\r\n".'Сергей тел: 0672533305',
+                        'Поставщик: ' . $detail->manufacturer_name . "\r\n".' Ул. Зеленая 1299, Оля Ли',
                         'QRкод'
 
                     ];
@@ -345,7 +413,7 @@ class CsvOrderController extends Controller
                 }
 
 
-            })->export('xls');
+            })->export('xlsx');
         }else return redirect()->back()->withInput()->withErrors(['msg' => 'Not find items']);
 
     }
