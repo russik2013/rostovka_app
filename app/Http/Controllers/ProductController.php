@@ -507,7 +507,7 @@ class ProductController extends Controller
             $product -> product_url = url($product ->id.'/product');
         }
 
-        return view('user.search.search', compact('products'));
+        return view('user.search.search', compact('products', 'name'));
 
     }
 

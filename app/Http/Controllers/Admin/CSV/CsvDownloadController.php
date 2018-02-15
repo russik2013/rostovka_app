@@ -25,15 +25,15 @@ class CsvDownloadController extends Controller
 
 
         $accessibility = [0,1];
-        if($request -> accessibility)
-            dd("russi");
-        if($request -> accessibility == 0){
-            $accessibility = [0];
+        if($request -> accessibility) {
+            if ($request->accessibility == 0) {
+                $accessibility = [0];
 
-        }
-        if($request -> accessibility == 1){
-            $accessibility = [1];
+            }
+            if ($request->accessibility == 1) {
+                $accessibility = [1];
 
+            }
         }
 
         $products = Product::with('category','manufacturer','season','type', 'size', 'photo')
@@ -113,13 +113,15 @@ class CsvDownloadController extends Controller
         else  $season = Season::where('id', $request -> season_id)->pluck('id')->toArray();
 
         $accessibility = [0,1];
-        if($request -> accessibility == 0){
-            $accessibility = [0];
+        if($request -> accessibility) {
+            if ($request->accessibility == 0) {
+                $accessibility = [0];
 
-        }
-        if($request -> accessibility == 1){
-            $accessibility = [1];
+            }
+            if ($request->accessibility == 1) {
+                $accessibility = [1];
 
+            }
         }
 
 
