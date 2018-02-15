@@ -57,22 +57,28 @@ class CsvDownloadController extends Controller
                     $photo_one = $product -> photo -> photo_url;
                 else $photo_one = '';
 
+                if($product->size)
+                    $size = $product->size->name;
+                else $size = 'none';
+
+                //dd($product->accessibility);
+
                 $data[] = [
 
                     "ID" => $product->id,
                     "Артикул" => $product->article,
+                    "Цена закупки" => $product->prise_zakup,
+                    "Цена продажи" => $product->prise,
                     "Бренд" => $product->manufacturer->name,
-                    "Размер" => $product->size->name,
+                    "Размер" => $size,
                     "Тип обуви" => $product->type->name,
                     "Категория" => $product->category->name,
                     "Пол" => $product->sex,
                     "Сезон" => $product->season->name,
                     "Кол в ящике" => $product->box_count,
                     "Мин. Кол" => $product->rostovka_count,
-                    "Цена закупки" => $product->prise_zakup,
-                    "Цена продажи" => $product->prise,
                     "Валюта" => $product->currency,
-                    "Наличие" => $product->accessibility,
+                    "Наличие" => (string)$product->accessibility,
                     "Материал" => $product->material,
                     "Цвет" => "",
                     "Скидка" => $product->discount,
@@ -91,6 +97,12 @@ class CsvDownloadController extends Controller
             Excel::create('Filename', function ($excel) use ($data) {
 
                 $excel->sheet('Sheetname', function ($sheet) use ($data) {
+
+                    for ($i = 1; $i < count($data) + 1; $i++) {
+
+                            $sheet->setHeight($i, 25);
+
+                    }
 
                     $sheet->fromArray($data);
 
@@ -129,10 +141,9 @@ class CsvDownloadController extends Controller
             -> where('manufacturer_id', $request -> manufacturer_id) ->whereIn('type_id', $type)
             ->whereIn('season_id', $season)-> whereIn('accessibility',$accessibility)-> get();
 
-
-
         if($products->count() > 0) {
             $data = [];
+            $photosData = [];
 
 
             foreach ($products as $product) {
@@ -191,7 +202,7 @@ class CsvDownloadController extends Controller
                 $data[] = [
 
                     "№" => count($data) + 1,
-                    "Фото" => $photo,
+                    "Фото" => "",
                     "Товар" => $product->name,
                     "размер" => $size,
                     "Пар в ящике" => $product->box_count,
@@ -199,13 +210,14 @@ class CsvDownloadController extends Controller
                     "Цена сайт" => $product->prise,
 
                 ];
+                $photosData[] = ["Фото" => $photo];
 
             }
 
 
-            Excel::create('Filename', function ($excel) use ($data) {
+            Excel::create('Filename', function ($excel) use ($data, $photosData) {
 
-                $excel->sheet('Sheetname', function ($sheet) use ($data) {
+                $excel->sheet('Sheetname', function ($sheet) use ($data, $photosData) {
 
                     for ($i = 1; $i < count($data) + 1; $i++) {
 
@@ -215,6 +227,7 @@ class CsvDownloadController extends Controller
                             $sheet->setHeight($i, 25);
 
                     }
+
 
                     $sheet->fromArray($data);
 
@@ -227,28 +240,28 @@ class CsvDownloadController extends Controller
                     $sheet->setWidth('G', 20);
                     $sheet->setWidth('H', 20);
 
-                    for ($i = 1; $i < count($data); $i++) {
-                        if($data[$i]['Фото'] != "")
+                    for ($i = 1; $i < count($photosData); $i++) {
+                        if($photosData[$i]['Фото'] != "")
 
-                        if (file_exists( 'images/products/' . $data[$i]['Фото'])) {
+                        if (file_exists( 'images/products/' . $photosData[$i]['Фото'])) {
                             $objDrawing = new PHPExcel_Worksheet_Drawing;
-                            $objDrawing->setPath(public_path('images/products/' . $data[$i]['Фото'])); //your image path
+                            $objDrawing->setPath(public_path('images/products/' . $photosData[$i]['Фото'])); //your image path
                             $objDrawing->setName('imageRussik');
                             $objDrawing->setWorksheet($sheet);
                             $objDrawing->setCoordinates('B' . ($i + 2));
                             $objDrawing->setResizeProportional();
                             $objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
-                            $objDrawing->setOffsetY(10);
-                            $objDrawing->setOffsetX(30);
+                            $objDrawing->setOffsetY(0);
+                            $objDrawing->setOffsetX(10);
                             $objDrawing->setWidth(280);
-                            $objDrawing->setHeight(150);
+                            $objDrawing->setHeight(170);
                         }
 
                     }
 
                 });
 
-            })->export('xlsx');
+            })->export('xls');
         }else return redirect()->back()->withInput()->withErrors(['msg'=> 'Not find items']);
     }
 }

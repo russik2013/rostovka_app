@@ -107,10 +107,38 @@ class CsvOrderController extends Controller
 
     public function getCsvFileWithOrdersImages(Request $request){
 
-        $orders = Order::with('details')
-            -> where('created_at', '>', $request -> dataFrom)
-            -> where('created_at', '<', $request -> dataTo) -> whereIn('paid', [0,3])
-            -> get();
+
+        if(!$request -> dataFrom)
+            $dataFrom = Carbon::now();
+        if(!$request -> dataTo)
+            $dataTo = Carbon::now();
+
+        if($request -> dataFrom)
+            $dataFrom = $request -> dataFrom;
+        if($request -> dataTo)
+            $dataTo = $request -> dataTo;
+
+
+        if($dataFrom == $dataTo){
+
+            $str = strtotime($dataTo);
+
+            $dataToSecond = date('Y-m-d',($str+86400*1));
+
+
+            $orders = Order::where('created_at', '>=', $dataTo)
+                ->where('created_at', '<', $dataToSecond)
+                -> whereIn('paid', [0,3])
+                -> get();
+
+
+        }else{
+
+            $orders = Order::where('created_at', '>=', $dataFrom)
+                -> where('created_at', '<=', $dataTo) -> whereIn('paid', [0,3])
+                -> get();
+        }
+
 
         if($orders->count() > 0) {
 
@@ -256,12 +284,40 @@ class CsvOrderController extends Controller
 
     public function getCsvFileWithOrders(Request $request){
 
+
+        if(!$request -> dataFrom)
+            $dataFrom = Carbon::now();
+        if(!$request -> dataTo)
+            $dataTo = Carbon::now();
+
+        if($request -> dataFrom)
+            $dataFrom = $request -> dataFrom;
+        if($request -> dataTo)
+            $dataTo = $request -> dataTo;
+
+
+        if($dataFrom == $dataTo){
+
+            $str = strtotime($dataTo);
+
+            $dataToSecond = date('Y-m-d',($str+86400*1));
+
+
+            $orders = Order::where('created_at', '>=', $dataTo)
+                ->where('created_at', '<', $dataToSecond)
+                -> whereIn('paid', [0,3])
+                -> get();
+
+
+        }else{
+
+            $orders = Order::where('created_at', '>=', $dataFrom)
+                -> where('created_at', '<=', $dataTo) -> whereIn('paid', [0,3])
+                -> get();
+        }
+
        // dd($request -> all());
 
-        $orders = Order::with('details')
-            -> where('created_at', '>', $request -> dataFrom)
-            -> where('created_at', '<', $request -> dataTo) -> whereIn('paid', [0,3])
-            -> get();
 
         $data = [];
 
