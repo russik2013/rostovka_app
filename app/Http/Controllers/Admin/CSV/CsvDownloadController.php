@@ -40,7 +40,7 @@ class CsvDownloadController extends Controller
             -> where('manufacturer_id', $request -> manufacturer_id) ->whereIn('type_id', $type)
             ->whereIn('season_id', $season) -> whereIn('accessibility',$accessibility)-> get();
 
-        dd($request -> all(), $season, $type, $products, $accessibility);
+        //dd($request -> all(), $season, $type, $products, $accessibility);
 
         if($products -> count() > 0) {
             $data = [];
