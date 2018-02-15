@@ -219,7 +219,7 @@ ul {
 
 .categoryPage .product-item {
   overflow: inherit;
-  min-height: 450§px;
+  min-height: 450px;
   padding: 0;
 }
 
@@ -233,6 +233,20 @@ ul {
   width: 100%;
   height: 100%;
   background: #fff;
+}
+
+
+.product-item:hover .prod--innerSide {
+  min-height: 480px;
+  position: absolute;
+  margin: 0 auto;
+  border: 2px solid #eeeeee !important;
+  /*box-shadow: 0 8px 25px 0 #dedede;*/
+  z-index: 90;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  left: 0;
 }
 
 .categoryPage .product-item:hover .goods_amount{
@@ -296,7 +310,7 @@ ul {
   width: 100%;
   max-height: 390px;
   max-width: 250px;
-  height: 300px;
+  height: 100%;
   text-align: center;
   margin: 0 auto;
   float: none;
@@ -591,6 +605,19 @@ input::-webkit-inner-spin-button {
 }
 
 @media (min-width: 280px) and (max-width: 1200px) {
+  .col-md-12.pull-left.goodsCount_price{
+    margin-top: 5px !important;
+  }
+  .item-price.col-md-6.pull-right.old--price{
+    margin-top: 20px !important;
+  }
+  [data-set="prodPrice"]{
+    margin-top: 0 !important;
+  }
+  .product-item .product-detail h5{
+    margin-top: 0;
+    margin-bottom: -20px;
+  }
   .regPage .btn-md {
     padding: auto !important;
   }
@@ -752,7 +779,7 @@ input::-webkit-inner-spin-button {
   }
 
   .categoryPage .product-item:hover .product-button{
-    bottom: 67px;
+    bottom: 47px;
     position: absolute;
     display: inline-block;
     left: 49%;
@@ -798,7 +825,7 @@ input::-webkit-inner-spin-button {
     font-size: 13px;
     background: #2c618f;
     padding-left: 10px;
-    padding-bottom: 0px;
+    padding-bottom: 0;
     padding-right: 10px;
     border-radius: 5px;
     color: #fff;
@@ -989,7 +1016,7 @@ input::-webkit-inner-spin-button {
   border: 2px solid transparent;
 }
 .mainPage .product-item:hover{
-  border: 2px solid #2b618f !important;
+  border: 2px solid transparent !important;
   z-index: 99;
 }
 

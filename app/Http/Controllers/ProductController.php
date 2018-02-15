@@ -346,11 +346,11 @@ class ProductController extends Controller
                 -> count();
         }
 
-//        if($request->category_id == 5){
-//
-//            $products_count = Product::whereNotNull('discount')->count();
-//
-//        }
+        if($request->category_id == 5){
+
+            $products_count = Product::whereNotNull('discount')->count();
+
+        }
         $count_of_page = $products_count / $request ->count_on_page;
 
         return ceil($count_of_page);
@@ -513,7 +513,7 @@ class ProductController extends Controller
             $product -> product_url = url($product ->id.'/product');
         }
 
-        return view('user.search.search', compact('products'));
+        return view('user.search.search', compact('products', 'name'));
 
     }
 

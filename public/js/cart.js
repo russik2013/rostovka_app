@@ -46,9 +46,8 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
     else {
         var checkif_true = false;
         var domtargetID = 0;
-        console.log();
         if($('.mainpageGoodsBlock').length > 0){
-            domtargetID = Number(event.target.offsetParent.offsetParent.dataset.id);
+            domtargetID = Number(event.target.offsetParent.offsetParent.offsetParent.dataset.id);
 
             checkDomPage(domtargetID, checkif_true);
         }
@@ -161,6 +160,7 @@ function additocart(targetID, itemQuant, domItem_price) {
 }
 
 function checkDublicate(event, targetID, checkif_true) {
+    console.log(event, targetID, checkif_true);
     if(checkif_true === false){
         for (var i = 0; i < Cart_data[0].row.length; i++){
             if (targetID === Number (Cart_data[0].row[i].productID)){
@@ -189,8 +189,9 @@ function initAdd(event, targetID, Cart_data) {
 var arrayItemId = 0;
 function dublicate(targetID, Cart_data) {
     //если индификторы совпадают, увеличиваем колличество и записываем ID элемента в объекте
-    for (var i = 0; i < Cart_data[0].row.length; i++) {
+    for (var i = 0; i < Cart_data[0].row.length; i++) {;
         if (Cart_data[0].row[i].buy_real_id === targetID) {
+            conversion(Cart_data[0].row[i].buy_real_id);
             Cart_data[0].row[i].quantity++;
             arrayItemId = i;
         }
@@ -213,6 +214,15 @@ function dublicate(targetID, Cart_data) {
     counterFn(mainPrice, targetID, updPrice);
 }
 
+var topSalesActive = false;
+function topSalesTab(event){
+    return topSalesActive = true
+}
+
+function defaultTab(event){
+    return topSalesActive = false
+}
+
 var qid = 0, counter = 0;
 function addtoCart(event, targetID) {
     var imgurl, gTitle, gQuant, gprice, productIndex, selected_quantity, rostovkaPrice;
@@ -225,9 +235,19 @@ function addtoCart(event, targetID) {
         $('.isClear').remove()
     }
 
-    for (var z = 0; z < data.length; z++){
-        if(targetID === data[z].real_id){
-            targetID = z;
+    if(topSalesActive === true){
+        data = TopSallesData;
+        for (var a = 0; a < data.length; a++){
+            if(targetID === data[a].real_id){
+                targetID = a;
+            }
+        }
+    } else {
+        data = data;
+        for (var z = 0; z < data.length; z++){
+            if(targetID === data[z].real_id){
+                targetID = z;
+            }
         }
     }
 
@@ -295,7 +315,8 @@ $(document).on('click', '.Cart_Button_Plus', function () {
     var target_dataset, flag = false, minus = false;
 
     if($(this).closest('li').attr('data-id') === undefined){
-        target_dataset = $(this).closest('li').attr('data-id');
+        var parentFinder = $(this).parents()[5];
+        target_dataset = $(parentFinder).attr('data-id');
         flag = false;
         conversion(target_dataset, flag, minus);
         $.find('[data-set="totalCost"]')[0].innerHTML = Cart_data[0].cartProducts_summ + ' грн';
@@ -305,8 +326,6 @@ $(document).on('click', '.Cart_Button_Plus', function () {
         target_dataset = Number ($(this).closest('li').attr('data-id'));
         flag = true;
         conversion(target_dataset, flag, minus);
-
-        console.log(target_dataset);
     }
 });
 
@@ -314,7 +333,8 @@ $(document).on('click', '.Cart_Button_Minus', function () {
     var target_dataset, flag = false, minus = true;
 
     if($(this).closest('li').attr('data-id') === undefined) {
-        target_dataset = $(this).closest('li').attr('data-id');
+        var parentFinder = $(this).parents()[5];
+        target_dataset = $(parentFinder).attr('data-id');
         flag = false;
         conversion(target_dataset, flag, minus);
 
@@ -348,12 +368,10 @@ function conversion(target_dataset, flag, minus) {
             if(Number (target_dataset) === Cart_data[0].row[y].targetID){
                 target_id = y;
                 mainPrice = Cart_data[0].row[y].price;
-                console.log('asdada');
             }
         }
         if(Cart_data[0].row[target_id].quantity > 1) {
             Cart_data[0].row[target_id].quantity--;
-            console.log(Cart_data[0].row[target_id].quantity);
         }
 
         if(Cart_data[0].row[target_id].quantityPrice > mainPrice){
@@ -361,7 +379,6 @@ function conversion(target_dataset, flag, minus) {
             updPrice -= mainPrice;
 
             Cart_data[0].row[target_id].quantityPrice = updPrice;
-            console.log(updPrice);
         }
         Cart_data[0].row[target_id].quantityPrice = updPrice;
         localStorage.setItem("Cart_data", JSON.stringify(Cart_data));

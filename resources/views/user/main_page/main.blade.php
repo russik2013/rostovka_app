@@ -50,12 +50,12 @@
         <section class="section-padding-b mainpageGoodsBlock">
             <div class="container larger">
                 <ul class="product-filter nav" role="tablist">
-                    <li class="nav-item">
+                    <li class="nav-item" onclick="defaultTab(event)">
                         <a class="nav-link active" href="#newest" role="tab" data-toggle="tab">
                             <h2 class="page-title">Новинки</h2>
                         </a>
                     </li>
-                    <li class="nav-item last">
+                    <li class="nav-item last" onclick="topSalesTab(event)">
                         <a class="nav-link" href="#topSalles" role="tab" data-toggle="tab">
                             <h2 class="page-title">Топ продаж</h2>
                         </a>
@@ -261,8 +261,8 @@
 </span>
 <div class="col-md-12 pull-left goodsCount_price">
 <span class="item-price col-md-6 pull-left">${size}</span>
-<h5 class="item-price col-md-6 pull-right">${price} <span>грн</span></h5>
-<div class="col-md-12 pull-left" style="margin-top: -10px;">
+<h5 class="item-price col-md-6 pull-right" data-set="prodPrice">${price} <span>грн</span></h5>
+<div class="col-md-12 pull-left" style="margin-top: -10px;"  data-set="old--Price">
 <h6 class="item-price col-md-6 pull-right old--price" style="color: #b2b2b2;text-decoration: line-through;margin-top: -7px;">${old_prise} <span>грн</span></h6>
 </div>
 </div>

@@ -19,7 +19,7 @@
                                                 <div class="product-item-inner">
                                                     <div class="product-img-wrap">
                                                         <a href="{{url($product -> id.'/product')}}">
-                                                            {{--<img class="img-responsive" src="./" alt="">--}}
+                                                            {{--<img class="img-responsive" src="" alt="">--}}
                                                         </a>
                                                     </div>
                                                 </div>

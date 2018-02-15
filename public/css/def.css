@@ -521,7 +521,7 @@ input, input[type="text"], input[type="email"], input[type="tel"], input[type="n
 }
 
 input[type="text"]:hover, input[type="email"]:hover, input[type="tel"]:hover, input[type="number"]:hover, input[type="radio"]:hover, input[type="checkbox"]:hover, input[type="password"]:hover, textarea:hover, select:hover {
-    border: 1px solid transparent;
+    border: 1px solid rgba(0, 0, 0, 0.10) !important;
 }
 
 input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="number"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focus, input[type="password"]:focus, textarea:focus {
@@ -4561,7 +4561,6 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 }
 
 .product-item .product-item-inner img {
-    width: 100%;
     max-height: 269px;
 }
 
@@ -6260,7 +6259,7 @@ ul#shipping_method {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    margin-right: 58px;
+    margin-right: 23%;
 }
 
 .sidebar-icon-nav .dropdownCart .price{

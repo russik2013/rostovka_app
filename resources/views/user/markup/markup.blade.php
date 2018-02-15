@@ -62,6 +62,12 @@
                 <!--Topbar Right-->
                 <div class="topbar-right">
                     <ul class="list-none">
+                        <li>
+                            <a href="#!">
+                                <span class="hidden-sm-down">О магазине</span>
+                            </a>
+                        </li>
+
                         @if(!Auth::user())
                             <li>
                                 <a href="{{url('/login')}}"><i class="fa fa-lock left" aria-hidden="true"></i><span

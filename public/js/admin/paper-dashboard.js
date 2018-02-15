@@ -181,7 +181,7 @@ $('.remove').on('click', function () {
 });
 
 $('input[type=number]').keyup(function() {
-    var num = this.value.match(/^\d+$/);
+    var num = this.value.match(/\d/.g);
     if (num === null) {
         this.value = "";
     }

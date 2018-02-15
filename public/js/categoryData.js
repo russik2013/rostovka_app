@@ -72,6 +72,7 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
                 $('.error--message').remove();
                 $('.product-filter-content').css('display', 'block');
                 $('.pagination-wraper').css('display', 'block');
+                checkPrices(data)
             }
             $('.preloader').remove();
         });
@@ -127,6 +128,7 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             if(msg.length > 0){
                 makeFilterData(msg);
                 $('.preloader').remove();
+                checkPrices(data);
             }else{
                 $('.preloader').remove();
                 $('.product-list-item ul li').css('display', 'none');
@@ -301,6 +303,7 @@ else{
 function initData(count_on_page) {
     localData();
     if(localStorage !== null){
+        filter_value = JSON.parse(savedFilters);
         $.ajax({
             method: "POST",
             url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
@@ -348,6 +351,7 @@ function makeData(page_num, count_on_page) {
             choosedType: choosedType
         }
     }).done(function( msg ) {
+        console.log(msg);
         for(var i= 0; i < msg.length; i++ ) {
             data[i] = {
                 dataID: msg[i].id,
@@ -413,6 +417,8 @@ function NextData(page_num, count_on_page, filter_value) {
 
         pageList = data;
         drawItems(pageList);
+        checkMinMax(data);
+        checkPrices(data);
 
         if(Number (page_num) === Number (paginationCount)){
             $('.next_Item').addClass('not-active');

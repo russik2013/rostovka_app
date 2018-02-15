@@ -76,7 +76,21 @@ function searchResult(searchData, imageUrl) {
             for (var u = 0; u < imageUrl.length; u++){
                 $('[data-img="image-url"]')[u].src = $('meta[name="root-site"]').attr('content') + '/images/products/' + imageUrl[u].url
             }
-        })
+        });
+
+        var filterData = [];
+        for (var i = 0; i < searchData.length; i++){
+            if(searchData[i].box_count === searchData[i].rostovka_count){
+                filterData.push(searchData[i]);
+            }
+        }
+        if(filterData.length > 0){
+            for(var z = 0; z < filterData.length; z++){
+                $('[data-select-id="'+ filterData[z].id +'"]').remove();
+                $('[data-product-id="'+ filterData[z].id +'"] .select-style')[0].innerHTML =
+                    "<div class='form-group select-style'><input class='form-control' type=\"number\" placeholder=\"в ящике\" disabled></div>"
+            }
+        }
     });
 }
 

@@ -119,8 +119,8 @@ function getSelect(e) {
         $('.xsl--uploader').css('display', 'none');
         $('button.upload').css('display', 'none');
         $('.sorting__Option.availability').css('display', 'block');
-        $('.header--add--buttons').append("<button class='download allProducts col-md-4 col-sm-12 col-xs-12' onclick='getUserAllProducts()'>Скачать</button>");
-        $('.header--add--buttons').append("<button class='download for_Supliers col-md-4 col-sm-12 col-xs-12' onclick='getManufacturesAllProducts()'>Скачать для поставщиков</button>");
+        $('.header--add--buttons').append("<button class='download allProducts col-md-4 col-sm-12 col-xs-12' onclick='getUserAllProducts(event)'>Скачать</button>");
+        $('.header--add--buttons').append("<button class='download for_Supliers col-md-4 col-sm-12 col-xs-12' onclick='getManufacturesAllProducts(event)'>Скачать для поставщиков</button>");
         $('select.manufacturer_Options').css('display', 'block');
         $('.seasone_Options').css('display', 'block');
         $('.type_Options').css('display', 'block');
@@ -129,25 +129,28 @@ function getSelect(e) {
     }
 }
 
-function getUserAllProducts() {
+function getUserAllProducts(event) {
+    $('.produtsTablePage').append('<div class="preloader"><i></i></div>');
     $.ajax({
         method: 'GET',
         data: {'_token': $('meta[name="csrf-token"]').attr('content')},
         manufacturer_id: $('.sorting__Option.manufacturer_Options option:selected').val(),
         type_id: $('.sorting__Option.seasone_Options option:selected').val(),
         season_id: $('.sorting__Option.type_Options option:selected').val(),
-        accessibility: $('.sorting__Option.availability option:selected').val(),
         success: function(){
+            event.preventDefault();
             window.location = $('meta[name="root-site"]').attr('content') + '/csvDownload?manufacturer_id='+
                 $('.sorting__Option.manufacturer_Options option:selected').val() +'&season_id='+
                 $('.sorting__Option.seasone_Options option:selected').val() + '&type_id='+
-                $('.sorting__Option.type_Options option:selected').val() + '&accessibility' +
-                $('.sorting__Option.availability option:selected').val()
+                $('.sorting__Option.type_Options option:selected').val() + '&accessibility=' +
+                $('.sorting__Option.availability option:selected').val();
+            $('.preloader').remove();
         }
     });
 }
 
 function getManufacturesAllProducts() {
+    $('.produtsTablePage').append('<div class="preloader"><i></i></div>');
     $.ajax({
         method: 'GET',
         data: {'_token': $('meta[name="csrf-token"]').attr('content')},
@@ -156,6 +159,7 @@ function getManufacturesAllProducts() {
             season_id: $('.sorting__Option.type_Options option:selected').val(),
         success: function(){
             window.location = $('meta[name="root-site"]').attr('content') + '/csvDownloadOrdersToManufacturer?manufacturer_id='+ $('.sorting__Option.manufacturer_Options option:selected').val() +'&season_id='+ $('.sorting__Option.seasone_Options option:selected').val() + '&type_id='+ $('.sorting__Option.type_Options option:selected').val();
+            $('.preloader').remove();
         }
     });
 }
@@ -179,7 +183,7 @@ $(document).on('click', 'button.edit', function () {
         zip_data.append('photo', $('#archive').prop('files')[0]);
         zip_data.append('files', $('#xslsx').prop('files')[0]);
 
-
+        $('.produtsTablePage').append('<div class="preloader"><i></i></div>');
         $.ajax({
             method: 'POST',
             headers: {'Content-Type': undefined},
@@ -188,6 +192,7 @@ $(document).on('click', 'button.edit', function () {
             contentType: false,
             data: zip_data,
             success: function(){
+                $('.preloader').remove();
                 $('.table-responsive').append(
                     '<div class="alert alert-success" role="alert" style="position: absolute;\n' +
                     '    top: -140px;\n' +
@@ -234,6 +239,7 @@ $(document).on('click', 'button.remove', function () {
         var zip_data = new FormData();
         zip_data.append('_token', $('meta[name="csrf-token"]').attr('content'));
         zip_data.append('files', $('#xslsx').prop('files')[0]);
+        $('.produtsTablePage').append('<div class="preloader"><i></i></div>');
 
         $.ajax({
             method: 'POST',
@@ -243,6 +249,7 @@ $(document).on('click', 'button.remove', function () {
             contentType: false,
             data: zip_data,
             success: function(){
+                $('.preloader').remove();
                 $('.table-responsive').append(
                     '<div class="alert alert-success" role="alert" style="position: absolute;\n' +
                     '    top: -140px;\n' +
@@ -287,7 +294,7 @@ $(document).on('click', 'button.upload', function () {
         zip_data.append('_token', $('meta[name="csrf-token"]').attr('content'));
         zip_data.append('photo', $('#archive').prop('files')[0]);
         zip_data.append('files', $('#xslsx').prop('files')[0]);
-
+        $('.produtsTablePage').append('<div class="preloader"><i></i></div>');
 
         $.ajax({
             method: 'POST',
@@ -309,6 +316,7 @@ $(document).on('click', 'button.upload', function () {
                 if($('.alert')){
                     setTimeout(removeAlert, 2000);
                 }
+                $('.preloader').remove();
             },
             error: function () {
                 $('.table-responsive').append(
