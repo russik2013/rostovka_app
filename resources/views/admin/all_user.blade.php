@@ -6,12 +6,20 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="header">
+                <div class="card" style="padding-top: 10px;">
+                    <div class="header" style="float: left;">
                         <h4 class="title">Список пользователей</h4>
                     </div>
+                    <div class="span12 pull-right col-md-3 col-sm-12 col-xs-12">
+                        <form id="custom-search-form" class="form-search form-horizontal pull-right col-sm-12 col-xs-12">
+                            <div class="input-append col-sm-12 col-xs-12">
+                                <input type="text" class="search-query col-sm-12 col-xs-12" placeholder="Поиск">
+                                <button type="submit" class="btn"><i class="ti-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
                     <div class="content table-responsive table-full-width">
-                        <table class="table table-striped">
+                        <table class="table table-striped" style="margin-top: 50px;">
                             <thead>
                             <tr>
                                 <th>ID</th>

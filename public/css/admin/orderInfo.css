@@ -1,9 +1,11 @@
 .card{
     padding-bottom: 30px;
 }
-.card label {padding-top: 11px;}
+
 .col-md-5{padding: 0}
-.orderInfo__input{margin-bottom: 20px}
+.orderInfo__input{
+    margin-bottom: -25px
+}
 .col-md-7 .header, .col-md-5 .header{
     padding: 0;
     padding-bottom: 0px;
@@ -12,6 +14,14 @@
     padding-left: 13px;
     border-bottom: 5px solid #f4f3ef;
     padding-bottom: 10px;
+}
+
+.card form [class*="col-"]:first-child{
+    padding-left: 0 !important;
+}
+
+.card form [class*="col-"]:last-child{
+    padding-right: 5px;
 }
 
 .header .col-md-12, .header .col-md-12 .title, .header .col-md-12 .addProduct{

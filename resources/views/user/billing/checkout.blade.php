@@ -87,7 +87,7 @@
                                             <div class="col-md-12 inputGroupContainer">
 
                                                 <div class="input-group">
-                                                    <input name="phone" placeholder="063 111 11 11" class="form-control" type="number"
+                                                    <input name="phone" placeholder="063 111 11 11" class="form-control userPhone" type="text"
                                                            @if(Auth::user())
                                                            value="{{old('phone',Auth::user()->phone)}}"
                                                            @else

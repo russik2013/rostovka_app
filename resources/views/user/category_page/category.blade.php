@@ -5,7 +5,7 @@
         <section class="content-page">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-10 push-md-2 product--block">
+                    <div @if($category -> id == 5) class="col-md-12 product--block" style="min-height: 600px;" @else class="col-md-10 push-md-2 product--block" @endif >
                         <!-- Title -->
                         <div class="list-page-title">
                             <h2 class="">{{$category -> name}}</h2>
@@ -24,10 +24,9 @@
                                         <option value="0" selected="selected">Последние поступления</option>
                                         <option value="1">от дешевого к дорогому</option>
                                         <option value="2">от дорогого к дешевому</option>
-                                        {{--<option value="sort_by_newness">по дате</option>--}}
                                     </select>
                                 </form>
-                                <form class="product-sort-by pull-right col-xl-5 col-md-12 col-sm-12 col-xs-12">
+                                <form class="product-sort-by pull-right col-xl-5 col-md-12 col-sm-12 col-xs-12" data-target="goodsCount">
                                     <label for="product-show">на странице по: </label>
                                     <select name="product-show" id="product-show" class="nice-select-box" data-set="selectCount">
                                         <option value="24" selected="selected">24</option>
@@ -91,7 +90,10 @@
 </span>
 <div class="col-md-12 pull-left goodsCount_price">
 <span class="item-price col-md-6 pull-left">${size}</span>
-<h5 class="item-price col-md-6 pull-right">${price} <span>грн</span></h5>
+<h5 class="item-price col-md-6 pull-right" data-set="prodPrice">${price} <span>грн</span></h5>
+<div class="col-md-12 pull-left" style="margin-top: -10px;">
+<h6 class="item-price col-md-6 pull-right old--price" data-set="old--Price" style="color: #b2b2b2;text-decoration: line-through;margin-top: -7px;">${old_prise} <span>грн</span></h6>
+</div>
 </div>
 
 <div class="product-button">

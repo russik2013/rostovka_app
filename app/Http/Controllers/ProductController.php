@@ -345,6 +345,12 @@ class ProductController extends Controller
                 ->whereIn('sex', $sex)
                 -> count();
         }
+
+        if($request->category_id == 5){
+
+            $products_count = Product::whereNotNull('discount')->count();
+
+        }
         $count_of_page = $products_count / $request ->count_on_page;
 
         return ceil($count_of_page);

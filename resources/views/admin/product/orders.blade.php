@@ -72,7 +72,7 @@
                                 @foreach($orders as $order)
                                     <tr>
                                         <td class="articul"><input value="{{$order -> id}}" disabled></td>
-                                        <td class="costomer--Info"><a href="#!">{{$order -> first_name.' '.$order -> last_name}}</a></td>
+                                        <td class="costomer--Info">{{$order -> first_name.' '.$order -> last_name}}</td>
                                         <td>
                                             @if($order -> shipping_method == "new_post") Новая почта
                                                 @elseif($order -> shipping_method == "delivery_method") Delivery
@@ -89,9 +89,9 @@
                                         <td @if($order ->paid == 1) class="paid--Status" @else @endif >@if($order ->paid == 1) да @else нет @endif</td>
                                         <td>{{$order -> created_at}}</td>
                                         <td class="options">
-                                            {{--<a href="#!">--}}
-                                                {{--<i class="ti-printer" data-toggle="tooltip" title="PDF"></i>--}}
-                                            {{--</a>--}}
+                                            <a href="{{url('/pdfLoad/'.$order->id)}}">
+                                                <i class="ti-printer" data-toggle="tooltip" title="PDF"></i>
+                                            </a>
                                             <a href="{{url('orderInfo/'.$order -> id)}}">
                                                 <i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i>
                                             </a>

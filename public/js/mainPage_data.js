@@ -7,6 +7,7 @@ $.ajax({
     url: $('meta[name="api_url"]').attr('content'),
     data: {category_id : 1}
 }).done(function(msg) {
+    console.log(msg);
     for(var i= 0; i < msg.length; i++ ) {
         data[i] = {
             dataID: msg[i].id,
@@ -19,6 +20,7 @@ $.ajax({
             full__price: msg[i].full__price,
             rostovka__price: msg[i].rostovka__price,
             real_id: msg[i].id,
+            old_prise: msg[i].old_prise,
             product_url: msg[i].product_url + '/' + i,
             option_type: 'full__price',
             size: msg[i].size.name
@@ -35,6 +37,7 @@ $.ajax({
     url: $('meta[name="top_tovar_url"]').attr('content'),
     data: {category_id : 1}
 }).done(function(msg) {
+    console.log(msg);
     for(var i= 0; i < msg.length; i++ ) {
         TopSallesData[i] = {
             dataID: msg[i].id,
@@ -47,6 +50,7 @@ $.ajax({
             full__price: msg[i].full__price,
             rostovka__price: msg[i].rostovka__price,
             real_id: msg[i].id,
+            old_prise: msg[i].old_prise,
             product_url: msg[i].product_url + '/' + i,
             option_type: 'full__price',
             size: msg[i].size.name

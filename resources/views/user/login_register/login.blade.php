@@ -12,7 +12,6 @@
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <input type="hidden" name="_method" value="POST">
                                     <h2 class="normal"><span>Авторизация</span></h2>
-                                    <p>Lorem ipsum dolor amet, conse adipiscing, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                     <div class="form-field-wrapper">
                                         <div class="form-group has-error">
                                             @if ($errors->has('login_error'))
@@ -38,7 +37,6 @@
                             <div class="form-border-box">
                                 <form>
                                     <h2 class="normal"><span>Регистрация</span></h2>
-                                    <p>Lorem ipsum dolor amet, conse adipiscing, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                     <div class="form-field-wrapper">
                                         <a href="register" class="submit btn btn-md btn-color">Создать аккаунт</a>
                                     </div>
