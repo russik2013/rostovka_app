@@ -57,6 +57,12 @@
 
                         @endforeach
                     </select>
+
+                    <select class="sorting__Option availability col-md-5 col-sm-12 col-xs-12" name="availability" style="display: none; float: left; margin-right: 5px;">
+                        <option value="2">Все</option>
+                        <option value="1">Да</option>
+                        <option value="0">Нет</option>
+                    </select>
                 </div>
 
                 <button class="upload col-md-4 col-sm-12 col-xs-12" >Загрузить</button>
@@ -92,7 +98,10 @@
                                 </thead>
                                 <tbody>
 
+
+
                                 @foreach($products as $product)
+
                                     <tr data-id="{{$product -> id}}">
                                         <td class="articul productsArt"><input value="{{$product -> article}}" disabled></td>
                                         <td>{{$product -> name}}</td>

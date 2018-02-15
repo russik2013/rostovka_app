@@ -71,6 +71,7 @@ function getSelect(e) {
         $('.seasone_Options').css('display', 'none');
         $('.type_Options').css('display', 'none');
         $('button.upload').css('display', 'none');
+        $('.sorting__Option.availability').css('display', 'none');
         $('.edit').remove();
         $('.header--add--buttons').append('' +
             '<button class="remove col-md-4 col-sm-12 col-xs-12" style="top: 20px; display: block;">Удалить</button>');
@@ -96,6 +97,7 @@ function getSelect(e) {
         $('select.manufacturer_Options').css('display', 'none');
         $('.seasone_Options').css('display', 'none');
         $('.type_Options').css('display', 'none');
+        $('.sorting__Option.availability').css('display', 'none');
         $('.edit').remove();
         $('.remove').remove();
     }
@@ -104,6 +106,7 @@ function getSelect(e) {
         $('.xsl--uploader').css('display', 'block');
         $('.file--uploader').css('display', 'block');
         $('.upload').css('display', 'none');
+        $('.sorting__Option.availability').css('display', 'none');
         $('.header--add--buttons').append('' +
             '<button class="edit col-md-4 col-sm-12 col-xs-12" style="top: 20px; display: block;">Загрузить</button>');
         getFile();
@@ -115,6 +118,7 @@ function getSelect(e) {
         $('.file--uploader').css('display', 'none');
         $('.xsl--uploader').css('display', 'none');
         $('button.upload').css('display', 'none');
+        $('.sorting__Option.availability').css('display', 'block');
         $('.header--add--buttons').append("<button class='download allProducts col-md-4 col-sm-12 col-xs-12' onclick='getUserAllProducts()'>Скачать</button>");
         $('.header--add--buttons').append("<button class='download for_Supliers col-md-4 col-sm-12 col-xs-12' onclick='getManufacturesAllProducts()'>Скачать для поставщиков</button>");
         $('select.manufacturer_Options').css('display', 'block');
@@ -132,8 +136,13 @@ function getUserAllProducts() {
         manufacturer_id: $('.sorting__Option.manufacturer_Options option:selected').val(),
         type_id: $('.sorting__Option.seasone_Options option:selected').val(),
         season_id: $('.sorting__Option.type_Options option:selected').val(),
+        accessibility: $('.sorting__Option.availability option:selected').val(),
         success: function(){
-            window.location = $('meta[name="root-site"]').attr('content') + '/csvDownload?manufacturer_id='+ $('.sorting__Option.manufacturer_Options option:selected').val() +'&season_id='+ $('.sorting__Option.seasone_Options option:selected').val() + '&type_id='+ $('.sorting__Option.type_Options option:selected').val();
+            window.location = $('meta[name="root-site"]').attr('content') + '/csvDownload?manufacturer_id='+
+                $('.sorting__Option.manufacturer_Options option:selected').val() +'&season_id='+
+                $('.sorting__Option.seasone_Options option:selected').val() + '&type_id='+
+                $('.sorting__Option.type_Options option:selected').val() + '&accessibility=' +
+                $('.sorting__Option.availability option:selected').val()
         }
     });
 }
@@ -145,8 +154,13 @@ function getManufacturesAllProducts() {
             manufacturer_id: $('.sorting__Option.manufacturer_Options option:selected').val(),
             type_id: $('.sorting__Option.seasone_Options option:selected').val(),
             season_id: $('.sorting__Option.type_Options option:selected').val(),
+            accessibility: $('.sorting__Option.availability option:selected').val(),
         success: function(){
-            window.location = $('meta[name="root-site"]').attr('content') + '/csvDownloadOrdersToManufacturer?manufacturer_id='+ $('.sorting__Option.manufacturer_Options option:selected').val() +'&season_id='+ $('.sorting__Option.seasone_Options option:selected').val() + '&type_id='+ $('.sorting__Option.type_Options option:selected').val();
+            window.location = $('meta[name="root-site"]').attr('content') + '/csvDownloadOrdersToManufacturer?manufacturer_id='+
+                $('.sorting__Option.manufacturer_Options option:selected').val() +'&season_id='+
+                $('.sorting__Option.seasone_Options option:selected').val() + '&type_id='+
+                $('.sorting__Option.type_Options option:selected').val()  + '&accessibility=' +
+                $('.sorting__Option.availability option:selected').val()
         }
     });
 }

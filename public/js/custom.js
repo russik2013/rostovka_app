@@ -74,10 +74,10 @@ $(function () {
 });
 
 
-$(document).on('click', '.product-item-inner a', function (event) {
-    var clickeID = Number (event.target.parentElement.parentElement.parentElement.parentElement.dataset.id);
-    sessionStorage.setItem('id', data[clickeID].dataID);
-});
+// $(document).on('click', '.product-item-inner a', function (event) {
+//     var clickeID = Number (event.target.parentElement.parentElement.parentElement.parentElement.dataset.id);
+//     localStorage.setItem('id', data[clickeID].dataID);
+// });
 
 $('.cartBl').on('scroll', function (ev) {
     ev.preventDefault();
@@ -93,14 +93,28 @@ $('.logOutButton').on('click', function () {
     })
 });
 
-
 //////Search
 $('.search--box button').on('click', function (e) {
     e.preventDefault();
     window.location = $('meta[name="root-site"]').attr('content') + '/category/' + $('.search-query').val();
 });
 
+
+$(document).ready(function () {
+    //called when key is pressed in textbox
+    $(".userPhone").keypress(function (e) {
+        //if the letter is not digit then display error and don't type anything
+        if (e.which !== 8 && e.which !== 0 && (e.which < 48 || e.which > 57)) {
+            return false;
+        }
+    });
+});
+
+
 $('.navigation-menu ul li a').on('click', function () {
     localStorage.removeItem('filterValues');
     localStorage.removeItem('selectedCount');
+    localStorage.removeItem('pageNum');
 });
+
+$('font').remove();

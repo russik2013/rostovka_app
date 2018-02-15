@@ -17,15 +17,19 @@ $('.removePrudct').on('click', function () {
         $.ajax({
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + '/deleteProductFromOrder',
-            data: {'_token': $('meta[name="csrf-token"]').attr('content'), id: productID}
+            data: {'_token': $('meta[name="csrf-token"]').attr('content'), id: productID},
+            success: function(){
+                window.location.reload(true);
+            }
         });
     });
 });
 
-
-$('.addProduct i').on('click', function(){
-    $("#productsModal").modal();
+$('.addProduct .fa-plus-square').on('click', function(){
+    $("#productsModal").modal('show');
 });
+
+
 
 var searchData = [];
 $('.search--good').on('click', function () {
@@ -44,6 +48,12 @@ $('.search--good').on('click', function () {
             for(var i = 0; i < msg.length; i++){
                 imageUrl.push({url: msg[i].photo.photo_url})
             }
+
+            if(searchData.length > 99){
+                $('.founded--good').css('display', 'none');
+                $('.modal-body').append('<div class="zero--result">Слишком много товаров :(</div>')
+            }
+
             if(searchData.length === 0){
                 $('.founded--good').css('display', 'none');
                 $('.modal-body').append('<div class="zero--result">Поиск не дал результатов :(</div>')
@@ -69,7 +79,6 @@ function searchResult(searchData, imageUrl) {
         })
     });
 }
-
 
 if(searchData.length === 0){
     $('.founded--good').css('display', 'none');
@@ -98,9 +107,11 @@ $('.add--product--in').on('click', function () {
         $.ajax({
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + '/addOrderDetail',
-            data: {'_token': $('meta[name="csrf-token"]').attr('content'), data: choosedProducts}
+            data: {'_token': $('meta[name="csrf-token"]').attr('content'), data: choosedProducts},
+            success: function(){
+                window.location.reload(true);
+            }
         });
         $("#productsModal").modal('hide');
-        window.location.reload();
     }
 });

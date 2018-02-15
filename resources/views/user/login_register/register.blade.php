@@ -34,7 +34,7 @@
                                     <div class="col-md-12 inputGroupContainer">
 
                                         <div class="input-group">
-                                            <input name="phone" placeholder="Номер телефона" class="form-control" type="number" value="{{old('phone')}}">
+                                            <input name="phone" placeholder="Номер телефона" class="form-control userPhone" type="text" value="{{old('phone')}}">
                                         </div>
                                     </div>
                                 </div>

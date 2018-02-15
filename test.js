@@ -1,49 +1,16 @@
 'use strict';
 var data = [],
     productTheme = $('#template'),
+    page_num = 1,
     count_on_page = Number ($.find('#product-show option')[0].innerText),
     paginationNum,
     paginationCount = 0,
-    page_num = 1,
     filter_value = [],
-    savedFilters = localStorage.getItem('filterValues'),
-    getSavedFilters,
-    selectedCount = Number ($.find('#product-show option')[0].innerText),
-    choosedType = 0;
+    selectedCount = Number ($.find('#product-show option')[0].innerText);
 
-if(localStorage.getItem('pageNum') !== null){
-
-} else {
-    localStorage.setItem('pageNum', page_num);
-}
-
-getSavedFilters = JSON.parse(savedFilters);
-
-function localData() {
-    if(localStorage.getItem('pageNum') !== null){
-        page_num = Number (localStorage.getItem('pageNum'));
-    } else {
-        page_num = 1;
-    }
-    
-    if(filter_value === null){
-        filter_value = [];
-    } else {
-        filter_value = JSON.parse(savedFilters);
-    }
-
-    if(selectedCount !== 0){
-        selectedCount = Number (localStorage.getItem('selectedCount'));
-    } else {
-        selectedCount = 24;
-    }
-}
-
-//Прелоадер при загрузке страницы
-$('.product--block').append('<div class="preloader"><i></i></div>');
-
-///Работа с фильтрами, вызывается с DOM
+///work with filters
 var values = [], targetID = 0;
+
 $('.sidebar-container input[type=checkbox]').on('change', function () {
     var target = $(this)[0].parentNode.parentNode.parentNode;
     targetID = $(this)[0].parentNode.childNodes[1].id;
@@ -65,13 +32,10 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + "/api/products",
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
-                filters: values, choosedType: choosedType}
+                filters: values}
         }).done(function(msg) {
             if(msg.length > 0){
-                makeFilterData(msg);
-                $('.error--message').remove();
-                $('.product-filter-content').css('display', 'block');
-                $('.pagination-wraper').css('display', 'block');
+                makeFilterData(msg)
             }
             $('.preloader').remove();
         });
@@ -80,19 +44,19 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
-                filters: values, choosedType: choosedType}
+                filters: values}
         }).done(function(msg) {
             paginationNum = msg;
             paginationCounter(paginationNum);
         });
 
-        localStorage.setItem('filterValues', JSON.stringify(values));
+        sessionStorage.setItem('filterValues', JSON.stringify(values));
     }
 
     if ($(this).is(':checked')) {
         values.push([targetID, $(this)[0].defaultValue, $(target)[0].childNodes[1].dataset.id]);
 
-        localStorage.setItem('filterValues', JSON.stringify(values));
+        sessionStorage.setItem('filterValues', JSON.stringify(values));
     }
 
     if (values.length !== 0) {
@@ -110,7 +74,7 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             $('.choosedFilter').append('' +
                 '<li class="appedned__item">' +
                 '<span class="item" data-type="' + values[y][0] + '">' + values[y][1] + '</span>' +
-                '<i class="fa fa-times removeAppended__Item" aria-hidden="true"></i>' +
+                '<i class="fa fa-times-circle removeAppended__Item" aria-hidden="true"></i>' +
                 '</li>');
         }
         RemoveItem();
@@ -118,23 +82,17 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
 
         $('.product--block').append('<div class="preloader"><i></i></div>');
 
+
+        console.log(values);
         $.ajax({
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + "/api/products",
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
-                filters: values, choosedType: choosedType}
+                filters: values}
         }).done(function(msg) {
             if(msg.length > 0){
                 makeFilterData(msg);
                 $('.preloader').remove();
-            }else{
-                $('.preloader').remove();
-                $('.product-list-item ul li').css('display', 'none');
-                $('.product-filter-content').css('display', 'none');
-                $('.pagination-wraper').css('display', 'none');
-                if($('.error--message').length === 0){
-                    $('.product-list-view').append('<div class="col-md-12 error--message">Выбранные фильтры не дали результатов</div>')
-                }
             }
         });
 
@@ -142,7 +100,7 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
             data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
-                filters: values, choosedType: choosedType}
+                filters: values}
         }).done(function(msg) {
             paginationNum = msg;
             paginationCounter(paginationNum);
@@ -160,163 +118,35 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
     return filter_value
 });
 
-//Получение сохраненного количество (24 - 36 - 48) товаров на страницеxw
-var saved_count_on_page = Number (localStorage.getItem('selectedCount'));
+-
+var saved_count_on_page = sessionStorage.getItem('selectedCount');
 
-//Выбор количество элементов на странице
 $('#product-show').on('change', function () {
-    saved_count_on_page = Number ($.find('.product-sort-by.pull-right .nice-select-box .current')[0].innerText);
+    count_on_page = Number ($.find('.product-sort-by.pull-right .nice-select-box .current')[0].innerText);
     $('.product--block').append('<div class="preloader"><i></i></div>');
-
-    localStorage.setItem('selectedCount',  JSON.stringify(saved_count_on_page));
-    initData(saved_count_on_page);
+    initData(count_on_page);
+    sessionStorage.setItem('selectedCount',  JSON.stringify(count_on_page));
+    return count_on_page;
 });
 
-//Отрисвока данных сохрененных данных, если localstorage не пуст. Если пуст, заполняются дефолтовые значения
-setSavedOptionCount();
-function setSavedOptionCount() {
-    if(localStorage.getItem('pageNum') !== null) {
-        page_num = Number (localStorage.getItem('pageNum'));
-
-        drawItems(page_num);
-    } else {
-        page_num = 1;
-    }
-
-    if(saved_count_on_page !== 0) {
-        for (var l = 0; l < $.find('[data-set="selectCount"] option').length; l++){
-            if(Number ($.find('[data-set="selectCount"] option')[l].attributes[0].value) === saved_count_on_page) {
-                $.find('[data-set="selectCount"] option')[l].setAttribute('selected', 'selected')
-            }
-        }
-    } else {
-        saved_count_on_page = 24;
-        count_on_page = 24;
-        localStorage.setItem('selectedCount',  JSON.stringify(count_on_page));
-        for (var z = 0; z < $.find('[data-set="selectCount"] option').length; z++){
-            if(Number ($.find('[data-set="selectCount"] option')[z].attributes[0].value) === saved_count_on_page) {
-                $.find('[data-set="selectCount"] option')[z].setAttribute('selected', 'selected')
-            }
-        }
-    }
+if(saved_count_on_page !== null){
+    count_on_page = JSON.parse(saved_count_on_page);
+    drawItems();
+    sessionStorage.setItem('selectedCount',  JSON.stringify(count_on_page));
 }
 
-if(getSavedFilters !== null) {
-    setSavedOptionCount();
+initData(count_on_page);
 
-    var items_Count = Number ($.find('.checkbox-circle').length);
-    for (var i = 0; i < getSavedFilters.length; i++){
-        for(var b = 0; b < items_Count; b++){
-            if($.find('.checkbox-circle input')[b].dataset.value === getSavedFilters[i][0]){
-                $.find('.checkbox-circle input')[b].setAttribute("checked", "checked");
-            }
-        }
-    }
-
-
-    values = getSavedFilters;
-    if(values.length !== 0){
-        var AppendedList = $('.choosedFilter li');
-        $('.CFBlock').css('display', 'block');
-
-        Number(AppendedList.length++);
-        for (var y = 0; y < values.length; y++) {
-            for (var z = 0; z < AppendedList.length; z++) {
-                if ($.find('.checkbox-circle input')[z].dataset.value === values[y][z]) {
-                    $(AppendedList)[z].remove();
-                }
-            }
-
-            $('.choosedFilter').append('' +
-                '<li class="appedned__item">' +
-                '<span class="item" data-type="' + values[y][0] + '">' + values[y][1] + '</span>' +
-                '<i class="fa fa-times-circle removeAppended__Item" aria-hidden="true"></i>' +
-                '</li>');
-        }
-        RemoveItem();
-    }
-
-    $('.product--block').append('<div class="preloader"><i></i></div>');
-
+function initData(count_on_page) {
     $.ajax({
-        method: 'POST',
-        url: "../api/products",
-        data: {
-            category_id : $('meta[name="category_id"]').attr('content'),
-            page_num: page_num,
-            count_on_page: Number (saved_count_on_page),
-            filters: values,
-            choosedType: choosedType
-        }
-    }).done(function(msg) {
-        if(msg.length > 0){
-            for(var i= 0; i < msg.length; i++ ) {
-                data[i] = {
-                    dataID: msg[i].id,
-                    imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,
-                    name: msg[i].name,
-                    rostovka: msg[i].rostovka_count,
-                    box: msg[i].box_count,
-                    type: msg[i].types,
-                    price: msg[i].prise,
-                    full__price: msg[i].full__price,
-                    rostovka__price: msg[i].rostovka__price,
-                    real_id: msg[i].id,
-                    product_url: msg[i].product_url + '/' + i,
-                    size: msg[i].size.name,
-                    old_prise: msg[i].old_prise,
-                    option_type: 'full__price' // Или full__price или rostovka__price
-                };
-            }
-            checkMinMax(data);
-            checkPrices(data);
-            pageList = data;
-            GetData(pageList);
-            drawItems(pageList);
-            $('.preloader').remove();
-        } else {
-            $('.preloader').remove();
-            $('.product-list-item ul li').css('display', 'none');
-            $('.product-filter-content').css('display', 'none');
-            $('.pagination-wraper').css('display', 'none');
-            $('.product-list-view').append('<div class="col-md-12 error--message">Выбранные фильтры не дали результатов</div>')
-        }
-    });
-
-    $.ajax({
-        method: 'POST',
-        url: "../api/pagination",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: Number (saved_count_on_page),
-            filters: values, choosedType: choosedType}
-    }).done(function(msg) {
+        method: "POST",
+        url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
+        data: {category_id : $('meta[name="category_id"]').attr('content'), count_on_page: count_on_page, filters: filter_value}
+    }).done(function (msg) {
         paginationNum = msg;
         paginationCounter(paginationNum);
+        makeData(1, count_on_page);
     });
-}
-else{
-    initData(count_on_page);
-}
-
-//Инициализация созданние деф. данных
-function initData(count_on_page) {
-    localData();
-    if(localStorage !== null){
-        $.ajax({
-            method: "POST",
-            url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
-            data: {
-                category_id : $('meta[name="category_id"]').attr('content'),
-                page_num: page_num,
-                count_on_page: count_on_page,
-                filters: filter_value,
-                choosedType: choosedType
-            }
-        }).done(function (msg) {
-            paginationNum = msg;
-            paginationCounter(paginationNum);
-            makeData(page_num, count_on_page);
-        });
-    }
 }
 
 var paginationCounter = function (paginationNum) {
@@ -331,27 +161,20 @@ var paginationCounter = function (paginationNum) {
         $('.preloader').remove();
         $('.product-filter-content').css('display', 'none');
         scrolltop();
+        $('#target').append('<div class="filter--null">По вашим критериям нет товаров ;(</div>')
     }
 };
 
-//Создание данных
 function makeData(page_num, count_on_page) {
-    data = [];
     $.ajax({
         method: "POST",
         url: $('meta[name="root-site"]').attr('content') + "/api/products",
-        data: {
-            category_id : $('meta[name="category_id"]').attr('content'),
-            page_num: page_num,
-            count_on_page: count_on_page,
-            filters: filter_value,
-            choosedType: choosedType
-        }
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page, filters: filter_value}
     }).done(function( msg ) {
         for(var i= 0; i < msg.length; i++ ) {
             data[i] = {
                 dataID: msg[i].id,
-                imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/' + msg[i].photo.photo_url,
+                imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,
                 name: msg[i].name,
                 rostovka: msg[i].rostovka_count,
                 box: msg[i].box_count,
@@ -360,9 +183,8 @@ function makeData(page_num, count_on_page) {
                 full__price: msg[i].full__price,
                 rostovka__price: msg[i].rostovka__price,
                 real_id: msg[i].id,
-                product_url: msg[i].product_url, // раньше было так msg[i].product_url + '/' + i
+                product_url: msg[i].product_url + '/' + i,
                 size: msg[i].size.name,
-                old_prise: msg[i].old_prise,
                 option_type: 'full__price' // Или full__price или rostovka__price
             };
         }
@@ -373,23 +195,34 @@ function makeData(page_num, count_on_page) {
         });
         GetData(data);
         $('.preloader').remove();
-        //Проверка дублей
-        checkMinMax(data);
-        checkPrices(data);
     }) .fail(function( msg ) {});
 }
 
-//Создание данных по фильтру
-var numberPerPage = 24, pageList = [], currentPage = 1, numberOfPages = 0;
+var numberPerPage = 12, pageList = [], currentPage = 1, numberOfPages = 0;
+
+function checkMinMax() {
+    var MinMaxCounter = [];
+    for (var i = 0; i < data.length; i++){
+        if(data[i].box === data[i].rostovka){
+            var id = data[i].real_id;
+            MinMaxCounter.push(id)
+        }
+    }
+
+    $(document).ready(function(){
+        for(var y = 0; y < MinMaxCounter.length; y++){
+            $('[data-id="'+MinMaxCounter[y]+'"] [data-set="minimum"]').css('visibility', 'hidden');
+        }
+
+    })
+}
+
 function NextData(page_num, count_on_page, filter_value) {
     $('.product--block').append('<div class="preloader"><i></i></div>');
     $.ajax({
         method: "POST",
         url: $('meta[name="root-site"]').attr('content') + "/api/products",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num,
-            count_on_page: count_on_page,
-            filters: filter_value,
-            choosedType: choosedType}
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page, filters: filter_value}
     }).done(function(msg) {
         $('.preloader').remove();
         for(var i= 0; i < msg.length; i++ ) {
@@ -405,7 +238,6 @@ function NextData(page_num, count_on_page, filter_value) {
                 rostovka__price: msg[i].rostovka__price,
                 real_id: msg[i].id,
                 product_url: msg[i].product_url + '/' + i,
-                old_prise: msg[i].old_prise,
                 size: msg[i].size.name,
                 option_type: 'full__price' // Или full__price или rostovka__price
             };
@@ -424,27 +256,27 @@ function NextData(page_num, count_on_page, filter_value) {
             $('.moveTo_end').removeClass('not-active');
         }
 
-        if(page_num === 1) {
+        if(page_num === 1){
             $(document).ready(function () {
                 $('.moveTo_start').addClass('not-active');
                 $('.previous_Item').addClass('not-active');
             });
-        } else {
+        }else {
             $(document).ready(function () {
                 $('.moveTo_start').removeClass('not-active');
                 $('.previous_Item').removeClass('not-active');
             })
         }
 
+
     }) .fail(function( msg ) {
 
     });
 }
 
-//Работа с пагинацией, массивом товаров
 function GetData(data) {
     if (data.length > 0) {
-        //work with pagination
+//work with pagination
         var Pagination = {
             code: '',
             Extend: function (data) {
@@ -467,15 +299,11 @@ function GetData(data) {
 
             First: function () {
                 Pagination.code += '<a>1</a><i>...</i>';
+                page_num = 1;
             },
 
             Click: function () {
                 page_num = Pagination.page = +this.innerHTML;
-                localStorage.setItem('pageNum', page_num);
-                count_on_page = Number (localStorage.getItem('selectedCount'));
-                if(getSavedFilters !== null){
-                    filter_value = getSavedFilters;
-                }
                 NextData(page_num, count_on_page, filter_value);
                 Pagination.page = +this.innerHTML;
                 Pagination.Start();
@@ -510,6 +338,30 @@ function GetData(data) {
                 page_num = Pagination.page;
                 NextData(page_num, count_on_page, filter_value);
             },
+
+// First_Page: function () {
+//     Pagination.page = 1;
+//     if (Pagination.page < 1) {
+//         Pagination.page = 1;
+//     }
+//     Pagination.Start();
+//     scrolltop();
+//
+//     page_num = Pagination.page;
+//     NextData(page_num, count_on_page);
+// },
+
+// Last_Page: function () {
+//     Pagination.page = Pagination.size;
+//     if (Pagination.page < 1) {
+//         Pagination.page = 1;
+//     }
+//     Pagination.Start();
+//     scrolltop();
+//
+//     page_num = Pagination.page;
+//     NextData(page_num, count_on_page);
+// },
 
             Bind: function () {
                 var a = Pagination.e.getElementsByTagName('a');
@@ -546,7 +398,6 @@ function GetData(data) {
                 Pagination.Finish();
 
                 var pageNum = Pagination.page;
-
                 nextPage(pageNum);
                 scrolltop();
             },
@@ -559,11 +410,11 @@ function GetData(data) {
 
             Create: function (e) {
                 var html = [
-                    // '<div class="moveTo_start scrollUp" onclick="Pagination.First_Page()"><i class="fa fa-angle-double-left"></i></div>',
+// '<div class="moveTo_start scrollUp" onclick="Pagination.First_Page()"><i class="fa fa-angle-double-left"></i></div>',
                     '<a class="previous_Item scrollUp">← предыдущая</a>',
                     '<span class="paginationItems scrollUp"></span>',
-                    '<a class="next_Item scrollUp">следующая →</a>'
-                    // '<div class="moveTo_end scrollUp" onclick="Pagination.Last_Page()"><i class="fa fa-angle-double-right"></i></div>'
+                    '<a class="next_Item scrollUp">следующая →</a>',
+// '<div class="moveTo_end scrollUp" onclick="Pagination.Last_Page()"><i class="fa fa-angle-double-right"></i></div>'
                 ];
 
                 e.innerHTML = html.join('');
@@ -572,26 +423,26 @@ function GetData(data) {
             },
 
             Init: function (e, data) {
-                if(localStorage.getItem('pageNum') !== null) {
-                    data.page = Number (localStorage.getItem('pageNum'));
-                    Pagination.Extend(data);
-                    Pagination.Create(e);
-                    Pagination.Start();
-                } else {
-                    Pagination.Extend(data);
-                    Pagination.Create(e);
-                    Pagination.Start();
-                }
+                Pagination.Extend(data);
+                Pagination.Create(e);
+                Pagination.Start();
             }
         };
+
+        $(document).on('click', '.nice-select-box .list', function () {
+            numberPerPage = Number($.find('.nice-select-box .option.selected')[0].dataset.value);
+            pageList = [];
+        });
     }
-    
+
     function load() {
         makePagination();
         loadList();
     }
 
-    /// Work with Data
+    load();
+
+/// Work with Data
     function makePagination() {
         numberOfPages = getNumberOfPages();
     }
@@ -610,12 +461,11 @@ function GetData(data) {
         var end = begin + numberPerPage;
 
         pageList = data.slice(begin, end);
-        pageList = data;
 
         drawItems(pageList);
     }
 
-    //Initialization
+//Initialization
     var init = function () {
         Pagination.Init(document.getElementById('pagination'), {
             size: Number (paginationCount),
@@ -624,66 +474,33 @@ function GetData(data) {
         });
     };
 
-    if(Number (paginationNum) !== 0) {
+    if(Number (paginationNum) !== 0){
         init();
     }
 }
 
-//Отрисовка элементов TMPL
+-
+    $('.product--block').append('<div class="preloader"><i></i></div>');
+
 function drawItems(pageList) {
     var delay = 0;
     document.getElementById("target").innerHTML = "";
     $(productTheme).tmpl(pageList).appendTo('#target').each(function () {
         delay += 0.1;
         $(this).addClass('animated fadeIn').css('animation-delay', delay + 's');
+        checkMinMax();
     });
 }
 
-//Проверка дублей расстовки/ящика
-function checkMinMax(data) {
-    var MinMaxCounter = [];
-    for (var i = 0; i < data.length; i++) {
-        if(data[i].box === data[i].rostovka) {
-            var id = data[i].real_id;
-            MinMaxCounter.push(id);
-        }
-    }
-
-    $(document).ready(function(){
-        for(var y = 0; y < MinMaxCounter.length; y++){
-            $('[data-id="'+MinMaxCounter[y]+'"] [data-set="minimum"]').css('visibility', 'hidden');
-        }
-    })
+function scrolltop() {
+    var body = $("html, body");
+    body.stop().animate({scrollTop: 0}, 500, 'swing');
 }
 
-
-// Проверка дублей скидок
-function checkPrices(data) {
-    var MinMaxCounter = [];
-    for (var i = 0; i < data.length; i++) {
-        if(data[i].price === data[i].old_prise) {
-            var id = data[i].real_id;
-            MinMaxCounter.push(id);
-        }
-    }
-
-    $(document).ready(function(){
-        for(var y = 0; y < MinMaxCounter.length; y++){
-            $('[data-id="'+MinMaxCounter[y]+'"] [data-set="old--Price"]').css('visibility', 'hidden');
-            $('[data-id="'+MinMaxCounter[y]+'"] [data-set="prodPrice"]').css('margin-top', '0');
-        }
-    })
-}
-
-//Удаление итема из фильтра
 function RemoveItem() {
     $('.removeAppended__Item').on('click', function () {
         var clickedTarget = $(this)[0].parentElement.textContent,
             AppendedList = $('.filterInner input');
-
-        $('.error--message').remove();
-        $('.product-filter-content').css('display', 'block');
-        $('.pagination-wraper').css('display', 'block');
 
         $(this)[0].parentElement.remove();
 
@@ -704,13 +521,15 @@ function RemoveItem() {
             $('.CFBlock').css('display', 'none');
         }
 
+
         $('.product--block').append('<div class="preloader"><i></i></div>');
+
 
         $.ajax({
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + "/api/products",
-            data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page,
-                filters: values, choosedType: choosedType}
+            data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
+                filters: values}
         }).done(function( msg ) {
             if(msg.length > 0){
                 makeFilterData(msg)
@@ -721,26 +540,21 @@ function RemoveItem() {
         $.ajax({
             method: 'POST',
             url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
-            data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page,
-                filters: values, choosedType: choosedType}
+            data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
+                filters: values}
         }).done(function(msg) {
             paginationNum = msg;
             paginationCounter(paginationNum);
         });
 
-        localStorage.setItem('filterValues', JSON.stringify(values));
+        sessionStorage.setItem('filterValues', JSON.stringify(values));
     });
 }
 
-//Очистка данных (Фильтры, локалсторейдж, установка данных на дефолтовые значения)
-$('.removeallFilters span').on('click', function (e) {
+$('.removeallFilters span').on('click', function () {
     values = [];
-    localStorage.clear();
-    saved_count_on_page = 0;
     var AppendedList = $('.choosedFilter li');
-    $('.error--message').remove();
-    $('.product-filter-content').css('display', 'block');
-    $('.pagination-wraper').css('display', 'block');
+
     for (var i = 0; i < AppendedList.length; i++) {
         $(AppendedList)[i].remove();
     }
@@ -756,38 +570,37 @@ $('.removeallFilters span').on('click', function (e) {
     $.ajax({
         method: 'POST',
         url: $('meta[name="root-site"]').attr('content') + "/api/products",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: 24,
-            filters: values, choosedType: choosedType}
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
+            filters: values}
     }).done(function( msg ) {
         if(msg.length > 0){
             makeFilterData(msg)
         }
         $('.preloader').remove();
-
-        $('[data-target="goodsCount"] .nice-select-box .current')[0].innerText = 24;
-        $('[data-target="goodsCount"] .nice-select-box [data-value="24"]').addClass('selected');
-        $('[data-target="goodsCount"] .nice-select-box [data-value="36"]').removeClass('selected');
     });
 
     $.ajax({
         method: 'POST',
         url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: 24,
-            filters: values, choosedType: choosedType}
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
+            filters: values}
     }).done(function(msg) {
         paginationNum = msg;
         paginationCounter(paginationNum);
-
-        e.preventDefault();
-        setSavedOptionCount();
     });
+    sessionStorage.setItem('filterValues', JSON.stringify(values));
 });
 
-//Создание данных после выбора фильтров
-function makeFilterData(msg) {
-    var filtered_data, data = [];
-    for(var i= 0; i < msg.length; i++ ) {
+$('.submit_onChoose button').on('click', function () {
+    values = [];
+    $('.submit_onChoose').removeClass('showed');
+    $('input[type=checkbox]').prop('checked', false)
+});
 
+//Making sorted data
+function makeFilterData(msg) {
+    var filtered_data;
+    for(var i= 0; i < msg.length; i++ ) {
         data[i] = {
             dataID: msg[i].id,
             imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,
@@ -801,63 +614,18 @@ function makeFilterData(msg) {
             real_id: msg[i].id,
             product_url: msg[i].product_url + '/' + i,
             size: msg[i].size.name,
-            old_prise: msg[i].old_prise,
             option_type: 'full__price' // Или full__price или rostovka__price
         };
     }
 
     pageList = data;
     filtered_data = data;
-
     drawItems(pageList);
     GetData(filtered_data);
-    //Проверка дублей
-    checkMinMax(data);
-    checkPrices(data);
 }
 
-// Сортировка данных
-$('#short-by').on('change', function () {
-    choosedType = $('#short-by :selected').val();
-    data = [];
-    $('.product--block').append('<div class="preloader"><i></i></div>');
-
-    $.ajax({
-        method: "POST",
-        url: $('meta[name="root-site"]').attr('content') + "/api/products",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page, filters: filter_value, choosedType: choosedType}
-    }).done(function(msg) {
-        $('.preloader').remove();
-        for(var i= 0; i < msg.length; i++ ) {
-            data[i] = {
-                dataID: msg[i].id,
-                imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,
-                name: msg[i].name,
-                rostovka: msg[i].rostovka_count,
-                box: msg[i].box_count,
-                type: msg[i].types,
-                price: msg[i].prise,
-                full__price: msg[i].full__price,
-                rostovka__price: msg[i].rostovka__price,
-                real_id: msg[i].id,
-                old_prise: msg[i].old_prise,
-                product_url: msg[i].product_url + '/' + i,
-                size: msg[i].size.name,
-                option_type: 'full__price' // Или full__price или rostovka__price
-            };
-        }
-
-        $('.preloader').remove();
-        pageList = data;
-        drawItems(pageList);
-    }) .fail(function( msg ) {
-
-    });
-});
-
-
-//Работа с размерамии, от - до
 getSizes();
+var min_range = 0, max_range = 0;
 function getSizes() {
     $.ajax({
         method: 'POST',
@@ -867,11 +635,11 @@ function getSizes() {
     });
 
 }
-// Слайдер от - до
+
+// Slider from to
 function slider(msg) {
-    var min_range = Number (msg[0]);
-    var max_range = Number (msg[1]);
-    
+    min_range = Number (msg[0]);
+    max_range = Number (msg[1]);
     $( "#slider-range" ).slider({
         range: true,
         min: min_range,
@@ -882,10 +650,6 @@ function slider(msg) {
             $("#amount").val(ui.values[ 1 ] );
         },
         change: function() {
-            page_num = Number (localStorage.getItem('pageNum'));
-            if(filter_value === null){
-                filter_value = []
-            }
             var min, max, sizes = [], changeFlag = false;
             min = Number ($.find('#minchoose')[0].value);
             max = Number ($.find('#amount')[0].value);
@@ -897,7 +661,7 @@ function slider(msg) {
                 }
             }
             var flag = false;
-            if(changeFlag === false) {
+            if(changeFlag === false){
                 for(var i = 0; i < filter_value.length; i++){
                     if(filter_value[i][0] === "size_min"){
                         filter_value[i][1] = min;
@@ -909,7 +673,7 @@ function slider(msg) {
                     }
                 }
                 sizes['Sizes'] = [min, max];
-                if(flag === false) {
+                if(flag === false){
                     filter_value.push(['size_min', min, 'size']);
                     filter_value.push(['size_max', max, 'size']);
                 }
@@ -942,34 +706,12 @@ function slider(msg) {
             $.ajax({
                 method: "POST",
                 url: $('meta[name="root-site"]').attr('content') + "/api/products",
-                data: {category_id : $('meta[name="category_id"]').attr('content'),
-                    page_num: page_num,
-                    count_on_page: count_on_page,
-                    choosedType: choosedType,
-                    filters: filter_value
-                }
+                data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
+                    filters: filter_value}
             }).done(function( msg ) {
-
-                if(msg.length === 0){
-                    $('.preloader').remove();
-                    $('.product-list-view li').css('display', 'none');
-                    $('.pagination-wraper').css('display', 'none');
-                    $('.product-filter-content').css('display', 'none');
-                    if($('.alert.alert-warning').length < 1){
-                        $('#target').append('<div class="alert alert-warning">\n' +
-                            '  <strong>Поиск не дал результатов</strong>\n' +
-                            '</div>');
-                    }
-                }
-                else{
-                    $('.product-list-view li').css('display', 'block');
-                    $('.pagination-wraper').css('display', 'block');
-                    $('.product-filter-content').css('display', 'block');
-                    makeFilterData(msg);
-                    $('.alert.alert-warning').remove();
-                    $('.preloader').remove();
-                }
-
+                console.log(msg);
+                $('.preloader').remove();
+                makeFilterData(msg);
 
             }) .fail(function( msg ) {
 
@@ -978,33 +720,15 @@ function slider(msg) {
             $.ajax({
                 method: 'POST',
                 url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
-                data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page,
+                data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
                     filters: filter_value}
             }).done(function(msg) {
-                if(msg.length === 0){
-
-                }
-                else{
-                    paginationNum = msg;
-                    paginationCounter(paginationNum);
-                }
+                console.log(msg);
+                paginationNum = msg;
+                paginationCounter(paginationNum);
             });
         }
     });
     $( "#minchoose" ).val($( "#slider-range" ).slider( "values", 0 ));
     $( "#amount" ).val($( "#slider-range" ).slider( "values", 1 ));
-}
-
-// Работа с иконками для моб. версии
-$('.filter--mobileButton').on('click', function () {
-    $('.category--Filters').toggleClass('active');
-});
-$('.category--Filters .close-icon').on('click', function () {
-    $('.category--Filters').removeClass('active');
-});
-
-// Медленный скролл
-function scrolltop() {
-    var body = $("html, body");
-    body.stop().animate({scrollTop: 0}, 500, 'swing');
 }

@@ -27,10 +27,10 @@ class ProductController extends Controller
 
             $products = Product::with('category','manufacturer') ->
             where('name', "like", "%".$name."%")
-                ->groupBy('id') ->paginate(15);
+                ->orderBy('id', 'desc') ->paginate(15);
 
         else
-            $products = Product::with('category','manufacturer')   ->groupBy('id') ->paginate(15);
+            $products = Product::with('category','manufacturer')  ->orderBy('id', 'desc') ->paginate(15);
 
         //dd($products -> get());
 

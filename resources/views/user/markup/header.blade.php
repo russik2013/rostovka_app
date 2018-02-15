@@ -1,6 +1,8 @@
 
                 <ul>
-
+                    <li>
+                        <a class="mainforMobile" href="{{url('/')}}"> Главная</a>
+                    </li>
                     @foreach($categories as $category)
 
                         <li>
@@ -10,6 +12,3 @@
 
 
                 </ul>
-
-
-

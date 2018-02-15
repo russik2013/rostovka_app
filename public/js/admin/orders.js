@@ -18,10 +18,9 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    var userLang = navigator.language || navigator.userLanguage;
-
     var options = $.extend({},
-        $.datepicker.regional["ja"], {
+        $.datepicker.regional["ru"], {
+            defaultDate: new Date(),
             dateFormat: "yy-mm-dd",
             changeMonth: true,
             changeYear: true,
@@ -32,6 +31,21 @@ $(document).ready(function () {
     $("#from").datepicker(options);
     $("#to").datepicker(options);
 });
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+$('#from').val(formatDate(new Date()));
+$('#to').val(formatDate(new Date()));
 
 $('.remove__order').on('click', function () {
     var productName = $(this)[0].parentElement.parentNode.children[1].innerText,
