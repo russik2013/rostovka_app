@@ -138,7 +138,6 @@ function getUserAllProducts(event) {
         type_id: $('.sorting__Option.seasone_Options option:selected').val(),
         season_id: $('.sorting__Option.type_Options option:selected').val(),
         success: function(){
-            event.preventDefault();
             $('.preloader').remove();
             window.location = $('meta[name="root-site"]').attr('content') + '/csvDownload?manufacturer_id='+
                 $('.sorting__Option.manufacturer_Options option:selected').val() +'&season_id='+
@@ -314,7 +313,7 @@ $(document).on('click', 'button.upload', function () {
                     '    top: -140px;\n' +
                     '    width: 100%;\n' +
                     '    left: 0;">\n' +
-                    '<a href="#" class="alert-link">Товары умпешно загруженны</a>\n' +
+                    '<a href="#" class="alert-link">Товары успешно загруженны</a>\n' +
                     '</div>'
                 );
 
@@ -345,7 +344,7 @@ function removeAlert() {
     $('.alert').remove();
 }
 
-$('.form-search button').on('click', function (e) {
+$('.form-search button').on('clickpreventDefault', function (e) {
     e.preventDefault();
     window.location = $('meta[name="root-site"]').attr('content') + '/products/' + $('.search-query').val();
 });

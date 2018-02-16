@@ -623,6 +623,7 @@ input::-webkit-inner-spin-button {
   }
   .regPage .input-group{
     padding-right: 0;
+    width: 90%;
   }
   .copyrights p.copyright{padding-left: 3px}
   .logReg_page.regPage h3{padding-left: 10px}

@@ -109,6 +109,7 @@ function getSelect(event, value) {
 
     else{
         var box_Price = 0, recalculatedP = 0;
+
         for (var z = 0; z < Cart_data[0].row.length; z++){
             if(Number (targetID) === Cart_data[0].row[z].productID){
                 Cart_data[0].row[z].price = Cart_data[0].row[z].box__price;

@@ -351,7 +351,6 @@ function makeData(page_num, count_on_page) {
             choosedType: choosedType
         }
     }).done(function( msg ) {
-        console.log(msg);
         for(var i= 0; i < msg.length; i++ ) {
             data[i] = {
                 dataID: msg[i].id,
@@ -369,6 +368,13 @@ function makeData(page_num, count_on_page) {
                 old_prise: msg[i].old_prise,
                 option_type: 'full__price' // Или full__price или rostovka__price
             };
+        }
+
+        if(msg.length === 0){
+            $('#target').append('<div style="    padding-top: 20px;\n' +
+                '    text-align: center;\n' +
+                '    font-size: 20px;\n' +
+                '    text-transform: uppercase;">Нет товаров</div>')
         }
 
         $(document).ready(function () {
@@ -1014,3 +1020,10 @@ function scrolltop() {
     var body = $("html, body");
     body.stop().animate({scrollTop: 0}, 500, 'swing');
 }
+
+$(document).ready(function () {
+    if($('.paginationItems a').length === 0){
+        console.log( $('.next_Item'));
+        $('.next_Item').css('display', 'none')
+    }
+});

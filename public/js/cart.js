@@ -415,9 +415,9 @@ function counterFn(mainPrice) {
 
 function cartSumm(){
     if($.find('[data-set="cart-summ"]').length !== 0){
-        $.find('[data-set="cart-summ"]')[0].innerText = Cart_data[0].cartProducts_summ;
+        $.find('[data-set="cart-summ"]')[0].innerText = Math.round(Cart_data[0].cartProducts_summ);
         $.find('[data-set="cartCount"]')[0].innerText = Cart_data[0].cartCount;
-        $.find('[data-set="cart-inner-summ"]')[0].innerText = Cart_data[0].cartProducts_summ + ' грн';
+        $.find('[data-set="cart-inner-summ"]')[0].innerText = Math.round(Cart_data[0].cartProducts_summ) + ' грн';
     }
 }
 

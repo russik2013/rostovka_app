@@ -117,4 +117,8 @@ $('.navigation-menu ul li a').on('click', function () {
     localStorage.removeItem('pageNum');
 });
 
-$('font').remove();
+$('.mobileNav li a').on('click', function () {
+    localStorage.removeItem('filterValues');
+    localStorage.removeItem('selectedCount');
+    localStorage.removeItem('pageNum');
+});
