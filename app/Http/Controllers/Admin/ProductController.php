@@ -25,12 +25,12 @@ class ProductController extends Controller
 
         if($name != "")
 
-            $products = Product::with('category','manufacturer') ->
+            $products = Product::with('category','manufacturer', 'photo') ->
             where('name', "like", "%".$name."%")
                 ->orderBy('id', 'desc') ->paginate(15);
 
         else
-            $products = Product::with('category','manufacturer')  ->orderBy('id', 'desc') ->paginate(15);
+            $products = Product::with('category','manufacturer', 'photo')  ->orderBy('id', 'desc') ->paginate(15);
 
         //dd($products -> get());
 

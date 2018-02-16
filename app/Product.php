@@ -48,3 +48,5 @@ class Product extends Model
     }
 
 }
+
+//dd(Product::all());

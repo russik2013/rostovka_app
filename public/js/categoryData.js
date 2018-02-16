@@ -386,6 +386,8 @@ function makeData(page_num, count_on_page) {
         //Проверка дублей
         checkMinMax(data);
         checkPrices(data);
+        console.log(data);
+        checkPagination();
     }) .fail(function( msg ) {});
 }
 
@@ -1021,9 +1023,10 @@ function scrolltop() {
     body.stop().animate({scrollTop: 0}, 500, 'swing');
 }
 
-$(document).ready(function () {
-    if($('.paginationItems a').length === 0){
-        console.log( $('.next_Item'));
-        $('.next_Item').css('display', 'none')
+function checkPagination() {
+    if($('.paginationItems a').length <= 1){
+        $('.next_Item.scrollUp').css('display', 'none')
+    } else {
+        $('.next_Item.scrollUp').css('display', 'block')
     }
-});
+}

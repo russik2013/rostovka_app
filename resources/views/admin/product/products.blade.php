@@ -40,7 +40,6 @@
                         @endforeach
                     </select>
 
-
                     <select class="sorting__Option seasone_Options col-md-5 col-sm-12 col-xs-12" name="season" onChange="getSeason(event)" style="display: none">
                         @foreach($seasons as $season)
 
@@ -48,7 +47,6 @@
 
                         @endforeach
                     </select>
-
 
                     <select class="sorting__Option type_Options col-md-5 col-sm-12 col-xs-12" name="manufactures" onChange="getManufactures(event)" style="display: none; float: left; margin-right: 5px;">
                         @foreach($types as $type)
@@ -78,6 +76,7 @@
             </div>
         </div>
     </div>
+
     <div class="content products--content produtsTablePage">
         <div class="container-fluid">
             <div class="row">
@@ -88,43 +87,50 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
+                                    <th>Фото</th>
                                     <th>Артикул</th>
                                     <th>Название</th>
                                     <th>Категория</th>
                                     <th>Произвоитель</th>
                                     <th>Скидка</th>
+                                    <th>Цена</th>
+                                    <th>Цена закупки</th>
                                     <th>Доступность</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
-
-
                                 @foreach($products as $product)
 
                                     <tr data-id="{{$product -> id}}">
+                                        <td style="max-width: 80px;">
+                                            <img src="{{url('/images/products/'. $product -> photo -> photo_url)}}" />
+                                        </td>
+
                                         <td class="articul productsArt"><input value="{{$product -> article}}" disabled></td>
+
                                         <td>{{$product -> name}}</td>
+
                                         <td>{{$product -> category -> name}}</td>
+
                                         <td>{{$product -> manufacturer -> name}}</td>
+
                                         <td>{{$product -> discount}}</td>
+
+                                        <td>{{$product -> prise}}</td>
+
+                                        <td>{{$product -> cena_zakupki}}</td>
+
                                         <td>@if($product ->show_product == 1) да @else нет @endif</td>
+
                                         <td>{{$product -> created_at}}  <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
-                                        {{--<i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a><a href="{{url('/product/'.$product->id.'/edit')}}"></a>--}}
                                     </tr>
+
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    {{--<ul class="pagination">--}}
-                        {{--<li><a href="!#">&laquo;</a></li>--}}
-                        {{--@for($i = 1; $i < $pagination + 1; $i++)--}}
-
-                            {{--<li  @if($i == 0)class="active" @endif><a href="{{url('products/'.$i)}}">{{$i}}</a></li>--}}
-                        {{--@endfor--}}
-                        {{--<li><a href="!#">&raquo;</a></li>--}}
-                    {{--</ul>--}}
 
                     {{$products->links()}}
                 </div>
