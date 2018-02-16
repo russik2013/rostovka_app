@@ -414,8 +414,9 @@ class ProductController extends Controller
 
                 $prozent_discount = explode("%",$product -> discount);
 
-                if(isset($prozent_discount[1])){
+                //dd($product->prise);
 
+                if(isset($prozent_discount[1]) && $prozent_discount[1] != ""){
 
                     $product->prise =  $product->prise - ( $product->prise * ($prozent_discount[0]/100) ) ;
                 }

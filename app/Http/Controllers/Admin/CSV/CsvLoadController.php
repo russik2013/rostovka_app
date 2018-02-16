@@ -178,10 +178,6 @@ class CsvLoadController extends Controller
                 $manufacturer = $manufacturers[$product ->{'brend'}];
             }
 
-            if($product ->nalichie == 'Есть')
-                $show = 1;
-            else
-                $show = 0;
 
             if (isset($types[$product ->{'tip_obuvi'}]))
                 $type = $types[$product ->{'tip_obuvi'}];
@@ -204,11 +200,11 @@ class CsvLoadController extends Controller
                 'prise' => $product ->tsena_prodazhi,
                 'manufacturer_id' => $manufacturer,
                 'category_id' => $categories[$product ->kategoriya],
-                'show_product' => $show,
+                'show_product' => $product ->nalichie,
                 'currency' =>  'грн',
                 'full_description' => $product ->opisanie,
-                'discount' => $product ->skidka."%",
-                'accessibility' => $show,
+                'discount' => $product ->skidka,
+                'accessibility' => $product ->nalichie,
                 'type_id' => $type,
                 'season_id' => $season,
                 'size_id' => $size,
@@ -362,11 +358,6 @@ class CsvLoadController extends Controller
                 $manufacturer = $manufacturers[$product ->{'brend'}];
             }
 
-            if($product ->nalichie == 'Есть')
-                $show = 1;
-            else
-                $show = 0;
-
             if (isset($types[$product ->{'tip_obuvi'}]))
                 $type = $types[$product ->{'tip_obuvi'}];
             else{
@@ -388,11 +379,11 @@ class CsvLoadController extends Controller
                                 'prise' => $product ->tsena_prodazhi,
                                 'manufacturer_id' => $manufacturer,
                                 'category_id' => $categories[$product ->kategoriya],
-                                'show_product' => $show,
+                                'show_product' => $product ->nalichie,
                                 'currency' =>  'грн',
                                 'full_description' => $product ->opisanie,
-                                'discount' => $product ->skidka."%",
-                                'accessibility' => $show,
+                                'discount' => $product ->skidka,
+                                'accessibility' => $product ->nalichie,
                                 'type_id' => $type,
                                 'season_id' => $season,
                                 'size_id' => $size,
