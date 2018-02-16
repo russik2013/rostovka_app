@@ -68,7 +68,7 @@ class CsvDownloadController extends Controller
                     "ID" => $product->id,
                     "Артикул" => $product->article,
                     "Цена закупки" => $product->prise_zakup,
-                    "Цена продажи" => $product->prise,
+                    "Цена продажи" => $product->prise_default,
                     "Наличие" => (string)$product->accessibility,
                     "Бренд" => $product->manufacturer->name,
                     "Размер" => $size,
@@ -156,49 +156,6 @@ class CsvDownloadController extends Controller
                 if($product->size)
                     $size = $product->size->name;
                 else $size = 'none';
-
-                if($product -> manufacturer ->koorse != "" || $product -> manufacturer ->koorse != 0){
-
-                    $product->prise *= $product -> manufacturer ->koorse;
-
-                }
-
-                if($product -> manufacturer ->discount !="" || $product -> manufacturer ->discount != 0) {
-
-                    $hrivna_discount = explode("грн",$product -> manufacturer ->discount);
-
-                    if(isset($hrivna_discount[1])){
-
-                        $product->prise = $product->prise - $hrivna_discount[0];
-                    }
-
-                    $prozent_discount = explode("%",$product -> manufacturer ->discount);
-
-                    if(isset($prozent_discount[1])){
-
-                        $product->prise = $product->prise - ( $product->prise * ($prozent_discount[0]/100) );
-                    }
-
-                }
-
-                if($product ->discount !="" || $product -> discount != 0) {
-
-                    $hrivna_discount = explode("грн",$product ->discount);
-
-                    if(isset($hrivna_discount[1])){
-
-                        $product->prise =  $product->prise - $hrivna_discount[0];
-                    }
-
-                    $prozent_discount = explode("%",$product -> discount);
-
-                    if(isset($prozent_discount[1])){
-
-
-                        $product->prise =  $product->prise - ( $product->prise * ($prozent_discount[0]/100) ) ;
-                    }
-
-                }
 
                 $data[] = [
 
