@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Manufacturer;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class SuppliersController extends Controller
 {
@@ -46,6 +48,67 @@ class SuppliersController extends Controller
             else $manufacturer -> box = 0;
 
             $manufacturer -> save();
+
+            $products = Product::where("manufacturer_id", $manufacturer -> id) -> get();
+
+            DB::update('update products set prise = prise_default where manufacturer_id = ?',[$manufacturer -> id]);
+
+
+            if($manufacturer ->koorse != "" || $manufacturer ->koorse != 0){
+
+                DB::update('update products set prise = prise * ? where manufacturer_id = ?',
+                    [$manufacturer ->koorse,$manufacturer -> id]);
+
+            }
+
+            if($manufacturer ->discount !="" || $manufacturer ->discount != 0) {
+
+
+                $hrivna_discount = explode("грн", $manufacturer ->discount);
+
+                if(isset($hrivna_discount[1])){
+
+                    DB::update('update products set prise = prise - ? where manufacturer_id = ?',
+                        [$hrivna_discount[0],$manufacturer -> id]);
+
+                }
+
+                $prozent_discount = explode("%",$manufacturer ->discount);
+
+                if(isset($prozent_discount[1])){
+
+                    DB::update('update products set prise = prise - ( prise * ?)  where manufacturer_id = ?',
+                        [$prozent_discount[0]/100,$manufacturer -> id]);
+
+                }
+
+            }
+            foreach ($products as $product){
+
+                if($product ->discount !="" || $product -> discount != 0) {
+
+
+                    $hrivna_discount = explode("грн",$product ->discount);
+
+                    if(isset($hrivna_discount[1])){
+
+                        DB::update('update products set prise = prise - ?  where manufacturer_id = ?',
+                            [$hrivna_discount[0],$manufacturer -> id]);
+                    }
+
+                    $prozent_discount = explode("%",$product -> discount);
+
+
+                    if(isset($prozent_discount[1])){
+
+                        DB::update('update products set prise = prise - ( prise * ?)  where manufacturer_id = ?',
+                            [$prozent_discount[0]/100,$manufacturer -> id]);
+
+                    }
+
+                }
+
+            }
 
             return redirect()->route('suppliers');
 

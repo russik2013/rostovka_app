@@ -124,56 +124,6 @@ class ProductController extends Controller
 
         foreach ($products as $product){
 
-            $product -> old_prise = $product -> prise;
-
-            if($product -> manufacturer ->koorse != "" || $product -> manufacturer ->koorse != 0){
-
-                $product -> old_prise *= $product -> manufacturer ->koorse;
-                $product -> prise = $product -> prise * $product -> manufacturer ->koorse;
-
-            }
-
-            if($product -> manufacturer ->discount !="" || $product -> manufacturer ->discount != 0) {
-
-
-                $hrivna_discount = explode("грн",$product -> manufacturer ->discount);
-
-                if(isset($hrivna_discount[1])){
-
-                    $product->prise = $product->prise - $hrivna_discount[0];
-                }
-
-                $prozent_discount = explode("%",$product -> manufacturer ->discount);
-
-                if(isset($prozent_discount[1])){
-
-                    $product->prise = $product->prise - ( $product->prise * ($prozent_discount[0]/100) );
-                }
-
-            }
-
-            if($product ->discount !="" || $product -> discount != 0) {
-
-
-                $hrivna_discount = explode("грн",$product ->discount);
-
-                if(isset($hrivna_discount[1])){
-
-                    $product->prise = $product->prise - $hrivna_discount[0];
-                }
-
-                $prozent_discount = explode("%",$product -> discount);
-
-
-
-                if(isset($prozent_discount[1])){
-
-                    $product->prise = $product->prise - ( $product->prise * ($prozent_discount[0]/100) ) ;
-                }
-
-            }
-
-
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
 
@@ -377,54 +327,6 @@ class ProductController extends Controller
         //$products = Product::take(10)  -> get();
         foreach ($products as $product){
 
-            $product->old_price = $product->prise;
-
-            if($product -> manufacturer ->koorse != "" || $product -> manufacturer ->koorse != 0){
-
-                $product->prise *= $product -> manufacturer ->koorse;
-                $product->old_price *= $product -> manufacturer ->koorse;
-            }
-
-            if($product -> manufacturer ->discount !="" || $product -> manufacturer ->discount != 0) {
-
-                $hrivna_discount = explode("грн",$product -> manufacturer ->discount);
-
-                if(isset($hrivna_discount[1])){
-
-                    $product->prise = $product->prise - $hrivna_discount[0];
-                }
-
-                $prozent_discount = explode("%",$product -> manufacturer ->discount);
-
-                if(isset($prozent_discount[1])){
-
-                    $product->prise = $product->prise - ( $product->prise * ($prozent_discount[0]/100) );
-                }
-
-            }
-
-            if($product ->discount !="" || $product -> discount != 0) {
-
-                $hrivna_discount = explode("грн",$product ->discount);
-
-                if(isset($hrivna_discount[1])){
-
-                    $product->prise =  $product->prise - $hrivna_discount[0];
-                }
-
-                $prozent_discount = explode("%",$product -> discount);
-
-                //dd($product->prise);
-
-                if(isset($prozent_discount[1]) && $prozent_discount[1] != ""){
-
-                    $product->prise =  $product->prise - ( $product->prise * ($prozent_discount[0]/100) ) ;
-                }
-
-            }
-
-
-
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
 
@@ -437,7 +339,6 @@ class ProductController extends Controller
 
             $product -> types = $product -> type -> name;
             $product -> product_url = url($product ->id.'/product');
-            //$product -> image_url = $product ->photo->photo_url;
 
         }
 
@@ -466,53 +367,6 @@ class ProductController extends Controller
                 ->orderBy('id',"desc")->paginate(16);
 
         foreach ($products as $product){
-
-            $product->old_prise = $product -> prise;
-
-            if($product -> manufacturer ->koorse != "" || $product -> manufacturer ->koorse != 0){
-
-                $product -> prise = $product -> prise * $product -> manufacturer ->koorse;
-                $product->old_prise *= $product -> manufacturer ->koorse;
-
-            }
-
-            if($product -> manufacturer ->discount !="" || $product -> manufacturer ->discount != 0) {
-
-
-                $hrivna_discount = explode("грн",$product -> manufacturer ->discount);
-
-                if(isset($hrivna_discount[1])){
-
-                    $product->prise = $product->prise - $hrivna_discount[0];
-                }
-
-                $prozent_discount = explode("%",$product -> manufacturer ->discount);
-
-                if(isset($prozent_discount[1])){
-
-                    $product->prise = $product->prise - ( $product->prise * ($prozent_discount[0]/100) );
-                }
-
-            }
-
-            if($product ->discount !="" || $product -> discount != 0) {
-
-                $hrivna_discount = explode("грн",$product ->discount);
-
-                if(isset($hrivna_discount[1])){
-
-                    $product->prise = $product->prise - $hrivna_discount[0];
-                }
-
-                $prozent_discount = explode("%",$product -> discount);
-
-                if(isset($prozent_discount[1])){
-
-                    $product->prise = $product->prise - ( $product->prise * ($prozent_discount[0]/100) ) ;
-                }
-
-            }
-
 
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;

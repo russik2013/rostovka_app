@@ -151,6 +151,7 @@ class CsvLoadController extends Controller
         $sizes = Size::all()  -> pluck('id', 'name') -> toArray();
         $categories = Category::all() -> pluck('id', 'name') -> toArray();
         $manufacturers = Manufacturer::all() -> pluck('id', 'name') -> toArray();
+        $manufacturersInfo = Manufacturer::all();
 
         foreach ($products as $product){
 
@@ -193,11 +194,65 @@ class CsvLoadController extends Controller
                 $season = $seasons[$product ->{'sezon'}];
             }
 
+
+
+            $priseWithDiscount = $product ->tsena_prodazhi;
+
+            $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[$product ->{'brend'}]);
+
+            if($manufacturersInfoToProduct ->koorse != "" || $manufacturersInfoToProduct ->koorse != 0){
+
+                $priseWithDiscount *= $manufacturersInfoToProduct ->koorse;
+
+            }
+
+            if($manufacturersInfoToProduct ->discount !="" || $manufacturersInfoToProduct ->discount != 0) {
+
+
+                $hrivna_discount = explode("грн",$manufacturersInfoToProduct ->discount);
+
+                if(isset($hrivna_discount[1])){
+
+                    $priseWithDiscount = $priseWithDiscount - $hrivna_discount[0];
+                }
+
+                $prozent_discount = explode("%",$manufacturersInfoToProduct ->discount);
+
+                if(isset($prozent_discount[1])){
+
+                    $priseWithDiscount = $priseWithDiscount - ( $priseWithDiscount * ($prozent_discount[0]/100) );
+                }
+
+            }
+
+            if($product ->skidka !="" || $product ->skidka != 0) {
+
+
+                $hrivna_discount = explode("грн",$product ->skidka);
+
+                if(isset($hrivna_discount[1])){
+
+                    $priseWithDiscount = $priseWithDiscount - $hrivna_discount[0];
+                }
+
+                $prozent_discount = explode("%",$product ->skidka);
+
+
+
+                if(isset($prozent_discount[1])){
+
+                    $priseWithDiscount = $priseWithDiscount - ( $priseWithDiscount * ($prozent_discount[0]/100) ) ;
+                }
+
+            }
+
+
             $insert_array = [ 'article' => $product ->artikul,
                 'name' => $product ->artikul.'_'.$product ->{'brend'},     ///////////////////////////// уточнить
                 'rostovka_count' => $product ->{"min._kol"},
                 'box_count' => $product ->kol_v_yashchike,
-                'prise' => $product ->tsena_prodazhi,
+                'prise' => $priseWithDiscount,
+                'prise_default' => $product ->tsena_prodazhi,
                 'manufacturer_id' => $manufacturer,
                 'category_id' => $categories[$product ->kategoriya],
                 'show_product' => $product ->nalichie,
@@ -330,6 +385,7 @@ class CsvLoadController extends Controller
         $sizes = Size::all()  -> pluck('id', 'name') -> toArray();
         $categories = Category::all() -> pluck('id', 'name') -> toArray();
         $manufacturers = Manufacturer::all() -> pluck('id', 'name') -> toArray();
+        $manufacturersInfo = Manufacturer::all();
         $insert_array = [];
 
         foreach ($products as $product){
@@ -372,11 +428,65 @@ class CsvLoadController extends Controller
                 $season = $seasons[$product ->{'sezon'}];
             }
 
+
+
+            $priseWithDiscount = $product ->tsena_prodazhi;
+
+            $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[$product ->{'brend'}]);
+
+            if($manufacturersInfoToProduct ->koorse != "" || $manufacturersInfoToProduct ->koorse != 0){
+
+                $priseWithDiscount *= $manufacturersInfoToProduct ->koorse;
+
+            }
+
+            if($manufacturersInfoToProduct ->discount !="" || $manufacturersInfoToProduct ->discount != 0) {
+
+
+                $hrivna_discount = explode("грн",$manufacturersInfoToProduct ->discount);
+
+                if(isset($hrivna_discount[1])){
+
+                    $priseWithDiscount = $priseWithDiscount - $hrivna_discount[0];
+                }
+
+                $prozent_discount = explode("%",$manufacturersInfoToProduct ->discount);
+
+                if(isset($prozent_discount[1])){
+
+                    $priseWithDiscount = $priseWithDiscount - ( $priseWithDiscount * ($prozent_discount[0]/100) );
+                }
+
+            }
+
+            if($product ->skidka !="" || $product ->skidka != 0) {
+
+
+                $hrivna_discount = explode("грн",$product ->skidka);
+
+                if(isset($hrivna_discount[1])){
+
+                    $priseWithDiscount = $priseWithDiscount - $hrivna_discount[0];
+                }
+
+                $prozent_discount = explode("%",$product ->skidka);
+
+
+
+                if(isset($prozent_discount[1])){
+
+                    $priseWithDiscount = $priseWithDiscount - ( $priseWithDiscount * ($prozent_discount[0]/100) ) ;
+                }
+
+            }
+
+
             $insert_array[] = [ 'article' => $product ->artikul,
                                 'name' => $product ->artikul.'_'.$product ->{'brend'},     ///////////////////////////// уточнить
                                 'rostovka_count' => $product ->{"min._kol"},
                                 'box_count' => $product ->kol_v_yashchike,
-                                'prise' => $product ->tsena_prodazhi,
+                                'prise_default' => $product ->tsena_prodazhi,
+                                'prise' => $priseWithDiscount,
                                 'manufacturer_id' => $manufacturer,
                                 'category_id' => $categories[$product ->kategoriya],
                                 'show_product' => $product ->nalichie,
