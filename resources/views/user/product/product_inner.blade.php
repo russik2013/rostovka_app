@@ -57,6 +57,21 @@
                                                             itemprop="category">{{$product -> season -> name}}</span></span>
                                         <span>Размеры : <span class="category"
                                                               itemprop="category">{{$product -> size -> name}}</span></span>
+
+                                        <span>Материал верх : <span class="category"
+                                                              itemprop="category">{{$product -> size -> name}}</span></span>
+
+                                        <span>Материал внутри : <span class="category"
+                                                              itemprop="category">{{$product -> size -> name}}</span></span>
+
+                                        <span>Материал стельки : <span class="category"
+                                                              itemprop="category">{{$product -> size -> name}}</span></span>
+
+                                        <span>Повторы : <span class="category"
+                                                                       itemprop="category">{{$product -> size -> name}}</span></span>
+
+                                        <span>Цвет : <span class="category"
+                                                              itemprop="category">{{$product -> size -> name}}</span></span>
                                     </div>
                                 </div>
 
