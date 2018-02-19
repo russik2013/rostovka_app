@@ -94,9 +94,6 @@ class OrderController extends Controller
 
     public function addOrderDetail(Request $request){
 
-
-        dd($request -> all());
-
          $ids = [];
 
          for($i = 0; $i < count($request -> data); $i ++){

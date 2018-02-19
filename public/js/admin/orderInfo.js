@@ -109,9 +109,9 @@ $('.add--product--in').on('click', function () {
             url: $('meta[name="root-site"]').attr('content') + '/addOrderDetail',
             data: {'_token': $('meta[name="csrf-token"]').attr('content'), data: choosedProducts},
             success: function(){
-                //window.location.reload(true);
+                window.location.reload(true);
             }
         });
-        //$("#productsModal").modal('hide');
+        $("#productsModal").modal('hide');
     }
 });

@@ -4,11 +4,7 @@
     <list default="true" id="193d3dbc-6990-4cb2-bda5-0007cf53db7e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SaleController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SaleController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/OrderDetails.php" afterPath="$PROJECT_DIR$/app/OrderDetails.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Product.php" afterPath="$PROJECT_DIR$/app/Product.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/admin/orderInfo.js" afterPath="$PROJECT_DIR$/public/js/admin/orderInfo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/product/orderInfo.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/product/orderInfo.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -66,7 +62,7 @@
       <file leaf-file-name="CsvLoadController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7800">
+            <state relative-caret-position="746">
               <caret line="520" column="41" lean-forward="true" selection-start-line="520" selection-start-column="32" selection-end-line="520" selection-end-column="41" />
               <folding>
                 <element signature="e#50#67#0#PHP" expanded="true" />
@@ -105,20 +101,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrderController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="OrderController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="97" column="30" lean-forward="true" selection-start-line="97" selection-start-column="7" selection-end-line="97" selection-end-column="30" />
+            <state relative-caret-position="237">
+              <caret line="94" column="53" lean-forward="false" selection-start-line="94" selection-start-column="53" selection-end-line="94" selection-end-column="53" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="orderInfo.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="orderInfo.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/product/orderInfo.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="639">
+            <state relative-caret-position="640">
               <caret line="192" column="72" lean-forward="false" selection-start-line="192" selection-start-column="72" selection-end-line="192" selection-end-column="72" />
               <folding>
                 <marker date="1519053119000" expanded="true" signature="9:24" ph="..." />
@@ -166,8 +162,8 @@
       <file leaf-file-name="orderInfo.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/admin/orderInfo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="812">
-              <caret line="114" column="10" lean-forward="false" selection-start-line="114" selection-start-column="10" selection-end-line="114" selection-end-column="10" />
+            <state relative-caret-position="767">
+              <caret line="111" column="16" lean-forward="false" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -205,8 +201,8 @@
       <find>color</find>
       <find>'material'</find>
       <find>ti</find>
-      <find>addOrderDetail</find>
       <find>type</find>
+      <find>addOrderDetail</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -271,9 +267,9 @@
         <option value="$PROJECT_DIR$/app/Product.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SaleController.php" />
         <option value="$PROJECT_DIR$/app/OrderDetails.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/product/orderInfo.blade.php" />
         <option value="$PROJECT_DIR$/public/js/admin/orderInfo.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/product/orderInfo.blade.php" />
       </list>
     </option>
   </component>
@@ -1137,14 +1133,7 @@
       <workItem from="1518769701764" duration="6595000" />
       <workItem from="1519030174545" duration="1283000" />
       <workItem from="1519033101948" duration="3465000" />
-      <workItem from="1519051283500" duration="1325000" />
-    </task>
-    <task id="LOCAL-00021" summary="Cart update">
-      <created>1513171100300</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1513171100300</updated>
+      <workItem from="1519051283500" duration="1601000" />
     </task>
     <task id="LOCAL-00022" summary="Category update">
       <created>1514202092611</created>
@@ -1482,11 +1471,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519037913010</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="update scv download v0.3.4">
+      <created>1519053131949</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1519053131949</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="747145000" />
+    <option name="totallyTimeSpent" value="747421000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
@@ -1986,36 +1982,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7800">
-          <caret line="520" column="41" lean-forward="true" selection-start-line="520" selection-start-column="32" selection-end-line="520" selection-end-column="41" />
-          <folding>
-            <element signature="e#50#67#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
           <caret line="78" column="36" lean-forward="false" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/OrderDetails.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="69" lean-forward="true" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SaleController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="15" column="9" lean-forward="false" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -2036,25 +2006,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/admin/orderInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
-          <caret line="114" column="10" lean-forward="false" selection-start-line="114" selection-start-column="10" selection-end-line="114" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="97" column="30" lean-forward="true" selection-start-line="97" selection-start-column="7" selection-end-line="97" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/product/orderInfo.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="639">
+        <state relative-caret-position="640">
           <caret line="192" column="72" lean-forward="false" selection-start-line="192" selection-start-column="72" selection-end-line="192" selection-end-column="72" />
           <folding>
             <marker date="1519053119000" expanded="true" signature="9:24" ph="..." />
@@ -2085,6 +2039,48 @@
             <marker date="1519053119000" expanded="true" signature="17227:17243" ph="..." />
             <marker date="1519053119000" expanded="true" signature="17363:17391" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/admin/orderInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="767">
+          <caret line="111" column="16" lean-forward="false" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SaleController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="15" column="9" lean-forward="false" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/OrderDetails.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="69" lean-forward="true" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="746">
+          <caret line="520" column="41" lean-forward="true" selection-start-line="520" selection-start-column="32" selection-end-line="520" selection-end-column="41" />
+          <folding>
+            <element signature="e#50#67#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="94" column="53" lean-forward="false" selection-start-line="94" selection-start-column="53" selection-end-line="94" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>
