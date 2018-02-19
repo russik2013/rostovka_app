@@ -263,9 +263,17 @@ class CsvLoadController extends Controller
                 'type_id' => $type,
                 'season_id' => $season,
                 'size_id' => $size,
-                "material" => $product ->material,
                 "prise_zakup" => $product -> tsena_zakupki,
-                'sex' => $sex];
+                'sex' => $sex,
+                'material' => $product ->material_verkh,
+                'color' => $product -> tsvet,
+                'manufacturer_country' => $product ->strana_proizvoditel,
+                'material_inside' => $product ->material_vnunri,
+                'material_insoles' => $product ->material_stelei,
+                'repeats' => $product ->povtory,
+
+
+            ];
 
             Product::find($product->id)->update($insert_array);
 
@@ -280,7 +288,12 @@ class CsvLoadController extends Controller
         $products = Excel::load($path, function($reader) {
         })->get();
 
+
+        dd($products);
+
         $products = $this ->checkEmpty($products);
+
+
 
         if($this ->checkDooble($products))
 
@@ -498,7 +511,18 @@ class CsvLoadController extends Controller
                                 'season_id' => $season,
                                 'size_id' => $size,
                                 "prise_zakup" => $product -> tsena_zakupki,
-                                'sex' => $sex];
+                                'sex' => $sex,
+
+                                'material' => $product ->material_verkh,
+                                'color' => $product -> tsvet,
+                                'manufacturer_country' => $product ->strana_proizvoditel,
+                                'material_inside' => $product ->material_vnunri,
+                                'material_insoles' => $product ->material_stelei,
+                                'repeats' => $product ->povtory,
+
+
+
+                                ];
         }
 
         return $insert_array;
