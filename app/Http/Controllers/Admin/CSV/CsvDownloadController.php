@@ -25,7 +25,8 @@ class CsvDownloadController extends Controller
 
 
         $accessibility = [0,1];
-        if($request -> accessibility) {
+
+
             if ($request->accessibility == 0) {
                 $accessibility = [0];
 
@@ -34,7 +35,7 @@ class CsvDownloadController extends Controller
                 $accessibility = [1];
 
             }
-        }
+
 
         $products = Product::with('category','manufacturer','season','type', 'size', 'photo')
             -> where('manufacturer_id', $request -> manufacturer_id) ->whereIn('type_id', $type)
@@ -79,13 +80,17 @@ class CsvDownloadController extends Controller
                     "Кол в ящике" => $product->box_count,
                     "Мин. Кол" => $product->rostovka_count,
                     "Валюта" => $product->currency,
-
-                    "Материал" => $product->material,
-                    "Цвет" => "",
                     "Скидка" => $product->discount,
-                    "Страна производитель" => "",
                     //"show_product" => $product ->show_product,
                     "Описание" => $product->full_description,
+
+                    "Материал верх" =>$product ->material,
+                    "Материал внутри" =>$product ->material_inside,
+                    "Материал стельки" =>$product ->material_insoles,
+                    "Цвет" =>$product ->color,
+                    "Страна производитель" =>$product ->manufacturer_country,
+                    "Повторы" =>$product ->repeats,
+
                     "Фото1" => $photo_one,
                     "Фото2" => "",
                     "Фото3" => ""
@@ -126,7 +131,7 @@ class CsvDownloadController extends Controller
         else  $season = Season::where('id', $request -> season_id)->pluck('id')->toArray();
 
         $accessibility = [0,1];
-        if($request -> accessibility) {
+
             if ($request->accessibility == 0) {
                 $accessibility = [0];
 
@@ -135,7 +140,7 @@ class CsvDownloadController extends Controller
                 $accessibility = [1];
 
             }
-        }
+
 
 
         $products = Product::with('category','manufacturer','season','type', 'size', 'photo')
@@ -159,7 +164,6 @@ class CsvDownloadController extends Controller
 
                 $data[] = [
 
-                    "№" => count($data) + 1,
                     "Фото" => "",
                     "Товар" => $product->name,
                     "размер" => $size,
@@ -177,10 +181,10 @@ class CsvDownloadController extends Controller
 
                 $excel->sheet('Sheetname', function ($sheet) use ($data, $photosData) {
 
-                    for ($i = 1; $i < count($data) + 1; $i++) {
+                    for ($i = 1; $i < count($data) + 2; $i++) {
 
                         if ($i > 2)
-                            $sheet->setHeight($i, 130);
+                            $sheet->setHeight($i, 50);
                         else
                             $sheet->setHeight($i, 25);
 
@@ -188,11 +192,10 @@ class CsvDownloadController extends Controller
 
 
                     $sheet->fromArray($data);
-
-                    $sheet->setWidth('A', 25);
-                    $sheet->setWidth('B', 40);
-                    $sheet->setWidth('C', 40);
-                    $sheet->setWidth('D', 40);
+                    $sheet->setWidth('A', 12);
+                    $sheet->setWidth('B', 20);
+                    $sheet->setWidth('C', 20);
+                    $sheet->setWidth('D', 20);
                     $sheet->setWidth('E', 10);
                     $sheet->setWidth('F', 10);
                     $sheet->setWidth('G', 20);
@@ -206,13 +209,13 @@ class CsvDownloadController extends Controller
                             $objDrawing->setPath(public_path('images/products/' . $photosData[$i]['Фото'])); //your image path
                             $objDrawing->setName('imageRussik');
                             $objDrawing->setWorksheet($sheet);
-                            $objDrawing->setCoordinates('B' . ($i + 2));
+                            $objDrawing->setCoordinates('A' . ($i + 2));
                             $objDrawing->setResizeProportional();
                             $objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
                             $objDrawing->setOffsetY(0);
                             $objDrawing->setOffsetX(10);
-                            $objDrawing->setWidth(280);
-                            $objDrawing->setHeight(170);
+                            $objDrawing->setWidth(90);
+                            $objDrawing->setHeight(60);
                         }
 
                     }

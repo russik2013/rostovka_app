@@ -74,6 +74,7 @@
                 <th class="border_table">Тип</th>
                 <th class="border_table">Кол-во.</th>
                 <th class="border_table">Пар в ящ/рост.</th>
+                <th class="border_table">Размер.</th>
                 <th class="border_table">Цена за шт.</th>
                 <th class="border_table">Общая цена</th>
             </tr>
@@ -98,6 +99,7 @@
                             {{$detail -> rostovka_count}}
                         @endif
                     </td>
+                    <td class="border_table">{{$detail ->size_name}}</td>
                     <td class="border_table">{{$detail ->prise}}</td>
                     <td class="border_table">{{$detail ->this_tovar_in_order_price}}</td>
                 </tr>
@@ -109,7 +111,7 @@
 
 
             <tr>
-                <td colspan="7"><p>Всего к оплате:</p></td>
+                <td colspan="8"><p>Всего к оплате:</p></td>
 
             </tr>
             <tr>
