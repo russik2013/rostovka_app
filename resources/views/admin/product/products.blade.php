@@ -104,7 +104,7 @@
 
                                     <tr data-id="{{$product -> id}}">
                                         <td style="max-width: 80px;">
-                                            <img src="{{url('/images/products/'. $product -> photo -> photo_url)}}" />
+                                            <img style="width: 70%;margin-bottom: 30px;" src="{{url('/images/products/'. $product -> photo -> photo_url)}}" />
                                         </td>
 
                                         <td class="articul productsArt"><input value="{{$product -> article}}" disabled></td>
