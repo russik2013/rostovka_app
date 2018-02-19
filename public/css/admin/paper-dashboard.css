@@ -2771,7 +2771,7 @@ textarea.form-control {
   right: 19%;
   position: absolute;
   font-size: 16px;
-  top: 13px;
+  transform: translate(-50%, -50%);
   cursor: pointer;
   color: #252422;
 }
@@ -2908,4 +2908,8 @@ textarea.form-control {
   left: auto;
   right: 43%;
   z-index: 220;
+}
+
+.edit--Icons a{
+  top: 27px;
 }

@@ -183,8 +183,8 @@ class CsvDownloadController extends Controller
 
                     for ($i = 1; $i < count($data) + 2; $i++) {
 
-                        if ($i > 2)
-                            $sheet->setHeight($i, 50);
+                        if ($i > 1)
+                            $sheet->setHeight($i, 53);
                         else
                             $sheet->setHeight($i, 25);
 
@@ -212,7 +212,7 @@ class CsvDownloadController extends Controller
                             $objDrawing->setCoordinates('A' . ($i + 2));
                             $objDrawing->setResizeProportional();
                             $objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
-                            $objDrawing->setOffsetY(0);
+                            $objDrawing->setOffsetY(2);
                             $objDrawing->setOffsetX(10);
                             $objDrawing->setWidth(90);
                             $objDrawing->setHeight(60);

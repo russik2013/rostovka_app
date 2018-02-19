@@ -6249,17 +6249,18 @@ ul#shipping_method {
 }
 
 .sidebar-icon-nav .dropdownCart .title{
+    max-width: 150px;
     font-size: 14px;
     margin-left: 15px;
-    max-width: 160px;
     overflow: hidden;
     width: 100%;
     margin-top: 3px;
-    float: right;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    margin-right: 23%;
+    display: inline-block;
+    margin-right: auto;
+    margin-left: 13px;
 }
 
 .sidebar-icon-nav .dropdownCart .price{
