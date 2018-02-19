@@ -164,7 +164,6 @@ class CsvDownloadController extends Controller
 
                 $data[] = [
 
-                    "№" => count($data) + 1,
                     "Фото" => "",
                     "Товар" => $product->name,
                     "размер" => $size,
@@ -182,10 +181,10 @@ class CsvDownloadController extends Controller
 
                 $excel->sheet('Sheetname', function ($sheet) use ($data, $photosData) {
 
-                    for ($i = 1; $i < count($data) + 1; $i++) {
+                    for ($i = 1; $i < count($data) + 2; $i++) {
 
                         if ($i > 2)
-                            $sheet->setHeight($i, 130);
+                            $sheet->setHeight($i, 50);
                         else
                             $sheet->setHeight($i, 25);
 
@@ -193,11 +192,10 @@ class CsvDownloadController extends Controller
 
 
                     $sheet->fromArray($data);
-
-                    $sheet->setWidth('A', 25);
-                    $sheet->setWidth('B', 40);
-                    $sheet->setWidth('C', 40);
-                    $sheet->setWidth('D', 40);
+                    $sheet->setWidth('A', 12);
+                    $sheet->setWidth('B', 20);
+                    $sheet->setWidth('C', 20);
+                    $sheet->setWidth('D', 20);
                     $sheet->setWidth('E', 10);
                     $sheet->setWidth('F', 10);
                     $sheet->setWidth('G', 20);
@@ -211,13 +209,13 @@ class CsvDownloadController extends Controller
                             $objDrawing->setPath(public_path('images/products/' . $photosData[$i]['Фото'])); //your image path
                             $objDrawing->setName('imageRussik');
                             $objDrawing->setWorksheet($sheet);
-                            $objDrawing->setCoordinates('B' . ($i + 2));
+                            $objDrawing->setCoordinates('A' . ($i + 2));
                             $objDrawing->setResizeProportional();
                             $objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
                             $objDrawing->setOffsetY(0);
                             $objDrawing->setOffsetX(10);
-                            $objDrawing->setWidth(280);
-                            $objDrawing->setHeight(170);
+                            $objDrawing->setWidth(90);
+                            $objDrawing->setHeight(60);
                         }
 
                     }
