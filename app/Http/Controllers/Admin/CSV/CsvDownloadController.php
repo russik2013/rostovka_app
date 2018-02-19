@@ -79,13 +79,17 @@ class CsvDownloadController extends Controller
                     "Кол в ящике" => $product->box_count,
                     "Мин. Кол" => $product->rostovka_count,
                     "Валюта" => $product->currency,
-
-                    "Материал" => $product->material,
-                    "Цвет" => "",
                     "Скидка" => $product->discount,
-                    "Страна производитель" => "",
                     //"show_product" => $product ->show_product,
                     "Описание" => $product->full_description,
+
+                    "Материал верх" =>$product ->material,
+                    "Материал внутри" =>$product ->material_inside,
+                    "Материал стельки" =>$product ->material_insoles,
+                    "Цвет" =>$product ->color,
+                    "Страна производитель" =>$product ->manufacturer_country,
+                    "Повторы" =>$product ->repeats,
+
                     "Фото1" => $photo_one,
                     "Фото2" => "",
                     "Фото3" => ""
