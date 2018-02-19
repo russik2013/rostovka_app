@@ -266,7 +266,7 @@ if(getSavedFilters !== null) {
                     real_id: msg[i].id,
                     product_url: msg[i].product_url + '/' + i,
                     size: msg[i].size.name,
-                    old_prise: msg[i].old_prise,
+                    old_prise: msg[i].prise_default,
                     option_type: 'full__price' // Или full__price или rostovka__price
                 };
             }
@@ -365,7 +365,7 @@ function makeData(page_num, count_on_page) {
                 real_id: msg[i].id,
                 product_url: msg[i].product_url, // раньше было так msg[i].product_url + '/' + i
                 size: msg[i].size.name,
-                old_prise: msg[i].old_prise,
+                old_prise: msg[i].prise_default,
                 option_type: 'full__price' // Или full__price или rostovka__price
             };
         }
@@ -417,7 +417,7 @@ function NextData(page_num, count_on_page, filter_value) {
                 rostovka__price: msg[i].rostovka__price,
                 real_id: msg[i].id,
                 product_url: msg[i].product_url + '/' + i,
-                old_prise: msg[i].old_prise,
+                old_prise: msg[i].prise_default,
                 size: msg[i].size.name,
                 option_type: 'full__price' // Или full__price или rostovka__price
             };
@@ -675,7 +675,7 @@ function checkMinMax(data) {
 function checkPrices(data) {
     var MinMaxCounter = [];
     for (var i = 0; i < data.length; i++) {
-        if(data[i].price === data[i].old_prise) {
+        if(data[i].price === data[i].prise_default) {
             var id = data[i].real_id;
             MinMaxCounter.push(id);
         }
@@ -815,7 +815,7 @@ function makeFilterData(msg) {
             real_id: msg[i].id,
             product_url: msg[i].product_url + '/' + i,
             size: msg[i].size.name,
-            old_prise: msg[i].old_prise,
+            old_prise: msg[i].prise_default,
             option_type: 'full__price' // Или full__price или rostovka__price
         };
     }
@@ -854,7 +854,7 @@ $('#short-by').on('change', function () {
                 full__price: msg[i].full__price,
                 rostovka__price: msg[i].rostovka__price,
                 real_id: msg[i].id,
-                old_prise: msg[i].old_prise,
+                old_prise: msg[i].prise_default,
                 product_url: msg[i].product_url + '/' + i,
                 size: msg[i].size.name,
                 option_type: 'full__price' // Или full__price или rostovka__price

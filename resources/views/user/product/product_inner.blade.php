@@ -58,20 +58,39 @@
                                         <span>Размеры : <span class="category"
                                                               itemprop="category">{{$product -> size -> name}}</span></span>
 
-                                        <span>Материал верх : <span class="category"
-                                                              itemprop="category">{{$product -> size -> name}}</span></span>
 
-                                        <span>Материал внутри : <span class="category"
-                                                              itemprop="category">{{$product -> size -> name}}</span></span>
 
-                                        <span>Материал стельки : <span class="category"
-                                                              itemprop="category">{{$product -> size -> name}}</span></span>
+                                        @if($product ->material)
+                                            <span>Материал верх : <span class="category"
+                                                                        itemprop="category">{{$product -> material}}</span></span>
+                                        @endif
 
-                                        <span>Повторы : <span class="category"
-                                                                       itemprop="category">{{$product -> size -> name}}</span></span>
+                                        @if($product ->material_inside)
+                                            <span>Материал внутри : <span class="category"
+                                                                          itemprop="category">{{$product -> material_inside}}</span></span>
 
-                                        <span>Цвет : <span class="category"
-                                                              itemprop="category">{{$product -> size -> name}}</span></span>
+                                        @endif
+
+                                        @if($product -> material_insoles)
+                                            <span>Материал стельки : <span class="category"
+                                                                           itemprop="category">{{$product -> material_insoles}}</span></span>
+
+                                        @endif
+                                        @if($product ->repeats)
+                                            <span>Повторы : <span class="category"
+                                                                  itemprop="category">{{$product -> repeats}}</span></span>
+
+                                        @endif
+                                        @if($product ->color)
+                                            <span>Цвет : <span class="category"
+                                                               itemprop="category">{{$product -> color}}</span></span>
+
+                                        @endif
+
+
+
+
+
                                     </div>
                                 </div>
 

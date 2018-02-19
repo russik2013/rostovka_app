@@ -19,7 +19,7 @@ $.ajax({
             full__price: msg[i].full__price,
             rostovka__price: msg[i].rostovka__price,
             real_id: msg[i].id,
-            old_prise: Number (msg[i].old_price),
+            old_prise: Number (msg[i].prise_default),
             product_url: msg[i].product_url + '/' + i,
             option_type: 'full__price',
             size: msg[i].size.name
@@ -49,7 +49,7 @@ $.ajax({
             full__price: msg[i].full__price,
             rostovka__price: msg[i].rostovka__price,
             real_id: msg[i].id,
-            old_prise: Number (msg[i].old_price),
+            old_prise: Number (msg[i].prise_default),
             product_url: msg[i].product_url + '/' + i,
             option_type: 'full__price',
             size: msg[i].size.name
