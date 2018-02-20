@@ -13,7 +13,7 @@ class SaleController extends Controller
 {
     public function makeOrder(Request $request){
 
-        //dd($request -> all());
+       //return response($request -> all());
 
         $order = new Order();
 
@@ -79,10 +79,6 @@ class SaleController extends Controller
 
         }
 
-        dd(OrderDetails::insert($insert_mass));
-
-
-        return response($insert_mass, 404);
 
         OrderDetails::insert($insert_mass);
     }

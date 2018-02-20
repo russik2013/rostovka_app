@@ -190,7 +190,8 @@ class OrderController extends Controller
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now(),
                         'image' => $product-> photo->photo_url,
-                        'prise_zakup' => $product-> prise_zakup
+                        'prise_zakup' => $product-> prise_zakup,
+                        'tip' => $orderDates[$product -> id][2]
                     ];
 
 
