@@ -4091,7 +4091,7 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
 .copyrights a {
     color: #ffa8a9;
     font-weight: bold;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 .copyrights a:hover {
@@ -6186,7 +6186,7 @@ ul#shipping_method {
 }
 .cartBl{padding-bottom: 20px}
 .cartBl:hover .dropdownCart{
-    display: block !important;
+    display: block;
 }
 
 .arrow-up {
@@ -6496,7 +6496,7 @@ th.product-price{
 }
 
 td.poduct--info span.first-child{
-    margin-top: 50px !important;}
+    margin-top: 40px !important;}
 
 td.poduct--info{
     width: 275px;
@@ -7071,3 +7071,9 @@ fieldset input:hover{
     text-align: center;
     text-transform: uppercase;
 }
+
+.checkoutPage .row{
+    margin: 0;
+}
+.is--Desc{display: block}
+.is--mobile{display: none}

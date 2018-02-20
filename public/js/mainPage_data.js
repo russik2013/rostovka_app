@@ -15,7 +15,7 @@ $.ajax({
             rostovka: msg[i].rostovka_count,
             box: msg[i].box_count,
             type: msg[i].types,
-            price: msg[i].prise,
+            price: Number (msg[i].prise),
             full__price: msg[i].full__price,
             rostovka__price: msg[i].rostovka__price,
             real_id: msg[i].id,
@@ -31,7 +31,6 @@ $.ajax({
     checkNewest(checkData);
 }) .fail(function(msg) {});
 
-
 $.ajax({
     method: "POST",
     url: $('meta[name="top_tovar_url"]').attr('content'),
@@ -45,7 +44,7 @@ $.ajax({
             rostovka: msg[i].rostovka_count,
             box: msg[i].box_count,
             type: msg[i].types,
-            price: msg[i].prise,
+            price: Number (msg[i].prise),
             full__price: msg[i].full__price,
             rostovka__price: msg[i].rostovka__price,
             real_id: msg[i].id,

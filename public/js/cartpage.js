@@ -1,5 +1,44 @@
 $('.cartBl').remove();
-var Cart_data = [{row: []}];
+var Cart_data = [{row: []}],
+    mobileVersion = false;
+
+if(Cart_data[0].row.length < 5){
+    var intElemOffsetHeight = $( window ).height(),
+        intElemOffsetWidth = $( window ).width();
+
+    if(intElemOffsetWidth >= 1024){
+        isDesc();
+        getData();
+        mobileVersion = false;
+    } else {
+        getmobileData();
+        mobileVersion = true;
+    }
+    setHeight(intElemOffsetHeight);
+    $(window).resize(function() {
+        intElemOffsetHeight = $( window ).height() + 200;
+        intElemOffsetWidth = $( window ).width();
+        setHeight(intElemOffsetHeight);
+
+        if(intElemOffsetWidth >= 1024){
+            isDesc();
+        } else {
+            isMobile();
+        }
+    });
+    function isDesc() {
+        $('.is--desc').css('display', 'block');
+        $('.is--Mobile').css('display', 'none');
+    }
+
+    function isMobile() {
+        $('.is--desc').css('display', 'none');
+        $('.is--Mobile').css('display', 'block');
+    }
+    function setHeight(intElemOffsetHeight) {
+        $('.cart-container').css('height', ''+intElemOffsetHeight+'');
+    }
+}
 
 function getData() {
     var retrievedData = localStorage.getItem("Cart_data");
@@ -9,7 +48,15 @@ function getData() {
         Cart_template(Cart_data);
     }
 }
-getData();
+
+function getmobileData() {
+    var retrievedData = localStorage.getItem("Cart_data");
+    if(retrievedData !== null){
+        Cart_data = JSON.parse(retrievedData);
+        $('.cartPage_article').remove();
+        moBile_template(Cart_data);
+    }
+}
 
 if(Cart_data[0].row.length === 0){
     $('.cart-form').remove();
@@ -23,18 +70,22 @@ function TotalCost() {
     $.find('[data-set="totalCost"]')[0].innerHTML = Cart_data[0].cartProducts_summ + ' грн';
 }
 
-if(Cart_data[0].row.length < 5){
-    var intElemOffsetHeight = $( window ).height();
-    setHeight(intElemOffsetHeight);
-    $(window).resize(function() {
-        intElemOffsetHeight = $( window ).height() + 200;
-        setHeight(intElemOffsetHeight);
-    });
-    function setHeight(intElemOffsetHeight) {
-        $('.cart-container').css('height', ''+intElemOffsetHeight+'');
-    }
-}
+function moBile_template(Cart_data) {
+    $.get('cartTmpl/cartMobile.html', {}, function (templateBody) {
+        $.tmpl(templateBody, Cart_data).appendTo('#mobile--goods');
 
+        getSelectedValue();
+
+        for (var i = 0; i < Cart_data[0].row.length; i++){
+            if(Cart_data[0].row[i].box__price === Cart_data[0].row[i].rostovka__price){
+                $('[data-select-id="'+ Cart_data[0].row[i].productID +'"]').remove();
+
+                $('[product-id="'+ Cart_data[0].row[i].productID +'"] .select-style')[0].innerHTML =
+                    "<div class='form-group select-style'><input class='form-control' type=\"number\" placeholder=\"в ящике\" disabled></div>"
+            }
+        }
+    });
+}
 
 function Cart_template(Cart_data) {
     $.get('cartTmpl/cartTable.html', {}, function (templateBody) {
@@ -58,25 +109,50 @@ if(Cart_data[0].row.length === 0){
 
 if($.find('#cartTableInner').length !== 0){
     $(document).on('click', '.removeItem', function (){
-        var removeTarget = Number ($(this)[0].parentElement.parentElement.attributes[1].nodeValue);
-        for (var i = 0; i < Cart_data[0].row.length; i++){
-            var arrayID = Cart_data[0].row[i].productID;
-            if(removeTarget === Number (arrayID)){
-                var domElement = $.find('[product-id="'+ removeTarget +'"]');
-                $(domElement).remove();
-                Cart_data[0].cartProducts_summ -= Cart_data[0].row[i].quantityPrice;
-                TotalCost();
+        if(mobileVersion === true){
+            var removeTarget = Number ($(this)[0].offsetParent.dataset.id);
+            for (var i = 0; i < Cart_data[0].row.length; i++){
+                var arrayID = Cart_data[0].row[i].productID;
+                if(removeTarget === Number (arrayID)){
+                    var domElement = $.find('[product-id="'+ removeTarget +'"]');
+                    $(domElement).remove();
+                    Cart_data[0].cartProducts_summ -= Cart_data[0].row[i].quantityPrice;
+                    TotalCost();
 
-                Cart_data[0].row.splice(i, 1);
-                Cart_data[0].cartCount--;
-                localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+                    Cart_data[0].row.splice(i, 1);
+                    Cart_data[0].cartCount--;
+                    localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
 
-                if(Cart_data[0].row.length === 0){
-                    $('.cart-form').remove();
-                    $('.post-8').append('<div class="cartPage_article">Корзина пуста :(</div>');
+                    if(Cart_data[0].row.length === 0){
+                        $('.cart-form').remove();
+                        $('.post-8').append('<div class="cartPage_article">Корзина пуста :(</div>');
+                    }
+                    if(Cart_data[0].row.length < 5){
+                        $('.mb-80').addClass('Zero--height');
+                    }
                 }
-                if(Cart_data[0].row.length < 5){
-                    $('.mb-80').addClass('Zero--height');
+            }
+        } else {
+            var removeTarget = Number ($(this)[0].parentElement.parentElement.attributes[1].nodeValue);
+            for (var i = 0; i < Cart_data[0].row.length; i++){
+                var arrayID = Cart_data[0].row[i].productID;
+                if(removeTarget === Number (arrayID)){
+                    var domElement = $.find('[product-id="'+ removeTarget +'"]');
+                    $(domElement).remove();
+                    Cart_data[0].cartProducts_summ -= Cart_data[0].row[i].quantityPrice;
+                    TotalCost();
+
+                    Cart_data[0].row.splice(i, 1);
+                    Cart_data[0].cartCount--;
+                    localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
+
+                    if(Cart_data[0].row.length === 0){
+                        $('.cart-form').remove();
+                        $('.post-8').append('<div class="cartPage_article">Корзина пуста :(</div>');
+                    }
+                    if(Cart_data[0].row.length < 5){
+                        $('.mb-80').addClass('Zero--height');
+                    }
                 }
             }
         }
@@ -85,7 +161,11 @@ if($.find('#cartTableInner').length !== 0){
 
 var targetID = 0;
 function getSelect(event, value) {
-    targetID = event.target.parentElement.offsetParent.parentElement.attributes[1].nodeValue;
+    if(mobileVersion === true){
+        targetID = event.target.attributes[3].nodeValue;
+    } else {
+        targetID = event.target.parentElement.offsetParent.parentElement.attributes[1].nodeValue;
+    }
 
     if(value === '1'){
         var rostovka_Price = 0, recalculated_price = 0;

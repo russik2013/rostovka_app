@@ -105,6 +105,7 @@ function getProductData(targetID, itemQuant, domItem_price) {
     }).done(function(msg) {
         $('button.buyProduct_inner').attr( "disabled", false );
         productData.push(msg);
+        
         if(Cart_data[0].row.length !== 0){
             pushtoCart();
         }
@@ -160,7 +161,6 @@ function additocart(targetID, itemQuant, domItem_price) {
 }
 
 function checkDublicate(event, targetID, checkif_true) {
-    console.log(event, targetID, checkif_true);
     if(checkif_true === false){
         for (var i = 0; i < Cart_data[0].row.length; i++){
             if (targetID === Number (Cart_data[0].row[i].productID)){
@@ -266,6 +266,7 @@ function addtoCart(event, targetID) {
         name: gTitle,
         quant: gQuant,
         price: gprice,
+        size: data[targetID].size,
         quantity: selected_quantity,
         quantityPrice: gprice,
         rostovka__price: rostovkaPrice,
@@ -388,7 +389,7 @@ function conversion(target_dataset, flag, minus) {
         $.find('[data-cart-summ="cartCount"]')[target_id].innerText = updPrice;
     }
     else{
-        $('tr[data-id="'+ target_dataset +'"] .counting')[0].innerText = updPrice + ' грн';
+        $('[data-id="'+ target_dataset +'"] .counting')[0].innerText = updPrice + ' грн';
     }
 
     counterFn(mainPrice, targetID, updPrice);

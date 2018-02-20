@@ -263,7 +263,7 @@
 <span class="item-price col-md-6 pull-left">${size}</span>
 <h5 class="item-price col-md-6 pull-right" data-set="prodPrice">${price} <span>грн</span></h5>
 <div class="col-md-12 pull-left" style="margin-top: -10px;"  data-set="old--Price">
-<h6 class="item-price col-md-6 pull-right old--price" style="color: #b2b2b2;text-decoration: line-through;margin-top: -7px;">${old_prise} <span>грн</span></h6>
+<h6 class="item-price col-md-6 pull-right old--price" style="color: #b2b2b2;text-decoration: line-through;margin-top: -7px; float: right">${old_prise} <span>грн</span></h6>
 </div>
 </div>
 

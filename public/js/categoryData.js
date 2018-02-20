@@ -260,7 +260,7 @@ if(getSavedFilters !== null) {
                     rostovka: msg[i].rostovka_count,
                     box: msg[i].box_count,
                     type: msg[i].types,
-                    price: msg[i].prise,
+                    price: Number (msg[i].prise),
                     full__price: msg[i].full__price,
                     rostovka__price: msg[i].rostovka__price,
                     real_id: msg[i].id,
@@ -359,17 +359,16 @@ function makeData(page_num, count_on_page) {
                 rostovka: msg[i].rostovka_count,
                 box: msg[i].box_count,
                 type: msg[i].types,
-                price: msg[i].prise,
+                price: Number (msg[i].prise),
                 full__price: msg[i].full__price,
                 rostovka__price: msg[i].rostovka__price,
                 real_id: msg[i].id,
                 product_url: msg[i].product_url, // раньше было так msg[i].product_url + '/' + i
                 size: msg[i].size.name,
-                old_prise: msg[i].prise_default,
+                old_prise: Number (msg[i].prise_default),
                 option_type: 'full__price' // Или full__price или rostovka__price
             };
         }
-
         if(msg.length === 0){
             $('#target').append('<div style="    padding-top: 20px;\n' +
                 '    text-align: center;\n' +
@@ -386,7 +385,6 @@ function makeData(page_num, count_on_page) {
         //Проверка дублей
         checkMinMax(data);
         checkPrices(data);
-        console.log(data);
         checkPagination();
     }) .fail(function( msg ) {});
 }
@@ -412,12 +410,12 @@ function NextData(page_num, count_on_page, filter_value) {
                 rostovka: msg[i].rostovka_count,
                 box: msg[i].box_count,
                 type: msg[i].types,
-                price: msg[i].prise,
+                price: Number (msg[i].prise),
                 full__price: msg[i].full__price,
                 rostovka__price: msg[i].rostovka__price,
                 real_id: msg[i].id,
                 product_url: msg[i].product_url + '/' + i,
-                old_prise: msg[i].prise_default,
+                old_prise: Number (msg[i].prise_default),
                 size: msg[i].size.name,
                 option_type: 'full__price' // Или full__price или rostovka__price
             };
@@ -675,7 +673,7 @@ function checkMinMax(data) {
 function checkPrices(data) {
     var MinMaxCounter = [];
     for (var i = 0; i < data.length; i++) {
-        if(data[i].price === data[i].prise_default) {
+        if(data[i].price === data[i].old_prise) {
             var id = data[i].real_id;
             MinMaxCounter.push(id);
         }
@@ -801,7 +799,6 @@ $('.removeallFilters span').on('click', function (e) {
 function makeFilterData(msg) {
     var filtered_data, data = [];
     for(var i= 0; i < msg.length; i++ ) {
-
         data[i] = {
             dataID: msg[i].id,
             imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,
@@ -809,13 +806,13 @@ function makeFilterData(msg) {
             rostovka: msg[i].rostovka_count,
             box: msg[i].box_count,
             type: msg[i].types,
-            price: msg[i].prise,
+            price: Number (msg[i].prise),
             full__price: msg[i].full__price,
             rostovka__price: msg[i].rostovka__price,
             real_id: msg[i].id,
             product_url: msg[i].product_url + '/' + i,
             size: msg[i].size.name,
-            old_prise: msg[i].prise_default,
+            old_prise: Number (Number (msg[i].prise_default)),
             option_type: 'full__price' // Или full__price или rostovka__price
         };
     }
@@ -850,11 +847,11 @@ $('#short-by').on('change', function () {
                 rostovka: msg[i].rostovka_count,
                 box: msg[i].box_count,
                 type: msg[i].types,
-                price: msg[i].prise,
+                price: Number (msg[i].prise),
                 full__price: msg[i].full__price,
                 rostovka__price: msg[i].rostovka__price,
                 real_id: msg[i].id,
-                old_prise: msg[i].prise_default,
+                old_prise: Number (msg[i].prise_default),
                 product_url: msg[i].product_url + '/' + i,
                 size: msg[i].size.name,
                 option_type: 'full__price' // Или full__price или rostovka__price
@@ -1027,6 +1024,6 @@ function checkPagination() {
     if($('.paginationItems a').length <= 1){
         $('.next_Item.scrollUp').css('display', 'none')
     } else {
-        $('.next_Item.scrollUp').css('display', 'block')
+        $('.next_Item.scrollUp').css('display', 'inline-block')
     }
 }

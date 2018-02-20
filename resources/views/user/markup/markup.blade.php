@@ -132,7 +132,7 @@
 
                             <!-- Cart-->
                             <li class="cartBl">
-                                <a href="javascript:void(0)">
+                                <a href="{{route('cart')}}">
                                     <div class="cart-icon">
                                         <i aria-hidden="true" class="fa fa-shopping-bag"></i>
                                     </div>
@@ -210,8 +210,7 @@
                 </div>
 
                 <div class="copyrights">
-                    <p class="copyright">&copy; Developed & Designed by <a href="http://comnd-x.com/" target="_blank">Commnd+X
-                            Studio</a></p>
+                    <p class="copyright">2018 &copy; Dev by<a href="http://comnd-x.com/" target="_blank">Command+X</a></p>
                 </div>
 
 
@@ -268,7 +267,6 @@
 <script>
     $('.search--box button').on('click', function (e) {
         e.preventDefault();
-        console.log(location);
         $(location).attr('href', '{{url("showFinderFinal")}}/' + $('.search--box input').val() );
     });
 </script>

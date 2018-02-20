@@ -36,12 +36,6 @@
                                                         <span class="item-price col-md-6 pull-left">{{$product -> size -> name}}</span>
                                                         <h5 class="item-price col-md-6 pull-right">{{$product -> prise}} <span>грн</span></h5>
                                                     </div>
-
-                                                    <div class="product-button">
-                                                        <a href="#!" onclick="success('Товар добавлен в корзину')" data-set="buyButton">
-                                                            Купить
-                                                        </a>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </li>

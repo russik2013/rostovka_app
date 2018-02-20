@@ -288,9 +288,6 @@ class CsvLoadController extends Controller
         $products = Excel::load($path, function($reader) {
         })->get();
 
-
-        dd($products);
-
         $products = $this ->checkEmpty($products);
 
 

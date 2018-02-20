@@ -94,21 +94,21 @@
                                     </div>
                                 </div>
 
-                                <div class="product-share">
-                                    <span>Покажите товар друзьям :</span>
-                                    <ul>
-                                        <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://adadadaadad"
-                                               target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="http://twitter.com/share?url=http://adadadaadad" target="_blank"><i
-                                                        class="fa fa-twitter"></i></a></li>
-                                        <li><a href="http://plus.google.com/share?url=http://adadadaadad"
-                                               target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a href="mailto:?subject=Check this http://adadadaadad" target="_blank"><i
-                                                        class="fa fa-envelope"></i></a></li>
-                                        <li><a href="http://pinterest.com/pin/create/button/?url=http://adadadaadad"
-                                               target="_blank"><i class="fa fa-pinterest"></i></a></li>
-                                    </ul>
-                                </div>
+                                {{--<div class="product-share">--}}
+                                    {{--<span>Покажите товар друзьям :</span>--}}
+                                    {{--<ul>--}}
+                                        {{--<li><a href="https://www.facebook.com/sharer/sharer.php?u=http://adadadaadad"--}}
+                                               {{--target="_blank"><i class="fa fa-facebook"></i></a></li>--}}
+                                        {{--<li><a href="http://twitter.com/share?url=http://adadadaadad" target="_blank"><i--}}
+                                                        {{--class="fa fa-twitter"></i></a></li>--}}
+                                        {{--<li><a href="http://plus.google.com/share?url=http://adadadaadad"--}}
+                                               {{--target="_blank"><i class="fa fa-google-plus"></i></a></li>--}}
+                                        {{--<li><a href="mailto:?subject=Check this http://adadadaadad" target="_blank"><i--}}
+                                                        {{--class="fa fa-envelope"></i></a></li>--}}
+                                        {{--<li><a href="http://pinterest.com/pin/create/button/?url=http://adadadaadad"--}}
+                                               {{--target="_blank"><i class="fa fa-pinterest"></i></a></li>--}}
+                                    {{--</ul>--}}
+                                {{--</div>--}}
                                 <div class="single-variation-wrap">
                                     <div class="product-price">
                                         <span class="price">{{$product -> prise}} грн</span>
