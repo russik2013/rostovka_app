@@ -248,7 +248,7 @@ class CsvLoadController extends Controller
 
 
             $insert_array = [ 'article' => $product ->artikul,
-                'name' => $product ->artikul.'_'.$product ->{'brend'},     ///////////////////////////// уточнить
+                'name' => $product ->artikul.' '.$product ->{'brend'},     ///////////////////////////// уточнить
                 'rostovka_count' => $product ->{"min._kol"},
                 'box_count' => $product ->kol_v_yashchike,
                 'prise' => $priseWithDiscount,
@@ -290,8 +290,6 @@ class CsvLoadController extends Controller
 
         $products = $this ->checkEmpty($products);
 
-
-
         if($this ->checkDooble($products))
 
             return response('Check file, program find doodles', 404);
@@ -315,18 +313,21 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
-            $products_mass[$product ->artikul.'_'.$product ->{'brend'}] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
+            $products_mass[$product ->artikul.' '.$product ->{'brend'}] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
 
         }
 
         $data_base_products = Product::whereIn('name', array_keys($products_mass)) -> pluck('id', 'name') ->toArray();
 
+        //dd($products_mass, $data_base_products);
+
         foreach ($products_mass as $key => $photo_to_product_value){
 
             foreach ($photo_to_product_value[0] as $item){
 
-                if($item && file_exists('../images/products/' . $item.'.jpg'))
-                    File::move('../images/products/' . $item.'.jpg', 'images/products/' . $data_base_products[$key]."_". $item.'.jpg');
+
+                if($item && file_exists('../images/products/'.(integer)$item.'.jpg'))
+                    File::move('../images/products/'.(integer)$item.'.jpg', 'images/products/' . $data_base_products[$key]."_". $item.'.jpg');
 
             }
         }
@@ -346,7 +347,7 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
-            $products_mass[$product ->artikul.'_'.$product ->{'brend'}] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
+            $products_mass[$product ->artikul.' '.$product ->{'brend'}] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
 
         }
 
@@ -357,9 +358,11 @@ class CsvLoadController extends Controller
         foreach ($products_mass as $key => $photo_to_product_value){
 
             foreach ($photo_to_product_value[0] as $item){
-                if($item)
-                $photos_to_products_insert_array[] = ['photo_url' => $data_base_products[$key]."_". $item.'.jpg',
-                                                      'product_id' => $data_base_products[$key]];
+                if($item) {
+
+                    $photos_to_products_insert_array[] = ['photo_url' => $data_base_products[$key] . "_" . $item . '.jpg',
+                        'product_id' => $data_base_products[$key]];
+                }
 
             }
         }
@@ -492,7 +495,7 @@ class CsvLoadController extends Controller
 
 
             $insert_array[] = [ 'article' => $product ->artikul,
-                                'name' => $product ->artikul.'_'.$product ->{'brend'},     ///////////////////////////// уточнить
+                                'name' => $product ->artikul.' '.$product ->{'brend'},     ///////////////////////////// уточнить
                                 'rostovka_count' => $product ->{"min._kol"},
                                 'box_count' => $product ->kol_v_yashchike,
                                 'prise_default' => $product ->tsena_prodazhi,
