@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="193d3dbc-6990-4cb2-bda5-0007cf53db7e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvDownloadController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvDownloadController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,11 +46,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CsvLoadController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CsvLoadController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="197">
               <caret line="153" column="49" lean-forward="true" selection-start-line="153" selection-start-column="49" selection-end-line="153" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CsvDownloadController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvDownloadController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2260">
+              <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -137,16 +146,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ref.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Parsing/Ref.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="55" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Product.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Parsing/Product.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -161,7 +160,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>addSize</find>
       <find>%</find>
       <find>csvShoesUpdate</find>
       <find>csvLoadUpdate</find>
@@ -191,6 +189,7 @@
       <find>formInsertArray</find>
       <find>Женской</find>
       <find>sexFilter</find>
+      <find>Женский</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -245,7 +244,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/SuppliersController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/product/supplier_edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/pdf/invoice.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvDownloadController.php" />
         <option value="$PROJECT_DIR$/app/Product.php" />
         <option value="$PROJECT_DIR$/app/OrderDetails.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/product/orderInfo.blade.php" />
@@ -258,6 +256,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/SaleController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvDownloadController.php" />
       </list>
     </option>
   </component>
@@ -1246,14 +1245,7 @@
       <workItem from="1519051283500" duration="1677000" />
       <workItem from="1519054969712" duration="605000" />
       <workItem from="1519122576331" duration="13479000" />
-      <workItem from="1519210280147" duration="7386000" />
-    </task>
-    <task id="LOCAL-00030" summary="update plugins">
-      <created>1517230636539</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1517230636540</updated>
+      <workItem from="1519210280147" duration="7497000" />
     </task>
     <task id="LOCAL-00031" summary="update plugins">
       <created>1517231301005</created>
@@ -1591,11 +1583,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519217363181</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="update scv download v0.3.4">
+      <created>1519223550960</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1519223550960</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="768967000" />
+    <option name="totallyTimeSpent" value="769078000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
@@ -1936,16 +1935,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvDownloadController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2910">
-          <caret line="194" column="44" lean-forward="false" selection-start-line="194" selection-start-column="44" selection-end-line="194" selection-end-column="44" />
-          <folding>
-            <element signature="e#50#66#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/admin/orders.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2203,6 +2192,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="153" column="49" lean-forward="true" selection-start-line="153" selection-start-column="49" selection-end-line="153" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvDownloadController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2260">
+          <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
           <folding />
         </state>
       </provider>
