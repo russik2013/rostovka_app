@@ -55,14 +55,15 @@ class ProductController extends Controller
             $sex = $this->sexFilter($request->filters);
 
         if($sex == false)
-            $sex = null;
+            $sex = ['Девочка', 'Мальчик'];
 
         $orderType = 'desc';
         $order = 'id';
         if(isset($request -> choosedType)) {
             if ($request->choosedType== 0) {
 
-                $products = Product::where('category_id', '=', $request->category_id)
+
+                    $products = Product::where('category_id', '=', $request->category_id)
                         ->whereIn('season_id', $this->seasonFilter($request->filters))
                         ->whereIn('type_id', $this->typeFilter($request->filters))
                         ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
@@ -71,15 +72,17 @@ class ProductController extends Controller
                         ->where('accessibility', 1)
                         ->where('show_product', 1)
                         ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
-                        ->orderBy('id','desc')
-                    ->with('photo', 'size', 'manufacturer')->get();
+                        ->orderBy('id', 'desc')
+                        ->with('photo', 'size', 'manufacturer')->get();
+
             }
 
             if ($request->choosedType == 1) {
                 
                 //dd('russik');
 
-                $products = Product::where('category_id', '=', $request->category_id)
+
+                    $products = Product::where('category_id', '=', $request->category_id)
                         ->whereIn('season_id', $this->seasonFilter($request->filters))
                         ->whereIn('type_id', $this->typeFilter($request->filters))
                         ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
@@ -88,6 +91,10 @@ class ProductController extends Controller
                         ->where('show_product', 1)
                         ->whereIn('sex', $sex)
                         ->orderBy('prise','asc')->pluck('prise', 'id') -> toArray();
+
+
+
+
                 $products = Product::whereIn('id',
                     array_slice(array_keys($products),$request->count_on_page * ($request->page_num - 1),$request->count_on_page))
                     ->with('photo', 'size', 'manufacturer')
@@ -97,15 +104,21 @@ class ProductController extends Controller
             }
 
             if ($request->choosedType == 2) {
-                $products = Product::where('category_id', '=', $request->category_id)
-                    ->whereIn('season_id', $this->seasonFilter($request->filters))
-                    ->whereIn('type_id', $this->typeFilter($request->filters))
-                    ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
-                    ->whereIn('size_id', $this->sizeFilter($request->filters))
-                    ->whereIn('sex', $sex)
-                    ->where('accessibility', 1)
-                    ->where('show_product', 1)
-                    ->orderBy('prise','desc')->pluck('prise', 'id') -> toArray();
+
+
+                    $products = Product::where('category_id', '=', $request->category_id)
+                        ->whereIn('season_id', $this->seasonFilter($request->filters))
+                        ->whereIn('type_id', $this->typeFilter($request->filters))
+                        ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
+                        ->whereIn('size_id', $this->sizeFilter($request->filters))
+                        ->whereIn('sex', $sex)
+                        ->where('accessibility', 1)
+                        ->where('show_product', 1)
+                        ->orderBy('prise','desc')->pluck('prise', 'id') -> toArray();
+
+
+
+
                 $products = Product::whereIn('id',
                     array_slice(array_keys($products),$request->count_on_page * ($request->page_num - 1),$request->count_on_page))
                     ->with('photo', 'size', 'manufacturer')
