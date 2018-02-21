@@ -4,7 +4,6 @@
     <list default="true" id="193d3dbc-6990-4cb2-bda5-0007cf53db7e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,8 +49,8 @@
       <file leaf-file-name="CsvLoadController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="803">
-              <caret line="531" column="12" lean-forward="false" selection-start-line="531" selection-start-column="12" selection-end-line="531" selection-end-column="12" />
+            <state relative-caret-position="202">
+              <caret line="313" column="12" lean-forward="false" selection-start-line="313" selection-start-column="12" selection-end-line="313" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -1246,14 +1245,7 @@
       <workItem from="1519051283500" duration="1677000" />
       <workItem from="1519054969712" duration="605000" />
       <workItem from="1519122576331" duration="13479000" />
-      <workItem from="1519210280147" duration="2318000" />
-    </task>
-    <task id="LOCAL-00027" summary="Cart update v0.0.9">
-      <created>1516289813756</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1516289813756</updated>
+      <workItem from="1519210280147" duration="2370000" />
     </task>
     <task id="LOCAL-00028" summary="Cart update v0.1.0">
       <created>1516355014159</created>
@@ -1591,11 +1583,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519208387028</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="update scv download v0.3.4">
+      <created>1519216877791</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1519216877791</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="763899000" />
+    <option name="totallyTimeSpent" value="763951000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
@@ -2201,8 +2200,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="803">
-          <caret line="531" column="12" lean-forward="false" selection-start-line="531" selection-start-column="12" selection-end-line="531" selection-end-column="12" />
+        <state relative-caret-position="202">
+          <caret line="313" column="12" lean-forward="false" selection-start-line="313" selection-start-column="12" selection-end-line="313" selection-end-column="12" />
           <folding />
         </state>
       </provider>

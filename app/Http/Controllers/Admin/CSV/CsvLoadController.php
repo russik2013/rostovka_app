@@ -312,8 +312,6 @@ class CsvLoadController extends Controller
         
         else {
 
-            dd($this->formInsertArray($products));
-
             Product::insert($this->formInsertArray($products));
 
             ProductPhotos::insert($this->formPhotoInsertArray($request, $products));
@@ -527,7 +525,6 @@ class CsvLoadController extends Controller
 
             }
 
-         //   dd($product ->artikul, $product ->{'brend'}, $priseWithDiscount,$type,$season,$size);
 
 
 
