@@ -200,14 +200,13 @@ class CsvLoadController extends Controller
 
             $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[$product ->{'brend'}]);
 
-            if($manufacturersInfoToProduct ->koorse != "" || $manufacturersInfoToProduct ->koorse != 0){
+            if($manufacturersInfoToProduct ->koorse != "" && $manufacturersInfoToProduct ->koorse != 0){
 
                 $priseWithDiscount *= $manufacturersInfoToProduct ->koorse;
 
             }
 
-            if($manufacturersInfoToProduct ->discount !="" || $manufacturersInfoToProduct ->discount != 0) {
-
+            if($manufacturersInfoToProduct ->discount !="" && $manufacturersInfoToProduct ->discount != 0) {
 
                 $hrivna_discount = explode("грн",$manufacturersInfoToProduct ->discount);
 
@@ -225,7 +224,7 @@ class CsvLoadController extends Controller
 
             }
 
-            if($product ->skidka !="" || $product ->skidka != 0) {
+            if($product ->skidka !="" && $product ->skidka != 0) {
 
 
                 $hrivna_discount = explode("грн",$product ->skidka);
@@ -237,15 +236,12 @@ class CsvLoadController extends Controller
 
                 $prozent_discount = explode("%",$product ->skidka);
 
-
-
                 if(isset($prozent_discount[1])){
 
                     $priseWithDiscount = $priseWithDiscount - ( $priseWithDiscount * ($prozent_discount[0]/100) ) ;
                 }
 
             }
-
 
             $insert_array = [ 'article' => $product ->artikul,
                 'name' => $product ->artikul.' '.$product ->{'brend'},     ///////////////////////////// уточнить

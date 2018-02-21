@@ -73,6 +73,7 @@ class ProductController extends Controller
             }
         }
 
+        //dd( $orderType,$order );
 
         $sex = $this -> getSex($request -> category_id);
 
@@ -82,7 +83,7 @@ class ProductController extends Controller
         if($sex == false)
             $sex = null;
 
-
+        //dd(Product::orderBy($order,$orderType) -> get());
 
         if($sex == null) {
 
@@ -94,8 +95,9 @@ class ProductController extends Controller
                 ->where('sex', "!=","")
                 ->where('accessibility', 1)
                 ->where('show_product', 1)
+                ->orderBy($order,$orderType)
                 ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
-                ->with('photo', 'size', 'manufacturer')->orderBy($order,$orderType)->get();
+                ->with('photo', 'size', 'manufacturer')->get();
         }
         else {
             $products = Product::where('category_id', '=', $request->category_id)
@@ -106,8 +108,9 @@ class ProductController extends Controller
                 ->whereIn('sex', $sex)
                 ->where('accessibility', 1)
                 ->where('show_product', 1)
+                ->orderBy($order,$orderType)
                 ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
-                ->with('photo', 'size', 'manufacturer')->orderBy($order,$orderType)->get();
+                ->with('photo', 'size', 'manufacturer')->get();
         }
 
         if($request->category_id == 5){

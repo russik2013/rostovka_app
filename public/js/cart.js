@@ -20,11 +20,12 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
         var itemQuant = Number ($('.quantity').val()),
             domItem_price = Number ($.find('.choosed')[0].firstElementChild.lastElementChild.firstChild.innerText),
             trueTarget = false;
-
+        console.log(targetID);
         if(Cart_data[0].row.length === 0){
             getProductData(targetID, itemQuant, domItem_price);
         }
         else {
+            console.log(targetID);
             for (var l = 0; l < Cart_data[0].row.length; l++){
                 if(targetID === Cart_data[0].row[l].buy_real_id){
                     targetID = l;
@@ -44,11 +45,10 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
     }
 
     else {
-        var checkif_true = false;
-        var domtargetID = 0;
+        var checkif_true = false, domtargetID = 0;
+
         if($('.mainpageGoodsBlock').length > 0){
             domtargetID = Number(event.target.offsetParent.offsetParent.offsetParent.dataset.id);
-
             checkDomPage(domtargetID, checkif_true);
         }
         else{
@@ -59,13 +59,14 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
 });
 
 function checkDomPage(domtargetID, checkif_true) {
+
     for (var i = 0; i < data.length; i++) {
         if (domtargetID === Number (data[i].dataID)) {
             hidden__price = data[i].full__price;
         }
     }
     targetID = domtargetID;
-
+    
     if (Cart_data[0].row.length === 0) {
         initAdd(event, targetID, Cart_data);
     }
@@ -144,6 +145,7 @@ function getProductData(targetID, itemQuant, domItem_price) {
 }
 
 function additocart(targetID, itemQuant, domItem_price) {
+    console.log(targetID);
     Cart_data[0].row[targetID].quantity += itemQuant;
     Cart_data[0].row[targetID].quantityPrice = Cart_data[0].row[targetID].quantity * domItem_price;
     Cart_data[0].row[targetID].price = domItem_price;
@@ -165,10 +167,12 @@ function checkDublicate(event, targetID, checkif_true) {
         for (var i = 0; i < Cart_data[0].row.length; i++){
             if (targetID === Number (Cart_data[0].row[i].productID)){
                 checkif_true = false;
+                console.log(targetID);
                 dublicate(targetID, Cart_data);
                 break;
             }
             else{
+                console.log(targetID);
                 checkif_true = true;
             }
         }
@@ -189,9 +193,9 @@ function initAdd(event, targetID, Cart_data) {
 var arrayItemId = 0;
 function dublicate(targetID, Cart_data) {
     //если индификторы совпадают, увеличиваем колличество и записываем ID элемента в объекте
-    for (var i = 0; i < Cart_data[0].row.length; i++) {;
+    for (var i = 0; i < Cart_data[0].row.length; i++) {
         if (Cart_data[0].row[i].buy_real_id === targetID) {
-            conversion(Cart_data[0].row[i].buy_real_id);
+            // conversion(Cart_data[0].row[i].buy_real_id);
             Cart_data[0].row[i].quantity++;
             arrayItemId = i;
         }
@@ -243,14 +247,17 @@ function addtoCart(event, targetID) {
             }
         }
     } else {
-        data = data;
+        // data = data;
+        //console.log(data);
         for (var z = 0; z < data.length; z++){
             if(targetID === data[z].real_id){
                 targetID = z;
+                break;
             }
         }
     }
 
+    //console.log(data[targetID]);
     productIndex = Number (data[targetID].real_id);
     gTitle = data[targetID].name;
     selected_quantity = 1;
