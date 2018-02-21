@@ -284,8 +284,8 @@ class CsvLoadController extends Controller
                 'material' => $product ->material_verkh,
                 'color' => $product -> tsvet,
                 'manufacturer_country' => $product ->strana_proizvoditel,
-                'material_inside' => $product ->material_vnunri,
-                'material_insoles' => $product ->material_stelei,
+                'material_inside' => $product ->material_vnutri,
+                'material_insoles' => $product ->material_stelki,
                 'repeats' => $product ->povtory,
 
 
@@ -526,10 +526,6 @@ class CsvLoadController extends Controller
             }
 
 
-
-
-            dd($product);
-
             $insert_array[] = [ 'article' => $product ->artikul,
                                 'name' => $product ->artikul.' '.$product ->{'brend'},     ///////////////////////////// уточнить
                                 'rostovka_count' => $product ->{"min._kol"},
@@ -551,8 +547,8 @@ class CsvLoadController extends Controller
                                 'material' => $product ->material_verkh,
                                 'color' => $product -> tsvet,
                                 'manufacturer_country' => $product ->strana_proizvoditel,
-                                'material_inside' => $product ->material_vnunri,
-                                'material_insoles' => $product ->material_stelei,
+                                'material_inside' => $product ->material_vnutri,
+                                'material_insoles' => $product ->material_stelki,
                                 'repeats' => $product ->povtory,
                                 ];
         }

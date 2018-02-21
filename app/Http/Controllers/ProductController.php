@@ -89,18 +89,6 @@ class ProductController extends Controller
                         ->whereIn('size_id', $this->sizeFilter($request->filters))
                         ->where('accessibility', 1)
                         ->where('show_product', 1)
-                        ->whereIn('sex', '!=', "")
-                        ->orderBy('prise','asc')->pluck('prise', 'id') -> toArray();
-
-
-
-                    $products = Product::where('category_id', '=', $request->category_id)
-                        ->whereIn('season_id', $this->seasonFilter($request->filters))
-                        ->whereIn('type_id', $this->typeFilter($request->filters))
-                        ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
-                        ->whereIn('size_id', $this->sizeFilter($request->filters))
-                        ->where('accessibility', 1)
-                        ->where('show_product', 1)
                         ->whereIn('sex', $sex)
                         ->orderBy('prise','asc')->pluck('prise', 'id') -> toArray();
 
@@ -116,18 +104,6 @@ class ProductController extends Controller
             }
 
             if ($request->choosedType == 2) {
-
-
-                    $products = Product::where('category_id', '=', $request->category_id)
-                        ->whereIn('season_id', $this->seasonFilter($request->filters))
-                        ->whereIn('type_id', $this->typeFilter($request->filters))
-                        ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
-                        ->whereIn('size_id', $this->sizeFilter($request->filters))
-                        ->whereIn('sex', '!=', "")
-                        ->where('accessibility', 1)
-                        ->where('show_product', 1)
-                        ->orderBy('prise','desc')->pluck('prise', 'id') -> toArray();
-
 
 
                     $products = Product::where('category_id', '=', $request->category_id)
