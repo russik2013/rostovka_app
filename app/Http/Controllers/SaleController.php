@@ -123,6 +123,11 @@ class SaleController extends Controller
 
             }
 
+            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0){
+
+                $product->prise_default *= $product -> manufacturer ->koorse;
+            }
+
 
             $product -> types = $product -> type -> name;
             $product -> product_url = url($product ->id.'/product');

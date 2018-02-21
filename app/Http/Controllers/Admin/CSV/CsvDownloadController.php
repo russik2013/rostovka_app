@@ -19,7 +19,7 @@ class CsvDownloadController extends Controller
                 $type = Type::all()->pluck('id')->toArray();
             else  $type = Type::where('id', $request -> type_id)->pluck('id')->toArray();
 
-        if($request -> season_id == 1)
+        if($request -> season_id == 5)
                 $season = Season::all()->pluck('id')->toArray();
             else  $season = Season::where('id', $request -> season_id)->pluck('id')->toArray();
 
@@ -126,7 +126,7 @@ class CsvDownloadController extends Controller
                 $type = Type::all()->pluck('id')->toArray();
             else  $type = Type::where('id', $request -> type_id)->pluck('id')->toArray();
 
-        if($request -> season_id == 1)
+        if($request -> season_id == 5)
             $season = Season::all()->pluck('id')->toArray();
         else  $season = Season::where('id', $request -> season_id)->pluck('id')->toArray();
 

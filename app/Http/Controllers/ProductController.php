@@ -48,31 +48,6 @@ class ProductController extends Controller
 
         //dd($request -> all());
 
-        $orderType = 'desc';
-        $order = 'id';
-        if(isset($request -> choosedType)) {
-            if ($request->choosedType== 0) {
-
-                $orderType = 'desc';
-                $order = 'id';
-
-            }
-
-            if ($request->choosedType == 1) {
-
-                $orderType = 'asc';
-                $order = 'prise';
-
-            }
-
-            if ($request->choosedType == 2) {
-
-                $orderType = 'desc';
-                $order = 'prise';
-
-            }
-        }
-
 
         $sex = $this -> getSex($request -> category_id);
 
@@ -82,33 +57,64 @@ class ProductController extends Controller
         if($sex == false)
             $sex = null;
 
+        $orderType = 'desc';
+        $order = 'id';
+        if(isset($request -> choosedType)) {
+            if ($request->choosedType== 0) {
 
+                $products = Product::where('category_id', '=', $request->category_id)
+                        ->whereIn('season_id', $this->seasonFilter($request->filters))
+                        ->whereIn('type_id', $this->typeFilter($request->filters))
+                        ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
+                        ->whereIn('size_id', $this->sizeFilter($request->filters))
+                        ->whereIn('sex', $sex)
+                        ->where('accessibility', 1)
+                        ->where('show_product', 1)
+                        ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
+                        ->orderBy('id','desc')
+                    ->with('photo', 'size', 'manufacturer')->get();
+            }
 
-        if($sex == null) {
+            if ($request->choosedType == 1) {
+                
+                //dd('russik');
 
-            $products = Product::where('category_id', '=', $request->category_id)
-                ->whereIn('season_id', $this->seasonFilter($request->filters))
-                ->whereIn('type_id', $this->typeFilter($request->filters))
-                ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
-                ->whereIn('size_id', $this->sizeFilter($request->filters))
-                ->where('sex', "!=","")
-                ->where('accessibility', 1)
-                ->where('show_product', 1)
-                ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
-                ->with('photo', 'size', 'manufacturer')->orderBy($order,$orderType)->get();
+                $products = Product::where('category_id', '=', $request->category_id)
+                        ->whereIn('season_id', $this->seasonFilter($request->filters))
+                        ->whereIn('type_id', $this->typeFilter($request->filters))
+                        ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
+                        ->whereIn('size_id', $this->sizeFilter($request->filters))
+                        ->where('accessibility', 1)
+                        ->where('show_product', 1)
+                        ->whereIn('sex', $sex)
+                        ->orderBy('prise','asc')->pluck('prise', 'id') -> toArray();
+                $products = Product::whereIn('id',
+                    array_slice(array_keys($products),$request->count_on_page * ($request->page_num - 1),$request->count_on_page))
+                    ->with('photo', 'size', 'manufacturer')
+                    ->orderBy('prise','asc')
+                    ->get();
+
+            }
+
+            if ($request->choosedType == 2) {
+                $products = Product::where('category_id', '=', $request->category_id)
+                    ->whereIn('season_id', $this->seasonFilter($request->filters))
+                    ->whereIn('type_id', $this->typeFilter($request->filters))
+                    ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
+                    ->whereIn('size_id', $this->sizeFilter($request->filters))
+                    ->whereIn('sex', $sex)
+                    ->where('accessibility', 1)
+                    ->where('show_product', 1)
+                    ->orderBy('prise','desc')->pluck('prise', 'id') -> toArray();
+                $products = Product::whereIn('id',
+                    array_slice(array_keys($products),$request->count_on_page * ($request->page_num - 1),$request->count_on_page))
+                    ->with('photo', 'size', 'manufacturer')
+                    ->orderBy('prise','desc')
+                    ->get();
+
+            }
         }
-        else {
-            $products = Product::where('category_id', '=', $request->category_id)
-                ->whereIn('season_id', $this->seasonFilter($request->filters))
-                ->whereIn('type_id', $this->typeFilter($request->filters))
-                ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
-                ->whereIn('size_id', $this->sizeFilter($request->filters))
-                ->whereIn('sex', $sex)
-                ->where('accessibility', 1)
-                ->where('show_product', 1)
-                ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
-                ->with('photo', 'size', 'manufacturer')->orderBy($order,$orderType)->get();
-        }
+
 
         if($request->category_id == 5){
 
@@ -120,12 +126,18 @@ class ProductController extends Controller
 
         }
 
+       // dd($products);
 
 
         foreach ($products as $product){
 
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
+
+            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0){
+
+                $product->prise_default *= $product -> manufacturer ->koorse;
+            }
 
             if($product -> manufacturer ->box == 1 ){
 
@@ -330,6 +342,11 @@ class ProductController extends Controller
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
 
+            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0){
+
+                $product->prise_default *= $product -> manufacturer ->koorse;
+            }
+
             if($product -> manufacturer ->box == 1 ){
 
                 $product->rostovka__price = $product->full__price;
@@ -367,6 +384,11 @@ class ProductController extends Controller
                 ->orderBy('id',"desc")->paginate(16);
 
         foreach ($products as $product){
+
+            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0){
+
+               $product->prise_default *= $product -> manufacturer ->koorse;
+            }
 
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
