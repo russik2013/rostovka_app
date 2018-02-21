@@ -7077,3 +7077,7 @@ fieldset input:hover{
 }
 .is--Desc{display: block}
 .is--mobile{display: none}
+
+.slick-list.draggable h5.item-price{
+    margin-top: 0;
+}
