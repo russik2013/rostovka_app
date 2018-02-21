@@ -528,7 +528,7 @@ class CsvLoadController extends Controller
 
 
 
-
+            dd($product);
 
             $insert_array[] = [ 'article' => $product ->artikul,
                                 'name' => $product ->artikul.' '.$product ->{'brend'},     ///////////////////////////// уточнить
