@@ -41,6 +41,17 @@ class ProductController extends Controller
 
         $products = Product::where('name','like', '%'.$request->name.'%') -> with('photo', 'manufacturer', 'category')->get();
 
+        foreach ($products as $product){
+
+            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0){
+
+                $product->prise_default *= $product -> manufacturer ->koorse;
+
+            }
+
+        }
+
+
         return $products;
 
 

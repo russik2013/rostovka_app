@@ -127,6 +127,11 @@ class ProductController extends Controller
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
 
+            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0){
+
+                $product->prise_default *= $product -> manufacturer ->koorse;
+            }
+
             if($product -> manufacturer ->box == 1 ){
 
                 $product->rostovka__price = $product->full__price;
@@ -330,6 +335,11 @@ class ProductController extends Controller
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
 
+            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0){
+
+                $product->prise_default *= $product -> manufacturer ->koorse;
+            }
+
             if($product -> manufacturer ->box == 1 ){
 
                 $product->rostovka__price = $product->full__price;
@@ -367,6 +377,11 @@ class ProductController extends Controller
                 ->orderBy('id',"desc")->paginate(16);
 
         foreach ($products as $product){
+
+            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0){
+
+               $product->prise_default *= $product -> manufacturer ->koorse;
+            }
 
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
