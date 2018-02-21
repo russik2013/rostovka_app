@@ -151,9 +151,9 @@ class ProductController extends Controller
     protected function getSex($category_id){
 
         if($category_id == 2)
-            return array('Мужской');
+            return array('Мужская');
         if($category_id == 3)
-            return array('Женский');
+            return array('Женская');
 
         return false;
 
