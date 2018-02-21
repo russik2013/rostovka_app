@@ -158,7 +158,7 @@ class CsvLoadController extends Controller
             if($product -> kategoriya == 'Мужская')
                 $sex = 'Мужской';
             if($product -> kategoriya == 'Женская')
-                $sex = 'Женской';
+                $sex = 'Женский';
             if($product -> kategoriya == 'Детская')
                 $sex = $product -> pol;
 
@@ -422,7 +422,7 @@ class CsvLoadController extends Controller
             if($product -> kategoriya == 'Мужская')
                 $sex = 'Мужской';
             if($product -> kategoriya == 'Женская')
-                $sex = 'Женской';
+                $sex = 'Женский';
             if($product -> kategoriya == 'Детская')
                 $sex = $product -> pol;
 
@@ -548,7 +548,6 @@ class CsvLoadController extends Controller
                                 'size_id' => $size,
                                 "prise_zakup" => $product -> tsena_zakupki,
                                 'sex' => $sex,
-
                                 'material' => $product ->material_verkh,
                                 'color' => $product -> tsvet,
                                 'manufacturer_country' => $product ->strana_proizvoditel,

@@ -48,31 +48,6 @@ class ProductController extends Controller
 
         //dd($request -> all());
 
-        $orderType = 'desc';
-        $order = 'id';
-        if(isset($request -> choosedType)) {
-            if ($request->choosedType== 0) {
-
-                $orderType = 'desc';
-                $order = 'id';
-
-            }
-
-            if ($request->choosedType == 1) {
-
-                $orderType = 'asc';
-                $order = 'prise';
-
-            }
-
-            if ($request->choosedType == 2) {
-
-                $orderType = 'desc';
-                $order = 'prise';
-
-            }
-        }
-
 
         $sex = $this -> getSex($request -> category_id);
 
@@ -82,34 +57,64 @@ class ProductController extends Controller
         if($sex == false)
             $sex = null;
 
-        dd(Product::groupBy('prise')->get());
+        $orderType = 'desc';
+        $order = 'id';
+        if(isset($request -> choosedType)) {
+            if ($request->choosedType== 0) {
 
+                $products = Product::where('category_id', '=', $request->category_id)
+                        ->whereIn('season_id', $this->seasonFilter($request->filters))
+                        ->whereIn('type_id', $this->typeFilter($request->filters))
+                        ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
+                        ->whereIn('size_id', $this->sizeFilter($request->filters))
+                        ->whereIn('sex', $sex)
+                        ->where('accessibility', 1)
+                        ->where('show_product', 1)
+                        ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
+                        ->orderBy('id','desc')
+                    ->with('photo', 'size', 'manufacturer')->get();
+            }
 
-        if($sex == null) {
+            if ($request->choosedType == 1) {
+                
+                //dd('russik');
 
-            $products = Product::where('category_id', '=', $request->category_id)
-                ->whereIn('season_id', $this->seasonFilter($request->filters))
-                ->whereIn('type_id', $this->typeFilter($request->filters))
-                ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
-                ->whereIn('size_id', $this->sizeFilter($request->filters))
-                ->where('sex', "!=","")
-                ->where('accessibility', 1)
-                ->where('show_product', 1)
-                ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
-                ->with('photo', 'size', 'manufacturer')->orderBy($order,$orderType)->get();
+                $products = Product::where('category_id', '=', $request->category_id)
+                        ->whereIn('season_id', $this->seasonFilter($request->filters))
+                        ->whereIn('type_id', $this->typeFilter($request->filters))
+                        ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
+                        ->whereIn('size_id', $this->sizeFilter($request->filters))
+                        ->where('accessibility', 1)
+                        ->where('show_product', 1)
+                        ->whereIn('sex', $sex)
+                        ->orderBy('prise','asc')->pluck('prise', 'id') -> toArray();
+                $products = Product::whereIn('id',
+                    array_slice(array_keys($products),$request->count_on_page * ($request->page_num - 1),$request->count_on_page))
+                    ->with('photo', 'size', 'manufacturer')
+                    ->orderBy('prise','asc')
+                    ->get();
+
+            }
+
+            if ($request->choosedType == 2) {
+                $products = Product::where('category_id', '=', $request->category_id)
+                    ->whereIn('season_id', $this->seasonFilter($request->filters))
+                    ->whereIn('type_id', $this->typeFilter($request->filters))
+                    ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
+                    ->whereIn('size_id', $this->sizeFilter($request->filters))
+                    ->whereIn('sex', $sex)
+                    ->where('accessibility', 1)
+                    ->where('show_product', 1)
+                    ->orderBy('prise','desc')->pluck('prise', 'id') -> toArray();
+                $products = Product::whereIn('id',
+                    array_slice(array_keys($products),$request->count_on_page * ($request->page_num - 1),$request->count_on_page))
+                    ->with('photo', 'size', 'manufacturer')
+                    ->orderBy('prise','desc')
+                    ->get();
+
+            }
         }
-        else {
-            $products = Product::where('category_id', '=', $request->category_id)
-                ->whereIn('season_id', $this->seasonFilter($request->filters))
-                ->whereIn('type_id', $this->typeFilter($request->filters))
-                ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
-                ->whereIn('size_id', $this->sizeFilter($request->filters))
-                ->whereIn('sex', $sex)
-                ->where('accessibility', 1)
-                ->where('show_product', 1)
-                ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
-                ->with('photo', 'size', 'manufacturer')->orderBy($order,$orderType)->get();
-        }
+
 
         if($request->category_id == 5){
 
@@ -121,6 +126,7 @@ class ProductController extends Controller
 
         }
 
+       // dd($products);
 
 
         foreach ($products as $product){
@@ -152,9 +158,9 @@ class ProductController extends Controller
     protected function getSex($category_id){
 
         if($category_id == 2)
-            return array('Мужская');
+            return array('Мужской');
         if($category_id == 3)
-            return array('Женская');
+            return array('Женский');
 
         return false;
 
