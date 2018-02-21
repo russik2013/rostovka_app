@@ -119,7 +119,7 @@ class ParsingController extends Controller
 
         $types = Type::all();
 
-        $skip = 70434;
+        $skip = 66000;
         $take = 6000;
 
 
@@ -177,6 +177,9 @@ class ParsingController extends Controller
 
 
             if(isset($this ->options[ $product -> id ]['season'])) {
+//                dd($products_attr_options[$this->options[$product->id]['season']],
+//                    $seasons->where('name', '=', $products_attr_options[$this->options[$product->id]['season']])->first(),
+//                    $seasons);
                 $season = $seasons->where('name', '=', $products_attr_options[$this->options[$product->id]['season']])->first()->id;
             }
             else
@@ -236,7 +239,7 @@ class ParsingController extends Controller
 
         foreach (array_chunk($insert_array,1000) as $t) {
 
-            //\App\Product::insert($t);
+            \App\Product::insert($t);
 
 
         }
