@@ -15,7 +15,7 @@ class CsvDownloadController extends Controller
     public function getCsvFileWithProduct(Request $request){
 
         if(Type::where('id', $request -> type_id)->first())
-            if(Type::where('id', $request -> type_id) ->first() -> name == 'обувь')
+            if(Type::where('id', $request -> type_id) ->first() -> name == 'Все')
                 $type = Type::all()->pluck('id')->toArray();
             else  $type = Type::where('id', $request -> type_id)->pluck('id')->toArray();
 
@@ -122,7 +122,7 @@ class CsvDownloadController extends Controller
     public function getCsvFileWithOrdersToManufacturer(Request $request){
 
         if(Type::where('id', $request -> type_id)->first())
-            if(Type::where('id', $request -> type_id) ->first() -> name == 'обувь')
+            if(Type::where('id', $request -> type_id) ->first() -> name == 'Все')
                 $type = Type::all()->pluck('id')->toArray();
             else  $type = Type::where('id', $request -> type_id)->pluck('id')->toArray();
 
