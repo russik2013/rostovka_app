@@ -155,11 +155,11 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
-            if($product -> kategoriya == 'Мужское')
-                $sex = 'Мужское';
-            if($product -> kategoriya == 'Женское')
-                $sex = 'Женское';
-            if($product -> kategoriya == 'Детское')
+            if($product -> kategoriya == 'Мужская')
+                $sex = 'Мужской';
+            if($product -> kategoriya == 'Женская')
+                $sex = 'Женский';
+            if($product -> kategoriya == 'Детская')
                 $sex = $product -> pol;
 
 
@@ -200,13 +200,14 @@ class CsvLoadController extends Controller
 
             $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[$product ->{'brend'}]);
 
-            if($manufacturersInfoToProduct ->koorse != "" && $manufacturersInfoToProduct ->koorse != 0){
+            if($manufacturersInfoToProduct ->koorse != "" || $manufacturersInfoToProduct ->koorse != 0){
 
                 $priseWithDiscount *= $manufacturersInfoToProduct ->koorse;
 
             }
 
-            if($manufacturersInfoToProduct ->discount !="" && $manufacturersInfoToProduct ->discount != 0) {
+            if($manufacturersInfoToProduct ->discount !="" || $manufacturersInfoToProduct ->discount != 0) {
+
 
                 $hrivna_discount = explode("грн",$manufacturersInfoToProduct ->discount);
 
@@ -224,7 +225,7 @@ class CsvLoadController extends Controller
 
             }
 
-            if($product ->skidka !="" && $product ->skidka != 0) {
+            if($product ->skidka !="" || $product ->skidka != 0) {
 
 
                 $hrivna_discount = explode("грн",$product ->skidka);
@@ -243,6 +244,23 @@ class CsvLoadController extends Controller
 
             }
 
+            switch ($product ->kategoriya){
+
+                case "Детская":
+                    $categoryId = 1;
+                    break;
+                case "Мужская":
+                    $categoryId = 2;
+                    break;
+                case "Женская":
+                    $categoryId = 3;
+                    break;
+                default :
+                    $categoryId = 4;
+
+            }
+
+
             $insert_array = [ 'article' => $product ->artikul,
                 'name' => $product ->artikul.' '.$product ->{'brend'},     ///////////////////////////// уточнить
                 'rostovka_count' => $product ->{"min._kol"},
@@ -250,7 +268,7 @@ class CsvLoadController extends Controller
                 'prise' => $priseWithDiscount,
                 'prise_default' => $product ->tsena_prodazhi,
                 'manufacturer_id' => $manufacturer,
-                'category_id' => $categories[$product ->kategoriya],
+                'category_id' => $categoryId,
                 'show_product' => $product ->nalichie,
                 'currency' =>  'грн',
                 'full_description' => $product ->opisanie,
@@ -399,11 +417,11 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
-            if($product -> kategoriya == 'Мужское')
-                $sex = 'Мужское';
-            if($product -> kategoriya == 'Женское')
-                $sex = 'Женское';
-            if($product -> kategoriya == 'Детское')
+            if($product -> kategoriya == 'Мужская')
+                $sex = 'Мужской';
+            if($product -> kategoriya == 'Женская')
+                $sex = 'Женский';
+            if($product -> kategoriya == 'Детская')
                 $sex = $product -> pol;
 
 
@@ -443,13 +461,13 @@ class CsvLoadController extends Controller
 
             $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[$product ->{'brend'}]);
 
-            if($manufacturersInfoToProduct ->koorse != "" || $manufacturersInfoToProduct ->koorse != 0){
+            if($manufacturersInfoToProduct ->koorse != "" && $manufacturersInfoToProduct ->koorse != 0){
 
                 $priseWithDiscount *= $manufacturersInfoToProduct ->koorse;
 
             }
 
-            if($manufacturersInfoToProduct ->discount !="" || $manufacturersInfoToProduct ->discount != 0) {
+            if($manufacturersInfoToProduct ->discount !="" && $manufacturersInfoToProduct ->discount != 0) {
 
 
                 $hrivna_discount = explode("грн",$manufacturersInfoToProduct ->discount);
@@ -468,7 +486,7 @@ class CsvLoadController extends Controller
 
             }
 
-            if($product ->skidka !="" || $product ->skidka != 0) {
+            if($product ->skidka !="" && $product ->skidka != 0) {
 
 
                 $hrivna_discount = explode("грн",$product ->skidka);
@@ -489,6 +507,26 @@ class CsvLoadController extends Controller
 
             }
 
+            switch ($product ->kategoriya){
+
+                case "Детская":
+                    $categoryId = 1;
+                    break;
+                case "Мужская":
+                    $categoryId = 2;
+                    break;
+                case "Женская":
+                    $categoryId = 3;
+                    break;
+                default :
+                    $categoryId = 4;
+
+            }
+
+
+
+
+
 
             $insert_array[] = [ 'article' => $product ->artikul,
                                 'name' => $product ->artikul.' '.$product ->{'brend'},     ///////////////////////////// уточнить
@@ -497,7 +535,7 @@ class CsvLoadController extends Controller
                                 'prise_default' => $product ->tsena_prodazhi,
                                 'prise' => $priseWithDiscount,
                                 'manufacturer_id' => $manufacturer,
-                                'category_id' => $categories[$product ->kategoriya],
+                                'category_id' => $categoryId,
                                 'show_product' => $product ->nalichie,
                                 'currency' =>  'грн',
                                 'full_description' => $product ->opisanie,
@@ -508,18 +546,15 @@ class CsvLoadController extends Controller
                                 'size_id' => $size,
                                 "prise_zakup" => $product -> tsena_zakupki,
                                 'sex' => $sex,
-
                                 'material' => $product ->material_verkh,
                                 'color' => $product -> tsvet,
                                 'manufacturer_country' => $product ->strana_proizvoditel,
                                 'material_inside' => $product ->material_vnunri,
                                 'material_insoles' => $product ->material_stelei,
                                 'repeats' => $product ->povtory,
-
-
-
                                 ];
         }
+
 
         return $insert_array;
 
