@@ -82,6 +82,7 @@ class ProductController extends Controller
         if($sex == false)
             $sex = null;
 
+        dd(Product::groupBy('prise')->get());
 
 
         if($sex == null) {

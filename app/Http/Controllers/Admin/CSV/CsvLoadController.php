@@ -558,7 +558,6 @@ class CsvLoadController extends Controller
                                 ];
         }
 
-        dd($insert_array);
 
         return $insert_array;
 
