@@ -110,6 +110,18 @@ class SuppliersController extends Controller
 
             }
 
+            $productsTwo = Product::where("manufacturer_id", $manufacturer -> id) -> get();
+
+            foreach ($productsTwo as $products){
+
+                $products -> prise = round($products->prise, 2);
+
+                $products -> save();
+
+            }
+
+
+
             return redirect()->route('suppliers');
 
         } else return redirect() -> back()->withInput()->withErrors(['error' => "Id was wrong"]);

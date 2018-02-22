@@ -260,6 +260,7 @@ class CsvLoadController extends Controller
 
             }
 
+            $priseWithDiscount = round($priseWithDiscount, 2);
 
             $insert_array = [ 'article' => $product ->artikul,
                 'name' => $product ->artikul.' '.$product ->{'brend'},     ///////////////////////////// уточнить
@@ -528,6 +529,7 @@ class CsvLoadController extends Controller
 
             }
 
+            $priseWithDiscount = round($priseWithDiscount, 2);
 
             $insert_array[] = [ 'article' => $product ->artikul,
                                 'name' => $product ->artikul.' '.$product ->{'brend'},     ///////////////////////////// уточнить
