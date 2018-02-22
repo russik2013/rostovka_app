@@ -308,8 +308,11 @@ else{
 //Инициализация созданние деф. данных
 function initData(count_on_page) {
     localData();
-    if(localStorage !== null){
-        filter_value = JSON.parse(savedFilters);
+    if(localStorage !== null) {
+        var local_filter_value = localStorage.getItem('filterValues');
+        filter_value = JSON.parse(local_filter_value);
+
+        console.log(count_on_page);
         $.ajax({
             method: "POST",
             url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
@@ -850,7 +853,7 @@ function makeFilterData(msg) {
             real_id: msg[i].id,
             product_url: msg[i].product_url + '/' + i,
             size: msg[i].size.name,
-            old_prise: Number (Number (msg[i].prise_default)),
+            old_prise: Number ((msg[i].prise_default)).toFixed,
             option_type: 'full__price' // Или full__price или rostovka__price
         };
     }
