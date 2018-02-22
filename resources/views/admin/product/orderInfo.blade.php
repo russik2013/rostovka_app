@@ -183,7 +183,9 @@
 
                                             <table class="table table-condensed">
                                                 <tbody>
+
                                                     @foreach($order -> details as $detail)
+                                                        @if($detail -> product != null)
                                                         <tr data-id="{{$detail -> id}}">
                                                             <td><a href="{{url($detail -> product -> id."/product")}}" target="_blank"><img style="max-width: 90px;" src="{{url('/images/products/'.$detail -> image)}}"></a></td>
                                                             <td><a href="{{url($detail -> product-> id."/product")}}" target="_blank">{{$detail -> tovar_name}}</a></td>
@@ -202,6 +204,7 @@
                                                             <td>{{$detail -> tovar_in_order_count}}</td>
                                                             <td><i class="removePrudct table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></td>
                                                         </tr>
+                                                        @endif
                                                     @endforeach
                                                 </tbody>
                                             </table>

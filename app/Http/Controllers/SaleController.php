@@ -13,7 +13,7 @@ class SaleController extends Controller
 {
     public function makeOrder(Request $request){
 
-       //return response($request -> all());
+       return response($request -> all());
 
         $order = new Order();
 

@@ -1,6 +1,8 @@
 Cart_data = localStorage.getItem('Cart_data');
 Cart_data = JSON.parse(Cart_data);
 
+console.log(Cart_data);
+
 var orderTotal = Cart_data[0].cartProducts_summ;
 $('.order-total span')[0].innerText = orderTotal + ' грн';
 $('.is--Mobile .order-total .amount')[0].innerText = orderTotal + ' грн';
@@ -26,6 +28,7 @@ $(document).ready(function() {
                 inputArray = inputArray.concat(
                     {'name' : 'tovar['+i+'][product_id]','value': Cart_data[0].row[i].productID},
                     {'name' : 'tovar['+i+'][quantity]','value': Cart_data[0].row[i].quantity},
+                    {'name' : 'tovar['+i+'][selected_value]','value': Cart_data[0].row[i].quantity},
                     {'name' : 'tovar['+i+'][quantityPrice]','value': Cart_data[0].row[i].quantityPrice});
             }
 

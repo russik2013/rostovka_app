@@ -121,6 +121,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/personal', 'Admin\HomeController@personal');
         Route::post('/personal/update', 'Admin\HomeController@personalUpdate');
 
+        Route::get('/type', 'Admin\TypeController@index') ->name('types');
+        Route::get('/type/{id}', 'Admin\TypeController@delete');
+
+
+
     });
 
 

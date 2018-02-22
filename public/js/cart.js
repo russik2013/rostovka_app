@@ -20,7 +20,6 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
         var itemQuant = Number ($('.quantity').val()),
             domItem_price = Number ($.find('.choosed')[0].firstElementChild.lastElementChild.firstChild.innerText),
             trueTarget = false;
-        console.log(targetID);
         if(Cart_data[0].row.length === 0){
             getProductData(targetID, itemQuant, domItem_price);
         }
@@ -127,7 +126,7 @@ function getProductData(targetID, itemQuant, domItem_price) {
                 rostovka__price: Number ($.find('[data-set="rotovkaset"] .iPrice')[0].innerText),
                 buy_real_id: productData[0].id,
                 cart_product_url: productData[0].product_url,
-                selected_value: null,
+                selected_value: 'box',
                 price_per_pair: productData[0].prise,
                 box__price: Number ($.find('[data-set="boxset"] .iPrice')[0].innerText)
             });
@@ -279,7 +278,7 @@ function addtoCart(event, targetID) {
         rostovka__price: rostovkaPrice,
         buy_real_id: data[targetID].real_id,
         cart_product_url: data[targetID].product_url,
-        selected_value: null,
+        selected_value: 'box',
         price_per_pair: data[targetID].price,
         box__price: gprice
     });
