@@ -50,10 +50,6 @@ class CsvDownloadController extends Controller
 
                 $i++;
 
-//                if($product->size)
-//                    $sizes = explode('-', $product->size->name);
-//                else $sizes = explode('-', 'none-none');
-
                 if($product -> photo)
                     $photo_one = $product -> photo -> photo_url;
                 else $photo_one = '';
@@ -63,6 +59,23 @@ class CsvDownloadController extends Controller
                 else $size = 'none';
 
                 //dd($product->accessibility);
+
+                switch ($product->category_id){
+
+                    case 1 :
+                        $categoryName = "Детская";
+                        break;
+                    case 2 :
+                        $categoryName = "Мужская";
+                        break;
+                    case 3 :
+                        $categoryName = "Женская";
+                        break;
+                    default :
+                        $categoryName = "Другая";
+                }
+
+
 
                 $data[] = [
 
@@ -74,7 +87,7 @@ class CsvDownloadController extends Controller
                     "Бренд" => $product->manufacturer->name,
                     "Размер" => $size,
                     "Тип обуви" => $product->type->name,
-                    "Категория" => $product->category->name,
+                    "Категория" => $categoryName,
                     "Пол" => $product->sex,
                     "Сезон" => $product->season->name,
                     "Кол в ящике" => $product->box_count,
