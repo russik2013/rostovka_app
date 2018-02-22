@@ -4731,6 +4731,10 @@ ul.pagination-numbers, .pagination .pagination-numbers, .pagination-numbers {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 90%;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
 }
 
 .product-item .product-detail .item-price, .product-item .product-detail .star-rating {
@@ -7080,4 +7084,40 @@ fieldset input:hover{
 
 .slick-list.draggable h5.item-price{
     margin-top: 0;
+}
+
+.searchPage .pagination li span{
+    margin: 0 2px 0 2px;
+    cursor: pointer;
+    padding: 5px 10px 5px 10px;
+    border: 1px solid #F6F6F6;
+    background-color: #fff;
+    color: #000;
+}
+
+.searchPage .pagination li.active span{
+    background-color: rgb(22, 102, 175);
+    color: #fff;
+}
+
+.searchPage .pagination li a{
+    margin: 0 2px 0 2px;
+    cursor: pointer;
+    padding: 5px 10px 5px 10px;
+    border: 1px solid #F6F6F6;
+    background-color: #fff;
+    color: #000;
+}
+
+.searchPage .pagination li.disabled{
+    display: none;
+}
+
+.searchPage .pagination li{
+    display: inline;
+}
+
+.searchPage .pagination{
+    float: none;
+    margin: 0 auto;
 }

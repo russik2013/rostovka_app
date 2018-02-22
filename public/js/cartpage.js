@@ -61,9 +61,11 @@ function getmobileData() {
 if(Cart_data[0].row.length === 0){
     $('.cart-form').remove();
     $('.post-8').append('<div class="cartPage_article">Корзина пуста :(</div>');
+    $('.tableFooter').css('display', 'none');
 }
 else{
-    TotalCost()
+    TotalCost();
+    $('.tableFooter').css('display', 'block');
 }
 
 function TotalCost() {

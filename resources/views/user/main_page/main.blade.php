@@ -85,16 +85,16 @@
                             <div class="col-12 mb-30">
                                 <!-- banner No.1 -->
                                 <div class="promo-banner-wrap">
-                                    <a href="category" class="promo-image-wrap">
-                                        <img src="{{'img/promo-banner4.jpg'}}" alt="Accesories">
+                                    <a href="{{url('/3/category')}}" class="promo-image-wrap">
+                                        <img src="{{'img/promo-banner4.jpg'}}">
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-12 mb-sm-30">
-                                <!-- banner No.2 -->
+                            <div class="col-12 mb-30">
+                                <!-- banner No.3 -->
                                 <div class="promo-banner-wrap">
-                                    <a href="category" class="promo-image-wrap">
-                                        <img src="{{'img/promo-banner3.jpg'}}" alt="Accesories">
+                                    <a href="{{url('/2/category')}}" class="promo-image-wrap">
+                                        <img src="{{'img/promo-banner2.jpg'}}">
                                     </a>
                                 </div>
                             </div>
@@ -104,33 +104,26 @@
                     <!--Right Side-->
                     <div class="col-md-6">
                         <div class="row">
-                            <div class="col-12 mb-30">
-                                <!-- banner No.3 -->
-                                <div class="promo-banner-wrap">
-                                    <a href="category" class="promo-image-wrap">
-                                        <img src="{{'img/promo-banner2.jpg'}}" alt="Accesories">
-                                    </a>
-                                </div>
-                            </div>
                             <div class="col-12 mb-sm-30">
                                 <!-- banner No.4 -->
                                 <div class="promo-banner-wrap">
-                                    <a href="category" class="promo-image-wrap">
-                                        <img src="{{'img/promo-banner5.jpg'}}" alt="Accesories">
+                                    <a href="{{url('/1/category')}}" class="promo-image-wrap">
+                                        <img src="{{'img/promo-banner5.jpg'}}">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-12 mb-30">
+                                <!-- banner No.3 -->
+                                <div class="promo-banner-wrap" style="margin-top: 30px;padding-top: 90px;padding-left: 50px">
+                                    <a href="{{url('/5/category')}}" class="promo-image-wrap">
+                                        <img src="{{'img/promo_bannerBig.png'}}" alt="Accesories">
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-12">
-                        <!-- banner No.4 -->
-                        <div class="promo-banner-wrap large">
-                            <a href="category" class="promo-image-wrap">
-                                <img src="{{'img/promo_bannerBig.png'}}" alt="">
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>

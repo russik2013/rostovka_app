@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="root-site" content="{!!route('root')!!}">
     <meta name="csrf-token" content="{!! csrf_token() !!}">
-
-    <title>Rostovka</title>
-    <meta name="description" content=""/>
-    <meta name="keywords" content="">
-    <meta name="author" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+
+    <title>Оптовая продажа женской, мужской и детской обуви в Украине</title>
+    <meta name="keywords" content="купить обувь оптом, обувь оптом, обувь оптом одесса, купить обувь оптом в украине, оптовая продажа обуви, 7 км обувь оптом, обувь оптом 7км" />
+    <meta name="description" content="Качественная обувь оптом в Одессе доступна в нашем каталоге. Огромный выбор детской, женской, мужской обуви с доставкой по всей Украине." />
+
     <!--[if IE]>
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 

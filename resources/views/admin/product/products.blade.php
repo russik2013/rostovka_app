@@ -89,7 +89,7 @@
                                 <tr>
                                     <th>Фото</th>
                                     <th>Артикул</th>
-                                    <th>Название</th>
+                                    <th>Размеры</th>
                                     <th>Категория</th>
                                     <th>Произвоитель</th>
                                     <th>Скидка</th>
@@ -109,7 +109,7 @@
 
                                         <td class="articul productsArt"><input value="{{$product -> article}}" disabled></td>
 
-                                        <td>{{$product -> name}}</td>
+                                        <td>{{$product -> size -> name}}</td>
 
                                         <td>{{$product -> category -> name}}</td>
 
@@ -119,7 +119,7 @@
 
                                         <td>{{$product -> prise}}</td>
 
-                                        <td>{{$product -> cena_zakupki}}</td>
+                                        <td>{{$product -> prise_zakup}}</td>
 
                                         <td>@if($product ->show_product == 1) да @else нет @endif</td>
 

@@ -346,7 +346,7 @@ var paginationCounter = function (paginationNum) {
 
 //Создание данных
 function makeData(page_num, count_on_page) {
-    data = [];
+    // data = [];
     $.ajax({
         method: "POST",
         url: $('meta[name="root-site"]').attr('content') + "/api/products",
@@ -358,41 +358,68 @@ function makeData(page_num, count_on_page) {
             choosedType: choosedType
         }
     }).done(function( msg ) {
-        for(var i= 0; i < msg.length; i++ ) {
-            data[i] = {
-                dataID: msg[i].id,
-                imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/' + msg[i].photo.photo_url,
-                name: msg[i].name,
-                rostovka: msg[i].rostovka_count,
-                box: msg[i].box_count,
-                type: msg[i].types,
-                price: Number (msg[i].prise),
-                full__price: msg[i].full__price,
-                rostovka__price: msg[i].rostovka__price,
-                real_id: msg[i].id,
-                product_url: msg[i].product_url, // раньше было так msg[i].product_url + '/' + i
-                size: msg[i].size.name,
-                old_prise: Number (msg[i].prise_default),
-                option_type: 'full__price' // Или full__price или rostovka__price
-            };
-        }
-        if(msg.length === 0){
+        if(msg.length !== 0){
+            for(var i= 0; i < msg.length; i++ ) {
+                if(msg[i].photo !== null){
+                    data[i] = {
+                        dataID: msg[i].id,
+                        imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/' + msg[i].photo.photo_url,
+                        name: msg[i].name,
+                        rostovka: msg[i].rostovka_count,
+                        box: msg[i].box_count,
+                        type: msg[i].types,
+                        price: Number (msg[i].prise),
+                        full__price: msg[i].full__price,
+                        rostovka__price: msg[i].rostovka__price,
+                        real_id: msg[i].id,
+                        product_url: msg[i].product_url, // раньше было так msg[i].product_url + '/' + i
+                        size: msg[i].size.name,
+                        old_prise: Number (msg[i].prise_default),
+                        option_type: 'full__price' // Или full__price или rostovka__price
+                    };
+                    checkMinMax(data);
+                    checkPrices(data);
+                } else {
+                    data[i] = {
+                        dataID: msg[i].id,
+                        imgUrl: $('meta[name="root-site"]').attr('content') + '/image/' + 'noimage.jpg',
+                        name: msg[i].name,
+                        rostovka: msg[i].rostovka_count,
+                        box: msg[i].box_count,
+                        type: msg[i].types,
+                        price: Number (msg[i].prise),
+                        full__price: msg[i].full__price,
+                        rostovka__price: msg[i].rostovka__price,
+                        real_id: msg[i].id,
+                        product_url: msg[i].product_url, // раньше было так msg[i].product_url + '/' + i
+                        size: msg[i].size.name,
+                        old_prise: Number (msg[i].prise_default),
+                        option_type: 'full__price' // Или full__price или rostovka__price
+                    };
+                    checkMinMax(data);
+                    checkPrices(data);
+                }
+                $(document).ready(function () {
+                    $('.moveTo_start').addClass('not-active');
+                    $('.previous_Item').addClass('not-active');
+                });
+                GetData(data);
+                $('.preloader').remove();
+                //Проверка дублей
+
+                checkPagination();
+            }
+            
+
+
+        } else {
             $('#target').append('<div style="    padding-top: 20px;\n' +
                 '    text-align: center;\n' +
                 '    font-size: 20px;\n' +
                 '    text-transform: uppercase;">Нет товаров</div>')
         }
 
-        $(document).ready(function () {
-            $('.moveTo_start').addClass('not-active');
-            $('.previous_Item').addClass('not-active');
-        });
-        GetData(data);
-        $('.preloader').remove();
-        //Проверка дублей
-        checkMinMax(data);
-        checkPrices(data);
-        checkPagination();
+
     }) .fail(function( msg ) {});
 }
 
@@ -845,6 +872,9 @@ $('#short-by').on('change', function () {
     data = [];
     $('.product--block').append('<div class="preloader"><i></i></div>');
 
+    count_on_page = localStorage.getItem('selectedCount');
+    page_num = localStorage.getItem('pageNum');
+
     $.ajax({
         method: "POST",
         url: $('meta[name="root-site"]').attr('content') + "/api/products",
@@ -877,6 +907,21 @@ $('#short-by').on('change', function () {
         checkMinMax(data)
     }) .fail(function( msg ) {
 
+    });
+
+    $.ajax({
+        method: 'POST',
+        url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page,
+            filters: filter_value}
+    }).done(function(msg) {
+        if(msg.length === 0){
+
+        }
+        else{
+            paginationNum = msg;
+            paginationCounter(paginationNum);
+        }
     });
 });
 
