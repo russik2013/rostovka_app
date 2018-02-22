@@ -28,7 +28,7 @@ $(document).ready(function() {
                 inputArray = inputArray.concat(
                     {'name' : 'tovar['+i+'][product_id]','value': Cart_data[0].row[i].productID},
                     {'name' : 'tovar['+i+'][quantity]','value': Cart_data[0].row[i].quantity},
-                    {'name' : 'tovar['+i+'][selected_value]','value': Cart_data[0].row[i].quantity},
+                    {'name' : 'tovar['+i+'][selected_value]','value': Cart_data[0].row[i].selected_value},
                     {'name' : 'tovar['+i+'][quantityPrice]','value': Cart_data[0].row[i].quantityPrice});
             }
 

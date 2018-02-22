@@ -88,7 +88,7 @@ function searchResult(searchData, imageUrl) {
             for(var z = 0; z < filterData.length; z++){
                 $('[data-select-id="'+ filterData[z].id +'"]').remove();
                 $('[data-product-id="'+ filterData[z].id +'"] .select-style')[0].innerHTML =
-                    "<div class='form-group select-style'><input class='form-control' type=\"number\" placeholder=\"в ящике\" disabled></div>"
+                    "<div class='form-group select-style'><input class='form-control' type=\"number\" placeholder=\"в ящике\" selected='selected' disabled></div>"
             }
         }
     });

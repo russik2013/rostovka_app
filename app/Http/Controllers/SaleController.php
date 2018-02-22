@@ -13,7 +13,7 @@ class SaleController extends Controller
 {
     public function makeOrder(Request $request){
 
-       return response($request -> all());
+      // return response($request -> all());
 
         $order = new Order();
 
@@ -49,6 +49,9 @@ class SaleController extends Controller
             foreach ($products as $product) {
 
                 if ($product->id == $tovar['product_id']) {
+                    if($tovar['selected_value'] == 1){
+                        $tip = 'minimum';
+                    }else $tip = 'box';
                     $insert_mass[] = [
                         'article' => $product->article,
                         'tovar_name' => $product->name,
@@ -70,7 +73,8 @@ class SaleController extends Controller
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now(),
                         'image' => $product-> photo->photo_url,
-                        'prise_zakup' => $product->prise_zakup
+                        'prise_zakup' => $product->prise_zakup,
+                        'tip' => $tip
                     ];
 
 
