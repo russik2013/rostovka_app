@@ -6,18 +6,20 @@ use App\Order;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
 use PDF;
 
 class ReceiptController extends Controller
 {
     public function index($id){
         $order = Order::with('details') -> find($id);
-        $pdf = PDF::loadView('admin.pdf.invoice', compact('order'));
-        $pdf -> setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
 
-        //$pdf -> setPaper('a4', 'landscape');
+            $pdf = PDF::loadView('admin.pdf.invoice', compact('order'));
+            $pdf -> setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
 
-        return $pdf->download('invoice.pdf');
+            //$pdf -> setPaper('a4', 'landscape');
+
+            return $pdf->download('invoice.pdf');
 
     }
 

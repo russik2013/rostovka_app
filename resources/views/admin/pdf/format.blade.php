@@ -111,7 +111,7 @@
                     <td class="border_table">{{$detail ->this_tovar_in_order_price}}</td>
                 </tr>
 
-                @endforeach
+            @endforeach
 
 
 
@@ -128,25 +128,25 @@
 
     </div>
     {{--<div class="bl3">--}}
-        {{--<p>Всего к оплате:</p>--}}
-        {{--<p class="price"><h2> {{$order -> details -> sum('this_tovar_in_order_price')}}</h2> грн.</p>--}}
+    {{--<p>Всего к оплате:</p>--}}
+    {{--<p class="price"><h2> {{$order -> details -> sum('this_tovar_in_order_price')}}</h2> грн.</p>--}}
     {{--</div>--}}
 
 </div>
 
 
-    {{--<div class="table-title">--}}
-        {{--<h1>№ заказа 3175</h1>--}}
-    {{--</div>--}}
-    {{--<div class="contacts">--}}
+{{--<div class="table-title">--}}
+{{--<h1>№ заказа 3175</h1>--}}
+{{--</div>--}}
+{{--<div class="contacts">--}}
 
 
 
-    {{--</div>--}}
+{{--</div>--}}
 
-    {{--<div class="bottom-content">--}}
+{{--<div class="bottom-content">--}}
 
-    {{--</div>--}}
+{{--</div>--}}
 
 </body>
 </html>
