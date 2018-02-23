@@ -238,4 +238,87 @@ class CsvDownloadController extends Controller
             })->export('xls');
         }else return redirect()->back()->withInput()->withErrors(['msg'=> 'Not find items']);
     }
+
+    public function getCsvFileWithOrdersToManufacturerOhnePhoto(Request $request){
+
+        if(Type::where('id', $request -> type_id)->first())
+            if(Type::where('id', $request -> type_id) ->first() -> name == 'Все')
+                $type = Type::all()->pluck('id')->toArray();
+            else  $type = Type::where('id', $request -> type_id)->pluck('id')->toArray();
+
+        if($request -> season_id == 5)
+            $season = Season::all()->pluck('id')->toArray();
+        else  $season = Season::where('id', $request -> season_id)->pluck('id')->toArray();
+
+        $accessibility = [0,1];
+
+        if ($request->accessibility == 0) {
+            $accessibility = [0];
+
+        }
+        if ($request->accessibility == 1) {
+            $accessibility = [1];
+
+        }
+
+
+
+        $products = Product::with('category','manufacturer','season','type', 'size', 'photo')
+            -> where('manufacturer_id', $request -> manufacturer_id) ->whereIn('type_id', $type)
+            ->whereIn('season_id', $season)-> whereIn('accessibility',$accessibility)-> get();
+
+        if($products->count() > 0) {
+            $data = [];
+            $photosData = [];
+
+
+            foreach ($products as $product) {
+
+                if($product->photo)
+                    $photo = $product->photo->photo_url;
+                else $photo = "";
+
+                if($product->size)
+                    $size = $product->size->name;
+                else $size = 'none';
+
+                $data[] = [
+
+                    "Товар" => $product->name,
+                    "размер" => $size,
+                    "Пар в ящике" => $product->box_count,
+                    "Цена закуп" => $product->prise_zakup,
+                    "Цена сайт" => $product->prise,
+
+                ];
+                $photosData[] = ["Фото" => $photo];
+
+            }
+
+
+            Excel::create('Filename', function ($excel) use ($data, $photosData) {
+
+                $excel->sheet('Sheetname', function ($sheet) use ($data, $photosData) {
+
+                    for ($i = 1; $i < count($data) + 2; $i++) {
+
+                            $sheet->setHeight($i, 25);
+
+                    }
+
+                    $sheet->fromArray($data);
+                    $sheet->setWidth('B', 20);
+                    $sheet->setWidth('C', 20);
+                    $sheet->setWidth('D', 20);
+                    $sheet->setWidth('E', 10);
+                    $sheet->setWidth('F', 10);
+                    $sheet->setWidth('G', 20);
+                    $sheet->setWidth('H', 20);
+
+                });
+
+            })->export('xls');
+        }else return redirect()->back()->withInput()->withErrors(['msg'=> 'Not find items']);
+    }
+
 }
