@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="193d3dbc-6990-4cb2-bda5-0007cf53db7e" name="Default" comment="update scv download v0.3.5">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/admin/pdf/format.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/admin/pdf/russik.blade.php" />
+    <list default="true" id="193d3dbc-6990-4cb2-bda5-0007cf53db7e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvDownloadController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvDownloadController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PDF/ReceiptController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PDF/ReceiptController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/pdf/invoice.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/pdf/invoice.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -897,14 +891,7 @@
       <workItem from="1519224114539" duration="447000" />
       <workItem from="1519226059593" duration="1096000" />
       <workItem from="1519288765256" duration="3607000" />
-      <workItem from="1519392378400" duration="5844000" />
-    </task>
-    <task id="LOCAL-00041" summary="update scv download v0.2.2">
-      <created>1518089989376</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1518089989376</updated>
+      <workItem from="1519392378400" duration="5904000" />
     </task>
     <task id="LOCAL-00042" summary="update scv download v0.2.2">
       <created>1518098094272</created>
@@ -1242,11 +1229,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519297876947</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="update scv download v0.3.5">
+      <created>1519398918625</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1519398918626</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="780263000" />
+    <option name="totallyTimeSpent" value="780323000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
