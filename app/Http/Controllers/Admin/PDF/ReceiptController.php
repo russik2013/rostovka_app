@@ -19,7 +19,7 @@ class ReceiptController extends Controller
 
             //$pdf -> setPaper('a4', 'landscape');
 
-            return $pdf->download('invoice.pdf');
+            return $pdf->stream('invoice.pdf');
 
     }
 

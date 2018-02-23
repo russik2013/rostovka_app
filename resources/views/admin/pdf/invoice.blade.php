@@ -17,7 +17,7 @@
 
     body { font-family: DejaVu Sans, sans-serif; }
 
-    .blocks{position: absolute; top: 0; left: 0;}
+    .blocks{ top: 0; left: 0;}
     .bl1{width: 100%; min-height: 50%;}
     .bl2{width: 100%; height: 50%; padding-top: 200px;}
     .bl3{width: 100%; height: 100%;}
@@ -87,7 +87,7 @@
 
             @foreach($order -> details as $detail)
 
-                <br>
+
                 <tr>
                     <td class="border_table" style="overflow: hidden;"><img src="{{public_path() .'/images/products/'.$detail -> image}}" width="70px" height="70px"></td>
                     <td class="border_table">{{$detail -> tovar_name}} ({{$detail -> size_name}})</td>
