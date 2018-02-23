@@ -115,6 +115,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         //////////////////////Page products////////////////////////////
         Route::get('/csvDownloadOrdersToManufacturer','Admin\CSV\CsvDownloadController@getCsvFileWithOrdersToManufacturer')-> name('downloadProductToManufacturer');
+        Route::get('/csvDownloadOrdersToManufacturerOhnePhoto','Admin\CSV\CsvDownloadController@getCsvFileWithOrdersToManufacturerOhnePhoto')-> name('downloadProductToManufacturerOhnePhoto');
         Route::get('/csvDownload','Admin\CSV\CsvDownloadController@getCsvFileWithProduct') -> name('download');
         ////////////////////////////////////////////////////////////////
 

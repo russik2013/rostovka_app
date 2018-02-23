@@ -9,9 +9,15 @@
 
 <style>
 
+    div.page
+    {
+        page-break-after: always;
+        page-break-inside: avoid;
+    }
+
     body { font-family: DejaVu Sans, sans-serif; }
 
-    .blocks{ top: 0; left: 0;}
+    .blocks{position: absolute; top: 0; left: 0;}
     .bl1{width: 100%; min-height: 50%;}
     .bl2{width: 100%; height: 50%; padding-top: 200px;}
     .bl3{width: 100%; height: 100%;}
@@ -79,9 +85,9 @@
                 <th class="border_table">Общая цена</th>
             </tr>
 
-            @foreach($order -> details as $detail)
+            @foreach($details as $detail)
 
-
+                <br>
                 <tr>
                     <td class="border_table" style="overflow: hidden;"><img src="{{public_path() .'/images/products/'.$detail -> image}}" width="70px" height="70px"></td>
                     <td class="border_table">{{$detail -> tovar_name}} ({{$detail -> size_name}})</td>
@@ -105,7 +111,10 @@
                     <td class="border_table">{{$detail ->this_tovar_in_order_price}}</td>
                 </tr>
 
-                @endforeach
+            @endforeach
+
+
+
             <tr>
                 <td colspan="8"><p>Всего к оплате:</p></td>
 
@@ -119,25 +128,25 @@
 
     </div>
     {{--<div class="bl3">--}}
-        {{--<p>Всего к оплате:</p>--}}
-        {{--<p class="price"><h2> {{$order -> details -> sum('this_tovar_in_order_price')}}</h2> грн.</p>--}}
+    {{--<p>Всего к оплате:</p>--}}
+    {{--<p class="price"><h2> {{$order -> details -> sum('this_tovar_in_order_price')}}</h2> грн.</p>--}}
     {{--</div>--}}
 
 </div>
 
 
-    {{--<div class="table-title">--}}
-        {{--<h1>№ заказа 3175</h1>--}}
-    {{--</div>--}}
-    {{--<div class="contacts">--}}
+{{--<div class="table-title">--}}
+{{--<h1>№ заказа 3175</h1>--}}
+{{--</div>--}}
+{{--<div class="contacts">--}}
 
 
 
-    {{--</div>--}}
+{{--</div>--}}
 
-    {{--<div class="bottom-content">--}}
+{{--<div class="bottom-content">--}}
 
-    {{--</div>--}}
+{{--</div>--}}
 
 </body>
 </html>
