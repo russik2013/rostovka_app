@@ -4,7 +4,6 @@
     <list default="true" id="193d3dbc-6990-4cb2-bda5-0007cf53db7e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PDF/ReceiptController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PDF/ReceiptController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/pdf/invoice.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/pdf/invoice.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -57,7 +56,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="invoice.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="invoice.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/pdf/invoice.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
@@ -85,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReceiptController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ReceiptController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/PDF/ReceiptController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="21" column="31" lean-forward="false" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+              <caret line="21" column="33" lean-forward="false" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -289,8 +288,8 @@
         <option value="$PROJECT_DIR$/resources/views/admin/pdf/russik.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvDownloadController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/PDF/ReceiptController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/pdf/invoice.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/PDF/ReceiptController.php" />
       </list>
     </option>
   </component>
@@ -893,14 +892,7 @@
       <workItem from="1519224114539" duration="447000" />
       <workItem from="1519226059593" duration="1096000" />
       <workItem from="1519288765256" duration="3607000" />
-      <workItem from="1519392378400" duration="6254000" />
-    </task>
-    <task id="LOCAL-00043" summary="update scv download v0.2.3">
-      <created>1518098128072</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1518098128072</updated>
+      <workItem from="1519392378400" duration="6322000" />
     </task>
     <task id="LOCAL-00044" summary="update scv download v0.2.4">
       <created>1518104097101</created>
@@ -1238,11 +1230,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519398973820</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="update scv download v0.3.5">
+      <created>1519399328714</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1519399328714</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="780673000" />
+    <option name="totallyTimeSpent" value="780741000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
@@ -1780,14 +1779,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/PDF/ReceiptController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="21" column="31" lean-forward="false" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/pdf/invoice.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1811,6 +1802,14 @@
             <marker date="1519399276000" expanded="true" signature="4381:4416" ph="..." />
             <marker date="1519399276000" expanded="true" signature="4643:4696" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/PDF/ReceiptController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="21" column="33" lean-forward="false" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
