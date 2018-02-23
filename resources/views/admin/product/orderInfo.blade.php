@@ -194,9 +194,9 @@
                                                                 @if($detail -> tip == 'box')
                                                                     Ящик
                                                                 @elseif($detail -> tip == 'minimum')
-                                                                    Ростовка
+                                                                    Минимум
                                                                 @elseif(($detail -> this_tovar_in_order_price / $detail -> tovar_in_order_count)/ $detail -> prise == $detail -> rostovka_count)
-                                                                    Ростовка
+                                                                    Минимум
                                                                 @else
                                                                     Ящик
                                                                 @endif

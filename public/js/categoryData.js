@@ -311,8 +311,7 @@ function initData(count_on_page) {
     if(localStorage !== null) {
         var local_filter_value = localStorage.getItem('filterValues');
         filter_value = JSON.parse(local_filter_value);
-
-        console.log(count_on_page);
+        
         $.ajax({
             method: "POST",
             url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
@@ -938,18 +937,46 @@ function getSizes() {
     }).done(function( msg ) {
         slider(msg);
     });
-
 }
+
 // Слайдер от - до
 function slider(msg) {
-    var min_range = Number (msg[0]);
-    var max_range = Number (msg[1]);
-    
+    var min_range = msg[0],
+        max_range = msg[1],
+        saveRange = [];
+
+    if(localStorage.getItem('rangeValues') !== null){
+        var rangeValues = localStorage.getItem('rangeValues');
+        rangeValues = JSON.parse(rangeValues);
+
+        min_range = msg[0];
+        max_range = msg[1];
+        saveRange = [];
+
+        $('.ui-widget-header').css('width', rangeValues[0].range.width + '%');
+        $(document).ready(function () {
+            var leftArrow = $('.ui-slider-handle')[0],
+                rightArrow = $('.ui-slider-handle')[1],
+                slider = $('.ui-widget-header');
+            $(slider)[0].style.width = rangeValues[0].range.width + '%';
+            $(slider)[0].style.left = rangeValues[0].range.sliderPosition + '%';
+            $(leftArrow)[0].style.left = rangeValues[0].range.leftArrowPosition + '%';
+            $(rightArrow)[0].style.left = rangeValues[0].range.rightArrowPosition + '%';
+
+            $("#minchoose").val(rangeValues[0].range.min);
+            $("#amount").val(rangeValues[0].range.max);
+        });
+
+    } else {
+
+    }
+
+
     $( "#slider-range" ).slider({
         range: true,
         min: min_range,
         max: max_range,
-        values: [10, 50],
+        values: [min_range, max_range],
         slide: function(event, ui) {
             $("#minchoose").val(ui.values[ 0 ]);
             $("#amount").val(ui.values[ 1 ] );
@@ -1007,7 +1034,35 @@ function slider(msg) {
                     filter_value.push(['size_min', min, 'size']);
                     filter_value.push(['size_max', max, 'size']);
                 }
+
                 changeFlag = true;
+            }
+
+            var slider = $('.ui-slider-range'),
+                sliderHandler = $('.ui-slider-handle') ,
+                sliderWidth =  (100 * parseFloat($(slider).css('width')) / parseFloat($(slider).parent().css('width'))),
+                sliderPosition =  100 * parseFloat($(slider).css('left')) / parseFloat($(slider).parent().css('width')),
+                leftArrow = $(sliderHandler)[0],
+                rightArrow = $(sliderHandler)[1],
+                leftArrowPosition = (100 * parseFloat($(leftArrow).css('left')) / parseFloat($(leftArrow).parent().css('width'))),
+                rightArrowPosition = (100 * parseFloat($(rightArrow).css('left')) / parseFloat($(rightArrow).parent().css('width')));
+
+            saveRange.push({
+                range:{
+                    min: min,
+                    max: max,
+                    width: sliderWidth,
+                    sliderPosition: sliderPosition,
+                    leftArrowPosition: leftArrowPosition,
+                    rightArrowPosition: rightArrowPosition
+                }
+            });
+
+            if(localStorage.getItem('rangeValues') !== null){
+                localStorage.removeItem('rangeValues');
+
+            } else {
+                localStorage.setItem('rangeValues', JSON.stringify(saveRange));
             }
 
             $('.product--block').append('<div class="preloader"><i></i></div>');

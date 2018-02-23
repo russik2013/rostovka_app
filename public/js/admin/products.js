@@ -121,12 +121,33 @@ function getSelect(e) {
         $('.sorting__Option.availability').css('display', 'block');
         $('.header--add--buttons').append("<button class='download allProducts col-md-4 col-sm-12 col-xs-12' onclick='getUserAllProducts()'>Скачать</button>");
         $('.header--add--buttons').append("<button class='download for_Supliers col-md-4 col-sm-12 col-xs-12' onclick='getManufacturesAllProducts()'>Скачать для поставщиков</button>");
+        $('.header--add--buttons').append("<button class='download for_Supliers_photo col-md-4 col-sm-12 col-xs-12' style='right: -340px;top: -65px;width: 220px;position: relative;' onclick='getManufacturesAllProductsPhoto()'>Скачать для поставщиков без фото</button>");
         $('select.manufacturer_Options').css('display', 'block');
         $('.seasone_Options').css('display', 'block');
         $('.type_Options').css('display', 'block');
         $('.edit').remove();
         $('.remove').remove();
     }
+}
+
+function getManufacturesAllProductsPhoto() {
+    $('.produtsTablePage').append('<div class="preloader"><i></i></div>');
+    $.ajax({
+        method: 'GET',
+        data: {'_token': $('meta[name="csrf-token"]').attr('content')},
+        manufacturer_id: $('.sorting__Option.manufacturer_Options option:selected').val(),
+        type_id: $('.sorting__Option.seasone_Options option:selected').val(),
+        season_id: $('.sorting__Option.type_Options option:selected').val(),
+        accessibility: $('.sorting__Option.availability option:selected').val(),
+        success: function(){
+            $('.preloader').remove();
+            window.location = $('meta[name="root-site"]').attr('content') + '/csvDownloadOrdersToManufacturer?manufacturer_id='+
+                $('.sorting__Option.manufacturer_Options option:selected').val() +'&season_id='+
+                $('.sorting__Option.seasone_Options option:selected').val() + '&type_id='+
+                $('.sorting__Option.type_Options option:selected').val()  + '&accessibility=' +
+                $('.sorting__Option.availability option:selected').val()
+        }
+    });
 }
 
 function getUserAllProducts(event) {

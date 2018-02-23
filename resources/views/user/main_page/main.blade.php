@@ -93,7 +93,7 @@
                             <div class="col-12 mb-30">
                                 <!-- banner No.3 -->
                                 <div class="promo-banner-wrap">
-                                    <a href="{{url('/2/category')}}" class="promo-image-wrap">
+                                    <a href="{{url('/1/category')}}" class="promo-image-wrap">
                                         <img src="{{'img/promo-banner2.jpg'}}">
                                     </a>
                                 </div>
@@ -107,7 +107,7 @@
                             <div class="col-12 mb-sm-30">
                                 <!-- banner No.4 -->
                                 <div class="promo-banner-wrap">
-                                    <a href="{{url('/1/category')}}" class="promo-image-wrap">
+                                    <a href="{{url('/2/category')}}" class="promo-image-wrap">
                                         <img src="{{'img/promo-banner5.jpg'}}">
                                     </a>
                                 </div>
@@ -115,9 +115,9 @@
 
                             <div class="col-12 mb-30">
                                 <!-- banner No.3 -->
-                                <div class="promo-banner-wrap" style="margin-top: 30px;padding-top: 90px;padding-left: 50px">
+                                <div class="promo-banner-wrap" style="margin-top: 30px;">
                                     <a href="{{url('/5/category')}}" class="promo-image-wrap">
-                                        <img src="{{'img/promo_bannerBig.png'}}" alt="Accesories">
+                                        <img src="{{'img/saleBanner.jpg'}}">
                                     </a>
                                 </div>
                             </div>

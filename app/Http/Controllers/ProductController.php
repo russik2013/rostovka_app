@@ -306,7 +306,7 @@ class ProductController extends Controller
             $sex = $this->sexFilter($request->filters);
 
         if($sex == false)
-            $sex = null;
+            $sex = ['Девочка', 'Мальчик'];
 
         if($sex == null) {
             $products_count = Product::where('category_id', '=', $request->category_id)
@@ -331,11 +331,17 @@ class ProductController extends Controller
                 -> count();
         }
 
+
+
+
+
         if($request->category_id == 5){
 
             $products_count = Product::whereNotNull('discount')->count();
 
         }
+
+//        dd([$products_count, $request ->count_on_page]);
         $count_of_page = $products_count / $request ->count_on_page;
 
         return ceil($count_of_page);

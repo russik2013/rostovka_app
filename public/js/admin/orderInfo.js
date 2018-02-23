@@ -88,7 +88,11 @@ function searchResult(searchData, imageUrl) {
             for(var z = 0; z < filterData.length; z++){
                 $('[data-select-id="'+ filterData[z].id +'"]').remove();
                 $('[data-product-id="'+ filterData[z].id +'"] .select-style')[0].innerHTML =
-                    "<div class='form-group select-style'><input class='form-control' type=\"number\" placeholder=\"в ящике\" selected='selected' disabled></div>"
+                    "<div class=\"form-group select-style\"> " +
+                    "<select class='form-control' type=\"number\" disabled data-set='select_box_type'>" +
+                    "<option value='0' data-set='box' selected='selected'>в ящике</option>" +
+                    "</select>"+
+                    "</div>"
             }
         }
     });
@@ -104,7 +108,7 @@ $('.add--product--in').on('click', function () {
 
     for(var z = 0; z < $(checkboxes).length; z++) {
         if ($(checkboxes)[z].checked === true) {
-            checkedProduct = $(checkboxes)[z].parentNode.parentNode.dataset.poductId;
+            checkedProduct = $(checkboxes)[z].parentNode.parentNode.dataset.productId;
             itemCount = $(checkboxes)[z].parentNode.parentNode.children[7].children["0"].value;
             $('.product--list').append('<div class="preloader"><i></i></div>');
 

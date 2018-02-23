@@ -5358,6 +5358,7 @@ product-quantity input[type="number"]::-webkit-inner-spin-button {
 }
 
 .quantityPlus, .quantityMinus {
+    z-index: 120;
     position: absolute;
     right: 0;
     cursor: pointer;
