@@ -130,6 +130,7 @@ class SaleController extends Controller
             if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0){
 
                 $product->prise_default *= $product -> manufacturer ->koorse;
+                $product->prise_default = round( $product->prise_default, 2);
             }
 
 

@@ -150,6 +150,7 @@ class ProductController extends Controller
             if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0){
 
                 $product->prise_default *= $product -> manufacturer ->koorse;
+                $product->prise_default = round( $product->prise_default, 2);
             }
 
             if($product -> manufacturer ->box == 1 ){
@@ -364,6 +365,7 @@ class ProductController extends Controller
             if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0){
 
                 $product->prise_default *= $product -> manufacturer ->koorse;
+                $product->prise_default = round( $product->prise_default, 2);
             }
 
             if($product -> manufacturer ->box == 1 ){
@@ -407,6 +409,7 @@ class ProductController extends Controller
             if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0){
 
                $product->prise_default *= $product -> manufacturer ->koorse;
+                $product->prise_default = round( $product->prise_default, 2);
             }
 
             $product -> full__price = $product -> prise * $product -> box_count;
