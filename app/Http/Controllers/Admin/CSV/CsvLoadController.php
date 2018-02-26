@@ -441,14 +441,14 @@ class CsvLoadController extends Controller
             }
 
 
-            if(isset($manufacturers[$product ->{'brend'}]))
+            if(isset($manufacturers[trim($product ->{'brend'})]))
                 $manufacturer = $manufacturers[$product ->{'brend'}];
             else{
                 $manufacturers = array_merge($manufacturers, $this ->addManufacturer($product ->{'brend'}));
                 $manufacturer = $manufacturers[$product ->{'brend'}];
             }
 
-            if (isset($types[$product ->{'tip_obuvi'}]))
+            if (isset($types[trim($product ->{'tip_obuvi'})]))
                 $type = $types[$product ->{'tip_obuvi'}];
             else{
                 $types = array_merge($types, $this ->addType($product ->{'tip_obuvi'}));
