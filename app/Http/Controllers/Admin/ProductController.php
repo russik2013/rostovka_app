@@ -20,7 +20,7 @@ class ProductController extends Controller
     public function index($name = ""){
 
         $manufactures = Manufacturer::all();
-        $seasons = Season::all();
+        $seasons = Season::where('id', '!=', 5) -> get();
         $types = Type::where('id', '!=', 28) -> get();
 
         if($name != "")

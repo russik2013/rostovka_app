@@ -42,6 +42,9 @@
 
 
                     <select class="sorting__Option seasone_Options col-md-5 col-sm-12 col-xs-12" name="season" onChange="getSeason(event)" style="display: none">
+
+                        <option value="5">Все</option>
+
                         @foreach($seasons as $season)
 
                             <option value="{{$season -> id}}">{{$season -> name}}</option>
