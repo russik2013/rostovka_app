@@ -51,6 +51,9 @@
 
 
                     <select class="sorting__Option type_Options col-md-5 col-sm-12 col-xs-12" name="manufactures" onChange="getManufactures(event)" style="display: none; float: left; margin-right: 5px;">
+
+                        <option value="28">Все</option>
+
                         @foreach($types as $type)
 
                             <option value="{{$type -> id}}">{{$type -> name}}</option>

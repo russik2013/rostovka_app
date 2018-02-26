@@ -21,7 +21,7 @@ class ProductController extends Controller
 
         $manufactures = Manufacturer::all();
         $seasons = Season::all();
-        $types = Type::all();
+        $types = Type::where('id', '!=', 28) -> get();
 
         if($name != "")
 

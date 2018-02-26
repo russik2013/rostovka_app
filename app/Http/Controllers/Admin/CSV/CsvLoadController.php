@@ -585,7 +585,7 @@ class CsvLoadController extends Controller
 
         $manufacturer = new Manufacturer();
 
-        $manufacturer -> name = $brend;
+        $manufacturer -> name = trim($brend);
 
         $manufacturer -> save();
 
@@ -597,7 +597,7 @@ class CsvLoadController extends Controller
 
         $type = new Type();
 
-        $type -> name = $tip;
+        $type -> name = trim($tip);
 
         $type -> save();
 
@@ -609,7 +609,7 @@ class CsvLoadController extends Controller
 
         $season = new Season();
 
-        $season -> name = $sezon;
+        $season -> name = trim($sezon);
 
         $season -> save();
 
