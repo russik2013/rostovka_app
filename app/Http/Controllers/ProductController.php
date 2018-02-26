@@ -108,7 +108,7 @@ class ProductController extends Controller
 
         if($request->category_id == 5){
 
-            $products = Product::whereNotNull('discount')
+            $products = Product::whereNotNull('discount') -> where('discount', '!=', '0%')
                 ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
                 ->with('photo', 'size')->orderBy($order,$orderType)->get();
 
