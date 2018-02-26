@@ -81,15 +81,22 @@ class CsvOrderController extends Controller
 
                     $excel->sheet($key, function ($sheet) use ($value) {
 
+                        for ($i = 1; $i < count($value) + 10; $i++) {
+
+                                $sheet->setHeight($i, 35);
+
+                        }
+
+
                         $sheet->fromArray($value);
 
-                        $sheet->setWidth('A', 8);
-                        $sheet->setWidth('B', 30);
-                        $sheet->setWidth('C', 20);
-                        $sheet->setWidth('D', 30);
-                        $sheet->setWidth('E', 10);
-                        $sheet->setWidth('F', 20);
-                        $sheet->setWidth('G', 20);
+                        $sheet->setWidth('A', 3);
+                        $sheet->setWidth('B', 20);
+                        $sheet->setWidth('C', 22);
+                        $sheet->setWidth('D', 15);
+                        $sheet->setWidth('E', 7);
+                        $sheet->setWidth('F', 12);
+                        $sheet->setWidth('G', 8);
                         $sheet->setWidth('H', 20);
                         $sheet->setWidth('I', 8);
 
