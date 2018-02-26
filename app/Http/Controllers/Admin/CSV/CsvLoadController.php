@@ -440,14 +440,14 @@ class CsvLoadController extends Controller
             }
 
 
-            if(isset($manufacturers[$product ->{'brend'}]))
+            if(isset($manufacturers[trim($product ->{'brend'})]))
                 $manufacturer = $manufacturers[$product ->{'brend'}];
             else{
                 $manufacturers = array_merge($manufacturers, $this ->addManufacturer($product ->{'brend'}));
                 $manufacturer = $manufacturers[$product ->{'brend'}];
             }
 
-            if (isset($types[$product ->{'tip_obuvi'}]))
+            if (isset($types[trim($product ->{'tip_obuvi'})]))
                 $type = $types[$product ->{'tip_obuvi'}];
             else{
                 $types = array_merge($types, $this ->addType($product ->{'tip_obuvi'}));
@@ -585,7 +585,7 @@ class CsvLoadController extends Controller
 
         $manufacturer = new Manufacturer();
 
-        $manufacturer -> name = $brend;
+        $manufacturer -> name = trim($brend);
 
         $manufacturer -> save();
 
@@ -597,7 +597,7 @@ class CsvLoadController extends Controller
 
         $type = new Type();
 
-        $type -> name = $tip;
+        $type -> name = trim($tip);
 
         $type -> save();
 
@@ -609,7 +609,7 @@ class CsvLoadController extends Controller
 
         $season = new Season();
 
-        $season -> name = $sezon;
+        $season -> name = trim($sezon);
 
         $season -> save();
 

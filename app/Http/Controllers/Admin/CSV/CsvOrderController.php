@@ -64,7 +64,7 @@ class CsvOrderController extends Controller
                 $data[$order->shipping_method][] = [
                     "№" => $score[$order->shipping_method],
                     "Фамилия имя отчество" => $order->first_name . ' ' . $order->last_name,
-                    'Город.Номер отделения' => $order->address,
+                    'Город.Номер отделения' => $order->address. ' '. $order -> info,
                     'Номер телефона' => $order->phone,
                     "Сумма" => '',
                     "Кол-во мест" => '',
@@ -81,15 +81,22 @@ class CsvOrderController extends Controller
 
                     $excel->sheet($key, function ($sheet) use ($value) {
 
+                        for ($i = 1; $i < count($value) + 10; $i++) {
+
+                                $sheet->setHeight($i, 35);
+
+                        }
+
+
                         $sheet->fromArray($value);
 
-                        $sheet->setWidth('A', 8);
-                        $sheet->setWidth('B', 30);
-                        $sheet->setWidth('C', 20);
-                        $sheet->setWidth('D', 30);
-                        $sheet->setWidth('E', 10);
-                        $sheet->setWidth('F', 20);
-                        $sheet->setWidth('G', 20);
+                        $sheet->setWidth('A', 3);
+                        $sheet->setWidth('B', 20);
+                        $sheet->setWidth('C', 22);
+                        $sheet->setWidth('D', 15);
+                        $sheet->setWidth('E', 7);
+                        $sheet->setWidth('F', 12);
+                        $sheet->setWidth('G', 8);
                         $sheet->setWidth('H', 20);
                         $sheet->setWidth('I', 8);
 
@@ -148,12 +155,14 @@ class CsvOrderController extends Controller
 
                 foreach ($order->details as $detail) {
 
+                    $time =  explode(' ',  Carbon::now());
+
                     $data[$detail->manufacturer_name][0] = [
 
-                        implode("\r\n", explode(' ',  Carbon::now())),
+                        $time[0],
+                        '',
                         'Заказчик: Rostovka.net '."\r\n".'Сергей тел: 0672533305',
                         'Поставщик: ' . $detail->manufacturer_name . "\r\n".' Ул. Зеленая 1299, Оля Ли',
-                        'QRкод'
 
                     ];
 
@@ -209,10 +218,27 @@ class CsvOrderController extends Controller
                             else
                                 $sheet->setHeight($i, 25);
 
+                            $sheet->getStyle('A'.$i.':I3'.$i)->getAlignment()->applyFromArray(
+                                array('horizontal' => 'center', 'vertical' => 'center')
+                            );
+
+                        }
+
+                        for ($i = 1; $i < count($value) + 2; $i++) {
+
+                            if ($i > 2)
+                                $sheet->setHeight($i, 130);
+                            else
+                                $sheet->setHeight($i, 25);
+
+                            $sheet->getStyle('A'.$i.':I3'.$i)->getAlignment()->applyFromArray(
+                                array('horizontal' => 'center', 'vertical' => 'center')
+                            );
+
                         }
 
                         $sheet->row(1, $value[0]);
-                        $sheet->row(2, array("", "Номер заказа", 'Фото', "Aртикул", "Ящ/рост", "Кол-во", "Пар в Ящ/рост", "Цена за Пару(закуп)", "Сумма"));
+                        $sheet->row(2, array("№", "Номер "."\r\n"."заказа", 'Фото', "Aртикул", "Ящ/рост", "Кол-во", "Пар в Ящ/рост", "Цена за Пару(закуп)", "Сумма"));
 
                         $count = 0;
                         $all_prise = 0;
@@ -238,16 +264,32 @@ class CsvOrderController extends Controller
 
                         }
 
+
                         $sheet->row(2 + $i, array("", "", "", "", "", "", $count, "", $all_prise));
                         $sheet->setWidth('A', 10);
-                        $sheet->setWidth('B', 25);
-                        $sheet->setWidth('C', 25);
-                        $sheet->setWidth('D', 40);
-                        $sheet->setWidth('E', 10);
-                        $sheet->setWidth('F', 10);
-                        $sheet->setWidth('G', 20);
-                        $sheet->setWidth('H', 20);
+                        $sheet->setWidth('B', 8);
+                        $sheet->setWidth('C', 23);
+                        $sheet->setWidth('D', 28);
+                        $sheet->setWidth('E', 8);
+                        $sheet->setWidth('F', 7);
+                        $sheet->setWidth('G', 13);
+                        $sheet->setWidth('H', 18);
                         $sheet->setWidth('I', 8);
+
+                        $sheet->mergeCells('E1:G1');
+
+                        $objDrawing = new PHPExcel_Worksheet_Drawing;
+                        $objDrawing->setPath(public_path('images/viber_image.jpg')); //your image path
+                        $objDrawing->setName('imageRussik');
+                        $objDrawing->setWorksheet($sheet);
+                        $objDrawing->setCoordinates('E1');
+                        $objDrawing->setResizeProportional();
+                        //$objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
+                        $objDrawing->setOffsetY(0);
+                        $objDrawing->setOffsetX(0);
+                        $objDrawing->setWidth(60);
+                        $objDrawing->setHeight(33);
+
 
                         for ($i = 1; $i < count($value); $i++) {
                             //dump($value[$i]);
@@ -327,12 +369,15 @@ class CsvOrderController extends Controller
 
                 foreach ($order->details as $detail) {
 
+                    $time =  explode(' ',  Carbon::now());
+
                     $data[$detail->manufacturer_name][0] = [
 
-                        implode("\r\n", explode(' ',  Carbon::now())),
+                        $time[0],
+                        '',
                         'Заказчик: Rostovka.net '."\r\n".'Сергей тел: 0672533305',
                         'Поставщик: ' . $detail->manufacturer_name . "\r\n".' Ул. Зеленая 1299, Оля Ли',
-                        'QRкод'
+
 
                     ];
 
@@ -360,7 +405,6 @@ class CsvOrderController extends Controller
                     $data[$detail->manufacturer_name][] = [
                         $number,
                         $detail->order_id,
-                        $detail->image,
                         $detail->article,
                         $type,
                         $detail->tovar_in_order_count,
@@ -381,31 +425,57 @@ class CsvOrderController extends Controller
 
                     $excel->sheet($key, function ($sheet) use ($value) {
 
+
+                        for ($i = 1; $i < count($value) + 2; $i++) {
+
+                                $sheet->setHeight($i, 25);
+
+                            $sheet->getStyle('A'.$i.':I3'.$i)->getAlignment()->applyFromArray(
+                                array('horizontal' => 'center', 'vertical' => 'center')
+                            );
+
+                        }
+
                         $sheet->row(1, $value[0]);
-                        $sheet->row(2, array("", "Номер заказа", 'Фото', "Aртикул", "Ящ/рост", "Кол-во", "Пар в Ящ/рост", "Цена за Пару(закуп)", "Сумма"));
+                        $sheet->row(2, array("№", "Номер"."\r\n"."заказа",  "Aртикул", "Ящ/рост", "Кол-во", "Пар в Ящ/рост", "Цена за Пару(закуп)", "Сумма"));
 
                         $count = 0;
                         $all_prise = 0;
+
 
                         for ($i = 1; $i < count($value); $i++) {
 
                             $sheet->row(2 + $i, $value[$i]);
 
-                            $count += $value[$i][6];
-                            $all_prise += $value[$i][8];
+                            $count += $value[$i][5];
+                            $all_prise += $value[$i][7];
 
                         }
 
-                        $sheet->row(2 + $i, array("", "", "", "", "", "", $count, "", $all_prise));
-                        $sheet->setWidth('A', 25);
-                        $sheet->setWidth('B', 40);
-                        $sheet->setWidth('C', 40);
-                        $sheet->setWidth('D', 40);
-                        $sheet->setWidth('E', 10);
-                        $sheet->setWidth('F', 10);
-                        $sheet->setWidth('G', 20);
-                        $sheet->setWidth('H', 20);
+                        $sheet->row(2 + $i, array("", "", "", "", "", $count, "", $all_prise));
+                        $sheet->setWidth('A', 10);
+                        $sheet->setWidth('B', 8);
+                        $sheet->setWidth('C', 28);
+                        $sheet->setWidth('D', 28);
+                        $sheet->setWidth('E', 8);
+                        $sheet->setWidth('F', 7);
+                        $sheet->setWidth('G', 13);
+                        $sheet->setWidth('H', 18);
                         $sheet->setWidth('I', 8);
+
+                        $sheet->mergeCells('E1:G1');
+
+                        $objDrawing = new PHPExcel_Worksheet_Drawing;
+                        $objDrawing->setPath(public_path('images/viber_image.jpg')); //your image path
+                        $objDrawing->setName('imageRussik');
+                        $objDrawing->setWorksheet($sheet);
+                        $objDrawing->setCoordinates('E1');
+                        $objDrawing->setResizeProportional();
+                        //$objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
+                        $objDrawing->setOffsetY(0);
+                        $objDrawing->setOffsetX(0);
+                        $objDrawing->setWidth(60);
+                        $objDrawing->setHeight(33);
 
                     });
 
