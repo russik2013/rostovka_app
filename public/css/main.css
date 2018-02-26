@@ -608,6 +608,20 @@ input::-webkit-inner-spin-button {
   .col-md-12.pull-left.goodsCount_price{
     margin-top: 5px !important;
   }
+
+  .close-icon{display: block !important;}
+
+  .header-main.fixed .navigation-menu{
+    margin-top: -32px !important;
+    top: 50px;
+  }
+
+  .header-main.fixed .logo a{
+    width: 220px !important;
+    margin-top: 8px !important;
+    padding-bottom: 10px;
+  }
+
   .item-price.col-md-6.pull-right.old--price{
     margin-top: 20px !important;
   }
@@ -627,12 +641,21 @@ input::-webkit-inner-spin-button {
   }
   .copyrights p.copyright{padding-left: 3px}
   .logReg_page.regPage h3{padding-left: 10px}
-  .list-page-title{padding-left: 10px; padding-right: 10px}
+  .list-page-title{padding-left: 10px; padding-right: 10px; margin-bottom: 30px}
   .mainforMobile{display: block}
   .logo, .move--to--cart{
     width: 80%;
   }
-  .header-rightside-nav{width: 100%}
+  .header-main .logo{
+    margin-right: -50px;
+    margin-top: 10px;
+  }
+  .header-rightside-nav{
+    float: right;
+    width: 220px !important;
+    margin-top: 25px;
+    margin-right: 20px;
+  }
   .col-md-10.push-md-2.product--block{
     width: 100%;
     padding: 0;
@@ -774,6 +797,7 @@ input::-webkit-inner-spin-button {
   .header-rightside-nav .list-none-ib .cartBl{
     float: right;
     margin-top: 4px !important;
+    margin-left: 10px !important;
   }
 
   .categoryPage .product-list-view .goods_amount{
@@ -834,10 +858,28 @@ input::-webkit-inner-spin-button {
     color: #fff;
     display: block;
     text-transform: uppercase;
+    position: relative;
+    z-index: 99;
+  }
+
+  .sidebar-icon-nav{
+    float: right;
+  }
+
+  .navigation-menu ul{
+    width: 100%;
+  }
+
+  .navigation-menu{
+    position: relative !important;
+    margin: 0 auto;
+    margin-top: -24px;
+    top: 25px;
   }
 
   .category--Filters.active{
     display: block;
+    max-width: 100%;
   }
 
   .close-icon{

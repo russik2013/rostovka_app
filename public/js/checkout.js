@@ -94,7 +94,7 @@ $(document).ready(function() {
                         message: 'Введите корректный адрес эл. почты'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9_@\.]+$/,
+                        regexp: /^[a-zA-Z0-9-_@\.]+$/,
                         message: 'Введите корректный адрес эл. почты'
                     }
                 }

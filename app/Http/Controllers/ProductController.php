@@ -67,7 +67,7 @@ class ProductController extends Controller
                         ->whereIn('season_id', $this->seasonFilter($request->filters))
                         ->whereIn('type_id', $this->typeFilter($request->filters))
                         ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
-                        ->whereIn('size_id', $this->sizeFilter($request->filters))
+                        ->whereIn('size_id', $this->sizeFilter($request->sizes))
                         ->whereIn('sex', $sex)
                         ->where('accessibility', 1)
                         ->where('show_product', 1)
@@ -86,7 +86,7 @@ class ProductController extends Controller
                         ->whereIn('season_id', $this->seasonFilter($request->filters))
                         ->whereIn('type_id', $this->typeFilter($request->filters))
                         ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
-                        ->whereIn('size_id', $this->sizeFilter($request->filters))
+                        ->whereIn('size_id', $this->sizeFilter($request->sizes))
                         ->where('accessibility', 1)
                         ->where('show_product', 1)
                         ->whereIn('sex', $sex)
@@ -110,7 +110,7 @@ class ProductController extends Controller
                         ->whereIn('season_id', $this->seasonFilter($request->filters))
                         ->whereIn('type_id', $this->typeFilter($request->filters))
                         ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
-                        ->whereIn('size_id', $this->sizeFilter($request->filters))
+                        ->whereIn('size_id', $this->sizeFilter($request->sizes))
                         ->whereIn('sex', $sex)
                         ->where('accessibility', 1)
                         ->where('show_product', 1)
@@ -207,25 +207,10 @@ class ProductController extends Controller
         $sizes_min = 0;
         $sizes_max = 0;
 
-        if($filters && !empty($filters)){
-
-            foreach ($filters as $filter){
-
-                if ($filter[2] == 'size') {
-
-                    if($filter[0] == 'size_min')
-                        $sizes_min = $filter[1];
-
-                    if($filter[0] == 'size_max')
-                        $sizes_max = $filter[1];
-
-                }
-
-            }
-
+        if($filters[0]){
+            $sizes_min = $filters[0]['sizeValues'][0];
+            $sizes_max = $filters[0]['sizeValues'][1];
         }
-
-
 
         if($sizes_min != 0 && $sizes_max != 0){
             return Size::where('min', '>=', $sizes_min) -> where('max','<=', $sizes_max)
@@ -314,7 +299,7 @@ class ProductController extends Controller
                 ->whereIn('season_id', $this->seasonFilter($request->filters))
                 ->whereIn('type_id', $this->typeFilter($request->filters))
                 ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
-                ->whereIn('size_id', $this->sizeFilter($request->filters))
+                ->whereIn('size_id', $this->sizeFilter($request->sizes))
                 ->where('accessibility', 1)
                 ->where('show_product', 1)
                 ->where('sex', "!=",'')
@@ -325,7 +310,7 @@ class ProductController extends Controller
                 ->whereIn('season_id', $this->seasonFilter($request->filters))
                 ->whereIn('type_id', $this->typeFilter($request->filters))
                 ->whereIn('manufacturer_id', $this->manufacturerFilter($request->filters))
-                ->whereIn('size_id', $this->sizeFilter($request->filters))
+                ->whereIn('size_id', $this->sizeFilter($request->sizes))
                 ->where('accessibility', 1)
                 ->where('show_product', 1)
                 ->whereIn('sex', $sex)

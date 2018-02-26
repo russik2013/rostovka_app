@@ -11,7 +11,9 @@
     <title>Оптовая продажа женской, мужской и детской обуви в Украине</title>
     <meta name="keywords" content="купить обувь оптом, обувь оптом, обувь оптом одесса, купить обувь оптом в украине, оптовая продажа обуви, 7 км обувь оптом, обувь оптом 7км" />
     <meta name="description" content="Качественная обувь оптом в Одессе доступна в нашем каталоге. Огромный выбор детской, женской, мужской обуви с доставкой по всей Украине." />
-
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
     <!--[if IE]>
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 
@@ -26,6 +28,7 @@
     <link href="{{asset('css/animate.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('css/def.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('css/main.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('css/bootstrap-slider.min.css')}}" rel="stylesheet" type="text/css"/>
     @yield('productLibCSS')
 </head>
 <body class="">
@@ -243,6 +246,7 @@
 <script type="text/javascript" src="{{asset('js/tether.min.js')}}"></script>
 <!--Bootstrap tooltips require Tether (Tether Js)-->
 <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/bootstrap-slider.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/bootstrapvalidator.min.js')}}"></script>
 <!-- bootstrap js -->
 

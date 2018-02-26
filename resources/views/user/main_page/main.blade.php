@@ -45,7 +45,6 @@
 
     <!-- Page Content Wraper -->
     <div class="page-content-wraper">
-
         <!-- Product (Tab with Slider) -->
         <section class="section-padding-b mainpageGoodsBlock">
             <div class="container larger">

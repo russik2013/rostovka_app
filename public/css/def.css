@@ -1948,8 +1948,6 @@ form label.error {
 
 @media (max-width: 1220px) {
     .header-topbar, .header-main {
-        padding-top: 20px;
-        padding-bottom: 20px;
         padding-left: 10px;
         padding-right: 10px;
     }
@@ -1957,8 +1955,6 @@ form label.error {
 
 @media (max-width: 1080px) {
     .header-topbar, .header-main {
-        padding-top: 20px;
-        padding-bottom: 20px;
         padding-left: 10px;
         padding-right: 10px;
         text-align: center;
@@ -1985,10 +1981,7 @@ form label.error {
 
     .list-none-ib{
         width: 100%;
-        padding-top: 15px;
-        padding-bottom: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-bottom: 10px;;
     }
 
     .list-none-ib li{
@@ -2399,7 +2392,7 @@ form label.error {
     display: none;
 }
 /*Mobile style's*/
-@media only screen and (max-width: 979px) {
+@media only screen and (max-width: 890px) {
     .mobileNav{
         position: absolute;
         top: 0;
@@ -2409,6 +2402,11 @@ form label.error {
         height: auto;
         z-index: 99;
         display: none;
+    }
+
+    .header-topbar{
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
     .mobileNav.display{
         display: block;
@@ -2422,6 +2420,12 @@ form label.error {
         text-transform: uppercase;
         border-bottom: 1px solid rgba(0, 0, 0, 0.0784313725490196);
     }
+
+    .header-main.fixed .logo a{
+        width: 200px !important;
+        margin-top: 20px !important;
+    }
+
     .navigation-menu {
         display: block;
         text-transform: uppercase;
@@ -2430,15 +2434,17 @@ form label.error {
         width: auto;
         float: left;
         position: absolute;
-        top: -50px;
         left: 20px;
+        top: -123px !important;
+        background: #1665af;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 3px;
     }
 
     .menu-mobile:after{
         content: none;
     }
-
-
 
     .navigation-menu ul > li > a {
         padding: 8px 15px;
@@ -2508,6 +2514,27 @@ form label.error {
 
     .nav-dropdown > .container {
         width: 100%;
+    }
+
+    .header-main .logo{
+        margin: 0 auto;
+        text-align: center !important;
+        float: left;
+        width: 0 !important;
+        margin-right: 0 !important;
+        margin-left: 20px;
+    }
+    .header-main .logo a{
+        margin-top: 20px !important;
+        margin-top: 5px;
+        width: 200px;
+        display: block;
+        left: 0;
+        margin-left: -70px;
+    }
+
+    .header-rightside-nav{
+        margin-top: 35px !important;
     }
 }
 
@@ -3940,6 +3967,13 @@ img.tp-caption {
 .product-list-item {
     margin-top: 30px;
     padding-bottom: 30px;
+    width: 100%;
+}
+
+@media (min-width: 280px) and (max-width: 1200px) {
+    .product-list-item{
+        margin: 0;
+    }
 }
 
 .product-list-item .product-item-element {
@@ -7059,6 +7093,9 @@ fieldset input:hover{
 .filter--mobileButton{
     display: none;
 }
+.header{
+    height: auto !important;
+}
 
 .error--message{
     position: relative;
@@ -7122,3 +7159,29 @@ fieldset input:hover{
     float: none;
     margin: 0 auto;
 }
+
+.slider-selection{
+    background: #1665af !important;
+}
+.slider.slider-horizontal .slider-track{
+    height: 5px !important;
+    margin-top: -2px !important;
+}
+
+.slider.slider-horizontal{
+    margin-top: 30px;
+}
+.slider .tooltip.top{
+    z-index: 99 !important;
+    border-radius: 0 !important;
+}
+.tooltip-inner{
+    background-color: #1764af;
+}
+.slider-track{
+    background-image: -webkit-linear-gradient(top,#eeeeee 0,#eeeeee 100%);
+    background-image: -o-linear-gradient(top,#eeeeee 0,#eeeeee 100%);
+    background-image: linear-gradient(to bottom,#eeeeee 0,#eeeeee 100%);
+}
+.tooltip.tooltip-main.top{
+    opacity: 1;}

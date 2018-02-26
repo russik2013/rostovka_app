@@ -1,4 +1,4 @@
-$('.removePrudct').on('click', function () {
+$('.removePrudct').on('click', function (){
     var productName = $(this)[0].parentElement.parentNode.children[1].innerText,
         productID = $(this)[0].parentNode.parentNode.dataset.id,
         productRemove = $(this)[0].parentNode.parentNode;

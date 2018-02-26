@@ -24,7 +24,6 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
             getProductData(targetID, itemQuant, domItem_price);
         }
         else {
-            console.log(targetID);
             for (var l = 0; l < Cart_data[0].row.length; l++){
                 if(targetID === Cart_data[0].row[l].buy_real_id){
                     targetID = l;
@@ -91,7 +90,6 @@ function setUrl() {
     $('.cart--url').attr("href", url);
 }
 
-
 function getProductData(targetID, itemQuant, domItem_price) {
     var poductinnerID = Number ($.find('[data-prodid]')[0].dataset.prodid),
         productData = [];
@@ -144,7 +142,6 @@ function getProductData(targetID, itemQuant, domItem_price) {
 }
 
 function additocart(targetID, itemQuant, domItem_price) {
-    console.log(targetID);
     Cart_data[0].row[targetID].quantity += itemQuant;
     Cart_data[0].row[targetID].quantityPrice = Cart_data[0].row[targetID].quantity * domItem_price;
     Cart_data[0].row[targetID].price = domItem_price;
@@ -166,12 +163,10 @@ function checkDublicate(event, targetID, checkif_true) {
         for (var i = 0; i < Cart_data[0].row.length; i++){
             if (targetID === Number (Cart_data[0].row[i].productID)){
                 checkif_true = false;
-                console.log(targetID);
                 dublicate(targetID, Cart_data);
                 break;
             }
             else{
-                console.log(targetID);
                 checkif_true = true;
             }
         }
@@ -240,14 +235,13 @@ function addtoCart(event, targetID) {
 
     if(topSalesActive === true){
         data = TopSallesData;
+
         for (var a = 0; a < data.length; a++){
             if(targetID === data[a].real_id){
                 targetID = a;
             }
         }
     } else {
-        // data = data;
-        //console.log(data);
         for (var z = 0; z < data.length; z++){
             if(targetID === data[z].real_id){
                 targetID = z;
@@ -256,7 +250,6 @@ function addtoCart(event, targetID) {
         }
     }
 
-    //console.log(data[targetID]);
     productIndex = Number (data[targetID].real_id);
     gTitle = data[targetID].name;
     selected_quantity = 1;
