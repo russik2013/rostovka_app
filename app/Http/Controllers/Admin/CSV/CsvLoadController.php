@@ -200,7 +200,7 @@ class CsvLoadController extends Controller
 
             $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[$product ->{'brend'}]);
 
-            if($manufacturersInfoToProduct ->koorse != "" || $manufacturersInfoToProduct ->koorse != 0){
+            if($manufacturersInfoToProduct ->koorse != "" || $manufacturersInfoToProduct ->koorse != 0 && $product->valyuta != "грн"){
 
                 $priseWithDiscount *= $manufacturersInfoToProduct ->koorse;
 
@@ -272,7 +272,7 @@ class CsvLoadController extends Controller
                 'manufacturer_id' => $manufacturer,
                 'category_id' => $categoryId,
                 'show_product' => $product ->nalichie,
-                'currency' =>  'грн',
+                'currency' =>  $product->valyuta,
                 'full_description' => $product ->opisanie,
                 'discount' => $product ->skidka,
                 'accessibility' => $product ->nalichie,
@@ -414,6 +414,8 @@ class CsvLoadController extends Controller
 
     protected function formInsertArray($products){
 
+        dd($products);
+
         $types = Type::all() -> pluck('id', 'name') -> toArray();
         $seasons = Season::all() -> pluck('id', 'name') -> toArray();
         $sizes = Size::all()  -> pluck('id', 'name') -> toArray();
@@ -468,7 +470,7 @@ class CsvLoadController extends Controller
 
             $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[$product ->{'brend'}]);
 
-            if($manufacturersInfoToProduct ->koorse != "" && $manufacturersInfoToProduct ->koorse != 0){
+            if($manufacturersInfoToProduct ->koorse != "" && $manufacturersInfoToProduct ->koorse != 0 && $product->valyuta != "грн"){
 
                 $priseWithDiscount *= $manufacturersInfoToProduct ->koorse;
 
@@ -540,7 +542,7 @@ class CsvLoadController extends Controller
                                 'manufacturer_id' => $manufacturer,
                                 'category_id' => $categoryId,
                                 'show_product' => $product ->nalichie,
-                                'currency' =>  'грн',
+                                'currency' =>  $product->valyuta,
                                 'full_description' => $product ->opisanie,
                                 'discount' => $product ->skidka,
                                 'accessibility' => $product ->nalichie,
