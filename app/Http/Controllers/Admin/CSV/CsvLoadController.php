@@ -155,13 +155,16 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
+            $product -> kategoriya = ucfirst(trim($product -> kategoriya));
+
             if($product -> kategoriya == 'Мужская')
                 $sex = 'Мужской';
             if($product -> kategoriya == 'Женская')
                 $sex = 'Женский';
-            if($product -> kategoriya == 'Детская')
-                $sex = $product -> pol;
-
+            if($product -> kategoriya == 'Детская') {
+                $product->pol = ucfirst(trim($product->pol));
+                $sex = $product->pol;
+            }
 
 
             if(isset($sizes[$product -> razmer]))
@@ -187,11 +190,11 @@ class CsvLoadController extends Controller
                 $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
             }
 
-            if(isset($seasons[$product ->{'sezon'}]))
-                $season = $seasons[$product ->{'sezon'}];
+            if(isset($seasons[ucfirst(trim($product ->{'sezon'}))]))
+                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
             else{
                 $seasons = array_merge($seasons, $this ->addSeason($product ->{'sezon'}));
-                $season = $seasons[$product ->{'sezon'}];
+                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
             }
 
 
@@ -426,15 +429,17 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
+            $product -> kategoriya = ucfirst(trim($product -> kategoriya));
+
             if($product -> kategoriya == 'Мужская')
                 $sex = 'Мужской';
             if($product -> kategoriya == 'Женская')
                 $sex = 'Женский';
-            if($product -> kategoriya == 'Детская')
-                $sex = $product -> pol;
+            if($product -> kategoriya == 'Детская') {
+                $product -> pol = ucfirst(trim($product -> pol));
+                $sex = $product->pol;
+            }
 
-
-           // dd([ucfirst(trim($product ->{'brend'})), ucfirst(trim($product ->{'tip_obuvi'}))]);
 
             if(isset($sizes[$product -> razmer]))
                 $size = $sizes[$product -> razmer];
@@ -458,11 +463,11 @@ class CsvLoadController extends Controller
                 $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
             }
 
-            if(isset($seasons[$product ->{'sezon'}]))
-                $season = $seasons[$product ->{'sezon'}];
+            if(isset($seasons[ucfirst(trim($product ->{'sezon'}))]))
+                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
             else{
                 $seasons = array_merge($seasons, $this ->addSeason($product ->{'sezon'}));
-                $season = $seasons[$product ->{'sezon'}];
+                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
             }
 
 

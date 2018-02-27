@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8656dcb1-f648-4b1e-bf22-139918d6aa81" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/admin/mail/smallMail.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.env" afterPath="$PROJECT_DIR$/.env" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SaleController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SaleController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -128,7 +124,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="298">
-              <caret line="337" column="12" lean-forward="false" selection-start-line="337" selection-start-column="10" selection-end-line="337" selection-end-column="12" />
+              <caret line="340" column="12" lean-forward="false" selection-start-line="340" selection-start-column="10" selection-end-line="340" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -188,7 +184,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>filterPro</find>
       <find>productsUpdate</find>
       <find>show_product</find>
       <find>photo_url</find>
@@ -205,7 +200,6 @@
       <find>_</find>
       <find>finder</find>
       <find>Женская</find>
-      <find>formInsertArray</find>
       <find>Женской</find>
       <find>sexFilter</find>
       <find>Женский</find>
@@ -217,6 +211,8 @@
       <find>addType</find>
       <find>addManufacturer</find>
       <find>tri</find>
+      <find>ins</find>
+      <find>formInsertArray</find>
       <find>dd</find>
     </findStrings>
     <replaceStrings>
@@ -1012,14 +1008,7 @@
       <workItem from="1519392378400" duration="6322000" />
       <workItem from="1519643534850" duration="1946000" />
       <workItem from="1519652956298" duration="3817000" />
-      <workItem from="1519720474217" duration="4209000" />
-    </task>
-    <task id="LOCAL-00052" summary="update scv download v0.2.7">
-      <created>1518449662061</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1518449662061</updated>
+      <workItem from="1519720474217" duration="4668000" />
     </task>
     <task id="LOCAL-00053" summary="update scv download v0.2.7">
       <created>1518449836491</created>
@@ -1357,11 +1346,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519721859918</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="update currency v0.3.5">
+      <created>1519726191485</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1519726191486</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="793260000" />
+    <option name="totallyTimeSpent" value="793719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
@@ -1906,7 +1902,7 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
-          <caret line="337" column="12" lean-forward="false" selection-start-line="337" selection-start-column="10" selection-end-line="337" selection-end-column="12" />
+          <caret line="340" column="12" lean-forward="false" selection-start-line="340" selection-start-column="10" selection-end-line="340" selection-end-column="12" />
           <folding />
         </state>
       </provider>
