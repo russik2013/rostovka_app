@@ -50,8 +50,10 @@ class CsvDownloadController extends Controller
 
                 $i++;
 
-                if($product -> photo)
-                    $photo_one = $product -> photo -> photo_url;
+                if($product -> photo) {
+                    $photo_name = explode('.', $product->photo->photo_url);
+                    $photo_one = $photo_name[0];
+                }
                 else $photo_one = '';
 
                 if($product->size)

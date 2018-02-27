@@ -10,9 +10,12 @@ use App\ProductPhotos;
 use App\Season;
 use App\Size;
 use App\Type;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 use Maatwebsite\Excel\Facades\Excel;
+
 use ZipArchive;
 use Illuminate\Support\Facades\File;
 
@@ -155,13 +158,16 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
+            $product -> kategoriya = ucfirst(trim($product -> kategoriya));
+
             if($product -> kategoriya == 'Мужская')
                 $sex = 'Мужской';
             if($product -> kategoriya == 'Женская')
                 $sex = 'Женский';
-            if($product -> kategoriya == 'Детская')
-                $sex = $product -> pol;
-
+            if($product -> kategoriya == 'Детская') {
+                $product->pol = ucfirst(trim($product->pol));
+                $sex = $product->pol;
+            }
 
 
             if(isset($sizes[$product -> razmer]))
@@ -172,26 +178,26 @@ class CsvLoadController extends Controller
             }
 
 
-            if(isset($manufacturers[$product ->{'brend'}]))
-                $manufacturer = $manufacturers[$product ->{'brend'}];
+            if(isset($manufacturers[ ucfirst(trim($product ->{'brend'}))]))
+                $manufacturer = $manufacturers[ ucfirst(trim($product ->{'brend'}))];
             else{
                 $manufacturers = array_merge($manufacturers, $this ->addManufacturer($product ->{'brend'}));
-                $manufacturer = $manufacturers[$product ->{'brend'}];
+                $manufacturer = $manufacturers[ ucfirst(trim($product ->{'brend'}))];
             }
 
 
-            if (isset($types[$product ->{'tip_obuvi'}]))
-                $type = $types[$product ->{'tip_obuvi'}];
+            if (isset($types[ucfirst(trim($product ->{'tip_obuvi'}))]))
+                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
             else{
                 $types = array_merge($types, $this ->addType($product ->{'tip_obuvi'}));
-                $type = $types[$product ->{'tip_obuvi'}];
+                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
             }
 
-            if(isset($seasons[$product ->{'sezon'}]))
-                $season = $seasons[$product ->{'sezon'}];
+            if(isset($seasons[ucfirst(trim($product ->{'sezon'}))]))
+                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
             else{
                 $seasons = array_merge($seasons, $this ->addSeason($product ->{'sezon'}));
-                $season = $seasons[$product ->{'sezon'}];
+                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
             }
 
 
@@ -200,7 +206,7 @@ class CsvLoadController extends Controller
 
             $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[$product ->{'brend'}]);
 
-            if($manufacturersInfoToProduct ->koorse != "" || $manufacturersInfoToProduct ->koorse != 0){
+            if($manufacturersInfoToProduct ->koorse != "" || $manufacturersInfoToProduct ->koorse != 0 && $product->valyuta == "дол"){
 
                 $priseWithDiscount *= $manufacturersInfoToProduct ->koorse;
 
@@ -272,7 +278,7 @@ class CsvLoadController extends Controller
                 'manufacturer_id' => $manufacturer,
                 'category_id' => $categoryId,
                 'show_product' => $product ->nalichie,
-                'currency' =>  'грн',
+                'currency' =>  $product->valyuta,
                 'full_description' => $product ->opisanie,
                 'discount' => $product ->skidka,
                 'accessibility' => $product ->nalichie,
@@ -312,6 +318,7 @@ class CsvLoadController extends Controller
         
         else {
 
+            //dd($this->formInsertArray($products));
             Product::insert($this->formInsertArray($products));
 
             ProductPhotos::insert($this->formPhotoInsertArray($request, $products));
@@ -329,7 +336,7 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
-            $products_mass[$product ->artikul.' '.$product ->{'brend'}] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
+            $products_mass[$product ->artikul.' '.ucfirst(trim($product ->{'brend'}))] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
 
         }
 
@@ -341,13 +348,20 @@ class CsvLoadController extends Controller
 
             foreach ($photo_to_product_value[0] as $item){
                 if(is_numeric($item)){
-                    if($item && file_exists('../images/products/'.(integer)$item.'.jpg'))
-                        File::move('../images/products/'.(integer)$item.'.jpg', 'images/products/' . $data_base_products[$key]."_". $item.'.jpg');
-
+                    if($item && file_exists('../images/products/'.(integer)$item.'.jpg')) {
+                        File::move('../images/products/' . (integer)$item . '.jpg', 'images/products/' . $data_base_products[$key] . "_" . $item . '.jpg');
+                        $img = Image::make(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
+                        $img -> insert(public_path('images/марка.png'), 'center');
+                        $img -> save(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
+                    }
                 }else{
-                    if($item && file_exists('../images/products/'.$item.'.jpg'))
-                        File::move('../images/products/'.$item.'.jpg', 'images/products/' . $data_base_products[$key]."_". $item.'.jpg');
-
+                    if($item && file_exists('../images/products/'.$item.'.jpg')) {
+                        File::move('../images/products/' . $item . '.jpg', 'images/products/' . $data_base_products[$key] . "_" . $item . '.jpg');
+                        $img = Image::make(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
+                        $img -> insert(public_path('images/марка.png'), 'center');
+                        $img -> save(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
+                        //$objDrawing->setPath(public_path('images/viber_image.jpg')); //your image path
+                    }
                 }
 
             }
@@ -368,7 +382,7 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
-            $products_mass[$product ->artikul.' '.$product ->{'brend'}] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
+            $products_mass[$product ->artikul.' '.ucfirst(trim($product ->{'brend'}))] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
 
         }
 
@@ -414,6 +428,8 @@ class CsvLoadController extends Controller
 
     protected function formInsertArray($products){
 
+        //dd($products);
+
         $types = Type::all() -> pluck('id', 'name') -> toArray();
         $seasons = Season::all() -> pluck('id', 'name') -> toArray();
         $sizes = Size::all()  -> pluck('id', 'name') -> toArray();
@@ -424,14 +440,16 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
+            $product -> kategoriya = ucfirst(trim($product -> kategoriya));
+
             if($product -> kategoriya == 'Мужская')
                 $sex = 'Мужской';
             if($product -> kategoriya == 'Женская')
                 $sex = 'Женский';
-            if($product -> kategoriya == 'Детская')
-                $sex = $product -> pol;
-
-
+            if($product -> kategoriya == 'Детская') {
+                $product -> pol = ucfirst(trim($product -> pol));
+                $sex = $product->pol;
+            }
 
             if(isset($sizes[$product -> razmer]))
                 $size = $sizes[$product -> razmer];
@@ -441,34 +459,34 @@ class CsvLoadController extends Controller
             }
 
 
-            if(isset($manufacturers[trim($product ->{'brend'})]))
-                $manufacturer = $manufacturers[$product ->{'brend'}];
+            if(isset($manufacturers[ucfirst(trim($product ->{'brend'}))]))
+                $manufacturer = $manufacturers[ucfirst(trim($product ->{'brend'}))];
             else{
                 $manufacturers = array_merge($manufacturers, $this ->addManufacturer($product ->{'brend'}));
-                $manufacturer = $manufacturers[$product ->{'brend'}];
+                $manufacturer = $manufacturers[ucfirst(trim($product ->{'brend'}))];
             }
 
-            if (isset($types[trim($product ->{'tip_obuvi'})]))
-                $type = $types[$product ->{'tip_obuvi'}];
+            if (isset($types[ucfirst(trim($product ->{'tip_obuvi'}))]))
+                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
             else{
                 $types = array_merge($types, $this ->addType($product ->{'tip_obuvi'}));
-                $type = $types[$product ->{'tip_obuvi'}];
+                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
             }
 
-            if(isset($seasons[$product ->{'sezon'}]))
-                $season = $seasons[$product ->{'sezon'}];
+            if(isset($seasons[ucfirst(trim($product ->{'sezon'}))]))
+                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
             else{
                 $seasons = array_merge($seasons, $this ->addSeason($product ->{'sezon'}));
-                $season = $seasons[$product ->{'sezon'}];
+                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
             }
 
 
 
             $priseWithDiscount = $product ->tsena_prodazhi;
 
-            $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[$product ->{'brend'}]);
+            $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[ucfirst(trim($product ->{'brend'}))]);
 
-            if($manufacturersInfoToProduct ->koorse != "" && $manufacturersInfoToProduct ->koorse != 0){
+            if($manufacturersInfoToProduct ->koorse != "" && $manufacturersInfoToProduct ->koorse != 0 && $product->valyuta == "дол"){
 
                 $priseWithDiscount *= $manufacturersInfoToProduct ->koorse;
 
@@ -514,6 +532,7 @@ class CsvLoadController extends Controller
 
             }
 
+
             switch ($product ->kategoriya){
 
                 case "Детская":
@@ -530,9 +549,8 @@ class CsvLoadController extends Controller
 
             }
 
-
             $insert_array[] = [ 'article' => $product ->artikul,
-                                'name' => $product ->artikul.' '.$product ->{'brend'},     ///////////////////////////// уточнить
+                                'name' => $product ->artikul.' '.ucfirst(trim($product ->{'brend'})),     ///////////////////////////// уточнить
                                 'rostovka_count' => $product ->{"min._kol"},
                                 'box_count' => $product ->kol_v_yashchike,
                                 'prise_default' => $product ->tsena_prodazhi,
@@ -540,7 +558,7 @@ class CsvLoadController extends Controller
                                 'manufacturer_id' => $manufacturer,
                                 'category_id' => $categoryId,
                                 'show_product' => $product ->nalichie,
-                                'currency' =>  'грн',
+                                'currency' =>  $product->valyuta,
                                 'full_description' => $product ->opisanie,
                                 'discount' => $product ->skidka,
                                 'accessibility' => $product ->nalichie,
@@ -585,7 +603,7 @@ class CsvLoadController extends Controller
 
         $manufacturer = new Manufacturer();
 
-        $manufacturer -> name = trim($brend);
+        $manufacturer -> name =ucfirst(trim($brend));
 
         $manufacturer -> save();
 
@@ -597,7 +615,7 @@ class CsvLoadController extends Controller
 
         $type = new Type();
 
-        $type -> name = trim($tip);
+        $type -> name = ucfirst(trim($tip));
 
         $type -> save();
 
@@ -609,7 +627,7 @@ class CsvLoadController extends Controller
 
         $season = new Season();
 
-        $season -> name = trim($sezon);
+        $season -> name = $sezon;
 
         $season -> save();
 
