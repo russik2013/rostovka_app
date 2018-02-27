@@ -108,6 +108,8 @@
 
                                 @foreach($products as $product)
 
+
+
                                     <tr data-id="{{$product -> id}}">
                                         <td style="max-width: 80px;">
                                             @if($product -> photo )
@@ -141,6 +143,8 @@
                     </div>
 
                     {{$products->links()}}
+
+
                 </div>
             </div>
         </div>
