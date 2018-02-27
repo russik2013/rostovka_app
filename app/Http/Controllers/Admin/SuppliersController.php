@@ -56,7 +56,7 @@ class SuppliersController extends Controller
 
             if($manufacturer ->koorse != "" && $manufacturer ->koorse != 0){
 
-                DB::update('update products set prise = prise * ? where manufacturer_id = ? AND currency != "грн"',
+                DB::update('update products set prise = prise * ? where manufacturer_id = ? AND currency = "дол"',
                     [$manufacturer ->koorse,$manufacturer -> id]);
 
             }

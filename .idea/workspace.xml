@@ -93,8 +93,8 @@
       <file leaf-file-name="CsvLoadController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="472" column="132" lean-forward="true" selection-start-line="472" selection-start-column="103" selection-end-line="472" selection-end-column="132" />
+            <state relative-caret-position="385">
+              <caret line="202" column="131" lean-forward="false" selection-start-line="202" selection-start-column="131" selection-end-line="202" selection-end-column="131" />
               <folding />
             </state>
           </provider>
@@ -104,17 +104,17 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/SuppliersController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="388">
-              <caret line="58" column="113" lean-forward="false" selection-start-line="58" selection-start-column="92" selection-end-line="58" selection-end-column="113" />
+              <caret line="58" column="111" lean-forward="true" selection-start-line="58" selection-start-column="108" selection-end-line="58" selection-end-column="111" />
               <folding>
-                <marker date="1519721765000" expanded="true" signature="1295:1362" ph="update produ... " />
-                <marker date="1519721765000" expanded="true" signature="1496:1559" ph="update produ... " />
-                <marker date="1519721765000" expanded="true" signature="1496:1575" ph="update produ... " />
-                <marker date="1519721765000" expanded="true" signature="1496:1581" ph="update produ... " />
-                <marker date="1519721765000" expanded="true" signature="1496:1649" ph="update produ... " />
-                <marker date="1519721765000" expanded="true" signature="1909:1972" ph="update produ... " />
-                <marker date="1519721765000" expanded="true" signature="2221:2296" ph="update produ... " />
-                <marker date="1519721765000" expanded="true" signature="2695:2759" ph="update produ... " />
-                <marker date="1519721765000" expanded="true" signature="3024:3099" ph="update produ... " />
+                <marker date="1519721849000" expanded="true" signature="1295:1362" ph="update produ... " />
+                <marker date="1519721849000" expanded="true" signature="1496:1559" ph="update produ... " />
+                <marker date="1519721849000" expanded="true" signature="1496:1574" ph="update produ... " />
+                <marker date="1519721849000" expanded="true" signature="1496:1580" ph="update produ... " />
+                <marker date="1519721849000" expanded="true" signature="1496:1648" ph="update produ... " />
+                <marker date="1519721849000" expanded="true" signature="1908:1971" ph="update produ... " />
+                <marker date="1519721849000" expanded="true" signature="2220:2295" ph="update produ... " />
+                <marker date="1519721849000" expanded="true" signature="2694:2758" ph="update produ... " />
+                <marker date="1519721849000" expanded="true" signature="3023:3098" ph="update produ... " />
               </folding>
             </state>
           </provider>
@@ -239,8 +239,8 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/product/products.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvOrderController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/SuppliersController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" />
       </list>
     </option>
   </component>
@@ -928,14 +928,7 @@
       <workItem from="1519392378400" duration="6322000" />
       <workItem from="1519643534850" duration="1946000" />
       <workItem from="1519652956298" duration="3817000" />
-      <workItem from="1519720474217" duration="1129000" />
-    </task>
-    <task id="LOCAL-00050" summary="update scv download v0.2.7">
-      <created>1518446146577</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1518446146577</updated>
+      <workItem from="1519720474217" duration="1216000" />
     </task>
     <task id="LOCAL-00051" summary="update scv download v0.2.7">
       <created>1518448354417</created>
@@ -1273,11 +1266,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519661698832</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="update currency v0.3.5">
+      <created>1519721789974</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1519721789974</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="790180000" />
+    <option name="totallyTimeSpent" value="790267000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
@@ -1344,7 +1344,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Cart ended" />
     <MESSAGE value="Cart update" />
     <MESSAGE value="Category update" />
     <MESSAGE value="Cart update v0.0.5" />
@@ -1369,7 +1368,8 @@
     <MESSAGE value="update scv download v0.3.3" />
     <MESSAGE value="update scv download v0.3.4" />
     <MESSAGE value="update scv download v0.3.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="update scv download v0.3.5" />
+    <MESSAGE value="update currency v0.3.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="update currency v0.3.5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1766,8 +1766,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="472" column="132" lean-forward="true" selection-start-line="472" selection-start-column="103" selection-end-line="472" selection-end-column="132" />
+        <state relative-caret-position="385">
+          <caret line="202" column="131" lean-forward="false" selection-start-line="202" selection-start-column="131" selection-end-line="202" selection-end-column="131" />
           <folding />
         </state>
       </provider>
@@ -1775,17 +1775,17 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/SuppliersController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="388">
-          <caret line="58" column="113" lean-forward="false" selection-start-line="58" selection-start-column="92" selection-end-line="58" selection-end-column="113" />
+          <caret line="58" column="111" lean-forward="true" selection-start-line="58" selection-start-column="108" selection-end-line="58" selection-end-column="111" />
           <folding>
-            <marker date="1519721765000" expanded="true" signature="1295:1362" ph="update produ... " />
-            <marker date="1519721765000" expanded="true" signature="1496:1559" ph="update produ... " />
-            <marker date="1519721765000" expanded="true" signature="1496:1575" ph="update produ... " />
-            <marker date="1519721765000" expanded="true" signature="1496:1581" ph="update produ... " />
-            <marker date="1519721765000" expanded="true" signature="1496:1649" ph="update produ... " />
-            <marker date="1519721765000" expanded="true" signature="1909:1972" ph="update produ... " />
-            <marker date="1519721765000" expanded="true" signature="2221:2296" ph="update produ... " />
-            <marker date="1519721765000" expanded="true" signature="2695:2759" ph="update produ... " />
-            <marker date="1519721765000" expanded="true" signature="3024:3099" ph="update produ... " />
+            <marker date="1519721849000" expanded="true" signature="1295:1362" ph="update produ... " />
+            <marker date="1519721849000" expanded="true" signature="1496:1559" ph="update produ... " />
+            <marker date="1519721849000" expanded="true" signature="1496:1574" ph="update produ... " />
+            <marker date="1519721849000" expanded="true" signature="1496:1580" ph="update produ... " />
+            <marker date="1519721849000" expanded="true" signature="1496:1648" ph="update produ... " />
+            <marker date="1519721849000" expanded="true" signature="1908:1971" ph="update produ... " />
+            <marker date="1519721849000" expanded="true" signature="2220:2295" ph="update produ... " />
+            <marker date="1519721849000" expanded="true" signature="2694:2758" ph="update produ... " />
+            <marker date="1519721849000" expanded="true" signature="3023:3098" ph="update produ... " />
           </folding>
         </state>
       </provider>

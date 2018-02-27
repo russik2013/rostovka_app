@@ -200,7 +200,7 @@ class CsvLoadController extends Controller
 
             $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[$product ->{'brend'}]);
 
-            if($manufacturersInfoToProduct ->koorse != "" || $manufacturersInfoToProduct ->koorse != 0 && $product->valyuta != "грн"){
+            if($manufacturersInfoToProduct ->koorse != "" || $manufacturersInfoToProduct ->koorse != 0 && $product->valyuta == "дол"){
 
                 $priseWithDiscount *= $manufacturersInfoToProduct ->koorse;
 
@@ -470,7 +470,7 @@ class CsvLoadController extends Controller
 
             $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[$product ->{'brend'}]);
 
-            if($manufacturersInfoToProduct ->koorse != "" && $manufacturersInfoToProduct ->koorse != 0 && $product->valyuta != "грн"){
+            if($manufacturersInfoToProduct ->koorse != "" && $manufacturersInfoToProduct ->koorse != 0 && $product->valyuta == "дол"){
 
                 $priseWithDiscount *= $manufacturersInfoToProduct ->koorse;
 
