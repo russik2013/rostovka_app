@@ -10,9 +10,12 @@ use App\ProductPhotos;
 use App\Season;
 use App\Size;
 use App\Type;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 use Maatwebsite\Excel\Facades\Excel;
+
 use ZipArchive;
 use Illuminate\Support\Facades\File;
 
@@ -315,6 +318,7 @@ class CsvLoadController extends Controller
         
         else {
 
+            //dd($this->formInsertArray($products));
             Product::insert($this->formInsertArray($products));
 
             ProductPhotos::insert($this->formPhotoInsertArray($request, $products));
@@ -332,7 +336,7 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
-            $products_mass[$product ->artikul.' '.$product ->{'brend'}] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
+            $products_mass[$product ->artikul.' '.ucfirst(trim($product ->{'brend'}))] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
 
         }
 
@@ -344,13 +348,20 @@ class CsvLoadController extends Controller
 
             foreach ($photo_to_product_value[0] as $item){
                 if(is_numeric($item)){
-                    if($item && file_exists('../images/products/'.(integer)$item.'.jpg'))
-                        File::move('../images/products/'.(integer)$item.'.jpg', 'images/products/' . $data_base_products[$key]."_". $item.'.jpg');
-
+                    if($item && file_exists('../images/products/'.(integer)$item.'.jpg')) {
+                        File::move('../images/products/' . (integer)$item . '.jpg', 'images/products/' . $data_base_products[$key] . "_" . $item . '.jpg');
+                        $img = Image::make(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
+                        $img -> insert(public_path('images/марка.png'), 'center');
+                        $img -> save(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
+                    }
                 }else{
-                    if($item && file_exists('../images/products/'.$item.'.jpg'))
-                        File::move('../images/products/'.$item.'.jpg', 'images/products/' . $data_base_products[$key]."_". $item.'.jpg');
-
+                    if($item && file_exists('../images/products/'.$item.'.jpg')) {
+                        File::move('../images/products/' . $item . '.jpg', 'images/products/' . $data_base_products[$key] . "_" . $item . '.jpg');
+                        $img = Image::make(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
+                        $img -> insert(public_path('images/марка.png'), 'center');
+                        $img -> save(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
+                        //$objDrawing->setPath(public_path('images/viber_image.jpg')); //your image path
+                    }
                 }
 
             }
@@ -371,7 +382,7 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
-            $products_mass[$product ->artikul.' '.$product ->{'brend'}] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
+            $products_mass[$product ->artikul.' '.ucfirst(trim($product ->{'brend'}))] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
 
         }
 
@@ -440,7 +451,6 @@ class CsvLoadController extends Controller
                 $sex = $product->pol;
             }
 
-
             if(isset($sizes[$product -> razmer]))
                 $size = $sizes[$product -> razmer];
             else{
@@ -474,7 +484,7 @@ class CsvLoadController extends Controller
 
             $priseWithDiscount = $product ->tsena_prodazhi;
 
-            $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[$product ->{'brend'}]);
+            $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[ucfirst(trim($product ->{'brend'}))]);
 
             if($manufacturersInfoToProduct ->koorse != "" && $manufacturersInfoToProduct ->koorse != 0 && $product->valyuta == "дол"){
 
@@ -522,6 +532,7 @@ class CsvLoadController extends Controller
 
             }
 
+
             switch ($product ->kategoriya){
 
                 case "Детская":
@@ -538,9 +549,8 @@ class CsvLoadController extends Controller
 
             }
 
-
             $insert_array[] = [ 'article' => $product ->artikul,
-                                'name' => $product ->artikul.' '.$product ->{'brend'},     ///////////////////////////// уточнить
+                                'name' => $product ->artikul.' '.ucfirst(trim($product ->{'brend'})),     ///////////////////////////// уточнить
                                 'rostovka_count' => $product ->{"min._kol"},
                                 'box_count' => $product ->kol_v_yashchike,
                                 'prise_default' => $product ->tsena_prodazhi,
