@@ -19,9 +19,9 @@ class ProductController extends Controller
 {
     public function index($name = ""){
 
-        $manufactures = Manufacturer::all();
-        $seasons = Season::where('id', '!=', 5) -> get();
-        $types = Type::where('id', '!=', 28) -> get();
+        $manufactures = Manufacturer::orderBy('name','asc') -> get();
+        $seasons = Season::where('id', '!=', 5) ->orderBy('name','asc') -> get();
+        $types = Type::where('id', '!=', 28)->orderBy('name','asc') -> get();
 
         if($name != "")
 
