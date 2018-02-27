@@ -8,6 +8,10 @@ $.ajax({
     data: {category_id : 1}
 }).done(function(msg) {
     for(var i= 0; i < msg.length; i++ ) {
+        if(msg[i].photo === null){
+            msg[i].photo = 'undefined';
+        }
+
         data[i] = {
             dataID: msg[i].id,
             imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,
@@ -37,6 +41,10 @@ $.ajax({
     data: {category_id : 1}
 }).done(function(msg) {
     for(var i= 0; i < msg.length; i++ ) {
+        if(msg[i].photo === null){
+            msg[i].photo = 'undefined';
+        }
+
         TopSallesData[i] = {
             dataID: msg[i].id,
             imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,

@@ -446,6 +446,9 @@ function NextData(page_num, count_on_page, filter_value) {
     }).done(function(msg) {
         $('.preloader').remove();
         for(var i= 0; i < msg.length; i++ ) {
+            if(msg[i].photo === null){
+                msg[i].photo = 'undefined';
+            }
             data[i] = {
                 dataID: msg[i].id,
                 imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,
@@ -832,6 +835,10 @@ $('.removeallFilters span').on('click', function (e) {
 function makeFilterData(msg) {
     var filtered_data;
     for(var i= 0; i < msg.length; i++ ) {
+        if(msg[i].photo === null){
+            msg[i].photo = 'undefined';
+        }
+
         data[i] = {
             dataID: msg[i].id,
             imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,
@@ -876,6 +883,10 @@ $('#short-by').on('change', function () {
     }).done(function(msg) {
         $('.preloader').remove();
         for(var i= 0; i < msg.length; i++ ) {
+            if(msg[i].photo === null){
+                msg[i].photo = 'undefined';
+            }
+
             data[i] = {
                 dataID: msg[i].id,
                 imgUrl: $('meta[name="root-site"]').attr('content') + '/images/products/'+msg[i].photo.photo_url,

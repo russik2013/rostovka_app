@@ -5,7 +5,10 @@ if(Cart_data === null){
     $('.has-feedback button').attr("disabled", "disabled");
 }
 
-var orderTotal = Cart_data[0].cartProducts_summ;
+if(Cart_data !== null){
+    var orderTotal = Cart_data[0].cartProducts_summ;
+}
+
 $('.order-total span')[0].innerText = orderTotal + ' грн';
 $('.is--Mobile .order-total .amount')[0].innerText = orderTotal + ' грн';
 
