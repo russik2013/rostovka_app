@@ -172,19 +172,19 @@ class CsvLoadController extends Controller
             }
 
 
-            if(isset($manufacturers[$product ->{'brend'}]))
-                $manufacturer = $manufacturers[$product ->{'brend'}];
+            if(isset($manufacturers[ ucfirst(trim($product ->{'brend'}))]))
+                $manufacturer = $manufacturers[ ucfirst(trim($product ->{'brend'}))];
             else{
                 $manufacturers = array_merge($manufacturers, $this ->addManufacturer($product ->{'brend'}));
-                $manufacturer = $manufacturers[$product ->{'brend'}];
+                $manufacturer = $manufacturers[ ucfirst(trim($product ->{'brend'}))];
             }
 
 
-            if (isset($types[$product ->{'tip_obuvi'}]))
-                $type = $types[$product ->{'tip_obuvi'}];
+            if (isset($types[ucfirst(trim($product ->{'tip_obuvi'}))]))
+                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
             else{
                 $types = array_merge($types, $this ->addType($product ->{'tip_obuvi'}));
-                $type = $types[$product ->{'tip_obuvi'}];
+                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
             }
 
             if(isset($seasons[$product ->{'sezon'}]))
@@ -414,7 +414,7 @@ class CsvLoadController extends Controller
 
     protected function formInsertArray($products){
 
-        dd($products);
+        //dd($products);
 
         $types = Type::all() -> pluck('id', 'name') -> toArray();
         $seasons = Season::all() -> pluck('id', 'name') -> toArray();
@@ -434,6 +434,7 @@ class CsvLoadController extends Controller
                 $sex = $product -> pol;
 
 
+           // dd([ucfirst(trim($product ->{'brend'})), ucfirst(trim($product ->{'tip_obuvi'}))]);
 
             if(isset($sizes[$product -> razmer]))
                 $size = $sizes[$product -> razmer];
@@ -443,18 +444,18 @@ class CsvLoadController extends Controller
             }
 
 
-            if(isset($manufacturers[trim($product ->{'brend'})]))
-                $manufacturer = $manufacturers[$product ->{'brend'}];
+            if(isset($manufacturers[ucfirst(trim($product ->{'brend'}))]))
+                $manufacturer = $manufacturers[ucfirst(trim($product ->{'brend'}))];
             else{
                 $manufacturers = array_merge($manufacturers, $this ->addManufacturer($product ->{'brend'}));
-                $manufacturer = $manufacturers[$product ->{'brend'}];
+                $manufacturer = $manufacturers[ucfirst(trim($product ->{'brend'}))];
             }
 
-            if (isset($types[trim($product ->{'tip_obuvi'})]))
-                $type = $types[$product ->{'tip_obuvi'}];
+            if (isset($types[ucfirst(trim($product ->{'tip_obuvi'}))]))
+                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
             else{
                 $types = array_merge($types, $this ->addType($product ->{'tip_obuvi'}));
-                $type = $types[$product ->{'tip_obuvi'}];
+                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
             }
 
             if(isset($seasons[$product ->{'sezon'}]))
@@ -587,7 +588,7 @@ class CsvLoadController extends Controller
 
         $manufacturer = new Manufacturer();
 
-        $manufacturer -> name = trim($brend);
+        $manufacturer -> name =ucfirst(trim($brend));
 
         $manufacturer -> save();
 
@@ -599,7 +600,7 @@ class CsvLoadController extends Controller
 
         $type = new Type();
 
-        $type -> name = trim($tip);
+        $type -> name = ucfirst(trim($tip));
 
         $type -> save();
 
@@ -611,7 +612,7 @@ class CsvLoadController extends Controller
 
         $season = new Season();
 
-        $season -> name = trim($sezon);
+        $season -> name = $sezon;
 
         $season -> save();
 

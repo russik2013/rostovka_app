@@ -8,12 +8,15 @@ use App\Product;
 use App\TopSale;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class SaleController extends Controller
 {
     public function makeOrder(Request $request){
 
        //return response($request -> all());
+
+
 
         $order = new Order();
 
@@ -24,6 +27,29 @@ class SaleController extends Controller
         $this ->addOrderDetais($request -> tovar, $order -> id);
 
         $this ->setTopTovar($request -> tovar);
+
+        $order = Order::with('details', 'details.product') -> find($order -> id);
+
+        $this ->sendOrderMail($order);
+
+
+    }
+
+    private function sendOrderMail($dates){
+
+        if($dates -> email) {
+
+            Mail::send('admin.mail.smallMail', ["order" => $dates], function ($message) use ($dates) {
+
+
+                $message->from('us@example.com', 'Laravel');
+                $message->to("z.kon2009@gmail.com", 'Drugak')->subject('Welcome to Odessa');
+                //$message->to('z.kon2009@gmail.com','Drugak')->subject('Welcome to Odessa');
+            });
+
+            return response(['status' => 'success', 'message' => '', 'data' => null]);
+        }
+        return response(['status' => 'client error', 'message' => 'wrong email address', 'data' => null]);
 
     }
 
