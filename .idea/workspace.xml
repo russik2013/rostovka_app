@@ -1,77 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8656dcb1-f648-4b1e-bf22-139918d6aa81" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/viber_image.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/guzzlehttp/psr7/CHANGELOG.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/guzzlehttp/psr7/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/guzzlehttp/psr7/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/guzzlehttp/psr7/composer.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/guzzlehttp/psr7/src/AppendStream.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/guzzlehttp/psr7/src/CachingStream.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/guzzlehttp/psr7/src/InflateStream.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/guzzlehttp/psr7/src/NoSeekStream.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/guzzlehttp/psr7/src/Uri.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/guzzlehttp/psr7/src/UriNormalizer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/guzzlehttp/psr7/src/UriResolver.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/guzzlehttp/psr7/src/functions.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Commands/AbstractCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Commands/Argument.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Commands/ChecksumCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Commands/CircleCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Commands/EllipseCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Commands/ExifCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Commands/IptcCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Commands/LineCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Commands/OrientateCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Commands/PolygonCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Commands/PsrResponseCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Commands/RectangleCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Commands/ResponseCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Commands/StreamCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Commands/TextCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Exception/ImageException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Exception/InvalidArgumentException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Exception/MissingDependencyException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Exception/NotFoundException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Exception/NotReadableException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Exception/NotSupportedException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Exception/NotWritableException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Exception/RuntimeException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/BackupCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/BlurCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/ColorizeCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/ContrastCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/CropCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/DestroyCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/ExifCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/FillCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/GammaCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/HeightenCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/InsertCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/InterlaceCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/InvertCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/OpacityCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/PickColorCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/PixelCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/ResetCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/ResizeCanvasCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/ResizeCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/RotateCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/SharpenCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/intervention/image/src/Intervention/Image/Imagick/Commands/TrimCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/psr/http-message/CHANGELOG.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/psr/http-message/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/psr/http-message/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/psr/http-message/composer.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/psr/http-message/src/MessageInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/psr/http-message/src/RequestInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/psr/http-message/src/ResponseInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/psr/http-message/src/ServerRequestInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/psr/http-message/src/StreamInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/psr/http-message/src/UploadedFileInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/psr/http-message/src/UriInterface.php" />
+    <list default="true" id="8656dcb1-f648-4b1e-bf22-139918d6aa81" name="Default" comment="update currency v0.3.5">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/product/products.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/product/products.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -164,7 +96,7 @@
       <file leaf-file-name="CsvOrderController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvOrderController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4125">
+            <state relative-caret-position="3858">
               <caret line="281" column="102" lean-forward="false" selection-start-line="281" selection-start-column="24" selection-end-line="281" selection-end-column="102" />
               <folding />
             </state>
@@ -174,7 +106,7 @@
       <file leaf-file-name="CsvLoadController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-12">
+            <state relative-caret-position="656">
               <caret line="332" column="35" lean-forward="false" selection-start-line="332" selection-start-column="23" selection-end-line="332" selection-end-column="35" />
               <folding>
                 <element signature="e#50#67#0#PHP" expanded="true" />
@@ -183,7 +115,40 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="70559_1.jpg" pinned="false" current-in-tab="true">
+      <file leaf-file-name="products.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/product/products.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2085">
+              <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+              <folding>
+                <marker date="1519739450000" expanded="true" signature="9:22" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="42:71" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="115:127" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="138:158" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="360:376" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="1909:1927" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="1933:1953" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="2353:2366" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="2372:2387" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="2826:2837" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="2843:2856" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="4979:4993" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="5086:5105" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="5170:5186" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="5240:5268" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="5322:5354" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="5408:5428" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="5585:5607" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="6692:6710" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="6804:6817" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="6838:6877" ph="..." />
+                <marker date="1519739450000" expanded="true" signature="6910:6937" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="70559_1.jpg" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/images/products/70559_1.jpg">
           <provider selected="true" editor-type-id="images">
             <state />
@@ -303,7 +268,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
         <option value="$PROJECT_DIR$/resources/views/user/category_page/filters.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/FilterController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/product/products.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvOrderController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/SuppliersController.php" />
         <option value="$PROJECT_DIR$/.env" />
@@ -314,6 +278,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvDownloadController.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/product/products.blade.php" />
       </list>
     </option>
   </component>
@@ -454,87 +419,11 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="routes" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="category_page" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -582,33 +471,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="pdf" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mail" />
+              <option name="myItemId" value="product" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -636,207 +499,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="products" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="products" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Providers" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rostovka_app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CSV" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -1095,14 +758,7 @@
       <workItem from="1519643534850" duration="1946000" />
       <workItem from="1519652956298" duration="3817000" />
       <workItem from="1519720474217" duration="6330000" />
-      <workItem from="1519731936576" duration="1206000" />
-    </task>
-    <task id="LOCAL-00055" summary="update scv download v0.2.8">
-      <created>1518511687994</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1518511687995</updated>
+      <workItem from="1519731936576" duration="2828000" />
     </task>
     <task id="LOCAL-00056" summary="update scv download v0.2.9">
       <created>1518526797194</created>
@@ -1440,11 +1096,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519733633381</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="update currency v0.3.5">
+      <created>1519733691688</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1519733691688</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="796587000" />
+    <option name="totallyTimeSpent" value="798209000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
@@ -1786,13 +1449,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/product/products.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="45" lean-forward="false" selection-start-line="45" selection-start-column="45" selection-end-line="45" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/SuppliersController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="388">
@@ -1891,14 +1547,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvOrderController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4125">
-          <caret line="281" column="102" lean-forward="false" selection-start-line="281" selection-start-column="24" selection-end-line="281" selection-end-column="102" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/app.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -1930,9 +1578,22 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/products/70559_1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvOrderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3858">
+          <caret line="281" column="102" lean-forward="false" selection-start-line="281" selection-start-column="24" selection-end-line="281" selection-end-column="102" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
+        <state relative-caret-position="656">
           <caret line="332" column="35" lean-forward="false" selection-start-line="332" selection-start-column="23" selection-end-line="332" selection-end-column="35" />
           <folding>
             <element signature="e#50#67#0#PHP" expanded="true" />
@@ -1940,9 +1601,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/products/70559_1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/product/products.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2085">
+          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+          <folding>
+            <marker date="1519739450000" expanded="true" signature="9:22" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="42:71" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="115:127" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="138:158" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="360:376" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="1909:1927" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="1933:1953" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="2353:2366" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="2372:2387" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="2826:2837" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="2843:2856" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="4979:4993" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="5086:5105" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="5170:5186" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="5240:5268" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="5322:5354" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="5408:5428" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="5585:5607" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="6692:6710" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="6804:6817" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="6838:6877" ph="..." />
+            <marker date="1519739450000" expanded="true" signature="6910:6937" ph="..." />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
