@@ -7094,7 +7094,7 @@ fieldset input:hover{
     display: none;
 }
 .header{
-    height: auto !important;
+    height: 127px !important;
 }
 
 .error--message{
@@ -7185,3 +7185,47 @@ fieldset input:hover{
 }
 .tooltip.tooltip-main.top{
     opacity: 1;}
+
+
+.about--page{
+    padding: 0 20px 0 20px;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    font-size: 15px;
+    text-align: justify;
+}
+
+.about--page h1{
+    font-size: 35px;
+    text-align: center;
+    width: 100%;
+}
+.about--page h2{
+    text-align: center;
+    width: 100%;
+}
+.about--page .information--text{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.about--page .information--text img{
+    float: left;
+    width: 60px;
+    margin-right: 20px;
+    padding-bottom: 90px;
+}
+.about--page .information--text ul{margin-top: 20px; margin-bottom: 20px}
+.about--page .information--text ul li{
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: 10px;
+}
+.about--page .information--text .red{
+    color: red;
+    font-weight: 600;
+}
+
+.about--page .information--text ul.payment li{
+    font-weight: normal;
+    font-size: 15px;
+}

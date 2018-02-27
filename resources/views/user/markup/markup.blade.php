@@ -66,7 +66,7 @@
                 <div class="topbar-right">
                     <ul class="list-none">
                         <li>
-                            <a href="#!">
+                            <a href="{{url('/about')}}">
                                 <span class="hidden-sm-down">О магазине</span>
                             </a>
                         </li>
@@ -197,6 +197,7 @@
 @yield('billing')
 @yield('product')
 @yield('search_result')
+@yield('aboutPage')
 <!-- End Page Content -->
     <!-- End Page Content Wraper -->
 
@@ -219,8 +220,8 @@
 
                 <div class="col-md-4 col-sm-12" style="float: left; margin-left: auto; color: #fff;">
                     <div class="footer-block contact-block" style="float: right; padding-top: 15px; padding-top: 20px;">
-                        <span style="float: left; margin-right: 15px;"><i class="fa fa-phone" aria-hidden="true" style="margin-right: 10px;"></i>(067) 25-333-05</span>
-                        <span style="float: left; margin-right: 15px;"><i class="fa fa-vimeo" aria-hidden="true" style="margin-right: 10px;"></i>(093) 350-43-82 (VIBER)</span>
+                        <span style="float: left; margin-right: 15px; color: #fff;"><i class="fa fa-phone" aria-hidden="true" style="margin-right: 10px;"></i>(067) 25-333-05</span>
+                        <span style="float: left; margin-right: 15px; color: #fff;"><i class="fa fa-vimeo" aria-hidden="true" style="margin-right: 10px;"></i>(093) 350-43-82 (VIBER)</span>
                     </div>
                 </div>
             </div>

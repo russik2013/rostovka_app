@@ -12,6 +12,11 @@
 */
 
 
+Route::get('/about', function (){
+
+    return view('user.about');
+
+});
 
 Route::get('/parsing', 'Parsing\ParsingController@index');
 

@@ -98,9 +98,7 @@ $('.search--box button').on('click', function (e) {
 
 
 $(document).ready(function () {
-    //called when key is pressed in textbox
     $(".userPhone").keypress(function (e) {
-        //if the letter is not digit then display error and don't type anything
         if (e.which !== 8 && e.which !== 0 && (e.which < 48 || e.which > 57)) {
             return false;
         }
@@ -110,12 +108,14 @@ $(document).ready(function () {
 
 $('.navigation-menu ul li a').on('click', function () {
     localStorage.removeItem('filterValues');
+    localStorage.removeItem('sizeValues');
     localStorage.removeItem('selectedCount');
     localStorage.removeItem('pageNum');
 });
 
 $('.mobileNav li a').on('click', function () {
     localStorage.removeItem('filterValues');
+    localStorage.removeItem('sizeValues');
     localStorage.removeItem('selectedCount');
     localStorage.removeItem('pageNum');
 });

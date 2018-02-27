@@ -777,7 +777,7 @@ function RemoveItem() {
 //Очистка данных (Фильтры, локалсторейдж, установка данных на дефолтовые значения)
 $('.removeallFilters span').on('click', function (e) {
     values = [];
-    localStorage.clear();
+    localStorage.removeItem('filterValues');
     saved_count_on_page = 0;
     var AppendedList = $('.choosedFilter li');
     localStorage.setItem('pageNum', 1);
