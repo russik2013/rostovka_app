@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\CSV;
 
+use App\Manufacturer;
 use App\Order;
 use App\Parsing\Product;
 use Carbon\Carbon;
@@ -92,16 +93,37 @@ class CsvOrderController extends Controller
 
                         }
 
+                        switch ($key){
+                            case "new_post" :
+                                $headValue = "Новая почта";
+                                break;
+                            case "delivery_method" :
+                                $headValue = "Delivery";
+                                break;
+                            case "avtolux_method" :
+                                $headValue = "Автолюкс";
+                                break;
+                            case "intime_method" :
+                                $headValue = "InTime";
+                                break;
+                            case "bus_method" :
+                                $headValue = "Подвести к автобусу";
+                                break;
+                            default :
+                                $headValue = "Самовывоз";
+                        }
 
-                        $sheet->row(1, array("",$key,"","","","",""));
+
+
+                        $sheet->row(1, array("",$headValue,"","","","",""));
 
                         $sheet->row(2, array("№",
                             "Фамилия"."\r\n"."имя"."\r\n"."отчество",
                             "Город"."\r\n"."Номер отделения",
-                            "Номер "."\r\n"." телефона",
+                            "Номер "."\r\n"."телефона",
                             "Сумма",
                             "Кол-во"."\r\n"."мест",
-                            "Галочка"));
+                            "Гал"));
 
                         for ($i = 0; $i < count($value); $i++) {
 
@@ -130,7 +152,7 @@ class CsvOrderController extends Controller
                         $sheet->setWidth('D', 15);
                         $sheet->setWidth('E', 7);
                         $sheet->setWidth('F', 12);
-                        $sheet->setWidth('G', 8);
+                        $sheet->setWidth('G', 4);
 
 
 
@@ -183,6 +205,21 @@ class CsvOrderController extends Controller
         if($orders->count() > 0) {
 
             $data = [];
+            $manufacturersNames = [];
+
+            foreach ($orders as $order) {
+
+                foreach ($order->details as $detail) {
+
+                    if(!in_array($detail->manufacturer_name, $manufacturersNames))
+                        $manufacturersNames[] = $detail->manufacturer_name;
+
+                }
+
+            }
+
+            $manufacturersInfos = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('street', 'name');
+
 
             foreach ($orders as $order) {
 
@@ -195,7 +232,7 @@ class CsvOrderController extends Controller
                         $time[0],
                         '',
                         'Заказчик: Rostovka.net '."\r\n".'Сергей тел: 0672533305',
-                        'Поставщик: ' . $detail->manufacturer_name . "\r\n".' Ул. Зеленая 1299, Оля Ли',
+                        'Поставщик: ' . $detail->manufacturer_name . "\r\n". $manufacturersInfos[$detail->manufacturer_name],
 
                     ];
 
@@ -251,24 +288,12 @@ class CsvOrderController extends Controller
                             else
                                 $sheet->setHeight($i, 25);
 
-                            $sheet->getStyle('A'.$i.':I3'.$i)->getAlignment()->applyFromArray(
+                            $sheet->getStyle('A'.$i.':I'.$i)->getAlignment()->applyFromArray(
                                 array('horizontal' => 'center', 'vertical' => 'center')
                             );
 
                         }
 
-                        for ($i = 1; $i < count($value) + 2; $i++) {
-
-                            if ($i > 2)
-                                $sheet->setHeight($i, 130);
-                            else
-                                $sheet->setHeight($i, 25);
-
-                            $sheet->getStyle('A'.$i.':I3'.$i)->getAlignment()->applyFromArray(
-                                array('horizontal' => 'center', 'vertical' => 'center')
-                            );
-
-                        }
 
                         $sheet->row(1, $value[0]);
                         $sheet->row(2, array("№", "Номер "."\r\n"."заказа", 'Фото', "Aртикул", "Ящ/рост", "Кол-во", "Пар в Ящ/рост", "Цена за Пару(закуп)", "Сумма"));
@@ -302,7 +327,7 @@ class CsvOrderController extends Controller
                         $sheet->setWidth('A', 10);
                         $sheet->setWidth('B', 8);
                         $sheet->setWidth('C', 23);
-                        $sheet->setWidth('D', 28);
+                        $sheet->setWidth('D', 40);
                         $sheet->setWidth('E', 8);
                         $sheet->setWidth('F', 7);
                         $sheet->setWidth('G', 13);
@@ -395,8 +420,22 @@ class CsvOrderController extends Controller
 
 
         $data = [];
+        $manufacturersNames = [];
 
         if($orders->count() > 0) {
+
+            foreach ($orders as $order) {
+
+                foreach ($order->details as $detail) {
+
+                    if(!in_array($detail->manufacturer_name, $manufacturersNames))
+                    $manufacturersNames[] = $detail->manufacturer_name;
+
+                }
+
+            }
+
+            $manufacturersInfos = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('street', 'name');
 
             foreach ($orders as $order) {
 
@@ -409,7 +448,7 @@ class CsvOrderController extends Controller
                         $time[0],
                         '',
                         'Заказчик: Rostovka.net '."\r\n".'Сергей тел: 0672533305',
-                        'Поставщик: ' . $detail->manufacturer_name . "\r\n".' Ул. Зеленая 1299',
+                        'Поставщик: ' . $detail->manufacturer_name . "\r\n". $manufacturersInfos[$detail->manufacturer_name],
 
 
                     ];
@@ -463,7 +502,10 @@ class CsvOrderController extends Controller
 
                                 $sheet->setHeight($i, 25);
 
-                            $sheet->getStyle('A'.$i.':I3'.$i)->getAlignment()->applyFromArray(
+                                if($i >= 3)
+                                    $sheet->setHeight($i, 40);
+
+                            $sheet->getStyle('A'.$i.':I'.$i)->getAlignment()->applyFromArray(
                                 array('horizontal' => 'center', 'vertical' => 'center')
                             );
 
@@ -488,21 +530,22 @@ class CsvOrderController extends Controller
                         $sheet->row(2 + $i, array("", "", "", "", "", $count, "", $all_prise));
                         $sheet->setWidth('A', 10);
                         $sheet->setWidth('B', 8);
-                        $sheet->setWidth('C', 28);
-                        $sheet->setWidth('D', 20);
+                        $sheet->setWidth('C', 35);
+                        $sheet->setWidth('D', 8);
                         $sheet->setWidth('E', 8);
                         $sheet->setWidth('F', 7);
                         $sheet->setWidth('G', 10);
                         $sheet->setWidth('H', 10);
                         //$sheet->setWidth('I', 8);
 
-                        $sheet->mergeCells('E1:G1');
+                        $sheet->mergeCells('D1:F1');
+                        $sheet->mergeCells('G1:H1');
 
                         $objDrawing = new PHPExcel_Worksheet_Drawing;
                         $objDrawing->setPath(public_path('images/viber_image.jpg')); //your image path
                         $objDrawing->setName('imageRussik');
                         $objDrawing->setWorksheet($sheet);
-                        $objDrawing->setCoordinates('E1');
+                        $objDrawing->setCoordinates('G1');
                         $objDrawing->setResizeProportional();
                         //$objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
                         $objDrawing->setOffsetY(0);
