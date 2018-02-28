@@ -3967,6 +3967,28 @@ img.tp-caption {
     width: 100%;
 }
 
+@media(min-width: 492px) and (max-width: 890px){
+    .header-topbar .topbar-left .phone.pull-left{
+        margin-left: 90px;
+    }
+}
+
+@media(min-width: 280px) and (max-width: 492px){
+    .header-topbar .topbar-left .phone.pull-left{
+        margin-left: 90px;
+    }
+
+    .navigation-menu{
+        margin-top: -38px !important;
+    }
+    .header-topbar .topbar-right ul li{
+        text-align: left;
+        display: inline-block;
+        top: -10px;
+    }
+}
+
+
 @media (min-width: 280px) and (max-width: 1200px) {
     .product-list-item{
         margin: 0;

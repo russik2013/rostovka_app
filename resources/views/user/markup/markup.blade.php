@@ -47,7 +47,7 @@
         <div class="header-topbar">
             <div class="header-topbar-inner">
                 <!--Topbar Left-->
-                <div class="topbar-left hidden-sm-down">
+                <div class="topbar-left">
                     <div class="phone pull-left">
                         <div class="text-left pull-left">
                             <i class="fa fa-phone left" aria-hidden="true"></i>

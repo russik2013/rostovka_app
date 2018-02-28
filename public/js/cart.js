@@ -115,7 +115,6 @@ function getProductData(targetID, itemQuant, domItem_price) {
             $('.isClear').remove()
         }
         function pushtoCart() {
-            console.log(productData[0]);
             Cart_data[0].row.push({
                 productID: productData[0].id,
                 targetID: productData[0].id,
