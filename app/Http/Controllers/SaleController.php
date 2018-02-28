@@ -16,8 +16,6 @@ class SaleController extends Controller
 
       // return response($request -> all());
 
-
-
         $order = new Order();
 
         $order -> fill($request -> all());
@@ -37,13 +35,12 @@ class SaleController extends Controller
 
     private function sendOrderMail($dates){
 
+
         if($dates -> email) {
 
             Mail::send('admin.mail.smallMail', ["order" => $dates], function ($message) use ($dates) {
-
-
                 $message->from('us@example.com', 'Laravel');
-                $message->to("z.kon2009@gmail.com", 'Drugak')->subject('Welcome to Odessa');
+                $message->to("parhva@gmail.com", 'Drugak')->subject('Welcome to Odessa');
                 //$message->to('z.kon2009@gmail.com','Drugak')->subject('Welcome to Odessa');
             });
 

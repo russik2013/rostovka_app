@@ -128,7 +128,7 @@ class CsvLoadController extends Controller
 
             foreach ($products as $product) {
 
-                $products_mass[$product->artikul . '_' . $product->{'brend'}] = [[$product->foto1, $product->foto2, $product->foto3]];
+                $products_mass[$product->artikul . ' ' . ucfirst(trim($product ->{'brend'}))] = [[$product->foto1, $product->foto2, $product->foto3]];
 
             }
 
@@ -158,14 +158,14 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
-            $product -> kategoriya = ucfirst(trim($product -> kategoriya));
+            //$product -> kategoriya = ucfirst(trim($product -> kategoriya));
 
             if($product -> kategoriya == 'Мужская')
                 $sex = 'Мужской';
             if($product -> kategoriya == 'Женская')
                 $sex = 'Женский';
             if($product -> kategoriya == 'Детская') {
-                $product->pol = ucfirst(trim($product->pol));
+                //$product->pol = ucfirst(trim($product->pol));
                 $sex = $product->pol;
             }
 
@@ -204,15 +204,15 @@ class CsvLoadController extends Controller
 
             $priseWithDiscount = $product ->tsena_prodazhi;
 
-            $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[$product ->{'brend'}]);
+            $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[ucfirst(trim($product ->{'brend'}))]);
 
-            if($manufacturersInfoToProduct ->koorse != "" || $manufacturersInfoToProduct ->koorse != 0 && $product->valyuta == "дол"){
+            if($manufacturersInfoToProduct ->koorse != "" && $manufacturersInfoToProduct ->koorse != 0 && $product->valyuta == "дол"){
 
                 $priseWithDiscount *= $manufacturersInfoToProduct ->koorse;
 
             }
 
-            if($manufacturersInfoToProduct ->discount !="" || $manufacturersInfoToProduct ->discount != 0) {
+            if($manufacturersInfoToProduct ->discount !="" && $manufacturersInfoToProduct ->discount != 0) {
 
 
                 $hrivna_discount = explode("грн",$manufacturersInfoToProduct ->discount);
@@ -231,7 +231,7 @@ class CsvLoadController extends Controller
 
             }
 
-            if($product ->skidka !="" || $product ->skidka != 0) {
+            if($product ->skidka !="" && $product ->skidka != 0) {
 
 
                 $hrivna_discount = explode("грн",$product ->skidka);
@@ -271,7 +271,7 @@ class CsvLoadController extends Controller
             $priseWithDiscount = round($priseWithDiscount, 2);
 
             $insert_array = [ 'article' => $product ->artikul,
-                'name' => $product ->artikul.' '.$product ->{'brend'},     ///////////////////////////// уточнить
+                'name' => $product ->artikul.' '.ucfirst(trim($product ->{'brend'})),     ///////////////////////////// уточнить
                 'rostovka_count' => $product ->{"min._kol"},
                 'box_count' => $product ->kol_v_yashchike,
                 'prise' => $priseWithDiscount,
@@ -441,16 +441,20 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
-            $product -> kategoriya = ucfirst(trim($product -> kategoriya));
 
+
+            //$product -> kategoriya = ucfirst(trim($product -> kategoriya));
+
+            //$sex = '';
             if($product -> kategoriya == 'Мужская')
                 $sex = 'Мужской';
             if($product -> kategoriya == 'Женская')
                 $sex = 'Женский';
             if($product -> kategoriya == 'Детская') {
-                $product -> pol = ucfirst(trim($product -> pol));
+                //$product -> pol = ucfirst(trim($product -> pol));
                 $sex = $product->pol;
             }
+
 
             if(isset($sizes[$product -> razmer]))
                 $size = $sizes[$product -> razmer];
