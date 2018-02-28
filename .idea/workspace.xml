@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8656dcb1-f648-4b1e-bf22-139918d6aa81" name="Default" comment="update currency v0.3.5">
+    <list default="true" id="8656dcb1-f648-4b1e-bf22-139918d6aa81" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvDownloadController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvDownloadController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvOrderController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvOrderController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -968,14 +965,7 @@
       <workItem from="1519731936576" duration="5962000" />
       <workItem from="1519747634656" duration="16000" />
       <workItem from="1519807403369" duration="8758000" />
-      <workItem from="1519827727108" duration="3192000" />
-    </task>
-    <task id="LOCAL-00059" summary="update scv download v0.3.1">
-      <created>1518699479403</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1518699479404</updated>
+      <workItem from="1519827727108" duration="3217000" />
     </task>
     <task id="LOCAL-00060" summary="update scv download v0.3.2">
       <created>1518699989118</created>
@@ -1313,11 +1303,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519821342435</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="update currency v0.3.5">
+      <created>1519831510321</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1519831510322</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="813309000" />
+    <option name="totallyTimeSpent" value="813334000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
