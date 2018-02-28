@@ -177,24 +177,28 @@ class CsvDownloadController extends Controller
                     $size = $product->size->name;
                 else $size = 'none';
 
+
+
                 $data[] = [
 
-                    "Фото" => "",
-                    "Товар" => $product->name,
-                    "размер" => $size,
-                    "Пар в ящике" => $product->box_count,
-                    "Цена закуп" => $product->prise_zakup,
-                    "Цена сайт" => $product->prise,
+                    "",
+                    $product->name,
+                    $size,
+                    $product->box_count,
+                    $product->prise_zakup,
+                    $product->prise,
 
                 ];
                 $photosData[] = ["Фото" => $photo];
 
             }
 
+            $manufacturerInfo = $products[0]->manufacturer;
 
-            Excel::create('Filename', function ($excel) use ($data, $photosData) {
 
-                $excel->sheet('Sheetname', function ($sheet) use ($data, $photosData) {
+            Excel::create('Filename', function ($excel) use ($data, $photosData,$manufacturerInfo) {
+
+                $excel->sheet('Sheetname', function ($sheet) use ($data, $photosData,$manufacturerInfo) {
 
                     for ($i = 1; $i < count($data) + 2; $i++) {
 
@@ -203,14 +207,72 @@ class CsvDownloadController extends Controller
                         else
                             $sheet->setHeight($i, 25);
 
+                        $size = 2 + $i;
+
+                        $sheet->getStyle('A'.$size.':F'.$size)->getAlignment()->applyFromArray(
+                            array('horizontal' => 'left', 'vertical' => 'center')
+                        );
+
                     }
 
 
-                    $sheet->fromArray($data);
-                    $sheet->setWidth('A', 12);
-                    $sheet->setWidth('B', 20);
-                    $sheet->setWidth('C', 20);
-                    $sheet->setWidth('D', 20);
+                    //dd()
+
+                    $sheet->row(1, array("Фото",
+                                         "01.01.2001"."\r\n".""."\r\n"."Адрес: ".$manufacturerInfo -> street.", номер телефона: ".$manufacturerInfo -> phone." "."\r\n".""."\r\n"." ".$manufacturerInfo ->firstName.", 0672533305",
+                                         "",
+                        "Rostovka","",""));
+
+
+
+
+                    $sheet->setHeight(1, 60);
+
+                    $sheet->mergeCells('B1:C1');
+                    $sheet->mergeCells('D1:F1');
+
+                    $sheet->getStyle('A1:C1')->getAlignment()->applyFromArray(
+                        array('horizontal' => 'left', 'vertical' => 'center')
+                    );
+                    $sheet->getStyle('D1:F1')->getAlignment()->applyFromArray(
+                        array('horizontal' => 'center', 'vertical' => 'center')
+                    );
+
+                    $sheet->row(2, array("",
+                        "Товар",
+                        "размер",
+                        "Пар в ящике",
+                        "Цена закуп",
+                        "Цена сайт"));
+
+                    //dd($data);
+
+                    //$sheet->fromArray($data);
+
+
+
+
+                    for ($i = 0; $i < count($data); $i++) {
+
+                        $insertIntoTableValue = [
+                            $data[$i][0],
+                            $data[$i][1],
+                            $data[$i][2],
+                            $data[$i][3],
+                            $data[$i][4],
+                            $data[$i][5]
+                        ];
+
+
+
+                        $sheet->row(3 + $i, $insertIntoTableValue);
+
+
+                    }
+                    $sheet->setWidth('A', 9);
+                    $sheet->setWidth('B', 48);
+                    $sheet->setWidth('C', 10);
+                    $sheet->setWidth('D', 12);
                     $sheet->setWidth('E', 10);
                     $sheet->setWidth('F', 10);
                     $sheet->setWidth('G', 20);
@@ -285,37 +347,102 @@ class CsvDownloadController extends Controller
                 else $size = 'none';
 
                 $data[] = [
-
-                    "Товар" => $product->name,
-                    "размер" => $size,
-                    "Пар в ящике" => $product->box_count,
-                    "Цена закуп" => $product->prise_zakup,
-                    "Цена сайт" => $product->prise,
+                    $product->name,
+                    $size,
+                    $product->box_count,
+                    $product->prise_zakup,
+                    $product->prise,
 
                 ];
-                $photosData[] = ["Фото" => $photo];
+
 
             }
 
 
-            Excel::create('Filename', function ($excel) use ($data, $photosData) {
+            $manufacturerInfo = $products[0]->manufacturer;
 
-                $excel->sheet('Sheetname', function ($sheet) use ($data, $photosData) {
+
+            Excel::create('Filename', function ($excel) use ($data, $manufacturerInfo) {
+
+                $excel->sheet('Sheetname', function ($sheet) use ($data, $manufacturerInfo) {
 
                     for ($i = 1; $i < count($data) + 2; $i++) {
 
+                        if ($i > 2)
+                            $sheet->setHeight($i, 50);
+                        else
                             $sheet->setHeight($i, 25);
+
+                        $size = 2 + $i;
+
+                        $sheet->getStyle('A'.$size.':E'.$size)->getAlignment()->applyFromArray(
+                            array('horizontal' => 'left', 'vertical' => 'center')
+                        );
 
                     }
 
-                    $sheet->fromArray($data);
-                    $sheet->setWidth('B', 20);
-                    $sheet->setWidth('C', 20);
-                    $sheet->setWidth('D', 20);
+
+                    //dd()
+
+                    $sheet->row(1, array(
+                        "01.01.2001"."\r\n".""."\r\n"."Адрес: ".$manufacturerInfo -> street.", номер телефона: ".$manufacturerInfo -> phone." "."\r\n".""."\r\n"." ".$manufacturerInfo ->firstName.", 0672533305",
+                        "",
+                        "Rostovka","",""));
+
+
+
+
+                    $sheet->setHeight(1, 60);
+
+                    $sheet->mergeCells('A1:B1');
+                    $sheet->mergeCells('C1:E1');
+
+                    $sheet->getStyle('A1:B1')->getAlignment()->applyFromArray(
+                        array('horizontal' => 'left', 'vertical' => 'center')
+                    );
+                    $sheet->getStyle('C1:E1')->getAlignment()->applyFromArray(
+                        array('horizontal' => 'center', 'vertical' => 'center')
+                    );
+
+                    $sheet->row(2, array(
+                        "Товар",
+                        "размер",
+                        "Пар в ящике",
+                        "Цена закуп",
+                        "Цена сайт"));
+
+                    //dd($data);
+
+                    //$sheet->fromArray($data);
+
+
+
+
+                    for ($i = 0; $i < count($data); $i++) {
+
+                        $insertIntoTableValue = [
+                            $data[$i][0],
+                            $data[$i][1],
+                            $data[$i][2],
+                            $data[$i][3],
+                            $data[$i][4]
+                        ];
+
+
+
+                        $sheet->row(3 + $i, $insertIntoTableValue);
+
+
+                    }
+                    $sheet->setWidth('A', 9);
+                    $sheet->setWidth('B', 48);
+                    $sheet->setWidth('C', 10);
+                    $sheet->setWidth('D', 12);
                     $sheet->setWidth('E', 10);
                     $sheet->setWidth('F', 10);
                     $sheet->setWidth('G', 20);
                     $sheet->setWidth('H', 20);
+
 
                 });
 

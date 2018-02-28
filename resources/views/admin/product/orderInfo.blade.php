@@ -81,7 +81,7 @@
                                             </div>
                                             <div class="col-md-7">
                                                 <div class="form-group">
-                                                    <input class="form-control border-input" name="phone" type="number" value="{{$order ->  phone}}">
+                                                    <input class="form-control border-input" name="phone" type="text" value="{{$order ->  phone}}">
                                                 </div>
                                             </div>
                                         </div>
