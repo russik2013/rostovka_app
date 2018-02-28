@@ -373,6 +373,7 @@ class ProductController extends Controller
 
         $product = Product::with('photo')  ->find($request->id);
 
+        $product ->size = $product -> size -> name;
         $product -> full__price = $product -> prise * $product -> box_count;
         $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
         $product -> types = $product -> type -> name;

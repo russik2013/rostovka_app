@@ -127,6 +127,7 @@ function getProductData(targetID, itemQuant, domItem_price) {
                 quantityPrice: Number ($('.choosed .iPrice')[0].innerText) *  Number ($('.quantity.input-lg').val()),
                 rostovka__price: Number ($.find('[data-set="rotovkaset"] .iPrice')[0].innerText),
                 buy_real_id: productData[0].id,
+                size: productData[0].size.name,
                 cart_product_url: productData[0].product_url,
                 selected_value: '0',
                 price_per_pair: productData[0].prise,
