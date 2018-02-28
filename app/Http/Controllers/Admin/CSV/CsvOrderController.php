@@ -62,13 +62,13 @@ class CsvOrderController extends Controller
 
 
                 $data[$order->shipping_method][] = [
-                    "№" => $score[$order->shipping_method],
-                    "Фамилия имя отчество" => $order->first_name . ' ' . $order->last_name,
-                    'Город.Номер отделения' => $order->address. ' '. $order -> info,
-                    'Номер телефона' => $order->phone,
-                    "Сумма" => '',
-                    "Кол-во мест" => '',
-                    "Галочка" => ""
+                   $score[$order->shipping_method],
+                   $order->first_name . ' ' . $order->last_name,
+                   $order->address. ' '. $order -> info,
+                   $order->phone,
+                   '',
+                   '',
+                   ""
                 ];
 
                 $score[$order->shipping_method] =  $score[$order->shipping_method] + 1;
@@ -79,16 +79,50 @@ class CsvOrderController extends Controller
 
                 foreach ($data as $key => $value) {
 
-                    $excel->sheet($key, function ($sheet) use ($value) {
+                    $excel->sheet($key, function ($sheet) use ($value, $key) {
 
                         for ($i = 1; $i < count($value) + 10; $i++) {
 
                                 $sheet->setHeight($i, 35);
 
+                            $sheet->getStyle('A'.$i.':I3'.$i)->getAlignment()->applyFromArray(
+                                array('horizontal' => 'left', 'vertical' => 'center')
+                            );
+
+
                         }
 
 
-                        $sheet->fromArray($value);
+                        $sheet->row(1, array("",$key,"","","","",""));
+
+                        $sheet->row(2, array("№",
+                            "Фамилия"."\r\n"."имя"."\r\n"."отчество",
+                            "Город"."\r\n"."Номер отделения",
+                            "Номер "."\r\n"." телефона",
+                            "Сумма",
+                            "Кол-во"."\r\n"."мест",
+                            "Галочка"));
+
+                        for ($i = 0; $i < count($value); $i++) {
+
+                            $insertIntoTableValue = [
+                                $value[$i][0],
+                                $value[$i][1],
+                                $value[$i][2],
+                                $value[$i][3],
+                                $value[$i][4],
+                                $value[$i][5],
+                                $value[$i][6]
+                            ];
+
+
+
+                            $sheet->row(3 + $i, $insertIntoTableValue);
+
+
+                        }
+
+                        //$sheet->fromArray($value);
 
                         $sheet->setWidth('A', 3);
                         $sheet->setWidth('B', 20);
@@ -97,14 +131,13 @@ class CsvOrderController extends Controller
                         $sheet->setWidth('E', 7);
                         $sheet->setWidth('F', 12);
                         $sheet->setWidth('G', 8);
-                        $sheet->setWidth('H', 20);
-                        $sheet->setWidth('I', 8);
+
+
 
                     });
 
 
                 }
-
 
             })->export('xlsx');
         }else return redirect()->back()->withInput()->withErrors(['msg'=> 'Not find items']);
@@ -376,7 +409,7 @@ class CsvOrderController extends Controller
                         $time[0],
                         '',
                         'Заказчик: Rostovka.net '."\r\n".'Сергей тел: 0672533305',
-                        'Поставщик: ' . $detail->manufacturer_name . "\r\n".' Ул. Зеленая 1299, Оля Ли',
+                        'Поставщик: ' . $detail->manufacturer_name . "\r\n".' Ул. Зеленая 1299',
 
 
                     ];
@@ -437,7 +470,7 @@ class CsvOrderController extends Controller
                         }
 
                         $sheet->row(1, $value[0]);
-                        $sheet->row(2, array("№", "Номер"."\r\n"."заказа",  "Aртикул", "Ящ/рост", "Кол-во", "Пар в Ящ/рост", "Цена за Пару(закуп)", "Сумма"));
+                        $sheet->row(2, array("№", "Номер"."\r\n"."заказа",  "Aртикул", "Ящ/рост", "Кол-во", "Пар", "Закуп", "Сумма"));
 
                         $count = 0;
                         $all_prise = 0;
@@ -456,12 +489,12 @@ class CsvOrderController extends Controller
                         $sheet->setWidth('A', 10);
                         $sheet->setWidth('B', 8);
                         $sheet->setWidth('C', 28);
-                        $sheet->setWidth('D', 28);
+                        $sheet->setWidth('D', 20);
                         $sheet->setWidth('E', 8);
                         $sheet->setWidth('F', 7);
-                        $sheet->setWidth('G', 13);
-                        $sheet->setWidth('H', 18);
-                        $sheet->setWidth('I', 8);
+                        $sheet->setWidth('G', 10);
+                        $sheet->setWidth('H', 10);
+                        //$sheet->setWidth('I', 8);
 
                         $sheet->mergeCells('E1:G1');
 
