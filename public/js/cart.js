@@ -20,6 +20,7 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
         var itemQuant = Number ($('.quantity').val()),
             domItem_price = Number ($.find('.choosed')[0].firstElementChild.lastElementChild.firstChild.innerText),
             trueTarget = false;
+
         if(Cart_data[0].row.length === 0){
             getProductData(targetID, itemQuant, domItem_price);
         }
@@ -93,6 +94,8 @@ function setUrl() {
 function getProductData(targetID, itemQuant, domItem_price) {
     var poductinnerID = Number ($.find('[data-prodid]')[0].dataset.prodid),
         productData = [];
+    
+    console.log(targetID);
 
     $('button.buyProduct_inner').attr( "disabled", true );
 
@@ -112,6 +115,7 @@ function getProductData(targetID, itemQuant, domItem_price) {
             $('.isClear').remove()
         }
         function pushtoCart() {
+            console.log(productData[0]);
             Cart_data[0].row.push({
                 productID: productData[0].id,
                 targetID: productData[0].id,

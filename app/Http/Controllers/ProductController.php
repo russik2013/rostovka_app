@@ -32,7 +32,7 @@ class ProductController extends Controller
 
     public function show($id, $number = null){
 
-        $product = Product::find($id);
+        $product = Product::with('size') ->find($id);
 
         return view('user.product.product_inner', compact('product', 'number'));
 

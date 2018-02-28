@@ -310,6 +310,7 @@ else{
 //Инициализация созданние деф. данных
 function initData(count_on_page) {
     localData();
+    data = [];
     if(localStorage !== null) {
         var local_filter_value = localStorage.getItem('filterValues');
         filter_value = JSON.parse(local_filter_value);

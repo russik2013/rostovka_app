@@ -21,6 +21,21 @@ class SuppliersController extends Controller
 
     }
 
+    public function delete($id){
+
+        $manufacturer = Manufacturer::find();
+        if($manufacturer){
+
+            $manufacturer -> delete();
+
+            Product::where('manufacturer_id', $id) -> delete();
+
+            return response('done', 200);
+
+        }else return response('wrong id', 404);
+
+    }
+
     public function edit($id){
 
         $manufacturer = Manufacturer::find($id);

@@ -817,10 +817,6 @@ input::-webkit-inner-spin-button {
     transition: none !important;
   }
 
-  .categoryPage .product-filter-content{
-    display: none;
-  }
-
   .categoryPage .product-item .product-item-inner{
     height: 230px;
   }
