@@ -200,7 +200,7 @@ class CsvDownloadController extends Controller
 
                 $excel->sheet('Sheetname', function ($sheet) use ($data, $photosData,$manufacturerInfo) {
 
-                    for ($i = 1; $i < count($data) + 2; $i++) {
+                    for ($i = 1; $i < count($data) + 3; $i++) {
 
                         if ($i > 2)
                             $sheet->setHeight($i, 50);
@@ -219,7 +219,7 @@ class CsvDownloadController extends Controller
                     //dd()
 
                     $sheet->row(1, array("Фото",
-                                         "01.01.2001"."\r\n".""."\r\n"."Адрес: ".$manufacturerInfo -> street.", номер телефона: ".$manufacturerInfo -> phone." "."\r\n".""."\r\n"." ".$manufacturerInfo ->firstName.", 0672533305",
+                                         "01.01.2001"."\r\n".""."\r\n"."Адрес: ".$manufacturerInfo -> street.", номер телефона: ".$manufacturerInfo -> phone." "."\r\n".""."\r\n"."Сергей, 0672533305",
                                          "",
                         "Rostovka","",""));
 
@@ -235,7 +235,10 @@ class CsvDownloadController extends Controller
                         array('horizontal' => 'left', 'vertical' => 'center')
                     );
                     $sheet->getStyle('D1:F1')->getAlignment()->applyFromArray(
-                        array('horizontal' => 'center', 'vertical' => 'center')
+                        array('horizontal' => 'center', 'vertical' => 'center',
+                            'font' => array(
+                            'size' => 600,
+                        ))
                     );
 
                     $sheet->row(2, array("",
@@ -366,7 +369,7 @@ class CsvDownloadController extends Controller
 
                 $excel->sheet('Sheetname', function ($sheet) use ($data, $manufacturerInfo) {
 
-                    for ($i = 1; $i < count($data) + 2; $i++) {
+                    for ($i = 1; $i < count($data) + 3; $i++) {
 
                         if ($i > 2)
                             $sheet->setHeight($i, 50);
@@ -385,7 +388,7 @@ class CsvDownloadController extends Controller
                     //dd()
 
                     $sheet->row(1, array(
-                        "01.01.2001"."\r\n".""."\r\n"."Адрес: ".$manufacturerInfo -> street.", номер телефона: ".$manufacturerInfo -> phone." "."\r\n".""."\r\n"." ".$manufacturerInfo ->firstName.", 0672533305",
+                        "01.01.2001"."\r\n".""."\r\n"."Адрес: ".$manufacturerInfo -> street.", номер телефона: ".$manufacturerInfo -> phone." "."\r\n".""."\r\n"."Сергей, 0672533305",
                         "",
                         "Rostovka","",""));
 
@@ -401,7 +404,10 @@ class CsvDownloadController extends Controller
                         array('horizontal' => 'left', 'vertical' => 'center')
                     );
                     $sheet->getStyle('C1:E1')->getAlignment()->applyFromArray(
-                        array('horizontal' => 'center', 'vertical' => 'center')
+                        array('horizontal' => 'center', 'vertical' => 'center',
+                            'font' => array(
+                                'size' => 600,
+                            ))
                     );
 
                     $sheet->row(2, array(
