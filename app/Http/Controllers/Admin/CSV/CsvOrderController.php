@@ -84,13 +84,11 @@ class CsvOrderController extends Controller
 
                         for ($i = 1; $i < count($value) + 10; $i++) {
 
-                            $sheet->setHeight($i, 35);
+                            $sheet->setHeight($i, 46);
 
                             $sheet->getStyle('A'.$i.':I3'.$i)->getAlignment()->applyFromArray(
                                 array('horizontal' => 'left', 'vertical' => 'center')
                             )->setWrapText(true);
-
-
                         }
 
                         switch ($key){
@@ -284,7 +282,7 @@ class CsvOrderController extends Controller
                         for ($i = 1; $i < count($value) + 2; $i++) {
 
                             if ($i > 2)
-                                $sheet->setHeight($i, 130);
+                                $sheet->setHeight($i, 60);
                             else
                                 $sheet->setHeight($i, 25);
 
@@ -362,10 +360,10 @@ class CsvOrderController extends Controller
                                     $objDrawing->setCoordinates('C' . ($i + 2));
                                     $objDrawing->setResizeProportional();
                                     //$objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
-                                    $objDrawing->setOffsetY(0);
-                                    $objDrawing->setOffsetX(0);
-                                    $objDrawing->setWidth(250);
-                                    $objDrawing->setHeight(170);
+                                    $objDrawing->setOffsetY(5);
+                                    $objDrawing->setOffsetX(55);
+                                    $objDrawing->setWidth(125);
+                                    $objDrawing->setHeight(65);
                                 }
 
                         }
@@ -474,10 +472,19 @@ class CsvOrderController extends Controller
 
                     $number = count($data[$detail->manufacturer_name]);
 
+                    $normArtikle = explode(mb_strtolower($detail->manufacturer_name), $detail->article);
+                    if(isset($normArtikle[1])){
+
+                        $artiklePrint = $normArtikle[1];
+
+                    }else $artiklePrint = $detail->article;
+
+                    //dd($normArtikle, $detail->manufacturer_name);
+
                     $data[$detail->manufacturer_name][] = [
                         $number,
                         $detail->order_id,
-                        $detail->article,
+                        $artiklePrint,
                         $type,
                         $detail->tovar_in_order_count,
                         $count,
@@ -518,6 +525,8 @@ class CsvOrderController extends Controller
 
 
                         for ($i = 1; $i < count($value); $i++) {
+
+
 
                             $sheet->row(2 + $i, $value[$i]);
 

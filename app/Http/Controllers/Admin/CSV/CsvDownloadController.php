@@ -195,7 +195,6 @@ class CsvDownloadController extends Controller
 
             $manufacturerInfo = $products[0]->manufacturer;
 
-
             Excel::create('Filename', function ($excel) use ($data, $photosData,$manufacturerInfo) {
 
                 $excel->sheet('Sheetname', function ($sheet) use ($data, $photosData,$manufacturerInfo) {
@@ -281,7 +280,10 @@ class CsvDownloadController extends Controller
                     $sheet->setWidth('G', 20);
                     $sheet->setWidth('H', 20);
 
-                    for ($i = 1; $i < count($photosData); $i++) {
+
+
+                    for ($i = 0; $i < count($photosData); $i++) {
+
                         if($photosData[$i]['Фото'] != "")
 
                         if (file_exists( 'images/products/' . $photosData[$i]['Фото'])) {
@@ -289,13 +291,13 @@ class CsvDownloadController extends Controller
                             $objDrawing->setPath(public_path('images/products/' . $photosData[$i]['Фото'])); //your image path
                             $objDrawing->setName('imageRussik');
                             $objDrawing->setWorksheet($sheet);
-                            $objDrawing->setCoordinates('A' . ($i + 2));
+                            $objDrawing->setCoordinates('A' . ($i + 3));
                             $objDrawing->setResizeProportional();
                             $objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
                             $objDrawing->setOffsetY(0);
                             $objDrawing->setOffsetX(10);
-                            $objDrawing->setWidth(90);
-                            $objDrawing->setHeight(60);
+                            $objDrawing->setWidth(80);
+                            $objDrawing->setHeight(55);
                         }
 
                     }
@@ -440,8 +442,8 @@ class CsvDownloadController extends Controller
 
 
                     }
-                    $sheet->setWidth('A', 9);
-                    $sheet->setWidth('B', 48);
+                    $sheet->setWidth('A', 48);
+                    $sheet->setWidth('B', 9);
                     $sheet->setWidth('C', 10);
                     $sheet->setWidth('D', 12);
                     $sheet->setWidth('E', 10);
