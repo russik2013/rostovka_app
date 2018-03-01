@@ -58,18 +58,18 @@ class CsvOrderController extends Controller
         if($orders->count() > 0) {
             foreach ($orders as $order) {
 
-               if(!isset($score[$order->shipping_method]))
-                   $score[$order->shipping_method] = 1;
+                if(!isset($score[$order->shipping_method]))
+                    $score[$order->shipping_method] = 1;
 
 
                 $data[$order->shipping_method][] = [
-                   $score[$order->shipping_method],
-                   $order->first_name . ' ' . $order->last_name,
-                   $order->address. ' '. $order -> info,
-                   $order->phone,
-                   '',
-                   '',
-                   ""
+                    $score[$order->shipping_method],
+                    $order->first_name . ' ' . $order->last_name,
+                    $order->address. ' '. $order -> info,
+                    $order->phone,
+                    '',
+                    '',
+                    ""
                 ];
 
                 $score[$order->shipping_method] =  $score[$order->shipping_method] + 1;
@@ -84,11 +84,11 @@ class CsvOrderController extends Controller
 
                         for ($i = 1; $i < count($value) + 10; $i++) {
 
-                                $sheet->setHeight($i, 35);
+                            $sheet->setHeight($i, 35);
 
                             $sheet->getStyle('A'.$i.':I3'.$i)->getAlignment()->applyFromArray(
                                 array('horizontal' => 'left', 'vertical' => 'center')
-                            );
+                            )->setWrapText(true);
 
 
                         }
@@ -290,7 +290,7 @@ class CsvOrderController extends Controller
 
                             $sheet->getStyle('A'.$i.':I'.$i)->getAlignment()->applyFromArray(
                                 array('horizontal' => 'center', 'vertical' => 'center')
-                            );
+                            )->setWrapText(true);
 
                         }
 
@@ -354,19 +354,19 @@ class CsvOrderController extends Controller
 
                             if($value[$i][2] != "")
 
-                            if (file_exists('images/products/' . $value[$i][2]) && $value[$i][2] != "") {
-                                $objDrawing = new PHPExcel_Worksheet_Drawing;
-                                $objDrawing->setPath(public_path('images/products/' . $value[$i][2])); //your image path
-                                $objDrawing->setName('imageRussik');
-                                $objDrawing->setWorksheet($sheet);
-                                $objDrawing->setCoordinates('C' . ($i + 2));
-                                $objDrawing->setResizeProportional();
-                                //$objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
-                                $objDrawing->setOffsetY(0);
-                                $objDrawing->setOffsetX(0);
-                                $objDrawing->setWidth(250);
-                                $objDrawing->setHeight(170);
-                            }
+                                if (file_exists('images/products/' . $value[$i][2]) && $value[$i][2] != "") {
+                                    $objDrawing = new PHPExcel_Worksheet_Drawing;
+                                    $objDrawing->setPath(public_path('images/products/' . $value[$i][2])); //your image path
+                                    $objDrawing->setName('imageRussik');
+                                    $objDrawing->setWorksheet($sheet);
+                                    $objDrawing->setCoordinates('C' . ($i + 2));
+                                    $objDrawing->setResizeProportional();
+                                    //$objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
+                                    $objDrawing->setOffsetY(0);
+                                    $objDrawing->setOffsetX(0);
+                                    $objDrawing->setWidth(250);
+                                    $objDrawing->setHeight(170);
+                                }
 
                         }
 
@@ -416,7 +416,7 @@ class CsvOrderController extends Controller
                 -> get();
         }
 
-       // dd($request -> all());
+        // dd($request -> all());
 
 
         $data = [];
@@ -429,7 +429,7 @@ class CsvOrderController extends Controller
                 foreach ($order->details as $detail) {
 
                     if(!in_array($detail->manufacturer_name, $manufacturersNames))
-                    $manufacturersNames[] = $detail->manufacturer_name;
+                        $manufacturersNames[] = $detail->manufacturer_name;
 
                 }
 
@@ -497,7 +497,6 @@ class CsvOrderController extends Controller
 
                     $excel->sheet($key, function ($sheet) use ($value) {
 
-
                         for ($i = 1; $i < count($value) + 2; $i++) {
 
                                 $sheet->setHeight($i, 25);
@@ -507,7 +506,7 @@ class CsvOrderController extends Controller
 
                             $sheet->getStyle('A'.$i.':I'.$i)->getAlignment()->applyFromArray(
                                 array('horizontal' => 'center', 'vertical' => 'center')
-                            );
+                            )->setWrapText(true);
 
                         }
 
@@ -540,6 +539,7 @@ class CsvOrderController extends Controller
 
                         $sheet->mergeCells('D1:F1');
                         $sheet->mergeCells('G1:H1');
+
 
                         $objDrawing = new PHPExcel_Worksheet_Drawing;
                         $objDrawing->setPath(public_path('images/viber_image.jpg')); //your image path
