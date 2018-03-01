@@ -147,7 +147,7 @@ class ProductController extends Controller
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
 
-            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0){
+            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0 && $product->currency == 'дол'){
 
                 $product->prise_default *= $product -> manufacturer ->koorse;
             }
@@ -355,7 +355,7 @@ class ProductController extends Controller
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
 
-            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0){
+            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0 && $product->currency == 'дол'){
 
                 $product->prise_default *= $product -> manufacturer ->koorse;
             }
@@ -398,7 +398,7 @@ class ProductController extends Controller
 
         foreach ($products as $product){
 
-            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0){
+            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0  && $product->currency == 'дол'){
 
                $product->prise_default *= $product -> manufacturer ->koorse;
             }
