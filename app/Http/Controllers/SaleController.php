@@ -150,7 +150,7 @@ class SaleController extends Controller
 
             }
 
-            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0){
+            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0 && $product->currency == 'дол'){
 
                 $product->prise_default *= $product -> manufacturer ->koorse;
                 $product->prise_default = round( $product->prise_default, 2);

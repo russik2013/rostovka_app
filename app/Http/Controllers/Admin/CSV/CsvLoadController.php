@@ -87,7 +87,7 @@ class CsvLoadController extends Controller
         ProductPhotos::whereIn('product_id', $delete_array) -> delete();
 
         foreach ($photos as $photo){
-
+            if(file_exists('images/products/' . $photo))
             File::delete('images/products/' . $photo);
 
         }
@@ -397,6 +397,9 @@ class CsvLoadController extends Controller
                 if($item) {
 
                     $photos_to_products_insert_array[] = ['photo_url' => $data_base_products[$key] . "_" . $item . '.jpg',
+                        'product_id' => $data_base_products[$key]];
+                }else {
+                    $photos_to_products_insert_array[] = ['photo_url' => 'none',
                         'product_id' => $data_base_products[$key]];
                 }
 
