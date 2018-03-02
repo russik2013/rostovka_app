@@ -58,18 +58,18 @@ class CsvOrderController extends Controller
         if($orders->count() > 0) {
             foreach ($orders as $order) {
 
-               if(!isset($score[$order->shipping_method]))
-                   $score[$order->shipping_method] = 1;
+                if(!isset($score[$order->shipping_method]))
+                    $score[$order->shipping_method] = 1;
 
 
                 $data[$order->shipping_method][] = [
-                   $score[$order->shipping_method],
-                   $order->first_name . ' ' . $order->last_name,
-                   $order->address. ' '. $order -> info,
-                   $order->phone,
-                   '',
-                   '',
-                   ""
+                    $score[$order->shipping_method],
+                    $order->first_name . ' ' . $order->last_name,
+                    $order->address. ' '. $order -> info,
+                    $order->phone,
+                    '',
+                    '',
+                    ""
                 ];
 
                 $score[$order->shipping_method] =  $score[$order->shipping_method] + 1;
@@ -84,13 +84,11 @@ class CsvOrderController extends Controller
 
                         for ($i = 1; $i < count($value) + 10; $i++) {
 
-                                $sheet->setHeight($i, 35);
+                            $sheet->setHeight($i, 46);
 
                             $sheet->getStyle('A'.$i.':I3'.$i)->getAlignment()->applyFromArray(
                                 array('horizontal' => 'left', 'vertical' => 'center')
-                            );
-
-
+                            )->setWrapText(true);
                         }
 
                         switch ($key){
@@ -220,10 +218,38 @@ class CsvOrderController extends Controller
 
             $manufacturersInfos = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('street', 'name');
 
+            $manufacturersFirstName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('firstName', 'name');
+            $manufacturersSecondName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('secondName', 'name');
+            $manufacturersPhoneName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('phone', 'name');
+
 
             foreach ($orders as $order) {
 
                 foreach ($order->details as $detail) {
+                    if(isset($manufacturersInfos[$detail->manufacturer_name]))
+                        if($manufacturersInfos[$detail->manufacturer_name] != "" && $manufacturersInfos[$detail->manufacturer_name] != null)
+                            $street = ", ".$manufacturersInfos[$detail->manufacturer_name];
+                        else $street = $manufacturersInfos[$detail->manufacturer_name];
+                    else $street = 'Поставщик был удалён'.", ";
+
+                    if(isset($manufacturersFirstName[$detail->manufacturer_name]))
+                        if($manufacturersFirstName[$detail->manufacturer_name] != "" && $manufacturersFirstName[$detail->manufacturer_name] != null)
+                            $firstNameManufacturer = ", ".$manufacturersFirstName[$detail->manufacturer_name];
+                        else $firstNameManufacturer = $manufacturersFirstName[$detail->manufacturer_name];
+                    else $firstNameManufacturer = '';
+
+                    if(isset($manufacturersSecondName[$detail->manufacturer_name]))
+                        if($manufacturersSecondName[$detail->manufacturer_name] != "" && $manufacturersSecondName[$detail->manufacturer_name] != null)
+                            $secondNameManufacturer = " ".$manufacturersSecondName[$detail->manufacturer_name];
+                        else $secondNameManufacturer = $manufacturersSecondName[$detail->manufacturer_name];
+                    else $secondNameManufacturer = '';
+
+
+                    if(isset($manufacturersPhoneName[$detail->manufacturer_name]))
+                        if($manufacturersPhoneName[$detail->manufacturer_name] != "" && $manufacturersPhoneName[$detail->manufacturer_name] != null)
+                            $phoneManufacturer = ", ".$manufacturersPhoneName[$detail->manufacturer_name];
+                        else  $phoneManufacturer = $manufacturersPhoneName[$detail->manufacturer_name];
+                    else $phoneManufacturer = '';
 
                     $time =  explode(' ',  Carbon::now());
 
@@ -232,7 +258,7 @@ class CsvOrderController extends Controller
                         $time[0],
                         '',
                         'Заказчик: Rostovka.net '."\r\n".'Сергей тел: 0672533305',
-                        'Поставщик: ' . $detail->manufacturer_name . "\r\n". $manufacturersInfos[$detail->manufacturer_name],
+                        'Поставщик: ' . $detail->manufacturer_name . "". $street ."". $firstNameManufacturer. "". $secondNameManufacturer."".$phoneManufacturer,
 
                     ];
 
@@ -284,13 +310,13 @@ class CsvOrderController extends Controller
                         for ($i = 1; $i < count($value) + 2; $i++) {
 
                             if ($i > 2)
-                                $sheet->setHeight($i, 130);
+                                $sheet->setHeight($i, 60);
                             else
                                 $sheet->setHeight($i, 25);
 
                             $sheet->getStyle('A'.$i.':I'.$i)->getAlignment()->applyFromArray(
                                 array('horizontal' => 'center', 'vertical' => 'center')
-                            );
+                            )->setWrapText(true);
 
                         }
 
@@ -354,19 +380,19 @@ class CsvOrderController extends Controller
 
                             if($value[$i][2] != "")
 
-                            if (file_exists('images/products/' . $value[$i][2]) && $value[$i][2] != "") {
-                                $objDrawing = new PHPExcel_Worksheet_Drawing;
-                                $objDrawing->setPath(public_path('images/products/' . $value[$i][2])); //your image path
-                                $objDrawing->setName('imageRussik');
-                                $objDrawing->setWorksheet($sheet);
-                                $objDrawing->setCoordinates('C' . ($i + 2));
-                                $objDrawing->setResizeProportional();
-                                //$objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
-                                $objDrawing->setOffsetY(0);
-                                $objDrawing->setOffsetX(0);
-                                $objDrawing->setWidth(250);
-                                $objDrawing->setHeight(170);
-                            }
+                                if (file_exists('images/products/' . $value[$i][2]) && $value[$i][2] != "") {
+                                    $objDrawing = new PHPExcel_Worksheet_Drawing;
+                                    $objDrawing->setPath(public_path('images/products/' . $value[$i][2])); //your image path
+                                    $objDrawing->setName('imageRussik');
+                                    $objDrawing->setWorksheet($sheet);
+                                    $objDrawing->setCoordinates('C' . ($i + 2));
+                                    $objDrawing->setResizeProportional();
+                                    //$objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
+                                    $objDrawing->setOffsetY(5);
+                                    $objDrawing->setOffsetX(55);
+                                    $objDrawing->setWidth(125);
+                                    $objDrawing->setHeight(65);
+                                }
 
                         }
 
@@ -416,7 +442,7 @@ class CsvOrderController extends Controller
                 -> get();
         }
 
-       // dd($request -> all());
+        // dd($request -> all());
 
 
         $data = [];
@@ -429,7 +455,7 @@ class CsvOrderController extends Controller
                 foreach ($order->details as $detail) {
 
                     if(!in_array($detail->manufacturer_name, $manufacturersNames))
-                    $manufacturersNames[] = $detail->manufacturer_name;
+                        $manufacturersNames[] = $detail->manufacturer_name;
 
                 }
 
@@ -437,18 +463,53 @@ class CsvOrderController extends Controller
 
             $manufacturersInfos = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('street', 'name');
 
+            $manufacturersFirstName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('firstName', 'name');
+            $manufacturersSecondName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('secondName', 'name');
+            $manufacturersPhoneName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('phone', 'name');
+
+            //dd($manufacturersNames, $manufacturersInfos,$manufacturersFirstName,$manufacturersSecondName, $manufacturersPhoneName);
+
+
             foreach ($orders as $order) {
 
                 foreach ($order->details as $detail) {
 
                     $time =  explode(' ',  Carbon::now());
 
+                    if(isset($manufacturersInfos[$detail->manufacturer_name]))
+                        if($manufacturersInfos[$detail->manufacturer_name] != "" && $manufacturersInfos[$detail->manufacturer_name] != null)
+                            $street = ", ".$manufacturersInfos[$detail->manufacturer_name];
+                        else $street = $manufacturersInfos[$detail->manufacturer_name];
+                    else $street = 'Поставщик был удалён'.", ";
+
+                    if(isset($manufacturersFirstName[$detail->manufacturer_name]))
+                        if($manufacturersFirstName[$detail->manufacturer_name] != "" && $manufacturersFirstName[$detail->manufacturer_name] != null)
+                            $firstNameManufacturer = ", ".$manufacturersFirstName[$detail->manufacturer_name];
+                        else $firstNameManufacturer = $manufacturersFirstName[$detail->manufacturer_name];
+                    else $firstNameManufacturer = '';
+
+                    if(isset($manufacturersSecondName[$detail->manufacturer_name]))
+                        if($manufacturersSecondName[$detail->manufacturer_name] != "" && $manufacturersSecondName[$detail->manufacturer_name] != null)
+                            $secondNameManufacturer = " ".$manufacturersSecondName[$detail->manufacturer_name];
+                        else $secondNameManufacturer = $manufacturersSecondName[$detail->manufacturer_name];
+                    else $secondNameManufacturer = '';
+
+
+                    if(isset($manufacturersPhoneName[$detail->manufacturer_name]))
+                        if($manufacturersPhoneName[$detail->manufacturer_name] != "" && $manufacturersPhoneName[$detail->manufacturer_name] != null)
+                            $phoneManufacturer = ", ".$manufacturersPhoneName[$detail->manufacturer_name];
+                        else  $phoneManufacturer = $manufacturersPhoneName[$detail->manufacturer_name];
+                    else $phoneManufacturer = '';
+
+
+
+
                     $data[$detail->manufacturer_name][0] = [
 
                         $time[0],
                         '',
                         'Заказчик: Rostovka.net '."\r\n".'Сергей тел: 0672533305',
-                        'Поставщик: ' . $detail->manufacturer_name . "\r\n". $manufacturersInfos[$detail->manufacturer_name],
+                        'Поставщик: ' . $detail->manufacturer_name ."". $street ."". $firstNameManufacturer. "". $secondNameManufacturer."".$phoneManufacturer,
 
 
                     ];
@@ -474,10 +535,19 @@ class CsvOrderController extends Controller
 
                     $number = count($data[$detail->manufacturer_name]);
 
+                    $normArtikle = explode(mb_strtolower($detail->manufacturer_name), $detail->article);
+                    if(isset($normArtikle[1])){
+
+                        $artiklePrint = $normArtikle[1];
+
+                    }else $artiklePrint = $detail->article;
+
+                    //dd($normArtikle, $detail->manufacturer_name);
+
                     $data[$detail->manufacturer_name][] = [
                         $number,
                         $detail->order_id,
-                        $detail->article,
+                        $artiklePrint,
                         $type,
                         $detail->tovar_in_order_count,
                         $count,
@@ -497,17 +567,16 @@ class CsvOrderController extends Controller
 
                     $excel->sheet($key, function ($sheet) use ($value) {
 
-
                         for ($i = 1; $i < count($value) + 2; $i++) {
 
-                                $sheet->setHeight($i, 25);
+                                $sheet->setHeight($i, 52);
 
                                 if($i >= 3)
                                     $sheet->setHeight($i, 40);
 
                             $sheet->getStyle('A'.$i.':I'.$i)->getAlignment()->applyFromArray(
                                 array('horizontal' => 'center', 'vertical' => 'center')
-                            );
+                            )->setWrapText(true);
 
                         }
 
@@ -519,6 +588,8 @@ class CsvOrderController extends Controller
 
 
                         for ($i = 1; $i < count($value); $i++) {
+
+
 
                             $sheet->row(2 + $i, $value[$i]);
 
@@ -540,6 +611,7 @@ class CsvOrderController extends Controller
 
                         $sheet->mergeCells('D1:F1');
                         $sheet->mergeCells('G1:H1');
+
 
                         $objDrawing = new PHPExcel_Worksheet_Drawing;
                         $objDrawing->setPath(public_path('images/viber_image.jpg')); //your image path

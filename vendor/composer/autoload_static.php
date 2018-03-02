@@ -322,6 +322,10 @@ class ComposerStaticInit639d35262d59105a382916b2beb6576d
             array (
                 0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
             ),
+            'PDFMerger' => 
+            array (
+                0 => __DIR__ . '/..' . '/rguedes/pdfmerger/Classes',
+            ),
         ),
         'M' => 
         array (
@@ -2255,6 +2259,7 @@ class ComposerStaticInit639d35262d59105a382916b2beb6576d
         'Monolog\\Processor\\UidProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/UidProcessor.php',
         'Monolog\\Processor\\WebProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/WebProcessor.php',
         'Monolog\\Registry' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Registry.php',
+        'PDFMerger' => __DIR__ . '/..' . '/rguedes/pdfmerger/Classes/PDFMerger.php',
         'PHPExcel' => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes/PHPExcel.php',
         'PHPExcel_Autoloader' => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes/PHPExcel/Autoloader.php',
         'PHPExcel_Best_Fit' => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes/PHPExcel/Shared/trend/bestFitClass.php',
