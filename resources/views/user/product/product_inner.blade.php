@@ -21,11 +21,13 @@
                                     <div class="product-image-slider product-image-gallery" id="product-image-gallery"
                                          data-pswp-uid="3">
                                         <div class="item">
-                                            <a class="product-gallery-item"
-                                               href="{{asset('images/products/'.$product -> photo -> photo_url)}}" data-size=""
-                                               data-med="{{asset('images/products/'.$product -> photo -> photo_url)}}" data-med-size="">
-                                                <img src="{{asset('images/products/'.$product -> photo -> photo_url)}}" alt="image 1"/>
-                                            </a>
+                                            @if ($product -> photo)
+                                                <a class="product-gallery-item"
+                                                   href="{{asset('images/products/'.$product -> photo -> photo_url)}}" data-size=""
+                                                   data-med="{{asset('images/products/'.$product -> photo -> photo_url)}}" data-med-size="">
+                                                    <img src="{{asset('images/products/'.$product -> photo -> photo_url)}}" alt="image 1"/>
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                     <!-- End Slick Image Slider -->
@@ -103,10 +105,10 @@
                                     <div class="col-md-12 chooseItem">
                                         <div class="radio lft choosed" data-set="boxset">
                                             <label>
-                                                <input type="radio" name="optradio" style="width:25px; height:40px;"
+                                                <input type="radio" name="optradio" value="0" style="width:25px; height:40px;"
                                                        checked onclick="getSelect(event)" data-id="box">в ящике
                                                 <span class="boxPrice"><span
-                                                            class="iPrice">{{$product -> prise * $product -> box_count}}</span> <sup>грн</sup> <span
+                                                            class="iPrice">{{$product -> prise * $product -> rostovka_count}}</span> <sup>грн</sup> <span
                                                             class="forBag">за 1 ящик</span></span>
                                             </label>
                                         </div>
@@ -114,10 +116,10 @@
 
                                         <div class="radio rth disable" data-set="rotovkaset">
                                             <label>
-                                                <input type="radio" name="optradio" style="width:25px; height:40px;"
+                                                <input type="radio" name="optradio" value="1" style="width:25px; height:40px;"
                                                        onclick="getSelect(event)">
                                                 минимум
-                                                <span><span class="iPrice">{{$product -> prise * $product -> rostovka_count}}</span> <sup>грн</sup> <span
+                                                <span><span class="iPrice">{{$product -> prise * $product -> box_count}}</span> <sup>грн</sup> <span
                                                             class="forBag">за 1 ростовку</span></span>
                                             </label>
                                         </div>

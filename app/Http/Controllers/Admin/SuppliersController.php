@@ -23,16 +23,16 @@ class SuppliersController extends Controller
 
     public function delete($id){
 
-        $manufacturer = Manufacturer::find();
+        $manufacturer = Manufacturer::find($id);
         if($manufacturer){
 
             $manufacturer -> delete();
 
             Product::where('manufacturer_id', $id) -> delete();
 
-            return response('done', 200);
+            return redirect()->back();
 
-        }else return response('wrong id', 404);
+        }else return redirect()->back();
 
     }
 
@@ -45,8 +45,6 @@ class SuppliersController extends Controller
             return view('admin.product.supplier_edit', compact('manufacturer'));
 
         else return redirect() -> back();
-
-
 
     }
 

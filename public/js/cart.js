@@ -19,10 +19,11 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
 
         var itemQuant = Number ($('.quantity').val()),
             domItem_price = Number ($.find('.choosed')[0].firstElementChild.lastElementChild.firstChild.innerText),
-            trueTarget = false;
+            trueTarget = false,
+            choosedType = String ($('.radio.choosed input').val());
 
         if(Cart_data[0].row.length === 0){
-            getProductData(targetID, itemQuant, domItem_price);
+            getProductData(targetID, itemQuant, domItem_price, choosedType);
         }
         else {
             for (var l = 0; l < Cart_data[0].row.length; l++){
@@ -38,13 +39,14 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
             }
 
             if(trueTarget === false){
-                getProductData(targetID, itemQuant, domItem_price);
+                getProductData(targetID, itemQuant, domItem_price, choosedType);
             }
         }
     }
 
     else {
-        var checkif_true = false, domtargetID = 0;
+        var checkif_true = false, domtargetID = 0, choosedType = 1;
+
 
         if($('.mainpageGoodsBlock').length > 0){
             domtargetID = Number(event.target.offsetParent.offsetParent.offsetParent.dataset.id);
@@ -91,11 +93,9 @@ function setUrl() {
     $('.cart--url').attr("href", url);
 }
 
-function getProductData(targetID, itemQuant, domItem_price) {
+function getProductData(targetID, itemQuant, domItem_price, choosedType) {
     var poductinnerID = Number ($.find('[data-prodid]')[0].dataset.prodid),
         productData = [];
-    
-    console.log(targetID);
 
     $('button.buyProduct_inner').attr( "disabled", true );
 
@@ -108,13 +108,18 @@ function getProductData(targetID, itemQuant, domItem_price) {
         productData.push(msg);
         
         if(Cart_data[0].row.length !== 0){
-            pushtoCart();
+            pushtoCart(choosedType);
         }
         else{
-            pushtoCart();
+            pushtoCart(choosedType);
             $('.isClear').remove()
         }
-        function pushtoCart() {
+        
+        function pushtoCart(choosedType) {
+
+            if(msg.photo === null){
+                msg.photo = 'undefined';
+            }
             Cart_data[0].row.push({
                 productID: productData[0].id,
                 targetID: productData[0].id,
@@ -128,10 +133,12 @@ function getProductData(targetID, itemQuant, domItem_price) {
                 buy_real_id: productData[0].id,
                 size: productData[0].size.name,
                 cart_product_url: productData[0].product_url,
-                selected_value: '0',
+                selected_value: choosedType,
                 price_per_pair: productData[0].prise,
                 box__price: Number ($.find('[data-set="boxset"] .iPrice')[0].innerText)
             });
+
+            console.log(Cart_data[0].row);
 
             $('.dropdownCart ul li').remove();
             Cart_data[0].cartCount = Cart_data[0].row.length;

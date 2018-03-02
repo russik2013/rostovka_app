@@ -434,7 +434,7 @@ function makeData(page_num, count_on_page) {
 var numberPerPage = 24, pageList = [], currentPage = 1, numberOfPages = 0;
 function NextData(page_num, count_on_page, filter_value) {
     data = [];
-    console.log(sizeValue);
+
     $('.product--block').append('<div class="preloader"><i></i></div>');
     $.ajax({
         method: "POST",
@@ -690,6 +690,7 @@ function GetData(data) {
 
 //Отрисовка элементов TMPL
 function drawItems(pageList) {
+    console.log(pageList);
     var delay = 0;
     document.getElementById("target").innerHTML = "";
     $(productTheme).tmpl(pageList).appendTo('#target').each(function () {

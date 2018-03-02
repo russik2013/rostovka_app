@@ -68,7 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/suppliers/{name?}', 'Admin\SuppliersController@index')->name('suppliers');
         Route::get('/suppliers_edit/{id}', 'Admin\SuppliersController@edit');
         Route::post('/suppliers_update', 'Admin\SuppliersController@update');
-        Route::post('/suppliers_delete/{id}', 'Admin\SuppliersController@delete');
+        Route::get('/suppliers_delete/{id}', 'Admin\SuppliersController@delete');
 
         Route::get('/admin_index/{name?}', 'Admin\HomeController@index') -> name("adminIndex");
         Route::get('/user_edit/{id}', 'Admin\HomeController@editClient');
