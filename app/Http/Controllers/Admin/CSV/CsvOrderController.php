@@ -219,9 +219,15 @@ class CsvOrderController extends Controller
             $manufacturersInfos = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('street', 'name');
 
 
+
+
             foreach ($orders as $order) {
 
                 foreach ($order->details as $detail) {
+
+                    if(isset($manufacturersInfos[$detail->manufacturer_name]))
+                        $street = $manufacturersInfos[$detail->manufacturer_name];
+                    else $street = 'Поставщик был удалён';
 
                     $time =  explode(' ',  Carbon::now());
 
@@ -230,7 +236,7 @@ class CsvOrderController extends Controller
                         $time[0],
                         '',
                         'Заказчик: Rostovka.net '."\r\n".'Сергей тел: 0672533305',
-                        'Поставщик: ' . $detail->manufacturer_name . "\r\n". $manufacturersInfos[$detail->manufacturer_name],
+                        'Поставщик: ' . $detail->manufacturer_name . "\r\n". $street,
 
                     ];
 
@@ -441,12 +447,16 @@ class CsvOrderController extends Controller
 
                     $time =  explode(' ',  Carbon::now());
 
+                    if(isset($manufacturersInfos[$detail->manufacturer_name]))
+                        $street = $manufacturersInfos[$detail->manufacturer_name];
+                    else $street = 'Поставщик был удалён';
+
                     $data[$detail->manufacturer_name][0] = [
 
                         $time[0],
                         '',
                         'Заказчик: Rostovka.net '."\r\n".'Сергей тел: 0672533305',
-                        'Поставщик: ' . $detail->manufacturer_name . "\r\n". $manufacturersInfos[$detail->manufacturer_name],
+                        'Поставщик: ' . $detail->manufacturer_name . "\r\n". $street,
 
 
                     ];
