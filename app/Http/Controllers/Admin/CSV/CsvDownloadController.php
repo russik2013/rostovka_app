@@ -195,6 +195,8 @@ class CsvDownloadController extends Controller
 
             $manufacturerInfo = $products[0]->manufacturer;
 
+            //dd($manufacturerInfo);
+
             Excel::create('Filename', function ($excel) use ($data, $photosData,$manufacturerInfo) {
 
                 $excel->sheet('Sheetname', function ($sheet) use ($data, $photosData,$manufacturerInfo) {
@@ -215,12 +217,26 @@ class CsvDownloadController extends Controller
                     }
 
 
-                    //dd()
+                    if($manufacturerInfo -> street != "" &&  $manufacturerInfo -> street != null)
+                        $streetManufacturer = ", ".$manufacturerInfo -> street;
+                    else $streetManufacturer = '';
+
+                    if($manufacturerInfo -> firstName != "" &&  $manufacturerInfo -> firstName != null)
+                        $firstNameManufacturer = ", ".$manufacturerInfo -> firstName;
+                    else $firstNameManufacturer = '';
+
+                    if($manufacturerInfo -> secondName != "" &&  $manufacturerInfo -> secondName != null)
+                        $secondNameManufacturer = ", ".$manufacturerInfo -> secondName;
+                    else $secondNameManufacturer = '';
+
+                    if($manufacturerInfo -> phone != "" &&  $manufacturerInfo -> phone != null)
+                        $phoneManufacturer = ", ".$manufacturerInfo -> phone;
+                    else $phoneManufacturer = '';
 
                     $sheet->row(1, array("Фото",
-                                         "01.01.2001"."\r\n".""."\r\n"."Адрес: ".$manufacturerInfo -> street.", номер телефона: ".$manufacturerInfo -> phone." "."\r\n".""."\r\n"."Сергей, 0672533305",
+                                         "01.01.2001"."\r\n".""."\r\n"."Поставщик: ".$manufacturerInfo -> name.", ".$streetManufacturer.", ".$firstNameManufacturer." ". $secondNameManufacturer.", ".$phoneManufacturer,
                                          "",
-                        "Rostovka","",""));
+                        "Rostovka"."\r\n".""."\r\n"."Сергей, 0672533305","",""));
 
 
 
@@ -389,11 +405,26 @@ class CsvDownloadController extends Controller
 
                     //dd()
 
-                    $sheet->row(1, array(
-                        "01.01.2001"."\r\n".""."\r\n"."Адрес: ".$manufacturerInfo -> street.", номер телефона: ".$manufacturerInfo -> phone." "."\r\n".""."\r\n"."Сергей, 0672533305",
-                        "",
-                        "Rostovka","",""));
+                    if($manufacturerInfo -> street != "" &&  $manufacturerInfo -> street != null)
+                        $streetManufacturer = ", ".$manufacturerInfo -> street;
+                    else $streetManufacturer = '';
 
+                    if($manufacturerInfo -> firstName != "" &&  $manufacturerInfo -> firstName != null)
+                        $firstNameManufacturer = ", ".$manufacturerInfo -> firstName;
+                    else $firstNameManufacturer = '';
+
+                    if($manufacturerInfo -> secondName != "" &&  $manufacturerInfo -> secondName != null)
+                        $secondNameManufacturer = ", ".$manufacturerInfo -> secondName;
+                    else $secondNameManufacturer = '';
+
+                    if($manufacturerInfo -> phone != "" &&  $manufacturerInfo -> phone != null)
+                        $phoneManufacturer = ", ".$manufacturerInfo -> phone;
+                    else $phoneManufacturer = '';
+
+                    $sheet->row(1, array("Фото",
+                        "01.01.2001"."\r\n".""."\r\n"."Поставщик: ".$manufacturerInfo -> name.", ".$streetManufacturer.", ".$firstNameManufacturer." ". $secondNameManufacturer.", ".$phoneManufacturer,
+                        "",
+                        "Rostovka"."\r\n".""."\r\n"."Сергей, 0672533305","",""));
 
 
 

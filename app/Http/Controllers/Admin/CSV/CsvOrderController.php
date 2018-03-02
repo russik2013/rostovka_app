@@ -218,16 +218,38 @@ class CsvOrderController extends Controller
 
             $manufacturersInfos = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('street', 'name');
 
-
+            $manufacturersFirstName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('firstName', 'name');
+            $manufacturersSecondName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('secondName', 'name');
+            $manufacturersPhoneName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('phone', 'name');
 
 
             foreach ($orders as $order) {
 
                 foreach ($order->details as $detail) {
-
                     if(isset($manufacturersInfos[$detail->manufacturer_name]))
-                        $street = $manufacturersInfos[$detail->manufacturer_name];
-                    else $street = 'Поставщик был удалён';
+                        if($manufacturersInfos[$detail->manufacturer_name] != "" && $manufacturersInfos[$detail->manufacturer_name] != null)
+                            $street = ", ".$manufacturersInfos[$detail->manufacturer_name];
+                        else $street = $manufacturersInfos[$detail->manufacturer_name];
+                    else $street = 'Поставщик был удалён'.", ";
+
+                    if(isset($manufacturersFirstName[$detail->manufacturer_name]))
+                        if($manufacturersFirstName[$detail->manufacturer_name] != "" && $manufacturersFirstName[$detail->manufacturer_name] != null)
+                            $firstNameManufacturer = ", ".$manufacturersFirstName[$detail->manufacturer_name];
+                        else $firstNameManufacturer = $manufacturersFirstName[$detail->manufacturer_name];
+                    else $firstNameManufacturer = '';
+
+                    if(isset($manufacturersSecondName[$detail->manufacturer_name]))
+                        if($manufacturersSecondName[$detail->manufacturer_name] != "" && $manufacturersSecondName[$detail->manufacturer_name] != null)
+                            $secondNameManufacturer = " ".$manufacturersSecondName[$detail->manufacturer_name];
+                        else $secondNameManufacturer = $manufacturersSecondName[$detail->manufacturer_name];
+                    else $secondNameManufacturer = '';
+
+
+                    if(isset($manufacturersPhoneName[$detail->manufacturer_name]))
+                        if($manufacturersPhoneName[$detail->manufacturer_name] != "" && $manufacturersPhoneName[$detail->manufacturer_name] != null)
+                            $phoneManufacturer = ", ".$manufacturersPhoneName[$detail->manufacturer_name];
+                        else  $phoneManufacturer = $manufacturersPhoneName[$detail->manufacturer_name];
+                    else $phoneManufacturer = '';
 
                     $time =  explode(' ',  Carbon::now());
 
@@ -236,7 +258,7 @@ class CsvOrderController extends Controller
                         $time[0],
                         '',
                         'Заказчик: Rostovka.net '."\r\n".'Сергей тел: 0672533305',
-                        'Поставщик: ' . $detail->manufacturer_name . "\r\n". $street,
+                        'Поставщик: ' . $detail->manufacturer_name . "". $street ."". $firstNameManufacturer. "". $secondNameManufacturer."".$phoneManufacturer,
 
                     ];
 
@@ -441,6 +463,13 @@ class CsvOrderController extends Controller
 
             $manufacturersInfos = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('street', 'name');
 
+            $manufacturersFirstName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('firstName', 'name');
+            $manufacturersSecondName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('secondName', 'name');
+            $manufacturersPhoneName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('phone', 'name');
+
+            //dd($manufacturersNames, $manufacturersInfos,$manufacturersFirstName,$manufacturersSecondName, $manufacturersPhoneName);
+
+
             foreach ($orders as $order) {
 
                 foreach ($order->details as $detail) {
@@ -448,15 +477,39 @@ class CsvOrderController extends Controller
                     $time =  explode(' ',  Carbon::now());
 
                     if(isset($manufacturersInfos[$detail->manufacturer_name]))
-                        $street = $manufacturersInfos[$detail->manufacturer_name];
-                    else $street = 'Поставщик был удалён';
+                        if($manufacturersInfos[$detail->manufacturer_name] != "" && $manufacturersInfos[$detail->manufacturer_name] != null)
+                            $street = ", ".$manufacturersInfos[$detail->manufacturer_name];
+                        else $street = $manufacturersInfos[$detail->manufacturer_name];
+                    else $street = 'Поставщик был удалён'.", ";
+
+                    if(isset($manufacturersFirstName[$detail->manufacturer_name]))
+                        if($manufacturersFirstName[$detail->manufacturer_name] != "" && $manufacturersFirstName[$detail->manufacturer_name] != null)
+                            $firstNameManufacturer = ", ".$manufacturersFirstName[$detail->manufacturer_name];
+                        else $firstNameManufacturer = $manufacturersFirstName[$detail->manufacturer_name];
+                    else $firstNameManufacturer = '';
+
+                    if(isset($manufacturersSecondName[$detail->manufacturer_name]))
+                        if($manufacturersSecondName[$detail->manufacturer_name] != "" && $manufacturersSecondName[$detail->manufacturer_name] != null)
+                            $secondNameManufacturer = " ".$manufacturersSecondName[$detail->manufacturer_name];
+                        else $secondNameManufacturer = $manufacturersSecondName[$detail->manufacturer_name];
+                    else $secondNameManufacturer = '';
+
+
+                    if(isset($manufacturersPhoneName[$detail->manufacturer_name]))
+                        if($manufacturersPhoneName[$detail->manufacturer_name] != "" && $manufacturersPhoneName[$detail->manufacturer_name] != null)
+                            $phoneManufacturer = ", ".$manufacturersPhoneName[$detail->manufacturer_name];
+                        else  $phoneManufacturer = $manufacturersPhoneName[$detail->manufacturer_name];
+                    else $phoneManufacturer = '';
+
+
+
 
                     $data[$detail->manufacturer_name][0] = [
 
                         $time[0],
                         '',
                         'Заказчик: Rostovka.net '."\r\n".'Сергей тел: 0672533305',
-                        'Поставщик: ' . $detail->manufacturer_name . "\r\n". $street,
+                        'Поставщик: ' . $detail->manufacturer_name ."". $street ."". $firstNameManufacturer. "". $secondNameManufacturer."".$phoneManufacturer,
 
 
                     ];
@@ -516,7 +569,7 @@ class CsvOrderController extends Controller
 
                         for ($i = 1; $i < count($value) + 2; $i++) {
 
-                                $sheet->setHeight($i, 25);
+                                $sheet->setHeight($i, 52);
 
                                 if($i >= 3)
                                     $sheet->setHeight($i, 40);

@@ -90,7 +90,7 @@
 
                 <tr>
                     <td class="border_table" style="overflow: hidden;"><img src="{{public_path() .'/images/products/'.$detail -> image}}" width="70px" height="70px"></td>
-                    <td class="border_table">{{$detail -> tovar_name}} ({{$detail -> size_name}})</td>
+                    <td class="border_table">{{$detail -> tovar_name}}</td>
                     <td class="border_table">
                         @if(($detail -> this_tovar_in_order_price / $detail -> tovar_in_order_count)/ $detail -> prise == $detail -> box_count)
                             Ящик
