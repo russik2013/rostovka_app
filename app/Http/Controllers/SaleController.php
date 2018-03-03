@@ -38,9 +38,10 @@ class SaleController extends Controller
 
         if($dates -> email) {
 
-            Mail::send('admin.mail.smallMail', ["order" => $dates], function ($message) use ($dates) {
-                $message->from('us@example.com', 'Laravel');
-                $message->to("parhva@gmail.com", 'Drugak')->subject('Welcome to Odessa');
+            Mail::send('admin.mail.smallMail', ["order" => $dates], function ($message)use ($dates) {
+                $message->from('z.kon2009@gmail.com', 'Rostovka');
+                $message->to("Sava280982@inbox.ru", 'Drugak')->subject('new order');
+                $message->to( $dates -> email, 'Drugak')->subject('new order');
                 //$message->to('z.kon2009@gmail.com','Drugak')->subject('Welcome to Odessa');
             });
 

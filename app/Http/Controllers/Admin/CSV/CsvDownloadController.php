@@ -21,21 +21,21 @@ class CsvDownloadController extends Controller
             else  $type = Type::where('id', $request -> type_id)->pluck('id')->toArray();
 
         if($request -> season_id == 5)
-                $season = Season::all()->pluck('id')->toArray();
-            else  $season = Season::where('id', $request -> season_id)->pluck('id')->toArray();
+            $season = Season::all()->pluck('id')->toArray();
+        else  $season = Season::where('id', $request -> season_id)->pluck('id')->toArray();
 
 
         $accessibility = [0,1];
 
 
-            if ($request->accessibility == 0) {
-                $accessibility = [0];
+        if ($request->accessibility == 0) {
+            $accessibility = [0];
 
-            }
-            if ($request->accessibility == 1) {
-                $accessibility = [1];
+        }
+        if ($request->accessibility == 1) {
+            $accessibility = [1];
 
-            }
+        }
 
 
         $products = Product::with('category','manufacturer','season','type', 'size', 'photo')
@@ -122,7 +122,7 @@ class CsvDownloadController extends Controller
 
                     for ($i = 1; $i < count($data) + 1; $i++) {
 
-                            $sheet->setHeight($i, 25);
+                        $sheet->setHeight($i, 25);
 
                     }
 
@@ -148,14 +148,14 @@ class CsvDownloadController extends Controller
 
         $accessibility = [0,1];
 
-            if ($request->accessibility == 0) {
-                $accessibility = [0];
+        if ($request->accessibility == 0) {
+            $accessibility = [0];
 
-            }
-            if ($request->accessibility == 1) {
-                $accessibility = [1];
+        }
+        if ($request->accessibility == 1) {
+            $accessibility = [1];
 
-            }
+        }
 
 
 
@@ -241,8 +241,8 @@ class CsvDownloadController extends Controller
                     $dataToSecond = date('Y-m-d',($str+86400*1));
 
                     $sheet->row(1, array("Фото",
-                                         $dataToSecond."\r\n".""."\r\n"."Поставщик: ".$manufacturerInfo -> name."".$streetManufacturer."".$firstNameManufacturer."". $secondNameManufacturer."".$phoneManufacturer,
-                                         "",
+                        $dataToSecond."\r\n".""."\r\n"."Поставщик: ".$manufacturerInfo -> name."".$streetManufacturer."".$firstNameManufacturer."". $secondNameManufacturer."".$phoneManufacturer,
+                        "",
                         "Rostovka"."\r\n".""."\r\n"."Сергей, 0672533305","",""));
 
 
@@ -259,8 +259,8 @@ class CsvDownloadController extends Controller
                     $sheet->getStyle('D1:F1')->getAlignment()->applyFromArray(
                         array('horizontal' => 'center', 'vertical' => 'center',
                             'font' => array(
-                            'size' => 600,
-                        ))
+                                'size' => 600,
+                            ))
                     );
 
                     $sheet->row(2, array("",
@@ -309,25 +309,25 @@ class CsvDownloadController extends Controller
 
                         if($photosData[$i]['Фото'] != "")
 
-                        if (file_exists( 'images/products/' . $photosData[$i]['Фото'])) {
-                            $objDrawing = new PHPExcel_Worksheet_Drawing;
-                            $objDrawing->setPath(public_path('images/products/' . $photosData[$i]['Фото'])); //your image path
-                            $objDrawing->setName('imageRussik');
-                            $objDrawing->setWorksheet($sheet);
-                            $objDrawing->setCoordinates('A' . ($i + 3));
-                            $objDrawing->setResizeProportional();
-                            $objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
-                            $objDrawing->setOffsetY(0);
-                            $objDrawing->setOffsetX(10);
-                            $objDrawing->setWidth(80);
-                            $objDrawing->setHeight(55);
-                        }
+                            if (file_exists( 'images/products/' . $photosData[$i]['Фото'])) {
+                                $objDrawing = new PHPExcel_Worksheet_Drawing;
+                                $objDrawing->setPath(public_path('images/products/' . $photosData[$i]['Фото'])); //your image path
+                                $objDrawing->setName('imageRussik');
+                                $objDrawing->setWorksheet($sheet);
+                                $objDrawing->setCoordinates('A' . ($i + 3));
+                                $objDrawing->setResizeProportional();
+                                $objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
+                                $objDrawing->setOffsetY(0);
+                                $objDrawing->setOffsetX(10);
+                                $objDrawing->setWidth(80);
+                                $objDrawing->setHeight(55);
+                            }
 
                     }
 
                 });
 
-            })->export('xls');
+            })->export('xlsx');
         }else return redirect()->back()->withInput()->withErrors(['msg'=> 'Not find items']);
     }
 
@@ -498,7 +498,7 @@ class CsvDownloadController extends Controller
 
                 });
 
-            })->export('xls');
+            })->export('xlsx');
         }else return redirect()->back()->withInput()->withErrors(['msg'=> 'Not find items']);
     }
 
