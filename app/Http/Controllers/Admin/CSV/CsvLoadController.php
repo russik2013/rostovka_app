@@ -10,9 +10,12 @@ use App\ProductPhotos;
 use App\Season;
 use App\Size;
 use App\Type;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 use Maatwebsite\Excel\Facades\Excel;
+
 use ZipArchive;
 use Illuminate\Support\Facades\File;
 
@@ -84,7 +87,7 @@ class CsvLoadController extends Controller
         ProductPhotos::whereIn('product_id', $delete_array) -> delete();
 
         foreach ($photos as $photo){
-
+            if(file_exists('images/products/' . $photo))
             File::delete('images/products/' . $photo);
 
         }
@@ -125,7 +128,7 @@ class CsvLoadController extends Controller
 
             foreach ($products as $product) {
 
-                $products_mass[$product->artikul . '_' . $product->{'brend'}] = [[$product->foto1, $product->foto2, $product->foto3]];
+                $products_mass[$product->artikul . ' ' . ucfirst(trim($product ->{'brend'}))] = [[$product->foto1, $product->foto2, $product->foto3]];
 
             }
 
@@ -151,77 +154,149 @@ class CsvLoadController extends Controller
         $sizes = Size::all()  -> pluck('id', 'name') -> toArray();
         $categories = Category::all() -> pluck('id', 'name') -> toArray();
         $manufacturers = Manufacturer::all() -> pluck('id', 'name') -> toArray();
+        $manufacturersInfo = Manufacturer::all();
 
         foreach ($products as $product){
 
-            if($product -> kategoriya == 'Мужское')
-                $sex = 'Мужское';
-            if($product -> kategoriya == 'Женское')
-                $sex = 'Женское';
-            if($product -> kategoriya == 'Детское')
-                $sex = $product -> pol;
+            //$product -> kategoriya = ucfirst(trim($product -> kategoriya));
 
-
-            if($product -> razmer_ot > $product -> razmer_do){
-                if(isset($sizes[$product -> razmer_do.'-'.$product -> razmer_ot]))
-                    $size = $sizes[$product -> razmer_do.'-'.$product -> razmer_ot];
-                else{
-                    $sizes = array_merge($sizes, $this ->addSize($product -> razmer_do, $product -> razmer_ot));
-                    $size = $sizes[$product -> razmer_do.'-'.$product -> razmer_ot];
-                }
-            }else{
-                if(isset($sizes[$product -> razmer_ot.'-'.$product -> razmer_do]))
-                    $size = $sizes[$product -> razmer_ot.'-'.$product -> razmer_do];
-                else{
-                    $sizes = array_merge($sizes, $this ->addSize($product -> razmer_ot, $product -> razmer_do));
-                    $size = $sizes[$product -> razmer_ot.'-'.$product -> razmer_do];
-                }
+            if($product -> kategoriya == 'Мужская')
+                $sex = 'Мужской';
+            if($product -> kategoriya == 'Женская')
+                $sex = 'Женский';
+            if($product -> kategoriya == 'Детская') {
+                //$product->pol = ucfirst(trim($product->pol));
+                $sex = $product->pol;
             }
 
-            if(isset($manufacturers[$product ->{'brend'}]))
-                $manufacturer = $manufacturers[$product ->{'brend'}];
+
+            if(isset($sizes[$product -> razmer]))
+                $size = $sizes[$product -> razmer];
+            else{
+                $sizes = array_merge($sizes, $this ->addSize($product -> razmer));
+                $size = $sizes[$product -> razmer];
+            }
+
+
+            if(isset($manufacturers[ ucfirst(trim($product ->{'brend'}))]))
+                $manufacturer = $manufacturers[ ucfirst(trim($product ->{'brend'}))];
             else{
                 $manufacturers = array_merge($manufacturers, $this ->addManufacturer($product ->{'brend'}));
-                $manufacturer = $manufacturers[$product ->{'brend'}];
+                $manufacturer = $manufacturers[ ucfirst(trim($product ->{'brend'}))];
             }
 
-            if($product ->nalichie == 'Есть')
-                $show = 1;
-            else
-                $show = 0;
 
-            if (isset($types[$product ->{'tip_obuvi'}]))
-                $type = $types[$product ->{'tip_obuvi'}];
+            if (isset($types[ucfirst(trim($product ->{'tip_obuvi'}))]))
+                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
             else{
                 $types = array_merge($types, $this ->addType($product ->{'tip_obuvi'}));
-                $type = $types[$product ->{'tip_obuvi'}];
+                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
             }
 
-            if(isset($seasons[$product ->{'sezon'}]))
-                $season = $seasons[$product ->{'sezon'}];
+            if(isset($seasons[ucfirst(trim($product ->{'sezon'}))]))
+                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
             else{
                 $seasons = array_merge($seasons, $this ->addSeason($product ->{'sezon'}));
-                $season = $seasons[$product ->{'sezon'}];
+                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
             }
 
+
+
+            $priseWithDiscount = $product ->tsena_prodazhi;
+
+            $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[ucfirst(trim($product ->{'brend'}))]);
+
+            if($manufacturersInfoToProduct ->koorse != "" && $manufacturersInfoToProduct ->koorse != 0 && $product->valyuta == "дол"){
+
+                $priseWithDiscount *= $manufacturersInfoToProduct ->koorse;
+
+            }
+
+            if($manufacturersInfoToProduct ->discount !="" && $manufacturersInfoToProduct ->discount != 0) {
+
+
+                $hrivna_discount = explode("грн",$manufacturersInfoToProduct ->discount);
+
+                if(isset($hrivna_discount[1])){
+
+                    $priseWithDiscount = $priseWithDiscount - $hrivna_discount[0];
+                }
+
+                $prozent_discount = explode("%",$manufacturersInfoToProduct ->discount);
+
+                if(isset($prozent_discount[1])){
+
+                    $priseWithDiscount = $priseWithDiscount - ( $priseWithDiscount * ($prozent_discount[0]/100) );
+                }
+
+            }
+
+            if($product ->skidka !="" && $product ->skidka != 0) {
+
+
+                $hrivna_discount = explode("грн",$product ->skidka);
+
+                if(isset($hrivna_discount[1])){
+
+                    $priseWithDiscount = $priseWithDiscount - $hrivna_discount[0];
+                }
+
+                $prozent_discount = explode("%",$product ->skidka);
+
+
+
+                if(isset($prozent_discount[1])){
+
+                    $priseWithDiscount = $priseWithDiscount - ( $priseWithDiscount * ($prozent_discount[0]/100) ) ;
+                }
+
+            }
+
+            switch ($product ->kategoriya){
+
+                case "Детская":
+                    $categoryId = 1;
+                    break;
+                case "Мужская":
+                    $categoryId = 2;
+                    break;
+                case "Женская":
+                    $categoryId = 3;
+                    break;
+                default :
+                    $categoryId = 4;
+
+            }
+
+            $priseWithDiscount = round($priseWithDiscount, 2);
+
             $insert_array = [ 'article' => $product ->artikul,
-                'name' => $product ->artikul.'_'.$product ->{'brend'},     ///////////////////////////// уточнить
+                'name' => $product ->artikul.' '.ucfirst(trim($product ->{'brend'})),     ///////////////////////////// уточнить
                 'rostovka_count' => $product ->{"min._kol"},
                 'box_count' => $product ->kol_v_yashchike,
-                'prise' => $product ->tsena_prodazhi,
+                'prise' => (float)$priseWithDiscount,
+                'prise_default' => (float) $product ->tsena_prodazhi,
                 'manufacturer_id' => $manufacturer,
-                'category_id' => $categories[$product ->kategoriya],
-                'show_product' => $show,
-                'currency' =>  'грн',
+                'category_id' => $categoryId,
+                'show_product' => $product ->nalichie,
+                'currency' =>  $product->valyuta,
                 'full_description' => $product ->opisanie,
-                'discount' => $product ->skidka."%",
-                'accessibility' => $show,
+                'discount' => $product ->skidka,
+                'accessibility' => $product ->nalichie,
                 'type_id' => $type,
                 'season_id' => $season,
                 'size_id' => $size,
-                "material" => $product ->material,
-                "prise_zakup" => $product -> tsena_zakupki,
-                'sex' => $sex];
+                "prise_zakup" => (float)$product -> tsena_zakupki,
+                'sex' => $sex,
+                'material' => $product ->material_verkh,
+                'color' => $product -> tsvet,
+                'manufacturer_country' => $product ->strana_proizvoditel,
+                'material_inside' => $product ->material_vnutri,
+                'material_insoles' => $product ->material_stelki,
+                'repeats' => $product ->povtory,
+
+
+            ];
 
             Product::find($product->id)->update($insert_array);
 
@@ -244,10 +319,7 @@ class CsvLoadController extends Controller
         
         else {
 
-            //return response($this->formInsertArray($products));
-
-            //dd($this->formInsertArray($products), 'russik');
-
+            //dd($this->formInsertArray($products));
             Product::insert($this->formInsertArray($products));
 
             ProductPhotos::insert($this->formPhotoInsertArray($request, $products));
@@ -265,17 +337,33 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
-            $products_mass[$product ->artikul.'_'.$product ->{'brend'}] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
+            $products_mass[$product ->artikul.' '.ucfirst(trim($product ->{'brend'}))] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
 
         }
 
         $data_base_products = Product::whereIn('name', array_keys($products_mass)) -> pluck('id', 'name') ->toArray();
 
+        //dd($products_mass, $data_base_products);
+
         foreach ($products_mass as $key => $photo_to_product_value){
 
             foreach ($photo_to_product_value[0] as $item){
-                if($item && file_exists('..images/products/' . $item.'.jpg'))
-                    File::move('../images/products/' . $item.'.jpg', 'images/products/' . $data_base_products[$key]."_". $item.'.jpg');
+                if(is_numeric($item)){
+                    if($item && file_exists('../images/products/'.(integer)$item.'.jpg')) {
+                        File::move('../images/products/' . (integer)$item . '.jpg', 'images/products/' . $data_base_products[$key] . "_" . $item . '.jpg');
+                        $img = Image::make(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
+                        $img -> insert(public_path('images/марка.png'), 'center');
+                        $img -> save(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
+                    }
+                }else{
+                    if($item && file_exists('../images/products/'.$item.'.jpg')) {
+                        File::move('../images/products/' . $item . '.jpg', 'images/products/' . $data_base_products[$key] . "_" . $item . '.jpg');
+                        $img = Image::make(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
+                        $img -> insert(public_path('images/марка.png'), 'center');
+                        $img -> save(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
+                        //$objDrawing->setPath(public_path('images/viber_image.jpg')); //your image path
+                    }
+                }
 
             }
         }
@@ -289,11 +377,13 @@ class CsvLoadController extends Controller
         $zip->extractTo('../images/products/');
         $zip->close();
 
+
+
         $products_mass = [];
 
         foreach ($products as $product){
 
-            $products_mass[$product ->artikul.'_'.$product ->{'brend'}] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
+            $products_mass[$product ->artikul.' '.ucfirst(trim($product ->{'brend'}))] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
 
         }
 
@@ -304,9 +394,14 @@ class CsvLoadController extends Controller
         foreach ($products_mass as $key => $photo_to_product_value){
 
             foreach ($photo_to_product_value[0] as $item){
-                if($item)
-                $photos_to_products_insert_array[] = ['photo_url' => $data_base_products[$key]."_". $item.'.jpg',
-                                                      'product_id' => $data_base_products[$key]];
+                if($item) {
+
+                    $photos_to_products_insert_array[] = ['photo_url' => $data_base_products[$key] . "_" . $item . '.jpg',
+                        'product_id' => $data_base_products[$key]];
+                }else {
+                    $photos_to_products_insert_array[] = ['photo_url' => 'none',
+                        'product_id' => $data_base_products[$key]];
+                }
 
             }
         }
@@ -337,101 +432,180 @@ class CsvLoadController extends Controller
 
     protected function formInsertArray($products){
 
+        //dd($products);
+
         $types = Type::all() -> pluck('id', 'name') -> toArray();
         $seasons = Season::all() -> pluck('id', 'name') -> toArray();
         $sizes = Size::all()  -> pluck('id', 'name') -> toArray();
         $categories = Category::all() -> pluck('id', 'name') -> toArray();
         $manufacturers = Manufacturer::all() -> pluck('id', 'name') -> toArray();
+        $manufacturersInfo = Manufacturer::all();
         $insert_array = [];
 
         foreach ($products as $product){
 
-            if($product -> kategoriya == 'Мужское')
-                $sex = 'Мужское';
-            if($product -> kategoriya == 'Женское')
-                $sex = 'Женское';
-            if($product -> kategoriya == 'Детское')
-                $sex = $product -> pol;
 
 
-            if($product -> razmer_ot > $product -> razmer_do){
-                if(isset($sizes[$product -> razmer_do.'-'.$product -> razmer_ot]))
-                    $size = $sizes[$product -> razmer_do.'-'.$product -> razmer_ot];
-                else{
-                    $sizes = array_merge($sizes, $this ->addSize($product -> razmer_do, $product -> razmer_ot));
-                    $size = $sizes[$product -> razmer_do.'-'.$product -> razmer_ot];
-                }
-            }else{
-                if(isset($sizes[$product -> razmer_ot.'-'.$product -> razmer_do]))
-                    $size = $sizes[$product -> razmer_ot.'-'.$product -> razmer_do];
-                else{
-                    $sizes = array_merge($sizes, $this ->addSize($product -> razmer_ot, $product -> razmer_do));
-                    $size = $sizes[$product -> razmer_ot.'-'.$product -> razmer_do];
-                }
+            //$product -> kategoriya = ucfirst(trim($product -> kategoriya));
+
+            //$sex = '';
+            if($product -> kategoriya == 'Мужская')
+                $sex = 'Мужской';
+            if($product -> kategoriya == 'Женская')
+                $sex = 'Женский';
+            if($product -> kategoriya == 'Детская') {
+                //$product -> pol = ucfirst(trim($product -> pol));
+                $sex = $product->pol;
             }
 
-            if(isset($manufacturers[$product ->{'brend'}]))
-                $manufacturer = $manufacturers[$product ->{'brend'}];
+
+            if(isset($sizes[$product -> razmer]))
+                $size = $sizes[$product -> razmer];
+            else{
+                $sizes = array_merge($sizes, $this ->addSize($product -> razmer));
+                $size = $sizes[$product -> razmer];
+            }
+
+
+            if(isset($manufacturers[ucfirst(trim($product ->{'brend'}))]))
+                $manufacturer = $manufacturers[ucfirst(trim($product ->{'brend'}))];
             else{
                 $manufacturers = array_merge($manufacturers, $this ->addManufacturer($product ->{'brend'}));
-                $manufacturer = $manufacturers[$product ->{'brend'}];
+                $manufacturer = $manufacturers[ucfirst(trim($product ->{'brend'}))];
             }
 
-            if($product ->nalichie == 'Есть')
-                $show = 1;
-            else
-                $show = 0;
-
-            if (isset($types[$product ->{'tip_obuvi'}]))
-                $type = $types[$product ->{'tip_obuvi'}];
+            if (isset($types[ucfirst(trim($product ->{'tip_obuvi'}))]))
+                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
             else{
                 $types = array_merge($types, $this ->addType($product ->{'tip_obuvi'}));
-                $type = $types[$product ->{'tip_obuvi'}];
+                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
             }
 
-            if(isset($seasons[$product ->{'sezon'}]))
-                $season = $seasons[$product ->{'sezon'}];
+            if(isset($seasons[ucfirst(trim($product ->{'sezon'}))]))
+                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
             else{
                 $seasons = array_merge($seasons, $this ->addSeason($product ->{'sezon'}));
-                $season = $seasons[$product ->{'sezon'}];
+                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
             }
 
+
+
+            $priseWithDiscount = $product ->tsena_prodazhi;
+
+            $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[ucfirst(trim($product ->{'brend'}))]);
+
+            if($manufacturersInfoToProduct ->koorse != "" && $manufacturersInfoToProduct ->koorse != 0 && $product->valyuta == "дол"){
+
+                $priseWithDiscount *= $manufacturersInfoToProduct ->koorse;
+
+            }
+
+            if($manufacturersInfoToProduct ->discount !="" && $manufacturersInfoToProduct ->discount != 0) {
+
+
+                $hrivna_discount = explode("грн",$manufacturersInfoToProduct ->discount);
+
+                if(isset($hrivna_discount[1])){
+
+                    $priseWithDiscount = $priseWithDiscount - $hrivna_discount[0];
+                }
+
+                $prozent_discount = explode("%",$manufacturersInfoToProduct ->discount);
+
+                if(isset($prozent_discount[1])){
+
+                    $priseWithDiscount = $priseWithDiscount - ( $priseWithDiscount * ($prozent_discount[0]/100) );
+                }
+
+            }
+
+            if($product ->skidka !="" && $product ->skidka != 0) {
+
+
+                $hrivna_discount = explode("грн",$product ->skidka);
+
+                if(isset($hrivna_discount[1])){
+
+                    $priseWithDiscount = $priseWithDiscount - $hrivna_discount[0];
+                }
+
+                $prozent_discount = explode("%",$product ->skidka);
+
+
+
+                if(isset($prozent_discount[1])){
+
+                    $priseWithDiscount = $priseWithDiscount - ( $priseWithDiscount * ($prozent_discount[0]/100) ) ;
+                }
+
+            }
+
+
+            switch ($product ->kategoriya){
+
+                case "Детская":
+                    $categoryId = 1;
+                    break;
+                case "Мужская":
+                    $categoryId = 2;
+                    break;
+                case "Женская":
+                    $categoryId = 3;
+                    break;
+                default :
+                    $categoryId = 4;
+
+            }
+
+            $priseWithDiscount = round($priseWithDiscount, 2);
+
             $insert_array[] = [ 'article' => $product ->artikul,
-                                'name' => $product ->artikul.'_'.$product ->{'brend'},     ///////////////////////////// уточнить
+                                'name' => $product ->artikul.' '.ucfirst(trim($product ->{'brend'})),     ///////////////////////////// уточнить
                                 'rostovka_count' => $product ->{"min._kol"},
                                 'box_count' => $product ->kol_v_yashchike,
-                                'prise' => $product ->tsena_prodazhi,
+                                'prise_default' =>(float) $product ->tsena_prodazhi,
+                                'prise' => (float)$priseWithDiscount,
                                 'manufacturer_id' => $manufacturer,
-                                'category_id' => $categories[$product ->kategoriya],
-                                'show_product' => $show,
-                                'currency' =>  'грн',
+                                'category_id' => $categoryId,
+                                'show_product' => $product ->nalichie,
+                                'currency' =>  $product->valyuta,
                                 'full_description' => $product ->opisanie,
-                                'discount' => $product ->skidka."%",
-                                'accessibility' => $show,
+                                'discount' => $product ->skidka,
+                                'accessibility' => $product ->nalichie,
                                 'type_id' => $type,
                                 'season_id' => $season,
                                 'size_id' => $size,
-                                "prise_zakup" => $product -> tsena_zakupki,
-                                'sex' => $sex];
+                                "prise_zakup" =>(float) $product -> tsena_zakupki,
+                                'sex' => $sex,
+                                'material' => $product ->material_verkh,
+                                'color' => $product -> tsvet,
+                                'manufacturer_country' => $product ->strana_proizvoditel,
+                                'material_inside' => $product ->material_vnutri,
+                                'material_insoles' => $product ->material_stelki,
+                                'repeats' => $product ->povtory,
+                                ];
         }
+
 
         return $insert_array;
 
     }
 
-    protected function addSize($min, $max){
+    protected function addSize($min){
 
         $size = new Size();
 
-        $size ->name = $min.'-'.$max;
+        $size ->name = $min;
 
-        $size ->min = $min;
+        $size_norm = explode('-', $min);
 
-        $size ->max = $max;
+        $size ->min = $size_norm[0];
+
+        $size ->max = $size_norm[1];
 
         $size -> save();
 
-        return [$min.'-'.$max => $size -> id];
+        return [$min => $size -> id];
 
     }
 
@@ -439,7 +613,7 @@ class CsvLoadController extends Controller
 
         $manufacturer = new Manufacturer();
 
-        $manufacturer -> name = $brend;
+        $manufacturer -> name =ucfirst(trim($brend));
 
         $manufacturer -> save();
 
@@ -451,7 +625,7 @@ class CsvLoadController extends Controller
 
         $type = new Type();
 
-        $type -> name = $tip;
+        $type -> name = ucfirst(trim($tip));
 
         $type -> save();
 

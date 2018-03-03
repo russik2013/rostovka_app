@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <title>Table</title>
-
 </head>
 <body>
 
@@ -11,7 +10,7 @@
 
     body { font-family: DejaVu Sans, sans-serif; }
 
-    .blocks{position: absolute; top: 0; left: 0;}
+    .blocks{ top: 0; left: 0;}
     .bl1{width: 100%; min-height: 50%;}
     .bl2{width: 100%; height: 50%; padding-top: 200px;}
     .bl3{width: 100%; height: 100%;}
@@ -74,15 +73,17 @@
                 <th class="border_table">Тип</th>
                 <th class="border_table">Кол-во.</th>
                 <th class="border_table">Пар в ящ/рост.</th>
+                <th class="border_table">Размер.</th>
                 <th class="border_table">Цена за шт.</th>
                 <th class="border_table">Общая цена</th>
             </tr>
 
             @foreach($order -> details as $detail)
 
+
                 <tr>
                     <td class="border_table" style="overflow: hidden;"><img src="{{public_path() .'/images/products/'.$detail -> image}}" width="70px" height="70px"></td>
-                    <td class="border_table">{{$detail -> tovar_name}} ({{$detail -> size_name}})</td>
+                    <td class="border_table">{{$detail -> tovar_name}}</td>
                     <td class="border_table">
                         @if(($detail -> this_tovar_in_order_price / $detail -> tovar_in_order_count)/ $detail -> prise == $detail -> box_count)
                             Ящик
@@ -98,18 +99,14 @@
                             {{$detail -> rostovka_count}}
                         @endif
                     </td>
+                    <td class="border_table">{{$detail ->size_name}}</td>
                     <td class="border_table">{{$detail ->prise}}</td>
                     <td class="border_table">{{$detail ->this_tovar_in_order_price}}</td>
                 </tr>
 
                 @endforeach
-
-
-
-
-
             <tr>
-                <td colspan="7"><p>Всего к оплате:</p></td>
+                <td colspan="8"><p>Всего к оплате:</p></td>
 
             </tr>
             <tr>

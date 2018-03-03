@@ -1,9 +1,16 @@
 Cart_data = localStorage.getItem('Cart_data');
 Cart_data = JSON.parse(Cart_data);
 
-console.log(Cart_data);
-var orderTotal = Cart_data[0].cartProducts_summ;
+if(Cart_data === null){
+    $('.has-feedback button').attr("disabled", "disabled");
+}
+
+if(Cart_data !== null){
+    var orderTotal = Cart_data[0].cartProducts_summ;
+}
+
 $('.order-total span')[0].innerText = orderTotal + ' грн';
+$('.is--Mobile .order-total .amount')[0].innerText = orderTotal + ' грн';
 
 if($('.checkoutPage')){
     $('.cartBl').css('display', 'none');
@@ -18,36 +25,41 @@ $(document).ready(function() {
         live: 'enabled',
         submitButton: '[type="submit"]',
         message: '',
-        submitHandler: function(validator, form, submitButton) {
-
-            var inputArray = $(form).serializeArray();
-
-            for (var i = 0; i < Cart_data[0].row.length; i++){
-                inputArray = inputArray.concat(
-                    {'name' : 'tovar['+i+'][product_id]','value': Cart_data[0].row[i].productID},
-                    {'name' : 'tovar['+i+'][quantity]','value': Cart_data[0].row[i].quantity},
-                    {'name' : 'tovar['+i+'][quantityPrice]','value': Cart_data[0].row[i].quantityPrice});
-            }
-
-
-            inputArray = inputArray.concat({'name' : 'summ','value': Cart_data[0].cartProducts_summ});
-
-            $.ajax({
-                type: 'POST',
-                url: $('meta[name="checkout_url"]').attr('content'),
-                data: inputArray,
-                success: function(result) {
-                    $('.successful_Buy').modal();
-                    $('.form-field-wrapper input').val('');
-                    localStorage.clear();
-                    $.find('[data-set="cart-summ"]')[0].innerText = 0;
-                    $.find('[data-set="cartCount"]')[0].innerText = 0;
-                    $.find('[data-set="cart-inner-summ"]')[0].innerText = 0;
-                    $('.dropdownCart ul li').remove();
-                    $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>');
+        submitHandler: function(validator, form, submitButton, e) {
+            if(Cart_data === null) {
+                console.log('asdasdas');
+                e.preventDefault();
+                return false
+            } else {
+                var inputArray = $(form).serializeArray();
+                for (var i = 0; i < Cart_data[0].row.length; i++){
+                    inputArray = inputArray.concat(
+                        {'name' : 'tovar['+i+'][product_id]','value': Cart_data[0].row[i].productID},
+                        {'name' : 'tovar['+i+'][quantity]','value': Cart_data[0].row[i].quantity},
+                        {'name' : 'tovar['+i+'][selected_value]','value': Cart_data[0].row[i].selected_value},
+                        {'name' : 'tovar['+i+'][quantityPrice]','value': Cart_data[0].row[i].quantityPrice});
                 }
-            });
-            return false;
+
+
+                inputArray = inputArray.concat({'name' : 'summ','value': Cart_data[0].cartProducts_summ});
+
+                $.ajax({
+                    type: 'POST',
+                    url: $('meta[name="checkout_url"]').attr('content'),
+                    data: inputArray,
+                    success: function(result) {
+                        $('.successful_Buy').modal();
+                        $('.form-field-wrapper input').val('');
+                        localStorage.clear();
+                        $.find('[data-set="cart-summ"]')[0].innerText = 0;
+                        $.find('[data-set="cartCount"]')[0].innerText = 0;
+                        $.find('[data-set="cart-inner-summ"]')[0].innerText = 0;
+                        $('.dropdownCart ul li').remove();
+                        $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>');
+                    }
+                });
+                return false;
+            }
         },
         // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
         feedbackIcons: {
@@ -85,7 +97,7 @@ $(document).ready(function() {
                         message: 'Введите корректный адрес эл. почты'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9_@\.]+$/,
+                        regexp: /^[a-zA-Z0-9-_@\.]+$/,
                         message: 'Введите корректный адрес эл. почты'
                     }
                 }
@@ -181,7 +193,6 @@ $(document).ready(function() {
         var bv = $form.data('bootstrapValidator');
 
         success = true;
-        console.log('console loged');
 
         sendData();
     });

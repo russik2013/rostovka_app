@@ -45,17 +45,16 @@
 
     <!-- Page Content Wraper -->
     <div class="page-content-wraper">
-
         <!-- Product (Tab with Slider) -->
         <section class="section-padding-b mainpageGoodsBlock">
             <div class="container larger">
                 <ul class="product-filter nav" role="tablist">
-                    <li class="nav-item">
+                    <li class="nav-item" onclick="defaultTab(event)">
                         <a class="nav-link active" href="#newest" role="tab" data-toggle="tab">
                             <h2 class="page-title">Новинки</h2>
                         </a>
                     </li>
-                    <li class="nav-item last">
+                    <li class="nav-item last" onclick="topSalesTab(event)">
                         <a class="nav-link" href="#topSalles" role="tab" data-toggle="tab">
                             <h2 class="page-title">Топ продаж</h2>
                         </a>
@@ -85,16 +84,16 @@
                             <div class="col-12 mb-30">
                                 <!-- banner No.1 -->
                                 <div class="promo-banner-wrap">
-                                    <a href="category" class="promo-image-wrap">
-                                        <img src="{{'img/promo-banner4.jpg'}}" alt="Accesories">
+                                    <a href="{{url('/3/category')}}" class="promo-image-wrap">
+                                        <img src="{{'img/promo-banner4.jpg'}}">
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-12 mb-sm-30">
-                                <!-- banner No.2 -->
+                            <div class="col-12 mb-30">
+                                <!-- banner No.3 -->
                                 <div class="promo-banner-wrap">
-                                    <a href="category" class="promo-image-wrap">
-                                        <img src="{{'img/promo-banner3.jpg'}}" alt="Accesories">
+                                    <a href="{{url('/1/category')}}" class="promo-image-wrap">
+                                        <img src="{{'img/promo-banner2.jpg'}}">
                                     </a>
                                 </div>
                             </div>
@@ -104,33 +103,26 @@
                     <!--Right Side-->
                     <div class="col-md-6">
                         <div class="row">
-                            <div class="col-12 mb-30">
-                                <!-- banner No.3 -->
-                                <div class="promo-banner-wrap">
-                                    <a href="category" class="promo-image-wrap">
-                                        <img src="{{'img/promo-banner2.jpg'}}" alt="Accesories">
-                                    </a>
-                                </div>
-                            </div>
                             <div class="col-12 mb-sm-30">
                                 <!-- banner No.4 -->
                                 <div class="promo-banner-wrap">
-                                    <a href="category" class="promo-image-wrap">
-                                        <img src="{{'img/promo-banner5.jpg'}}" alt="Accesories">
+                                    <a href="{{url('/2/category')}}" class="promo-image-wrap">
+                                        <img src="{{'img/promo-banner5.jpg'}}">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-12 mb-30">
+                                <!-- banner No.3 -->
+                                <div class="promo-banner-wrap" style="margin-top: 30px;">
+                                    <a href="{{url('/5/category')}}" class="promo-image-wrap">
+                                        <img src="{{'img/saleBanner.jpg'}}">
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-12">
-                        <!-- banner No.4 -->
-                        <div class="promo-banner-wrap large">
-                            <a href="category" class="promo-image-wrap">
-                                <img src="{{'img/promo_bannerBig.png'}}" alt="">
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -261,9 +253,9 @@
 </span>
 <div class="col-md-12 pull-left goodsCount_price">
 <span class="item-price col-md-6 pull-left">${size}</span>
-<h5 class="item-price col-md-6 pull-right">${price} <span>грн</span></h5>
-<div class="col-md-12 pull-left" style="margin-top: -10px;">
-<h6 class="item-price col-md-6 pull-right old--price" style="color: #b2b2b2;text-decoration: line-through;margin-top: -7px;">${old_prise} <span>грн</span></h6>
+<h5 class="item-price col-md-6 pull-right" data-set="prodPrice">${price} <span>грн</span></h5>
+<div class="col-md-12 pull-left" style="margin-top: -10px;"  data-set="old--Price">
+<h6 class="item-price col-md-6 pull-right old--price" style="color: #b2b2b2;text-decoration: line-through;margin-top: -7px; float: right">${old_prise} <span>грн</span></h6>
 </div>
 </div>
 

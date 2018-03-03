@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="root-site" content="{!!route('root')!!}">
     <meta name="csrf-token" content="{!! csrf_token() !!}">
-
-    <title>Rostovka</title>
-    <meta name="description" content=""/>
-    <meta name="keywords" content="">
-    <meta name="author" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+
+    <title>Оптовая продажа женской, мужской и детской обуви в Украине</title>
+    <meta name="keywords" content="купить обувь оптом, обувь оптом, обувь оптом одесса, купить обувь оптом в украине, оптовая продажа обуви, 7 км обувь оптом, обувь оптом 7км" />
+    <meta name="description" content="Качественная обувь оптом в Одессе доступна в нашем каталоге. Огромный выбор детской, женской, мужской обуви с доставкой по всей Украине." />
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
     <!--[if IE]>
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 
@@ -26,6 +28,7 @@
     <link href="{{asset('css/animate.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('css/def.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('css/main.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('css/bootstrap-slider.min.css')}}" rel="stylesheet" type="text/css"/>
     @yield('productLibCSS')
 </head>
 <body class="">
@@ -44,7 +47,7 @@
         <div class="header-topbar">
             <div class="header-topbar-inner">
                 <!--Topbar Left-->
-                <div class="topbar-left hidden-sm-down">
+                <div class="topbar-left">
                     <div class="phone pull-left">
                         <div class="text-left pull-left">
                             <i class="fa fa-phone left" aria-hidden="true"></i>
@@ -62,6 +65,12 @@
                 <!--Topbar Right-->
                 <div class="topbar-right">
                     <ul class="list-none">
+                        <li>
+                            <a href="{{url('/about')}}">
+                                <span class="hidden-sm-down">О магазине</span>
+                            </a>
+                        </li>
+
                         @if(!Auth::user())
                             <li>
                                 <a href="{{url('/login')}}"><i class="fa fa-lock left" aria-hidden="true"></i><span
@@ -126,7 +135,7 @@
 
                             <!-- Cart-->
                             <li class="cartBl">
-                                <a href="javascript:void(0)">
+                                <a href="{{route('cart')}}">
                                     <div class="cart-icon">
                                         <i aria-hidden="true" class="fa fa-shopping-bag"></i>
                                     </div>
@@ -188,6 +197,7 @@
 @yield('billing')
 @yield('product')
 @yield('search_result')
+@yield('aboutPage')
 <!-- End Page Content -->
     <!-- End Page Content Wraper -->
 
@@ -204,15 +214,14 @@
                 </div>
 
                 <div class="copyrights">
-                    <p class="copyright">&copy; Developed & Designed by <a href="http://comnd-x.com/" target="_blank">Commnd+X
-                            Studio</a></p>
+                    <p class="copyright">2018 &copy; Dev by<a href="http://comnd-x.com/" target="_blank">Command+X</a></p>
                 </div>
 
 
                 <div class="col-md-4 col-sm-12" style="float: left; margin-left: auto; color: #fff;">
                     <div class="footer-block contact-block" style="float: right; padding-top: 15px; padding-top: 20px;">
-                        <span style="float: left; margin-right: 15px;"><i class="fa fa-phone" aria-hidden="true" style="margin-right: 10px;"></i>(067) 25-333-05</span>
-                        <span style="float: left; margin-right: 15px;"><i class="fa fa-vimeo" aria-hidden="true" style="margin-right: 10px;"></i>(093) 350-43-82 (VIBER)</span>
+                        <span style="float: left; margin-right: 15px; color: #fff;"><i class="fa fa-phone" aria-hidden="true" style="margin-right: 10px;"></i>(067) 25-333-05</span>
+                        <span style="float: left; margin-right: 15px; color: #fff;"><i class="fa fa-vimeo" aria-hidden="true" style="margin-right: 10px;"></i>(093) 350-43-82 (VIBER)</span>
                     </div>
                 </div>
             </div>
@@ -238,6 +247,7 @@
 <script type="text/javascript" src="{{asset('js/tether.min.js')}}"></script>
 <!--Bootstrap tooltips require Tether (Tether Js)-->
 <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/bootstrap-slider.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/bootstrapvalidator.min.js')}}"></script>
 <!-- bootstrap js -->
 
@@ -262,7 +272,6 @@
 <script>
     $('.search--box button').on('click', function (e) {
         e.preventDefault();
-        console.log(location);
         $(location).attr('href', '{{url("showFinderFinal")}}/' + $('.search--box input').val() );
     });
 </script>

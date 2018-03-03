@@ -123,7 +123,7 @@ select {
 .header--add--buttons button{
     background: #63a3ff;
     color: #fff;
-    padding: 6px 20px 4px 20px;
+    padding: 6px 10px 4px 10px;
     float: right;
     margin-bottom: 10px;
     position: absolute;
@@ -170,7 +170,7 @@ select {
 
 .for_Supliers{
     right: -340px !important;
-    width: 50%;
+    width: auto;
 }
 
 .produtsTablePage .remove__product{

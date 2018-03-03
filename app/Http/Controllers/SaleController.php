@@ -8,10 +8,13 @@ use App\Product;
 use App\TopSale;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class SaleController extends Controller
 {
     public function makeOrder(Request $request){
+
+      // return response($request -> all());
 
         $order = new Order();
 
@@ -22,6 +25,28 @@ class SaleController extends Controller
         $this ->addOrderDetais($request -> tovar, $order -> id);
 
         $this ->setTopTovar($request -> tovar);
+
+        $order = Order::with('details', 'details.product') -> find($order -> id);
+
+        $this ->sendOrderMail($order);
+
+
+    }
+
+    private function sendOrderMail($dates){
+
+
+        if($dates -> email) {
+
+            Mail::send('admin.mail.smallMail', ["order" => $dates], function ($message) use ($dates) {
+                $message->from('us@example.com', 'Laravel');
+                $message->to("parhva@gmail.com", 'Drugak')->subject('Welcome to Odessa');
+                //$message->to('z.kon2009@gmail.com','Drugak')->subject('Welcome to Odessa');
+            });
+
+            return response(['status' => 'success', 'message' => '', 'data' => null]);
+        }
+        return response(['status' => 'client error', 'message' => 'wrong email address', 'data' => null]);
 
     }
 
@@ -47,6 +72,9 @@ class SaleController extends Controller
             foreach ($products as $product) {
 
                 if ($product->id == $tovar['product_id']) {
+                    if($tovar['selected_value'] == 1){
+                        $tip = 'minimum';
+                    }else $tip = 'box';
                     $insert_mass[] = [
                         'article' => $product->article,
                         'tovar_name' => $product->name,
@@ -68,7 +96,8 @@ class SaleController extends Controller
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now(),
                         'image' => $product-> photo->photo_url,
-                        'prise_zakup' => $product->prise_zakup
+                        'prise_zakup' => $product->prise_zakup,
+                        'tip' => $tip
                     ];
 
 
@@ -105,12 +134,29 @@ class SaleController extends Controller
 
     public function getTopSales(){
         $top = TopSale::orderBy('count','desc') -> take(10) -> pluck('product_id');
-        $products = Product::whereIn('id', $top) ->with('photo','size') ->get();
+        $products = Product::whereIn('id', $top) ->with('photo','size','manufacturer')
+            ->where('show_product', 1)
+            ->where('accessibility', 1) ->get();
 
         foreach ($products as $product){
 
             $product -> full__price = $product -> prise * $product -> box_count;
             $product -> rostovka__price = $product -> prise * $product -> rostovka_count;
+
+            if($product -> manufacturer ->box == 1 ){
+
+                $product->rostovka__price = $product->full__price;
+                $product -> rostovka_count = $product -> box_count;
+
+            }
+
+            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0 && $product->currency == 'дол'){
+
+                $product->prise_default *= $product -> manufacturer ->koorse;
+                $product->prise_default = round( $product->prise_default, 2);
+            }
+
+
             $product -> types = $product -> type -> name;
             $product -> product_url = url($product ->id.'/product');
         }

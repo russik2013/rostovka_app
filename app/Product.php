@@ -8,7 +8,8 @@ class Product extends Model
 {
     protected $fillable =['article','name','rostovka_count','box_count','prise','manufacturer_id','category_id',
         'show_product','currency','full_description','discount','accessibility','image_url','type_id','season_id',
-        'size_id','sex',"material", "tip_vyazki"];
+        'size_id','sex',"material", "tip_vyazki", "prise_default", 'material', 'color', 'manufacturer_country', 'material_inside',
+        'material_insoles', 'repeats', 'prise_zakup'];
 
 
     public function season(){
@@ -48,3 +49,5 @@ class Product extends Model
     }
 
 }
+
+//dd(Product::all());

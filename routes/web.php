@@ -12,6 +12,11 @@
 */
 
 
+Route::get('/about', function (){
+
+    return view('user.about');
+
+});
 
 Route::get('/parsing', 'Parsing\ParsingController@index');
 
@@ -63,8 +68,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/suppliers/{name?}', 'Admin\SuppliersController@index')->name('suppliers');
         Route::get('/suppliers_edit/{id}', 'Admin\SuppliersController@edit');
         Route::post('/suppliers_update', 'Admin\SuppliersController@update');
+        Route::get('/suppliers_delete/{id}', 'Admin\SuppliersController@delete');
 
-        Route::get('/admin_index', 'Admin\HomeController@index') -> name("adminIndex");
+        Route::get('/admin_index/{name?}', 'Admin\HomeController@index') -> name("adminIndex");
         Route::get('/user_edit/{id}', 'Admin\HomeController@editClient');
         Route::post('/user_delete/{id}', 'Admin\HomeController@deleteClient');
         Route::post('/user_update', 'Admin\HomeController@updateClient');
@@ -103,7 +109,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('/csvLoadDelete','Admin\CSV\CsvLoadController@csvShoesDelete') -> name('delete');
 
-        Route::post('/csvDownload','Admin\CSV\CsvDownloadController@getCsvFileWithProduct') -> name('download');
+        //Route::post('/csvDownload','Admin\CSV\CsvDownloadController@getCsvFileWithProduct') -> name('download');
 
 
         /////////////////////////Page orders///////////////////////////////
@@ -115,11 +121,17 @@ Route::group(['middleware' => 'auth'], function () {
 
         //////////////////////Page products////////////////////////////
         Route::get('/csvDownloadOrdersToManufacturer','Admin\CSV\CsvDownloadController@getCsvFileWithOrdersToManufacturer')-> name('downloadProductToManufacturer');
+        Route::get('/csvDownloadOrdersToManufacturerOhnePhoto','Admin\CSV\CsvDownloadController@getCsvFileWithOrdersToManufacturerOhnePhoto')-> name('downloadProductToManufacturerOhnePhoto');
         Route::get('/csvDownload','Admin\CSV\CsvDownloadController@getCsvFileWithProduct') -> name('download');
         ////////////////////////////////////////////////////////////////
 
         Route::get('/personal', 'Admin\HomeController@personal');
         Route::post('/personal/update', 'Admin\HomeController@personalUpdate');
+
+        Route::get('/type', 'Admin\TypeController@index') ->name('types');
+        Route::get('/type/{id}', 'Admin\TypeController@delete');
+
+
 
     });
 

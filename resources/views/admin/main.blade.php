@@ -46,7 +46,6 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-
                 <a href="{{url("admin_index")}}" class="simple-text">
                     Rostovka.net
                 </a>
@@ -76,6 +75,13 @@
                     <a href="{{url('suppliers')}}">
                         <i class="ti-package"></i>
                         <p>Поставщики</p>
+                    </a>
+                </li>
+
+                <li id="suppliers" @if(Request::route()->getName() == "types") class="active" @endif >
+                    <a href="{{url('type')}}">
+                        <i class="ti-package"></i>
+                        <p>Фильтры</p>
                     </a>
                 </li>
             </ul>
@@ -118,6 +124,7 @@
         @yield('orderInfo_content')
         @yield('options_container')
         @yield('suppliers_container')
+        @yield('editingFilters')
 
         <footer class="footer">
             <div class="container-fluid">
@@ -170,4 +177,5 @@
 @yield('ordersLib')
 @yield('optionsLib')
 @yield('suppliersLib')
+
 </html>

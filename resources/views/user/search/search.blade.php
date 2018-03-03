@@ -1,6 +1,6 @@
 @extends('user.markup.markup')
 @section('search_result')
-    <div class="categoryPage" dataID="">
+    <div class="categoryPage searchPage">
         <section class="content-page">
             <div class="container">
                 <div class="row">
@@ -13,13 +13,12 @@
                             @else
                                 <ul class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine">
                                     @foreach($products as $product)
-                                        {{--{{dd($product)}}--}}
                                         <li class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item" data-id={{$product -> id}}>
                                             <div class="prod--innerSide">
                                                 <div class="product-item-inner">
                                                     <div class="product-img-wrap">
                                                         <a href="{{url($product -> id.'/product')}}">
-                                                            {{--<img class="img-responsive" src="./" alt="">--}}
+                                                            <img class="img-responsive" src="{{asset('images/products/'.$product -> photo -> photo_url)}}" >
                                                         </a>
                                                     </div>
                                                 </div>
@@ -35,12 +34,6 @@
                                                     <div class="col-md-12 pull-left goodsCount_price">
                                                         <span class="item-price col-md-6 pull-left">{{$product -> size -> name}}</span>
                                                         <h5 class="item-price col-md-6 pull-right">{{$product -> prise}} <span>грн</span></h5>
-                                                    </div>
-
-                                                    <div class="product-button">
-                                                        <a href="#!" onclick="success('Товар добавлен в корзину')" data-set="buyButton">
-                                                            Купить
-                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>

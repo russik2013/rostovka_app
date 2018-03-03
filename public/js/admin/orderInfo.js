@@ -1,4 +1,4 @@
-$('.removePrudct').on('click', function () {
+$('.removePrudct').on('click', function (){
     var productName = $(this)[0].parentElement.parentNode.children[1].innerText,
         productID = $(this)[0].parentNode.parentNode.dataset.id,
         productRemove = $(this)[0].parentNode.parentNode;
@@ -76,7 +76,25 @@ function searchResult(searchData, imageUrl) {
             for (var u = 0; u < imageUrl.length; u++){
                 $('[data-img="image-url"]')[u].src = $('meta[name="root-site"]').attr('content') + '/images/products/' + imageUrl[u].url
             }
-        })
+        });
+
+        var filterData = [];
+        for (var i = 0; i < searchData.length; i++){
+            if(searchData[i].box_count === searchData[i].rostovka_count){
+                filterData.push(searchData[i]);
+            }
+        }
+        if(filterData.length > 0){
+            for(var z = 0; z < filterData.length; z++){
+                $('[data-select-id="'+ filterData[z].id +'"]').remove();
+                $('[data-product-id="'+ filterData[z].id +'"] .select-style')[0].innerHTML =
+                    "<div class=\"form-group select-style\"> " +
+                    "<select class='form-control' type=\"number\" disabled data-set='select_box_type'>" +
+                    "<option value='0' data-set='box' selected='selected'>в ящике</option>" +
+                    "</select>"+
+                    "</div>"
+            }
+        }
     });
 }
 
@@ -90,7 +108,7 @@ $('.add--product--in').on('click', function () {
 
     for(var z = 0; z < $(checkboxes).length; z++) {
         if ($(checkboxes)[z].checked === true) {
-            checkedProduct = $(checkboxes)[z].parentNode.parentNode.dataset.poductId;
+            checkedProduct = $(checkboxes)[z].parentNode.parentNode.dataset.productId;
             itemCount = $(checkboxes)[z].parentNode.parentNode.children[7].children["0"].value;
             $('.product--list').append('<div class="preloader"><i></i></div>');
 

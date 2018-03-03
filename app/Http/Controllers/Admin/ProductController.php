@@ -19,18 +19,18 @@ class ProductController extends Controller
 {
     public function index($name = ""){
 
-        $manufactures = Manufacturer::all();
-        $seasons = Season::all();
-        $types = Type::all();
+        $manufactures = Manufacturer::orderBy('name','asc') -> get();
+        $seasons = Season::where('id', '!=', 5) ->orderBy('name','asc') -> get();
+        $types = Type::where('id', '!=', 28)->orderBy('name','asc') -> get();
 
         if($name != "")
 
-            $products = Product::with('category','manufacturer') ->
+            $products = Product::with('category','manufacturer', 'photo') ->
             where('name', "like", "%".$name."%")
-                ->groupBy('id') ->paginate(15);
+                ->orderBy('id', 'desc') ->paginate(15);
 
         else
-            $products = Product::with('category','manufacturer')   ->groupBy('id') ->paginate(15);
+            $products = Product::with('category','manufacturer', 'photo')  ->orderBy('id', 'desc') ->paginate(15);
 
         //dd($products -> get());
 
@@ -43,47 +43,9 @@ class ProductController extends Controller
 
         foreach ($products as $product){
 
+            if($product -> manufacturer ->koorse != "" && $product -> manufacturer ->koorse != 0){
 
-            if($product -> manufacturer ->koorse != "" || $product -> manufacturer ->koorse != 0){
-
-                $product->prise *= $product -> manufacturer ->koorse;
-
-            }
-
-            if($product -> manufacturer ->discount !="" || $product -> manufacturer ->discount != 0) {
-
-                $hrivna_discount = explode("грн",$product -> manufacturer ->discount);
-
-                if(isset($hrivna_discount[1])){
-
-                    $product->prise = $product->prise - $hrivna_discount[0];
-                }
-
-                $prozent_discount = explode("%",$product -> manufacturer ->discount);
-
-                if(isset($prozent_discount[1])){
-
-                    $product->prise = $product->prise - ( $product->prise * ($prozent_discount[0]/100) );
-                }
-
-            }
-
-            if($product ->discount !="" || $product -> discount != 0) {
-
-                $hrivna_discount = explode("грн",$product ->discount);
-
-                if(isset($hrivna_discount[1])){
-
-                    $product->prise =  $product->prise - $hrivna_discount[0];
-                }
-
-                $prozent_discount = explode("%",$product -> discount);
-
-                if(isset($prozent_discount[1])){
-
-
-                    $product->prise =  $product->prise - ( $product->prise * ($prozent_discount[0]/100) ) ;
-                }
+                $product->prise_default *= $product -> manufacturer ->koorse;
 
             }
 

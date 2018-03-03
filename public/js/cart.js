@@ -19,10 +19,11 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
 
         var itemQuant = Number ($('.quantity').val()),
             domItem_price = Number ($.find('.choosed')[0].firstElementChild.lastElementChild.firstChild.innerText),
-            trueTarget = false;
+            trueTarget = false,
+            choosedType = String ($('.radio.choosed input').val());
 
         if(Cart_data[0].row.length === 0){
-            getProductData(targetID, itemQuant, domItem_price);
+            getProductData(targetID, itemQuant, domItem_price, choosedType);
         }
         else {
             for (var l = 0; l < Cart_data[0].row.length; l++){
@@ -38,18 +39,17 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
             }
 
             if(trueTarget === false){
-                getProductData(targetID, itemQuant, domItem_price);
+                getProductData(targetID, itemQuant, domItem_price, choosedType);
             }
         }
     }
 
     else {
-        var checkif_true = false;
-        var domtargetID = 0;
-        console.log();
-        if($('.mainpageGoodsBlock').length > 0){
-            domtargetID = Number(event.target.offsetParent.offsetParent.dataset.id);
+        var checkif_true = false, domtargetID = 0, choosedType = 1;
 
+
+        if($('.mainpageGoodsBlock').length > 0){
+            domtargetID = Number(event.target.offsetParent.offsetParent.offsetParent.dataset.id);
             checkDomPage(domtargetID, checkif_true);
         }
         else{
@@ -60,13 +60,14 @@ $(document).on("click", '[data-set="buyButton"]', function (event) {
 });
 
 function checkDomPage(domtargetID, checkif_true) {
+
     for (var i = 0; i < data.length; i++) {
         if (domtargetID === Number (data[i].dataID)) {
             hidden__price = data[i].full__price;
         }
     }
     targetID = domtargetID;
-
+    
     if (Cart_data[0].row.length === 0) {
         initAdd(event, targetID, Cart_data);
     }
@@ -92,8 +93,7 @@ function setUrl() {
     $('.cart--url').attr("href", url);
 }
 
-
-function getProductData(targetID, itemQuant, domItem_price) {
+function getProductData(targetID, itemQuant, domItem_price, choosedType) {
     var poductinnerID = Number ($.find('[data-prodid]')[0].dataset.prodid),
         productData = [];
 
@@ -106,14 +106,20 @@ function getProductData(targetID, itemQuant, domItem_price) {
     }).done(function(msg) {
         $('button.buyProduct_inner').attr( "disabled", false );
         productData.push(msg);
+        
         if(Cart_data[0].row.length !== 0){
-            pushtoCart();
+            pushtoCart(choosedType);
         }
         else{
-            pushtoCart();
+            pushtoCart(choosedType);
             $('.isClear').remove()
         }
-        function pushtoCart() {
+        
+        function pushtoCart(choosedType) {
+
+            if(msg.photo === null){
+                msg.photo = 'undefined';
+            }
             Cart_data[0].row.push({
                 productID: productData[0].id,
                 targetID: productData[0].id,
@@ -125,11 +131,14 @@ function getProductData(targetID, itemQuant, domItem_price) {
                 quantityPrice: Number ($('.choosed .iPrice')[0].innerText) *  Number ($('.quantity.input-lg').val()),
                 rostovka__price: Number ($.find('[data-set="rotovkaset"] .iPrice')[0].innerText),
                 buy_real_id: productData[0].id,
+                size: productData[0].size.name,
                 cart_product_url: productData[0].product_url,
-                selected_value: null,
+                selected_value: choosedType,
                 price_per_pair: productData[0].prise,
                 box__price: Number ($.find('[data-set="boxset"] .iPrice')[0].innerText)
             });
+
+            console.log(Cart_data[0].row);
 
             $('.dropdownCart ul li').remove();
             Cart_data[0].cartCount = Cart_data[0].row.length;
@@ -191,6 +200,7 @@ function dublicate(targetID, Cart_data) {
     //если индификторы совпадают, увеличиваем колличество и записываем ID элемента в объекте
     for (var i = 0; i < Cart_data[0].row.length; i++) {
         if (Cart_data[0].row[i].buy_real_id === targetID) {
+            // conversion(Cart_data[0].row[i].buy_real_id);
             Cart_data[0].row[i].quantity++;
             arrayItemId = i;
         }
@@ -213,6 +223,15 @@ function dublicate(targetID, Cart_data) {
     counterFn(mainPrice, targetID, updPrice);
 }
 
+var topSalesActive = false;
+function topSalesTab(event){
+    return topSalesActive = true
+}
+
+function defaultTab(event){
+    return topSalesActive = false
+}
+
 var qid = 0, counter = 0;
 function addtoCart(event, targetID) {
     var imgurl, gTitle, gQuant, gprice, productIndex, selected_quantity, rostovkaPrice;
@@ -225,9 +244,20 @@ function addtoCart(event, targetID) {
         $('.isClear').remove()
     }
 
-    for (var z = 0; z < data.length; z++){
-        if(targetID === data[z].real_id){
-            targetID = z;
+    if(topSalesActive === true){
+        data = TopSallesData;
+
+        for (var a = 0; a < data.length; a++){
+            if(targetID === data[a].real_id){
+                targetID = a;
+            }
+        }
+    } else {
+        for (var z = 0; z < data.length; z++){
+            if(targetID === data[z].real_id){
+                targetID = z;
+                break;
+            }
         }
     }
 
@@ -246,12 +276,13 @@ function addtoCart(event, targetID) {
         name: gTitle,
         quant: gQuant,
         price: gprice,
+        size: data[targetID].size,
         quantity: selected_quantity,
         quantityPrice: gprice,
         rostovka__price: rostovkaPrice,
         buy_real_id: data[targetID].real_id,
         cart_product_url: data[targetID].product_url,
-        selected_value: null,
+        selected_value: '0',
         price_per_pair: data[targetID].price,
         box__price: gprice
     });
@@ -295,7 +326,8 @@ $(document).on('click', '.Cart_Button_Plus', function () {
     var target_dataset, flag = false, minus = false;
 
     if($(this).closest('li').attr('data-id') === undefined){
-        target_dataset = $(this).closest('li').attr('data-id');
+        var parentFinder = $(this).parents()[5];
+        target_dataset = $(parentFinder).attr('data-id');
         flag = false;
         conversion(target_dataset, flag, minus);
         $.find('[data-set="totalCost"]')[0].innerHTML = Cart_data[0].cartProducts_summ + ' грн';
@@ -305,8 +337,6 @@ $(document).on('click', '.Cart_Button_Plus', function () {
         target_dataset = Number ($(this).closest('li').attr('data-id'));
         flag = true;
         conversion(target_dataset, flag, minus);
-
-        console.log(target_dataset);
     }
 });
 
@@ -314,7 +344,8 @@ $(document).on('click', '.Cart_Button_Minus', function () {
     var target_dataset, flag = false, minus = true;
 
     if($(this).closest('li').attr('data-id') === undefined) {
-        target_dataset = $(this).closest('li').attr('data-id');
+        var parentFinder = $(this).parents()[5];
+        target_dataset = $(parentFinder).attr('data-id');
         flag = false;
         conversion(target_dataset, flag, minus);
 
@@ -348,12 +379,10 @@ function conversion(target_dataset, flag, minus) {
             if(Number (target_dataset) === Cart_data[0].row[y].targetID){
                 target_id = y;
                 mainPrice = Cart_data[0].row[y].price;
-                console.log('asdada');
             }
         }
         if(Cart_data[0].row[target_id].quantity > 1) {
             Cart_data[0].row[target_id].quantity--;
-            console.log(Cart_data[0].row[target_id].quantity);
         }
 
         if(Cart_data[0].row[target_id].quantityPrice > mainPrice){
@@ -361,7 +390,6 @@ function conversion(target_dataset, flag, minus) {
             updPrice -= mainPrice;
 
             Cart_data[0].row[target_id].quantityPrice = updPrice;
-            console.log(updPrice);
         }
         Cart_data[0].row[target_id].quantityPrice = updPrice;
         localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
@@ -371,7 +399,7 @@ function conversion(target_dataset, flag, minus) {
         $.find('[data-cart-summ="cartCount"]')[target_id].innerText = updPrice;
     }
     else{
-        $('tr[data-id="'+ target_dataset +'"] .counting')[0].innerText = updPrice + ' грн';
+        $('[data-id="'+ target_dataset +'"] .counting')[0].innerText = updPrice + ' грн';
     }
 
     counterFn(mainPrice, targetID, updPrice);
@@ -398,9 +426,9 @@ function counterFn(mainPrice) {
 
 function cartSumm(){
     if($.find('[data-set="cart-summ"]').length !== 0){
-        $.find('[data-set="cart-summ"]')[0].innerText = Cart_data[0].cartProducts_summ;
+        $.find('[data-set="cart-summ"]')[0].innerText = Math.round(Cart_data[0].cartProducts_summ);
         $.find('[data-set="cartCount"]')[0].innerText = Cart_data[0].cartCount;
-        $.find('[data-set="cart-inner-summ"]')[0].innerText = Cart_data[0].cartProducts_summ + ' грн';
+        $.find('[data-set="cart-inner-summ"]')[0].innerText = Math.round(Cart_data[0].cartProducts_summ) + ' грн';
     }
 }
 

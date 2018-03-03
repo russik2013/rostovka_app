@@ -139,12 +139,13 @@
                                     </fieldset>
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="checkout-order-review">
                                     <h3>Ваш заказ</h3>
                                     <div class="product-checkout-review-order">
                                         <div class="responsive-table">
-                                            <table class="">
+                                            <table class="is--Desc">
                                                 <tfoot>
                                                 <tr class="shipping">
                                                     <th>Доставка</th>
@@ -185,6 +186,45 @@
                                                 </tr>
                                                 </tfoot>
                                             </table>
+
+                                            <div class="is--Mobile">
+                                                <div>
+                                                    <span class="mTitle">Доставка</span>
+                                                    <ul id="shipping_method">
+                                                    <li>
+                                                        <input name="shipping_method" data-index="0" id="mob_new_post" value="new_post" class="shipping_method" checked="checked" type="radio">
+                                                        <label for="mob_new_post">Новая почта</label>
+                                                    </li>
+                                                    <li>
+                                                        <input name="shipping_method" data-index="0" id="mob_delivery_method" value="delivery_method" class="shipping_method" type="radio">
+                                                        <label for="mob_delivery_method">Delivery</label>
+                                                    </li>
+                                                    <li>
+                                                        <input name="shipping_method" data-index="0" id="mob_avtolux_method" value="avtolux_method" class="shipping_method" type="radio">
+                                                        <label for="mob_avtolux_method">Автолюкс</label>
+                                                    </li>
+                                                    <li>
+                                                        <input name="shipping_method" data-index="0" id="mob_intime_method" value="intime_method" class="shipping_method" type="radio">
+                                                        <label for="mob_intime_method">InTime</label>
+                                                    </li>
+                                                    <li>
+                                                        <input name="shipping_method" data-index="0" id="mob_bus_method" value="bus_method" class="shipping_method" type="radio">
+                                                        <label for="mob_bus_method">Подвести к автобусу</label>
+                                                    </li>
+                                                    <li>
+                                                        <input name="shipping_method" data-index="0" id="mob_self_pickup" value="self_pickup" class="shipping_method" type="radio">
+                                                        <label for="mob_self_pickup">Самовывоз</label>
+                                                    </li>
+                                                </ul>
+                                                </div>
+
+                                                <div class="order-total">
+                                                    <span class="mTitle">Сумма</span>
+                                                    <div>
+                                                        <span class="product-price-amount amount"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="product-checkout-payment">

@@ -1,12 +1,12 @@
 @extends('user.markup.markup')
 @section('billing')
     <!-- Page Content -->
-<section class="content-page cart-container">
+<section class="content-page cart-container cart--page">
     
     <div class="container mb-80">
         <div class="row">
             <div class="col-sm-12">
-                <article class="post-8">
+                <article class="post-8 is--desc">
                     <form class="cart-form" action="#" method="post">
                         <div class="cart-product-table-wrap responsive-table">
                             <table>
@@ -17,6 +17,7 @@
                                     <th>Тип</th>
                                     <th>Цена</br> за пару</th>
                                     <th>Цена </br>(рост./ящ.)</th>
+                                    <th>Размер</th>
                                     <th>Итого</th>
                                     <th></th>
                                     <th></th>
@@ -25,19 +26,24 @@
                                 <tbody id="cartTableInner" data-set="tableCart"></tbody>
                             </table>
                         </div>
-
-                        <div class="col-md-7 col-md-push-7 pull-right tableFooter">
-                            <span class="col-md-12 pull-left totalcoseTitle">Итоговая стоимость: </span>
-                            <span class="col-md-12 pull-left" data-set="totalCost"></span>
-
-                            <div class="row cart-actions col-md-12 pull-right">
-                                <div class="col-md-12">
-                                    <a class="col-md-5 pull-right btn btn-lg btn-color" href="{{url('checkout')}}">Оформить заказ</a>
-                                </div>
-                            </div>
-                        </div>
                     </form>
                 </article>
+                <article class="mobile-post is-mobile">
+                    <div id="mobile--goods">
+
+                    </div>
+                </article>
+
+                <div class="col-md-7 col-md-push-7 pull-right tableFooter">
+                    <span class="col-md-12 pull-left totalcoseTitle">Итоговая стоимость: </span>
+                    <span class="col-md-12 pull-left" data-set="totalCost"></span>
+
+                    <div class="row cart-actions col-md-12 pull-right">
+                        <div class="col-md-12">
+                            <a class="col-md-5 pull-right btn btn-lg btn-color" href="{{url('checkout')}}">Оформить заказ</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -257,12 +257,12 @@
 @yield('auth_lib')
 @yield('productLib')
 <script type="text/javascript" src="{{asset('js/cart.js')}}"></script>
+
 <!-- custom js -->
 <!-- end jquery -->
 <script>
     $('.search--box button').on('click', function (e) {
         e.preventDefault();
-        console.log(location);
         $(location).attr('href', '{{url("showFinderFinal")}}/' + $('.search--box input').val() );
     });
 </script>

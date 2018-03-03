@@ -96,8 +96,9 @@
                                                 </div>
 
                                                 <div class="form-group currency">
-                                                    <input class="form-control border-input" type="number" name="koorse" value="{{$manufacturer -> koorse}}" placeholder="{{$manufacturer -> koorse}}">
+                                                    <input class="form-control border-input" name="koorse" value="{{$manufacturer -> koorse}}" placeholder="{{$manufacturer -> koorse}}">
                                                 </div>
+
                                             </div>
                                         </div>
 

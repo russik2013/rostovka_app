@@ -29,7 +29,7 @@
 
     <td class="type">
         <div class="form-group select-style">
-            <select class="form-control" onChange="getSelect(event, value)" data-set="select_box_type" data-select-id="${productID}">
+            <select class="form-control" onChange="getSelect(event, value)" data-set="select_box_type" >
                 <option value="0">в ящике</option>
                 <option value="1">минимум</option>
             </select>
@@ -44,9 +44,14 @@
         <span class="item--price">${price} грн</span>
     </td>
 
+    <td class="price">
+        <span class="item--price">${size}</span>
+    </td>
+
     <td class="price counting">
         <span data-set="productSumm">${quantityPrice} <span>грн</span></span>
     </td>
+
     <td class="remove--td">
         <span class="removeItem">
             <i class="fa fa-times" aria-hidden="true"></i>

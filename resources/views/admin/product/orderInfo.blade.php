@@ -81,7 +81,7 @@
                                             </div>
                                             <div class="col-md-7">
                                                 <div class="form-group">
-                                                    <input class="form-control border-input" name="phone" type="number" value="{{$order ->  phone}}">
+                                                    <input class="form-control border-input" name="phone" type="text" value="{{$order ->  phone}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -183,20 +183,28 @@
 
                                             <table class="table table-condensed">
                                                 <tbody>
+
                                                     @foreach($order -> details as $detail)
+                                                        @if($detail -> product != null)
                                                         <tr data-id="{{$detail -> id}}">
                                                             <td><a href="{{url($detail -> product -> id."/product")}}" target="_blank"><img style="max-width: 90px;" src="{{url('/images/products/'.$detail -> image)}}"></a></td>
                                                             <td><a href="{{url($detail -> product-> id."/product")}}" target="_blank">{{$detail -> tovar_name}}</a></td>
                                                             <td>{{$detail -> this_tovar_in_order_price}}<span> грн</span></td>
-                                                            <td>@if(($detail -> this_tovar_in_order_price / $detail -> tovar_in_order_count)/ $detail -> prise == $detail -> box_count)
+                                                            <td>
+                                                                @if($detail -> tip == 'box')
                                                                     Ящик
+                                                                @elseif($detail -> tip == 'minimum')
+                                                                    Минимум
+                                                                @elseif(($detail -> this_tovar_in_order_price / $detail -> tovar_in_order_count)/ $detail -> prise == $detail -> rostovka_count)
+                                                                    Минимум
                                                                 @else
-                                                                    Ростовка
+                                                                    Ящик
                                                                 @endif
                                                             </td>
                                                             <td>{{$detail -> tovar_in_order_count}}</td>
                                                             <td><i class="removePrudct table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></td>
                                                         </tr>
+                                                        @endif
                                                     @endforeach
                                                 </tbody>
                                             </table>
