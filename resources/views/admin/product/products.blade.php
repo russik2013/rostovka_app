@@ -72,9 +72,9 @@
                 <button class="upload col-md-4 col-sm-12 col-xs-12" >Загрузить</button>
             </div>
 
-            <div class="span12 pull-right col-md-3 col-sm-12 col-xs-12">
+            <div class="span12 pull-right col-md-3 col-sm-12 col-xs-12" style="padding-right: 0;">
                 <form id="custom-search-form" class="form-search form-horizontal pull-right col-sm-12 col-xs-12">
-                    <div class="input-append col-sm-12 col-xs-12">
+                    <div class="input-append col-sm-12 col-xs-12" style="padding-right: 0;">
                         <input type="text" class="search-query col-sm-12 col-xs-12" placeholder="Поиск">
                         <button type="submit" class="btn"><i class="ti-search"></i></button>
                     </div>
