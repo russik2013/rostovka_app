@@ -31,6 +31,26 @@
                                 </table>
 
                             </div>
+
+
+                            <div class="col-md-6 pull-left" style="margin-top: 30px; padding: 0">
+                                <table class="table table-striped">
+                                    <tbody>
+                                    @foreach($seasons as $season)
+
+                                        <tr data-id="{{$season -> id}}">
+                                            <td class="articul productsArt" style="display: none;"><input value="{{$season -> id}}" disabled></td>
+                                            <th>{{$season -> name}}</th>
+                                            <td><a class="remove__product" href="{{url('/seasonRemove/'.$season->id)}}"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                        </tr>
+
+                                    @endforeach
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>
