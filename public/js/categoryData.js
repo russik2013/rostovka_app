@@ -309,7 +309,7 @@ else{
 }
 
 //Инициализация созданние деф. данных
-function initData(saved_count_on_page) {
+function initData(count_on_page) {
     localData();
     data = [];
     if(localStorage !== null) {
