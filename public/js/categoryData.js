@@ -28,6 +28,7 @@ if(localStorage.getItem('pageNum') !== null){
     localStorage.setItem('pageNum', page_num);
 }
 
+selectedCount = Number (localStorage.getItem('selectedCount'));
 getSavedFilters = JSON.parse(savedFilters);
 
 function localData() {
@@ -308,7 +309,7 @@ else{
 }
 
 //Инициализация созданние деф. данных
-function initData(count_on_page) {
+function initData(saved_count_on_page) {
     localData();
     data = [];
     if(localStorage !== null) {
@@ -321,7 +322,7 @@ function initData(count_on_page) {
             data: {
                 category_id : $('meta[name="category_id"]').attr('content'),
                 page_num: page_num,
-                count_on_page: count_on_page,
+                count_on_page: saved_count_on_page,
                 filters: filter_value,
                 choosedType: choosedType,
                 sizes: sizeValue
@@ -329,7 +330,7 @@ function initData(count_on_page) {
         }).done(function (msg) {
             paginationNum = msg;
             paginationCounter(paginationNum);
-            makeData(page_num, count_on_page);
+            makeData(page_num, saved_count_on_page);
         });
     }
 }
@@ -359,7 +360,7 @@ function makeData(page_num, count_on_page) {
         data: {
             category_id : $('meta[name="category_id"]').attr('content'),
             page_num: page_num,
-            count_on_page: count_on_page,
+            count_on_page: saved_count_on_page,
             filters: filter_value,
             choosedType: choosedType,
             sizes: sizeValue
@@ -690,7 +691,6 @@ function GetData(data) {
 
 //Отрисовка элементов TMPL
 function drawItems(pageList) {
-    console.log(pageList);
     var delay = 0;
     document.getElementById("target").innerHTML = "";
     $(productTheme).tmpl(pageList).appendTo('#target').each(function () {

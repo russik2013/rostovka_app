@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use PHPExcel_Worksheet_Drawing;
+use Carbon\Carbon;
 
 class CsvDownloadController extends Controller
 {
@@ -203,8 +204,8 @@ class CsvDownloadController extends Controller
 
                     for ($i = 1; $i < count($data) + 3; $i++) {
 
-                        if ($i > 1)
-                            $sheet->setHeight($i, 53);
+                        if ($i > 2)
+                            $sheet->setHeight($i, 50);
                         else
                             $sheet->setHeight($i, 25);
 
@@ -226,15 +227,21 @@ class CsvDownloadController extends Controller
                     else $firstNameManufacturer = '';
 
                     if($manufacturerInfo -> secondName != "" &&  $manufacturerInfo -> secondName != null)
-                        $secondNameManufacturer = ", ".$manufacturerInfo -> secondName;
+                        $secondNameManufacturer = " ".$manufacturerInfo -> secondName;
                     else $secondNameManufacturer = '';
 
                     if($manufacturerInfo -> phone != "" &&  $manufacturerInfo -> phone != null)
                         $phoneManufacturer = ", ".$manufacturerInfo -> phone;
                     else $phoneManufacturer = '';
 
+                    $dataTo = Carbon::now();
+
+                    $str = strtotime($dataTo);
+
+                    $dataToSecond = date('Y-m-d',($str+86400*1));
+
                     $sheet->row(1, array("Фото",
-                                         "01.01.2001"."\r\n".""."\r\n"."Поставщик: ".$manufacturerInfo -> name.", ".$streetManufacturer.", ".$firstNameManufacturer." ". $secondNameManufacturer.", ".$phoneManufacturer,
+                                         $dataToSecond."\r\n".""."\r\n"."Поставщик: ".$manufacturerInfo -> name."".$streetManufacturer."".$firstNameManufacturer."". $secondNameManufacturer."".$phoneManufacturer,
                                          "",
                         "Rostovka"."\r\n".""."\r\n"."Сергей, 0672533305","",""));
 
@@ -310,7 +317,7 @@ class CsvDownloadController extends Controller
                             $objDrawing->setCoordinates('A' . ($i + 3));
                             $objDrawing->setResizeProportional();
                             $objDrawing->setOffsetX($objDrawing->getWidth() - $objDrawing->getWidth() / 5);
-                            $objDrawing->setOffsetY(2);
+                            $objDrawing->setOffsetY(0);
                             $objDrawing->setOffsetX(10);
                             $objDrawing->setWidth(80);
                             $objDrawing->setHeight(55);
@@ -390,7 +397,7 @@ class CsvDownloadController extends Controller
                     for ($i = 1; $i < count($data) + 3; $i++) {
 
                         if ($i > 2)
-                            $sheet->setHeight($i, 50);
+                            $sheet->setHeight($i, 40);
                         else
                             $sheet->setHeight($i, 25);
 
@@ -414,15 +421,21 @@ class CsvDownloadController extends Controller
                     else $firstNameManufacturer = '';
 
                     if($manufacturerInfo -> secondName != "" &&  $manufacturerInfo -> secondName != null)
-                        $secondNameManufacturer = ", ".$manufacturerInfo -> secondName;
+                        $secondNameManufacturer = " ".$manufacturerInfo -> secondName;
                     else $secondNameManufacturer = '';
 
                     if($manufacturerInfo -> phone != "" &&  $manufacturerInfo -> phone != null)
                         $phoneManufacturer = ", ".$manufacturerInfo -> phone;
                     else $phoneManufacturer = '';
 
-                    $sheet->row(1, array("Фото",
-                        "01.01.2001"."\r\n".""."\r\n"."Поставщик: ".$manufacturerInfo -> name.", ".$streetManufacturer.", ".$firstNameManufacturer." ". $secondNameManufacturer.", ".$phoneManufacturer,
+                    $dataTo = Carbon::now();
+
+                    $str = strtotime($dataTo);
+
+                    $dataToSecond = date('Y-m-d',($str+86400*1));
+
+                    $sheet->row(1, array(
+                        $dataToSecond."\r\n".""."\r\n"."Поставщик: ".$manufacturerInfo -> name."".$streetManufacturer."".$firstNameManufacturer."". $secondNameManufacturer."".$phoneManufacturer,
                         "",
                         "Rostovka"."\r\n".""."\r\n"."Сергей, 0672533305","",""));
 
