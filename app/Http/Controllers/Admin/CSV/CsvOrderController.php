@@ -76,7 +76,7 @@ class CsvOrderController extends Controller
 
             }
 
-            Excel::create('Russik', function ($excel) use ($data) {
+            Excel::create('Заказ Доставка', function ($excel) use ($data) {
 
                 foreach ($data as $key => $value) {
 
@@ -221,6 +221,7 @@ class CsvOrderController extends Controller
             $manufacturersFirstName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('firstName', 'name');
             $manufacturersSecondName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('secondName', 'name');
             $manufacturersPhoneName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('phone', 'name');
+            $manufacturersNumberContainer = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('numberContainer', 'name');
 
 
             foreach ($orders as $order) {
@@ -251,6 +252,12 @@ class CsvOrderController extends Controller
                         else  $phoneManufacturer = $manufacturersPhoneName[$detail->manufacturer_name];
                     else $phoneManufacturer = '';
 
+                    if(isset($manufacturersNumberContainer[$detail->manufacturer_name]))
+                        if($manufacturersNumberContainer[$detail->manufacturer_name] != "" && $manufacturersNumberContainer[$detail->manufacturer_name] != null)
+                            $NumberContainerManufacturer = ", ".$manufacturersNumberContainer[$detail->manufacturer_name];
+                        else  $NumberContainerManufacturer = $manufacturersNumberContainer[$detail->manufacturer_name];
+                    else $NumberContainerManufacturer = '';
+
                     $time =  explode(' ',  Carbon::now());
 
                     $data[$detail->manufacturer_name][0] = [
@@ -258,7 +265,7 @@ class CsvOrderController extends Controller
                         $time[0],
                         '',
                         'Заказчик: Rostovka.net '."\r\n".'Сергей тел: 0672533305',
-                        'Поставщик: ' . $detail->manufacturer_name . "". $street ."". $firstNameManufacturer. "". $secondNameManufacturer."".$phoneManufacturer,
+                        'Поставщик: ' . $detail->manufacturer_name . "". $street. "". $NumberContainerManufacturer ."". $firstNameManufacturer. "". $secondNameManufacturer."".$phoneManufacturer,
 
                     ];
 
@@ -301,7 +308,7 @@ class CsvOrderController extends Controller
 
             }
 
-            Excel::create('Filename', function ($excel) use ($data) {
+            Excel::create('Заказ Произв Фото', function ($excel) use ($data) {
 
                 foreach ($data as $key => $value) {
 
@@ -309,10 +316,11 @@ class CsvOrderController extends Controller
 
                         for ($i = 1; $i < count($value) + 2; $i++) {
 
-                            if ($i > 2)
-                                $sheet->setHeight($i, 60);
+
+                            if ($i == 2)
+                                $sheet->setHeight($i, 30);
                             else
-                                $sheet->setHeight($i, 25);
+                                $sheet->setHeight($i, 50);
 
                             $sheet->getStyle('A'.$i.':I'.$i)->getAlignment()->applyFromArray(
                                 array('horizontal' => 'center', 'vertical' => 'center')
@@ -466,6 +474,7 @@ class CsvOrderController extends Controller
             $manufacturersFirstName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('firstName', 'name');
             $manufacturersSecondName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('secondName', 'name');
             $manufacturersPhoneName = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('phone', 'name');
+            $manufacturersNumberContainer = Manufacturer::whereIn('name', $manufacturersNames) -> pluck('numberContainer', 'name');
 
             //dd($manufacturersNames, $manufacturersInfos,$manufacturersFirstName,$manufacturersSecondName, $manufacturersPhoneName);
 
@@ -501,7 +510,11 @@ class CsvOrderController extends Controller
                         else  $phoneManufacturer = $manufacturersPhoneName[$detail->manufacturer_name];
                     else $phoneManufacturer = '';
 
-
+                    if(isset($manufacturersNumberContainer[$detail->manufacturer_name]))
+                        if($manufacturersNumberContainer[$detail->manufacturer_name] != "" && $manufacturersNumberContainer[$detail->manufacturer_name] != null)
+                            $NumberContainerManufacturer = ", ".$manufacturersNumberContainer[$detail->manufacturer_name];
+                        else  $NumberContainerManufacturer = $manufacturersNumberContainer[$detail->manufacturer_name];
+                    else $NumberContainerManufacturer = '';
 
 
                     $data[$detail->manufacturer_name][0] = [
@@ -509,7 +522,7 @@ class CsvOrderController extends Controller
                         $time[0],
                         '',
                         'Заказчик: Rostovka.net '."\r\n".'Сергей тел: 0672533305',
-                        'Поставщик: ' . $detail->manufacturer_name ."". $street ."". $firstNameManufacturer. "". $secondNameManufacturer."".$phoneManufacturer,
+                        'Поставщик: ' . $detail->manufacturer_name ."". $street."". $NumberContainerManufacturer ."". $firstNameManufacturer. "". $secondNameManufacturer."".$phoneManufacturer,
 
 
                     ];
@@ -561,7 +574,7 @@ class CsvOrderController extends Controller
 
             }
 
-            Excel::create('Filename', function ($excel) use ($data) {
+            Excel::create('Заказ Произв', function ($excel) use ($data) {
 
                 foreach ($data as $key => $value) {
 
@@ -569,10 +582,10 @@ class CsvOrderController extends Controller
 
                         for ($i = 1; $i < count($value) + 2; $i++) {
 
-                                $sheet->setHeight($i, 52);
+                            $sheet->setHeight($i, 67);
 
-                                if($i >= 3)
-                                    $sheet->setHeight($i, 40);
+                            if($i >= 2)
+                                $sheet->setHeight($i, 40);
 
                             $sheet->getStyle('A'.$i.':I'.$i)->getAlignment()->applyFromArray(
                                 array('horizontal' => 'center', 'vertical' => 'center')
