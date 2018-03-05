@@ -17,12 +17,11 @@ class ValidationProvider extends ServiceProvider
         Validator::extend('csv_validation', function ($attribute, $value){
 
 
-            if($value -> extension() == 'txt' || $value -> extension() == 'csv' || $value -> extension() == 'xlsx' ||
-                $value -> extension() == 'zip' || $value -> extension() == 'bin')
+            if($value -> extension() == 'zip')
                 return  true;
             else return false;
 
-        },'Only csv or xlsx file');
+        },'Only zip file');
     }
 
     /**

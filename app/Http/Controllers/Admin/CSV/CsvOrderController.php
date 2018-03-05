@@ -316,7 +316,7 @@ class CsvOrderController extends Controller
 
                         for ($i = 1; $i < count($value) + 2; $i++) {
 
-                            
+
                             if ($i == 2)
                                 $sheet->setHeight($i, 30);
                             else
@@ -582,10 +582,10 @@ class CsvOrderController extends Controller
 
                         for ($i = 1; $i < count($value) + 2; $i++) {
 
-                                $sheet->setHeight($i, 67);
+                            $sheet->setHeight($i, 67);
 
-                                if($i >= 2)
-                                    $sheet->setHeight($i, 40);
+                            if($i >= 2)
+                                $sheet->setHeight($i, 40);
 
                             $sheet->getStyle('A'.$i.':I'.$i)->getAlignment()->applyFromArray(
                                 array('horizontal' => 'center', 'vertical' => 'center')
