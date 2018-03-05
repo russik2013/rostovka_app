@@ -108,7 +108,7 @@
                                                 <input type="radio" name="optradio" value="0" style="width:25px; height:40px;"
                                                        checked onclick="getSelect(event)" data-id="box">в ящике
                                                 <span class="boxPrice"><span
-                                                            class="iPrice">{{$product -> prise * $product -> rostovka_count}}</span> <sup>грн</sup> <span
+                                                            class="iPrice">{{$product -> prise * $product -> box_count}}</span> <sup>грн</sup> <span
                                                             class="forBag">за 1 ящик</span></span>
                                             </label>
                                         </div>
@@ -119,7 +119,7 @@
                                                 <input type="radio" name="optradio" value="1" style="width:25px; height:40px;"
                                                        onclick="getSelect(event)">
                                                 минимум
-                                                <span><span class="iPrice">{{$product -> prise * $product -> box_count}}</span> <sup>грн</sup> <span
+                                                <span><span class="iPrice">{{$product -> prise * $product -> rostovka_count}}</span> <sup>грн</sup> <span
                                                             class="forBag">за 1 ростовку</span></span>
                                             </label>
                                         </div>
