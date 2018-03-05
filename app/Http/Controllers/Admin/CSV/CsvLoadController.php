@@ -95,7 +95,13 @@ class CsvLoadController extends Controller
     }
 
 
-    public function csvShoesUpdate(CsvPostRequest $request){
+    public function csvShoesUpdate(CsvPostRequest $request)
+    {
+
+        if ( $request -> photo -> extension() != 'zip')
+
+            return response('No photo arhive load', 404);
+
 
         $path = $request->file('files')->getRealPath();
 
@@ -103,6 +109,7 @@ class CsvLoadController extends Controller
         })->get();
 
         $products = $this ->checkEmpty($products);
+
 
         $this->productsUpdate($products);
 
@@ -306,6 +313,11 @@ class CsvLoadController extends Controller
 
     public function csvShoesLoad(CsvPostRequest $request){
 
+        if ( $request -> photo -> extension() != 'zip')
+
+            return response('No photo arhive load', 404);
+
+
         $path = $request->file('files')->getRealPath();
 
         $products = Excel::load($path, function($reader) {
@@ -316,7 +328,7 @@ class CsvLoadController extends Controller
         if($this ->checkDooble($products))
 
             return response('Check file, program find doodles', 404);
-        
+
         else {
 
             //dd($this->formInsertArray($products));
