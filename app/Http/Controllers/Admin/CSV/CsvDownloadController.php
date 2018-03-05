@@ -116,7 +116,7 @@ class CsvDownloadController extends Controller
 
             }
 
-            Excel::create('Filename', function ($excel) use ($data) {
+            Excel::create('Товары Редакт', function ($excel) use ($data) {
 
                 $excel->sheet('Sheetname', function ($sheet) use ($data) {
 
@@ -198,7 +198,7 @@ class CsvDownloadController extends Controller
 
             //dd($manufacturerInfo);
 
-            Excel::create('Filename', function ($excel) use ($data, $photosData,$manufacturerInfo) {
+            Excel::create('Товары Пост Фото', function ($excel) use ($data, $photosData,$manufacturerInfo) {
 
                 $excel->sheet('Sheetname', function ($sheet) use ($data, $photosData,$manufacturerInfo) {
 
@@ -234,6 +234,10 @@ class CsvDownloadController extends Controller
                         $phoneManufacturer = ", ".$manufacturerInfo -> phone;
                     else $phoneManufacturer = '';
 
+                    if($manufacturerInfo -> numberContainer != "" &&  $manufacturerInfo -> numberContainer != null)
+                        $containerManufacturer = ", ".$manufacturerInfo -> numberContainer;
+                    else $containerManufacturer = '';
+
                     $dataTo = Carbon::now();
 
                     $str = strtotime($dataTo);
@@ -241,7 +245,7 @@ class CsvDownloadController extends Controller
                     $dataToSecond = date('Y-m-d',($str+86400*1));
 
                     $sheet->row(1, array("Фото",
-                        $dataToSecond."\r\n".""."\r\n"."Поставщик: ".$manufacturerInfo -> name."".$streetManufacturer."".$firstNameManufacturer."". $secondNameManufacturer."".$phoneManufacturer,
+                        $dataToSecond."\r\n".""."\r\n"."Поставщик: ".$manufacturerInfo -> name."".$streetManufacturer."". $containerManufacturer."".$firstNameManufacturer."". $secondNameManufacturer."".$phoneManufacturer,
                         "",
                         "Rostovka"."\r\n".""."\r\n"."Сергей, 0672533305","",""));
 
@@ -390,7 +394,7 @@ class CsvDownloadController extends Controller
             $manufacturerInfo = $products[0]->manufacturer;
 
 
-            Excel::create('Filename', function ($excel) use ($data, $manufacturerInfo) {
+            Excel::create('Товары Пост', function ($excel) use ($data, $manufacturerInfo) {
 
                 $excel->sheet('Sheetname', function ($sheet) use ($data, $manufacturerInfo) {
 
@@ -428,6 +432,10 @@ class CsvDownloadController extends Controller
                         $phoneManufacturer = ", ".$manufacturerInfo -> phone;
                     else $phoneManufacturer = '';
 
+                    if($manufacturerInfo -> numberContainer != "" &&  $manufacturerInfo -> numberContainer != null)
+                        $containerManufacturer = ", ".$manufacturerInfo -> numberContainer;
+                    else $containerManufacturer = '';
+
                     $dataTo = Carbon::now();
 
                     $str = strtotime($dataTo);
@@ -435,7 +443,7 @@ class CsvDownloadController extends Controller
                     $dataToSecond = date('Y-m-d',($str+86400*1));
 
                     $sheet->row(1, array(
-                        $dataToSecond."\r\n".""."\r\n"."Поставщик: ".$manufacturerInfo -> name."".$streetManufacturer."".$firstNameManufacturer."". $secondNameManufacturer."".$phoneManufacturer,
+                        $dataToSecond."\r\n".""."\r\n"."Поставщик: ".$manufacturerInfo -> name."".$streetManufacturer."". $containerManufacturer."".$firstNameManufacturer."". $secondNameManufacturer."".$phoneManufacturer,
                         "",
                         "Rostovka"."\r\n".""."\r\n"."Сергей, 0672533305","",""));
 
