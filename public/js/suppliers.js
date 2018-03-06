@@ -8,8 +8,6 @@ $('.remove__product').on('click', function () {
         choosedName = $(clickedTableTr)[1].children[1].innerText,
         choosedID = $(clickedTableTr)[1].dataset.id;
 
-    console.log(choosedID);
-
     removeFilter(clickedTableTr, choosedName, choosedID)
 });
 

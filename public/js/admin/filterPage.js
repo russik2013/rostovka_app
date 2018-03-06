@@ -19,7 +19,6 @@ $('.add--newFilter').on('click', function () {
 
 function remFilter(event) {
     var filterName = event.originalEvent.originalTarget.parentNode.parentNode.firstChild.nodeValue,
-        filterID = event.currentTarget.parentNode.dataset.id,
         elemDelete = event.currentTarget.parentNode;
 
     swal({
@@ -32,7 +31,6 @@ function remFilter(event) {
         cancelButtonText: 'Нет'
     }).then(function() {
         $(elemDelete).remove();
-        console.log(filterName, filterID)
     });
 }
 

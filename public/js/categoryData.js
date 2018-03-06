@@ -17,8 +17,9 @@ if(localStorage.getItem('sizeValues') !== null) {
     sizeValue = JSON.parse(sizeValue);
 
     $( "#ex2" ).bootstrapSlider({
-        value: [ sizeValue[0].sizeValues[0], sizeValue[0].sizeValues[1] ]
+         value: [ sizeValue[0].sizeValues[0], sizeValue[0].sizeValues[1] ]
     });
+    console.log(sizeValue[0].sizeValues[0], sizeValue[0].sizeValues[1]);
 }
 
 
@@ -101,6 +102,7 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
         $('.CFBlock').css('display', 'block');
         localStorage.setItem('pageNum', 1);
         Number(AppendedList.length++);
+
         for (var y = 0; y < values.length; y++) {
             for (var z = 0; z < AppendedList.length; z++) {
                 if ($(this)[0].id === values[y][z]) {
@@ -111,8 +113,10 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             $('.choosedFilter').append('' +
                 '<li class="appedned__item">' +
                 '<span class="item" data-type="' + values[y][0] + '">' + values[y][1] + '</span>' +
-                '<i class="fa fa-times removeAppended__Item" aria-hidden="true"></i>' +
+                '<i class="fa fa-times-circle removeAppended__Item deleteSize_button" aria-hidden="true"></i>' +
                 '</li>');
+                sizeFilter();
+
         }
         RemoveItem();
 
@@ -155,10 +159,9 @@ function activateData() {
         if(msg.length > 0) {
             localStorage.setItem('pageNum', 1);
             makeFilterData(msg);
-            $('.preloader').remove();
             checkPrices(data);
-        }else{
             $('.preloader').remove();
+        }else{
             $('.product-list-item ul li').css('display', 'none');
             $('.product-filter-content').css('display', 'none');
             $('.pagination-wraper').css('display', 'none');
@@ -345,7 +348,6 @@ var paginationCounter = function (paginationNum) {
         $('.pagination-wraper a').remove();
         $('.pagination-wraper span').remove();
         $('.productLine li').remove();
-        $('.preloader').remove();
         $('.product-filter-content').css('display', 'none');
         scrolltop();
     }
@@ -737,18 +739,16 @@ function checkPrices(data) {
 //Удаление итема из фильтра
 function RemoveItem() {
     $('.removeAppended__Item').on('click', function () {
-        // $('.sizeBlock div').remove();
-        // $( "#ex2" ).bootstrapSlider({
-        //     value: [ 10, 50 ]
-        // });
 
         var sizeRemove = document.querySelector(".deleteSize_button");
-        if(sizeRemove){
-            var ab = document.getElementById("ex2");;
-            console.log(ab.value);
 
+        if(sizeRemove !== null){
             $('.sizes--filterItem').remove();
             localStorage.removeItem("sizeValues");
+
+
+            $( "#ex2" ).bootstrapSlider('refresh');
+
             if($('.choosedFilter li').length === 0){
                 $('.CFBlock').css('display', 'none');
             }
@@ -1065,17 +1065,22 @@ function checkPagination() {
 sizeFilter();
 
 function sizeFilter(){
-    console.log(localStorage.getItem('sizeValues'));
-    if(localStorage.getItem('sizeValues') !== null) {
-        $('.CFBlock').css('display', 'block');
-        sizeValue = localStorage.getItem('sizeValues');
-        sizeValue = JSON.parse(sizeValue);
-        $('.choosedFilter').append('' +
-            '<li class="appedned__item sizes--filterItem">' +
-            '<span class="item" data-type="' + sizeValue[0].sizeValues[0] + '">' +"Размеры: " +sizeValue[0].sizeValues[0] +"-"+ sizeValue[0].sizeValues[1] +'</span>'  +
-            '<i class="fa fa-times-circle removeAppended__Item deleteSize_button" aria-hidden="true"></i>' +
-            '</li>');
-    }
 
-    RemoveItem();
+        if (localStorage.getItem('sizeValues') !== null) {
+            $('.CFBlock').css('display', 'block');
+            sizeValue = localStorage.getItem('sizeValues');
+            sizeValue = JSON.parse(sizeValue);
+            if(sizeValue[0].sizeValues[0]!==10 || sizeValue[0].sizeValues[1]!==50) {
+                $('.choosedFilter').append('' +
+                    '<li class="appedned__item sizes--filterItem" data-type="filterType">' +
+                    '<span class="item" data-type="' + sizeValue[0].sizeValues[0] + '">' + "Размеры: " + sizeValue[0].sizeValues[0] + "-" + sizeValue[0].sizeValues[1] + '</span>' +
+                    '<i class="fa fa-times-circle removeAppended__Item deleteSize_button" aria-hidden="true"></i>' +
+                    '</li>');
+                RemoveItem();
+            }
+            else if(values.length === 0){
+                $('.CFBlock').css('display', 'none');
+
+            }
+    }
 }
