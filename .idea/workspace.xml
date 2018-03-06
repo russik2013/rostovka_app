@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8656dcb1-f648-4b1e-bf22-139918d6aa81" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/js/admin/filterTypesLib.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/public/js/admin/addProduct.js" afterPath="$PROJECT_DIR$/public/js/admin/addProduct.js" />
-      <change beforePath="$PROJECT_DIR$/public/js/cart.js" afterPath="$PROJECT_DIR$/public/js/cart.js" />
-      <change beforePath="$PROJECT_DIR$/public/js/categoryData.js" afterPath="$PROJECT_DIR$/public/js/categoryData.js" />
-      <change beforePath="$PROJECT_DIR$/public/js/suppliers.js" afterPath="$PROJECT_DIR$/public/js/suppliers.js" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/main.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/main.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/product/editing.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/product/editing.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/product/suppliers.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/product/suppliers.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/search/search.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/search/search.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -201,8 +192,8 @@
       <file leaf-file-name="suppliers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/suppliers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="58" lean-forward="true" selection-start-line="29" selection-start-column="58" selection-end-line="29" selection-end-column="58" />
+            <state relative-caret-position="555">
+              <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -841,14 +832,7 @@
       <workItem from="1520072922510" duration="1022000" />
       <workItem from="1520239465690" duration="182000" />
       <workItem from="1520246903714" duration="17125000" />
-      <workItem from="1520324009165" duration="5886000" />
-    </task>
-    <task id="LOCAL-00067" summary="update scv download v0.3.3">
-      <created>1519034184665</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1519034184665</updated>
+      <workItem from="1520324009165" duration="5919000" />
     </task>
     <task id="LOCAL-00068" summary="update scv download v0.3.3">
       <created>1519034459002</created>
@@ -1186,11 +1170,18 @@
       <option name="project" value="LOCAL" />
       <updated>1520073052640</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="update currency v0.3.5">
+      <created>1520330240990</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1520330240990</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="857214000" />
+    <option name="totallyTimeSpent" value="857247000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="980" extended-state="0" />
@@ -1635,8 +1626,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/suppliers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="58" lean-forward="true" selection-start-line="29" selection-start-column="58" selection-end-line="29" selection-end-column="58" />
+        <state relative-caret-position="555">
+          <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
           <folding />
         </state>
       </provider>
