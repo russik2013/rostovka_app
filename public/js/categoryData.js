@@ -737,45 +737,75 @@ function checkPrices(data) {
 //Удаление итема из фильтра
 function RemoveItem() {
     $('.removeAppended__Item').on('click', function () {
-        var clickedTarget = $(this)[0].parentElement.textContent,
-            AppendedList = $('.filterInner input');
+        // $('.sizeBlock div').remove();
+        // $( "#ex2" ).bootstrapSlider({
+        //     value: [ 10, 50 ]
+        // });
 
-        $('.error--message').remove();
-        $('.product-filter-content').css('display', 'block');
-        $('.pagination-wraper').css('display', 'block');
+        var sizeRemove = document.querySelector(".deleteSize_button");
+        if(sizeRemove){
+            var ab = document.getElementById("ex2");;
+            console.log(ab.value);
 
-        $(this)[0].parentElement.remove();
-
-        for (var y = 0; y < values.length; y++) {
-            if (clickedTarget === values[y][1]) {
-                values.splice(y, 1)
+            $('.sizes--filterItem').remove();
+            localStorage.removeItem("sizeValues");
+            if($('.choosedFilter li').length === 0){
+                $('.CFBlock').css('display', 'none');
             }
-        }
 
-        for (var i = 0; i < AppendedList.length; i++) {
-            if (AppendedList[i].defaultValue === clickedTarget) {
-                AppendedList[i].checked = false;
+            $('.product--block').append('<div class="preloader"><i></i></div>');
+            $.ajax({
+                method: 'POST',
+                url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
+                data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page,
+                    filters: values, choosedType: choosedType, sizes: sizeValue}
+            }).done(function(msg) {
+                paginationNum = msg;
+                paginationCounter(paginationNum);
+                activateData();
+            });
+        } else {
+            var clickedTarget = $(this)[0].parentElement.textContent,
+                AppendedList = $('.filterInner input');
+
+            $('.error--message').remove();
+            $('.product-filter-content').css('display', 'block');
+            $('.pagination-wraper').css('display', 'block');
+
+            $(this)[0].parentElement.remove();
+
+            for (var y = 0; y < values.length; y++) {
+                if (clickedTarget === values[y][1]) {
+                    values.splice(y, 1)
+                }
             }
+
+            for (var i = 0; i < AppendedList.length; i++) {
+                if (AppendedList[i].defaultValue === clickedTarget) {
+                    AppendedList[i].checked = false;
+                }
+            }
+
+            if (values.length === 0) {
+                $('.CFBlock').css('display', 'none');
+            }
+
+            $('.product--block').append('<div class="preloader"><i></i></div>');
+
+            $.ajax({
+                method: 'POST',
+                url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
+                data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page,
+                    filters: values, choosedType: choosedType, sizes: sizeValue}
+            }).done(function(msg) {
+                paginationNum = msg;
+                paginationCounter(paginationNum);
+                activateData();
+            });
+
+            localStorage.setItem('filterValues', JSON.stringify(values));
         }
 
-        if (values.length === 0) {
-            $('.CFBlock').css('display', 'none');
-        }
-
-        $('.product--block').append('<div class="preloader"><i></i></div>');
-
-        $.ajax({
-            method: 'POST',
-            url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
-            data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page,
-                filters: values, choosedType: choosedType, sizes: sizeValue}
-        }).done(function(msg) {
-            paginationNum = msg;
-            paginationCounter(paginationNum);
-            activateData();
-        });
-
-        localStorage.setItem('filterValues', JSON.stringify(values));
     });
 }
 
@@ -783,6 +813,7 @@ function RemoveItem() {
 $('.removeallFilters span').on('click', function (e) {
     values = [];
     localStorage.removeItem('filterValues');
+    localStorage.removeItem('sizeValues');
     saved_count_on_page = 0;
     var AppendedList = $('.choosedFilter li');
     localStorage.setItem('pageNum', 1);
@@ -933,18 +964,6 @@ $('#short-by').on('change', function () {
 });
 
 
-//Работа с размерамии, от - до
-getSizes();
-function getSizes() {
-    $.ajax({
-        method: 'POST',
-        url: $('meta[name="root-site"]').attr('content') + "/api/getSizesMass"
-    }).done(function( msg ) {
-        slider(msg);
-    });
-}
-
-
 var GetSlideValue = function() {
     var newVal = $('#ex2').data('bootstrapSlider').getValue(),
         sizeValue = [];
@@ -958,6 +977,10 @@ var GetSlideValue = function() {
     localStorage.setItem('sizeValues', JSON.stringify(sizeValue));
 
     $('.product--block').append('<div class="preloader"><i></i></div>');
+
+    $('.CFBlock').css('display', 'block');
+    $('.sizes--filterItem').remove();
+    sizeFilter();
 
     $.ajax({
         method: "POST",
@@ -1016,54 +1039,6 @@ $("#ex2").bootstrapSlider({
 }).on('slideStop', GetSlideValue);
 
 
-// Слайдер от - до
-function slider(msg) {
-    var min_range = Number (msg[0]),
-        max_range = Number (msg[1]),
-        saveRange = [];
-
-    // if(localStorage.getItem('rangeValues') !== null){
-    //     var rangeValues = localStorage.getItem('rangeValues');
-    //     rangeValues = JSON.parse(rangeValues);
-    //
-    //     min_range = msg[0];
-    //     max_range = msg[1];
-    //     saveRange = [];
-    //
-    //     $('.ui-widget-header').css('width', rangeValues[0].range.width + '%');
-    //     $(document).ready(function () {
-    //         var leftArrow = $('.ui-slider-handle')[0],
-    //             rightArrow = $('.ui-slider-handle')[1],
-    //             slider = $('.ui-widget-header');
-    //         $(slider)[0].style.width = rangeValues[0].range.width + '%';
-    //         $(slider)[0].style.left = rangeValues[0].range.sliderPosition + '%';
-    //         $(leftArrow)[0].style.left = rangeValues[0].range.leftArrowPosition + '%';
-    //         $(rightArrow)[0].style.left = rangeValues[0].range.rightArrowPosition + '%';
-    //
-    //         $("#minchoose").val(rangeValues[0].range.min);
-    //         $("#amount").val(rangeValues[0].range.max);
-    //     });
-    //
-    // } else {
-    //
-    // }
-
-
-    $( "#slider-range" ).slider({
-        range: true,
-        min: min_range,
-        max: max_range,
-        values: [10, 50],
-        slide: function(event, ui) {
-            $("#minchoose").val(ui.values[ 0 ]);
-            $("#amount").val(ui.values[ 1 ] );
-        },
-        change: function() {
-        }
-    });
-    $( "#minchoose" ).val($( "#slider-range" ).slider( "values", 0 ));
-    $( "#amount" ).val($( "#slider-range" ).slider( "values", 1 ));
-}
 
 // Работа с иконками для моб. версии
 $('.filter--mobileButton').on('click', function () {
@@ -1085,4 +1060,22 @@ function checkPagination() {
     } else {
         $('.next_Item.scrollUp').css('display', 'inline-block')
     }
+}
+
+sizeFilter();
+
+function sizeFilter(){
+    console.log(localStorage.getItem('sizeValues'));
+    if(localStorage.getItem('sizeValues') !== null) {
+        $('.CFBlock').css('display', 'block');
+        sizeValue = localStorage.getItem('sizeValues');
+        sizeValue = JSON.parse(sizeValue);
+        $('.choosedFilter').append('' +
+            '<li class="appedned__item sizes--filterItem">' +
+            '<span class="item" data-type="' + sizeValue[0].sizeValues[0] + '">' +"Размеры: " +sizeValue[0].sizeValues[0] +"-"+ sizeValue[0].sizeValues[1] +'</span>'  +
+            '<i class="fa fa-times-circle removeAppended__Item deleteSize_button" aria-hidden="true"></i>' +
+            '</li>');
+    }
+
+    RemoveItem();
 }
