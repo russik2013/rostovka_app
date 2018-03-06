@@ -14,7 +14,7 @@ class ValidationProvider extends ServiceProvider
      */
     public function boot()
     {
-        Validator::extend('csv_validation', function ($attribute, $value){
+        Validator::extend('zip_validation', function ($attribute, $value){
 
 
             if($value -> extension() == 'zip')

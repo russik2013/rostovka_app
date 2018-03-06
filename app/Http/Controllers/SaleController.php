@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\OrderCash;
 use App\OrderDetails;
 use App\Product;
 use App\TopSale;
@@ -163,5 +164,52 @@ class SaleController extends Controller
         }
 
         return $products;
+    }
+
+    public function getOrderCash(Request $request){
+
+        if(Order::find($request -> id)){
+            $orderCash = OrderCash::where('order_id', $request -> id) -> first();
+            if($orderCash){
+
+                return response(['url' => url('showOrder/{orderCash}'.$orderCash -> cashCode)],200);
+
+            }else{
+
+                $orderCash = new OrderCash();
+
+                $orderCash->order_id = $request -> id;
+
+                $cashCode = str_random(64);
+
+                $orderCash->cashCode = $cashCode;
+
+                $orderCash -> save();
+
+                return response(['url' => url('showOrder/{orderCash}'.$cashCode)],200);
+
+            }
+
+        }else return response(['message' => 'Wrong order id'],404);
+
+    }
+
+    public function showOrderOnCash($orderCash){
+
+        $orderCash = OrderCash::where('cashCode', $orderCash) -> first();
+
+        if($orderCash){
+
+            $order = Order::with('details') -> find($orderCash -> order_id);
+
+            return view('user.sale.show', compact('order'));
+
+        }else {
+
+            return view('user.sale.empty');
+
+        }
+
+
     }
 }
