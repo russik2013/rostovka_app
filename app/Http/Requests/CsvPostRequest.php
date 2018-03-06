@@ -24,7 +24,7 @@ class CsvPostRequest extends FormRequest
     public function rules()
     {
         return [
-            //'photo' => 'required|csv_validation'
+            'photo' => 'sometimes|zip_validation'
         ];
     }
 }

@@ -98,11 +98,6 @@ class CsvLoadController extends Controller
     public function csvShoesUpdate(CsvPostRequest $request)
     {
 
-        if ( $request -> photo -> extension() != 'zip')
-
-            return response('No photo arhive load', 404);
-
-
         $path = $request->file('files')->getRealPath();
 
         $products = Excel::load($path, function($reader) {
@@ -312,11 +307,6 @@ class CsvLoadController extends Controller
     }
 
     public function csvShoesLoad(CsvPostRequest $request){
-
-        if ( $request -> photo -> extension() != 'zip')
-
-            return response('No photo arhive load', 404);
-
 
         $path = $request->file('files')->getRealPath();
 

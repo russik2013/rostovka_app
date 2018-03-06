@@ -101,7 +101,7 @@
                                     <th>Скидка</th>
                                     <th>Цена</th>
                                     <th>Цена закупки</th>
-                                    <th>Доступность</th>
+                                    <th>В наличии</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -131,7 +131,7 @@
 
                                         <td>{{$product -> prise_zakup}}</td>
 
-                                        <td>@if($product ->show_product == 1) да @else нет @endif</td>
+                                        <td>@if($product ->show_product == 1) Да @else Нет @endif</td>
 
                                         <td>{{$product -> created_at}}  <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
                                     </tr>
