@@ -97,7 +97,6 @@ class CsvLoadController extends Controller
 
     public function csvShoesUpdate(CsvPostRequest $request)
     {
-
         $path = $request->file('files')->getRealPath();
 
         $products = Excel::load($path, function($reader) {

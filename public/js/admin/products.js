@@ -205,6 +205,7 @@ $(document).on('click', 'button.edit', function () {
     if (fileChoosedZip === true && fileChoosedXLS === true) {
         var zip_data = new FormData();
         zip_data.append('_token', $('meta[name="csrf-token"]').attr('content'));
+        if($('#archive').prop('files')[0] !== undefined)
         zip_data.append('photo', $('#archive').prop('files')[0]);
         zip_data.append('files', $('#xslsx').prop('files')[0]);
 
