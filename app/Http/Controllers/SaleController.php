@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CashRequest;
+use App\Http\Requests\SaleRequest;
 use App\Order;
 use App\OrderCash;
 use App\OrderDetails;
@@ -41,10 +43,16 @@ class SaleController extends Controller
 
             Mail::send('admin.mail.smallMail', ["order" => $dates], function ($message)use ($dates) {
                 $message->from('z.kon2009@gmail.com', 'Rostovka');
-                $message->to("Sava280982@inbox.ru", 'Drugak')->subject('new order');
                 $message->to( $dates -> email, 'Drugak')->subject('new order');
                 //$message->to('z.kon2009@gmail.com','Drugak')->subject('Welcome to Odessa');
             });
+
+            Mail::send('admin.mail.smallMail', ["order" => $dates], function ($message)use ($dates) {
+                $message->from('z.kon2009@gmail.com', 'Rostovka');
+                $message->to("Sava280982@inbox.ru", 'Drugak')->subject('new order');
+                //$message->to('z.kon2009@gmail.com','Drugak')->subject('Welcome to Odessa');
+            });
+
 
             return response(['status' => 'success', 'message' => '', 'data' => null]);
         }
@@ -194,22 +202,71 @@ class SaleController extends Controller
 
     }
 
+    public function generateDateCash(CashRequest $request){
+
+        return response(url('showOrder').'/'.base64_encode('dateFrom='.$request -> dateFrom.'&'.'dateTo='.$request -> dateTo));
+
+    }
+
     public function showOrderOnCash($orderCash){
 
-        $orderCash = OrderCash::where('cashCode', $orderCash) -> first();
 
-        if($orderCash){
+        $datas = explode('&',base64_decode($orderCash));
 
-            $order = Order::with('details') -> find($orderCash -> order_id);
+        $dataInfo = [];
 
-            return view('user.sale.show', compact('order'));
+        foreach ($datas as $data){
 
-        }else {
-
-            return view('user.sale.empty');
+            $info = explode('=', $data);
+            $dataInfo[] = $info[1];
 
         }
 
+        if($dataInfo[0] == $dataInfo[1]){
+            $str = strtotime($dataInfo[1]);
+
+            $dataToSecond = date('Y-m-d',($str+86400*1));
+
+
+
+            $orders = Order::where('created_at', '>=', $dataInfo[1])
+                ->where('created_at', '<', $dataToSecond)
+                -> whereIn('paid', [0,3])
+                -> get();
+
+
+        }else{
+
+            $orders = Order::where('created_at', '>=', $dataInfo[0])
+                -> where('created_at', '<=', $dataInfo[1]) -> whereIn('paid', [0,3])
+                -> get();
+        }
+
+        $manufacturersNames = [];
+        $orderManufacturersUrl = [];
+
+            foreach ($orders as $order) {
+
+                foreach ($order->details as $detail) {
+
+                    if(!in_array($detail->manufacturer_name, $manufacturersNames)) {
+
+                        $orderManufacturersUrl[$detail->manufacturer_name] = url('showOrderManufacturer').'/'
+                            .base64_encode(
+                                'dateFrom='.$dataInfo[0].
+                                      '&'.'dateTo='.$dataInfo[1].
+                                      '&'.'manufacturer='.$detail->manufacturer_name);
+                        $manufacturersNames[] = $detail->manufacturer_name;
+                    }
+
+                }
+
+            }
+
+         return response($orderManufacturersUrl);
+
 
     }
+
+    public function showOrderManufacturer($orderCash){}
 }

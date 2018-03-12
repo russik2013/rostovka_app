@@ -119,7 +119,7 @@ class CsvLoadController extends Controller
     public function productsPhotoUpdate($photos, $products)
     {
 
-        if ($photos->photo != "undefined") {
+
             $zip = new ZipArchive;
             $zip->open($photos->photo->getRealPath());
             $zip->extractTo('../images/products/');
@@ -144,7 +144,7 @@ class CsvLoadController extends Controller
                     }
                 }
             }
-        }
+
 
     }
 
