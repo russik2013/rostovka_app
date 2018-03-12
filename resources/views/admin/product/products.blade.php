@@ -32,7 +32,7 @@
                     <input type="file" id="xslsx" data-filename-placement="inside" name="xlsx" title="Выбрать XLS" accept=".xls, .xlsx" class="col-md-5 col-sm-12 col-xs-12" onChange="getFileXls()">
 
                     <select class="sorting__Option manufacturer_Options col-md-5 col-sm-12 col-xs-12" name="manufactures" onChange="getManufactures(event)" style="display: none; float: left; margin-right: 5px;">
-
+                        <option value="0">Все</option>
                         @foreach($manufactures as $manufacture)
 
                             <option value="{{$manufacture -> id}}">{{$manufacture -> name}}</option>
