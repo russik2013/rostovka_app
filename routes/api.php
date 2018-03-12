@@ -37,6 +37,10 @@ Route::post('/news', 'ProductController@getNewsProduct');
 Route::post('/topSales','SaleController@getTopSales');
 Route::post('/pagination', 'ProductController@getPaginationPageCount');
 
+
+
+Route::post('/generateDateCash', 'SaleController@generateDateCash');
+
 //Route::post('');
 
 //Route::get('/csvDownloadOrdersToSend','Admin\CSV\CsvOrderController@getCsvFileWithOrdersToSend');

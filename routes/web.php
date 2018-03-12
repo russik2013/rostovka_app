@@ -58,6 +58,7 @@ Route::get('/cart', function () {
 
 Route::post('orderCash', 'SaleController@getOrderCash');
 Route::get('showOrder/{orderCash}', 'SaleController@showOrderOnCash');
+Route::get('showOrderManufacturer/{orderCash}', 'SaleController@showOrderManufacturer');
 
 //Route::get('/product_add', function () {
 //    return view('admin.product.pdoructadd');
