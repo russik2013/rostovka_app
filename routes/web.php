@@ -29,6 +29,11 @@ Route::get('/', function () {
 Route::get('/login', 'HomeController@login') -> name("login");
 Route::post('/login', 'HomeController@auth');
 
+Route::get('/tov',  function (){
+
+    return view('admin.product.tov');
+
+});
 
 Route::get('/register', 'HomeController@registerIndex');
 Route::post('/register', 'HomeController@register') -> name('register');

@@ -810,10 +810,12 @@ function RemoveItem() {
 }
 
 //Очистка данных (Фильтры, локалсторейдж, установка данных на дефолтовые значения)
-$('.removeallFilters span').on('click', function (e) {
+$('.removeallFilters span').on('click', function () {
     values = [];
     localStorage.removeItem('filterValues');
     localStorage.removeItem('sizeValues');
+
+    $( "#ex2" ).bootstrapSlider('refresh');
     saved_count_on_page = 0;
     var AppendedList = $('.choosedFilter li');
     localStorage.setItem('pageNum', 1);
@@ -832,23 +834,6 @@ $('.removeallFilters span').on('click', function (e) {
     $('input[type=checkbox]').prop('checked', false);
 
     $('.product--block').append('<div class="preloader"><i></i></div>');
-    
-    $.ajax({
-        method: 'POST',
-        url: $('meta[name="root-site"]').attr('content') + "/api/products",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: 24,
-            filters: values, choosedType: choosedType, sizes: sizeValue}
-    }).done(function( msg ) {
-        if(msg.length > 0){
-            pageList = [];
-            makeFilterData(msg)
-        }
-        $('.preloader').remove();
-
-        $('[data-target="goodsCount"] .nice-select-box .current')[0].innerText = 24;
-        $('[data-target="goodsCount"] .nice-select-box [data-value="24"]').addClass('selected');
-        $('[data-target="goodsCount"] .nice-select-box [data-value="36"]').removeClass('selected');
-    });
 
     $.ajax({
         method: 'POST',
@@ -861,6 +846,23 @@ $('.removeallFilters span').on('click', function (e) {
         makeData(page_num, count_on_page);
         paginationCounter(paginationNum);
         setSavedOptionCount();
+
+        $.ajax({
+            method: 'POST',
+            url: $('meta[name="root-site"]').attr('content') + "/api/products",
+            data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: 24,
+                filters: values, choosedType: choosedType, sizes: sizeValue}
+        }).done(function( msg ) {
+            if(msg.length > 0){
+                pageList = [];
+                makeFilterData(msg);
+            }
+            $('.preloader').remove();
+
+            $('[data-target="goodsCount"] .nice-select-box .current')[0].innerText = 24;
+            $('[data-target="goodsCount"] .nice-select-box [data-value="24"]').addClass('selected');
+            $('[data-target="goodsCount"] .nice-select-box [data-value="36"]').removeClass('selected');
+        });
     });
 });
 
