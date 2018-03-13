@@ -187,18 +187,18 @@ class CsvLoadController extends Controller
             }
 
 
-            if (isset($types[ucfirst(trim($product ->{'tip_obuvi'}))]))
-                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
+            if (isset($types[mb_ucfirst(trim($product ->{'tip_obuvi'}))]))
+                $type = $types[mb_ucfirst(trim($product ->{'tip_obuvi'}))];
             else{
                 $types = array_merge($types, $this ->addType($product ->{'tip_obuvi'}));
-                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
+                $type = $types[mb_ucfirst(trim($product ->{'tip_obuvi'}))];
             }
 
-            if(isset($seasons[ucfirst(trim($product ->{'sezon'}))]))
-                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
+            if(isset($seasons[mb_ucfirst(trim($product ->{'sezon'}))]))
+                $season = $seasons[mb_ucfirst(trim($product ->{'sezon'}))];
             else{
                 $seasons = array_merge($seasons, $this ->addSeason($product ->{'sezon'}));
-                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
+                $season = $seasons[mb_ucfirst(trim($product ->{'sezon'}))];
             }
 
 
@@ -475,18 +475,18 @@ class CsvLoadController extends Controller
                 $manufacturer = $manufacturers[ucfirst(trim($product ->{'brend'}))];
             }
 
-            if (isset($types[ucfirst(trim($product ->{'tip_obuvi'}))]))
-                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
+            if (isset($types[mb_ucfirst(trim($product ->{'tip_obuvi'}))]))
+                $type = $types[mb_ucfirst(trim($product ->{'tip_obuvi'}))];
             else{
                 $types = array_merge($types, $this ->addType($product ->{'tip_obuvi'}));
-                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
+                $type = $types[mb_ucfirst(trim($product ->{'tip_obuvi'}))];
             }
 
-            if(isset($seasons[ucfirst(trim($product ->{'sezon'}))]))
-                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
+            if(isset($seasons[mb_ucfirst(trim($product ->{'sezon'}))]))
+                $season = $seasons[mb_ucfirst(trim($product ->{'sezon'}))];
             else{
                 $seasons = array_merge($seasons, $this ->addSeason($product ->{'sezon'}));
-                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
+                $season = $seasons[mb_ucfirst(trim($product ->{'sezon'}))];
             }
 
 
@@ -626,7 +626,7 @@ class CsvLoadController extends Controller
 
         $type = new Type();
 
-        $type -> name = ucfirst(trim($tip));
+        $type -> name = mb_ucfirst(trim($tip));
 
         $type -> save();
 
@@ -638,7 +638,7 @@ class CsvLoadController extends Controller
 
         $season = new Season();
 
-        $season -> name = $sezon;
+        $season -> name = mb_ucfirst(trim($sezon));
 
         $season -> save();
 
