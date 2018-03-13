@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\CSV;
 
+use App\Manufacturer;
 use App\Product;
 use App\Season;
 use App\Type;
@@ -14,6 +15,16 @@ use Carbon\Carbon;
 class CsvDownloadController extends Controller
 {
     public function getCsvFileWithProduct(Request $request){
+
+        if($request -> manufacturer_id == 0){
+
+            $manufacturer_id = Manufacturer::all()->pluck('id')->toArray();
+
+        }else{
+
+            $manufacturer_id = Manufacturer::where('id', $request -> manufacturer_id)->pluck('id')->toArray();
+
+        }
 
         if(Type::where('id', $request -> type_id)->first())
             if(Type::where('id', $request -> type_id) ->first() -> name == 'Все')
@@ -39,7 +50,7 @@ class CsvDownloadController extends Controller
 
 
         $products = Product::with('category','manufacturer','season','type', 'size', 'photo')
-            -> where('manufacturer_id', $request -> manufacturer_id) ->whereIn('type_id', $type)
+            -> whereIn('manufacturer_id', $manufacturer_id) ->whereIn('type_id', $type)
             ->whereIn('season_id', $season) -> whereIn('accessibility',$accessibility)-> get();
 
         //dd($request -> all(), $season, $type, $products, $accessibility);

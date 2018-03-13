@@ -263,10 +263,68 @@ class SaleController extends Controller
 
             }
 
-         return response($orderManufacturersUrl);
+
+        return view('admin.product.tov', compact('orderManufacturersUrl'));
+         //return response($orderManufacturersUrl);
 
 
     }
 
-    public function showOrderManufacturer($orderCash){}
+    public function showOrderManufacturer($orderCash){
+
+        $datas = explode('&',base64_decode($orderCash));
+
+        $values = [];
+
+        foreach ($datas as $data){
+
+            $dataInfo = explode('=', $data);
+
+            $values[] = $dataInfo[1];
+
+        }
+
+
+        if($values[0] == $values[1]){
+            $str = strtotime($values[1]);
+
+            $dataToSecond = date('Y-m-d',($str+86400*1));
+
+
+
+            $orders = Order::where('created_at', '>=', $values[1])
+                ->where('created_at', '<', $dataToSecond)
+                -> whereIn('paid', [0,3])
+                -> get();
+
+
+        }else{
+
+            $orders = Order::where('created_at', '>=', $values[0])
+                -> where('created_at', '<=', $values[1]) -> whereIn('paid', [0,3])
+                -> get();
+        }
+
+
+        $manufacturersOrders = [];
+
+        foreach ($orders as $order) {
+
+            foreach ($order->details as $detail) {
+
+                if($detail->manufacturer_name == $values[2]) {
+
+                    $manufacturersOrders[] = $detail;
+                }
+
+            }
+
+        }
+
+        //dd($values);
+        dd($manufacturersOrders);
+
+
+
+    }
 }

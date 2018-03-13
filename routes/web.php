@@ -57,7 +57,9 @@ Route::get('/cart', function () {
 
 
 Route::post('orderCash', 'SaleController@getOrderCash');
-Route::get('showOrder/{orderCash}', 'SaleController@showOrderOnCash');
+
+
+
 Route::get('showOrderManufacturer/{orderCash}', 'SaleController@showOrderManufacturer');
 
 //Route::get('/product_add', function () {
@@ -72,27 +74,30 @@ Route::get('/pdfShow', 'Admin\PDF\ReceiptController@show');
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::group(['middleware' => 'admin'], function () {
+    Route::group(['middleware' => 'moder'], function () {
 
         Route::get('/suppliers/{name?}', 'Admin\SuppliersController@index')->name('suppliers');
         Route::get('/suppliers_edit/{id}', 'Admin\SuppliersController@edit');
         Route::post('/suppliers_update', 'Admin\SuppliersController@update');
         Route::get('/suppliers_delete/{id}', 'Admin\SuppliersController@delete');
 
-        Route::get('/admin_index/{name?}', 'Admin\HomeController@index') -> name("adminIndex");
-        Route::get('/user_edit/{id}', 'Admin\HomeController@editClient');
-        Route::post('/user_delete/{id}', 'Admin\HomeController@deleteClient');
-        Route::post('/user_update', 'Admin\HomeController@updateClient');
-
+        Route::group(['middleware' => 'admin'], function () {
+            Route::get('/admin_index/{name?}', 'Admin\HomeController@index')->name("adminIndex");
+            Route::get('/user_edit/{id}', 'Admin\HomeController@editClient');
+            Route::post('/user_delete/{id}', 'Admin\HomeController@deleteClient');
+            Route::post('/user_update', 'Admin\HomeController@updateClient');
+        });
 
         Route::post('/finder','Admin\ProductController@finder');//пои сковик товаров по имени
 
-        Route::get('/orders/{name?}', 'Admin\OrderController@index')->name('orders');
-        Route::get('/orderInfo/{id}', 'Admin\OrderController@orderInfo');
-        Route::post('/deleteProductFromOrder','Admin\OrderController@deleteOrderDetail');//удаление товара из заказа передавать id из orderdetails
-        Route::post('/deleteOrder','Admin\OrderController@deleteOrder');//удаление всего заказа передавать id заказа
-        Route::post('/addOrderDetail','Admin\OrderController@addOrderDetail');// добавление товара(ов) в заказ, передавать: id заказа массив id товаров, колличества товаров
-        Route::post('/orderUpdate', 'Admin\OrderController@update');
+        Route::group(['middleware' => 'admin'], function () {
+            Route::get('/orders/{name?}', 'Admin\OrderController@index')->name('orders');
+            Route::get('/orderInfo/{id}', 'Admin\OrderController@orderInfo');
+            Route::post('/deleteProductFromOrder','Admin\OrderController@deleteOrderDetail');//удаление товара из заказа передавать id из orderdetails
+            Route::post('/deleteOrder','Admin\OrderController@deleteOrder');//удаление всего заказа передавать id заказа
+            Route::post('/addOrderDetail','Admin\OrderController@addOrderDetail');// добавление товара(ов) в заказ, передавать: id заказа массив id товаров, колличества товаров
+            Route::post('/orderUpdate', 'Admin\OrderController@update');
+        });
 
         Route::get('/products/{name?}', 'Admin\ProductController@index') ->name('products');//вывод списка всех товаров
         Route::get('/product', 'ProductController@create');
@@ -144,7 +149,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
         Route::post('/generateDateCash', 'SaleController@generateDateCash');
-
+        Route::get('showOrder/{orderCash}', 'SaleController@showOrderOnCash');
 
     });
 

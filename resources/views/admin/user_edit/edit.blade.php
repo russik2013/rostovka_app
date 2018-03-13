@@ -36,7 +36,8 @@
                                                 <select class="form-control border-input user__type" data-userType="userType" name="type">
 
                                                     <option @if($client -> type == 'admin') selected @endif value="admin">Администратор</option>
-                                                    <option @if($client -> type == 'moder') selected @endif value="moder">Оптовик</option>
+                                                    <option @if($client -> type == 'moder') selected @endif value="moder">Модератор</option>
+                                                    <option @if($client -> type == 'opt') selected @endif value="opt">Оптовик</option>
                                                     <option @if($client -> type == 'user') selected @endif value="user">Пользователь</option>
 
                                                 </select>

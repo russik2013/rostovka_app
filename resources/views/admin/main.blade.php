@@ -51,25 +51,28 @@
                 </a>
             </div>
             <ul class="nav">
+                @if(Auth::user()->type == 'admin' )
                 <li id="users" @if(Request::route()->getName() == "adminIndex") class="active" @endif>
                     <a href="{{url('admin_index')}}">
                         <i class="ti-user"></i>
                         <p>Пользователи</p>
                     </a>
                 </li>
+                @endif
                 <li id="products" @if(Request::route()->getName() == "products") class="active" @endif>
                     <a href="{{url('products')}}">
                         <i class="ti-view-list-alt"></i>
                         <p>Товары</p>
                     </a>
                 </li>
-
+                @if(Auth::user()->type == 'admin' )
                 <li id="orders" @if(Request::route()->getName() == "orders") class="active" @endif>
                     <a href="{{url('orders')}}">
                         <i class="ti-pencil-alt2"></i>
                         <p>Заказы</p>
                     </a>
                 </li>
+                @endif
 
                 <li id="suppliers" @if(Request::route()->getName() == "suppliers") class="active" @endif >
                     <a href="{{url('suppliers')}}">
