@@ -263,7 +263,9 @@ class SaleController extends Controller
 
             }
 
-         return response($orderManufacturersUrl);
+
+        return view('admin.product.tov', compact('orderManufacturersUrl'));
+         //return response($orderManufacturersUrl);
 
 
     }
@@ -321,6 +323,8 @@ class SaleController extends Controller
 
         //dd($values);
         dd($manufacturersOrders);
+
+
 
     }
 }

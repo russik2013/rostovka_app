@@ -57,7 +57,9 @@ Route::get('/cart', function () {
 
 
 Route::post('orderCash', 'SaleController@getOrderCash');
-Route::get('showOrder/{orderCash}', 'SaleController@showOrderOnCash');
+
+
+
 Route::get('showOrderManufacturer/{orderCash}', 'SaleController@showOrderManufacturer');
 
 //Route::get('/product_add', function () {
@@ -147,7 +149,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
         Route::post('/generateDateCash', 'SaleController@generateDateCash');
-
+        Route::get('showOrder/{orderCash}', 'SaleController@showOrderOnCash');
 
     });
 

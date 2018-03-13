@@ -6,6 +6,8 @@
 
 @extends('admin.main')
 @section('orders_container')
+
+
     <div class="content products--content">
         <div class="container-fluid">
             <div class="row">
@@ -26,25 +28,21 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <td>fds</td>
-                                <td><input type="text" class="href" value="fdsfds" readonly></td>
-                                        <td class="options">
-                                            <a class="copy__order" href="#">
-                                                <i class="ti-clipboard" data-toggle="tooltip" title="Копировать ссылку"></i>
-                                            </a>
-                                        </td>
+
+                                @foreach($orderManufacturersUrl as $key => $value)
+                                   <tr> <td>{{$key}}</td>
+                                    <td><input type="text" class="href" value="{{$value}}" readonly></td>
+                                            <td class="options">
+                                                <a class="copy__order" href="#">
+                                                    <i class="ti-clipboard" data-toggle="tooltip" title="Копировать ссылку"></i>
+                                                </a>
+                                            </td>
+                                   </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    {{--<ul class="pagination">--}}
-                    {{--<li><a href="!#">&laquo;</a></li>--}}
-                    {{--@for($i = 1; $i < $pagination + 1; $i++)--}}
-
-                    {{--<li  @if($i == 0)class="active" @endif><a href="{{url('orders/'.$i)}}">{{$i}}</a></li>--}}
-                    {{--@endfor--}}
-                    {{--<li><a href="!#">&raquo;</a></li>--}}
-                    {{--</ul>--}}
 
                 </div>
             </div>
@@ -53,7 +51,7 @@
 @endsection
 
 @section('ordersLib')
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{{url('js/admin/orders.js')}}"></script>
-    <script src="{{url('js/admin/datepicker-ru.js')}}"></script>
+    {{--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>--}}
+    {{--<script src="{{url('js/admin/orders.js')}}"></script>--}}
+    {{--<script src="{{url('js/admin/datepicker-ru.js')}}"></script>--}}
 @endsection
