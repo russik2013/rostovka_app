@@ -70,18 +70,19 @@ $('.remove__order').on('click', function () {
         });
     });
 });
-
-
 var pullT_right = document.querySelector(".pullT-right");
-    pullT_right.onclick=function (e) {
-    location.href = location.origin+"/rostovka_app/public/tov";
+    pullT_right.onclick=function () {
         $.ajax({
             type: "POST",
             url: $('meta[name="root-site"]').attr('content') + '/generateDateCash',
             data: {
-                "dateFrom" : "2018-01-11 11:16",
-                "dateTo" : "2018-03-30 11:16",
+                "dateFrom" : $('#from').val(),
+                "dateTo" : $('#to').val(),
                 "_token" : $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(msg) {
+                location.href=msg;
+                console.log(msg);
             }
         });
 };

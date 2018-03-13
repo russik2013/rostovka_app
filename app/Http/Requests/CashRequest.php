@@ -24,8 +24,8 @@ class CashRequest extends FormRequest
     public function rules()
     {
         return [
-            'dateFrom'  => 'date_format:"Y-m-d H:i"|required',
-            'dateTo'  => 'date_format:"Y-m-d H:i"|required',
+            'dateFrom'  => 'date_format:"Y-m-d"|required',
+            'dateTo'  => 'date_format:"Y-m-d"|required',
         ];
     }
 }
