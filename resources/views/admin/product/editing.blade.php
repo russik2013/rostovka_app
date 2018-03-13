@@ -1,7 +1,3 @@
-{{--@section('suppliersCss')--}}
-    {{--<link href="{{url('css/admin/products.css')}}" rel="stylesheet">--}}
-{{--@endsection--}}
-
 @extends('admin.main')
 @section('editingFilters')
     <div class="content products--content">
@@ -14,15 +10,16 @@
                         </div>
 
                         <div class="content table-responsive table-full-width">
-                            <div class="col-md-6 pull-left" style="margin-top: 30px; padding: 0">
+                            <div class="typesBlock" style="margin-top: 30px; padding: 0; float: left; width: 50%">
                                 <table class="table table-striped">
                                     <tbody>
                                     @foreach($types as $type)
 
                                         <tr data-id="{{$type -> id}}">
                                             <td class="articul productsArt" style="display: none;"><input value="{{$type -> id}}" disabled></td>
-                                            <th>{{$type -> name}}</th>
-                                            <td><a class="remove__product" href="{{url('/type/'.$type->id)}}"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                            <th class="Name">{{$type -> name}}</th>
+
+                                            <td><a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
                                         </tr>
 
                                     @endforeach
@@ -33,15 +30,15 @@
                             </div>
 
 
-                            <div class="col-md-6 pull-left" style="margin-top: 30px; padding: 0">
+                            <div class="seasons" style="margin-top: 30px; padding: 0; float: left; width: 50%">
                                 <table class="table table-striped">
                                     <tbody>
                                     @foreach($seasons as $season)
 
                                         <tr data-id="{{$season -> id}}">
                                             <td class="articul productsArt" style="display: none;"><input value="{{$season -> id}}" disabled></td>
-                                            <th>{{$season -> name}}</th>
-                                            <td><a class="remove__product" href="{{url('/seasonRemove/'.$season->id)}}"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                            <th class="Name">{{$season -> name}}</th>
+                                            <td><a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
                                         </tr>
 
                                     @endforeach
@@ -59,6 +56,6 @@
     </div>
 @endsection
 
-{{--@section('suppliersLib')--}}
-    {{--<script src="{{url('js/suppliers.js')}}"></script>--}}
-{{--@endsection--}}
+@section('filterPageLIb')
+    <script src="{{url('js/admin/filterTypesLib.js')}}"></script>
+@endsection

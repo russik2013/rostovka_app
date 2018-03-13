@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ua">
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="{{url('admin/img/apple-icon.png')}}">
@@ -180,5 +180,6 @@
 @yield('ordersLib')
 @yield('optionsLib')
 @yield('suppliersLib')
+@yield('filterPageLIb')
 
 </html>

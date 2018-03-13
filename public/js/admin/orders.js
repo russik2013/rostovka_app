@@ -30,6 +30,7 @@ $(document).ready(function () {
 
     $("#from").datepicker(options);
     $("#to").datepicker(options);
+
 });
 
 function formatDate(date) {
@@ -70,12 +71,26 @@ $('.remove__order').on('click', function () {
     });
 });
 
+// $('.pullT-right').on('click', function () {
+//     console.log("fdsgsd");
+// })
+
+var copy__order = document.querySelector(".copy__order");
+copy__order.onclick=function () {
+    var href = document.querySelector(".href");
+    href.select();
+    document.execCommand("Copy");
+}
 function getSortItem(event) {
+    var pullR=document.querySelector(".pullT-right");
     if(Number (event.target.value) === 2){
-        $('.image__Option').css('display', 'block')
+        $('.image__Option').css('display', 'block');
+        pullR.style.display="block";
     }
     else{
         $('.image__Option').css('display', 'none')
+        pullR.style.display="none";
+
     }
 }
 

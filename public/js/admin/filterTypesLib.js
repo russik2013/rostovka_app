@@ -1,21 +1,26 @@
-$('.form-search button').on('click', function (e) {
-    e.preventDefault();
-    window.location = $('meta[name="root-site"]').attr('content') + '/suppliers/' + $('.search-query').val();
-});
-
 $('.remove__product').on('click', function () {
     var clickedTableTr = $(this).parents(),
+        types = $(clickedTableTr)[4].classList.value === 'typesBlock',
+        seasons = $(clickedTableTr)[4].classList.value === 'seasons',
         choosedName = $(clickedTableTr)[1].children[1].innerText,
         choosedID = $(clickedTableTr)[1].dataset.id;
 
-    removeFilter(clickedTableTr, choosedName, choosedID)
+
+    if(types || seasons){
+        removeFilter(clickedTableTr, types, seasons, choosedName, choosedID)
+    }
 });
 
 
-function removeFilter(clickedTableTr, choosedName, choosedID) {
+function removeFilter(clickedTableTr, types, seasons, choosedName, choosedID) {
+    if(types !== false){
+        choosedType = 'тип'
+    } else {
+        choosedType = 'сезон'
+    }
 
     swal({
-        title: ' Удалить поставщика' + ' <u>' + choosedName +'</u>',
+        title: ' Удалить ' + choosedType + ' <u>' + choosedName +'</u>',
         type: 'info',
         showCloseButton: true,
         showCancelButton: true,
@@ -25,7 +30,7 @@ function removeFilter(clickedTableTr, choosedName, choosedID) {
     }).then(function() {
         $.ajax({
             method: 'GET',
-            url: $('meta[name="root-site"]').attr('content') + '/suppliers_delete/' + choosedID,
+            url: $('meta[name="root-site"]').attr('content') + '/type/' + choosedID,
             data: {'_token': $('meta[name="csrf-token"]').attr('content')}
         }).done(function(msg) {
             $(clickedTableTr)[1].remove();

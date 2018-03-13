@@ -15,9 +15,8 @@ var data = [],
 if(localStorage.getItem('sizeValues') !== null) {
     sizeValue = localStorage.getItem('sizeValues');
     sizeValue = JSON.parse(sizeValue);
-
     $( "#ex2" ).bootstrapSlider({
-        value: [ sizeValue[0].sizeValues[0], sizeValue[0].sizeValues[1] ]
+         value: [ sizeValue[0].sizeValues[0], sizeValue[0].sizeValues[1] ]
     });
 }
 
@@ -56,7 +55,7 @@ $('.product--block').append('<div class="preloader"><i></i></div>');
 
 ///Работа с фильтрами, вызывается с DOM
 var values = [], targetID = 0;
-$('.sidebar-container input[type=checkbox]').on('change', function () {
+$('.sidebar-container input[type=checkbox]').on('change', function (event) {
     var target = $(this)[0].parentNode.parentNode.parentNode;
     targetID = $(this)[0].parentNode.childNodes[1].id;
 
@@ -101,6 +100,7 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
         $('.CFBlock').css('display', 'block');
         localStorage.setItem('pageNum', 1);
         Number(AppendedList.length++);
+
         for (var y = 0; y < values.length; y++) {
             for (var z = 0; z < AppendedList.length; z++) {
                 if ($(this)[0].id === values[y][z]) {
@@ -111,8 +111,10 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
             $('.choosedFilter').append('' +
                 '<li class="appedned__item">' +
                 '<span class="item" data-type="' + values[y][0] + '">' + values[y][1] + '</span>' +
-                '<i class="fa fa-times removeAppended__Item" aria-hidden="true"></i>' +
+                '<i class="fa fa-times-circle removeAppended__Item" aria-hidden="true"></i>' +
                 '</li>');
+                sizeFilter();
+
         }
         RemoveItem();
 
@@ -144,8 +146,8 @@ $('.sidebar-container input[type=checkbox]').on('change', function () {
 function activateData() {
     page_num = 1;
     var sizeValue = localStorage.getItem('sizeValues');
-    sizeValue = JSON.parse(sizeValue);
 
+    $('.preloader').remove();
     $.ajax({
         method: 'POST',
         url: $('meta[name="root-site"]').attr('content') + "/api/products",
@@ -155,10 +157,9 @@ function activateData() {
         if(msg.length > 0) {
             localStorage.setItem('pageNum', 1);
             makeFilterData(msg);
-            $('.preloader').remove();
             checkPrices(data);
-        }else{
             $('.preloader').remove();
+        }else{
             $('.product-list-item ul li').css('display', 'none');
             $('.product-filter-content').css('display', 'none');
             $('.pagination-wraper').css('display', 'none');
@@ -189,6 +190,7 @@ function setSavedOptionCount() {
         page_num = Number (localStorage.getItem('pageNum'));
 
         drawItems(page_num);
+
     } else {
         page_num = 1;
     }
@@ -331,6 +333,13 @@ function initData(count_on_page) {
             paginationNum = msg;
             paginationCounter(paginationNum);
             makeData(page_num, saved_count_on_page);
+            $('.preloader').remove();
+            if(msg < 1 ){
+                $('#target').append('<div style="padding-top: 20px;\n' +
+                    '    text-align: center;\n' +
+                    '    font-size: 20px;\n' +
+                    '    text-transform: uppercase;">Нет товаров</div>')
+            }
         });
     }
 }
@@ -345,7 +354,6 @@ var paginationCounter = function (paginationNum) {
         $('.pagination-wraper a').remove();
         $('.pagination-wraper span').remove();
         $('.productLine li').remove();
-        $('.preloader').remove();
         $('.product-filter-content').css('display', 'none');
         scrolltop();
     }
@@ -420,11 +428,6 @@ function makeData(page_num, count_on_page) {
             
 
 
-        } else {
-            $('#target').append('<div style="    padding-top: 20px;\n' +
-                '    text-align: center;\n' +
-                '    font-size: 20px;\n' +
-                '    text-transform: uppercase;">Нет товаров</div>')
         }
 
 
@@ -737,52 +740,82 @@ function checkPrices(data) {
 //Удаление итема из фильтра
 function RemoveItem() {
     $('.removeAppended__Item').on('click', function () {
-        var clickedTarget = $(this)[0].parentElement.textContent,
-            AppendedList = $('.filterInner input');
 
-        $('.error--message').remove();
-        $('.product-filter-content').css('display', 'block');
-        $('.pagination-wraper').css('display', 'block');
+        var sizeRemove = document.querySelector(".deleteSize_button");
 
-        $(this)[0].parentElement.remove();
+        if(sizeRemove !== null){
+            $('.sizes--filterItem').remove();
+            localStorage.removeItem("sizeValues");
 
-        for (var y = 0; y < values.length; y++) {
-            if (clickedTarget === values[y][1]) {
-                values.splice(y, 1)
+
+            $( "#ex2" ).bootstrapSlider('refresh');
+
+            if($('.choosedFilter li').length === 0){
+                $('.CFBlock').css('display', 'none');
             }
-        }
 
-        for (var i = 0; i < AppendedList.length; i++) {
-            if (AppendedList[i].defaultValue === clickedTarget) {
-                AppendedList[i].checked = false;
+            $('.product--block').append('<div class="preloader"><i></i></div>');
+            $.ajax({
+                method: 'POST',
+                url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
+                data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page,
+                    filters: values, choosedType: choosedType, sizes: sizeValue}
+            }).done(function(msg) {
+                paginationNum = msg;
+                paginationCounter(paginationNum);
+                activateData();
+            });
+        } else {
+            var clickedTarget = $(this)[0].parentElement.textContent,
+                AppendedList = $('.filterInner input');
+
+            $('.error--message').remove();
+            $('.product-filter-content').css('display', 'block');
+            $('.pagination-wraper').css('display', 'block');
+
+            $(this)[0].parentElement.remove();
+
+            for (var y = 0; y < values.length; y++) {
+                if (clickedTarget === values[y][1]) {
+                    values.splice(y, 1)
+                }
             }
+
+            for (var i = 0; i < AppendedList.length; i++) {
+                if (AppendedList[i].defaultValue === clickedTarget) {
+                    AppendedList[i].checked = false;
+                }
+            }
+
+            if (values.length === 0) {
+                $('.CFBlock').css('display', 'none');
+            }
+
+            $('.product--block').append('<div class="preloader"><i></i></div>');
+
+            $.ajax({
+                method: 'POST',
+                url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
+                data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page,
+                    filters: values, choosedType: choosedType, sizes: sizeValue}
+            }).done(function(msg) {
+                paginationNum = msg;
+                paginationCounter(paginationNum);
+                activateData();
+            });
+
+            localStorage.setItem('filterValues', JSON.stringify(values));
         }
 
-        if (values.length === 0) {
-            $('.CFBlock').css('display', 'none');
-        }
-
-        $('.product--block').append('<div class="preloader"><i></i></div>');
-
-        $.ajax({
-            method: 'POST',
-            url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
-            data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page,
-                filters: values, choosedType: choosedType, sizes: sizeValue}
-        }).done(function(msg) {
-            paginationNum = msg;
-            paginationCounter(paginationNum);
-            activateData();
-        });
-
-        localStorage.setItem('filterValues', JSON.stringify(values));
     });
 }
 
 //Очистка данных (Фильтры, локалсторейдж, установка данных на дефолтовые значения)
-$('.removeallFilters span').on('click', function (e) {
+$('.removeallFilters span').on('click', function () {
     values = [];
     localStorage.removeItem('filterValues');
+    localStorage.removeItem('sizeValues');
+
     saved_count_on_page = 0;
     var AppendedList = $('.choosedFilter li');
     localStorage.setItem('pageNum', 1);
@@ -801,16 +834,15 @@ $('.removeallFilters span').on('click', function (e) {
     $('input[type=checkbox]').prop('checked', false);
 
     $('.product--block').append('<div class="preloader"><i></i></div>');
-    
     $.ajax({
         method: 'POST',
         url: $('meta[name="root-site"]').attr('content') + "/api/products",
         data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: 24,
-            filters: values, choosedType: choosedType, sizes: sizeValue}
+            filters: values, choosedType: choosedType, sizes: sizeValue = []}
     }).done(function( msg ) {
         if(msg.length > 0){
             pageList = [];
-            makeFilterData(msg)
+            makeFilterData(msg);
         }
         $('.preloader').remove();
 
@@ -822,20 +854,22 @@ $('.removeallFilters span').on('click', function (e) {
     $.ajax({
         method: 'POST',
         url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: 24,
-            filters: values, choosedType: choosedType, sizes: sizeValue}
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1,
+            count_on_page: 24, filters: filter_value, choosedType: choosedType, sizes: sizeValue = []}
     }).done(function(msg) {
         paginationNum = msg;
         page_num = 1; count_on_page = 24; filter_value = null;
         makeData(page_num, count_on_page);
         paginationCounter(paginationNum);
         setSavedOptionCount();
+        $("#ex2").bootstrapSlider('refresh');
     });
 });
 
 //Создание данных после выбора фильтров
 function makeFilterData(msg) {
     var filtered_data;
+    data = [];
     for(var i= 0; i < msg.length; i++ ) {
         if(msg[i].photo === null){
             msg[i].photo = 'undefined';
@@ -933,18 +967,6 @@ $('#short-by').on('change', function () {
 });
 
 
-//Работа с размерамии, от - до
-getSizes();
-function getSizes() {
-    $.ajax({
-        method: 'POST',
-        url: $('meta[name="root-site"]').attr('content') + "/api/getSizesMass"
-    }).done(function( msg ) {
-        slider(msg);
-    });
-}
-
-
 var GetSlideValue = function() {
     var newVal = $('#ex2').data('bootstrapSlider').getValue(),
         sizeValue = [];
@@ -959,35 +981,38 @@ var GetSlideValue = function() {
 
     $('.product--block').append('<div class="preloader"><i></i></div>');
 
+    $('.CFBlock').css('display', 'block');
+    $('.sizes--filterItem').remove();
+    sizeFilter();
     $.ajax({
         method: "POST",
         url: $('meta[name="root-site"]').attr('content') + "/api/products",
         data: {category_id : $('meta[name="category_id"]').attr('content'),
-            page_num: page_num,
+            page_num: 1,
             count_on_page: count_on_page,
             choosedType: choosedType,
             filters: filter_value,
             sizes: sizeValue
         }
     }).done(function( msg ) {
-        if(msg.length === 0){
-            $('.preloader').remove();
-            $('.product-list-view li').css('display', 'none');
-            $('.pagination-wraper').css('display', 'none');
-            $('.product-filter-content').css('display', 'none');
-            if($('.alert.alert-warning').length < 1){
-                $('#target').append('<div class="alert alert-warning">\n' +
-                    '  <strong>Поиск не дал результатов</strong>\n' +
-                    '</div>');
-            }
-        }
-        else{
+        if(msg.length !== 0){
+            localStorage.removeItem('pageNum');
             $('.product-list-view li').css('display', 'block');
             $('.pagination-wraper').css('display', 'block');
             $('.product-filter-content').css('display', 'block');
-            makeFilterData(msg);
             $('.alert.alert-warning').remove();
-            $('.preloader').remove();
+            makeFilterData(msg);
+        } else {
+            if($('.productLine')[0].childNodes.length === 0){
+                $('.preloader').remove();
+                $('#target').append('<div style="padding-top: 20px;\n' +
+                    '    text-align: center;\n' +
+                    '    font-size: 20px;\n' +
+                    '    text-transform: uppercase;">Нет товаров</div>')
+            } else {
+                $('.preloader').remove();
+            }
+
         }
 
 
@@ -998,13 +1023,14 @@ var GetSlideValue = function() {
     $.ajax({
         method: 'POST',
         url: $('meta[name="root-site"]').attr('content') + "/api/pagination",
-        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: page_num, count_on_page: count_on_page,
+        data: {category_id : $('meta[name="category_id"]').attr('content'), page_num: 1, count_on_page: count_on_page,
             filters: filter_value, sizes: sizeValue}
     }).done(function(msg) {
         if(msg.length === 0){
 
         }
         else{
+            localStorage.removeItem('pageNum');
             paginationNum = msg;
             paginationCounter(paginationNum);
         }
@@ -1016,54 +1042,6 @@ $("#ex2").bootstrapSlider({
 }).on('slideStop', GetSlideValue);
 
 
-// Слайдер от - до
-function slider(msg) {
-    var min_range = Number (msg[0]),
-        max_range = Number (msg[1]),
-        saveRange = [];
-
-    // if(localStorage.getItem('rangeValues') !== null){
-    //     var rangeValues = localStorage.getItem('rangeValues');
-    //     rangeValues = JSON.parse(rangeValues);
-    //
-    //     min_range = msg[0];
-    //     max_range = msg[1];
-    //     saveRange = [];
-    //
-    //     $('.ui-widget-header').css('width', rangeValues[0].range.width + '%');
-    //     $(document).ready(function () {
-    //         var leftArrow = $('.ui-slider-handle')[0],
-    //             rightArrow = $('.ui-slider-handle')[1],
-    //             slider = $('.ui-widget-header');
-    //         $(slider)[0].style.width = rangeValues[0].range.width + '%';
-    //         $(slider)[0].style.left = rangeValues[0].range.sliderPosition + '%';
-    //         $(leftArrow)[0].style.left = rangeValues[0].range.leftArrowPosition + '%';
-    //         $(rightArrow)[0].style.left = rangeValues[0].range.rightArrowPosition + '%';
-    //
-    //         $("#minchoose").val(rangeValues[0].range.min);
-    //         $("#amount").val(rangeValues[0].range.max);
-    //     });
-    //
-    // } else {
-    //
-    // }
-
-
-    $( "#slider-range" ).slider({
-        range: true,
-        min: min_range,
-        max: max_range,
-        values: [10, 50],
-        slide: function(event, ui) {
-            $("#minchoose").val(ui.values[ 0 ]);
-            $("#amount").val(ui.values[ 1 ] );
-        },
-        change: function() {
-        }
-    });
-    $( "#minchoose" ).val($( "#slider-range" ).slider( "values", 0 ));
-    $( "#amount" ).val($( "#slider-range" ).slider( "values", 1 ));
-}
 
 // Работа с иконками для моб. версии
 $('.filter--mobileButton').on('click', function () {
@@ -1084,5 +1062,27 @@ function checkPagination() {
         $('.next_Item.scrollUp').css('display', 'none')
     } else {
         $('.next_Item.scrollUp').css('display', 'inline-block')
+    }
+}
+
+sizeFilter();
+
+function sizeFilter(){
+        if (localStorage.getItem('sizeValues') !== null) {
+
+            $('.CFBlock').css('display', 'block');
+            sizeValue = localStorage.getItem('sizeValues');
+            sizeValue = JSON.parse(sizeValue);
+            if(sizeValue[0].sizeValues[0]!==10 || sizeValue[0].sizeValues[1]!==50) {
+                $('.choosedFilter').append('' +
+                    '<li class="appedned__item sizes--filterItem" data-type="filterType">' +
+                    '<span class="item" data-type="' + sizeValue[0].sizeValues[0] + '">' + "Размеры: " + sizeValue[0].sizeValues[0] + "-" + sizeValue[0].sizeValues[1] + '</span>' +
+                    '<i class="fa fa-times-circle removeAppended__Item deleteSize_button" aria-hidden="true"></i>' +
+                    '</li>');
+                RemoveItem();
+            }
+            else if(values.length === 0){
+                $('.CFBlock').css('display', 'none');
+            }
     }
 }

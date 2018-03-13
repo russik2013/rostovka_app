@@ -43,6 +43,8 @@
 
                                 <div class="col-md-1 downloadButton">
                                     <button class="pull-right">Скачать</button>
+                                    <button class="pullT-right">Посмотреть</button>
+
                                 </div>
                             </div>
                             <div class="col-md-12 span12 pull-right searchbox">
