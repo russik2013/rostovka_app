@@ -71,9 +71,16 @@ $('.remove__order').on('click', function () {
     });
 });
 
-// $('.copy__order').on('click', function () {
-//     console.log("fdsf");
-// });
+// $('.pullT-right').on('click', function () {
+//     console.log("fdsgsd");
+// })
+
+var copy__order = document.querySelector(".copy__order");
+copy__order.onclick=function () {
+    var href = document.querySelector(".href");
+    href.select();
+    document.execCommand("Copy");
+}
 function getSortItem(event) {
     var pullR=document.querySelector(".pullT-right");
     if(Number (event.target.value) === 2){

@@ -27,10 +27,10 @@
                                 </thead>
                                 <tbody>
                                 <td>fds</td>
-                                <td>fds</td>
+                                <td><input type="text" class="href" value="fdsfds" readonly></td>
                                         <td class="options">
-                                            <a class="copy__order" href="#!">
-                                                <i class="ti-clipboard" data-toggle="tooltip" title="Clipboard"></i>
+                                            <a class="copy__order" href="#">
+                                                <i class="ti-clipboard" data-toggle="tooltip" title="Копировать ссылку"></i>
                                             </a>
                                         </td>
                                 </tbody>

@@ -140,10 +140,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/type', 'Admin\TypeController@index') ->name('types');
         Route::get('/type/{id}', 'Admin\TypeController@delete');
 
-            Route::get('/seasonRemove/{id}', 'Admin\TypeController@deleteSeason');
+        Route::get('/seasonRemove/{id}', 'Admin\TypeController@deleteSeason');
 
 
-
+        Route::post('/generateDateCash', 'SaleController@generateDateCash');
 
 
     });
