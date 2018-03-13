@@ -26,10 +26,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <td>fds</td>
-                                <td><input type="text" class="href" value="fdsfds" readonly></td>
+                                <td>Петрович</td>
+                                <td><input type="text" class="ordText" value="ЕРЛ-100" readonly></td>
                                         <td class="options">
-                                            <a class="copy__order" href="#">
+                                            <a class="copy__order">
                                                 <i class="ti-clipboard" data-toggle="tooltip" title="Копировать ссылку"></i>
                                             </a>
                                         </td>
@@ -54,6 +54,6 @@
 
 @section('ordersLib')
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{{url('js/admin/orders.js')}}"></script>
+    <script src="{{url('js/admin/ordersInf.js')}}"></script>
     <script src="{{url('js/admin/datepicker-ru.js')}}"></script>
 @endsection

@@ -71,16 +71,21 @@ $('.remove__order').on('click', function () {
     });
 });
 
-// $('.pullT-right').on('click', function () {
-//     console.log("fdsgsd");
-// })
 
-var copy__order = document.querySelector(".copy__order");
-copy__order.onclick=function () {
-    var href = document.querySelector(".href");
-    href.select();
-    document.execCommand("Copy");
-}
+var pullT_right = document.querySelector(".pullT-right");
+    pullT_right.onclick=function (e) {
+    location.href = location.origin+"/rostovka_app/public/tov";
+        $.ajax({
+            type: "POST",
+            url: $('meta[name="root-site"]').attr('content') + '/generateDateCash',
+            data: {
+                "dateFrom" : "2018-01-11 11:16",
+                "dateTo" : "2018-03-30 11:16",
+                "_token" : $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+};
+
 function getSortItem(event) {
     var pullR=document.querySelector(".pullT-right");
     if(Number (event.target.value) === 2){
