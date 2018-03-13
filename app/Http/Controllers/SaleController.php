@@ -322,7 +322,9 @@ class SaleController extends Controller
         }
 
         //dd($values);
-        dd($manufacturersOrders);
+        //dd($manufacturersOrders);
+
+        return view('user.sale.toManufacturer', compact('manufacturersOrders'));
 
 
 
