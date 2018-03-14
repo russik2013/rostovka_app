@@ -176,34 +176,33 @@ class CsvLoadController extends Controller
                 $size = $sizes[$product -> razmer];
             }
 
-
-            if(isset($manufacturers[ucfirst(trim($product ->{'brend'}))]))
-                $manufacturer = $manufacturers[ ucfirst(trim($product ->{'brend'}))];
+            if(isset($manufacturers[str_replace($product ->{'brend'}[0], strtoupper($product ->{'brend'}[0]), $product ->{'brend'})]))
+                $manufacturer = $manufacturers[str_replace($product ->{'brend'}[0], strtoupper($product ->{'brend'}[0]), $product ->{'brend'})];
             else{
                 $manufacturers = array_merge($manufacturers, $this ->addManufacturer($product ->{'brend'}));
-                $manufacturer = $manufacturers[ ucfirst(trim($product ->{'brend'}))];
+                $manufacturer = $manufacturers[str_replace($product ->{'brend'}[0], strtoupper($product ->{'brend'}[0]), $product ->{'brend'})];
             }
 
 
-            if (isset($types[ucfirst(trim($product ->{'tip_obuvi'}))]))
-                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
+            if (isset($types[str_replace($product ->{'tip_obuvi'}[0], strtoupper($product ->{'tip_obuvi'}[0]), $product ->{'tip_obuvi'})]))
+                $type = $types[str_replace($product ->{'tip_obuvi'}[0], strtoupper($product ->{'tip_obuvi'}[0]), $product ->{'tip_obuvi'})];
             else{
                 $types = array_merge($types, $this ->addType($product ->{'tip_obuvi'}));
-                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
+                $type = $types[str_replace($product ->{'tip_obuvi'}[0], strtoupper($product ->{'tip_obuvi'}[0]), $product ->{'tip_obuvi'})];
             }
 
-            if(isset($seasons[ucfirst(trim($product ->{'sezon'}))]))
-                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
+            if(isset($seasons[str_replace($product ->{'sezon'}[0], strtoupper($product ->{'sezon'}[0]), $product ->{'sezon'})]))
+                $season = $seasons[str_replace($product ->{'sezon'}[0], strtoupper($product ->{'sezon'}[0]), $product ->{'sezon'})];
             else{
                 $seasons = array_merge($seasons, $this ->addSeason($product ->{'sezon'}));
-                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
+                $season = $seasons[str_replace($product ->{'sezon'}[0], strtoupper($product ->{'sezon'}[0]), $product ->{'sezon'})];
             }
 
 
 
             $priseWithDiscount = $product ->tsena_prodazhi;
 
-            $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[ucfirst(trim($product ->{'brend'}))]);
+            $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[str_replace($product ->{'brend'}[0], strtoupper($product ->{'brend'}[0]), $product ->{'brend'})]);
 
             if($manufacturersInfoToProduct ->koorse != "" && $manufacturersInfoToProduct ->koorse != 0 && $product->valyuta == "дол"){
 
@@ -270,7 +269,7 @@ class CsvLoadController extends Controller
             $priseWithDiscount = round($priseWithDiscount, 2);
 
             $insert_array = [ 'article' => $product ->artikul,
-                'name' => $product ->artikul.' '.ucfirst(trim($product ->{'brend'})),     ///////////////////////////// уточнить
+                'name' => $product ->artikul.' '.str_replace($product ->{'brend'}[0], strtoupper($product ->{'brend'}[0]), $product ->{'brend'}),     ///////////////////////////// уточнить
                 'rostovka_count' => $product ->{"min._kol"},
                 'box_count' => $product ->kol_v_yashchike,
                 'prise' => (float)$priseWithDiscount,
@@ -338,7 +337,7 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
-            $products_mass[$product ->artikul.' '.ucfirst(trim($product ->{'brend'}))] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
+            $products_mass[$product ->artikul.' '.str_replace($product ->{'brend'}[0], strtoupper($product ->{'brend'}[0]), $product ->{'brend'})] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
 
         }
 
@@ -384,7 +383,7 @@ class CsvLoadController extends Controller
 
         foreach ($products as $product){
 
-            $products_mass[$product ->artikul.' '.ucfirst(trim($product ->{'brend'}))] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
+            $products_mass[$product ->artikul.' '.str_replace($product ->{'brend'}[0], strtoupper($product ->{'brend'}[0]), $product ->{'brend'})] = [[$product -> foto1,$product -> foto2,$product -> foto3]];
 
         }
 
@@ -468,32 +467,32 @@ class CsvLoadController extends Controller
             }
 
 
-            if(isset($manufacturers[ucfirst(trim($product ->{'brend'}))]))
-                $manufacturer = $manufacturers[ucfirst(trim($product ->{'brend'}))];
+            if(isset($manufacturers[str_replace($product ->{'brend'}[0], strtoupper($product ->{'brend'}[0]), $product ->{'brend'})]))
+                $manufacturer = $manufacturers[str_replace($product ->{'brend'}[0], strtoupper($product ->{'brend'}[0]), $product ->{'brend'})];
             else{
                 $manufacturers = array_merge($manufacturers, $this ->addManufacturer($product ->{'brend'}));
-                $manufacturer = $manufacturers[ucfirst(trim($product ->{'brend'}))];
+                $manufacturer = $manufacturers[str_replace($product ->{'brend'}[0], strtoupper($product ->{'brend'}[0]), $product ->{'brend'})];
             }
 
-            if (isset($types[ucfirst(trim($product ->{'tip_obuvi'}))]))
-                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
+            if (isset($types[str_replace($product ->{'tip_obuvi'}[0], strtoupper($product ->{'tip_obuvi'}[0]), $product ->{'tip_obuvi'})]))
+                $type = $types[str_replace($product ->{'tip_obuvi'}[0], strtoupper($product ->{'tip_obuvi'}[0]), $product ->{'tip_obuvi'})];
             else{
                 $types = array_merge($types, $this ->addType($product ->{'tip_obuvi'}));
-                $type = $types[ucfirst(trim($product ->{'tip_obuvi'}))];
+                $type = $types[str_replace($product ->{'tip_obuvi'}[0], strtoupper($product ->{'tip_obuvi'}[0]), $product ->{'tip_obuvi'})];
             }
 
-            if(isset($seasons[ucfirst(trim($product ->{'sezon'}))]))
-                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
+            if(isset($seasons[str_replace($product ->{'sezon'}[0], strtoupper($product ->{'sezon'}[0]), $product ->{'sezon'})]))
+                $season = $seasons[str_replace($product ->{'sezon'}[0], strtoupper($product ->{'sezon'}[0]), $product ->{'sezon'})];
             else{
                 $seasons = array_merge($seasons, $this ->addSeason($product ->{'sezon'}));
-                $season = $seasons[ucfirst(trim($product ->{'sezon'}))];
+                $season = $seasons[str_replace($product ->{'sezon'}[0], strtoupper($product ->{'sezon'}[0]), $product ->{'sezon'})];
             }
 
 
 
             $priseWithDiscount = $product ->tsena_prodazhi;
 
-            $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[ucfirst(trim($product ->{'brend'}))]);
+            $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[str_replace($product ->{'brend'}[0], strtoupper($product ->{'brend'}[0]), $product ->{'brend'})]);
 
             if($manufacturersInfoToProduct ->koorse != "" && $manufacturersInfoToProduct ->koorse != 0 && $product->valyuta == "дол"){
 
@@ -561,7 +560,7 @@ class CsvLoadController extends Controller
             $priseWithDiscount = round($priseWithDiscount, 2);
 
             $insert_array[] = [ 'article' => $product ->artikul,
-                                'name' => $product ->artikul.' '.ucfirst(trim($product ->{'brend'})),     ///////////////////////////// уточнить
+                                'name' => $product ->artikul.' '.str_replace($product ->{'brend'}[0], strtoupper($product ->{'brend'}[0]), $product ->{'brend'}),     ///////////////////////////// уточнить
                                 'rostovka_count' => $product ->{"min._kol"},
                                 'box_count' => $product ->kol_v_yashchike,
                                 'prise_default' =>(float) $product ->tsena_prodazhi,
@@ -614,7 +613,7 @@ class CsvLoadController extends Controller
 
         $manufacturer = new Manufacturer();
 
-        $manufacturer -> name =ucfirst(trim($brend));
+        $manufacturer -> name =str_replace($brend[0], strtoupper($brend[0]), $brend);
 
         $manufacturer -> save();
 
@@ -626,7 +625,7 @@ class CsvLoadController extends Controller
 
         $type = new Type();
 
-        $type -> name = ucfirst(trim($tip));
+        $type -> name = str_replace($tip[0], strtoupper($tip[0]), $tip);
 
         $type -> save();
 
@@ -638,7 +637,7 @@ class CsvLoadController extends Controller
 
         $season = new Season();
 
-        $season -> name = ucfirst(trim($sezon));
+        $season -> name = str_replace($sezon[0], strtoupper($sezon[0]), $sezon);
 
         $season -> save();
 
