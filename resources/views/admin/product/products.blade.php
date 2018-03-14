@@ -70,19 +70,16 @@
                 </div>
 
                 <button class="upload col-md-4 col-sm-12 col-xs-12" >Загрузить</button>
+
             </div>
 
             <div class="span12 pull-right col-md-5 col-sm-12 col-xs-12" style="padding-right: 0;">
                 <form id="custom-search-form" class="form-search form-horizontal pull-right col-sm-12 col-xs-12">
                     <div class="input-append col-sm-12 col-xs-12" style="padding-right: 0;">
 
-                        <h4 class="checkCounter">Выбрано: <span class="countNumber">0</span></h4>
+                        <h4 class="checkCounter" >Выбрано: <span class="countNumber">0</span></h4>
                             <input type="button" class="clearAll" value="Очистить выбор">
                             <input type="button" class="saveAll" value="Сохранить изменения">
-                    </div>
-                    <div class="input-append col-sm-12 col-xs-12" style="padding-right: 0;">
-                        <input type="text" class="search-query col-sm-12 col-xs-12" placeholder="Поиск">
-                        <button type="submit" class="btn"><i class="ti-search"></i></button>
                     </div>
                 </form>
             </div>
@@ -99,22 +96,42 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th id="chooseAll"><a href="#">Выбрать все</a></th>
-                                    <th id="closeAll"><a href="#"> Отменить все</a></th>
+                                    <th></th>
                                     <th>Фото</th>
                                     <th>Артикул</th>
                                     <th>Размеры</th>
                                     <th>Категория</th>
-                                    <th>Произвоитель</th>
+                                    <th>Производитель</th>
                                     <th>Скидка</th>
-                                    <th> Цена<br>
+                                    <th> Цена</th>
+                                    <th>Цена закупки</th>
+                                    <th>В наличии</tr>
+                                <tr>
+                                    <th style="width: 130px"><a href="#" id="chooseAll">Выбрать все</a>
+                                        <a href="#"id="closeAll"> Отменить все</a></th>
+                                    <th></th>
+                                    <th>
+                                        <input type="text" class="searchArt" placeholder="Поиск Артикул">
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                    <th>
+                                        <input type="text" class="searchMan" placeholder="Поиск производителя">
+                                    </th>
+                                    <th></th>
+                                    <th>
                                         <input type="text" class="price" value="Цена"></th>
-                                    <th>Цена закупки<br>
+                                    <th>
                                         <input type="text" class="pricePurchase" value="Цена закупки"></th>
-                                    <th>В наличии</th>
+                                    <th><select class="availability">
+                                            <option value="1">Не выбрано</option>
+                                            <option value="2">Да</option>
+                                            <option value="3">Нет</option>
+                                        </select></th>
                                 </tr>
                                 </thead>
                                 <tbody>
+
 
                                 @foreach($products as $product)
 

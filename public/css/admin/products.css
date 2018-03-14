@@ -192,13 +192,13 @@ select {
 #closeAll{
     display: none;
 }
-#chooseAll{
-    margin: 14px 0 0 0;
-
-}
-#chooseAll a{
-    margin: 14px 0 0 14px;
-}
 .input-append{
     padding-top: 10px;
+    text-align: center;
+}
+.availability{
+    border-radius: initial;
+}
+.checkCounter{
+    margin-top: 0;
 }

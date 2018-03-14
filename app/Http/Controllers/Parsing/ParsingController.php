@@ -279,4 +279,10 @@ class ParsingController extends Controller
         //dd(Product::all());
 
     }
+
+    public function testIncomeData(Request $request){
+
+        dd($request -> all());
+
+    }
 }

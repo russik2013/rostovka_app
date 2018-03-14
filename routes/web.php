@@ -26,6 +26,9 @@ Route::get('/', function () {
 })->name('root');
 
 
+Route::post('testIncomeData', 'ParsingController@testIncomeData');
+
+
 Route::get('/login', 'HomeController@login') -> name("login");
 Route::post('/login', 'HomeController@auth');
 

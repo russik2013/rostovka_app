@@ -376,6 +376,39 @@ var chooseAll =document.getElementById("chooseAll");
 var closeAll =document.getElementById("closeAll");
 var countNumber = document.querySelector(".countNumber");
 var clearAll = document.querySelector(".clearAll");
+var price = document.querySelector(".price");
+var pricePurchase =document.querySelector(".pricePurchase");
+var searchArt =document.querySelector(".searchArt");
+var searchMan = document.querySelector(".searchMan");
+
+searchArt.addEventListener("keypress",function (e) {
+    if(e.keyCode===13){
+        location.href = location.origin+"/rostovka_app/public/products";
+    }
+});
+
+searchMan.addEventListener("keypress",function (e) {
+    if(e.keyCode===13){
+        location.href = location.origin+"/rostovka_app/public/products";
+    }
+});
+
+pricePurchase.addEventListener("keypress",function (e) {
+    if(e.keyCode >= 48 && e.keyCode <= 57){
+    }
+    else{
+        e.preventDefault()
+    }
+});
+
+price.addEventListener("keypress",function (e) {
+    if(e.keyCode >= 48 && e.keyCode <= 57){
+    }
+    else{
+        e.preventDefault()
+    }
+});
+
 clearAll.addEventListener("click",function () {
     countNumber.innerHTML="0";
     for(var i=0;i<checkTov.length;i++){
@@ -384,6 +417,7 @@ clearAll.addEventListener("click",function () {
         chooseAll.style.display="block";
     }
 });
+
  for(var j = 0;j<checkTov.length;j++){
      checkTov[j].addEventListener("change",function () {
          if(this.checked===true){
@@ -394,6 +428,7 @@ clearAll.addEventListener("click",function () {
          }
      })
  }
+
 chooseAll.addEventListener('click',function () {
     for(var i=0;i<checkTov.length;i++){
         if(checkTov[i].checked===false){
@@ -404,6 +439,7 @@ chooseAll.addEventListener('click',function () {
         }
     }
 });
+
 closeAll.addEventListener('click',function () {
     for(var i=0;i<checkTov.length;i++){
         if(checkTov[i].checked===true){
