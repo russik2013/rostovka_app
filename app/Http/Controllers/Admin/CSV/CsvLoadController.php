@@ -107,7 +107,7 @@ class CsvLoadController extends Controller
 
         $this->productsUpdate($products);
 
-        if($request -> photo) {
+        if($request -> photo && $request -> photo != 'undefined') {
 
             $this->productsPhotoUpdate($request, $products);
 
@@ -118,8 +118,6 @@ class CsvLoadController extends Controller
 
     public function productsPhotoUpdate($photos, $products)
     {
-
-
             $zip = new ZipArchive;
             $zip->open($photos->photo->getRealPath());
             $zip->extractTo('../images/products/');
@@ -179,7 +177,7 @@ class CsvLoadController extends Controller
             }
 
 
-            if(isset($manufacturers[ ucfirst(trim($product ->{'brend'}))]))
+            if(isset($manufacturers[ucfirst(trim($product ->{'brend'}))]))
                 $manufacturer = $manufacturers[ ucfirst(trim($product ->{'brend'}))];
             else{
                 $manufacturers = array_merge($manufacturers, $this ->addManufacturer($product ->{'brend'}));
@@ -299,7 +297,9 @@ class CsvLoadController extends Controller
 
             ];
 
-            Product::find($product->id)->update($insert_array);
+            $productFind = Product::find($product->id);
+            if($productFind)
+                $productFind->update($insert_array);
 
         }
 
@@ -638,7 +638,7 @@ class CsvLoadController extends Controller
 
         $season = new Season();
 
-        $season -> name = $sezon;
+        $season -> name = ucfirst(trim($sezon));
 
         $season -> save();
 

@@ -307,6 +307,8 @@ class SaleController extends Controller
 
 
         $manufacturersOrders = [];
+        $finalPrise = 0;
+        $manufacturerName = $values[2];
 
         foreach ($orders as $order) {
 
@@ -315,6 +317,8 @@ class SaleController extends Controller
                 if($detail->manufacturer_name == $values[2]) {
 
                     $manufacturersOrders[] = $detail;
+                    $finalPrise += $detail -> this_tovar_in_order_price;
+
                 }
 
             }
@@ -324,7 +328,7 @@ class SaleController extends Controller
         //dd($values);
         //dd($manufacturersOrders);
 
-        return view('user.sale.toManufacturer', compact('manufacturersOrders'));
+        return view('user.sale.toManufacturer', compact('manufacturersOrders', 'finalPrise', 'manufacturerName'));
 
 
 
