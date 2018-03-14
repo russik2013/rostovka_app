@@ -23,16 +23,38 @@ class ProductController extends Controller
         $seasons = Season::where('id', '!=', 5) ->orderBy('name','asc') -> get();
         $types = Type::where('id', '!=', 28)->orderBy('name','asc') -> get();
 
-        if($name != "")
+        if(isset($_GET['manufacturer']))
+        $manufacturerId = Manufacturer:: where('name', "like", "%".$_GET['manufacturer']."%")
+            -> pluck('id')->toArray();
+        else $manufacturerId = Manufacturer::all() -> pluck('id')->toArray();
 
-            $products = Product::with('category','manufacturer', 'photo') ->
-            where('name', "like", "%".$name."%")
-                ->orderBy('id', 'desc') ->paginate(15);
 
-        else
-            $products = Product::with('category','manufacturer', 'photo')  ->orderBy('id', 'desc') ->paginate(15);
 
-        //dd($products -> get());
+        if($name != "") {
+            if( isset($_GET['article'])) {
+                $products = Product::with('category', 'manufacturer', 'photo')->
+                where('article', "like", "%" . $_GET['article'] . "%")->
+                where('name', "like", "%" . $name . "%")->
+                whereIn('manufacturer_id', $manufacturerId)->
+                orderBy('id', 'desc')->paginate(15);
+            }else {
+                $products = Product::with('category', 'manufacturer', 'photo')->
+                where('name', "like", "%" . $name . "%")->
+                whereIn('manufacturer_id', $manufacturerId)->
+                orderBy('id', 'desc')->paginate(15);
+            }
+        }
+        else{
+            if(isset($_GET['article'])){
+                $products = Product::with('category', 'manufacturer', 'photo')->
+                where('article', "like", "%" . $_GET['article'] . "%")->
+                whereIn('manufacturer_id', $manufacturerId)->
+                orderBy('id', 'desc')->paginate(15);
+            }else
+                $products = Product::with('category','manufacturer', 'photo')->
+                whereIn('manufacturer_id', $manufacturerId)->
+                orderBy('id', 'desc') ->paginate(15);
+        }
 
         return view('admin.product.products', compact('products', 'manufactures', 'seasons', 'types'));
     }
