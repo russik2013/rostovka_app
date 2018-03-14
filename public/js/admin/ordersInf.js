@@ -1,11 +1,11 @@
-// var ti_clipboard = document.querySelector(".ti-clipboard");
-// ti_clipboard.onclick=function () {
-//     var href = document.querySelector(".href");
-//     href.select();
-//     document.execCommand("Copy");
-//     console.log(href)
-// };
-var copy_order = document.querySelector(".copy__order");
-copy_order.onclick=function () {
-    console.log(4567);
+var ti_clipboard = document.getElementsByClassName("ti-clipboard");
+var href = document.getElementsByClassName("href");
+for(var i=0;i<ti_clipboard.length;i++) {
+    var index = i;
+    ti_clipboard[i].addEventListener("click",listener.bind(null,i));
+}
+
+function listener(index) {
+   href[index].select();
+   document.execCommand("Copy");
 }

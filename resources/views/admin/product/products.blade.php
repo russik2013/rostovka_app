@@ -72,8 +72,14 @@
                 <button class="upload col-md-4 col-sm-12 col-xs-12" >Загрузить</button>
             </div>
 
-            <div class="span12 pull-right col-md-3 col-sm-12 col-xs-12" style="padding-right: 0;">
+            <div class="span12 pull-right col-md-5 col-sm-12 col-xs-12" style="padding-right: 0;">
                 <form id="custom-search-form" class="form-search form-horizontal pull-right col-sm-12 col-xs-12">
+                    <div class="input-append col-sm-12 col-xs-12" style="padding-right: 0;">
+
+                        <h4 class="checkCounter">Выбрано: <span class="countNumber">0</span></h4>
+                            <input type="button" class="clearAll" value="Очистить выбор">
+                            <input type="button" class="saveAll" value="Сохранить изменения">
+                    </div>
                     <div class="input-append col-sm-12 col-xs-12" style="padding-right: 0;">
                         <input type="text" class="search-query col-sm-12 col-xs-12" placeholder="Поиск">
                         <button type="submit" class="btn"><i class="ti-search"></i></button>
@@ -93,14 +99,18 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
+                                    <th id="chooseAll"><a href="#">Выбрать все</a></th>
+                                    <th id="closeAll"><a href="#"> Отменить все</a></th>
                                     <th>Фото</th>
                                     <th>Артикул</th>
                                     <th>Размеры</th>
                                     <th>Категория</th>
                                     <th>Произвоитель</th>
                                     <th>Скидка</th>
-                                    <th>Цена</th>
-                                    <th>Цена закупки</th>
+                                    <th> Цена<br>
+                                        <input type="text" class="price" value="Цена"></th>
+                                    <th>Цена закупки<br>
+                                        <input type="text" class="pricePurchase" value="Цена закупки"></th>
                                     <th>В наличии</th>
                                 </tr>
                                 </thead>
@@ -111,6 +121,7 @@
 
 
                                     <tr data-id="{{$product -> id}}">
+                                        <td><input class="checkTov" type="checkbox"> </td>
                                         <td style="max-width: 80px;">
                                             @if($product -> photo )
                                             <img style="width: 70%;margin-bottom: 30px;" src="{{url('/images/products/'. $product -> photo -> photo_url)}}" />

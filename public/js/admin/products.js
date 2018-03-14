@@ -370,3 +370,47 @@ $('.form-search button').on('click', function (e) {
     e.preventDefault();
     window.location = $('meta[name="root-site"]').attr('content') + '/products/' + $('.search-query').val();
 });
+
+var checkTov = document.getElementsByClassName("checkTov");
+var chooseAll =document.getElementById("chooseAll");
+var closeAll =document.getElementById("closeAll");
+var countNumber = document.querySelector(".countNumber");
+var clearAll = document.querySelector(".clearAll");
+clearAll.addEventListener("click",function () {
+    countNumber.innerHTML="0";
+    for(var i=0;i<checkTov.length;i++){
+        checkTov[i].checked=false;
+        closeAll.style.display="none";
+        chooseAll.style.display="block";
+    }
+});
+ for(var j = 0;j<checkTov.length;j++){
+     checkTov[j].addEventListener("change",function () {
+         if(this.checked===true){
+             countNumber.innerHTML++;
+         }
+         else{
+             countNumber.innerHTML--;
+         }
+     })
+ }
+chooseAll.addEventListener('click',function () {
+    for(var i=0;i<checkTov.length;i++){
+        if(checkTov[i].checked===false){
+            countNumber.innerHTML++;
+            checkTov[i].checked=true;
+            closeAll.style.display="block";
+            chooseAll.style.display="none";
+        }
+    }
+});
+closeAll.addEventListener('click',function () {
+    for(var i=0;i<checkTov.length;i++){
+        if(checkTov[i].checked===true){
+            countNumber.innerHTML--;
+            checkTov[i].checked=false;
+            closeAll.style.display="none";
+            chooseAll.style.display="block";
+        }
+    }
+});

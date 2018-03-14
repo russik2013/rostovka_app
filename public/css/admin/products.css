@@ -83,7 +83,7 @@
 .header--add--buttons i:hover{
     color: #63a3ff;
 }
-.upload--buttons, .update--buttons, .remove--buttons{
+.upload--buttons, .update--buttons, .remove--buttons {
     font-size: 30px;
     border: none;
     background: transparent;
@@ -175,4 +175,30 @@ select {
 
 .produtsTablePage .remove__product{
     right: 10% !important;
+}
+.clearAll{
+    background: #63a3ff;
+    color: #fff;
+    padding: 6px 10px 4px 10px;
+    top: 20px;
+    margin-right: 50px;
+}
+.saveAll{
+    background: #63a3ff;
+    color: #fff;
+    padding: 6px 10px 4px 10px;
+    top: 20px;
+}
+#closeAll{
+    display: none;
+}
+#chooseAll{
+    margin: 14px 0 0 0;
+
+}
+#chooseAll a{
+    margin: 14px 0 0 14px;
+}
+.input-append{
+    padding-top: 10px;
 }
