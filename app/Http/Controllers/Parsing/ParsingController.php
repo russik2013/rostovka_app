@@ -280,9 +280,4 @@ class ParsingController extends Controller
 
     }
 
-    public function testIncomeData(Request $request){
-
-        dd($request -> all());
-
-    }
 }
