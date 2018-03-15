@@ -30,14 +30,14 @@
                                 <tbody>
 
                                 @foreach($orderManufacturersUrl as $key => $value)
-                                   <tr> <td>{{$key}}</td>
-                                    <td><input type="text" class="href" value="{{$value}}" readonly></td>
-                                            <td class="options">
-                                                <a class="copy__order" href="#">
-                                                    <i class="ti-clipboard" data-toggle="tooltip" title="Копировать ссылку"></i>
-                                                </a>
-                                            </td>
-                                   </tr>
+                                    <tr> <td>{{$key}}</td>
+                                        <td><input type="text" class="href" value="{{$value}}" readonly></td>
+                                        <td class="options">
+                                            <a class="copy__order" href="#">
+                                                <i class="ti-clipboard" data-toggle="tooltip" title="Копировать ссылку"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>
@@ -51,7 +51,7 @@
 @endsection
 
 @section('ordersLib')
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{{url('js/admin/orders.js')}}"></script>
-    <script src="{{url('js/admin/datepicker-ru.js')}}"></script>
+    {{--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>--}}
+    <script src="{{url('js/admin/ordersInf.js')}}"></script>
+    {{--<script src="{{url('js/admin/datepicker-ru.js')}}"></script>--}}
 @endsection

@@ -16,7 +16,9 @@ if($('.checkoutPage')){
     $('.cartBl').css('display', 'none');
 }
 $('.successful_Buy button').on('click', function () {
+    //dataLayer.push({'event': 'zakaz'});
     location.reload();
+
 });
 'use strict';
 $(document).ready(function() {

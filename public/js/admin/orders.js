@@ -70,17 +70,23 @@ $('.remove__order').on('click', function () {
         });
     });
 });
+var pullT_right = document.querySelector(".pullT-right");
+    pullT_right.onclick=function () {
+        $.ajax({
+            type: "POST",
+            url: $('meta[name="root-site"]').attr('content') + '/generateDateCash',
+            data: {
+                "dateFrom" : $('#from').val(),
+                "dateTo" : $('#to').val(),
+                "_token" : $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(msg) {
+                location.href=msg;
+                console.log(msg);
+            }
+        });
+};
 
-// $('.pullT-right').on('click', function () {
-//     console.log("fdsgsd");
-// })
-
-var copy__order = document.querySelector(".copy__order");
-copy__order.onclick=function () {
-    var href = document.querySelector(".href");
-    href.select();
-    document.execCommand("Copy");
-}
 function getSortItem(event) {
     var pullR=document.querySelector(".pullT-right");
     if(Number (event.target.value) === 2){

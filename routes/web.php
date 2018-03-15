@@ -26,6 +26,9 @@ Route::get('/', function () {
 })->name('root');
 
 
+Route::post('testIncomeData', 'Parsing\ParsingController@testIncomeData');// на эту ссылку ид>т запрос при мульти редактировании
+
+
 Route::get('/login', 'HomeController@login') -> name("login");
 Route::post('/login', 'HomeController@auth');
 

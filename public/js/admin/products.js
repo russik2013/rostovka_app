@@ -370,3 +370,122 @@ $('.form-search button').on('click', function (e) {
     e.preventDefault();
     window.location = $('meta[name="root-site"]').attr('content') + '/products/' + $('.search-query').val();
 });
+
+var checkTov = document.getElementsByClassName("checkTov");
+var chooseAll =document.getElementById("chooseAll");
+var closeAll =document.getElementById("closeAll");
+var countNumber = document.querySelector(".countNumber");
+var clearAll = document.querySelector(".clearAll");
+var price = document.querySelector(".price");
+var pricePurchase =document.querySelector(".pricePurchase");
+var searchArt =document.querySelector(".searchArt");
+var searchMan = document.querySelector(".searchMan");
+var saveAll = document.querySelector(".saveAll");
+var availability =document.querySelector(".availability")
+saveAll.addEventListener("click",function () {
+    var save =[];
+    for(var i=0;i<checkTov.length;i++){
+            if(checkTov[i].checked===true){
+                save.push(checkTov[i].value);
+            }
+    }
+    $.ajax({
+        type: "POST",
+        url: $('meta[name="root-site"]').attr('content') + '/testIncomeData',
+        data: {
+            "_token" : $('meta[name="csrf-token"]').attr('content'),
+            "save" : save,
+            "price": price.value,
+            "pricePurchase":pricePurchase.value,
+            "availability":availability.value
+        },
+        success: function(msg) {
+            console.log(msg);
+        }
+    });
+});
+searchArt.addEventListener("keypress",function (e) {
+    if(e.keyCode===13){
+        if(searchArt.value!==""&&searchMan.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
+        }
+        else if(searchArt.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchArt.value;
+        }
+        else if(searchMan.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products"+"?manufacturer="+searchMan.value;
+        }
+    }
+});
+
+searchMan.addEventListener("keypress",function (e) {
+    if(e.keyCode===13){
+        if(searchArt.value!==""&&searchMan.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
+        }
+        else if(searchMan.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchMan.value;
+        }
+        else if(searchArt.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products"+"?manufacturer="+searchArt.value;
+        }
+    }
+});
+
+pricePurchase.addEventListener("keypress",function (e) {
+    if(e.keyCode >= 48 && e.keyCode <= 57){
+    }
+    else{
+        e.preventDefault()
+    }
+});
+
+price.addEventListener("keypress",function (e) {
+    if(e.keyCode >= 48 && e.keyCode <= 57){
+    }
+    else{
+        e.preventDefault()
+    }
+});
+
+clearAll.addEventListener("click",function () {
+    countNumber.innerHTML="0";
+    for(var i=0;i<checkTov.length;i++){
+        checkTov[i].checked=false;
+        closeAll.style.display="none";
+        chooseAll.style.display="block";
+    }
+});
+
+ for(var j = 0;j<checkTov.length;j++){
+     checkTov[j].addEventListener("change",function () {
+         if(this.checked===true){
+             countNumber.innerHTML++;
+         }
+         else{
+             countNumber.innerHTML--;
+         }
+     })
+ }
+
+chooseAll.addEventListener('click',function () {
+    for(var i=0;i<checkTov.length;i++){
+        if(checkTov[i].checked===false){
+            countNumber.innerHTML++;
+            checkTov[i].checked=true;
+            closeAll.style.display="block";
+            chooseAll.style.display="none";
+        }
+    }
+});
+
+closeAll.addEventListener('click',function () {
+    for(var i=0;i<checkTov.length;i++){
+        if(checkTov[i].checked===true){
+            countNumber.innerHTML--;
+            checkTov[i].checked=false;
+            closeAll.style.display="none";
+            chooseAll.style.display="block";
+        }
+    }
+});
