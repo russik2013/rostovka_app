@@ -49,6 +49,8 @@ class CsvLoadController extends Controller
 
                 if($i != $j && $check_array[$i][0] == $check_array[$j][0] && $check_array[$i][1] == $check_array[$j][1]){
 
+                    dd([$check_array[$i][0], $check_array[$i][1]]);
+
                     return true;
 
                 }
@@ -323,14 +325,14 @@ class CsvLoadController extends Controller
 
     }
 
+
+
     public function csvShoesLoad(CsvPostRequest $request){
 
         $path = $request->file('files')->getRealPath();
 
         $products = Excel::load($path, function($reader) {
         })->get();
-
-
 
         $products = $this ->checkEmpty($products);
 
@@ -340,14 +342,15 @@ class CsvLoadController extends Controller
 
         else {
 
-            //dd($this->formInsertArray($products));
-            Product::insert($this->formInsertArray($products));
+            $inputTovars = $this->formInsertArray($products);
+
+            Product::insert($inputTovars[0]);
 
             ProductPhotos::insert($this->formPhotoInsertArray($request, $products));
 
             $this->photosRename($products);
 
-            return response('all date was upload', 200);
+            return response(['all date was upload', $inputTovars[1]], 200);
         }
 
     }
@@ -462,6 +465,10 @@ class CsvLoadController extends Controller
         $manufacturers = Manufacturer::all() -> pluck('id', 'name') -> toArray();
         $manufacturersInfo = Manufacturer::all();
         $insert_array = [];
+        $russik_dump = 2;
+
+        $checkProductInDb = [];
+        $checkProductInDb[0] = 'Товары, которые уже есть в базе';
 
         foreach ($products as $product){
 
@@ -478,6 +485,7 @@ class CsvLoadController extends Controller
                 //$product -> pol = ucfirst(trim($product -> pol));
                 $sex = $product->pol;
             }
+
 
 
             if(isset($sizes[$product -> razmer]))
@@ -515,9 +523,13 @@ class CsvLoadController extends Controller
 
             $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[str_replace($product ->{'brend'}[0], strtoupper($product ->{'brend'}[0]), $product ->{'brend'})]);
 
+
+
             if($manufacturersInfoToProduct ->koorse != "" && $manufacturersInfoToProduct ->koorse != 0 && $product->valyuta == "дол"){
 
                 $priseWithDiscount *= $manufacturersInfoToProduct ->koorse;
+
+
 
             }
 
@@ -580,35 +592,45 @@ class CsvLoadController extends Controller
 
             $priseWithDiscount = round($priseWithDiscount, 2);
 
-            $insert_array[] = [ 'article' => $product ->artikul,
-                                'name' => $product ->artikul.' '.str_replace($product ->{'brend'}[0], strtoupper($product ->{'brend'}[0]), $product ->{'brend'}),     ///////////////////////////// уточнить
-                                'rostovka_count' => $product ->{"min._kol"},
-                                'box_count' => $product ->kol_v_yashchike,
-                                'prise_default' =>(float) $product ->tsena_prodazhi,
-                                'prise' => (float)$priseWithDiscount,
-                                'manufacturer_id' => $manufacturer,
-                                'category_id' => $categoryId,
-                                'show_product' => $product ->nalichie,
-                                'currency' =>  $product->valyuta,
-                                'full_description' => $product ->opisanie,
-                                'discount' => $product ->skidka,
-                                'accessibility' => $product ->nalichie,
-                                'type_id' => $type,
-                                'season_id' => $season,
-                                'size_id' => $size,
-                                "prise_zakup" =>(float) $product -> tsena_zakupki,
-                                'sex' => $sex,
-                                'material' => $product ->material_verkh,
-                                'color' => $product -> tsvet,
-                                'manufacturer_country' => $product ->strana_proizvoditel,
-                                'material_inside' => $product ->material_vnutri,
-                                'material_insoles' => $product ->material_stelki,
-                                'repeats' => $product ->povtory,
-                                ];
+
+
+            if(Product::where('manufacturer_id',$manufacturer)
+                -> where('name', $product ->artikul.' '.str_replace($product ->{'brend'}[0], strtoupper($product ->{'brend'}[0]), $product ->{'brend'}))
+                ->get() -> toArray()) {
+                $checkProductInDb[] = $russik_dump;
+                   }
+            else {
+                $insert_array[] = ['article' => $product->artikul,
+                    'name' => $product->artikul . ' ' . str_replace($product->{'brend'}[0], strtoupper($product->{'brend'}[0]), $product->{'brend'}),     ///////////////////////////// уточнить
+                    'rostovka_count' => $product->{"min._kol"},
+                    'box_count' => $product->kol_v_yashchike,
+                    'prise_default' => (float)$product->tsena_prodazhi,
+                    'prise' => (float)$priseWithDiscount,
+                    'manufacturer_id' => $manufacturer,
+                    'category_id' => $categoryId,
+                    'show_product' => $product->nalichie,
+                    'currency' => $product->valyuta,
+                    'full_description' => $product->opisanie,
+                    'discount' => $product->skidka,
+                    'accessibility' => $product->nalichie,
+                    'type_id' => $type,
+                    'season_id' => $season,
+                    'size_id' => $size,
+                    "prise_zakup" => (float)$product->tsena_zakupki,
+                    'sex' => $sex,
+                    'material' => $product->material_verkh,
+                    'color' => $product->tsvet,
+                    'manufacturer_country' => $product->strana_proizvoditel,
+                    'material_inside' => $product->material_vnutri,
+                    'material_insoles' => $product->material_stelki,
+                    'repeats' => $product->povtory,
+                ];
+            }
+            $russik_dump ++;
         }
 
 
-        return $insert_array;
+        return [$insert_array, $checkProductInDb];
 
     }
 
