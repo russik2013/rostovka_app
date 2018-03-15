@@ -102,8 +102,9 @@ class CsvLoadController extends Controller
         $products = Excel::load($path, function($reader) {
         })->get();
 
-        $products = $this ->checkEmpty($products);
+        $this ->checkSex($products);
 
+        $products = $this ->checkEmpty($products);
 
         $this->productsUpdate($products);
 
@@ -112,6 +113,24 @@ class CsvLoadController extends Controller
             $this->productsPhotoUpdate($request, $products);
 
             $this->photosRename($products);
+        }
+
+    }
+
+    public function checkSex($products){
+
+        $i = 0;
+
+        foreach ($products as $product){
+
+
+
+            if($product -> kategoriya == 'Детская' ){
+
+
+
+            }
+
         }
 
     }
@@ -154,6 +173,8 @@ class CsvLoadController extends Controller
         $categories = Category::all() -> pluck('id', 'name') -> toArray();
         $manufacturers = Manufacturer::all() -> pluck('id', 'name') -> toArray();
         $manufacturersInfo = Manufacturer::all();
+
+        $russiks_iterator = 0;
 
         foreach ($products as $product){
 
@@ -296,6 +317,7 @@ class CsvLoadController extends Controller
 
             ];
 
+            $russiks_iterator ++;
             $productFind = Product::find($product->id);
             if($productFind)
                 $productFind->update($insert_array);
@@ -310,6 +332,8 @@ class CsvLoadController extends Controller
 
         $products = Excel::load($path, function($reader) {
         })->get();
+
+
 
         $products = $this ->checkEmpty($products);
 
