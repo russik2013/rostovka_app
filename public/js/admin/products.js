@@ -380,16 +380,55 @@ var price = document.querySelector(".price");
 var pricePurchase =document.querySelector(".pricePurchase");
 var searchArt =document.querySelector(".searchArt");
 var searchMan = document.querySelector(".searchMan");
-
+var saveAll = document.querySelector(".saveAll");
+var availability =document.querySelector(".availability")
+saveAll.addEventListener("click",function () {
+    var save =[];
+    for(var i=0;i<checkTov.length;i++){
+            if(checkTov[i].checked===true){
+                save.push(checkTov[i].value);
+            }
+    }
+    $.ajax({
+        type: "POST",
+        url: $('meta[name="root-site"]').attr('content') + '/testIncomeData',
+        data: {
+            "_token" : $('meta[name="csrf-token"]').attr('content'),
+            "save" : save,
+            "price": price.value,
+            "pricePurchase":pricePurchase.value,
+            "availability":availability.value
+        },
+        success: function(msg) {
+            console.log(msg);
+        }
+    });
+});
 searchArt.addEventListener("keypress",function (e) {
     if(e.keyCode===13){
-        location.href = location.origin+"/rostovka_app/public/products";
+        if(searchArt.value!==""&&searchMan.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
+        }
+        else if(searchArt.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchArt.value;
+        }
+        else if(searchMan.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products"+"?manufacturer="+searchMan.value;
+        }
     }
 });
 
 searchMan.addEventListener("keypress",function (e) {
     if(e.keyCode===13){
-        location.href = location.origin+"/rostovka_app/public/products";
+        if(searchArt.value!==""&&searchMan.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
+        }
+        else if(searchMan.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchMan.value;
+        }
+        else if(searchArt.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products"+"?manufacturer="+searchArt.value;
+        }
     }
 });
 

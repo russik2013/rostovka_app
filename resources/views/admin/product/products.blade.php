@@ -120,13 +120,13 @@
                                     </th>
                                     <th></th>
                                     <th>
-                                        <input type="text" class="price" value="Цена"></th>
+                                        <input type="text" class="price" placeholder="Цена"></th>
                                     <th>
-                                        <input type="text" class="pricePurchase" value="Цена закупки"></th>
+                                        <input type="text" class="pricePurchase" placeholder="Цена закупки"></th>
                                     <th><select class="availability">
-                                            <option value="1">Не выбрано</option>
-                                            <option value="2">Да</option>
-                                            <option value="3">Нет</option>
+                                            <option value="0">Не выбрано</option>
+                                            <option value="1">Да</option>
+                                            <option value="2">Нет</option>
                                         </select></th>
                                 </tr>
                                 </thead>
@@ -138,7 +138,7 @@
 
 
                                     <tr data-id="{{$product -> id}}">
-                                        <td><input class="checkTov" type="checkbox"> </td>
+                                        <td><input class="checkTov" type="checkbox" value="{{$product -> id}}"> </td>
                                         <td style="max-width: 80px;">
                                             @if($product -> photo )
                                             <img style="width: 70%;margin-bottom: 30px;" src="{{url('/images/products/'. $product -> photo -> photo_url)}}" />
