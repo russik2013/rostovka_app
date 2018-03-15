@@ -381,7 +381,7 @@ var pricePurchase =document.querySelector(".pricePurchase");
 var searchArt =document.querySelector(".searchArt");
 var searchMan = document.querySelector(".searchMan");
 var saveAll = document.querySelector(".saveAll");
-var availability =document.querySelector(".availability")
+var availability =document.querySelector(".isExist")
 saveAll.addEventListener("click",function () {
     var save =[];
     for(var i=0;i<checkTov.length;i++){
@@ -389,6 +389,7 @@ saveAll.addEventListener("click",function () {
                 save.push(checkTov[i].value);
             }
     }
+    console.log(availability.value);
     $.ajax({
         type: "POST",
         url: $('meta[name="root-site"]').attr('content') + '/testIncomeData',
@@ -400,9 +401,9 @@ saveAll.addEventListener("click",function () {
             "availability":availability.value
         },
         success: function(msg) {
-            console.log(msg);
         }
     });
+    //location.href = location.origin+"/rostovka_app/public/products"
 });
 searchArt.addEventListener("keypress",function (e) {
     if(e.keyCode===13){
@@ -424,10 +425,10 @@ searchMan.addEventListener("keypress",function (e) {
             location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
         }
         else if(searchMan.value!==""){
-            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchMan.value;
+            location.href = location.origin+"/rostovka_app/public/products" +"?manufacturer=" +searchMan.value;
         }
         else if(searchArt.value!==""){
-            location.href = location.origin+"/rostovka_app/public/products"+"?manufacturer="+searchArt.value;
+            location.href = location.origin+"/rostovka_app/public/products"+"?article="+searchArt.value;
         }
     }
 });

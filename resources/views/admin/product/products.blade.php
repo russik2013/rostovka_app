@@ -123,7 +123,7 @@
                                         <input type="text" class="price" placeholder="Цена"></th>
                                     <th>
                                         <input type="text" class="pricePurchase" placeholder="Цена закупки"></th>
-                                    <th><select class="availability">
+                                    <th><select class="availability isExist">
                                             <option value="0">Не выбрано</option>
                                             <option value="1">Да</option>
                                             <option value="2">Нет</option>
