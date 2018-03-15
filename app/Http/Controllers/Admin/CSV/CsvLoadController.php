@@ -174,8 +174,6 @@ class CsvLoadController extends Controller
         $manufacturers = Manufacturer::all() -> pluck('id', 'name') -> toArray();
         $manufacturersInfo = Manufacturer::all();
 
-        $russiks_iterator = 0;
-
         foreach ($products as $product){
 
             //$product -> kategoriya = ucfirst(trim($product -> kategoriya));
@@ -317,7 +315,6 @@ class CsvLoadController extends Controller
 
             ];
 
-            $russiks_iterator ++;
             $productFind = Product::find($product->id);
             if($productFind)
                 $productFind->update($insert_array);
