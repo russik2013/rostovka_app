@@ -140,8 +140,6 @@ class ProductController extends Controller
 
     public function tovarMultiUpdate(Request $request){
 
-        dd($request -> all());
-
         $products = Product::whereIn('id', $request -> save) -> get();
         $manufacturers = Manufacturer::all();
 
