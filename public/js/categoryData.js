@@ -1086,3 +1086,11 @@ function sizeFilter(){
             }
     }
 }
+var filter_mobileButton = document.querySelector(".filter--mobileButton");
+var close_icon = document.querySelector(".close-icon");
+close_icon.addEventListener('click',function () {
+    $("body").css("overflow", "auto");
+});
+filter_mobileButton.addEventListener('click',function () {
+    $("body").css("overflow", "hidden");
+})
