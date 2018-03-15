@@ -131,6 +131,7 @@
                     <!-- Sidebar Icon -->
                     <div class="sidebar-icon-nav">
                         <ul class="list-none-ib">
+
                             <!-- Search-->
                             <li>
                                 <form class="navbar-form" role="search">
@@ -142,6 +143,7 @@
                                     </div>
                                 </form>
                             </li>
+                            <li><div class="filter--mobileButton"><i class="fa fa-filter" aria-hidden="true"></i>Фильтры</div></li>
 
                             <!-- Cart-->
                             <li class="cartBl">

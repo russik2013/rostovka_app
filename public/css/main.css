@@ -13,6 +13,7 @@
 }
 ul {
   list-style-type: none;
+
 }
 .product-view-switcher {
   margin-right: 0 !important;
@@ -612,7 +613,7 @@ input::-webkit-inner-spin-button {
   .close-icon{display: block !important;}
 
   .header-main.fixed .navigation-menu{
-    margin-top: -32px !important;
+    margin-top: -352px !important;
     top: 50px;
   }
 
@@ -641,7 +642,12 @@ input::-webkit-inner-spin-button {
   }
   .copyrights p.copyright{padding-left: 3px}
   .logReg_page.regPage h3{padding-left: 10px}
-  .list-page-title{padding-left: 10px; padding-right: 10px; margin-bottom: 30px}
+  .list-page-title{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 30px;
+    text-align: center
+  }
   .mainforMobile{display: block}
   .logo, .move--to--cart{
     width: 80%;
@@ -651,8 +657,7 @@ input::-webkit-inner-spin-button {
     margin-top: 10px;
   }
   .header-rightside-nav{
-    float: right;
-    width: 220px !important;
+    width: 100% !important;
     margin-top: 25px;
     margin-right: 20px;
   }
@@ -671,7 +676,10 @@ input::-webkit-inner-spin-button {
     pointer-events: all;
   }
   .input-group.search--box{
-    max-width: 100px;
+     max-width: 100px;
+   }
+  .input-group .form-control{
+    border-radius: 15px !important;
   }
   .content-page{
     height: auto !important;
@@ -795,9 +803,11 @@ input::-webkit-inner-spin-button {
   }
 
   .header-rightside-nav .list-none-ib .cartBl{
+
     float: right;
     margin-top: 4px !important;
     margin-left: 10px !important;
+    padding: 0;
   }
 
   .categoryPage .product-list-view .goods_amount{
@@ -844,7 +854,6 @@ input::-webkit-inner-spin-button {
 
   .filter--mobileButton{
     float: right;
-    margin-top: -45px;
     font-size: 13px;
     background: #2c618f;
     padding-left: 10px;
@@ -854,7 +863,6 @@ input::-webkit-inner-spin-button {
     color: #fff;
     display: block;
     text-transform: uppercase;
-    position: relative;
     z-index: 99;
   }
 
@@ -871,6 +879,7 @@ input::-webkit-inner-spin-button {
     margin: 0 auto;
     margin-top: -24px;
     top: 25px;
+    padding-top: 20px;
   }
 
   .category--Filters.active{
@@ -1209,4 +1218,10 @@ input::-webkit-inner-spin-button {
 .about--page .information--text ul.payment li{
   font-weight: normal;
   font-size: 15px;
+}
+.list-none-ib{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
