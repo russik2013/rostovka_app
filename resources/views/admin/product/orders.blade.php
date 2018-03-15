@@ -89,7 +89,14 @@
                                             @elseif($order -> payment_method == "c_o_d") Наложенный платеж
                                             @else Наличными @endif</td>
                                         <td>{{$order -> all_prise}}</td>
-                                        <td @if($order ->paid == 1) class="paid--Status" @else @endif >@if($order ->paid == 1) да @else нет @endif</td>
+
+                                        <td> @if($order -> paid == 0) Новый
+                                            @elseif($order -> paid == 1) Оплачен
+                                            @elseif($order -> paid == 2) Отправлен
+                                            @elseif($order -> paid == 3) В обработке
+                                            @else Не собирать @endif
+
+                                        </td>
                                         <td>{{$order -> created_at}}</td>
                                         <td class="options">
                                             <a href="{{url('/pdfLoad/'.$order->id)}}">
