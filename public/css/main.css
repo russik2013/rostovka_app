@@ -616,6 +616,9 @@ input::-webkit-inner-spin-button {
     margin-top: -352px !important;
     top: 50px;
   }
+  .header-all{
+    position: fixed;
+  }
 
   .header-main.fixed .logo a{
     width: 220px !important;

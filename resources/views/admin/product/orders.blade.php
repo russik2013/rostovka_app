@@ -90,11 +90,11 @@
                                             @else Наличными @endif</td>
                                         <td>{{$order -> all_prise}}</td>
 
-                                        <td> @if($order -> paid == 0) Новый
-                                            @elseif($order -> paid == 1) Оплачен
-                                            @elseif($order -> paid == 2) Отправлен
-                                            @elseif($order -> paid == 3) В обработке
-                                            @else Не собирать @endif
+                                        <td> @if($order -> paid == 0) <div class="statusNew">Новый</div>
+                                            @elseif($order -> paid == 1) <div class="statusPaid">Оплачен</div>
+                                            @elseif($order -> paid == 2) <div class="statusSend">Отправлен</div>
+                                            @elseif($order -> paid == 3) <div class="statusProcessing">В обработке</div>
+                                            @else<div class="statusNotCollect"> Не собирать </div>@endif
 
                                         </td>
                                         <td>{{$order -> created_at}}</td>

@@ -329,15 +329,35 @@ $(document).on('click', 'button.upload', function () {
             processData: false,
             contentType: false,
             data: zip_data,
-            success: function(){
-                $('.table-responsive').append(
-                    '<div class="alert alert-success" role="alert" style="position: absolute;\n' +
-                    '    top: -140px;\n' +
-                    '    width: 100%;\n' +
-                    '    left: 0;">\n' +
-                    '<a href="#" class="alert-link">Товары успешно загруженны</a>\n' +
-                    '</div>'
-                );
+            success: function(msg){
+                if(msg[1][1]){
+                    var res="";
+                    for(var i = 0; i < msg[1].length;i++){
+                        res+=msg[1][i] +" , ";
+                    }
+                    $('.table-responsive').append(
+                        '<div class="alert alert-success" role="alert" style="position: absolute;\n' +
+                        '    top: -140px;\n' +
+                        '    width: 100%;\n' +
+                        '    left: 0;">\n' +
+                        '<a href="#" class="alert-link">Товары успешно загруженны</a>\n' +
+                        '<a href="#" class="alert-link">Товары, которые уже есть в базе? находятся в строчках :' + res + '</a>\n'+
+                        '</div>'
+                    );
+                }
+                else{
+                    $('.table-responsive').append(
+                        '<div class="alert alert-success" role="alert" style="position: absolute;\n' +
+                        '    top: -140px;\n' +
+                        '    width: 100%;\n' +
+                        '    left: 0;">\n' +
+                        '<a href="#" class="alert-link">Товары успешно загруженны</a>\n' +
+                        '</div>'
+                    );
+                }
+
+
+
 
                 if($('.alert')){
                     setTimeout(removeAlert, 2000);
@@ -389,21 +409,30 @@ saveAll.addEventListener("click",function () {
                 save.push(checkTov[i].value);
             }
     }
-    console.log(availability.value);
-    $.ajax({
-        type: "POST",
-        url: $('meta[name="root-site"]').attr('content') + '/testIncomeData',
-        data: {
-            "_token" : $('meta[name="csrf-token"]').attr('content'),
-            "save" : save,
-            "price": price.value,
-            "pricePurchase":pricePurchase.value,
-            "availability":availability.value
-        },
-        success: function(msg) {
-        }
-    });
-    //location.href = location.origin+"/rostovka_app/public/products"
+    debugger
+    if(pricePurchase.value>price.value)
+    {
+        alert("Цена закупки должна быть меньше цены")
+    }
+    else if(pricePurchase.value===""&&price.value===""&&availability.value==="0"){
+        alert("Не заполненно не одного поля!")
+    }
+    else {
+        $.ajax({
+            type: "POST",
+            url: $('meta[name="root-site"]').attr('content') + '/testIncomeData',
+            data: {
+                "_token": $('meta[name="csrf-token"]').attr('content'),
+                "save": save,
+                "price": price.value,
+                "pricePurchase": pricePurchase.value,
+                "availability": availability.value
+            },
+            success: function (msg) {
+            }
+        });
+        location.href = location.origin + "/rostovka_app/public/products"
+    }
 });
 searchArt.addEventListener("keypress",function (e) {
     if(e.keyCode===13){

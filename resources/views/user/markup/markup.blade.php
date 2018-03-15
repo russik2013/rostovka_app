@@ -54,6 +54,7 @@
     <!-- Header -->
     <header class="header">
         <!--Topbar-->
+        <div class="header-all">
         <div class="header-topbar">
             <div class="header-topbar-inner">
                 <!--Topbar Left-->
@@ -114,7 +115,7 @@
         <!--End Topbart-->
 
         <!-- Header Container -->
-        <div id="header-sticky" class="header-main">
+        <div id="header-sticky2" class="header-main">
             <div class="header-main-inner">
                 <!-- Logo -->
                 <div class="logo">
@@ -181,6 +182,7 @@
                     </div>
                     <!-- End Sidebar Icon -->
                 </div>
+            </div>
                 <!-- End Right Sidebar Nav -->
 
 
