@@ -4,6 +4,11 @@
 
 @extends('admin.main')
 @section('products_container')
+    <style>
+        .table-striped > thead > tr > th, .table-striped > tbody > tr > th, .table-striped > tfoot > tr > th, .table-striped > thead > tr > td, .table-striped > tbody > tr > td, .table-striped > tfoot > tr > td{
+            padding: 10px 0 !important;
+        }
+    </style>
     <div class="col-md-12 ">
         <div class="col-md-12 header">
             <h4 class="title">Список товаров</h4>
@@ -91,7 +96,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="content table-responsive table-full-width">
+                        <div class="content table-responsive table-full-width" style="padding: 0 10px 0 10px;">
 
                             <table class="table table-striped">
                                 <thead>

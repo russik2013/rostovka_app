@@ -2,6 +2,11 @@
 @section('billing')
 <!-- Page Content -->
 <meta name="checkout_url" content="{!! url('/checkout') !!}">
+<script>
+    dataLayer = [];
+    
+    console.log(dataLayer);
+</script>
 <div class="logReg_page regPage checkoutPage">
     <section class="content-page">
     <div class="container mb-80">
@@ -24,15 +29,15 @@
                                                 @endif
                                                 <label class="col-md-12 control-label">Ваше имя</label>
                                                 <div class="col-md-12 inputGroupContainer">
-
                                                     <div class="input-group">
-                                                        <input name="first_name" placeholder="имя"
+                                                        <input name="first_name"
+                                                               placeholder="имя"
                                                                class="input-md form-full-width form-control"
                                                                type="text"
                                                                @if(Auth::user())
                                                                 value="{{old('first_name',Auth::user()->first_name)}}"
                                                                @else
-                                                                value="{{old('first_name')}}"
+                                                               value="{{old('first_name')}}"
                                                                 @endif>
                                                     </div>
                                                 </div>
@@ -246,7 +251,7 @@
 
                                             </ul>
                                             <div class="col-md-12 form-field-wrapper form-group has-feedback">
-                                                <button type="submit" class="btn btn-warning submit btn btn-md btn-color">Оформить заказ</button>
+                                                <button type="submit" class="btn btn-warning submit btn btn-md btn-color" onclick="dataLayer.push({'event': 'zakaz'});">Оформить заказ</button>
                                             </div>
                                             @if(!Auth::user())
                                                 <p class="checkout-info">
