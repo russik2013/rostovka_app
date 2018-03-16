@@ -5,7 +5,7 @@
 <div class="content mainPage--content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 admin--usersPage">
                 <div class="card" style="padding-top: 10px;">
                     <div class="header" style="float: left;">
                         <h4 class="title">Список пользователей</h4>

@@ -83,7 +83,7 @@ function removeItemAdd() {
     $('.single-variation-wrap').append('' +
         '<div class="product--is--inCart">' +
         '<span>Товар в корзине</span>' +
-        '<div class="move--to--cart"><a class="cart--url">Перейти в корзну</a></div>' +
+        '<div class="move--to--cart"><a class="cart--url">Перейти в корзину</a></div>' +
         '</div>');
     setUrl();
 }

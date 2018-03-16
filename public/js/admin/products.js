@@ -229,7 +229,7 @@ $(document).on('click', 'button.edit', function () {
                 );
 
                 if($('.alert')){
-                    setTimeout(removeAlert, 2000);
+                    setTimeout(removeAlert, 10000);
                 }
             },
             error: function () {
@@ -243,7 +243,7 @@ $(document).on('click', 'button.edit', function () {
                 );
 
                 if($('.alert')){
-                    setTimeout(removeAlert, 2000);
+                    setTimeout(removeAlert, 10000);
                 }
             }
         });
@@ -286,7 +286,7 @@ $(document).on('click', 'button.remove', function () {
                 );
 
                 if($('.alert')){
-                    setTimeout(removeAlert, 2000);
+                    setTimeout(removeAlert, 10000);
                 }
             },
             error: function () {}
@@ -332,7 +332,7 @@ $(document).on('click', 'button.upload', function () {
             success: function(msg){
                 if(msg[1][1]){
                     var res="";
-                    for(var i = 0; i < msg[1].length;i++){
+                    for(var i = 1; i < msg[1].length;i++){
                         res+=msg[1][i] +" , ";
                     }
                     $('.table-responsive').append(
@@ -340,11 +340,13 @@ $(document).on('click', 'button.upload', function () {
                         '    top: -140px;\n' +
                         '    width: 100%;\n' +
                         '    left: 0;">\n' +
-                        '<a href="#" class="alert-link">Товары успешно загруженны</a>\n' +
-                        '<a href="#" class="alert-link">Товары, которые уже есть в базе? находятся в строчках :' + res + '</a>\n'+
+                        '<div href="#" class="alert-link">Товары успешно загруженны!</div>\n' +
+                        ' <br/> ' +
+                        '<div href="#" class="alert-link">Товары, которые уже есть в базе, находятся в строчках: ' + res + '</div>\n'+
                         '</div>'
                     );
                 }
+
                 else{
                     $('.table-responsive').append(
                         '<div class="alert alert-success" role="alert" style="position: absolute;\n' +
@@ -356,11 +358,8 @@ $(document).on('click', 'button.upload', function () {
                     );
                 }
 
-
-
-
                 if($('.alert')){
-                    setTimeout(removeAlert, 2000);
+                    setTimeout(removeAlert, 15000);
                 }
                 $('.preloader').remove();
             },
@@ -401,7 +400,8 @@ var pricePurchase =document.querySelector(".pricePurchase");
 var searchArt =document.querySelector(".searchArt");
 var searchMan = document.querySelector(".searchMan");
 var saveAll = document.querySelector(".saveAll");
-var availability =document.querySelector(".isExist")
+var availability =document.querySelector(".isExist");
+
 saveAll.addEventListener("click",function () {
     var save =[];
     for(var i=0;i<checkTov.length;i++){
@@ -409,7 +409,7 @@ saveAll.addEventListener("click",function () {
                 save.push(checkTov[i].value);
             }
     }
-    debugger
+
     if(pricePurchase.value>price.value)
     {
         alert("Цена закупки должна быть меньше цены")

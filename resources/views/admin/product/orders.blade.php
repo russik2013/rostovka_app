@@ -29,7 +29,7 @@
                                     <input type="text" id="to" name="to">
                                 </div>
 
-                                <div class="col-md-6 col-xs-12 col-sm-12">
+                                <div class="col-md-12 col-xs-12 col-sm-12" style="padding: 0">
                                     <select class="sorting__Option" name="options" onchange="getSortItem(event)">
                                         <option value="1">Респределить по доставк</option>
                                         <option value="2">Респределить по производителю</option>
