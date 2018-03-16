@@ -5457,7 +5457,7 @@ product-quantity input[type="number"]::-webkit-inner-spin-button {
 }
 
 .quantityMinus:before {
-    content: "–";
+    content: "â€“";
 }
 
 single-add_to_cart {

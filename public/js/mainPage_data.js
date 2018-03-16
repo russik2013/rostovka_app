@@ -112,8 +112,6 @@ function disableMinimum(MinMaxCounter) {
         $('[data-id="'+MinMaxCounter[y]+'"] [data-set="minimum"]').css('visibility', 'hidden')
     }
 }
-
-console.log(location.origin+"/rostovka_app/public/");
 var filter_mobileButton=document.querySelector(".filter--mobileButton");
 if(location.href===location.origin+"/rostovka_app/public/"){
     filter_mobileButton.style.display="none";

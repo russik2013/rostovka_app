@@ -182,16 +182,15 @@
                     </div>
                     <!-- End Sidebar Icon -->
                 </div>
+                <nav class="navigation-menu">
+                    @include('user.markup.header')
+                </nav>
             </div>
                 <!-- End Right Sidebar Nav -->
 
 
                 <!-- Navigation Menu -->
-                <nav class="navigation-menu">
-                    @include('user.markup.header')
 
-
-                </nav>
                 <!-- End Navigation Menu -->
                 <div class="mobileNav">
                     @include('user.markup.header')

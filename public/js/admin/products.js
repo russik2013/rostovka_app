@@ -332,7 +332,7 @@ $(document).on('click', 'button.upload', function () {
             success: function(msg){
                 if(msg[1][1]){
                     var res="";
-                    for(var i = 0; i < msg[1].length;i++){
+                    for(var i = 1; i < msg[1].length;i++){
                         res+=msg[1][i] +" , ";
                     }
                     $('.table-responsive').append(
@@ -429,21 +429,22 @@ saveAll.addEventListener("click",function () {
                 "availability": availability.value
             },
             success: function (msg) {
+                location.reload();
             }
         });
-        location.href = location.origin + "/rostovka_app/public/products"
+
     }
 });
 searchArt.addEventListener("keypress",function (e) {
     if(e.keyCode===13){
         if(searchArt.value!==""&&searchMan.value!==""){
-            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
+            location.href = location.origin+$('meta[name="root-site"]').attr('content') + "/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
         }
         else if(searchArt.value!==""){
-            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchArt.value;
+            location.href = location.origin+$('meta[name="root-site"]').attr('content') + "/public/products" +"?article=" +searchArt.value;
         }
         else if(searchMan.value!==""){
-            location.href = location.origin+"/rostovka_app/public/products"+"?manufacturer="+searchMan.value;
+            location.href = location.origin+ $('meta[name="root-site"]').attr('content') + "/public/products"+"?manufacturer="+searchMan.value;
         }
     }
 });

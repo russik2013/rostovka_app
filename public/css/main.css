@@ -13,7 +13,6 @@
 }
 ul {
   list-style-type: none;
-
 }
 .product-view-switcher {
   margin-right: 0 !important;
@@ -613,11 +612,8 @@ input::-webkit-inner-spin-button {
   .close-icon{display: block !important;}
 
   .header-main.fixed .navigation-menu{
-    margin-top: -352px !important;
+    margin-top: -32px !important;
     top: 50px;
-  }
-  .header-all{
-    position: fixed;
   }
 
   .header-main.fixed .logo a{
@@ -645,12 +641,7 @@ input::-webkit-inner-spin-button {
   }
   .copyrights p.copyright{padding-left: 3px}
   .logReg_page.regPage h3{padding-left: 10px}
-  .list-page-title{
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 30px;
-    text-align: center
-  }
+  .list-page-title{padding-left: 10px; padding-right: 10px; margin-bottom: 30px}
   .mainforMobile{display: block}
   .logo, .move--to--cart{
     width: 80%;
@@ -660,7 +651,8 @@ input::-webkit-inner-spin-button {
     margin-top: 10px;
   }
   .header-rightside-nav{
-    width: 100% !important;
+    float: right;
+    width: 220px !important;
     margin-top: 25px;
     margin-right: 20px;
   }
@@ -679,10 +671,7 @@ input::-webkit-inner-spin-button {
     pointer-events: all;
   }
   .input-group.search--box{
-     max-width: 100px;
-   }
-  .input-group .form-control{
-    border-radius: 15px !important;
+    max-width: 100px;
   }
   .content-page{
     height: auto !important;
@@ -806,11 +795,9 @@ input::-webkit-inner-spin-button {
   }
 
   .header-rightside-nav .list-none-ib .cartBl{
-
     float: right;
     margin-top: 4px !important;
     margin-left: 10px !important;
-    padding: 0;
   }
 
   .categoryPage .product-list-view .goods_amount{
@@ -857,6 +844,7 @@ input::-webkit-inner-spin-button {
 
   .filter--mobileButton{
     float: right;
+    margin-top: -45px;
     font-size: 13px;
     background: #2c618f;
     padding-left: 10px;
@@ -866,6 +854,7 @@ input::-webkit-inner-spin-button {
     color: #fff;
     display: block;
     text-transform: uppercase;
+    position: relative;
     z-index: 99;
   }
 
@@ -882,7 +871,6 @@ input::-webkit-inner-spin-button {
     margin: 0 auto;
     margin-top: -24px;
     top: 25px;
-    padding-top: 20px;
   }
 
   .category--Filters.active{
@@ -1181,31 +1169,31 @@ input::-webkit-inner-spin-button {
 }
 
 .about--page{
-    padding: 0 20px 0 20px;
-    padding-top: 80px;
-    padding-bottom: 50px;
+  padding: 0 20px 0 20px;
+  padding-top: 80px;
+  padding-bottom: 50px;
   font-size: 15px;
   text-align: justify;
 }
 
 .about--page h1{
   font-size: 35px;
-    text-align: center;
-    width: 100%;
+  text-align: center;
+  width: 100%;
 }
 .about--page h2{
   text-align: center;
   width: 100%;
 }
 .about--page .information--text{
-    margin-top: 40px;
+  margin-top: 40px;
   margin-bottom: 40px;
 }
 .about--page .information--text img{
-    float: left;
-    width: 60px;
-    margin-right: 20px;
-    padding-bottom: 90px;
+  float: left;
+  width: 60px;
+  margin-right: 20px;
+  padding-bottom: 90px;
 }
 .about--page .information--text ul{margin-top: 20px; margin-bottom: 20px}
 .about--page .information--text ul li{
@@ -1222,9 +1210,7 @@ input::-webkit-inner-spin-button {
   font-weight: normal;
   font-size: 15px;
 }
-.list-none-ib{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+.header-all{
+  position: fixed;
+  width: 100%;
 }
