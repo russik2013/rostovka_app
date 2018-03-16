@@ -44,6 +44,9 @@
                                 <div class="col-md-1 downloadButton">
                                     <button class="pull-right">Скачать</button>
                                 </div>
+                                    <div class="col-md-1 seeButton">
+                                        <button class="pullT-right">Посмотреть</button>
+                                    </div>
                             </div>
                             <div class="col-md-12 span12 pull-right searchbox">
                                 <form id="custom-search-form" class="form-search form-horizontal pull-right">
@@ -62,7 +65,7 @@
                                     <th>Способ доставки</th>
                                     <th>Способ оплаты</th>
                                     <th>К оплате</th>
-                                    <th>Оплачен</th>
+                                    <th>Статус</th>
                                     <th>Дата</th>
                                     <th></th>
                                 </tr>
@@ -86,7 +89,14 @@
                                             @elseif($order -> payment_method == "c_o_d") Наложенный платеж
                                             @else Наличными @endif</td>
                                         <td>{{$order -> all_prise}}</td>
-                                        <td @if($order ->paid == 1) class="paid--Status" @else @endif >@if($order ->paid == 1) да @else нет @endif</td>
+
+                                        <td> @if($order -> paid == 0) <div class="statusNew">Новый</div>
+                                            @elseif($order -> paid == 1) <div class="statusPaid">Оплачен</div>
+                                            @elseif($order -> paid == 2) <div class="statusSend">Отправлен</div>
+                                            @elseif($order -> paid == 3) <div class="statusProcessing">В обработке</div>
+                                            @else<div class="statusNotCollect"> Не собирать </div>@endif
+
+                                        </td>
                                         <td>{{$order -> created_at}}</td>
                                         <td class="options">
                                             <a href="{{url('/pdfLoad/'.$order->id)}}">

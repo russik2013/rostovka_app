@@ -26,9 +26,15 @@ Route::get('/', function () {
 })->name('root');
 
 
+
 Route::get('/login', 'HomeController@login') -> name("login");
 Route::post('/login', 'HomeController@auth');
 
+Route::get('/tov',  function (){
+
+    return view('admin.product.tov');
+
+});
 
 Route::get('/register', 'HomeController@registerIndex');
 Route::post('/register', 'HomeController@register') -> name('register');
@@ -51,6 +57,12 @@ Route::get('/cart', function () {
 })->name('cart');
 
 
+Route::post('orderCash', 'SaleController@getOrderCash');
+
+
+
+Route::get('showOrderManufacturer/{orderCash}', 'SaleController@showOrderManufacturer');
+
 //Route::get('/product_add', function () {
 //    return view('admin.product.pdoructadd');
 //});
@@ -63,27 +75,30 @@ Route::get('/pdfShow', 'Admin\PDF\ReceiptController@show');
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::group(['middleware' => 'admin'], function () {
+    Route::group(['middleware' => 'moder'], function () {
 
         Route::get('/suppliers/{name?}', 'Admin\SuppliersController@index')->name('suppliers');
         Route::get('/suppliers_edit/{id}', 'Admin\SuppliersController@edit');
         Route::post('/suppliers_update', 'Admin\SuppliersController@update');
         Route::get('/suppliers_delete/{id}', 'Admin\SuppliersController@delete');
 
-        Route::get('/admin_index/{name?}', 'Admin\HomeController@index') -> name("adminIndex");
-        Route::get('/user_edit/{id}', 'Admin\HomeController@editClient');
-        Route::post('/user_delete/{id}', 'Admin\HomeController@deleteClient');
-        Route::post('/user_update', 'Admin\HomeController@updateClient');
-
+        Route::group(['middleware' => 'admin'], function () {
+            Route::get('/admin_index/{name?}', 'Admin\HomeController@index')->name("adminIndex");
+            Route::get('/user_edit/{id}', 'Admin\HomeController@editClient');
+            Route::post('/user_delete/{id}', 'Admin\HomeController@deleteClient');
+            Route::post('/user_update', 'Admin\HomeController@updateClient');
+        });
 
         Route::post('/finder','Admin\ProductController@finder');//пои сковик товаров по имени
 
-        Route::get('/orders/{name?}', 'Admin\OrderController@index')->name('orders');
-        Route::get('/orderInfo/{id}', 'Admin\OrderController@orderInfo');
-        Route::post('/deleteProductFromOrder','Admin\OrderController@deleteOrderDetail');//удаление товара из заказа передавать id из orderdetails
-        Route::post('/deleteOrder','Admin\OrderController@deleteOrder');//удаление всего заказа передавать id заказа
-        Route::post('/addOrderDetail','Admin\OrderController@addOrderDetail');// добавление товара(ов) в заказ, передавать: id заказа массив id товаров, колличества товаров
-        Route::post('/orderUpdate', 'Admin\OrderController@update');
+        Route::group(['middleware' => 'admin'], function () {
+            Route::get('/orders/{name?}', 'Admin\OrderController@index')->name('orders');
+            Route::get('/orderInfo/{id}', 'Admin\OrderController@orderInfo');
+            Route::post('/deleteProductFromOrder','Admin\OrderController@deleteOrderDetail');//удаление товара из заказа передавать id из orderdetails
+            Route::post('/deleteOrder','Admin\OrderController@deleteOrder');//удаление всего заказа передавать id заказа
+            Route::post('/addOrderDetail','Admin\OrderController@addOrderDetail');// добавление товара(ов) в заказ, передавать: id заказа массив id товаров, колличества товаров
+            Route::post('/orderUpdate', 'Admin\OrderController@update');
+        });
 
         Route::get('/products/{name?}', 'Admin\ProductController@index') ->name('products');//вывод списка всех товаров
         Route::get('/product', 'ProductController@create');
@@ -91,6 +106,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/product/delete','Admin\ProductController@delete'); // удаление товара - передавать id товара
         Route::post('/product/update','Admin\ProductController@update'); // редактирование товара - передавать id товара и массив редактирование (с/без фото)
         Route::get('/product/{id}/edit','Admin\ProductController@edit'); // редактирование товара - ссылка на страницу редактирование
+        Route::post('/testIncomeData', 'Admin\ProductController@tovarMultiUpdate');// на эту ссылку ид>т запрос при мульти редактировании
 
         Route::get('/csvGlovesLoad','Admin\CSV\CsvGloversLoadController@index');
         Route::post('/csvGlovesLoad','Admin\CSV\CsvGloversLoadController@csvGloversLoad') -> name('load_gloves');
@@ -131,11 +147,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/type', 'Admin\TypeController@index') ->name('types');
         Route::get('/type/{id}', 'Admin\TypeController@delete');
 
-            Route::get('/seasonRemove/{id}', 'Admin\TypeController@deleteSeason');
+        Route::get('/seasonRemove/{id}', 'Admin\TypeController@deleteSeason');
 
 
-
-
+        Route::post('/generateDateCash', 'SaleController@generateDateCash');
+        Route::get('showOrder/{orderCash}', 'SaleController@showOrderOnCash');
 
     });
 

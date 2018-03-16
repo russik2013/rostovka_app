@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CsvPostRequest extends FormRequest
+class CashRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class CsvPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo' => 'sometimes|zip_validation'
+            'dateFrom'  => 'date_format:"Y-m-d"|required',
+            'dateTo'  => 'date_format:"Y-m-d"|required',
         ];
     }
 }

@@ -13,12 +13,15 @@
                             @else
                                 <ul class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left productLine">
                                     @foreach($products as $product)
+
                                         <li class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 pull-left product-item" data-id={{$product -> id}}>
                                             <div class="prod--innerSide">
                                                 <div class="product-item-inner">
                                                     <div class="product-img-wrap">
                                                         <a href="{{url($product -> id.'/product')}}">
+                                                            @if($product -> photo)
                                                             <img class="img-responsive" src="{{asset('images/products/'.$product -> photo -> photo_url)}}" >
+                                                                @endif
                                                         </a>
                                                     </div>
                                                 </div>

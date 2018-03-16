@@ -361,6 +361,7 @@ $(document).on('click', '.Cart_Button_Minus', function () {
 });
 
 function conversion(target_dataset, flag, minus) {
+    updPrice = 0;
     if(minus !== true){
         for(var i = 0; i < Cart_data[0].row.length; i++){
             if(Number (target_dataset) === Cart_data[0].row[i].targetID){
@@ -385,11 +386,14 @@ function conversion(target_dataset, flag, minus) {
             Cart_data[0].row[target_id].quantity--;
         }
 
+        console.log(Cart_data[0].row[target_id].quantityPrice, mainPrice);
         if(Cart_data[0].row[target_id].quantityPrice > mainPrice){
             updPrice = Cart_data[0].row[target_id].quantityPrice;
             updPrice -= mainPrice;
 
             Cart_data[0].row[target_id].quantityPrice = updPrice;
+        } else {
+            updPrice = Cart_data[0].row[target_id].quantityPrice;
         }
         Cart_data[0].row[target_id].quantityPrice = updPrice;
         localStorage.setItem("Cart_data", JSON.stringify(Cart_data));
@@ -399,10 +403,16 @@ function conversion(target_dataset, flag, minus) {
         $.find('[data-cart-summ="cartCount"]')[target_id].innerText = updPrice;
     }
     else{
-        $('[data-id="'+ target_dataset +'"] .counting')[0].innerText = updPrice + ' грн';
+        drawPrice(updPrice, target_dataset);
     }
 
     counterFn(mainPrice, targetID, updPrice);
+}
+
+function drawPrice(updPrice, target_dataset) {
+    if(updPrice !== 0){
+        $('[data-id="'+ target_dataset +'"] .counting')[0].innerText = updPrice + ' грн';
+    }
 }
 
 function getPrice() {

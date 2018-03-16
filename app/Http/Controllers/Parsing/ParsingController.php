@@ -279,4 +279,5 @@ class ParsingController extends Controller
         //dd(Product::all());
 
     }
+
 }

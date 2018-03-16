@@ -16,7 +16,9 @@ if($('.checkoutPage')){
     $('.cartBl').css('display', 'none');
 }
 $('.successful_Buy button').on('click', function () {
+    //dataLayer.push({'event': 'zakaz'});
     location.reload();
+
 });
 'use strict';
 $(document).ready(function() {
@@ -201,3 +203,23 @@ $(document).ready(function() {
 function sendData() {
     console.log(success)
 }
+
+var adress = document.querySelector(".adress");
+var secession =document.querySelector(".secession");
+var pickup = document.querySelector(".pickup");
+var shipping_method =document.getElementsByClassName("shipping_method");
+for(var i =0;i<shipping_method.length;i++){
+    shipping_method[i].addEventListener("change",function () {
+        debugger
+        if(this.checked===true){
+            adress.style.display="block";
+            secession.style.display="block";
+        }
+    })
+}
+pickup.addEventListener("click",function () {
+    if(pickup.checked===true){
+        adress.style.display="none";
+        secession.style.display="none";
+    }
+});

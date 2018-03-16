@@ -31,6 +31,8 @@ class HomeController extends Controller
                 return redirect()->intended('userinfo');
             if(Auth::user()->type == 'admin' )
                 return redirect()->intended('admin_index');
+            if(Auth::user()->type == 'moder' )
+                return redirect()->intended('products');
         }
 
         return back()->withErrors(array('login_error' => 'Не верные данные'));

@@ -32,7 +32,7 @@
                     <input type="file" id="xslsx" data-filename-placement="inside" name="xlsx" title="Выбрать XLS" accept=".xls, .xlsx" class="col-md-5 col-sm-12 col-xs-12" onChange="getFileXls()">
 
                     <select class="sorting__Option manufacturer_Options col-md-5 col-sm-12 col-xs-12" name="manufactures" onChange="getManufactures(event)" style="display: none; float: left; margin-right: 5px;">
-
+                        <option value="0">Все</option>
                         @foreach($manufactures as $manufacture)
 
                             <option value="{{$manufacture -> id}}">{{$manufacture -> name}}</option>
@@ -70,13 +70,16 @@
                 </div>
 
                 <button class="upload col-md-4 col-sm-12 col-xs-12" >Загрузить</button>
+
             </div>
 
-            <div class="span12 pull-right col-md-3 col-sm-12 col-xs-12" style="padding-right: 0;">
+            <div class="span12 pull-right col-md-5 col-sm-12 col-xs-12" style="padding-right: 0;">
                 <form id="custom-search-form" class="form-search form-horizontal pull-right col-sm-12 col-xs-12">
                     <div class="input-append col-sm-12 col-xs-12" style="padding-right: 0;">
-                        <input type="text" class="search-query col-sm-12 col-xs-12" placeholder="Поиск">
-                        <button type="submit" class="btn"><i class="ti-search"></i></button>
+
+                        <h4 class="checkCounter" >Выбрано: <span class="countNumber">0</span></h4>
+                            <input type="button" class="clearAll" value="Очистить выбор">
+                            <input type="button" class="saveAll" value="Сохранить изменения">
                     </div>
                 </form>
             </div>
@@ -93,24 +96,49 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
+                                    <th></th>
                                     <th>Фото</th>
                                     <th>Артикул</th>
                                     <th>Размеры</th>
                                     <th>Категория</th>
-                                    <th>Произвоитель</th>
+                                    <th>Производитель</th>
                                     <th>Скидка</th>
-                                    <th>Цена</th>
+                                    <th> Цена</th>
                                     <th>Цена закупки</th>
-                                    <th>Доступность</th>
+                                    <th>В наличии</tr>
+                                <tr>
+                                    <th style="width: 130px"><a href="#" id="chooseAll">Выбрать все</a>
+                                        <a href="#"id="closeAll"> Отменить все</a></th>
+                                    <th></th>
+                                    <th>
+                                        <input type="text" class="searchArt" placeholder="Поиск Артикул">
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                    <th>
+                                        <input type="text" class="searchMan" placeholder="Поиск производителя">
+                                    </th>
+                                    <th></th>
+                                    <th>
+                                        <input type="text" class="price" placeholder="Цена"></th>
+                                    <th>
+                                        <input type="text" class="pricePurchase" placeholder="Цена закупки"></th>
+                                    <th><select class="availability isExist">
+                                            <option value="0">Не выбрано</option>
+                                            <option value="1">Да</option>
+                                            <option value="2">Нет</option>
+                                        </select></th>
                                 </tr>
                                 </thead>
                                 <tbody>
+
 
                                 @foreach($products as $product)
 
 
 
                                     <tr data-id="{{$product -> id}}">
+                                        <td><input class="checkTov" type="checkbox" value="{{$product -> id}}"> </td>
                                         <td style="max-width: 80px;">
                                             @if($product -> photo )
                                             <img style="width: 70%;margin-bottom: 30px;" src="{{url('/images/products/'. $product -> photo -> photo_url)}}" />
@@ -131,7 +159,7 @@
 
                                         <td>{{$product -> prise_zakup}}</td>
 
-                                        <td>@if($product ->show_product == 1) да @else нет @endif</td>
+                                        <td>@if($product ->show_product == 1) Да @else Нет @endif</td>
 
                                         <td>{{$product -> created_at}}  <a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
                                     </tr>

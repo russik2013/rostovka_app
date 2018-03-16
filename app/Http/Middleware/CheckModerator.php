@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class CheckAdmin
+class CheckModerator
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,12 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->type == 'admin' || Auth::user()->type == 'admin')
+
+        if(Auth::user()->type == 'admin' || Auth::user()->type == 'moder' )
 
             return $next($request);
 
         else return response('only for admin');
+
     }
 }

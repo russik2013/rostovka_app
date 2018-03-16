@@ -14,12 +14,14 @@ class ValidationProvider extends ServiceProvider
      */
     public function boot()
     {
-        Validator::extend('csv_validation', function ($attribute, $value){
+        Validator::extend('zip_validation', function ($attribute, $value){;
 
-
-            if($value -> extension() == 'zip')
-                return  true;
-            else return false;
+            if($value != 'undefined') {
+                if ($value->extension() == 'zip')
+                    return true;
+                else return false;
+            }
+            else return true;
 
         },'Only zip file');
     }

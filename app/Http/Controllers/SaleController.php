@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CashRequest;
+use App\Http\Requests\SaleRequest;
 use App\Order;
+use App\OrderCash;
 use App\OrderDetails;
 use App\Product;
 use App\TopSale;
@@ -40,10 +43,16 @@ class SaleController extends Controller
 
             Mail::send('admin.mail.smallMail', ["order" => $dates], function ($message)use ($dates) {
                 $message->from('z.kon2009@gmail.com', 'Rostovka');
-                $message->to("Sava280982@inbox.ru", 'Drugak')->subject('new order');
                 $message->to( $dates -> email, 'Drugak')->subject('new order');
                 //$message->to('z.kon2009@gmail.com','Drugak')->subject('Welcome to Odessa');
             });
+
+            Mail::send('admin.mail.smallMail', ["order" => $dates], function ($message)use ($dates) {
+                $message->from('z.kon2009@gmail.com', 'Rostovka');
+                $message->to("Sava280982@gmail.com", 'Drugak')->subject('new order');
+                //$message->to('z.kon2009@gmail.com','Drugak')->subject('Welcome to Odessa');
+            });
+
 
             return response(['status' => 'success', 'message' => '', 'data' => null]);
         }
@@ -163,5 +172,165 @@ class SaleController extends Controller
         }
 
         return $products;
+    }
+
+    public function getOrderCash(Request $request){
+
+        if(Order::find($request -> id)){
+            $orderCash = OrderCash::where('order_id', $request -> id) -> first();
+            if($orderCash){
+
+                return response(['url' => url('showOrder/{orderCash}'.$orderCash -> cashCode)],200);
+
+            }else{
+
+                $orderCash = new OrderCash();
+
+                $orderCash->order_id = $request -> id;
+
+                $cashCode = str_random(64);
+
+                $orderCash->cashCode = $cashCode;
+
+                $orderCash -> save();
+
+                return response(['url' => url('showOrder/{orderCash}'.$cashCode)],200);
+
+            }
+
+        }else return response(['message' => 'Wrong order id'],404);
+
+    }
+
+    public function generateDateCash(CashRequest $request){
+
+        return response(url('showOrder').'/'.base64_encode('dateFrom='.$request -> dateFrom.'&'.'dateTo='.$request -> dateTo));
+
+    }
+
+    public function showOrderOnCash($orderCash){
+
+
+        $datas = explode('&',base64_decode($orderCash));
+
+        $dataInfo = [];
+
+        foreach ($datas as $data){
+
+            $info = explode('=', $data);
+            $dataInfo[] = $info[1];
+
+        }
+
+        if($dataInfo[0] == $dataInfo[1]){
+            $str = strtotime($dataInfo[1]);
+
+            $dataToSecond = date('Y-m-d',($str+86400*1));
+
+
+
+            $orders = Order::where('created_at', '>=', $dataInfo[1])
+                ->where('created_at', '<', $dataToSecond)
+                -> whereIn('paid', [0,3])
+                -> get();
+
+
+        }else{
+
+            $orders = Order::where('created_at', '>=', $dataInfo[0])
+                -> where('created_at', '<=', $dataInfo[1]) -> whereIn('paid', [0,3])
+                -> get();
+        }
+
+        $manufacturersNames = [];
+        $orderManufacturersUrl = [];
+
+            foreach ($orders as $order) {
+
+                foreach ($order->details as $detail) {
+
+                    if(!in_array($detail->manufacturer_name, $manufacturersNames)) {
+
+                        $orderManufacturersUrl[$detail->manufacturer_name] = url('showOrderManufacturer').'/'
+                            .base64_encode(
+                                'dateFrom='.$dataInfo[0].
+                                      '&'.'dateTo='.$dataInfo[1].
+                                      '&'.'manufacturer='.$detail->manufacturer_name);
+                        $manufacturersNames[] = $detail->manufacturer_name;
+                    }
+
+                }
+
+            }
+
+
+        return view('admin.product.tov', compact('orderManufacturersUrl'));
+         //return response($orderManufacturersUrl);
+
+
+    }
+
+    public function showOrderManufacturer($orderCash){
+
+        $datas = explode('&',base64_decode($orderCash));
+
+        $values = [];
+
+        foreach ($datas as $data){
+
+            $dataInfo = explode('=', $data);
+
+            $values[] = $dataInfo[1];
+
+        }
+
+
+        if($values[0] == $values[1]){
+            $str = strtotime($values[1]);
+
+            $dataToSecond = date('Y-m-d',($str+86400*1));
+
+
+
+            $orders = Order::where('created_at', '>=', $values[1])
+                ->where('created_at', '<', $dataToSecond)
+                -> whereIn('paid', [0,3])
+                -> get();
+
+
+        }else{
+
+            $orders = Order::where('created_at', '>=', $values[0])
+                -> where('created_at', '<=', $values[1]) -> whereIn('paid', [0,3])
+                -> get();
+        }
+
+
+        $manufacturersOrders = [];
+        $finalPrise = 0;
+        $manufacturerName = $values[2];
+
+        foreach ($orders as $order) {
+
+            foreach ($order->details as $detail) {
+
+                if($detail->manufacturer_name == $values[2]) {
+
+                    $manufacturersOrders[] = $detail;
+                    $finalPrise += $detail -> this_tovar_in_order_price;
+
+                }
+
+            }
+
+        }
+
+        //dd($values);
+        //dd($manufacturersOrders);
+
+        return view('user.sale.toManufacturer', compact('manufacturersOrders', 'finalPrise', 'manufacturerName'));
+
+
+
     }
 }

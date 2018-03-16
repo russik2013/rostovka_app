@@ -205,6 +205,7 @@ $(document).on('click', 'button.edit', function () {
     if (fileChoosedZip === true && fileChoosedXLS === true) {
         var zip_data = new FormData();
         zip_data.append('_token', $('meta[name="csrf-token"]').attr('content'));
+        if($('#archive').prop('files')[0] !== undefined)
         zip_data.append('photo', $('#archive').prop('files')[0]);
         zip_data.append('files', $('#xslsx').prop('files')[0]);
 
@@ -328,15 +329,35 @@ $(document).on('click', 'button.upload', function () {
             processData: false,
             contentType: false,
             data: zip_data,
-            success: function(){
-                $('.table-responsive').append(
-                    '<div class="alert alert-success" role="alert" style="position: absolute;\n' +
-                    '    top: -140px;\n' +
-                    '    width: 100%;\n' +
-                    '    left: 0;">\n' +
-                    '<a href="#" class="alert-link">Товары успешно загруженны</a>\n' +
-                    '</div>'
-                );
+            success: function(msg){
+                if(msg[1][1]){
+                    var res="";
+                    for(var i = 0; i < msg[1].length;i++){
+                        res+=msg[1][i] +" , ";
+                    }
+                    $('.table-responsive').append(
+                        '<div class="alert alert-success" role="alert" style="position: absolute;\n' +
+                        '    top: -140px;\n' +
+                        '    width: 100%;\n' +
+                        '    left: 0;">\n' +
+                        '<a href="#" class="alert-link">Товары успешно загруженны</a>\n' +
+                        '<a href="#" class="alert-link">Товары, которые уже есть в базе? находятся в строчках :' + res + '</a>\n'+
+                        '</div>'
+                    );
+                }
+                else{
+                    $('.table-responsive').append(
+                        '<div class="alert alert-success" role="alert" style="position: absolute;\n' +
+                        '    top: -140px;\n' +
+                        '    width: 100%;\n' +
+                        '    left: 0;">\n' +
+                        '<a href="#" class="alert-link">Товары успешно загруженны</a>\n' +
+                        '</div>'
+                    );
+                }
+
+
+
 
                 if($('.alert')){
                     setTimeout(removeAlert, 2000);
@@ -368,4 +389,133 @@ function removeAlert() {
 $('.form-search button').on('click', function (e) {
     e.preventDefault();
     window.location = $('meta[name="root-site"]').attr('content') + '/products/' + $('.search-query').val();
+});
+
+var checkTov = document.getElementsByClassName("checkTov");
+var chooseAll =document.getElementById("chooseAll");
+var closeAll =document.getElementById("closeAll");
+var countNumber = document.querySelector(".countNumber");
+var clearAll = document.querySelector(".clearAll");
+var price = document.querySelector(".price");
+var pricePurchase =document.querySelector(".pricePurchase");
+var searchArt =document.querySelector(".searchArt");
+var searchMan = document.querySelector(".searchMan");
+var saveAll = document.querySelector(".saveAll");
+var availability =document.querySelector(".isExist")
+saveAll.addEventListener("click",function () {
+    var save =[];
+    for(var i=0;i<checkTov.length;i++){
+            if(checkTov[i].checked===true){
+                save.push(checkTov[i].value);
+            }
+    }
+    debugger
+    if(pricePurchase.value>price.value)
+    {
+        alert("Цена закупки должна быть меньше цены")
+    }
+    else if(pricePurchase.value===""&&price.value===""&&availability.value==="0"){
+        alert("Не заполненно не одного поля!")
+    }
+    else {
+        $.ajax({
+            type: "POST",
+            url: $('meta[name="root-site"]').attr('content') + '/testIncomeData',
+            data: {
+                "_token": $('meta[name="csrf-token"]').attr('content'),
+                "save": save,
+                "price": price.value,
+                "pricePurchase": pricePurchase.value,
+                "availability": availability.value
+            },
+            success: function (msg) {
+            }
+        });
+        location.href = location.origin + "/rostovka_app/public/products"
+    }
+});
+searchArt.addEventListener("keypress",function (e) {
+    if(e.keyCode===13){
+        if(searchArt.value!==""&&searchMan.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
+        }
+        else if(searchArt.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchArt.value;
+        }
+        else if(searchMan.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products"+"?manufacturer="+searchMan.value;
+        }
+    }
+});
+
+searchMan.addEventListener("keypress",function (e) {
+    if(e.keyCode===13){
+        if(searchArt.value!==""&&searchMan.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
+        }
+        else if(searchMan.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products" +"?manufacturer=" +searchMan.value;
+        }
+        else if(searchArt.value!==""){
+            location.href = location.origin+"/rostovka_app/public/products"+"?article="+searchArt.value;
+        }
+    }
+});
+
+pricePurchase.addEventListener("keypress",function (e) {
+    if(e.keyCode >= 48 && e.keyCode <= 57){
+    }
+    else{
+        e.preventDefault()
+    }
+});
+
+price.addEventListener("keypress",function (e) {
+    if(e.keyCode >= 48 && e.keyCode <= 57){
+    }
+    else{
+        e.preventDefault()
+    }
+});
+
+clearAll.addEventListener("click",function () {
+    countNumber.innerHTML="0";
+    for(var i=0;i<checkTov.length;i++){
+        checkTov[i].checked=false;
+        closeAll.style.display="none";
+        chooseAll.style.display="block";
+    }
+});
+
+ for(var j = 0;j<checkTov.length;j++){
+     checkTov[j].addEventListener("change",function () {
+         if(this.checked===true){
+             countNumber.innerHTML++;
+         }
+         else{
+             countNumber.innerHTML--;
+         }
+     })
+ }
+
+chooseAll.addEventListener('click',function () {
+    for(var i=0;i<checkTov.length;i++){
+        if(checkTov[i].checked===false){
+            countNumber.innerHTML++;
+            checkTov[i].checked=true;
+            closeAll.style.display="block";
+            chooseAll.style.display="none";
+        }
+    }
+});
+
+closeAll.addEventListener('click',function () {
+    for(var i=0;i<checkTov.length;i++){
+        if(checkTov[i].checked===true){
+            countNumber.innerHTML--;
+            checkTov[i].checked=false;
+            closeAll.style.display="none";
+            chooseAll.style.display="block";
+        }
+    }
 });

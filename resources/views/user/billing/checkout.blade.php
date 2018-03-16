@@ -97,7 +97,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12 form-field-wrapper form-group has-feedback">
+                                        <div class="col-md-12 form-field-wrapper form-group has-feedback adress">
                                             @if ($errors->has('address'))
                                                 <p>  {{$errors -> first('address')}} </p>
                                             @endif
@@ -116,7 +116,7 @@
                                         </div>
 
                                         <!-- Text input-->
-                                        <div class="col-md-12 form-field-wrapper form-group has-feedback">
+                                        <div class="col-md-12 form-field-wrapper form-group has-feedback secession">
                                             <label class="col-md-12 control-label">Информация по доставке (Номер отделения)</label>
                                             <div class="col-md-12 inputGroupContainer">
 
@@ -172,7 +172,7 @@
                                                                 <label for="bus_method">Подвести к автобусу</label>
                                                             </li>
                                                             <li>
-                                                                <input name="shipping_method" data-index="0" id="self_pickup" value="self_pickup" class="shipping_method" type="radio">
+                                                                <input name="shipping_method" data-index="0" id="self_pickup" value="self_pickup" class="pickup" type="radio">
                                                                 <label for="self_pickup">Самовывоз</label>
                                                             </li>
                                                         </ul>

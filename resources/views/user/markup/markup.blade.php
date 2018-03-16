@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="UA">
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-52B7DR8');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,7 +39,10 @@
     @yield('productLibCSS')
 </head>
 <body class="">
-
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-52B7DR8"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <div id="nlpopup_overlay"></div>
 
 <div class="sidebar_overlay"></div>
@@ -44,6 +54,7 @@
     <!-- Header -->
     <header class="header">
         <!--Topbar-->
+        <div class="header-all">
         <div class="header-topbar">
             <div class="header-topbar-inner">
                 <!--Topbar Left-->
@@ -104,7 +115,7 @@
         <!--End Topbart-->
 
         <!-- Header Container -->
-        <div id="header-sticky" class="header-main">
+        <div id="header-sticky2" class="header-main">
             <div class="header-main-inner">
                 <!-- Logo -->
                 <div class="logo">
@@ -121,6 +132,7 @@
                     <!-- Sidebar Icon -->
                     <div class="sidebar-icon-nav">
                         <ul class="list-none-ib">
+
                             <!-- Search-->
                             <li>
                                 <form class="navbar-form" role="search">
@@ -132,6 +144,7 @@
                                     </div>
                                 </form>
                             </li>
+                            <li><div class="filter--mobileButton"><i class="fa fa-filter" aria-hidden="true"></i>Фильтры</div></li>
 
                             <!-- Cart-->
                             <li class="cartBl">
@@ -169,6 +182,7 @@
                     </div>
                     <!-- End Sidebar Icon -->
                 </div>
+            </div>
                 <!-- End Right Sidebar Nav -->
 
 

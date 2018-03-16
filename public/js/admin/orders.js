@@ -30,6 +30,7 @@ $(document).ready(function () {
 
     $("#from").datepicker(options);
     $("#to").datepicker(options);
+
 });
 
 function formatDate(date) {
@@ -69,13 +70,33 @@ $('.remove__order').on('click', function () {
         });
     });
 });
+var pullT_right = document.querySelector(".pullT-right");
+    pullT_right.onclick=function () {
+        $.ajax({
+            type: "POST",
+            url: $('meta[name="root-site"]').attr('content') + '/generateDateCash',
+            data: {
+                "dateFrom" : $('#from').val(),
+                "dateTo" : $('#to').val(),
+                "_token" : $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(msg) {
+                location.href=msg;
+                console.log(msg);
+            }
+        });
+};
 
 function getSortItem(event) {
+    var pullR=document.querySelector(".pullT-right");
     if(Number (event.target.value) === 2){
-        $('.image__Option').css('display', 'block')
+        $('.image__Option').css('display', 'block');
+        pullR.style.display="block";
     }
     else{
         $('.image__Option').css('display', 'none')
+        pullR.style.display="none";
+
     }
 }
 
@@ -153,3 +174,23 @@ $('.form-search button').on('click', function (e) {
     e.preventDefault();
     window.location = $('meta[name="root-site"]').attr('content') + '/orders/' + $('.search-query').val();
 });
+var statusNew = document.getElementsByClassName("statusNew");
+changeColor(statusNew);
+
+var statusProcessing = document.getElementsByClassName("statusProcessing");
+changeColor(statusProcessing,"#FDD835");
+
+var statusPaid = document.getElementsByClassName("statusPaid");
+changeColor(statusPaid,"#2E7D32");
+
+var statusSend = document.getElementsByClassName("statusSend");
+changeColor(statusSend,"#26A69A");
+
+var statusNotCollect = document.getElementsByClassName("statusNotCollect");
+changeColor(statusNotCollect,"#FF7043");
+
+function changeColor(id,color) {
+    for(var i=0;i<id.length;i++){
+        id[i].style.color=color;
+    }
+}
