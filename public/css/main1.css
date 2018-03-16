@@ -13,6 +13,7 @@
 }
 ul {
   list-style-type: none;
+
 }
 .product-view-switcher {
   margin-right: 0 !important;
@@ -603,20 +604,35 @@ input::-webkit-inner-spin-button {
 #product-detail .disable span {
   color: #000 !important;
 }
+@media (min-width: 280px) and (max-width: 768px) {
+    .header-main .logo{
+      display: none;
+    }
+    .navigation-menu{
+        padding-top: 78px !important;
+    }
+  .header{
+    position: fixed;
+  }
+}
 
-@media (min-width: 280px) and (max-width: 1200px) {
+@media (min-width: 780px) and (max-width: 1200px) {
   .col-md-12.pull-left.goodsCount_price{
     margin-top: 5px !important;
   }
-  .mobile-post.is-mobile{
-    display: block !important;
-    padding-top: 30px;
-  }
+
+    #page-wraper, .page-content-wraper{
+        padding-top: 187px;
+    }
+
   .close-icon{display: block !important;}
 
   .header-main.fixed .navigation-menu{
-    margin-top: -32px !important;
+    margin-top: -352px !important;
     top: 50px;
+  }
+  .header-all{
+    position: fixed;
   }
 
   .header-main.fixed .logo a{
@@ -644,7 +660,12 @@ input::-webkit-inner-spin-button {
   }
   .copyrights p.copyright{padding-left: 3px}
   .logReg_page.regPage h3{padding-left: 10px}
-  .list-page-title{padding-left: 10px; padding-right: 10px; margin-bottom: 30px}
+  .list-page-title{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 30px;
+    text-align: center
+  }
   .mainforMobile{display: block}
   .logo, .move--to--cart{
     width: 80%;
@@ -654,8 +675,7 @@ input::-webkit-inner-spin-button {
     margin-top: 10px;
   }
   .header-rightside-nav{
-    float: right;
-    width: 220px !important;
+    width: 100% !important;
     margin-top: 25px;
     margin-right: 20px;
   }
@@ -674,7 +694,10 @@ input::-webkit-inner-spin-button {
     pointer-events: all;
   }
   .input-group.search--box{
-    max-width: 100px;
+     max-width: 100px;
+   }
+  .input-group .form-control{
+    border-radius: 15px !important;
   }
   .content-page{
     height: auto !important;
@@ -798,9 +821,11 @@ input::-webkit-inner-spin-button {
   }
 
   .header-rightside-nav .list-none-ib .cartBl{
+
     float: right;
     margin-top: 4px !important;
     margin-left: 10px !important;
+    padding: 0;
   }
 
   .categoryPage .product-list-view .goods_amount{
@@ -848,7 +873,6 @@ input::-webkit-inner-spin-button {
   .filter--mobileButton{
     float: right;
     font-size: 13px;
-    margin-left: 10px;
     background: #2c618f;
     padding-left: 10px;
     padding-bottom: 0;
@@ -857,14 +881,11 @@ input::-webkit-inner-spin-button {
     color: #fff;
     display: block;
     text-transform: uppercase;
-    position: relative;
     z-index: 99;
   }
 
   .sidebar-icon-nav{
     float: right;
-    width: 100%;
-    min-width: 300px;
   }
 
   .navigation-menu ul{
@@ -872,11 +893,7 @@ input::-webkit-inner-spin-button {
   }
 
   .navigation-menu{
-    position: relative !important;
-    margin: 0 auto;
-    margin-top: -24px;
-    top: 25px;
-    padding-top: 31px;
+    padding-top: 100px;
   }
 
   .category--Filters.active{
@@ -1168,7 +1185,6 @@ input::-webkit-inner-spin-button {
     min-height: 480px;
     max-width: 20%;
   }
-
 }
 
 .nice-select .list{
@@ -1176,31 +1192,31 @@ input::-webkit-inner-spin-button {
 }
 
 .about--page{
-  padding: 0 20px 0 20px;
-  padding-top: 80px;
-  padding-bottom: 50px;
+    padding: 0 20px 0 20px;
+    padding-top: 80px;
+    padding-bottom: 50px;
   font-size: 15px;
   text-align: justify;
 }
 
 .about--page h1{
   font-size: 35px;
-  text-align: center;
-  width: 100%;
+    text-align: center;
+    width: 100%;
 }
 .about--page h2{
   text-align: center;
   width: 100%;
 }
 .about--page .information--text{
-  margin-top: 40px;
+    margin-top: 40px;
   margin-bottom: 40px;
 }
 .about--page .information--text img{
-  float: left;
-  width: 60px;
-  margin-right: 20px;
-  padding-bottom: 90px;
+    float: left;
+    width: 60px;
+    margin-right: 20px;
+    padding-bottom: 90px;
 }
 .about--page .information--text ul{margin-top: 20px; margin-bottom: 20px}
 .about--page .information--text ul li{
@@ -1217,19 +1233,9 @@ input::-webkit-inner-spin-button {
   font-weight: normal;
   font-size: 15px;
 }
-.header-all{
-  position: fixed;
-  width: 100%;
-}
-.list-none-ib {
+.list-none-ib{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-}
-.arrow{
-  font-size: 20px;
-}
-.mobile-post.is-mobile{
-  display: none;
 }

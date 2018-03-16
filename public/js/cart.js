@@ -466,7 +466,3 @@ var filter_mobileButton=document.querySelector(".filter--mobileButton");
 if(location.href===location.origin+"/rostovka_app/public/cart"){
     filter_mobileButton.style.display="none";
 }
-var fdfd =document.querySelector(".is--desc");
-if(Cart_data[0].row.length === 0) {
-    console.log(fdfd.innerHTML);
-}

@@ -61,6 +61,7 @@ function getmobileData() {
 if(Cart_data[0].row.length === 0){
     $('.cart-form').remove();
     $('.post-8').append('<div class="cartPage_article">Корзина пуста :(</div>');
+    $('.mobile-post.is-mobile').append('<div class="cartPage_article">Корзина пуста :(</div>');
     $('.tableFooter').css('display', 'none');
 }
 else{
@@ -105,8 +106,10 @@ function Cart_template(Cart_data) {
     });
 }
 
+console.log(Cart_data[0].row.length);
+
 if(Cart_data[0].row.length === 0){
-    $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>')
+    $('.mobile-post is-mobile').append('<span class="isClear">Корзина пуста</span>')
 }
 
 if($.find('#cartTableInner').length !== 0){
@@ -128,6 +131,8 @@ if($.find('#cartTableInner').length !== 0){
                     if(Cart_data[0].row.length === 0){
                         $('.cart-form').remove();
                         $('.post-8').append('<div class="cartPage_article">Корзина пуста :(</div>');
+
+                        $('.mobile-post.is-mobile').append('<div class="cartPage_article">Корзина пуста :(</div>');
                     }
                     if(Cart_data[0].row.length < 5){
                         $('.mb-80').addClass('Zero--height');

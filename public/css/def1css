@@ -23,7 +23,6 @@ body {
 }
 
 #page-wraper, .page-content-wraper {
-    padding-top: 50px;
     position: relative;
     width: 100%;
     background: #fff;
@@ -1793,9 +1792,11 @@ form label.error {
 .header-topbar .header-topbar-inner, .header-main .header-main-inner {
     max-width: 1820px;
     width: 100%;
-    display: table;
+    display: flex;
     margin-left: auto;
     margin-right: auto;
+    justify-content: center;
+    align-items: center;
 }
 
 /*------------------------------------------------------------------*/
@@ -1822,6 +1823,7 @@ form label.error {
     text-align: right;
     display: table-cell;
     vertical-align: middle;
+
 }
 
 .header-topbar .topbar-left {
@@ -1982,6 +1984,7 @@ form label.error {
 
     .list-none-ib{
         width: 100%;
+        padding-bottom: 10px;;
     }
 
     .list-none-ib li{
@@ -2034,7 +2037,6 @@ form label.error {
 .header-main {
     position: relative;
     z-index: 99;
-    display: table;
     width: 100%;
     background: #fff;
 }
@@ -2115,7 +2117,6 @@ form label.error {
 /* Navigation Menu -----------------------------------------------*/
 .navigation-menu {
     display: block;
-    position: static;
     text-transform: uppercase;
     text-align: center;
     width: 50%;
@@ -3393,7 +3394,6 @@ img.tp-caption {
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
     margin-bottom: 30px;
-    width: 70%;
 }
 
 .widget-sidebar:last-child {
@@ -3980,7 +3980,8 @@ img.tp-caption {
     }
 
     .navigation-menu{
-        margin-top: -38px !important;
+        margin-top: auto !important;
+        transform: translate(0%, -10%);
     }
     .header-topbar .topbar-right ul li{
         text-align: left;
@@ -5458,7 +5459,7 @@ product-quantity input[type="number"]::-webkit-inner-spin-button {
 }
 
 .quantityMinus:before {
-    content: "â€“";
+    content: "–";
 }
 
 single-add_to_cart {
@@ -6256,7 +6257,7 @@ ul#shipping_method {
     bottom: auto;
     right: 0;
 }
-/*.cartBl{padding-bottom: 20px}*/
+.cartBl{padding-bottom: 20px}
 .cartBl:hover .dropdownCart{
     display: block;
 }
@@ -7127,7 +7128,7 @@ fieldset input:hover{
     display: none;
 }
 .header{
-    height: 127px !important;
+    /*height: 127px !important;*/
 }
 
 .error--message{
