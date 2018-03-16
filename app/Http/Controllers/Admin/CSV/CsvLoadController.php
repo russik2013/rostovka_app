@@ -401,8 +401,6 @@ class CsvLoadController extends Controller
         $zip->extractTo('../images/products/');
         $zip->close();
 
-
-
         $products_mass = [];
 
         foreach ($products as $product){
@@ -419,7 +417,6 @@ class CsvLoadController extends Controller
 
             foreach ($photo_to_product_value[0] as $item){
                 if($item) {
-
                     $photos_to_products_insert_array[] = ['photo_url' => $data_base_products[$key] . "_" . $item . '.jpg',
                         'product_id' => $data_base_products[$key]];
                 }else {
