@@ -105,8 +105,8 @@ class SuppliersController extends Controller
 
                     if(isset($hrivna_discount[1])){
 
-                        DB::update('update products set prise = prise - ?  where manufacturer_id = ?',
-                            [$hrivna_discount[0],$manufacturer -> id]);
+                        DB::update('update products set prise = prise - ?  where id = ?',
+                            [$hrivna_discount[0],$product -> id]);
                     }
 
                     $prozent_discount = explode("%",$product -> discount);
@@ -114,8 +114,8 @@ class SuppliersController extends Controller
 
                     if(isset($prozent_discount[1])){
 
-                        DB::update('update products set prise = prise - ( prise * ?)  where manufacturer_id = ?',
-                            [$prozent_discount[0]/100,$manufacturer -> id]);
+                        DB::update('update products set prise = prise - ( prise * ?)  where id = ?',
+                            [$prozent_discount[0]/100,$product -> id]);
 
                     }
 
