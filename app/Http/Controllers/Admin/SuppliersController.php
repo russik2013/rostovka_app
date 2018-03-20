@@ -12,10 +12,15 @@ class SuppliersController extends Controller
 {
     public function index($name = ""){
 
-        if($name != "")
-            $manufacturers = Manufacturer::where('name', 'like', '%'.$name.'%') -> groupBy('id') ->paginate(15);
-        else
-            $manufacturers = Manufacturer::groupBy('id') ->paginate(15);
+        if($name != "") {
+
+            $manufacturers = Manufacturer::where('name', 'like', '%' . $name . '%')
+            ->orderBy('koorse', 'desc')->paginate(15);
+        }
+        else {
+
+            $manufacturers = Manufacturer::orderBy('koorse', 'desc')->paginate(15);
+        }
 
         return view('admin.product.suppliers', compact('manufacturers'));
 
