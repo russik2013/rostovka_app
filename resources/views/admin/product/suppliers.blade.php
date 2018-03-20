@@ -32,6 +32,7 @@
                                     <th>Фамилия</th>
                                     <th>Телефон</th>
                                     <th>Cкидка</th>
+                                    <th>Курс долларов</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -46,6 +47,7 @@
                                         <td>{{$manufacturer -> secondName}}</td>
                                         <td>{{$manufacturer -> phone}}</td>
                                         <td>{{$manufacturer -> discount}}</td>
+                                        <td>Дол 0</td>
                                         <td><a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a><a href="{{url('/suppliers_edit/'.$manufacturer -> id)}}"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> </td>
                                     </tr>
 

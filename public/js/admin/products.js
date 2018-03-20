@@ -438,13 +438,13 @@ saveAll.addEventListener("click",function () {
 searchArt.addEventListener("keypress",function (e) {
     if(e.keyCode===13){
         if(searchArt.value!==""&&searchMan.value!==""){
-            location.href = location.origin+$('meta[name="root-site"]').attr('content') + "/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
+            location.href = location.origin + "/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
         }
         else if(searchArt.value!==""){
-            location.href = location.origin+$('meta[name="root-site"]').attr('content') + "/public/products" +"?article=" +searchArt.value;
+            location.href = location.origin + "/public/products" +"?article=" +searchArt.value;
         }
         else if(searchMan.value!==""){
-            location.href = location.origin+ $('meta[name="root-site"]').attr('content') + "/public/products"+"?manufacturer="+searchMan.value;
+            location.href = location.origin + "/public/products"+"?manufacturer="+searchMan.value;
         }
     }
 });
@@ -452,13 +452,13 @@ searchArt.addEventListener("keypress",function (e) {
 searchMan.addEventListener("keypress",function (e) {
     if(e.keyCode===13){
         if(searchArt.value!==""&&searchMan.value!==""){
-            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
+            location.href = location.origin+"/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
         }
         else if(searchMan.value!==""){
-            location.href = location.origin+"/rostovka_app/public/products" +"?manufacturer=" +searchMan.value;
+            location.href = location.origin+"/public/products" +"?manufacturer=" +searchMan.value;
         }
         else if(searchArt.value!==""){
-            location.href = location.origin+"/rostovka_app/public/products"+"?article="+searchArt.value;
+            location.href = location.origin+"/public/products"+"?article="+searchArt.value;
         }
     }
 });

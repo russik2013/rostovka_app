@@ -11,7 +11,10 @@ var data = [],
     selectedCount = Number ($.find('#product-show option')[0].innerText),
     choosedType = 0,
     sizeValue = [];
-
+var filter_mobileButton = document.querySelector(".filter--mobileButton");
+if(location.href===location.origin+"/rostovka_app/public/5/category"){
+    filter_mobileButton.style.display="none";
+}
 
 //Прелоадер при загрузке страницы
 $('.product--block').append('<div class="preloader"><i></i></div>');
@@ -337,6 +340,8 @@ function initData(count_on_page) {
                     '    text-align: center;\n' +
                     '    font-size: 20px;\n' +
                     '    text-transform: uppercase;">Нет товаров</div>')
+                $('.preloader').remove();
+
             }
         });
     }
@@ -1009,6 +1014,7 @@ var GetSlideValue = function() {
                     '    text-align: center;\n' +
                     '    font-size: 20px;\n' +
                     '    text-transform: uppercase;">Нет товаров</div>')
+
             }
         }
     }) .fail(function( msg ) {
@@ -1080,7 +1086,6 @@ function sizeFilter(){
             }
     }
 }
-var filter_mobileButton = document.querySelector(".filter--mobileButton");
 var close_icon = document.querySelector(".close-icon");
 close_icon.addEventListener('click',function () {
     $("body").css("overflow", "auto");

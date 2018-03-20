@@ -117,7 +117,15 @@ select {
     appearance: none;
     border-radius: 6px;
     background: url(../../img/sel__Arrow.png) white no-repeat 98.5% !important;
-    background: url(../../img/sel__Arrow.png) white no-repeat calc(100% - 10px) !important;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.table > tbody > tr{
+    border: 1px solid #f4f3ef !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
 }
 
 .header--add--buttons button{
@@ -174,7 +182,7 @@ select {
 }
 
 .produtsTablePage .remove__product{
-    right: 10% !important;
+    right: 0 !important;
 }
 .clearAll{
     background: #63a3ff;

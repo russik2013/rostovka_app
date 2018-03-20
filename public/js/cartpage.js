@@ -57,7 +57,6 @@ function getmobileData() {
         moBile_template(Cart_data);
     }
 }
-
 if(Cart_data[0].row.length === 0){
     $('.cart-form').remove();
     $('.post-8').append('<div class="cartPage_article">Корзина пуста :(</div>');
@@ -133,6 +132,7 @@ if($.find('#cartTableInner').length !== 0){
                         $('.post-8').append('<div class="cartPage_article">Корзина пуста :(</div>');
 
                         $('.mobile-post.is-mobile').append('<div class="cartPage_article">Корзина пуста :(</div>');
+                        $('.tableFooter').css('display', 'none');
                     }
                     if(Cart_data[0].row.length < 5){
                         $('.mb-80').addClass('Zero--height');
@@ -230,4 +230,11 @@ function getSelectedValue() {
             $.find('[product-id="'+ Cart_data[0].row[i].productID +'"] .item--price')[0].innerText = Cart_data[0].row[i].price + ' грн';
         }
     }
+}
+
+var footer = document.querySelector(".footer");
+var cartPage_article = document.querySelector(".cartPage_article");
+if((location.href=== location.origin +"/rostovka_app/public/cart")&&(cartPage_article.innerHTML="Корзина пуста :(")){
+    footer.style.position="absolute";
+    footer.style.bottom="0";
 }

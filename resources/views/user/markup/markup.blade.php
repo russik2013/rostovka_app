@@ -144,7 +144,7 @@
                                     </div>
                                 </form>
                             </li>
-                            <li><div class="filter--mobileButton"><i class="fa fa-filter" aria-hidden="true"></i>Фильтры</div></li>
+                            <li class="f--button"><div class="filter--mobileButton"><i class="fa fa-filter" aria-hidden="true"></i>Фильтры</div></li>
 
                             <!-- Cart-->
                             <li class="cartBl">
@@ -287,6 +287,10 @@
         e.preventDefault();
         $(location).attr('href', '{{url("showFinderFinal")}}/' + $('.search--box input').val() );
     });
+
+    if($(location)[0].pathname === "/public/" || $(location)[0].pathname === "/public/about" || $(location)[0].pathname === "/public/userinfo" || $(location)[0].pathname === "/public/showFinderFinal/" || $(location)[0].pathname === "/public/5/category" || $(location)[0].pathname === "/public/cart" || $(location)[0].pathname === "/public/checkout") {
+        $('.f--button').remove();
+    }
 </script>
 </body>
 </html>
