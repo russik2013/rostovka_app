@@ -131,11 +131,37 @@ class ProductController extends Controller
 
         if($request->category_id == 5){
 
-            $products = Product::whereNotNull('discount')-> where('discount', '!=', '0%')
+            $manufacturersDiscaunt = Manufacturer::whereNotNull('discount')-> where('discount', '!=', '0%')
+                -> where('discount', '!=', '0грн')-> where('discount', '!=', '')-> pluck('id') -> toArray();
+
+            $productsFromManufacturers = Product::whereIn('manufacturer_id', $manufacturersDiscaunt)
+                ->where('accessibility', 1)
+                ->where('show_product', 1)
+                ->pluck('id') -> toArray();
+
+
+            $productsWithDiscount = Product::whereNotNull('discount', 'or')-> where('discount', '!=', '0%')
+                -> where('discount', '!=', '0грн')-> where('discount', '!=', '')
+                ->where('accessibility', 1)
+                ->where('show_product', 1)
+                ->pluck('id') -> toArray();
+
+            foreach ($productsWithDiscount as $item){
+
+                if(!in_array($item, $productsFromManufacturers)){
+
+                    $productsFromManufacturers[] = $item;
+
+                }
+
+            }
+
+            $products = Product::whereIn('id', $productsFromManufacturers)
                 ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
                 ->where('accessibility', 1)
                 ->where('show_product', 1)
                 ->with('photo', 'size')->orderBy($order,$orderType)->get();
+
 
         }
 
@@ -317,13 +343,41 @@ class ProductController extends Controller
                 -> count();
         }
 
-
-
-
-
         if($request->category_id == 5){
 
-            $products_count = Product::whereNotNull('discount')-> where('discount', '!=', '0%')->count();
+            $manufacturersDiscaunt = Manufacturer::whereNotNull('discount')-> where('discount', '!=', '0%')
+                -> where('discount', '!=', '0грн')-> where('discount', '!=', '')-> pluck('id') -> toArray();
+
+            $productsFromManufacturers = Product::whereIn('manufacturer_id', $manufacturersDiscaunt)
+                ->where('accessibility', 1)
+                ->where('show_product', 1)
+                ->pluck('id') -> toArray();
+
+
+            $productsWithDiscount = Product::whereNotNull('discount', 'or')-> where('discount', '!=', '0%')
+                -> where('discount', '!=', '0грн')-> where('discount', '!=', '')
+                ->where('accessibility', 1)
+                ->where('show_product', 1)
+                ->pluck('id') -> toArray();
+
+            foreach ($productsWithDiscount as $item){
+
+                if(!in_array($item, $productsFromManufacturers)){
+
+                    $productsFromManufacturers[] = $item;
+
+                }
+
+            }
+
+            $products_count = Product::whereIn('id', $productsFromManufacturers)
+                ->skip($request->count_on_page * ($request->page_num - 1))->take($request->count_on_page)
+                ->where('accessibility', 1)
+                ->where('show_product', 1)
+                ->count();
+
+
+            //$products_count = Product::whereNotNull('discount')-> where('discount', '!=', '0%')->count();
 
         }
 

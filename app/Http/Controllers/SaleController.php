@@ -42,13 +42,13 @@ class SaleController extends Controller
         if($dates -> email) {
 
             Mail::send('admin.mail.smallMail', ["order" => $dates], function ($message)use ($dates) {
-                $message->from('rostovkamail@gmail.com', 'Rostovka');
+                $message->from('z.kon2009@gmail.com', 'Rostovka');
                 $message->to( $dates -> email, 'Drugak')->subject('new order');
                 //$message->to('z.kon2009@gmail.com','Drugak')->subject('Welcome to Odessa');
             });
 
             Mail::send('admin.mail.smallMail', ["order" => $dates], function ($message)use ($dates) {
-                $message->from('rostovkamail@gmail.com', 'Rostovka');
+                $message->from('z.kon2009@gmail.com', 'Rostovka');
                 $message->to("rostovkamail@gmail.com", 'Drugak')->subject('new order');
                 //$message->to('z.kon2009@gmail.com','Drugak')->subject('Welcome to Odessa');
             });
