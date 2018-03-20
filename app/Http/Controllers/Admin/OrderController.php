@@ -15,7 +15,7 @@ class OrderController extends Controller
 
         if($name != '') {
             if (is_numeric($name))
-                $orders = Order::with('details')->orderBy('id', 'desc')-> where('id', $name) -> paginate(1);
+                $orders = Order::with('details')->orderBy('id', 'desc')-> where('id', $name) -> paginate(14);
             else
             $orders = Order::with('details')
                 -> where('first_name', 'like', "%".$name."%")

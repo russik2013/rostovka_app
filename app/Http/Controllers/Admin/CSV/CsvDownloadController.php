@@ -97,6 +97,8 @@ class CsvDownloadController extends Controller
                     "Артикул" => $product->article,
                     "Цена закупки" => $product->prise_zakup,
                     "Цена продажи" => $product->prise_default,
+                    "Скидка" => $product->discount,
+                    "Валюта" => $product->currency,
                     "Наличие" => (string)$product->accessibility,
                     "Бренд" => $product->manufacturer->name,
                     "Размер" => $size,
@@ -106,8 +108,8 @@ class CsvDownloadController extends Controller
                     "Сезон" => $product->season->name,
                     "Кол в ящике" => $product->box_count,
                     "Мин. Кол" => $product->rostovka_count,
-                    "Валюта" => $product->currency,
-                    "Скидка" => $product->discount,
+
+
                     //"show_product" => $product ->show_product,
                     "Описание" => $product->full_description,
 
