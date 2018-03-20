@@ -15,9 +15,9 @@ class HomeController extends Controller
         if($name != "")
             $clients = User::where('first_name', 'like', '%'.$name.'%')
                 -> where('last_name', 'like', '%'.$name.'%','or')
-                ->  paginate(15);
+                -> orderBy('type') -> paginate(15);
         else
-            $clients = User::paginate(15);
+            $clients = User::orderBy('type') -> paginate(15);
 
         return view('admin.all_user', compact('clients'));
 
