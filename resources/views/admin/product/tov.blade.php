@@ -52,6 +52,6 @@
 
 @section('ordersLib')
     {{--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>--}}
-    <script src="{{url('js/admin/ordersInf.js')}}"></script>
+    <script src="{{url('js/admin/ordersInf.js?n=1')}}"></script>
     {{--<script src="{{url('js/admin/datepicker-ru.js')}}"></script>--}}
 @endsection

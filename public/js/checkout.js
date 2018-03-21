@@ -223,3 +223,7 @@ pickup.addEventListener("click",function () {
         secession.style.display="none";
     }
 });
+var filter_mobileButton=document.querySelector(".filter--mobileButton");
+if(location.href===location.origin+"/rostovka_app/public/checkout"){
+    filter_mobileButton.style.display="none";
+}

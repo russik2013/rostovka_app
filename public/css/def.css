@@ -23,6 +23,7 @@ body {
 }
 
 #page-wraper, .page-content-wraper {
+    padding-top: 0;
     position: relative;
     width: 100%;
     background: #fff;
@@ -1981,7 +1982,6 @@ form label.error {
 
     .list-none-ib{
         width: 100%;
-        padding-bottom: 10px;;
     }
 
     .list-none-ib li{
@@ -2432,7 +2432,7 @@ form label.error {
         float: left;
         position: absolute;
         left: 20px;
-        top: -123px !important;
+        top: -48px;
         background: #1665af;
         padding-left: 10px;
         padding-right: 10px;
@@ -3978,8 +3978,12 @@ img.tp-caption {
         margin-left: 90px;
     }
 
+    .header-rightside-nav{
+        margin-bottom: 32px;
+    }
+
     .navigation-menu{
-        margin-top: -38px !important;
+        margin-top: -15px !important;
     }
     .header-topbar .topbar-right ul li{
         text-align: left;
@@ -5457,7 +5461,7 @@ product-quantity input[type="number"]::-webkit-inner-spin-button {
 }
 
 .quantityMinus:before {
-    content: "–";
+    content: "-";
 }
 
 single-add_to_cart {
@@ -6255,7 +6259,7 @@ ul#shipping_method {
     bottom: auto;
     right: 0;
 }
-.cartBl{padding-bottom: 20px}
+/*.cartBl{padding-bottom: 20px}*/
 .cartBl:hover .dropdownCart{
     display: block;
 }
@@ -6634,6 +6638,7 @@ td.price span span{
 .content-page.cart-container{
     overflow: hidden;
     overflow-y: scroll;
+    padding-top: 56px;
 }
 
 .price.counting{
@@ -7202,6 +7207,7 @@ fieldset input:hover{
 
 .slider.slider-horizontal{
     margin-top: 30px;
+    width: 100% !important;
 }
 .slider .tooltip.top{
     z-index: 99 !important;

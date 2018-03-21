@@ -153,25 +153,25 @@
 </body>
 
 <!--   Core JS Files   -->
-<script src="{{url('js/admin/jquery-1.10.2.js')}}" type="text/javascript"></script>
-<script src="{{url('js/admin/bootstrap.min.js')}}" type="text/javascript"></script>
+<script src="{{url('js/admin/jquery-1.10.2.js?n=1')}}" type="text/javascript"></script>
+<script src="{{url('js/admin/bootstrap.min.js?n=1')}}" type="text/javascript"></script>
 
 <!--  Checkbox, Radio & Switch Plugins -->
-<script src="{{url('js/admin/bootstrap-checkbox-radio.js')}}"></script>
+<script src="{{url('js/admin/bootstrap-checkbox-radio.js?n=1')}}"></script>
 
 <!--  Notifications Plugin    -->
-<script src="{{url('js/admin/bootstrap-notify.js')}}"></script>
+<script src="{{url('js/admin/bootstrap-notify.js?n=1')}}"></script>
 
 <!-- Sweet Alert -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.all.min.js"></script>
 
 <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
-<script src="{{url('js/admin/paper-dashboard.js')}}"></script>
+<script src="{{url('js/admin/paper-dashboard.js?n=1')}}"></script>
 
 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-<script src="{{url('js/admin/demo.js')}}"></script>
+<script src="{{url('js/admin/demo.js?n=1')}}"></script>
 
-<script type="text/javascript" src="{{asset('js/jquery.tmpl.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery.tmpl.min.js?n=1')}}"></script>
 
 @yield('edit_userLib')
 @yield('productsLib')

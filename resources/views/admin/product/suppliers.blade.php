@@ -32,7 +32,7 @@
                                     <th>Фамилия</th>
                                     <th>Телефон</th>
                                     <th>Cкидка</th>
-                                    <th>Курс</th>
+                                    <th>Курс долларов</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -66,5 +66,5 @@
 @endsection
 
 @section('suppliersLib')
-    <script src="{{url('js/suppliers.js')}}"></script>
+    <script src="{{url('js/suppliers.js?n=1')}}"></script>
 @endsection

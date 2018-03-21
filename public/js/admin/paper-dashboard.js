@@ -186,3 +186,16 @@ $('input[type=number]').keyup(function() {
         this.value = "";
     }
 });
+
+var userAdmin = document.getElementsByClassName("userAdmin");
+changeColor(userAdmin,"#4A148C");
+var userModer = document.getElementsByClassName("userModer");
+changeColor(userModer,"#33691");
+var userOpt = document.getElementsByClassName("userOpt");
+changeColor(userOpt,"#01579B");
+
+function changeColor(id,color) {
+    for(var i=0;i<id.length;i++){
+        id[i].style.color=color;
+    }
+}

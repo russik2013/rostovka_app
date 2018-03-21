@@ -11,6 +11,13 @@ var data = [],
     selectedCount = Number ($.find('#product-show option')[0].innerText),
     choosedType = 0,
     sizeValue = [];
+var filter_mobileButton = document.querySelector(".filter--mobileButton");
+if(location.href===location.origin+"/rostovka_app/public/5/category"){
+    filter_mobileButton.style.display="none";
+}
+
+//Прелоадер при загрузке страницы
+$('.product--block').append('<div class="preloader"><i></i></div>');
 
 if(localStorage.getItem('sizeValues') !== null) {
     sizeValue = localStorage.getItem('sizeValues');
@@ -21,8 +28,7 @@ if(localStorage.getItem('sizeValues') !== null) {
 }
 
 
-if(localStorage.getItem('pageNum') !== null){
-
+if(localStorage.getItem('pageNum') !== null) {
 } else {
     localStorage.setItem('pageNum', page_num);
 }
@@ -49,9 +55,6 @@ function localData() {
         selectedCount = 24;
     }
 }
-
-//Прелоадер при загрузке страницы
-$('.product--block').append('<div class="preloader"><i></i></div>');
 
 ///Работа с фильтрами, вызывается с DOM
 var values = [], targetID = 0;
@@ -147,7 +150,6 @@ function activateData() {
     page_num = 1;
     var sizeValue = localStorage.getItem('sizeValues');
 
-    $('.preloader').remove();
     $.ajax({
         method: 'POST',
         url: $('meta[name="root-site"]').attr('content') + "/api/products",
@@ -333,12 +335,13 @@ function initData(count_on_page) {
             paginationNum = msg;
             paginationCounter(paginationNum);
             makeData(page_num, saved_count_on_page);
-            $('.preloader').remove();
             if(msg < 1 ){
                 $('#target').append('<div style="padding-top: 20px;\n' +
                     '    text-align: center;\n' +
                     '    font-size: 20px;\n' +
                     '    text-transform: uppercase;">Нет товаров</div>')
+                $('.preloader').remove();
+
             }
         });
     }
@@ -704,9 +707,10 @@ function drawItems(pageList) {
 
 //Проверка дублей расстовки/ящика
 function checkMinMax(data) {
+
     var MinMaxCounter = [];
     for (var i = 0; i < data.length; i++) {
-        if(data[i].box === data[i].rostovka) {
+        if(Number (data[i].box) === Number (data[i].rostovka)) {
             var id = data[i].real_id;
             MinMaxCounter.push(id);
         }
@@ -723,7 +727,7 @@ function checkMinMax(data) {
 function checkPrices(data) {
     var MinMaxCounter = [];
     for (var i = 0; i < data.length; i++) {
-        if(data[i].price === data[i].old_prise) {
+        if(Number (data[i].price) === Number (data[i].old_prise)) {
             var id = data[i].real_id;
             MinMaxCounter.push(id);
         }
@@ -898,7 +902,7 @@ function makeFilterData(msg) {
 
     drawItems(pageList);
     GetData(filtered_data);
-    
+
     //Проверка дублей
     checkMinMax(data);
     checkPrices(data);
@@ -1002,6 +1006,8 @@ var GetSlideValue = function() {
             $('.product-filter-content').css('display', 'block');
             $('.alert.alert-warning').remove();
             makeFilterData(msg);
+
+            $('.preloader').remove();
         } else {
             if($('.productLine')[0].childNodes.length === 0){
                 $('.preloader').remove();
@@ -1009,13 +1015,9 @@ var GetSlideValue = function() {
                     '    text-align: center;\n' +
                     '    font-size: 20px;\n' +
                     '    text-transform: uppercase;">Нет товаров</div>')
-            } else {
-                $('.preloader').remove();
+
             }
-
         }
-
-
     }) .fail(function( msg ) {
 
     });
@@ -1040,7 +1042,6 @@ var GetSlideValue = function() {
 $("#ex2").bootstrapSlider({
     tooltip: 'always'
 }).on('slideStop', GetSlideValue);
-
 
 
 // Работа с иконками для моб. версии
@@ -1086,11 +1087,10 @@ function sizeFilter(){
             }
     }
 }
-var filter_mobileButton = document.querySelector(".filter--mobileButton");
 var close_icon = document.querySelector(".close-icon");
 close_icon.addEventListener('click',function () {
     $("body").css("overflow", "auto");
 });
 filter_mobileButton.addEventListener('click',function () {
     $("body").css("overflow", "hidden");
-})
+});

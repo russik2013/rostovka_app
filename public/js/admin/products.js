@@ -229,7 +229,7 @@ $(document).on('click', 'button.edit', function () {
                 );
 
                 if($('.alert')){
-                    setTimeout(removeAlert, 2000);
+                    setTimeout(removeAlert, 10000);
                 }
             },
             error: function () {
@@ -243,7 +243,7 @@ $(document).on('click', 'button.edit', function () {
                 );
 
                 if($('.alert')){
-                    setTimeout(removeAlert, 2000);
+                    setTimeout(removeAlert, 10000);
                 }
             }
         });
@@ -286,7 +286,7 @@ $(document).on('click', 'button.remove', function () {
                 );
 
                 if($('.alert')){
-                    setTimeout(removeAlert, 2000);
+                    setTimeout(removeAlert, 10000);
                 }
             },
             error: function () {}
@@ -329,18 +329,37 @@ $(document).on('click', 'button.upload', function () {
             processData: false,
             contentType: false,
             data: zip_data,
-            success: function(){
-                $('.table-responsive').append(
-                    '<div class="alert alert-success" role="alert" style="position: absolute;\n' +
-                    '    top: -140px;\n' +
-                    '    width: 100%;\n' +
-                    '    left: 0;">\n' +
-                    '<a href="#" class="alert-link">Товары успешно загруженны</a>\n' +
-                    '</div>'
-                );
+            success: function(msg){
+                if(msg[1][1]){
+                    var res="";
+                    for(var i = 1; i < msg[1].length;i++){
+                        res+=msg[1][i] +" , ";
+                    }
+                    $('.table-responsive').append(
+                        '<div class="alert alert-success" role="alert" style="position: absolute;\n' +
+                        '    top: -140px;\n' +
+                        '    width: 100%;\n' +
+                        '    left: 0;">\n' +
+                        '<div href="#" class="alert-link">Товары успешно загруженны!</div>\n' +
+                        ' <br/> ' +
+                        '<div href="#" class="alert-link">Товары, которые уже есть в базе, находятся в строчках: ' + res + '</div>\n'+
+                        '</div>'
+                    );
+                }
+
+                else{
+                    $('.table-responsive').append(
+                        '<div class="alert alert-success" role="alert" style="position: absolute;\n' +
+                        '    top: -140px;\n' +
+                        '    width: 100%;\n' +
+                        '    left: 0;">\n' +
+                        '<a href="#" class="alert-link">Товары успешно загруженны</a>\n' +
+                        '</div>'
+                    );
+                }
 
                 if($('.alert')){
-                    setTimeout(removeAlert, 2000);
+                    setTimeout(removeAlert, 15000);
                 }
                 $('.preloader').remove();
             },
@@ -381,7 +400,8 @@ var pricePurchase =document.querySelector(".pricePurchase");
 var searchArt =document.querySelector(".searchArt");
 var searchMan = document.querySelector(".searchMan");
 var saveAll = document.querySelector(".saveAll");
-var availability =document.querySelector(".isExist")
+var availability =document.querySelector(".isExist");
+
 saveAll.addEventListener("click",function () {
     var save =[];
     for(var i=0;i<checkTov.length;i++){
@@ -389,32 +409,42 @@ saveAll.addEventListener("click",function () {
                 save.push(checkTov[i].value);
             }
     }
-    console.log(availability.value);
-    $.ajax({
-        type: "POST",
-        url: $('meta[name="root-site"]').attr('content') + '/testIncomeData',
-        data: {
-            "_token" : $('meta[name="csrf-token"]').attr('content'),
-            "save" : save,
-            "price": price.value,
-            "pricePurchase":pricePurchase.value,
-            "availability":availability.value
-        },
-        success: function(msg) {
-        }
-    });
-    //location.href = location.origin+"/rostovka_app/public/products"
+
+    if(pricePurchase.value>price.value)
+    {
+        alert("Цена закупки должна быть меньше цены")
+    }
+    else if(pricePurchase.value===""&&price.value===""&&availability.value==="0"){
+        alert("Не заполненно не одного поля!")
+    }
+    else {
+        $.ajax({
+            type: "POST",
+            url: $('meta[name="root-site"]').attr('content') + '/testIncomeData',
+            data: {
+                "_token": $('meta[name="csrf-token"]').attr('content'),
+                "save": save,
+                "price": price.value,
+                "pricePurchase": pricePurchase.value,
+                "availability": availability.value
+            },
+            success: function (msg) {
+                location.reload();
+            }
+        });
+
+    }
 });
 searchArt.addEventListener("keypress",function (e) {
     if(e.keyCode===13){
         if(searchArt.value!==""&&searchMan.value!==""){
-            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
+            location.href = location.origin + "/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
         }
         else if(searchArt.value!==""){
-            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchArt.value;
+            location.href = location.origin + "/public/products" +"?article=" +searchArt.value;
         }
         else if(searchMan.value!==""){
-            location.href = location.origin+"/rostovka_app/public/products"+"?manufacturer="+searchMan.value;
+            location.href = location.origin + "/public/products"+"?manufacturer="+searchMan.value;
         }
     }
 });
@@ -422,13 +452,13 @@ searchArt.addEventListener("keypress",function (e) {
 searchMan.addEventListener("keypress",function (e) {
     if(e.keyCode===13){
         if(searchArt.value!==""&&searchMan.value!==""){
-            location.href = location.origin+"/rostovka_app/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
+            location.href = location.origin+"/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
         }
         else if(searchMan.value!==""){
-            location.href = location.origin+"/rostovka_app/public/products" +"?manufacturer=" +searchMan.value;
+            location.href = location.origin+"/public/products" +"?manufacturer=" +searchMan.value;
         }
         else if(searchArt.value!==""){
-            location.href = location.origin+"/rostovka_app/public/products"+"?article="+searchArt.value;
+            location.href = location.origin+"/public/products"+"?article="+searchArt.value;
         }
     }
 });

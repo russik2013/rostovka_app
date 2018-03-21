@@ -4,6 +4,15 @@
 
 @extends('admin.main')
 @section('products_container')
+    <style>
+        .table-striped > thead > tr > th, .table-striped > tbody > tr > th, .table-striped > tfoot > tr > th, .table-striped > thead > tr > td, .table-striped > tbody > tr > td, .table-striped > tfoot > tr > td{
+            font-size: 14px;
+            border: 1px solid #f4f3ef;
+            border-top: 0;
+            border-bottom: 0;
+            text-align: center;
+        }
+    </style>
     <div class="col-md-12 ">
         <div class="col-md-12 header">
             <h4 class="title">Список товаров</h4>
@@ -62,7 +71,7 @@
                         @endforeach
                     </select>
 
-                    <select class="sorting__Option availability col-md-5 col-sm-12 col-xs-12" name="availability" style="display: none; float: left; margin-right: 5px;">
+                    <select class="sorting__Option availability col-md-5 col-sm-12 col-xs-12" name="availability" style="display: none; float: left; margin-right: 5px">
                         <option value="2">Все</option>
                         <option value="1">Да</option>
                         <option value="0">Нет</option>
@@ -91,7 +100,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="content table-responsive table-full-width">
+                        <div class="content table-responsive table-full-width" style="padding: 0;">
 
                             <table class="table table-striped">
                                 <thead>
@@ -100,34 +109,36 @@
                                     <th>Фото</th>
                                     <th>Артикул</th>
                                     <th>Размеры</th>
-                                    <th>Категория</th>
                                     <th>Производитель</th>
-                                    <th>Скидка</th>
-                                    <th> Цена</th>
                                     <th>Цена закупки</th>
+                                    <th> Цена</th>
                                     <th>В наличии</tr>
                                 <tr>
-                                    <th style="width: 130px"><a href="#" id="chooseAll">Выбрать все</a>
+                                    <th style="width: 50px"><a href="#" id="chooseAll">Выбрать все</a>
                                         <a href="#"id="closeAll"> Отменить все</a></th>
                                     <th></th>
                                     <th>
-                                        <input type="text" class="searchArt" placeholder="Поиск Артикул">
-                                    </th>
-                                    <th></th>
-                                    <th></th>
-                                    <th>
-                                        <input type="text" class="searchMan" placeholder="Поиск производителя">
+                                        <input style="border: 1px solid #c5c5c5; max-width: 110px; text-align: center; padding-top: 3px" type="text" class="searchArt" placeholder="Поиск">
                                     </th>
                                     <th></th>
                                     <th>
-                                        <input type="text" class="price" placeholder="Цена"></th>
+                                        <input style="border: 1px solid #c5c5c5; max-width: 110px; text-align: center; padding-top: 3px"  type="text" class="searchMan" placeholder="Поиск">
+                                    </th>
                                     <th>
-                                        <input type="text" class="pricePurchase" placeholder="Цена закупки"></th>
-                                    <th><select class="availability isExist">
+                                        <input type="text" class="pricePurchase" style="border: 1px solid #c5c5c5; padding-top: 3px; max-width: 110px; text-align: center" placeholder="Закупка">
+                                    </th>
+
+                                    <th>
+                                        <input style="border: 1px solid #c5c5c5; max-width: 110px; text-align: center; padding-top: 3px" type="text" class="price" placeholder="Цена">
+                                    </th>
+
+                                    <th>
+                                        <select class="availability isExist" style="border: 1px solid #c5c5c5; padding-top: 3px; padding-bottom: 1px; max-width: 110px; text-align: center">
                                             <option value="0">Не выбрано</option>
                                             <option value="1">Да</option>
                                             <option value="2">Нет</option>
-                                        </select></th>
+                                        </select>
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -149,15 +160,13 @@
 
                                         <td>{{$product -> size -> name}}</td>
 
-                                        <td>{{$product -> category -> name}}</td>
 
                                         <td>{{$product -> manufacturer -> name}}</td>
+                                        <td>{{$product -> prise_zakup}}</td>
 
-                                        <td>{{$product -> discount}}</td>
 
                                         <td>{{$product -> prise}}</td>
 
-                                        <td>{{$product -> prise_zakup}}</td>
 
                                         <td>@if($product ->show_product == 1) Да @else Нет @endif</td>
 
@@ -179,6 +188,6 @@
     </div>
 @endsection
 @section('productsLib')
-    <script src="{{url('js/admin/bootstrap.file-input.js')}}"></script>
-    <script src="{{url('js/admin/products.js')}}"></script>
+    <script src="{{url('js/admin/bootstrap.file-input.js?n=1')}}"></script>
+    <script src="{{url('js/admin/products.js?n=1')}}"></script>
 @endsection

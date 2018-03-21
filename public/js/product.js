@@ -104,3 +104,4 @@ function makeSlider() {
         slidesToScroll: 1
     });
 }
+

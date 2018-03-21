@@ -54,6 +54,7 @@
     <!-- Header -->
     <header class="header">
         <!--Topbar-->
+        <div class="header-all">
         <div class="header-topbar">
             <div class="header-topbar-inner">
                 <!--Topbar Left-->
@@ -114,7 +115,7 @@
         <!--End Topbart-->
 
         <!-- Header Container -->
-        <div id="header-sticky" class="header-main">
+        <div id="header-sticky2" class="header-main">
             <div class="header-main-inner">
                 <!-- Logo -->
                 <div class="logo">
@@ -131,6 +132,7 @@
                     <!-- Sidebar Icon -->
                     <div class="sidebar-icon-nav">
                         <ul class="list-none-ib">
+
                             <!-- Search-->
                             <li>
                                 <form class="navbar-form" role="search">
@@ -142,6 +144,8 @@
                                     </div>
                                 </form>
                             </li>
+
+                            <li class="f--button"><div class="filter--mobileButton"><i class="fa fa-filter" aria-hidden="true"></i>Фильтры</div></li>
 
                             <!-- Cart-->
                             <li class="cartBl">
@@ -179,15 +183,15 @@
                     </div>
                     <!-- End Sidebar Icon -->
                 </div>
+                <nav class="navigation-menu">
+                    @include('user.markup.header')
+                </nav>
+            </div>
                 <!-- End Right Sidebar Nav -->
 
 
                 <!-- Navigation Menu -->
-                <nav class="navigation-menu">
-                    @include('user.markup.header')
 
-
-                </nav>
                 <!-- End Navigation Menu -->
                 <div class="mobileNav">
                     @include('user.markup.header')
@@ -269,7 +273,7 @@
 <!-- Plugins All js -->
 <script type="text/javascript" src="{{asset('js/plugins-all.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.tmpl.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/custom.js?n=5')}}"></script>
 @yield('mainPage_Lib')
 @yield('cartLib')
 @yield('auth_reg')
@@ -284,6 +288,10 @@
         e.preventDefault();
         $(location).attr('href', '{{url("showFinderFinal")}}/' + $('.search--box input').val() );
     });
+
+    if($(location)[0].pathname === "/public/" || $(location)[0].pathname === "/public/about" || $(location)[0].pathname === "/public/userinfo" || $(location)[0].pathname === "/public/showFinderFinal/" || $(location)[0].pathname === "/public/5/category" || $(location)[0].pathname === "/public/cart" || $(location)[0].pathname === "/public/checkout") {
+        $('.f--button').remove();
+    }
 </script>
 </body>
 </html>

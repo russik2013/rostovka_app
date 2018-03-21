@@ -271,5 +271,5 @@
 @endsection
 
 @section('mainPage_Lib')
-    <script type="text/javascript" src="{{asset('js/mainPage_data.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/mainPage_data.js?v=2')}}"></script>
 @endsection

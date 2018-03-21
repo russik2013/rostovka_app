@@ -83,7 +83,7 @@ function removeItemAdd() {
     $('.single-variation-wrap').append('' +
         '<div class="product--is--inCart">' +
         '<span>Товар в корзине</span>' +
-        '<div class="move--to--cart"><a class="cart--url">Перейти в корзну</a></div>' +
+        '<div class="move--to--cart"><a class="cart--url">Перейти в корзину</a></div>' +
         '</div>');
     setUrl();
 }
@@ -460,4 +460,12 @@ if(Cart_data[0].row.length === 0){
     $('.dropdownCart ul').append('<span class="isClear">Корзина пуста</span>');
     $('.dropdownCart .cartButton').css('display', 'none');
     $('.cartButton').css('margin', '0')
+}
+
+var filter_mobileButton=document.querySelector(".filter--mobileButton");
+if(location.href===location.origin+"/rostovka_app/public/cart"){
+    filter_mobileButton.style.display="none";
+}
+if(location.href===location.origin+"/rostovka_app/public/userinfo"){
+    filter_mobileButton.style.display="none";
 }

@@ -57,5 +57,5 @@
 @endsection
 
 @section('filterPageLIb')
-    <script src="{{url('js/admin/filterTypesLib.js')}}"></script>
+    <script src="{{url('js/admin/filterTypesLib.js?n=1')}}"></script>
 @endsection
