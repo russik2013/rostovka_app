@@ -322,7 +322,12 @@ class SaleController extends Controller
                 if($detail->manufacturer_name == $values[2]) {
 
                     $manufacturersOrders[] = $detail;
-                    $finalPrise += $detail -> this_tovar_in_order_price;
+                    if($detail -> tip == "box")
+
+                        $finalPrise +=   $detail->tovar_in_order_count * $detail->prise_zakup * $detail->box_count;
+                    else
+                        $finalPrise +=   $detail->tovar_in_order_count * $detail->prise_zakup * $detail->rostovka_count;
+                  //  $finalPrise += $detail -> this_tovar_in_order_price;
 
                 }
 

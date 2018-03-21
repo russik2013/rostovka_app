@@ -36,7 +36,8 @@
                 <td>{{$manufacturersOrder->tovar_in_order_count}}</td>
                 <td>@if($manufacturersOrder -> tip == "box") {{$manufacturersOrder->box_count}} @else {{$manufacturersOrder->rostovka_count}} @endif</td>
                 <td>{{$manufacturersOrder->prise_zakup}}</td>
-                <td>{{$manufacturersOrder->this_tovar_in_order_price}}</td>
+                <td>@if($manufacturersOrder -> tip == "box") {{$manufacturersOrder->tovar_in_order_count * $manufacturersOrder->prise_zakup * $manufacturersOrder->box_count}}
+                    @else{{$manufacturersOrder->tovar_in_order_count * $manufacturersOrder->prise_zakup * $manufacturersOrder->rostovka_count}} @endif</td>
             </tr>
             @endforeach
     </table>
