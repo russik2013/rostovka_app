@@ -49,11 +49,7 @@ class CsvOrderController extends Controller
 
             $dataToSecond = date('Y-m-d',($str+86400*1));
 
-            $strfrom = strtotime($dataFrom);
-
-            $dataFromSecond = date('Y-m-d',($strfrom-86400*1));
-
-            $orders = Order::where('created_at', '>=', $dataFromSecond)
+            $orders = Order::where('created_at', '>=', $dataFrom)
                 -> where('created_at', '<=', $dataToSecond) -> whereIn('paid', [0,3])
                 -> get();
         }
@@ -206,11 +202,7 @@ class CsvOrderController extends Controller
 
             $dataToSecond = date('Y-m-d',($str+86400*1));
 
-            $strfrom = strtotime($dataFrom);
-
-            $dataFromSecond = date('Y-m-d',($strfrom-86400*1));
-
-            $orders = Order::where('created_at', '>=', $dataFromSecond)
+            $orders = Order::where('created_at', '>=', $dataFrom)
                 -> where('created_at', '<=', $dataToSecond) -> whereIn('paid', [0,3])
                 -> get();
         }
@@ -465,11 +457,7 @@ class CsvOrderController extends Controller
 
             $dataToSecond = date('Y-m-d',($str+86400*1));
 
-            $strfrom = strtotime($dataFrom);
-
-            $dataFromSecond = date('Y-m-d',($strfrom-86400*1));
-
-            $orders = Order::where('created_at', '>=', $dataFromSecond)
+            $orders = Order::where('created_at', '>=', $dataFrom)
                 -> where('created_at', '<=', $dataToSecond) -> whereIn('paid', [0,3])
                 -> get();
         }
