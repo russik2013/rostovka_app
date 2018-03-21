@@ -12,10 +12,15 @@ class SuppliersController extends Controller
 {
     public function index($name = ""){
 
-        if($name != "")
-            $manufacturers = Manufacturer::where('name', 'like', '%'.$name.'%') -> groupBy('id') ->paginate(15);
-        else
-            $manufacturers = Manufacturer::groupBy('id') ->paginate(15);
+        if($name != "") {
+
+            $manufacturers = Manufacturer::where('name', 'like', '%' . $name . '%')
+            ->orderBy('koorse', 'desc')->paginate(15);
+        }
+        else {
+
+            $manufacturers = Manufacturer::orderBy('koorse', 'desc')->paginate(15);
+        }
 
         return view('admin.product.suppliers', compact('manufacturers'));
 
@@ -105,8 +110,8 @@ class SuppliersController extends Controller
 
                     if(isset($hrivna_discount[1])){
 
-                        DB::update('update products set prise = prise - ?  where manufacturer_id = ?',
-                            [$hrivna_discount[0],$manufacturer -> id]);
+                        DB::update('update products set prise = prise - ?  where id = ?',
+                            [$hrivna_discount[0],$product -> id]);
                     }
 
                     $prozent_discount = explode("%",$product -> discount);
@@ -114,8 +119,8 @@ class SuppliersController extends Controller
 
                     if(isset($prozent_discount[1])){
 
-                        DB::update('update products set prise = prise - ( prise * ?)  where manufacturer_id = ?',
-                            [$prozent_discount[0]/100,$manufacturer -> id]);
+                        DB::update('update products set prise = prise - ( prise * ?)  where id = ?',
+                            [$prozent_discount[0]/100,$product -> id]);
 
                     }
 

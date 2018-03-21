@@ -1,3 +1,5 @@
+
+
 var TopSallesData= [],
     data = [],
     productTheme = $('#template');
@@ -24,7 +26,7 @@ $.ajax({
             rostovka__price: msg[i].rostovka__price,
             real_id: msg[i].id,
             old_prise: Number (msg[i].prise_default),
-            product_url: msg[i].product_url + '/' + i,
+            product_url: msg[i].product_url + '/',
             option_type: 'full__price',
             size: msg[i].size.name
         };
@@ -57,7 +59,7 @@ $.ajax({
             rostovka__price: msg[i].rostovka__price,
             real_id: msg[i].id,
             old_prise: Number (msg[i].prise_default),
-            product_url: msg[i].product_url + '/' + i,
+            product_url: msg[i].product_url + '/',
             option_type: 'full__price',
             size: msg[i].size.name
         };

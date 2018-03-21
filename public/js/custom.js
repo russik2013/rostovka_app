@@ -119,3 +119,22 @@ $('.mobileNav li a').on('click', function () {
     localStorage.removeItem('selectedCount');
     localStorage.removeItem('pageNum');
 });
+
+var filter_mobileButton=document.querySelector(".filter--mobileButton");
+
+if(location.href===location.origin+"/" || location.href===location.origin+"/about" || location.href===location.origin+"/5/category" ||
+    location.href===location.origin+"/login" || location.href===location.origin+"/cart" || location.href===location.origin+"/product"){
+    filter_mobileButton.style.display="none";
+}
+var a = location.href;
+var b = a.split("/");
+var c = Number(b[3]);
+if(isNaN(c) || typeof(c)=== "undefined"){
+
+}
+else {
+    var d = c;
+}
+if(location.href===location.origin+"/" + d +"/product"){
+    filter_mobileButton.style.display="none";
+}

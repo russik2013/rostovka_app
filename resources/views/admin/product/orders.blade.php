@@ -29,7 +29,7 @@
                                     <input type="text" id="to" name="to">
                                 </div>
 
-                                <div class="col-md-6 col-xs-12 col-sm-12">
+                                <div class="col-md-12 col-xs-12 col-sm-12" style="padding: 0">
                                     <select class="sorting__Option" name="options" onchange="getSortItem(event)">
                                         <option value="1">Респределить по доставк</option>
                                         <option value="2">Респределить по производителю</option>
@@ -89,7 +89,14 @@
                                             @elseif($order -> payment_method == "c_o_d") Наложенный платеж
                                             @else Наличными @endif</td>
                                         <td>{{$order -> all_prise}}</td>
-                                        <td @if($order ->paid == 1) class="paid--Status" @else @endif >@if($order ->paid == 1) да @else нет @endif</td>
+
+                                        <td> @if($order -> paid == 0) <div class="statusNew">Новый</div>
+                                            @elseif($order -> paid == 1) <div class="statusPaid">Оплачен</div>
+                                            @elseif($order -> paid == 2) <div class="statusSend">Отправлен</div>
+                                            @elseif($order -> paid == 3) <div class="statusProcessing">В обработке</div>
+                                            @else<div class="statusNotCollect"> Не собирать </div>@endif
+
+                                        </td>
                                         <td>{{$order -> created_at}}</td>
                                         <td class="options">
                                             <a href="{{url('/pdfLoad/'.$order->id)}}">
@@ -127,6 +134,6 @@
 
 @section('ordersLib')
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{{url('js/admin/orders.js')}}"></script>
-    <script src="{{url('js/admin/datepicker-ru.js')}}"></script>
+    <script src="{{url('js/admin/orders.js?n=1')}}"></script>
+    <script src="{{url('js/admin/datepicker-ru.js?n=1')}}"></script>
 @endsection

@@ -5,7 +5,7 @@
 <div class="content mainPage--content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 admin--usersPage">
                 <div class="card" style="padding-top: 10px;">
                     <div class="header" style="float: left;">
                         <h4 class="title">Список пользователей</h4>
@@ -39,7 +39,7 @@
                                     <td>{{$client -> last_name}}</td>
                                     <td>{{$client -> email}}</td>
                                     <td>{{$client -> city}}</td>
-                                    <td class="edit--Icons">@if($client -> type == "user")Покупатель @elseif($client -> type == "admin") Админ @else Оптовик @endif <a href="{{url('/user_edit/'.$client -> id)}}"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                    <td class="edit--Icons">@if($client -> type == "user")Покупатель @elseif($client -> type == "opt") <div class="userOpt">Оптовик</div> @elseif($client -> type == "admin") <div class="userAdmin">Админ</div> @elseif($client -> type == "moder") <div class="userModer">Модератор</div> @else Оптовик @endif <a href="{{url('/user_edit/'.$client -> id)}}"><i class="table--icons ti-pencil-alt" data-toggle="tooltip" title="Редактировать"></i></a> <a class="remove"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
                                 </tr>
 
                             @endforeach

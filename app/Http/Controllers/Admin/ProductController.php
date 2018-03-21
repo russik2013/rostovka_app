@@ -137,4 +137,98 @@ class ProductController extends Controller
         else return response('Wrong product id', 404);
 
     }
+
+    public function tovarMultiUpdate(Request $request){
+
+        $products = Product::whereIn('id', $request -> save) -> get();
+        $manufacturers = Manufacturer::all();
+
+        foreach ($request -> save as $item){
+
+            foreach ($products as $product){
+
+                if($item == $product -> id){
+
+                    if($request ->price) {
+
+                        $priseWithDiscount = $request->price;
+
+                        $manufacturersInfoToProduct = $manufacturers->find($product->manufacturer_id);
+
+
+                        if ($manufacturersInfoToProduct->koorse != "" && $manufacturersInfoToProduct->koorse != 0 && $product->currency == "дол") {
+
+                            $priseWithDiscount *= $manufacturersInfoToProduct->koorse;
+
+                        }
+
+                        if ($manufacturersInfoToProduct->discount != "" && $manufacturersInfoToProduct->discount != 0) {
+
+
+                            $hrivna_discount = explode("грн", $manufacturersInfoToProduct->discount);
+
+                            if (isset($hrivna_discount[1])) {
+
+                                $priseWithDiscount = $priseWithDiscount - $hrivna_discount[0];
+                            }
+
+                            $prozent_discount = explode("%", $manufacturersInfoToProduct->discount);
+
+                            if (isset($prozent_discount[1])) {
+
+                                $priseWithDiscount = $priseWithDiscount - ($priseWithDiscount * ($prozent_discount[0] / 100));
+                            }
+
+                        }
+
+                        if ($product->discount != "" && $product->discount != 0) {
+
+
+                            $hrivna_discount = explode("грн", $product->discount);
+
+                            if (isset($hrivna_discount[1])) {
+
+                                $priseWithDiscount = $priseWithDiscount - $hrivna_discount[0];
+                            }
+
+                            $prozent_discount = explode("%", $product->discount);
+
+
+                            if (isset($prozent_discount[1])) {
+
+                                $priseWithDiscount = $priseWithDiscount - ($priseWithDiscount * ($prozent_discount[0] / 100));
+                            }
+
+                        }
+
+                        $product->prise = $priseWithDiscount;
+                        $product->prise_default = $request->price;
+
+                    }
+
+                    if($request->pricePurchase)
+                    $product->prise_zakup = $request->pricePurchase;
+
+                    if($request -> availability == 1) {
+                        $product->show_product = 1;
+                        $product->accessibility = 1;
+                    }
+                    if($request -> availability == 2) {
+                        $product->show_product = 0;
+                        $product->accessibility = 0;
+                    }
+
+                    $product -> save();
+
+
+                }
+
+            }
+            //$insertArray = ['prise' => ]
+
+
+        }
+        return response('done');
+
+    }
 }

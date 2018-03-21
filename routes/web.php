@@ -26,8 +26,6 @@ Route::get('/', function () {
 })->name('root');
 
 
-Route::post('testIncomeData', 'Parsing\ParsingController@testIncomeData');// на эту ссылку ид>т запрос при мульти редактировании
-
 
 Route::get('/login', 'HomeController@login') -> name("login");
 Route::post('/login', 'HomeController@auth');
@@ -108,6 +106,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/product/delete','Admin\ProductController@delete'); // удаление товара - передавать id товара
         Route::post('/product/update','Admin\ProductController@update'); // редактирование товара - передавать id товара и массив редактирование (с/без фото)
         Route::get('/product/{id}/edit','Admin\ProductController@edit'); // редактирование товара - ссылка на страницу редактирование
+        Route::post('/testIncomeData', 'Admin\ProductController@tovarMultiUpdate');// на эту ссылку ид>т запрос при мульти редактировании
 
         Route::get('/csvGlovesLoad','Admin\CSV\CsvGloversLoadController@index');
         Route::post('/csvGlovesLoad','Admin\CSV\CsvGloversLoadController@csvGloversLoad') -> name('load_gloves');

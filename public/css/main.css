@@ -283,7 +283,7 @@ ul {
   text-align: left;
 }
 .categoryPage .checkbox label {
-  padding-left: 15px;
+  padding-left: 3px;
 }
 .categoryPage .pull-right {
   margin-right: 0 !important;
@@ -608,7 +608,10 @@ input::-webkit-inner-spin-button {
   .col-md-12.pull-left.goodsCount_price{
     margin-top: 5px !important;
   }
-
+  .mobile-post.is-mobile{
+    display: block !important;
+    padding-top: 30px;
+  }
   .close-icon{display: block !important;}
 
   .header-main.fixed .navigation-menu{
@@ -641,20 +644,26 @@ input::-webkit-inner-spin-button {
   }
   .copyrights p.copyright{padding-left: 3px}
   .logReg_page.regPage h3{padding-left: 10px}
-  .list-page-title{padding-left: 10px; padding-right: 10px; margin-bottom: 30px}
+  .list-page-title{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 30px;
+    padding-top: 30px;
+  }
   .mainforMobile{display: block}
   .logo, .move--to--cart{
     width: 80%;
   }
   .header-main .logo{
+    width: auto;
     margin-right: -50px;
     margin-top: 10px;
+      display: none;
   }
   .header-rightside-nav{
     float: right;
-    width: 220px !important;
+    width: 100% !important;
     margin-top: 25px;
-    margin-right: 20px;
   }
   .col-md-10.push-md-2.product--block{
     width: 100%;
@@ -844,8 +853,8 @@ input::-webkit-inner-spin-button {
 
   .filter--mobileButton{
     float: right;
-    margin-top: -45px;
     font-size: 13px;
+    margin-left: 10px;
     background: #2c618f;
     padding-left: 10px;
     padding-bottom: 0;
@@ -860,18 +869,16 @@ input::-webkit-inner-spin-button {
 
   .sidebar-icon-nav{
     float: right;
+    width: 100%;
+    min-width: 300px;
+    max-height: 35px;
   }
 
   .navigation-menu ul{
     width: 100%;
   }
 
-  .navigation-menu{
-    position: relative !important;
-    margin: 0 auto;
-    margin-top: -24px;
-    top: 25px;
-  }
+
 
   .category--Filters.active{
     display: block;
@@ -1162,6 +1169,7 @@ input::-webkit-inner-spin-button {
     min-height: 480px;
     max-width: 20%;
   }
+
 }
 
 .nice-select .list{
@@ -1169,31 +1177,31 @@ input::-webkit-inner-spin-button {
 }
 
 .about--page{
-    padding: 0 20px 0 20px;
-    padding-top: 80px;
-    padding-bottom: 50px;
+  padding: 0 20px 0 20px;
+  padding-top: 80px;
+  padding-bottom: 50px;
   font-size: 15px;
   text-align: justify;
 }
 
 .about--page h1{
   font-size: 35px;
-    text-align: center;
-    width: 100%;
+  text-align: center;
+  width: 100%;
 }
 .about--page h2{
   text-align: center;
   width: 100%;
 }
 .about--page .information--text{
-    margin-top: 40px;
+  margin-top: 40px;
   margin-bottom: 40px;
 }
 .about--page .information--text img{
-    float: left;
-    width: 60px;
-    margin-right: 20px;
-    padding-bottom: 90px;
+  float: left;
+  width: 60px;
+  margin-right: 20px;
+  padding-bottom: 90px;
 }
 .about--page .information--text ul{margin-top: 20px; margin-bottom: 20px}
 .about--page .information--text ul li{
@@ -1209,4 +1217,20 @@ input::-webkit-inner-spin-button {
 .about--page .information--text ul.payment li{
   font-weight: normal;
   font-size: 15px;
+}
+.header-all{
+  position: fixed;
+  width: 100%;
+}
+.list-none-ib {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.arrow{
+  font-size: 20px;
+}
+.mobile-post.is-mobile{
+  display: none;
 }
