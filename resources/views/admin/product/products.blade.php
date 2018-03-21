@@ -71,7 +71,7 @@
                         @endforeach
                     </select>
 
-                    <select class="sorting__Option availability col-md-5 col-sm-12 col-xs-12" name="availability" style="display: none; float: left; margin-right: 5px; width: 100%">
+                    <select class="sorting__Option availability col-md-5 col-sm-12 col-xs-12" name="availability" style="display: none; float: left; margin-right: 5px">
                         <option value="2">Все</option>
                         <option value="1">Да</option>
                         <option value="0">Нет</option>
@@ -188,6 +188,6 @@
     </div>
 @endsection
 @section('productsLib')
-    <script src="{{url('js/admin/bootstrap.file-input.js')}}"></script>
-    <script src="{{url('js/admin/products.js')}}"></script>
+    <script src="{{url('js/admin/bootstrap.file-input.js?n=1')}}"></script>
+    <script src="{{url('js/admin/products.js?n=1')}}"></script>
 @endsection

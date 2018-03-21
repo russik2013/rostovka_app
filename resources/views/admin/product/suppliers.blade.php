@@ -66,5 +66,5 @@
 @endsection
 
 @section('suppliersLib')
-    <script src="{{url('js/suppliers.js')}}"></script>
+    <script src="{{url('js/suppliers.js?n=1')}}"></script>
 @endsection

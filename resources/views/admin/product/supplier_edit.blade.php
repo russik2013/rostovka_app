@@ -138,5 +138,5 @@
 
 @section('edit_userLib')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
-    {{--<script src="{{url('js/admin/user_edit.js')}}"></script>--}}
+    {{--<script src="{{url('js/admin/user_edit.js?n=1')}}"></script>--}}
 @endsection

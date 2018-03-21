@@ -707,9 +707,10 @@ function drawItems(pageList) {
 
 //Проверка дублей расстовки/ящика
 function checkMinMax(data) {
+
     var MinMaxCounter = [];
     for (var i = 0; i < data.length; i++) {
-        if(data[i].box === data[i].rostovka) {
+        if(Number (data[i].box) === Number (data[i].rostovka)) {
             var id = data[i].real_id;
             MinMaxCounter.push(id);
         }
@@ -726,7 +727,7 @@ function checkMinMax(data) {
 function checkPrices(data) {
     var MinMaxCounter = [];
     for (var i = 0; i < data.length; i++) {
-        if(data[i].price === data[i].old_prise) {
+        if(Number (data[i].price) === Number (data[i].old_prise)) {
             var id = data[i].real_id;
             MinMaxCounter.push(id);
         }

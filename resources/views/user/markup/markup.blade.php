@@ -144,6 +144,7 @@
                                     </div>
                                 </form>
                             </li>
+
                             <li class="f--button"><div class="filter--mobileButton"><i class="fa fa-filter" aria-hidden="true"></i>Фильтры</div></li>
 
                             <!-- Cart-->
@@ -272,7 +273,7 @@
 <!-- Plugins All js -->
 <script type="text/javascript" src="{{asset('js/plugins-all.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.tmpl.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/custom.js?n=5')}}"></script>
 @yield('mainPage_Lib')
 @yield('cartLib')
 @yield('auth_reg')

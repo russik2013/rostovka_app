@@ -269,5 +269,5 @@
 
 @section('product_addLib')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
-    <script src="{{url('js/admin/orderInfo.js')}}"></script>
+    <script src="{{url('js/admin/orderInfo.js?n=1')}}"></script>
 @endsection

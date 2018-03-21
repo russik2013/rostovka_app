@@ -107,5 +107,5 @@
 @endsection
 
 @section('category__Lib')
-    <script type="text/javascript" src="{{asset('js/categoryData.js?version=1.0.0')}}"></script>
+    <script type="text/javascript" src="{{asset('js/categoryData.js?version=2.0.0')}}"></script>
 @endsection
