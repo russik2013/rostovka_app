@@ -19,7 +19,7 @@
                                             <td class="articul productsArt" style="display: none;"><input value="{{$type -> id}}" disabled></td>
                                             <th class="Name">{{$type -> name}}</th>
 
-                                            <td><a class="remove__product" href="#!"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
+                                            <td><a class="remove__product" href="{{url('type/'.$type -> id)}}"><i class="table--icons ti-trash type-success" aria-label="Try me! Example: success modal" data-toggle="tooltip" title="Удалить"></i></a></td>
                                         </tr>
 
                                     @endforeach
