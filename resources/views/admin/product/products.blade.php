@@ -123,6 +123,14 @@
                                     <th></th>
                                     <th>
                                         <input style="border: 1px solid #c5c5c5; max-width: 110px; text-align: center; padding-top: 3px"  type="text" class="searchMan" placeholder="Поиск">
+                                        {{--<select class="manufacturer search" style="border: 1px solid #c5c5c5; padding-top: 3px; padding-bottom: 1px; max-width: 110px; text-align: center">--}}
+                                            {{--<option value="0">Все</option>--}}
+                                            {{--@foreach($manufactures as $manufacture)--}}
+
+                                                {{--<option value="{{$manufacture -> id}}">{{$manufacture -> name}}</option>--}}
+
+                                            {{--@endforeach--}}
+                                        {{--</select>--}}
                                     </th>
                                     <th>
                                         <input type="text" class="pricePurchase" style="border: 1px solid #c5c5c5; padding-top: 3px; max-width: 110px; text-align: center" placeholder="Закупка">
