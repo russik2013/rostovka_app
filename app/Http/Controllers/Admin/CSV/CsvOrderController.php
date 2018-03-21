@@ -286,14 +286,16 @@ class CsvOrderController extends Controller
 
                 foreach ($order->details as $detail) {
 
-                    if (($detail->this_tovar_in_order_price / $detail->tovar_in_order_count) / $detail->prise == $detail->box_count)
+                    if($detail -> tip == "box") {
                         $type = 'ящ';
-                    else
-                        $type = 'рост';
-
-                    if ($type == 'ящ')
                         $count = $detail->box_count;
-                    else $count = $detail->rostovka_count;
+                        $finalPrise = $detail->tovar_in_order_count * $detail->prise_zakup * $detail->box_count;
+                    }
+                    else {
+                        $type = 'рост';
+                        $count = $detail->rostovka_count;
+                        $finalPrise = $detail->tovar_in_order_count * $detail->prise_zakup * $detail->rostovka_count;
+                    }
 
 
                     $number = count($data[$detail->manufacturer_name]);
@@ -307,7 +309,7 @@ class CsvOrderController extends Controller
                         $detail->tovar_in_order_count,
                         $count,
                         (integer)$detail->prise_zakup,
-                        (integer)$detail->prise_zakup * $detail->tovar_in_order_count * $count
+                        $finalPrise
 
                     ];
 
@@ -547,17 +549,6 @@ class CsvOrderController extends Controller
             foreach ($orders as $order) {
 
                 foreach ($order->details as $detail) {
-
-                    if (($detail->this_tovar_in_order_price / $detail->tovar_in_order_count) / $detail->prise == $detail->box_count)
-                        $type = 'ящ';
-                    else
-                        $type = 'рост';
-
-                    if ($type == 'ящ')
-                        $count = $detail->box_count;
-                    else $count = $detail->rostovka_count;
-
-
                     $number = count($data[$detail->manufacturer_name]);
 
                     $normArtikle = explode(mb_strtolower($detail->manufacturer_name), $detail->article);
@@ -569,6 +560,17 @@ class CsvOrderController extends Controller
 
                     //dd($normArtikle, $detail->manufacturer_name);
 
+                    if($detail -> tip == "box") {
+                        $type = 'ящ';
+                        $count = $detail->box_count;
+                        $finalPrise = $detail->tovar_in_order_count * $detail->prise_zakup * $detail->box_count;
+                    }
+                    else {
+                        $type = 'рост';
+                        $count = $detail->rostovka_count;
+                        $finalPrise = $detail->tovar_in_order_count * $detail->prise_zakup * $detail->rostovka_count;
+                    }
+
                     $data[$detail->manufacturer_name][] = [
                         $number,
                         $detail->order_id,
@@ -577,7 +579,7 @@ class CsvOrderController extends Controller
                         $detail->tovar_in_order_count,
                         $count,
                         (integer)$detail->prise_zakup,
-                        (integer)$detail->prise_zakup * $detail->tovar_in_order_count * $count
+                        $finalPrise
 
                     ];
 
