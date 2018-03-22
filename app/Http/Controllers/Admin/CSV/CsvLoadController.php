@@ -157,7 +157,7 @@ class CsvLoadController extends Controller
             foreach ($products_mass as $key => $photo_to_product_value) {
 
                 foreach ($photo_to_product_value[0] as $item) {
-                    if ($item) {
+                    if ($item && file_exists('../images/products/'.$item.'.jpg')) {
                         ProductPhotos::where('product_id', '=', $data_base_products[$key])
                             ->update(['photo_url' => $data_base_products[$key] . "_" . $item . '.jpg']);
                     }
@@ -168,6 +168,7 @@ class CsvLoadController extends Controller
     }
 
     public function productsUpdate($products){
+
 
         $types = Type::all() -> pluck('id', 'name') -> toArray();
         $seasons = Season::all() -> pluck('id', 'name') -> toArray();
@@ -485,6 +486,8 @@ class CsvLoadController extends Controller
 
 
 
+
+
             if(isset($sizes[$product -> razmer]))
                 $size = $sizes[$product -> razmer];
             else{
@@ -520,7 +523,7 @@ class CsvLoadController extends Controller
 
             $manufacturersInfoToProduct = $manufacturersInfo ->find($manufacturers[str_replace($product ->{'brend'}[0], strtoupper($product ->{'brend'}[0]), $product ->{'brend'})]);
 
-
+            //dd($manufacturersInfoToProduct, $product->valyuta);
 
             if($manufacturersInfoToProduct ->koorse != "" && $manufacturersInfoToProduct ->koorse != 0 && $product->valyuta == "дол"){
 
