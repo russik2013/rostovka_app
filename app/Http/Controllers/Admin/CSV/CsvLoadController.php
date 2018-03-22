@@ -177,6 +177,7 @@ class CsvLoadController extends Controller
             foreach ($products_mass as $key => $photo_to_product_value) {
 
                 foreach ($photo_to_product_value[0] as $item) {
+
                     if ($item && file_exists('../images/products/'.$item.'.jpg')) {
                         ProductPhotos::where('product_id', '=', $data_base_products[$key])
                             ->update(['photo_url' => $data_base_products[$key] . "_" . $item . '.jpg']);

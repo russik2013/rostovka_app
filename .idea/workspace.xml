@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9fda3628-59ae-4bb0-aec9-228a56293af0" name="Default" comment="Front done update 27.02.18">
+    <list default="true" id="9fda3628-59ae-4bb0-aec9-228a56293af0" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/products/__MACOSX/._1.jpg" afterPath="$PROJECT_DIR$/images/products/__MACOSX/._1.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
@@ -99,8 +100,8 @@
       <file leaf-file-name="CsvLoadController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="53">
-              <caret line="98" column="35" lean-forward="false" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="35" />
+            <state relative-caret-position="649">
+              <caret line="441" column="58" lean-forward="true" selection-start-line="441" selection-start-column="58" selection-end-line="441" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -109,10 +110,10 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="124" column="155" lean-forward="false" selection-start-line="124" selection-start-column="155" selection-end-line="124" selection-end-column="155" />
+            <state relative-caret-position="222">
+              <caret line="125" column="32" lean-forward="false" selection-start-line="125" selection-start-column="32" selection-end-line="125" selection-end-column="32" />
               <folding>
-                <marker date="1521709211000" expanded="true" signature="4543:7640" ph="..." />
+                <marker date="1521715588000" expanded="true" signature="4543:7641" ph="..." />
               </folding>
             </state>
           </provider>
@@ -134,35 +135,6 @@
             <state relative-caret-position="120">
               <caret line="8" column="37" lean-forward="false" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="37" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edit.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/user_edit/edit.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" column="86" lean-forward="false" selection-start-line="38" selection-start-column="84" selection-end-line="38" selection-end-column="89" />
-              <folding>
-                <marker date="1521106963000" expanded="true" signature="9:23" ph="..." />
-                <marker date="1521106963000" expanded="true" signature="43:73" ph="..." />
-                <marker date="1521106963000" expanded="true" signature="348:360" ph="..." />
-                <marker date="1521106963000" expanded="true" signature="371:382" ph="..." />
-                <marker date="1521106963000" expanded="true" signature="772:793" ph="..." />
-                <marker date="1521106963000" expanded="true" signature="952:971" ph="..." />
-                <marker date="1521106963000" expanded="true" signature="1015:1027" ph="..." />
-                <marker date="1521106963000" expanded="true" signature="1386:1399" ph="..." />
-                <marker date="1521106963000" expanded="true" signature="1436:1449" ph="..." />
-                <marker date="1521106963000" expanded="true" signature="1633:1646" ph="..." />
-                <marker date="1521106963000" expanded="true" signature="3146:3162" ph="..." />
-                <marker date="1521106963000" expanded="true" signature="3733:3754" ph="..." />
-                <marker date="1521106963000" expanded="true" signature="4242:4262" ph="..." />
-                <marker date="1521106963000" expanded="true" signature="4849:4867" ph="..." />
-                <marker date="1521106963000" expanded="true" signature="5339:5354" ph="..." />
-                <marker date="1521106963000" expanded="true" signature="5906:5924" ph="..." />
-                <marker date="1521106963000" expanded="true" signature="6388:6410" ph="..." />
-                <marker date="1521106963000" expanded="true" signature="7736:7750" ph="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -201,7 +173,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>locat</find>
       <find>sti</find>
       <find>350</find>
       <find>widt</find>
@@ -228,9 +199,10 @@
       <find>header-all</find>
       <find>mb_strtoupper</find>
       <find>update</find>
-      <find>productsPhotoUpdate</find>
       <find>file_exists</find>
       <find>productsUpdate</find>
+      <find>photosRename</find>
+      <find>productsPhotoUpdate</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -297,8 +269,8 @@
         <option value="$PROJECT_DIR$/public/css/main.css" />
         <option value="$PROJECT_DIR$/resources/views/admin/product/products.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" />
       </list>
     </option>
   </component>
@@ -659,6 +631,38 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="public1" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rostovka_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rostovka_app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public1" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rostovka_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rostovka_app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -677,7 +681,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="image" />
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -691,15 +695,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="image" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="products" />
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -1009,19 +1005,19 @@
     <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/admin/product" />
-      <recent name="$PROJECT_DIR$/resources/views" />
-      <recent name="$PROJECT_DIR$/resources/views/user" />
-      <recent name="$PROJECT_DIR$/public/css/fonts" />
-      <recent name="$PROJECT_DIR$/public/js/admin" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV" />
       <recent name="$PROJECT_DIR$/public/js" />
       <recent name="$PROJECT_DIR$/public/images" />
       <recent name="$PROJECT_DIR$/public/img" />
       <recent name="$PROJECT_DIR$/resources/views" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images" />
+      <recent name="$PROJECT_DIR$/resources/views/admin/product" />
+      <recent name="$PROJECT_DIR$/resources/views" />
+      <recent name="$PROJECT_DIR$/resources/views/user" />
+      <recent name="$PROJECT_DIR$/public/css/fonts" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1239,21 +1235,7 @@
       <workItem from="1521142492921" duration="3597000" />
       <workItem from="1521192148024" duration="9790000" />
       <workItem from="1521627087181" duration="2235000" />
-      <workItem from="1521705113281" duration="2373000" />
-    </task>
-    <task id="LOCAL-00004" summary="FrontEnd Theme - DONE">
-      <created>1506696221640</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1506696221640</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Admin Theme">
-      <created>1509622019212</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1509622019212</updated>
+      <workItem from="1521705113281" duration="5774000" />
     </task>
     <task id="LOCAL-00006" summary="Admin Theme">
       <created>1509622053784</created>
@@ -1584,11 +1566,25 @@
       <option name="project" value="LOCAL" />
       <updated>1521707829996</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Front done update 27.02.18">
+      <created>1521709216790</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1521709216790</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Front done update 27.02.18">
+      <created>1521713019259</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1521713019259</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="771922000" />
+    <option name="totallyTimeSpent" value="775323000" />
   </component>
   <component name="TodoView" selected-index="2" />
   <component name="ToolWindowManager">
@@ -1779,20 +1775,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/user/main_page/main.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/sale/show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="36" lean-forward="false" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/robots.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2192,20 +2174,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/image/products/1.jpeg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/products/74110_1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="98" column="35" lean-forward="false" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="35" />
+        <state relative-caret-position="649">
+          <caret line="441" column="58" lean-forward="true" selection-start-line="441" selection-start-column="58" selection-end-line="441" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="124" column="155" lean-forward="false" selection-start-line="124" selection-start-column="155" selection-end-line="124" selection-end-column="155" />
+        <state relative-caret-position="222">
+          <caret line="125" column="32" lean-forward="false" selection-start-line="125" selection-start-column="32" selection-end-line="125" selection-end-column="32" />
           <folding>
-            <marker date="1521709211000" expanded="true" signature="4543:7640" ph="..." />
+            <marker date="1521715588000" expanded="true" signature="4543:7641" ph="..." />
           </folding>
         </state>
       </provider>
