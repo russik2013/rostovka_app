@@ -28,7 +28,12 @@ class ProductController extends Controller
             -> pluck('id')->toArray();
         else $manufacturerId = Manufacturer::all() -> pluck('id')->toArray();
 
+        $page = 1;
+        if(isset($_GET['page'])){
 
+            $page = $_GET['page'];
+
+        }
 
         if($name != "") {
             if( isset($_GET['article'])) {
@@ -36,12 +41,22 @@ class ProductController extends Controller
                 where('article', "like", "%" . $_GET['article'] . "%")->
                 where('name', "like", "%" . $name . "%")->
                 whereIn('manufacturer_id', $manufacturerId)->
-                orderBy('id', 'desc')->paginate(15);
+                orderBy('id', 'desc')->skip(($page - 1) * 15) -> take(15) -> get();
+
+                $productCount = ceil(Product::with('category', 'manufacturer', 'photo')->
+                    where('article', "like", "%" . $_GET['article'] . "%")->
+                    where('name', "like", "%" . $name . "%")->
+                    whereIn('manufacturer_id', $manufacturerId)-> count() / 15);
+
             }else {
                 $products = Product::with('category', 'manufacturer', 'photo')->
                 where('name', "like", "%" . $name . "%")->
                 whereIn('manufacturer_id', $manufacturerId)->
-                orderBy('id', 'desc')->paginate(15);
+                orderBy('id', 'desc')->skip(($page - 1) * 15) -> take(15) -> get();
+
+                $productCount = ceil(Product::with('category', 'manufacturer', 'photo')->
+                    where('name', "like", "%" . $name . "%")->
+                    whereIn('manufacturer_id', $manufacturerId) -> count() / 15);
             }
         }
         else{
@@ -49,14 +64,23 @@ class ProductController extends Controller
                 $products = Product::with('category', 'manufacturer', 'photo')->
                 where('article', "like", "%" . $_GET['article'] . "%")->
                 whereIn('manufacturer_id', $manufacturerId)->
-                orderBy('id', 'desc')->paginate(15);
-            }else
-                $products = Product::with('category','manufacturer', 'photo')->
+                orderBy('id', 'desc')->skip(($page - 1) * 15) -> take(15) -> get();
+
+                $productCount = ceil(Product::with('category', 'manufacturer', 'photo')->
+                    where('article', "like", "%" . $_GET['article'] . "%")->
+                    whereIn('manufacturer_id', $manufacturerId) -> count() / 15);
+            }else {
+                $products = Product::with('category', 'manufacturer', 'photo')->
                 whereIn('manufacturer_id', $manufacturerId)->
-                orderBy('id', 'desc') ->paginate(15);
+                orderBy('id', 'desc')->skip(($page - 1) * 15)->take(15)->get();
+
+                $productCount = ceil(Product::with('category', 'manufacturer', 'photo')->
+                    whereIn('manufacturer_id', $manufacturerId) -> count() / 15);
+            }
         }
 
-        return view('admin.product.products', compact('products', 'manufactures', 'seasons', 'types'));
+
+        return view('admin.product.products', compact('products', 'manufactures', 'seasons', 'types', 'productCount'));
     }
 
     public function finder(Request $request){
