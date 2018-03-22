@@ -123,7 +123,8 @@ $('.mobileNav li a').on('click', function () {
 var filter_mobileButton=document.querySelector(".filter--mobileButton");
 
 if(location.href===location.origin+"/" || location.href===location.origin+"/about" || location.href===location.origin+"/5/category" ||
-    location.href===location.origin+"/login" || location.href===location.origin+"/cart" || location.href===location.origin+"/product"){
+    location.href===location.origin+"/login" || location.href===location.origin+"/cart" || location.href===location.origin+"/product" ||
+    location.href===location.origin+"/checkout" || location.href===location.origin+"/register"){
     filter_mobileButton.style.display="none";
 }
 var a = location.href;

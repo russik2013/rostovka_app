@@ -23,6 +23,14 @@ class ProductController extends Controller
         $seasons = Season::where('id', '!=', 5) ->orderBy('name','asc') -> get();
         $types = Type::where('id', '!=', 28)->orderBy('name','asc') -> get();
 
+        $manufacturerGetParam = null;
+        $articleGetParam = null;
+
+        if(isset($_GET['manufacturer']))
+            $manufacturerGetParam = $_GET['manufacturer'];
+        if(isset($_GET['article']))
+            $articleGetParam = $_GET['article'];
+
         if(isset($_GET['manufacturer']))
         $manufacturerId = Manufacturer:: where('name', "like", "%".$_GET['manufacturer']."%")
             -> pluck('id')->toArray();
@@ -56,7 +64,7 @@ class ProductController extends Controller
                 orderBy('id', 'desc') ->paginate(15);
         }
 
-        return view('admin.product.products', compact('products', 'manufactures', 'seasons', 'types'));
+        return view('admin.product.products', compact('products', 'articleGetParam','manufacturerGetParam','manufactures', 'seasons', 'types'));
     }
 
     public function finder(Request $request){

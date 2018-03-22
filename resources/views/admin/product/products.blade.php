@@ -118,11 +118,21 @@
                                         <a href="#"id="closeAll"> Отменить все</a></th>
                                     <th></th>
                                     <th>
-                                        <input style="border: 1px solid #c5c5c5; max-width: 110px; text-align: center; padding-top: 3px" type="text" class="searchArt" placeholder="Поиск">
+                                        <input style="border: 1px solid #c5c5c5; max-width: 110px; text-align: center; padding-top: 3px" type="text" value="{{$articleGetParam}}" class="searchArt" placeholder="Поиск">
                                     </th>
                                     <th></th>
                                     <th>
-                                        <input style="border: 1px solid #c5c5c5; max-width: 110px; text-align: center; padding-top: 3px"  type="text" class="searchMan" placeholder="Поиск">
+                                        {{--<input style="border: 1px solid #c5c5c5; max-width: 110px; text-align: center; padding-top: 3px"  type="text" class="searchMan" placeholder="Поиск">--}}
+
+                                        <select class="searchMan" style="border: 1px solid #c5c5c5; padding-top: 3px; padding-bottom: 1px; max-width: 110px; text-align: center">
+                                            <option value="0">Все</option>
+                                            @foreach($manufactures as $manufacture)
+
+                                                <option @if($manufacture -> name == $manufacturerGetParam) selected @endif value="{{$manufacture -> name}}">{{$manufacture -> name}}</option>
+
+                                            @endforeach
+                                        </select>
+
                                     </th>
                                     <th>
                                         <input type="text" class="pricePurchase" style="border: 1px solid #c5c5c5; padding-top: 3px; max-width: 110px; text-align: center" placeholder="Закупка">

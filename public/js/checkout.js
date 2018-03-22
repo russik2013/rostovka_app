@@ -207,10 +207,10 @@ function sendData() {
 var adress = document.querySelector(".adress");
 var secession =document.querySelector(".secession");
 var pickup = document.querySelector(".pickup");
+var pickup_mob = document.querySelector(".pickup_mob");
 var shipping_method =document.getElementsByClassName("shipping_method");
 for(var i =0;i<shipping_method.length;i++){
     shipping_method[i].addEventListener("change",function () {
-        debugger
         if(this.checked===true){
             adress.style.display="block";
             secession.style.display="block";
@@ -219,6 +219,12 @@ for(var i =0;i<shipping_method.length;i++){
 }
 pickup.addEventListener("click",function () {
     if(pickup.checked===true){
+        adress.style.display="none";
+        secession.style.display="none";
+    }
+});
+pickup_mob.addEventListener("click",function () {
+    if(pickup_mob.checked===true){
         adress.style.display="none";
         secession.style.display="none";
     }

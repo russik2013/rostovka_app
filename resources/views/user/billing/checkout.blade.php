@@ -217,7 +217,7 @@
                                                         <label for="mob_bus_method">Подвести к автобусу</label>
                                                     </li>
                                                     <li>
-                                                        <input name="shipping_method" data-index="0" id="mob_self_pickup" value="self_pickup" class="shipping_method" type="radio">
+                                                        <input name="shipping_method" data-index="0" id="mob_self_pickup" value="self_pickup" class="pickup_mob" type="radio">
                                                         <label for="mob_self_pickup">Самовывоз</label>
                                                     </li>
                                                 </ul>
