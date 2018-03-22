@@ -367,6 +367,8 @@ class CsvLoadController extends Controller
 
             Product::insert($inputTovars[0]);
 
+            //dd($this->formPhotoInsertArray($request, $products));
+
             ProductPhotos::insert($this->formPhotoInsertArray($request, $products));
 
             $this->photosRename($products);
