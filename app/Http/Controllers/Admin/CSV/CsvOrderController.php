@@ -270,7 +270,7 @@ class CsvOrderController extends Controller
 
                     $data[$detail->manufacturer_name][0] = [
 
-                        Carbon::createFromFormat('d.m.Y', $time[0]),
+                        Carbon::parse($time[0])->format('d.m.Y'),
                         '',
                         'Заказчик: Rostovka.net '."\r\n".'Сергей тел: 0672533305',
                         'Поставщик: ' . $detail->manufacturer_name . "". $street. "". $NumberContainerManufacturer ."". $firstNameManufacturer. "". $secondNameManufacturer."".$phoneManufacturer,
@@ -533,7 +533,7 @@ class CsvOrderController extends Controller
 
                     $data[$detail->manufacturer_name][0] = [
 
-                        Carbon::createFromFormat('d.m.Y', $time[0]),
+                        Carbon::parse($time[0])->format('d.m.Y'),
                         '',
                         'Заказчик: Rostovka.net '."\r\n".'Сергей тел: 0672533305',
                         'Поставщик: ' . $detail->manufacturer_name ."". $street."". $NumberContainerManufacturer ."". $firstNameManufacturer. "". $secondNameManufacturer."".$phoneManufacturer,

@@ -123,6 +123,8 @@ Route::group(['middleware' => 'auth'], function () {
         //Route::get('/csvLoadUpdate','Admin\CSV\CsvLoadController@edit');
         Route::post('/csvLoadUpdate','Admin\CSV\CsvLoadController@csvShoesUpdate') -> name('update');
 
+        Route::post('/csvLoadUpdatePhoto','Admin\CSV\CsvLoadController@onlyPhotoUpdate') -> name('updatePhoto');// ссылка для обновления только урлов фоток
+
         Route::post('/csvLoadDelete','Admin\CSV\CsvLoadController@csvShoesDelete') -> name('delete');
 
         //Route::post('/csvDownload','Admin\CSV\CsvDownloadController@getCsvFileWithProduct') -> name('download');
