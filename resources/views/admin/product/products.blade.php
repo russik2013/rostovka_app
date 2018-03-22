@@ -189,7 +189,27 @@
                         </div>
                     </div>
 
-                    {{$products->links()}}
+                    @for($i = 1; $i < $productCount+1; $i ++)
+
+                        @if(isset($_GET['article']) && isset($_GET['manufacturer']))
+                            <a href="{{url('products?article='.$_GET['article'].'&manufacturer='.$_GET['manufacturer'].'&page='.$i)}}">{{$i}}</a>
+
+                        @elseif(isset($_GET['article']))
+                            <a href="{{url('products?article='.$_GET['article'].'&page='.$i)}}">{{$i}}</a>
+
+                        @elseif(isset($_GET['manufacturer']))
+                            <a href="{{url('products?manufacturer='.$_GET['manufacturer'].'&page='.$i)}}">{{$i}}</a>
+
+                            @else
+                            <a href="{{url('products?page='.$i)}}">{{$i}}</a>
+                            @endif
+
+                    @endfor
+
+
+
+
+                    {{--{{$products->links()}}--}}
 
 
                 </div>

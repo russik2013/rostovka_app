@@ -391,25 +391,30 @@ class CsvLoadController extends Controller
 
         $data_base_products = Product::whereIn('name', array_keys($products_mass)) -> pluck('id', 'name') ->toArray();
 
-        //dd($products_mass, $data_base_products);
+
 
         foreach ($products_mass as $key => $photo_to_product_value){
 
             foreach ($photo_to_product_value[0] as $item){
-                if(is_numeric($item)){
-                    if($item && file_exists('../images/products/'.(integer)$item.'.jpg')) {
-                        File::move('../images/products/' . (integer)$item . '.jpg', 'images/products/' . $data_base_products[$key] . "_" . $item . '.jpg');
-                        $img = Image::make(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
-                        $img -> insert(public_path('images/марка.png'), 'center');
-                        $img -> save(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
-                    }
-                }else{
-                    if($item && file_exists('../images/products/'.$item.'.jpg')) {
-                        File::move('../images/products/' . $item . '.jpg', 'images/products/' . $data_base_products[$key] . "_" . $item . '.jpg');
-                        $img = Image::make(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
-                        $img -> insert(public_path('images/марка.png'), 'center');
-                        $img -> save(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
-                        //$objDrawing->setPath(public_path('images/viber_image.jpg')); //your image path
+
+
+
+                if (isset($data_base_products[$key])) {
+                    if (is_numeric($item)) {
+                        if ($item && file_exists('../images/products/' . (integer)$item . '.jpg')) {
+                            File::move('../images/products/' . (integer)$item . '.jpg', 'images/products/' . $data_base_products[$key] . "_" . $item . '.jpg');
+                            $img = Image::make(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
+                            $img->insert(public_path('images/марка.png'), 'center');
+                            $img->save(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
+                        }
+                    } else {
+                        if ($item && file_exists('../images/products/' . $item . '.jpg')) {
+                            File::move('../images/products/' . $item . '.jpg', 'images/products/' . $data_base_products[$key] . "_" . $item . '.jpg');
+                            $img = Image::make(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
+                            $img->insert(public_path('images/марка.png'), 'center');
+                            $img->save(public_path('images/products/' . $data_base_products[$key] . "_" . $item . '.jpg'));
+                            //$objDrawing->setPath(public_path('images/viber_image.jpg')); //your image path
+                        }
                     }
                 }
 
@@ -439,15 +444,19 @@ class CsvLoadController extends Controller
 
         foreach ($products_mass as $key => $photo_to_product_value){
 
-            foreach ($photo_to_product_value[0] as $item){
-                if($item) {
-                    $photos_to_products_insert_array[] = ['photo_url' => $data_base_products[$key] . "_" . $item . '.jpg',
-                        'product_id' => $data_base_products[$key]];
-                }else {
-                    $photos_to_products_insert_array[] = ['photo_url' => 'none',
-                        'product_id' => $data_base_products[$key]];
-                }
+            foreach ($photo_to_product_value[0] as $item) {
 
+                if (isset($data_base_products[$key])) {
+                    if ($item) {
+                        $photos_to_products_insert_array[] = ['photo_url' => $data_base_products[$key] . "_" . $item . '.jpg',
+                            'product_id' => $data_base_products[$key]];
+                    } else {
+                        $photos_to_products_insert_array[] = ['photo_url' => 'none',
+                            'product_id' => $data_base_products[$key]];
+                    }
+
+
+                }
             }
         }
 
