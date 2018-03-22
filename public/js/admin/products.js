@@ -439,22 +439,12 @@ searchArt.addEventListener("keypress",function (e) {
     if(e.keyCode===13){
         if(searchArt.value!==""&&searchMan.value!=="0"){
             location.href = location.origin + "/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
-
-            localStorage.setItem("article", searchArt.value);
-            localStorage.setItem("manufacturer", searchMan.value);
-            console.log(localStorage.getItem("manufacturer"));
-
         }
         else if(searchArt.value!==""){
             location.href = location.origin + "/public/products" +"?article=" +searchArt.value;
-            localStorage.setItem("article", searchArt.value);
-            localStorage.removeItem("manufacturer")
-
         }
         else if(searchMan.value!=="0"){
             location.href = location.origin + "/public/products"+"?manufacturer="+searchMan.value;
-            localStorage.setItem("manufacturer", searchMan.value);
-            localStorage.removeItem("article")
         }
     }
 });
@@ -464,37 +454,17 @@ searchMan.addEventListener("keypress",function (e) {
     if(e.keyCode===13){
         if(searchArt.value!==""&&searchMan.value!=="0"){
             location.href = location.origin+"/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
-            localStorage.setItem("article", searchArt.value);
-            localStorage.setItem("manufacturer", searchMan.value);
         }
         else if(searchMan.value!=="0"){
             location.href = location.origin+"/public/products" +"?manufacturer=" +searchMan.value;
-            localStorage.setItem("manufacturer", searchMan.value);
-            localStorage.removeItem("article")
 
         }
         else if(searchArt.value!==""){
             location.href = location.origin+"/public/products"+"?article="+searchArt.value;
-            localStorage.setItem("article", searchArt.value);
-            localStorage.removeItem("manufacturer")
-
-
         }
     }
 });
 
-if(localStorage.getItem("article")!=="" && localStorage.getItem("manufacturer")!=="0"){
-    location.href += "/public/products" +"?article=" +searchArt.value +"&manufacturer="+searchMan.value;
-}
-else if (localStorage.getItem("manufacturer")!=="0"){
-    location.href += "/public/products"+"?manufacturer="+searchMan.value;
-}
-else if(localStorage.getItem("article")!==""){
-    location.href += "/public/products" +"?article=" +searchArt.value;
-}
-else{
-    console.log(64);
-}
 
 pricePurchase.addEventListener("keypress",function (e) {
     if(e.keyCode >= 48 && e.keyCode <= 57){
@@ -533,7 +503,6 @@ clearAll.addEventListener("click",function () {
  }
 
 chooseAll.addEventListener('click',function () {
-
     for(var i=0;i<checkTov.length;i++){
         if(checkTov[i].checked===false){
             countNumber.innerHTML++;

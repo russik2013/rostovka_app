@@ -124,6 +124,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/csvLoadUpdate','Admin\CSV\CsvLoadController@csvShoesUpdate') -> name('update');
 
         Route::post('/csvLoadUpdatePhoto','Admin\CSV\CsvLoadController@onlyPhotoUpdate') -> name('updatePhoto');// ссылка для обновления только урлов фоток
+        Route::get('/csvLoadUpdatePhoto','ParchomController@index');
 
         Route::post('/csvLoadDelete','Admin\CSV\CsvLoadController@csvShoesDelete') -> name('delete');
 
