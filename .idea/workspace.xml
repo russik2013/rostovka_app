@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9fda3628-59ae-4bb0-aec9-228a56293af0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/products/__MACOSX/._2.jpg" afterPath="" />
+    <list default="true" id="9fda3628-59ae-4bb0-aec9-228a56293af0" name="Default" comment="Front done update 27.02.18">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -63,7 +62,7 @@
       <file leaf-file-name="products.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/product/products.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2325">
+            <state relative-caret-position="15">
               <caret line="155" column="0" lean-forward="false" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
               <folding>
                 <marker date="1521627330000" expanded="true" signature="9:22" ph="..." />
@@ -100,26 +99,26 @@
       <file leaf-file-name="CsvLoadController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="161" column="104" lean-forward="true" selection-start-line="161" selection-start-column="26" selection-end-line="161" selection-end-column="104" />
+            <state relative-caret-position="53">
+              <caret line="98" column="35" lean-forward="false" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="web.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="794">
-              <caret line="105" column="36" lean-forward="true" selection-start-line="105" selection-start-column="21" selection-end-line="105" selection-end-column="36" />
+            <state relative-caret-position="207">
+              <caret line="124" column="155" lean-forward="false" selection-start-line="124" selection-start-column="155" selection-end-line="124" selection-end-column="155" />
               <folding>
-                <marker date="1521626929000" expanded="true" signature="4543:7484" ph="..." />
+                <marker date="1521709211000" expanded="true" signature="4543:7640" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProductController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProductController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="284">
@@ -133,7 +132,7 @@
         <entry file="file://$PROJECT_DIR$/app/ProductPhotos.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret line="8" column="51" lean-forward="false" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="51" />
+              <caret line="8" column="37" lean-forward="false" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -229,9 +228,9 @@
       <find>header-all</find>
       <find>mb_strtoupper</find>
       <find>update</find>
-      <find>productsUpdate</find>
       <find>productsPhotoUpdate</find>
       <find>file_exists</find>
+      <find>productsUpdate</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -276,7 +275,6 @@
         <option value="$PROJECT_DIR$/public/css/sale/sale.css" />
         <option value="$PROJECT_DIR$/resources/views/user/sale/show.blade.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/user/category_page/category.blade.php" />
         <option value="$PROJECT_DIR$/public/js/categoryData.js" />
         <option value="$PROJECT_DIR$/app/Http/Requests/CashRequest.php" />
@@ -298,8 +296,9 @@
         <option value="$PROJECT_DIR$/resources/views/user/markup/markup.blade.php" />
         <option value="$PROJECT_DIR$/public/css/main.css" />
         <option value="$PROJECT_DIR$/resources/views/admin/product/products.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
       </list>
     </option>
   </component>
@@ -1240,14 +1239,7 @@
       <workItem from="1521142492921" duration="3597000" />
       <workItem from="1521192148024" duration="9790000" />
       <workItem from="1521627087181" duration="2235000" />
-      <workItem from="1521705113281" duration="1035000" />
-    </task>
-    <task id="LOCAL-00003" summary="FrontEnd Theme - DONE">
-      <created>1506690823640</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1506690823640</updated>
+      <workItem from="1521705113281" duration="2373000" />
     </task>
     <task id="LOCAL-00004" summary="FrontEnd Theme - DONE">
       <created>1506696221640</created>
@@ -1585,11 +1577,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521627355932</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Front done update 27.02.18">
+      <created>1521707829995</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1521707829996</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="770584000" />
+    <option name="totallyTimeSpent" value="771922000" />
   </component>
   <component name="TodoView" selected-index="2" />
   <component name="ToolWindowManager">
@@ -2142,9 +2141,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="88" column="57" lean-forward="false" selection-start-line="88" selection-start-column="57" selection-end-line="88" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/product/products.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2325">
+        <state relative-caret-position="15">
           <caret line="155" column="0" lean-forward="false" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
           <folding>
             <marker date="1521627330000" expanded="true" signature="9:22" ph="..." />
@@ -2177,37 +2184,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/ProductPhotos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="37" lean-forward="false" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CSV/CsvLoadController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="161" column="104" lean-forward="true" selection-start-line="161" selection-start-column="26" selection-end-line="161" selection-end-column="104" />
+        <state relative-caret-position="53">
+          <caret line="98" column="35" lean-forward="false" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="794">
-          <caret line="105" column="36" lean-forward="true" selection-start-line="105" selection-start-column="21" selection-end-line="105" selection-end-column="36" />
+        <state relative-caret-position="207">
+          <caret line="124" column="155" lean-forward="false" selection-start-line="124" selection-start-column="155" selection-end-line="124" selection-end-column="155" />
           <folding>
-            <marker date="1521626929000" expanded="true" signature="4543:7484" ph="..." />
+            <marker date="1521709211000" expanded="true" signature="4543:7640" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/ProductPhotos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="51" lean-forward="false" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="88" column="57" lean-forward="false" selection-start-line="88" selection-start-column="57" selection-end-line="88" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>

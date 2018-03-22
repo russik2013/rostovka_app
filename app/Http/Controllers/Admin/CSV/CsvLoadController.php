@@ -96,6 +96,26 @@ class CsvLoadController extends Controller
 
     }
 
+    public function onlyPhotoUpdate(CsvPostRequest $request){
+
+        $path = $request->file('files')->getRealPath();
+
+        $products = Excel::load($path, function($reader) {
+        })->get();
+
+        $this ->checkSex($products);
+
+        $products = $this ->checkEmpty($products);
+
+        foreach ($products as $product){
+
+            ProductPhotos::where('product_id',$product -> id) -> update(['photo_url' =>$product -> foto1.'.jpg']);
+
+        }
+
+
+    }
+
 
     public function csvShoesUpdate(CsvPostRequest $request)
     {
