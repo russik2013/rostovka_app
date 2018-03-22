@@ -191,18 +191,66 @@
 
                     @for($i = 1; $i < $productCount+1; $i ++)
 
-                        @if(isset($_GET['article']) && isset($_GET['manufacturer']))
-                            <a href="{{url('products?article='.$_GET['article'].'&manufacturer='.$_GET['manufacturer'].'&page='.$i)}}">{{$i}}</a>
+                        @if(isset($_GET['page']))
 
-                        @elseif(isset($_GET['article']))
-                            <a href="{{url('products?article='.$_GET['article'].'&page='.$i)}}">{{$i}}</a>
+                            @if($_GET['page'] > 4 && $i == 1)
+                                @if(isset($_GET['article']) && isset($_GET['manufacturer']))
+                                    <a href="{{url('products?article='.$_GET['article'].'&manufacturer='.$_GET['manufacturer'].'&page='.$i)}}">{{$i}}</a>
 
-                        @elseif(isset($_GET['manufacturer']))
-                            <a href="{{url('products?manufacturer='.$_GET['manufacturer'].'&page='.$i)}}">{{$i}}</a>
+                                @elseif(isset($_GET['article']))
+                                    <a href="{{url('products?article='.$_GET['article'].'&page='.$i)}}">{{$i}}</a>
 
-                            @else
-                            <a href="{{url('products?page='.$i)}}">{{$i}}</a>
+                                @elseif(isset($_GET['manufacturer']))
+                                    <a href="{{url('products?manufacturer='.$_GET['manufacturer'].'&page='.$i)}}">{{$i}}</a>
+
+                                @else
+                                    <a href="{{url('products?page='.$i)}}">{{$i}}</a>
+                                @endif
+                                ...
+                                @endif
+
+                             @if(($i >= $_GET['page'] - 2 &&  $i <= $_GET['page'] + 2) || $i + 1 == $productCount)
+
+                                @if(isset($_GET['article']) && isset($_GET['manufacturer']))
+                                    <a href="{{url('products?article='.$_GET['article'].'&manufacturer='.$_GET['manufacturer'].'&page='.$i)}}">{{$i}}</a>
+
+                                @elseif(isset($_GET['article']))
+                                    <a href="{{url('products?article='.$_GET['article'].'&page='.$i)}}">{{$i}}</a>
+
+                                @elseif(isset($_GET['manufacturer']))
+                                    <a href="{{url('products?manufacturer='.$_GET['manufacturer'].'&page='.$i)}}">{{$i}}</a>
+
+                                    @else
+                                    <a href="{{url('products?page='.$i)}}">{{$i}}</a>
+                                    @endif
+
                             @endif
+
+                            @if($i == $_GET['page'] + 3)
+                                ...
+                                @endif
+
+                        @else
+                            @if(($i >= 1 &&  $i <= 5) || $i + 1 == $productCount)
+                                @if(isset($_GET['article']) && isset($_GET['manufacturer']))
+                                    <a href="{{url('products?article='.$_GET['article'].'&manufacturer='.$_GET['manufacturer'].'&page='.$i)}}">{{$i}}</a>
+
+                                @elseif(isset($_GET['article']))
+                                    <a href="{{url('products?article='.$_GET['article'].'&page='.$i)}}">{{$i}}</a>
+
+                                @elseif(isset($_GET['manufacturer']))
+                                    <a href="{{url('products?manufacturer='.$_GET['manufacturer'].'&page='.$i)}}">{{$i}}</a>
+
+                                @else
+                                    <a href="{{url('products?page='.$i)}}">{{$i}}</a>
+                                @endif
+                            @endif
+
+                                @if($i == 6)
+                                    ...
+                                @endif
+
+                        @endif
 
                     @endfor
 

@@ -88,7 +88,7 @@ class ProductController extends Controller
         }
 
 
-        return view('admin.product.products', compact('products', 'manufactures', 'seasons', 'types', 'productCount'));
+        return view('admin.product.products', compact('products', 'manufactures', 'seasons', 'types', 'productCount', 'manufacturerGetParam', 'articleGetParam'));
     }
 
     public function finder(Request $request){
