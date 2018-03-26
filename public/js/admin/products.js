@@ -402,6 +402,18 @@ var searchMan = document.querySelector(".searchMan");
 var saveAll = document.querySelector(".saveAll");
 var availability =document.querySelector(".isExist");
 
+var discount = document.querySelector(".discount");
+var discountpr = document.querySelector(".discountpr");
+
+discount.addEventListener("keypress",function (e) {
+      if(e.keyCode >= 48 && e.keyCode <= 57) {
+
+                }
+        else{
+                e.preventDefault();
+            }
+    });
+
 saveAll.addEventListener("click",function () {
     var save =[];
     for(var i=0;i<checkTov.length;i++){
@@ -414,7 +426,7 @@ saveAll.addEventListener("click",function () {
     {
         alert("Цена закупки должна быть меньше цены")
     }
-    else if(pricePurchase.value===""&&price.value===""&&availability.value==="0"){
+    else if(pricePurchase.value===""&&price.value===""&&availability.value==="0"&&discount.value===""){
         alert("Не заполненно не одного поля!")
     }
     else {
@@ -426,10 +438,11 @@ saveAll.addEventListener("click",function () {
                 "save": save,
                 "price": price.value,
                 "pricePurchase": pricePurchase.value,
-                "availability": availability.value
+                "availability": availability.value,
+                "discount": discount.value
             },
             success: function (msg) {
-                location.reload();
+                //location.reload();
             }
         });
 

@@ -112,9 +112,10 @@
                                     <th>Производитель</th>
                                     <th>Цена закупки</th>
                                     <th> Цена</th>
+                                    <th>Скидка</th>
                                     <th>В наличии</tr>
                                 <tr>
-                                    <th style="width: 50px"><a href="#" id="chooseAll">Выбрать все</a>
+                                    <th style="width: 50px"><a href="#" id="chooseAll">Выбрать все</a>g
                                         <a href="#"id="closeAll"> Отменить все</a></th>
                                     <th></th>
                                     <th>
@@ -140,6 +141,14 @@
 
                                     <th>
                                         <input style="border: 1px solid #c5c5c5; max-width: 110px; text-align: center; padding-top: 3px" type="text" class="price" placeholder="Цена">
+                                    </th>
+
+                                    <th>
+                                      <input style="border: 1px solid #c5c5c5; max-width: 110px; text-align: center; padding-top: 3px" type="text" class="discount" placeholder="Скидка">
+                                      <select class="discountpr isExist" style="border: 1px solid #c5c5c5; padding-top: 3px; padding-bottom: 1px; max-width: 110px; text-align: center">
+                                     <option value="грн">Грн</option>
+                                     <option value="%">%</option>
+                                    </select>
                                     </th>
 
                                     <th>
@@ -176,6 +185,7 @@
 
 
                                         <td>{{$product -> prise}}</td>
+                                        <td>{{$product -> discount}}</td>
 
 
                                         <td>@if($product ->show_product == 1) Да @else Нет @endif</td>

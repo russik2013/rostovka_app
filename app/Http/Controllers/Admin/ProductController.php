@@ -171,7 +171,61 @@ class ProductController extends Controller
 
     public function tovarMultiUpdate(Request $request){
 
-        $products = Product::whereIn('id', $request -> save) -> get();
+        //dd($request -> all());
+
+        if($request -> discount){
+
+            if($request -> availability == "грн") {
+
+                $products = Product::whereIn('id', $request->save)->with('manufacturer')->get();
+
+                foreach ($products as $product){
+
+                    if($product->prise < $request -> discount ){
+
+                        return response("discount can't be more as prise of one product", 404);
+
+                    }
+
+                    if ($product -> manufacturer -> discount != "" && $product -> manufacturer -> discount != 0) {
+
+                        $hrivna_discount = explode("грн", $product -> manufacturer -> discount);
+
+                        if (isset($hrivna_discount[1])) {
+
+                            if(($hrivna_discount[1] + $product->prise) < $request -> discount )
+
+                                return response("discount can't be more as prise of one product + manufacturer discount", 404);
+
+                        }
+
+                        $prozent_discount = explode("%", $product -> manufacturer -> discount);
+
+                        if (isset($prozent_discount[1])) {
+
+                            if(( $product->prise - ($product->prise * ($prozent_discount[0] / 100)) + $product->prise) < $request -> discount )
+
+                                return response("discount can't be more as prise of one product + manufacturer discount", 404);
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            if($request -> availability == "%" && $request -> discount > 100){
+
+                return response("discount can't be more as 100%", 404);
+
+            }
+
+        }
+
+
+        $products = Product::whereIn('id', $request -> save) ->with('manufacturer') -> get();
+
         $manufacturers = Manufacturer::all();
 
         foreach ($request -> save as $item){
@@ -179,6 +233,13 @@ class ProductController extends Controller
             foreach ($products as $product){
 
                 if($item == $product -> id){
+
+                    if($request -> discount){
+
+                        $product->discount = $request -> discount.$request -> availability;
+
+                    }
+
 
                     if($request ->price) {
 
@@ -248,6 +309,8 @@ class ProductController extends Controller
                         $product->show_product = 0;
                         $product->accessibility = 0;
                     }
+
+
 
                     $product -> save();
 
