@@ -399,7 +399,8 @@ class CsvLoadController extends Controller
 
 
 
-                if (isset($data_base_products[$key])) {
+                if (isset($data_base_products[$key]) && $item) {
+
                     if (is_numeric($item)) {
                         if ($item && file_exists('../images/products/' . (integer)$item . '.jpg')) {
                             File::move('../images/products/' . (integer)$item . '.jpg', 'images/products/' . $data_base_products[$key] . "_" . $item . '.jpg');
@@ -445,17 +446,11 @@ class CsvLoadController extends Controller
         foreach ($products_mass as $key => $photo_to_product_value){
 
             foreach ($photo_to_product_value[0] as $item) {
-
                 if (isset($data_base_products[$key])) {
                     if ($item) {
                         $photos_to_products_insert_array[] = ['photo_url' => $data_base_products[$key] . "_" . $item . '.jpg',
                             'product_id' => $data_base_products[$key]];
-                    } else {
-                        $photos_to_products_insert_array[] = ['photo_url' => 'none',
-                            'product_id' => $data_base_products[$key]];
                     }
-
-
                 }
             }
         }
